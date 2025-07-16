@@ -17,7 +17,7 @@ python3 scripts/mk_make.py
 cd build && make -j8 && sudo make install
 cd ../..
 
-pip install smt-portfolio
+pip install smt-portfolio tqdm genlm-control lean_interact 
 
 # Build the Lean project.
 lake script run check

@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM nvidia/cuda:12.9.1-cudnn-devel-ubuntu24.04
 
 WORKDIR /LeanEuclid
 COPY . .
@@ -37,4 +37,4 @@ RUN curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -
 # Build the Lean project.
 RUN lake script run check
 RUN lake exe cache get
-RUN lake build SystemE Book UniGeo E3
+# RUN lake build SystemE Book UniGeo E3

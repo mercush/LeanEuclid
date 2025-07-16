@@ -1,32 +1,34 @@
 import os
 import base64
-
-from openai import OpenAI
-
+from AutoFormalization.lean import *
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from vllm import SamplingParams
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 EXAMPLE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "example"))
 
 
-class GPT4:
-    def __init__(self, model="gpt-4-1106-preview", temperature=0.2, max_tokens=300):
-        self.client = OpenAI()
-        self.model = model
+class BaseLMModel:
+    """
+    Need: add_message(role, content) method to add messages to the conversation.
+    Get response with get_response() method.
+    """
+    def __init__(self, model="AI-MO/Kimina-Prover-Preview-Distill-7B", temperature=0.6, max_tokens=300):
+        self.llm = AutoModelForCausalLM.from_pretrained(model)
+        self.tokenizer = AutoTokenizer.from_pretrained(model)
         self.temperature = temperature
         self.max_tokens = max_tokens
-        self.messages = []
+        self.conversation = []
 
     def add_message(self, role, content):
-        self.messages.append({"role": role, "content": content})
+        self.conversation.append({"role": role, "content": content})
 
     def get_response(self):
-        completion = self.client.chat.completions.create(
-            model=self.model,
-            messages=self.messages,
-            temperature=self.temperature,
-            max_tokens=self.max_tokens,
-        )
-        return completion.choices[0].message.content
+        prompt = self.tokenizer.apply_chat_template(self.conversation, tokenize=False, add_generation_prompt=True)
+        sampling_params = SamplingParams(temperature=0.6, top_p=0.9, max_tokens=self.max_tokens)
+        output = self.llm.generate(prompt, sampling_params=sampling_params)
+        output_text = output[0].outputs[0].text
+        return output_text
 
 
 def process_image(image_path):

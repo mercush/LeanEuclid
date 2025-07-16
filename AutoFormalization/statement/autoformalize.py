@@ -157,12 +157,8 @@ def main():
             testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
 
         for i in tqdm.tqdm(testing_idx):
-            model = GPT4(
-                model=(
-                    "gpt-4-vision-preview"
-                    if args.reasoning == "multi-modal"
-                    else "gpt-4-1106-preview"
-                )
+            model = GenLMModel(
+                "AI-MO/Kimina-Prover-Preview-Distill-7B"
             )
             content = deepcopy(example_content)
 
@@ -211,7 +207,7 @@ def main():
             )
 
             model.add_message("system", instruction)
-            model.add_message("user", content)
+            model.add_message("user", str(content))
 
             for _ in range(args.num_query):
                 try:
