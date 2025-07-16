@@ -2,7 +2,7 @@ import os
 import base64
 from AutoFormalization.lean import *
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from vllm import SamplingParams
+from vllm import LLM, SamplingParams
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 EXAMPLE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "example"))
@@ -13,9 +13,12 @@ class BaseLMModel:
     Need: add_message(role, content) method to add messages to the conversation.
     Get response with get_response() method.
     """
-    def __init__(self, model="AI-MO/Kimina-Prover-Preview-Distill-7B", temperature=0.6, max_tokens=300):
-        self.llm = AutoModelForCausalLM.from_pretrained(model)
-        self.tokenizer = AutoTokenizer.from_pretrained(model)
+    def __init__(self, model_name="AI-MO/Kimina-Prover-Preview-Distill-7B", temperature=0.6, max_tokens=300):
+        self.llm = LLM(model_name,
+                    tensor_parallel_size=4, # Should have 8 GPUs on this node
+                    max_model_len=4096
+                    )
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.conversation = []
@@ -23,7 +26,7 @@ class BaseLMModel:
     def add_message(self, role, content):
         self.conversation.append({"role": role, "content": content})
 
-    def get_response(self):
+    async def get_response(self):
         prompt = self.tokenizer.apply_chat_template(self.conversation, tokenize=False, add_generation_prompt=True)
         sampling_params = SamplingParams(temperature=0.6, top_p=0.9, max_tokens=self.max_tokens)
         output = self.llm.generate(prompt, sampling_params=sampling_params)

@@ -5,6 +5,7 @@ import argparse
 import random
 import tqdm
 import json
+import asyncio
 
 from copy import deepcopy
 from AutoFormalization.utils import *
@@ -66,7 +67,7 @@ def examples(dataset, category, num, reasoning):
     return content
 
 
-def main():
+async def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--dataset",
@@ -157,7 +158,7 @@ def main():
             testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
 
         for i in tqdm.tqdm(testing_idx):
-            model = GenLMModel(
+            model = BaseLMModel(
                 "AI-MO/Kimina-Prover-Preview-Distill-7B"
             )
             content = deepcopy(example_content)
@@ -211,7 +212,7 @@ def main():
 
             for _ in range(args.num_query):
                 try:
-                    response = model.get_response()
+                    response = await model.get_response()
                 except Exception as e:
                     print(f"An error occurred: {e}")
 
@@ -244,4 +245,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
