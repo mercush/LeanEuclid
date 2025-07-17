@@ -25,43 +25,40 @@ class LeanPotential(Potential):
     lean_config: LeanREPLConfig
     lean_server: LeanServer
     llm: PromptedLLM
-    lean_preamble: str
 
     def __init__(self, llm: PromptedLLM):
         super().__init__(llm.vocab, llm.token_type, llm.eos)
         self.lean_config = LeanREPLConfig(verbose=True, lean_version="v4.7.0", project=TempRequireProject("mathlib"), memory_hard_limit_mb=4000) 
         self.lean_server = AutoLeanServer(self.lean_config)
-        self.llm = llm
 
     async def prefix(self, context):
-        text = "".join(context).decode("utf-8", errors="ignore")
+        context = b"".join(context).decode("utf-8", errors="ignore")
         
         # Check for complete pattern first
-        match = re.search(r"<<<(.*?)>>>", text, re.DOTALL)
+        match = re.search(r"<<<(.*?)>>>", context, re.DOTALL)
         if match:
-            text = match
+            context = match
         else:
             # Check for incomplete pattern with extra >
-            match = re.search(r"<<<(.*?)>{1,3}", text, re.DOTALL)
+            match = re.search(r"<<<(.*?)>{1,3}", context, re.DOTALL)
             if match:
                 return 0.0
             else:
                 # Check for incomplete pattern without closing >>>
-                match = re.search(r"<<<(.*?)", text, re.DOTALL)
+                match = re.search(r"<<<(.*?)", context, re.DOTALL)
                 if match:
-                    text = match
+                    context = match
         
         if len(context) == 0:
             return 0.0
-        text = self.lean_prefix + (b"".join(context)).decode("utf-8", errors="replace")
-        commands = parse_lean(text)
+        commands = parse_lean(context)
         if not commands:
             return 0.0
         if not isinstance(commands[-1], LeanTheorem):
             return 0.0
         commands[-1].proof = None
         repaired_lean = complete_lean_str(commands)
-        print(f"🔄 Generated:   {text}")
+        print(f"🔄 Generated:   {context}")
         print(f"🔧 Repaired:    {repaired_lean}", end="")
         try:
             start = time.time()
@@ -83,8 +80,9 @@ class LeanPotential(Potential):
                 else:
                     print(f"✅ Lean check passed ({elapsed:.3f}s)")
                     return 0.0
-            case LeanError(message):
-                print(f"❌❌ Lean error: {message}")
+            case LeanError():
+                messages = response.message
+                print(f"❌❌ Lean error: {messages}")
                 return float("-inf")
 
     async def complete(self, context):
@@ -109,8 +107,9 @@ class LeanPotential(Potential):
                 else:
                     print(f"✅ Lean check passed")
                     return 0.0
-            case LeanError(message):
-                print(f"❌❌ Lean error: {message}")
+            case LeanError():
+                messages = response.message
+                print(f"❌❌ Lean error: {messages}")
                 return float("-inf")
 
 def best_posterior(d):
@@ -125,7 +124,7 @@ class GenLMModel:
             engine_opts={
                 "max_model_len": 4096,
                 })
-        self.lean_potential = LeanPotential(self.llm_potential)
+        self.lean_potential = LeanPotential(self.llm)
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.n_particles = n_particles
@@ -149,5 +148,3 @@ class GenLMModel:
             critic=None # critic
         )
         return best_posterior(sequences.posterior)
-    def get_response(self):
-        return self.get_response()

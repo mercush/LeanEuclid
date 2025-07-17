@@ -121,7 +121,9 @@ async def main():
 
     with open("AutoFormalization/statement/instruction.txt") as f:
         instruction = instruction_head + f.read()
-
+    model = BaseLMModel(
+        "AI-MO/Kimina-Prover-Distill-8B"
+    )
     for c in args.category:
         print("Category: ", c)
         validator = Validator(
@@ -158,9 +160,6 @@ async def main():
             testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
 
         for i in tqdm.tqdm(testing_idx):
-            model = BaseLMModel(
-                "AI-MO/Kimina-Prover-Preview-Distill-7B"
-            )
             content = deepcopy(example_content)
 
             problem_text = ""
@@ -242,6 +241,7 @@ async def main():
                     else:
                         model.add_message("assistant", response)
                         model.add_message("user", parse_error())
+            model.conversation = []
 
 
 if __name__ == "__main__":

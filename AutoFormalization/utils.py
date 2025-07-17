@@ -13,9 +13,9 @@ class BaseLMModel:
     Need: add_message(role, content) method to add messages to the conversation.
     Get response with get_response() method.
     """
-    def __init__(self, model_name="AI-MO/Kimina-Prover-Preview-Distill-7B", temperature=0.6, max_tokens=300):
+    def __init__(self, model_name="AI-MO/Kimina-Autoformalizer-7B", temperature=0.6, max_tokens=5000):
         self.llm = LLM(model_name,
-                    tensor_parallel_size=4, # Should have 8 GPUs on this node
+                    tensor_parallel_size=1, # Should have 8 GPUs on this node
                     max_model_len=4096
                     )
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
@@ -27,10 +27,12 @@ class BaseLMModel:
         self.conversation.append({"role": role, "content": content})
 
     async def get_response(self):
+        print(len(self.conversation))
         prompt = self.tokenizer.apply_chat_template(self.conversation, tokenize=False, add_generation_prompt=True)
         sampling_params = SamplingParams(temperature=0.6, top_p=0.9, max_tokens=self.max_tokens)
         output = self.llm.generate(prompt, sampling_params=sampling_params)
         output_text = output[0].outputs[0].text
+        print("Response from model:", output_text)
         return output_text
 
 
