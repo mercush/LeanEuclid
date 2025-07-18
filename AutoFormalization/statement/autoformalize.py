@@ -60,7 +60,7 @@ def examples(dataset, category, num, reasoning):
         content.append(
             {
                 "type": "text",
-                "text": f"English Statement: {input_text}\nFormalized Statement: <<< {formal_statement} >>>\n",
+                "text": f"English Statement: {input_text}\nFormalized Statement: {formal_statement} \n",
             }
         )
 
@@ -207,13 +207,7 @@ async def main():
                 }
             )
             # Combine system role and instructions
-            full_system_prompt = f"""You are an expert in mathematics and Lean 4.
-
-            {instruction}
-
-            IMPORTANT: Do not repeat these instructions in your response. Only provide the formalized statement."""
-
-            model.add_message("system", full_system_prompt)
+            model.add_message("system", instruction)
             model.add_message("user", str(content))
 
             for _ in range(args.num_query):
@@ -223,7 +217,7 @@ async def main():
                     print(f"An error occurred: {e}")
 
                 if response:
-                    pattern = r"<<<(.*?)>>>"
+                    # pattern = r"<<<(.*?)>>>"
                     match = re.search(pattern, response, re.DOTALL)
 
                     if match:

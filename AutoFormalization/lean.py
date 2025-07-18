@@ -35,19 +35,19 @@ class LeanPotential(Potential):
         context = b"".join(context).decode("utf-8", errors="ignore")
         
         # Check for complete pattern first
-        match = re.search(r"<<<(.*?)>>>", context, re.DOTALL)
-        if match:
-            context = match
-        else:
-            # Check for incomplete pattern with extra >
-            match = re.search(r"<<<(.*?)>{1,3}", context, re.DOTALL)
-            if match:
-                return 0.0
-            else:
-                # Check for incomplete pattern without closing >>>
-                match = re.search(r"<<<(.*?)", context, re.DOTALL)
-                if match:
-                    context = match
+        # match = re.search(r"<<<(.*?)>>>", context, re.DOTALL)
+        # if match:
+        #     context = match
+        # else:
+        #     # Check for incomplete pattern with extra >
+        #     match = re.search(r"<<<(.*?)>{1,2}", context, re.DOTALL)
+        #     if match:
+        #         return 0.0
+        #     else:
+        #         # Check for incomplete pattern without closing >>>
+        #         match = re.search(r"<<<(.*?)", context, re.DOTALL)
+        #         if match:
+        #             context = match
         
         if len(context) == 0:
             return 0.0

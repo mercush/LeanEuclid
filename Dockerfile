@@ -26,7 +26,7 @@ WORKDIR /LeanEuclid
 
 # Install smt-portfolio in venv.
 RUN python3 -m venv venv
-RUN venv/bin/pip install smt-portfolio
+RUN venv/bin/pip install -r requirements.txt
 ENV PATH="/LeanEuclid/venv/bin:${PATH}"
 
 # Install elan.
