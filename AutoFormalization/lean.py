@@ -6,7 +6,7 @@ from genlm.control.sampler.token import TokenSampler
 from genlm.control.typing import TokenType, EndOfSequence
 import asyncio
 import time
-from lean_interact import LeanREPLConfig, AutoLeanServer, LeanServer, Command, TempRequireProject, AutoLeanServer
+from lean_interact import LeanREPLConfig, AutoLeanServer, LeanServer, Command, TempRequireProject, AutoLeanServer, LocalProject
 from lean_interact.interface import LeanError, CommandResponse
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -28,7 +28,7 @@ class LeanPotential(Potential):
 
     def __init__(self, llm: PromptedLLM):
         super().__init__(llm.vocab, llm.token_type, llm.eos)
-        self.lean_config = LeanREPLConfig(verbose=True, lean_version="v4.7.0", project=TempRequireProject("mathlib"), memory_hard_limit_mb=4000) 
+        self.lean_config = LeanREPLConfig(verbose=True, lean_version="v4.8.0", project=LocalProject(directory="~/lean-experiments/mau/LeanEuclid"), memory_hard_limit_mb=4000) 
         self.lean_server = AutoLeanServer(self.lean_config)
 
     async def prefix(self, context):
@@ -54,8 +54,8 @@ class LeanPotential(Potential):
         commands = parse_lean(context)
         if not commands:
             return 0.0
-        if not isinstance(commands[-1], LeanTheorem):
-            return 0.0
+        # if not isinstance(commands[-1], LeanTheorem):
+        #     return 0.0
         commands[-1].proof = None
         repaired_lean = complete_lean_str(commands)
         print(f"🔄 Generated:   {context}")

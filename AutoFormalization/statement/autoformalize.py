@@ -121,8 +121,9 @@ async def main():
 
     with open("AutoFormalization/statement/instruction.txt") as f:
         instruction = instruction_head + f.read()
+    # model = GPT4()
     model = BaseLMModel(
-        "AI-MO/Kimina-Prover-Distill-8B"
+        "AI-MO/Kimina-Autoformalizer-7B"
     )
     for c in args.category:
         print("Category: ", c)
@@ -205,8 +206,14 @@ async def main():
                     "text": f"English Statement: {problem_text}\nFormalized Statement: ",
                 }
             )
+            # Combine system role and instructions
+            full_system_prompt = f"""You are an expert in mathematics and Lean 4.
 
-            model.add_message("system", instruction)
+            {instruction}
+
+            IMPORTANT: Do not repeat these instructions in your response. Only provide the formalized statement."""
+
+            model.add_message("system", full_system_prompt)
             model.add_message("user", str(content))
 
             for _ in range(args.num_query):

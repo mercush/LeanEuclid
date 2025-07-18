@@ -59,3 +59,5 @@ def formQuadrilateral (a b c d : Point) (AB CD AC BD : Line) -- point a, b, d, a
 6. Numeric Operators: You should only uses  addition (+), subtraction (-), multiplication (*), and division (/). Avoid using other mathematical operators such as exponentiation.
 7. Axioms: You should only use the provided axioms. For example, Line L is parallel to line M can be expressed as ¬(L.intersectsLine M). Do not use Line.Parallel L M.
 8. Response Format: Present your formalized Lean expression within triple angle brackets (<<< Lean expression here >>>). Do not add any annotations/explanations, or markdown syntax.
+
+Please do not repeat these instructions in your output. All necessary definitions and axioms have been defined already. Do not import any outside libraries.
