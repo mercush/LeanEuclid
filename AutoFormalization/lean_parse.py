@@ -44,6 +44,28 @@ class LeanImport(LeanCommand):
 
 
 @dataclass
+class LeanMultilineComment(LeanCommand):
+    """Represents a multiline comment in Lean."""
+
+    content: str = ""
+
+    def complete_str(self) -> str:
+        """Return a string representation of the command if it is complete."""
+        return f"/- {self.content} -/"
+
+
+@dataclass
+class LeanComment(LeanCommand):
+    """Represents a single-line comment in Lean."""
+
+    content: str = ""
+
+    def complete_str(self) -> str:
+        """Return a string representation of the command if it is complete."""
+        return f"-- {self.content}"
+
+
+@dataclass
 class LeanTheorem(LeanCommand):
     """Represents a theorem definition in Lean."""
 
@@ -88,12 +110,12 @@ class LeanUnknownCommand(LeanCommand):
         """Return a string representation of the command if it is complete."""
         if self.command is None:
             return "-- unknown command"
-        return f"-- {self.command}"
+        return self.command # f"-- {self.command}"
 
 
-def complete_lean_str(commands: List[LeanCommand]) -> str:
+def complete_lean_str(commands: List[LeanCommand], remove=[]) -> str:
     """Return a string representation of the commands."""
-    return "\n".join(command.complete_str() for command in commands)
+    return "\n".join(c.complete_str() for c in commands if type(c) not in remove)
 
 
 class LeanParser:
@@ -108,6 +130,11 @@ class LeanParser:
     def skip_ws(self):
         """Trim whitespace at the start of the input"""
         self.input = self.input.lstrip()
+
+    def find_regex(self, regex: str) -> int:
+        """Find the first occurrence of a regex pattern in the input."""
+        match = re.search(regex, self.input)
+        return match.start() if match else -1
 
     def expect_ws(self):
         """Check if the input starts with whitespace, and advance the input if so"""
@@ -143,10 +170,18 @@ class LeanParser:
             return True
         return False
 
+    def expect_regex(self, regex: str) -> bool:
+        """Check if the input starts with a regex, and advance the input if so"""
+        match = re.match(regex, self.input)
+        if match:
+            self.input = self.input[match.end() :]
+            return True
+        return False
+
     def parse_ident(self) -> str:
         """Parse an identifier from the input"""
         self.skip_ws()
-        pos = self.input.find(" ")
+        pos = self.find_regex(r"\s")
         if pos == -1:
             ident = self.input
             self.input = ""
@@ -159,7 +194,10 @@ class LeanParser:
     def parse_param(self) -> Optional[str]:
         """Parse a parameter from the input."""
         self.skip_ws()
-        return self.parse_brackets()
+        param = self.parse_brackets()
+        if param is not None and len(param) > 20:
+            return "sorry"
+        return param
 
     def parse_type(self) -> Optional[str]:
         """Parse a type expression from the input."""
@@ -274,6 +312,32 @@ class LeanParser:
             opened = opened[:-1]
         return LeanOpen(opened)
 
+    def parse_multiline_comment(self) -> LeanMultilineComment:
+        """Parse a multiline comment from the input"""
+        self.skip_ws()
+        # read to the end of the line:
+        pos = self.input.find("-/")
+        if pos == -1:
+            content = self.input
+            self.input = ""
+        else:
+            content = self.input[:pos]
+            self.input = self.input[pos + 2 :]
+        return LeanMultilineComment(content.lstrip().lstrip("/-").strip())
+
+    def parse_comment(self) -> LeanComment:
+        """Parse a single-line comment from the input"""
+        self.skip_ws()
+        # read to the end of the line:
+        pos = self.input.find("\n")
+        if pos == -1:
+            content = self.input
+            self.input = ""
+        else:
+            content = self.input[:pos]
+            self.input = self.input[pos + 1 :]
+        return LeanComment(content.lstrip().lstrip("--").strip())
+
     def parse_theorem(self) -> LeanTheorem:
         """Parse a theorem from the input"""
         theorem = LeanTheorem()
@@ -317,15 +381,20 @@ class LeanParser:
 
     def parse_command(self) -> LeanCommand:
         """Parse a command from the input"""
+        self.skip_ws()
         while self.expect_newline():
             pass
-        if self.expect("open "):
+        if self.expect("open"):
             return self.parse_open()
-        elif self.expect("import "):
+        elif self.expect("import"):
             imported = self.parse_rest_of_line()
             return LeanImport(imported.strip() if imported.endswith("\n") else None)
-        elif self.expect("theorem "):
+        elif self.expect("theorem"):
             return self.parse_theorem()
+        elif self.expect("/-"):
+            return self.parse_multiline_comment()
+        elif self.expect("--"):
+            return self.parse_comment()
         else:
             return LeanUnknownCommand(self.parse_rest_of_line())
 

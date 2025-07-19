@@ -122,7 +122,7 @@ async def main():
     with open("AutoFormalization/statement/instruction.txt") as f:
         instruction = instruction_head + f.read()
     # model = GPT4()
-    model = BaseLMModel(
+    model = GenLMModel(
         "AI-MO/Kimina-Autoformalizer-7B"
     )
     for c in args.category:
@@ -158,7 +158,8 @@ async def main():
         if args.dataset == "UniGeo":
             testing_idx = range(1, 21)
         else:
-            testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
+            # testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
+            testing_idx = [4]
 
         for i in tqdm.tqdm(testing_idx):
             content = deepcopy(example_content)
@@ -211,37 +212,38 @@ async def main():
             model.add_message("user", str(content))
 
             for _ in range(args.num_query):
-                try:
-                    response = await model.get_response()
-                except Exception as e:
-                    print(f"An error occurred: {e}")
+                # try:
+                response = await model.get_response()
+                # except Exception as e:
+                #     print(f"An error occurred: {e}")
 
                 if response:
                     # pattern = r"<<<(.*?)>>>"
-                    match = re.search(pattern, response, re.DOTALL)
+                    # match = re.search(pattern, response, re.DOTALL)
 
-                    if match:
-                        pred = match.group(1)
-                        pred = re.sub(r"\s+", " ", pred).strip()
-                        error_message = validator.validate(pred, str(i))
-                        if error_message is None:
-                            result_file = os.path.join(result_dir, str(i) + ".json")
-                            with open(result_file, "w", encoding="utf-8") as f:
-                                json.dump(
-                                    {
-                                        "prediction": pred,
-                                        "groud_truth": formal_statement,
-                                    },
-                                    f,
-                                    ensure_ascii=False,
-                                )
-                            break
-                        else:
-                            model.add_message("assistant", response)
-                            model.add_message("user", lean_error(error_message))
+                    # if match:
+                    pred = response # match.group(1)
+                    pred = re.sub(r"\s+", " ", pred).strip()
+                    error_message = validator.validate(pred, str(i))
+                    print(f"❌ {error_message}")
+                    if error_message is None:
+                        result_file = os.path.join(result_dir, str(i) + ".json")
+                        with open(result_file, "w", encoding="utf-8") as f:
+                            json.dump(
+                                {
+                                    "prediction": pred,
+                                    "groud_truth": formal_statement,
+                                },
+                                f,
+                                ensure_ascii=False,
+                            )
+                        break
                     else:
                         model.add_message("assistant", response)
-                        model.add_message("user", parse_error())
+                        model.add_message("user", lean_error(error_message))
+                    # else:
+                    #     model.add_message("assistant", response)
+                    #     model.add_message("user", parse_error())
             model.conversation = []
 
 

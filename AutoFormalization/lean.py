@@ -1,5 +1,6 @@
 import os
 os.environ['VLLM_ENGINE_ITERATION_TIMEOUT_S'] = "2400"
+os.environ["VLLM_USE_V1"] = "0"
 
 from genlm.control import PromptedLLM, direct_token_sampler, Potential, AWRS, InferenceVisualizer
 from genlm.control.sampler.token import TokenSampler
@@ -17,9 +18,21 @@ import re
 from AutoFormalization.lean_parse import *
 
 TIMEOUT = 10  # seconds
-
-print("vllm engine iteration timeout s", vllm.envs.VLLM_ENGINE_ITERATION_TIMEOUT_S)
 os.environ['TOKENIZERS_PARALLELISM'] = 'true'
+
+class NoCommentPotential(Potential):
+    def __init__(self, llm: PromptedLLM):
+        super().__init__(llm.vocab, llm.token_type, llm.eos)
+
+    async def prefix(self, context):
+        if len(context) == 0:
+            return 0.0
+        last_token = context[-1].decode("utf-8", errors="ignore")
+        if last_token.startswith("/-") or last_token.startswith("--"):
+            return float("-inf")
+        return 0.0
+    async def complete(self, context):
+        return 0.0
 
 class LeanPotential(Potential):
     lean_config: LeanREPLConfig
@@ -28,8 +41,9 @@ class LeanPotential(Potential):
 
     def __init__(self, llm: PromptedLLM):
         super().__init__(llm.vocab, llm.token_type, llm.eos)
-        self.lean_config = LeanREPLConfig(verbose=True, lean_version="v4.8.0", project=LocalProject(directory="~/lean-experiments/mau/LeanEuclid"), memory_hard_limit_mb=4000) 
+        self.lean_config = LeanREPLConfig(verbose=True, lean_version="v4.8.0-rc2", project=LocalProject(directory="/LeanEuclid"), memory_hard_limit_mb=4000) 
         self.lean_server = AutoLeanServer(self.lean_config)
+        Command(cmd="import SystemE")
 
     async def prefix(self, context):
         context = b"".join(context).decode("utf-8", errors="ignore")
@@ -57,13 +71,15 @@ class LeanPotential(Potential):
         # if not isinstance(commands[-1], LeanTheorem):
         #     return 0.0
         commands[-1].proof = None
-        repaired_lean = complete_lean_str(commands)
-        print(f"🔄 Generated:   {context}")
-        print(f"🔧 Repaired:    {repaired_lean}", end="")
+        repaired_lean = complete_lean_str(commands, remove=[LeanImport, LeanOpen, LeanComment, LeanMultilineComment])
+        print(f"🔄 Generated:\n{context}")
+        print(f"🔧 Repaired:\n{repaired_lean}")
+        if not repaired_lean:
+            return 0.0
         try:
             start = time.time()
             response = self.lean_server.run(
-                Command(cmd=repaired_lean, env=0), timeout=TIMEOUT
+                Command(cmd=repaired_lean), timeout=TIMEOUT
             )
             end = time.time()
             elapsed = end - start
@@ -86,15 +102,14 @@ class LeanPotential(Potential):
                 return float("-inf")
 
     async def complete(self, context):
-        match = re.search(r"<<<(.*?)>>>", context, re.DOTALL)
-        if match:
-            text = match
-        if len(text) == 0:
+        # match = re.search(r"<<<(.*?)>>>", context, re.DOTALL)
+        # if match:
+        #     text = match
+        if len(context) == 0:
             return 0.0
-        text = (b"".join(context)).decode("utf-8")
-        print(text)
+        context = (b"".join(context)).decode("utf-8")
         try:
-            response = self.lean_server.run(Command(cmd=text, env=0), timeout=TIMEOUT)
+            response = self.lean_server.run(Command(cmd=context, env=0), timeout=TIMEOUT)
         except TimeoutError:
             print(f"⏰ Lean timed out (> {TIMEOUT}s)")
             return float("-inf")
@@ -119,12 +134,13 @@ def best_posterior(d):
     return decoded_text
 
 class GenLMModel:
-    def __init__(self, model_name: str, temperature: float = 0.6, max_tokens: int = 300, n_particles: int = 5):
+    def __init__(self, model_name: str, temperature: float = 1., max_tokens: int = 300, n_particles: int = 10):
         self.llm = PromptedLLM.from_name(model_name, temperature=temperature, 
             engine_opts={
-                "max_model_len": 4096,
+                "max_model_len": 2*4096,
                 })
         self.lean_potential = LeanPotential(self.llm)
+        self.nc_potential = NoCommentPotential(self.llm)
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.n_particles = n_particles
@@ -140,7 +156,7 @@ class GenLMModel:
             tokenize=True,
             add_generation_prompt=True
         )
-        awrs_sampler = AWRS(self.llm, self.lean_potential)
+        awrs_sampler = AWRS(self.llm, self.lean_potential * self.nc_potential)
         sequences = await awrs_sampler.smc(
             n_particles=self.n_particles, 
             max_tokens=self.max_tokens, 

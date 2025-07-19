@@ -1,40 +1,0 @@
-INFO 07-16 03:04:08 [__init__.py:243] No platform detected, vLLM is running on UnspecifiedPlatform
-Traceback (most recent call last):
-  File "/LeanEuclid/AutoFormalization/statement/autoformalize.py", line 10, in <module>
-    from AutoFormalization.utils import *
-  File "/LeanEuclid/AutoFormalization/utils.py", line 3, in <module>
-    from AutoFormalization.lean import *
-  File "/LeanEuclid/AutoFormalization/lean.py", line 9, in <module>
-    from lean_interact import LeanREPLConfig, AutoLeanServer, LeanServer, Command, TempRequireProject, AutoLeanServer
-ModuleNotFoundError: No module named 'lean_interact'
-INFO 07-16 03:05:06 [__init__.py:243] No platform detected, vLLM is running on UnspecifiedPlatform
-vllm engine iteration timeout s 2400
-Category:  
-  0%|          | 0/43 [00:00<?, ?it/s]
-Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s][A
-Fetching 4 files:  25%|██▌       | 1/4 [00:33<01:39, 33.32s/it][AFetching 4 files: 100%|██████████| 4/4 [00:33<00:00,  8.33s/it]
-
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s][ALoading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 54.12it/s]
-  0%|          | 0/43 [00:35<?, ?it/s]
-Traceback (most recent call last):
-  File "/LeanEuclid/AutoFormalization/statement/autoformalize.py", line 247, in <module>
-    main()
-  File "/LeanEuclid/AutoFormalization/statement/autoformalize.py", line 160, in main
-    model = GenLMModel(
-            ^^^^^^^^^^^
-  File "/LeanEuclid/AutoFormalization/lean.py", line 124, in __init__
-    self.llm = PromptedLLM.from_name(model_name, temperature=temperature, 
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/LeanEuclid/venv/lib/python3.12/site-packages/genlm/control/potential/built_in/llm.py", line 127, in from_name
-    model = load_model_by_name(name, backend=backend, **kwargs)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/LeanEuclid/venv/lib/python3.12/site-packages/genlm/control/potential/built_in/llm.py", line 23, in load_model_by_name
-    return model_cls.from_name(name, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/LeanEuclid/venv/lib/python3.12/site-packages/genlm/backend/llm/hf.py", line 111, in from_name
-    return cls(mod, tok, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/LeanEuclid/venv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-TypeError: AsyncTransformer.__init__() got an unexpected keyword argument 'engine_opts'
