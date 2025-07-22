@@ -51,9 +51,16 @@ def formParallelogram (a b c d : Point) (AB CD AC BD : Line) -- point a, b, d, a
 def formQuadrilateral (a b c d : Point) (AB CD AC BD : Line) -- point a, b, d, and c (in clockwise/counterclockwise order) form a quadrilateral, where point a and b are on line AB, point c and d are on line CD, point a and c are on line AC, and point b and d are on line BD.
 
 --  Guidelines --
-1. Implication: There can be only a single implication in the formula; either side of the implication must be a conjunction of formulae.
-2. Numeric Values Restrictions: Denote 90-degree angle by ∟, 180-degree angle by ∟ + ∟, etc. Also, when referring to segments, we always mean its length (i.e. |(a─b)|).
-3. Quantified Variables: Your quantified variables must be limited to primitive geometric types: points, lines, and circles. ALL bound variables must be mentioned at some point.
-4. Intermediate Variables: You should never define an intermediate variable inside the proposition. For example, "let α := (something);" is not allowed.
-5. Numeric Operators: You should only uses  addition (+), subtraction (-), multiplication (*), and division (/). Avoid using other mathematical operators such as exponentiation.
-6. Axioms: You should only use the provided axioms. For example, Line L is parallel to line M can be expressed as ¬(L.intersectsLine M). Do not use Line.Parallel L M.
+1. Your output must strictly follow this format: 
+theorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by sorry.
+- "theorem_name" should be a valid Lean identifier.
+- Each hypothesis must be inside parentheses and have the form (h : statement).
+- The conclusion must follow the colon ":" after the hypotheses.
+- The output must end with ":= by sorry."
+- Do not include any extra text, explanations, or comments outside this format.
+2. Implication: There can be only a single implication in the formula; either side of the implication must be a conjunction of formulae.
+3. Numeric Values Restrictions: Denote 90-degree angle by ∟, 180-degree angle by ∟ + ∟, etc. Also, when referring to segments, we always mean its length (i.e. |(a─b)|).
+4. Quantified Variables: Your quantified variables must be limited to primitive geometric types: points, lines, and circles. ALL bound variables must be mentioned at some point.
+5. Intermediate Variables: You should never define an intermediate variable inside the proposition. For example, "let α := (something);" is not allowed.
+6. Numeric Operators: You should only uses  addition (+), subtraction (-), multiplication (*), and division (/). Avoid using other mathematical operators such as exponentiation.
+7. Axioms: You should only use the provided axioms. For example, Line L is parallel to line M can be expressed as ¬(L.intersectsLine M). Do not use Line.Parallel L M.

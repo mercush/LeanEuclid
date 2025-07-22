@@ -123,7 +123,7 @@ async def main():
         instruction = instruction_head + f.read()
     # model = GPT4()
     model = GenLMModel(
-        "AI-MO/Kimina-Autoformalizer-7B"
+        "AI-MO/Kimina-Prover-72B"
     )
     for c in args.category:
         print("Category: ", c)

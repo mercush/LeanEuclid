@@ -18,7 +18,7 @@ class BaseLMModel:
     """
     def __init__(self, model_name="AI-MO/Kimina-Autoformalizer-7B", temperature=0.6, max_tokens=10000):
         self.llm = LLM(model_name,
-                    tensor_parallel_size=1, # Should have 8 GPUs on this node
+                    tensor_parallel_size=8, # Should have 8 GPUs on this node
                     max_model_len=4096
                     )
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
