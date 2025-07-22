@@ -70,7 +70,7 @@ class LeanPotential(Potential):
             return 0.0
         # if not isinstance(commands[-1], LeanTheorem):
         #     return 0.0
-        commands[-1].proof = None
+        # commands[-1].proof = None
         repaired_lean = complete_lean_str(commands, remove=[LeanImport, LeanOpen, LeanComment, LeanMultilineComment])
         print(f"🔄 Generated:\n{context}")
         print(f"🔧 Repaired:\n{repaired_lean}")

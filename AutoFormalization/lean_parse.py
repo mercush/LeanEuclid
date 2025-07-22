@@ -195,8 +195,6 @@ class LeanParser:
         """Parse a parameter from the input."""
         self.skip_ws()
         param = self.parse_brackets()
-        if param is not None and len(param) > 20:
-            return "sorry"
         return param
 
     def parse_type(self) -> Optional[str]:
@@ -237,7 +235,11 @@ class LeanParser:
         """
         if self.expect("("):
             text = self.parse_well_bracketed()
-            if text is None or not self.expect(")"):
+            if text is None:
+                return None
+            elif len(text) > 20:
+                return "sorry"
+            elif not self.expect(")"):
                 return None
             return "(" + text + ")"
         elif self.expect("["):
