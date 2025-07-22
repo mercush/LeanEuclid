@@ -88,6 +88,8 @@ class LeanTheorem(LeanCommand):
         else:
             res = f"theorem {self.name} "
         if self.params is not None:
+            # if len(self.params) > 20 : 
+            #     res += "sorry"
             res += " ".join(self.params)
         if self.typ is None:
             res += " : True"
@@ -237,8 +239,8 @@ class LeanParser:
             text = self.parse_well_bracketed()
             if text is None:
                 return None
-            elif len(text) > 20:
-                return "sorry"
+            # elif len(text) > 50:
+            #     return "sorry"
             elif not self.expect(")"):
                 return None
             return "(" + text + ")"
