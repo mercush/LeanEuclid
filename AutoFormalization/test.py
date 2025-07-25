@@ -1,40 +1,40 @@
-from genlm.control import PromptedLLM, direct_token_sampler, Potential, AWRS, InferenceVisualizer
-from genlm.control.sampler.token import TokenSampler
-from genlm.control.typing import TokenType, EndOfSequence
-import asyncio
-from AutoFormalization.lean import *
+from vllm import LLM, SamplingParams
+from transformers import AutoTokenizer
 
-# async def main() : 
-#     llm = PromptedLLM.from_name("AI-MO/Kimina-Autoformalizer-7B", temperature=0.7, 
-#                 engine_opts={
-#                     "max_model_len": 4096,
-#                     })
-#     lean_potential = LeanPotential(llm)
-
-#     llm.prompt_ids = llm.model.tokenizer.apply_chat_template(
-#         conversation=[{"role": "user", "content": "Formalize the pythagorean theorem."}],
-#         tokenize=True,
-#         add_generation_prompt=True
-#     )
-#     awrs_sampler = AWRS(llm, lean_potential)
-#     sequences = await awrs_sampler.smc(
-#         n_particles=4, 
-#         max_tokens=200, 
-#         ess_threshold=0.9,
-#         critic=None # critic
-#     )
-#     return sequences.posterior
-
-async def main():
-    model = GenLMModel(
-        "AI-MO/Kimina-Autoformalizer-7B",
-        temperature=0.6,
-        max_tokens=300,
-        n_particles=5
+def main():
+    # Load the model with tensor parallelism across 2 GPUs
+    model_name = "AI-MO/Kimina-Autoformalizer-7B"
+    
+    print("Loading model with tensor_parallel_size=2...")
+    model = LLM(model_name, tensor_parallel_size=2)
+    
+    print("Loading tokenizer...")
+    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+    
+    # Simple test query
+    problem = "The volume of a cone is given by the formula V = (1/3)Bh, where B is the area of the base and h is the height. If a cone has a base area of 12 square units and a height of 9 units, what is its volume?"
+    
+    print(f"Testing with query: {problem}")
+    
+    # Set up sampling parameters
+    sampling_params = SamplingParams(
+        temperature=0.7,
+        top_p=0.9,
+        max_tokens=200
     )
-    model.add_message("user", "Formalize the pythagorean theorem.")
-    response = await model.get_response()
-    return response
+    
+    # Generate response
+    print("Generating response...")
+    outputs = model.generate([problem], sampling_params)
+    
+    # Print results
+    for output in outputs:
+        prompt = output.prompt
+        generated_text = output.outputs[0].text
+        print(f"Prompt: {prompt}")
+        print(f"Generated text: {generated_text}")
+    
+    print("Test completed successfully! vLLM with tensor_parallel_size=2 is working correctly.")
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()

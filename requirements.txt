@@ -203,4 +203,5 @@ websockets==15.0.1
 xformers==0.0.29.post2
 xgrammar==0.1.17
 yarl==1.20.1
+z3-solver==4.12.2.0
 zipp==3.23.0

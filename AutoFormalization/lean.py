@@ -137,7 +137,7 @@ class GenLMModel:
     def __init__(self, model_name: str, temperature: float = 1., max_tokens: int = 300, n_particles: int = 10):
         self.llm = PromptedLLM.from_name(model_name, temperature=temperature, 
             engine_opts={
-                "tensor_parallel_size": 8,
+                "tensor_parallel_size": 2,
                 "max_model_len": 2*4096,
                 })
         self.lean_potential = LeanPotential(self.llm)
