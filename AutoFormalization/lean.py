@@ -20,6 +20,10 @@ from AutoFormalization.lean_parse import *
 TIMEOUT = 10  # seconds
 os.environ['TOKENIZERS_PARALLELISM'] = 'true'
 
+def tokens_to_str(tokens: list) -> str:
+    bytes_tokens = [t for t in tokens if isinstance(t, bytes)]  # filter out EOS tokens
+    return b"".join(bytes_tokens).decode("utf-8", errors="ignore")
+
 class NoCommentPotential(Potential):
     def __init__(self, llm: PromptedLLM):
         super().__init__(llm.vocab, llm.token_type, llm.eos)
@@ -43,102 +47,78 @@ class LeanPotential(Potential):
         super().__init__(llm.vocab, llm.token_type, llm.eos)
         self.lean_config = LeanREPLConfig(verbose=True, lean_version="v4.8.0-rc2", project=LocalProject(directory="/LeanEuclid"), memory_hard_limit_mb=4000) 
         self.lean_server = AutoLeanServer(self.lean_config)
-        response = self.lean_server.run(Command(cmd="import SystemE"), env=0)
-        print(f"Import response: {response"})
+        response = self.lean_server.run(Command(cmd="import SystemE"))
         self.environment = response.env
-    async def prefix(self, context):
-        context = b"".join(context).decode("utf-8", errors="ignore")
-        
-        # Check for complete pattern first
-        # match = re.search(r"<<<(.*?)>>>", context, re.DOTALL)
-        # if match:
-        #     context = match
-        # else:
-        #     # Check for incomplete pattern with extra >
-        #     match = re.search(r"<<<(.*?)>{1,2}", context, re.DOTALL)
-        #     if match:
-        #         return 0.0
-        #     else:
-        #         # Check for incomplete pattern without closing >>>
-        #         match = re.search(r"<<<(.*?)", context, re.DOTALL)
-        #         if match:
-        #             context = match
-        
-        if len(context) == 0:
-            return 0.0
-        commands = parse_lean(context)
-        if not commands:
-            return 0.0
-        # if not isinstance(commands[-1], LeanTheorem):
-        #     return 0.0
-        # commands[-1].proof = None
-        repaired_lean = complete_lean_str(commands, remove=[LeanImport, LeanOpen, LeanComment, LeanMultilineComment])
-        print(f"🔄 Generated:\n{context}")
-        print(f"🔧 Repaired:\n{repaired_lean}")
-        if not repaired_lean:
-            return 0.0
+        self.verbose = True
+
+    async def is_valid_lean(self, text: str) -> bool:
+        pos = text.find(":= by")
+        if pos != -1:  # LLMs always want to complete the proof, which we don't need.
+            text = text[:pos] + ":= by sorry"
         try:
             start = time.time()
-            response = self.lean_server.run(
-                Command(cmd=repaired_lean, env=self.environment), timeout=TIMEOUT
+            response = await self.lean_server.async_run(
+                Command(cmd=text, env=0), timeout=TIMEOUT
             )
             end = time.time()
             elapsed = end - start
         except TimeoutError:
-            print(f"⏰ Lean timed out (> {TIMEOUT}s)")
-            return float("-inf")
+            if self.verbose:
+                print(f"⏰ Lean timed out (> {TIMEOUT}s)")
+            return False
         match response:
             case CommandResponse():
                 messages = response.messages
                 errors = [m for m in messages if m.severity == "error"]
                 if errors:
-                    print(f"❌ Lean check failed ({elapsed:.3f}s): {errors[0].data}")
-                    return float("-inf")
+                    if self.verbose:
+                        print(
+                            f"❌ Lean check failed ({elapsed:.3f}s): {errors[0].data}"
+                        )
+                    return False
                 else:
-                    print(f"✅ Lean check passed ({elapsed:.3f}s)")
-                    return 0.0
-            case LeanError():
-                messages = response.message
-                print(f"❌❌ Lean error: {messages}")
-                return float("-inf")
+                    if self.verbose:
+                        print(f"✅ Lean check passed ({elapsed:.3f}s)")
+                    return True
+            case LeanError(message):
+                if self.verbose:
+                    print(f"❌❌ Lean error: {message}")
+                return False
 
-    async def complete(self, context):
-        # match = re.search(r"<<<(.*?)>>>", context, re.DOTALL)
-        # if match:
-        #     text = match
+    async def prefix(self, context):
+        context = tokens_to_str(context)
         if len(context) == 0:
             return 0.0
-        context = (b"".join(context)).decode("utf-8")
-        try:
-            response = self.lean_server.run(Command(cmd=context, env=self.environment), timeout=TIMEOUT)
-        except TimeoutError:
-            print(f"⏰ Lean timed out (> {TIMEOUT}s)")
-            return float("-inf")
-        match response:
-            case CommandResponse():
-                messages = response.messages
-                if any(m.severity == "error" for m in messages):
-                    print(f"❌ Lean check failed: {messages[0].data}")
-                    return float("-inf")
-                else:
-                    print(f"✅ Lean check passed")
-                    return 0.0
-            case LeanError():
-                messages = response.message
-                print(f"❌❌ Lean error: {messages}")
-                return float("-inf")
+        commands = parse_lean(context)
+        if not commands:
+            return 0.0
+        for command in commands:
+            if isinstance(command, LeanTheorem):
+                command.proof = None
+    
+        repaired_lean = complete_lean_str(commands, remove=[LeanImport, LeanOpen, LeanComment, LeanMultilineComment])
+        print(f"🔄 Generated Lean: {context}")
+        print(f"🔄 Repaired Lean: {repaired_lean}")
+        return 0.0 if await self.is_valid_lean(repaired_lean) else float("-inf")
+
+    async def complete(self, context):
+        if len(context) == 0:
+            return 0.0
+        text = tokens_to_str(context)
+        if self.verbose: 
+            print(f"🔄 Generated:   {text}")
+        return 0.0 if await self.is_valid_lean(text) else float("-inf")
 
 def best_posterior(d):
     best = max(d, key=d.get)
-    bytes_only = [item for item in best if isinstance(item, (bytes, bytearray))]
-    decoded_text = b''.join(bytes_only).decode('utf-8', errors='ignore')
+    decoded_text = tokens_to_str(best)
     return decoded_text
 
 class GenLMModel:
     def __init__(self, model_name: str, temperature: float = 1., max_tokens: int = 300, n_particles: int = 10):
         self.llm = PromptedLLM.from_name(model_name, temperature=temperature, 
             engine_opts={
-                "tensor_parallel_size": 2,
+                "tensor_parallel_size" : 8,
                 "max_model_len": 2*4096,
                 })
         self.lean_potential = LeanPotential(self.llm)

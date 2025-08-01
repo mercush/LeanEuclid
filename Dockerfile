@@ -37,4 +37,4 @@ RUN curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -
 # Build the Lean project.
 RUN lake script run check
 RUN lake exe cache get
-# RUN lake build SystemE Book UniGeo E3
+RUN lake build SystemE Book UniGeo E3

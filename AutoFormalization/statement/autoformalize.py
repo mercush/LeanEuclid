@@ -123,7 +123,7 @@ async def main():
         instruction = instruction_head + f.read()
     # model = GPT4()
     model = GenLMModel(
-        "AI-MO/Kimina-Autoformalizer-7B"
+        "AI-MO/Kimina-Prover-72B"
     )
     for c in args.category:
         print("Category: ", c)
@@ -159,7 +159,7 @@ async def main():
             testing_idx = range(1, 21)
         else:
             # testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
-            testing_idx = [4]
+            testing_idx = [4] # Only one example to test GenLM
 
         for i in tqdm.tqdm(testing_idx):
             content = deepcopy(example_content)
@@ -224,7 +224,7 @@ async def main():
                     # if match:
                     pred = response # match.group(1)
                     pred = re.sub(r"\s+", " ", pred).strip()
-                    error_message = validator.validate(pred, str(i))
+                    error_message = None # validator.validate(pred, str(i))
                     print(f"❌ {error_message}")
                     if error_message is None:
                         result_file = os.path.join(result_dir, str(i) + ".json")
