@@ -43,8 +43,9 @@ class LeanPotential(Potential):
         super().__init__(llm.vocab, llm.token_type, llm.eos)
         self.lean_config = LeanREPLConfig(verbose=True, lean_version="v4.8.0-rc2", project=LocalProject(directory="/LeanEuclid"), memory_hard_limit_mb=4000) 
         self.lean_server = AutoLeanServer(self.lean_config)
-        Command(cmd="import SystemE")
-
+        response = self.lean_server.run(Command(cmd="import SystemE"), env=0)
+        print(f"Import response: {response"})
+        self.environment = response.env
     async def prefix(self, context):
         context = b"".join(context).decode("utf-8", errors="ignore")
         
@@ -79,7 +80,7 @@ class LeanPotential(Potential):
         try:
             start = time.time()
             response = self.lean_server.run(
-                Command(cmd=repaired_lean), timeout=TIMEOUT
+                Command(cmd=repaired_lean, env=self.environment), timeout=TIMEOUT
             )
             end = time.time()
             elapsed = end - start
@@ -109,7 +110,7 @@ class LeanPotential(Potential):
             return 0.0
         context = (b"".join(context)).decode("utf-8")
         try:
-            response = self.lean_server.run(Command(cmd=context, env=0), timeout=TIMEOUT)
+            response = self.lean_server.run(Command(cmd=context, env=self.environment), timeout=TIMEOUT)
         except TimeoutError:
             print(f"⏰ Lean timed out (> {TIMEOUT}s)")
             return float("-inf")

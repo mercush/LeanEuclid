@@ -36,5 +36,7 @@ def main():
     
     print("Test completed successfully! vLLM with tensor_parallel_size=2 is working correctly.")
 
+def leaninteract_test():
+
 if __name__ == "__main__":
     main()
