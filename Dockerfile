@@ -15,14 +15,14 @@ RUN make -j8
 RUN make install
 WORKDIR /LeanEuclid
 
-# Build and Install Z3.
-RUN git clone https://github.com/Z3Prover/z3
-WORKDIR z3
-RUN python3 scripts/mk_make.py
-WORKDIR build
-RUN make -j8
-RUN make install
-WORKDIR /LeanEuclid
+# # Build and Install Z3.
+# RUN git clone https://github.com/Z3Prover/z3
+# WORKDIR z3
+# RUN python3 scripts/mk_make.py
+# WORKDIR build
+# RUN make -j8
+# RUN make install
+# WORKDIR /LeanEuclid
 
 # Install smt-portfolio in venv.
 RUN python3 -m venv venv
