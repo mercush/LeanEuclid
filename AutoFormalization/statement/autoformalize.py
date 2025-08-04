@@ -222,22 +222,23 @@ async def main():
                     # match = re.search(pattern, response, re.DOTALL)
 
                     # if match:
-                    pred = response # match.group(1)
-                    pred = re.sub(r"\s+", " ", pred).strip()
+                    # pred = response # match.group(1)
+                    # pred = re.sub(r"\s+", " ", pred).strip()
                     error_message = None # validator.validate(pred, str(i))
                     print(f"❌ {error_message}")
                     if error_message is None:
-                        result_file = os.path.join(result_dir, str(i) + ".json")
-                        with open(result_file, "w", encoding="utf-8") as f:
-                            json.dump(
-                                {
-                                    "prediction": pred,
-                                    "groud_truth": formal_statement,
-                                },
-                                f,
-                                ensure_ascii=False,
-                            )
-                        break
+                        for key, val in enumerate(response.items()):
+                            result_file = os.path.join(result_dir, str(i), str(key) + ".json")
+                            with open(result_file, "w", encoding="utf-8") as f:
+                                json.dump(
+                                    {
+                                        "prediction": val,
+                                        "groud_truth": formal_statement,
+                                    },
+                                    f,
+                                    ensure_ascii=False,
+                                )
+                            break
                     else:
                         model.add_message("assistant", response)
                         model.add_message("user", lean_error(error_message))

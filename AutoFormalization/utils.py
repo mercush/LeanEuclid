@@ -16,7 +16,7 @@ class BaseLMModel:
     Need: add_message(role, content) method to add messages to the conversation.
     Get response with get_response() method.
     """
-    def __init__(self, model_name="AI-MO/Kimina-Autoformalizer-7B", temperature=0.6, max_tokens=10000):
+    def __init__(self, model_name="AI-MO/Kimina-Autoformalizer-7B", temperature=1., max_tokens=2000, n_particles = 20):
         self.llm = LLM(model_name,
                     tensor_parallel_size=8, # Should have 8 GPUs on this node
                     max_model_len=4096
@@ -25,18 +25,20 @@ class BaseLMModel:
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.conversation = []
+        self.n_particles = n_particles 
 
     def add_message(self, role, content):
         self.conversation.append({"role": role, "content": content})
 
     async def get_response(self):
-        print(len(self.conversation))
-        prompt = self.tokenizer.apply_chat_template(self.conversation, tokenize=False, add_generation_prompt=True)
-        sampling_params = SamplingParams(temperature=0.6, top_p=0.9, max_tokens=self.max_tokens)
-        output = self.llm.generate(prompt, sampling_params=sampling_params)
-        output_text = output[0].outputs[0].text
-        print("Response from model:", output_text)
-        return output_text
+        output = {}
+        for i in range(self.n_particles): 
+            prompt = self.tokenizer.apply_chat_template(self.conversation, tokenize=False, add_generation_prompt=True)
+            sampling_params = SamplingParams(temperature=0.6, top_p=0.9, max_tokens=self.max_tokens)
+            output = self.llm.generate(prompt, sampling_params=sampling_params)
+            output_text = output[0].outputs[0].text
+            output[i] = output_text
+        return output
 
 
 def process_image(image_path):
