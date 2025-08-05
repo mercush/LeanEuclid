@@ -87,8 +87,6 @@ class LeanPotential(Potential):
 
     async def prefix(self, context):
         context = tokens_to_str(context)
-        if len(context) == 0:
-            return 0.0
         commands = parse_lean(context)
         if not commands:
             return 0.0
@@ -97,16 +95,18 @@ class LeanPotential(Potential):
                 command.proof = None
     
         repaired_lean = complete_lean_str(commands, remove=[LeanImport, LeanOpen, LeanComment, LeanMultilineComment])
+        if len(repaired_lean) == 0:
+            return 0.0
         print(f"🔄 Generated Lean: {context}")
         print(f"🔄 Repaired Lean: {repaired_lean}")
         return 0.0 if await self.is_valid_lean(repaired_lean) else float("-inf")
 
     async def complete(self, context):
-        if len(context) == 0:
-            return 0.0
         text = tokens_to_str(context)
         if self.verbose: 
             print(f"🔄 Generated:   {text}")
+        if len(text) == 0:
+            return 0.0
         return 0.0 if await self.is_valid_lean(text) else float("-inf")
 
 def best_posterior(d):
@@ -118,7 +118,7 @@ class GenLMModel:
     def __init__(self, model_name: str, temperature: float = 1., max_tokens: int = 2000, n_particles: int = 20):
         self.llm = PromptedLLM.from_name(model_name, temperature=temperature, 
             engine_opts={
-                "tensor_parallel_size" : 8,
+                "tensor_parallel_size" : 1,
                 "max_model_len": 2*4096,
                 })
         self.lean_potential = LeanPotential(self.llm)
