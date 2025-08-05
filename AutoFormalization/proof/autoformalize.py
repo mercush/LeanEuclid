@@ -6,7 +6,7 @@ import tqdm
 import json
 
 from copy import deepcopy
-from AutoFormalization.utils import *
+from LeanEuclid.AutoFormalization.utils import *
 
 
 def preceding_propositions(idx):

@@ -1,6 +1,6 @@
 import os
 import base64
-from AutoFormalization.lean import *
+from LeanPotential.lean_potential import *
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from vllm import LLM, SamplingParams
 

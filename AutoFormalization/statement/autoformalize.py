@@ -8,7 +8,7 @@ import json
 import asyncio
 
 from copy import deepcopy
-from AutoFormalization.utils import *
+from LeanEuclid.AutoFormalization.utils import *
 from E3.validator import Validator
 
 
@@ -123,7 +123,8 @@ async def main():
         instruction = instruction_head + f.read()
     # model = GPT4()
     model = GenLMModel(
-        "AI-MO/Kimina-Prover-72B"
+        "AI-MO/Kimina-Prover-72B",
+        "v4.8.0-rc2"
     )
     for c in args.category:
         print("Category: ", c)

@@ -5,7 +5,7 @@ import argparse
 import tqdm
 
 from subprocess import Popen, PIPE
-from AutoFormalization.utils import *
+from LeanEuclid.AutoFormalization.utils import *
 
 
 def check(lean_file):
