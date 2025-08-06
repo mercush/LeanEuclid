@@ -80,13 +80,15 @@ class LeanPotential(Potential):
                     if self.verbose:
                         print(f"✅ Lean check passed ({elapsed:.3f}s)")
                     return True
-            case LeanError(message):
+            case LeanError():
                 if self.verbose:
-                    print(f"❌❌ Lean error: {message}")
+                    print(f"❌❌ Lean error: or {response.message}")
                 return False
 
     async def prefix(self, context):
         context = tokens_to_str(context)
+        if "sorry" in context[:-2]:
+            return float("-inf")
         commands = parse_lean(context)
         if not commands:
             return 0.0
@@ -103,6 +105,8 @@ class LeanPotential(Potential):
 
     async def complete(self, context):
         text = tokens_to_str(context)
+        if ":=" in context:
+            raise Exception
         if self.verbose: 
             print(f"🔄 Generated:   {text}")
         if len(text) == 0:
@@ -115,11 +119,11 @@ def best_posterior(d):
     return decoded_text
 
 class GenLMModel:
-    def __init__(self, model_name: str, temperature: float = 1., max_tokens: int = 2000, n_particles: int = 20):
+    def __init__(self, model_name: str, temperature: float = 1., max_tokens: int = 2000, n_particles: int = 10):
         self.llm = PromptedLLM.from_name(model_name, temperature=temperature, 
             engine_opts={
-                "tensor_parallel_size" : 1,
-                "max_model_len": 2*4096,
+                "tensor_parallel_size" : 8,
+                "max_model_len": 2*4096
                 })
         self.lean_potential = LeanPotential(self.llm)
         self.nc_potential = NoCommentPotential(self.llm)
@@ -145,4 +149,4 @@ class GenLMModel:
             ess_threshold=0.9,
             critic=None # critic
         )
-        return sequences.posterior
+        return sequences.decoded_posterior

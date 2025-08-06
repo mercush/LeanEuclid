@@ -123,7 +123,7 @@ async def main():
         instruction = instruction_head + f.read()
     # model = GPT4()
     model = GenLMModel(
-        "AI-MO/Kimina-Autoformalizer-7B"
+        "AI-MO/Kimina-Prover-72B"
     )
     for c in args.category:
         print("Category: ", c)
@@ -158,8 +158,8 @@ async def main():
         if args.dataset == "UniGeo":
             testing_idx = range(1, 21)
         else:
-            # testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
-            testing_idx = [4] # Only one example to test GenLM
+            testing_idx = [i for i in range(22, 49) if i not in [2, 6, 12, 32, 42]] # TODO; change this back to 1. 
+            # testing_idx = [4] # Only one example to test GenLM
 
         for i in tqdm.tqdm(testing_idx):
             content = deepcopy(example_content)
@@ -227,12 +227,13 @@ async def main():
                     error_message = None # validator.validate(pred, str(i))
                     print(f"❌ {error_message}")
                     if error_message is None:
-                        for key, val in enumerate(response.items()):
-                            result_file = os.path.join(result_dir, str(i), str(key) + ".json")
+                        for idx, (key, _) in enumerate(response.items()):
+                            os.makedirs(os.path.join(result_dir, str(i)), exist_ok=True)
+                            result_file = os.path.join(result_dir, str(i), str(idx) + ".json")
                             with open(result_file, "w", encoding="utf-8") as f:
                                 json.dump(
                                     {
-                                        "prediction": val,
+                                        "prediction": key,
                                         "groud_truth": formal_statement,
                                     },
                                     f,
