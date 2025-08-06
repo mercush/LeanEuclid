@@ -158,7 +158,7 @@ async def main():
         if args.dataset == "UniGeo":
             testing_idx = range(1, 21)
         else:
-            testing_idx = [i for i in range(22, 49) if i not in [2, 6, 12, 32, 42]] # TODO; change this back to 1. 
+            testing_idx = [i for i in range(37, 49) if i not in [2, 6, 12, 32, 42]] # TODO; change this back to 1. 
             # testing_idx = [4] # Only one example to test GenLM
 
         for i in tqdm.tqdm(testing_idx):

@@ -1,0 +1,1 @@
+{"prediction": "theorem right_tri_from_squares (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC)\n  (h1 : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2) :\n  (∠ a:b:c : ℝ) = ∟ := by sorry\n", "groud_truth": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)| → ∠ b:a:c = ∟"}

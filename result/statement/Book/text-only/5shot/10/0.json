@@ -1,0 +1,1 @@
+{"prediction": "theorem bisect_segment (a b : Point) (AB : Line) (h : distinctPointsOnLine a b AB) :\n  ∃ d : Point, d.onLine AB ∧ (|(a─d)| = |(b─d)|) := by sorry\n", "groud_truth": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ d : Point, (between a d b) ∧ (|(a─d)| = |(d─b)|)"}
