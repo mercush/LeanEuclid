@@ -119,7 +119,7 @@ def best_posterior(d):
     return decoded_text
 
 class GenLMModel:
-    def __init__(self, model_name: str, temperature: float = 1., max_tokens: int = 2000, n_particles: int = 10):
+    def __init__(self, model_name: str, temperature: float = 1., max_tokens: int = 100, n_particles: int = 10):
         self.llm = PromptedLLM.from_name(model_name, temperature=temperature, 
             engine_opts={
                 "tensor_parallel_size" : 8,
@@ -146,7 +146,7 @@ class GenLMModel:
         sequences = await awrs_sampler.smc(
             n_particles=self.n_particles, 
             max_tokens=self.max_tokens, 
-            ess_threshold=0.9,
+            ess_threshold=0.5,
             critic=None # critic
         )
         return sequences.decoded_posterior
