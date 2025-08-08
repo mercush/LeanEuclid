@@ -104,6 +104,16 @@ async def main():
     parser.add_argument(
         "--num_examples", type=int, default=0, help="Number of examples"
     )
+    parser.add_argument(
+        "--model_name", type=str)
+    parser.add_argument(
+        "--preamble", type=str)
+    parser.add_argument(
+        "--lean_version", type=str)
+    parser.add_argument(
+        "--project_dir", type=str)
+    parser.add_argument(
+        "--tensor_parallel_size", type=int)
     args = parser.parse_args()
 
     random.seed(42)
@@ -123,8 +133,11 @@ async def main():
         instruction = instruction_head + f.read()
     # model = GPT4()
     model = GenLMModel(
-        "AI-MO/Kimina-Prover-72B",
-        "v4.8.0-rc2"
+        args.model_name,
+        args.preamble,
+        args.lean_version,
+        args.project_dir,
+        args.tensor_parallel_size,
     )
     for c in args.category:
         print("Category: ", c)
