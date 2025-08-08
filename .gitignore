@@ -3,7 +3,6 @@ Book/All.lean
 /lake-packages/*
 /.lake/*
 /.vscode/*
-/result
 /tmp
 /E3/_tmp/ 
 /E3/_out/

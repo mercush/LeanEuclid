@@ -1,0 +1,1 @@
+{"prediction": "theorem straight_line_at_right (a b c : Point) (AB : Line) (h : c.onLine AB ∧ a ≠ b ∧ distinctPointsOnLine a b AB) : ∃ f : Point, c.onLine (AB) ∧ (∠ a:c:f : ℝ) = ∟ := by sorry.", "groud_truth": "∀ (a b c : Point) (AB : Line), distinctPointsOnLine a b AB ∧ between a c b → exists f : Point, ¬(f.onLine AB) ∧ (∠ a:c:f = ∟)"}
