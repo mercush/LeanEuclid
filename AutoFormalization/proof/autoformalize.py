@@ -4,9 +4,16 @@ import argparse
 import random
 import tqdm
 import json
+import sys
 
 from copy import deepcopy
 from LeanEuclid.AutoFormalization.utils import *
+
+src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
+
+from LeanPotential.lean_potential import GenLMModel, BaseLMModel, GeminiModel
 
 
 def preceding_propositions(idx):
@@ -143,6 +150,31 @@ def main():
     parser.add_argument(
         "--num_examples", type=int, default=0, help="Number of examples"
     )
+    parser.add_argument(
+        "--model_type",
+        type=str,
+        choices=["genlm", "base", "gemini"],
+        required=True,
+        help="Model type",
+    )
+    parser.add_argument(
+        "--model_name",
+        type=str,
+        required=True,
+        help="Model name",
+    )
+    parser.add_argument(
+        "--tensor_parallel_size",
+        type=int,
+        default=1,
+        help="Tensor parallel size for GenLM",
+    )
+    parser.add_argument(
+        "--project_dir",
+        type=str,
+        default=".",
+        help="Project directory for GenLM",
+    )
     args = parser.parse_args()
 
     random.seed(42)
@@ -182,13 +214,29 @@ def main():
             testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
 
         for i in tqdm.tqdm(testing_idx):
-            model = GPT4(
-                model=(
-                    "gpt-4-vision-preview"
-                    if args.reasoning == "multi-modal"
-                    else "gpt-4-1106-preview"
+            if args.model_type.lower() == 'genlm':
+                model = GenLMModel(
+                    args.model_name,
+                    "", # preamble
+                    args.project_dir,
+                    args.tensor_parallel_size
                 )
-            )
+            elif args.model_type.lower() == 'base':
+                model = BaseLMModel(
+                    model_name=args.model_name,
+                    temperature=1.0,
+                    max_tokens=4096,
+                    n_particles=20
+                )
+            elif args.model_type.lower() == 'gemini':
+                model = GeminiModel(
+                    model=args.model_name,
+                    temperature=0.2,
+                    max_tokens=4096
+                )
+            else:
+                raise ValueError(f"Unknown model_type: {args.model_type}")
+            
             content = deepcopy(example_content)
 
             if args.dataset == "UniGeo":

@@ -1,0 +1,4 @@
+{
+    "prediction": "∀ a : Point, b : Point, c : Point, d : Point, e : Point, f : Point, AB : Line, BC : Line, AC : Line, BD : Line, CD : Line, ((formTriangle a b c AB BC AC) ∧ (distinctPointsOnLine b d BD ∧ distinctPointsOnLine c e CD)) → ((|(b─d)| + |(c─e)|) < (|(a─b)| + |(a─c)|) ∧ (∠ b:d:c) > (∠ a:b:c))",
+    "groud_truth": "∀ (a b c d : Point) (AB BC AC BD DC : Line), formTriangle a b c AB BC AC ∧ (a.sameSide d BC) ∧ (c.sameSide d AB) ∧ (b.sameSide d AC) ∧ distinctPointsOnLine b d BD ∧ distinctPointsOnLine d c DC → (|(b─d)| + |(d─c)| < |(b─a)| + |(a─c)|) ∧ (∠ b:d:c > ∠ b:a:c)"
+}

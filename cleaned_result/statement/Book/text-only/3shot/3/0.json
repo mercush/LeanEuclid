@@ -1,0 +1,4 @@
+{
+    "prediction": "∀ a : Point, b : Point, c : Point, AB : Line, ((distinctPointsOnLine a b AB) ∧ (|(a─c)| < |(a─b)|)) → (∃ e : Point, e.onLine AB ∧ |(a─e)| = |(a─c)|)",
+    "groud_truth": "∀ (a b c₀ c₁ : Point) (AB C : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c₀ c₁ C ∧ |(a─b)| > |(c₀─c₁)| → ∃ e : Point, between a e b ∧ |(a─e)| = |(c₀─c₁)|"
+}

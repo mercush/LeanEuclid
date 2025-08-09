@@ -227,7 +227,7 @@ async def main():
 
             for _ in range(args.num_query):
                 # try:
-                response = await model.get_response()
+                response = await model.retry_response()
                 # except Exception as e:
                 #     print(f"An error occurred: {e}")
 

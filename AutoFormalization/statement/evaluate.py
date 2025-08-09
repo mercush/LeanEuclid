@@ -56,7 +56,7 @@ def main():
         print("Category: ", c)
         pred_dir = os.path.join(
             ROOT_DIR,
-            "result",
+            "cleaned_result",
             "statement",
             args.dataset,
             args.reasoning,
@@ -65,25 +65,12 @@ def main():
         )
         result_dir = os.path.join(
             ROOT_DIR,
-            "result",
+            "cleaned_result",
             "equivalence",
             args.dataset,
             args.reasoning,
             str(args.num_examples) + "shot",
             c,
-        )
-        checker = Checker(
-            tmp_path=os.path.join(
-                ROOT_DIR,
-                "tmp",
-                "check",
-                args.dataset,
-                args.reasoning,
-                str(args.num_examples) + "-shot",
-                c,
-            ),
-            mode=args.mode,
-            result_path=result_dir,
         )
 
         if args.dataset == "UniGeo":
@@ -91,26 +78,45 @@ def main():
         else:
             testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
 
-        tot += len(testing_idx)
-
         for i in tqdm.tqdm(testing_idx):
-            pred_file = os.path.join(pred_dir, str(i) + ".json")
+            prop_pred_dir = os.path.join(pred_dir, str(i))
+            checker = Checker(
+                tmp_path=os.path.join(
+                    ROOT_DIR,
+                    "tmp",
+                    "check",
+                    args.dataset,
+                    args.reasoning,
+                    str(args.num_examples) + "-shot",
+                    c,
+                    str(i)
+                ),
+                mode=args.mode,
+                result_path=os.path.join(result_dir, str(i)),
+            )
+            if os.path.isdir(prop_pred_dir):
+                json_files = sorted([f for f in os.listdir(prop_pred_dir) if f.endswith('.json')])
+                tot += len(json_files)
 
-            if os.path.exists(pred_file):
-                with open(pred_file, "r", encoding="utf-8") as f:
-                    data = json.load(f)
+                for pred_filename in json_files:
+                    pred_file = os.path.join(prop_pred_dir, pred_filename)
+                    try:
+                        with open(pred_file, "r", encoding="utf-8") as f:
+                            data = json.load(f)
 
-                pred = data["prediction"]
-                formalization = data["groud_truth"]
+                        pred = data["prediction"]
+                        formalization = data["groud_truth"]
 
-                try:
-                    if checker.check(formalization, pred, str(i)):
-                        cnt += 1
-                except Exception as e:
-                    print(e)
-                    continue
+                        if checker.check(formalization, pred, str(i)):
+                            cnt += 1
+                    except Exception as e:
+                        print(f"Error processing file {pred_file}: {e}")
+                        continue
 
-    print(f"cnt: {cnt}, tot: {tot}, acc: {(cnt/tot)*100:.2f}%")
+    if tot > 0:
+        print(f"cnt: {cnt}, tot: {tot}, acc: {(cnt/tot)*100:.2f}%")
+    else:
+        print("No prediction files found to evaluate.")
 
 
 if __name__ == "__main__":

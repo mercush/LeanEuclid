@@ -2,7 +2,7 @@ import os
 import signal
 import json
 
-from E3.utils import *
+from E3.utils import ROOT_DIR, format_lean_checker_file
 from subprocess import Popen, PIPE
 
 
