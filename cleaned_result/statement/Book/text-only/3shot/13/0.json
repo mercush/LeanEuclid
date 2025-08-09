@@ -1,4 +1,4 @@
 {
-    "prediction": "∀ a : Point, b : Point, c : Point, AB : Line, CD : Line, ((twoLinesIntersectAtPoint AB CD b) ∧ (a.onLine AB) ∧ (c.onLine CD) ∧ (a ≠ b) ∧ (c ≠ b)) → ((∠ a:b:c : ℝ) + (∠ c:b:a : ℝ) = ∟ + ∟)",
+    "prediction": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD b) ∧ (a.onLine AB) ∧ (c.onLine CD) ∧ (a ≠ b) ∧ (c ≠ b)) → ((∠ a:b:c : ℝ) + (∠ c:b:a : ℝ) = ∟ + ∟)",
     "groud_truth": "∀ (a b c d : Point) (AB CD : Line), AB ≠ CD ∧ distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ between d b c → ∠ c:b:a + ∠ a:b:d = ∟ + ∟"
 }

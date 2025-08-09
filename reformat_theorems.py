@@ -12,7 +12,7 @@ def reformat_theorem(theorem: LeanTheorem) -> str:
     """
     Reformats a LeanTheorem object into a logical representation.
     Input: theorem name (v1: T1) (h1: p1) (h2: p2) : c
-    Output: ∀ v1: T1, (p1) ∧ (p2) → (c)
+    Output: ∀ (v1 : T1), (p1) ∧ (p2) → (c)
     """
     variable_declarations = []
     hypotheses = []
@@ -34,7 +34,7 @@ def reformat_theorem(theorem: LeanTheorem) -> str:
                 if type_part in GEOMETRIC_SORTS:
                     variables = name_part.split()
                     for var in variables:
-                        variable_declarations.append(f"{var} : {type_part}")
+                        variable_declarations.append(f"({var} : {type_part})")
                 else:
                     # It's a hypothesis
                     hypotheses.append(f"({type_part})")
@@ -44,18 +44,24 @@ def reformat_theorem(theorem: LeanTheorem) -> str:
 
     forall_part = ""
     if variable_declarations:
-        forall_part = f"∀ {', '.join(variable_declarations)}, "
+        forall_part = f"∀ {' '.join(variable_declarations)}"
 
     hypotheses_part = ""
     if hypotheses:
-        hypotheses_part = " ∧ ".join(hypotheses)
+        hypotheses_part = f"({ ' ∧ '.join(hypotheses) })"
     
     conclusion_part = f"({theorem.typ})" if theorem.typ else "()"
 
-    if hypotheses_part:
-        return f"{forall_part}({hypotheses_part}) → {conclusion_part}"
+    if forall_part:
+        # If there are variables, always include an implication
+        current_hypotheses = hypotheses_part if hypotheses_part else "(True)"
+        return f"{forall_part}, {current_hypotheses} → {conclusion_part}"
     else:
-        return f"{forall_part}{conclusion_part}"
+        # No variables, include implication only if there are hypotheses
+        if hypotheses_part:
+            return f"{hypotheses_part} → {conclusion_part}"
+        else:
+            return conclusion_part
 
 def process_file(input_path: str, output_path: str):
     """

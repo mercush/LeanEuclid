@@ -1,4 +1,4 @@
 {
-    "prediction": "∀ a : Point, b : Point, c : Point, d : Point, AB : Line, BC : Line, AC : Line, ((formTriangle a b c AB BC AC) ∧ (between b c d)) → ((∠ a:c:d : ℝ) > (∠ a:b:c : ℝ) ∧ (∠ a:c:d : ℝ) > (∠ c:a:b : ℝ))",
+    "prediction": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d)) → ((∠ a:c:d : ℝ) > (∠ a:b:c : ℝ) ∧ (∠ a:c:d : ℝ) > (∠ c:a:b : ℝ))",
     "groud_truth": "∀ (a b c d : Point) (AB BC AC: Line), formTriangle a b c AB BC AC ∧ (between b c d) → (∠ a:c:d > ∠ c:b:a) ∧ (∠ a:c:d > ∠ b:a:c)"
 }

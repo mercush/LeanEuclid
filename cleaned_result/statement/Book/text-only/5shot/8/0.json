@@ -1,4 +1,4 @@
 {
-    "prediction": "∀ a : Point, b : Point, c : Point, BC : Line, ((distinctPointsOnLine b c BC ∧ a ≠ b)) → (∃ l : Point, |(a─l)| = |(b─c)|)",
+    "prediction": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC ∧ a ≠ b)) → (∃ l : Point, |(a─l)| = |(b─c)|)",
     "groud_truth": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ |(b─c)| = |(e─f)| → ∠ b:a:c = ∠ e:d:f"
 }

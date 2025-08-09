@@ -20,7 +20,7 @@ from LeanEuclid.reformat_theorems import reformat_theorem, main as reformat_main
             params=["(A B : Point)", "(h1 : A != B)"],
             typ="exists_line (Line.new A B)"
         ),
-        "∀ A : Point, B : Point, ((A != B)) → (exists_line (Line.new A B))"
+        "∀ (A : Point) (B : Point), ((A != B)) → (exists_line (Line.new A B))"
     ),
     (
         LeanTheorem(
@@ -28,7 +28,7 @@ from LeanEuclid.reformat_theorems import reformat_theorem, main as reformat_main
             params=["(C : Circle)", "(p : Point)", "(h1 : C.center = p)", "(h2 : C.radius > 0)"],
             typ="p.is_on(C)"
         ),
-        "∀ C : Circle, p : Point, ((C.center = p) ∧ (C.radius > 0)) → (p.is_on(C))"
+        "∀ (C : Circle) (p : Point), ((C.center = p) ∧ (C.radius > 0)) → (p.is_on(C))"
     ),
     (
         LeanTheorem(
@@ -36,7 +36,7 @@ from LeanEuclid.reformat_theorems import reformat_theorem, main as reformat_main
             params=["(L M : Line)"],
             typ="L.intersects(M) or not L.intersects(M)"
         ),
-        "∀ L : Line, M : Line, (L.intersects(M) or not L.intersects(M))"
+        "∀ (L : Line) (M : Line), (True) → (L.intersects(M) or not L.intersects(M))"
     ),
     (
         LeanTheorem(
@@ -52,7 +52,7 @@ from LeanEuclid.reformat_theorems import reformat_theorem, main as reformat_main
             params=["(A B C : Point)", "(L : Line)", "(h1 : A.on_line L)", "(h2 : B.on_line L)", "(h3 : C.on_line L)"],
             typ="collinear A B C"
         ),
-        "∀ A : Point, B : Point, C : Point, L : Line, ((A.on_line L) ∧ (B.on_line L) ∧ (C.on_line L)) → (collinear A B C)"
+        "∀ (A : Point) (B : Point) (C : Point) (L : Line), ((A.on_line L) ∧ (B.on_line L) ∧ (C.on_line L)) → (collinear A B C)"
     ),
     (
         LeanTheorem(
@@ -69,7 +69,7 @@ from LeanEuclid.reformat_theorems import reformat_theorem, main as reformat_main
             params=["[DecidableEq Point]", "(A B : Point)"],
             typ="A = B or A != B"
         ),
-        "∀ A : Point, B : Point, (A = B or A != B)"
+        "∀ (A : Point) (B : Point), (True) → (A = B or A != B)"
     )
 ])
 def test_reformat_theorem(theorem_obj, expected_str):
@@ -100,7 +100,7 @@ def test_process_file(tmp_path):
     with open(output_file, 'r') as f:
         output_data = json.load(f)
     
-    assert output_data['prediction'] == "∀ A : Point, (A = A)"
+    assert output_data['prediction'] == "∀ (A : Point), (True) → (A = A)"
     assert output_data['source'] == "test" # Verify other data is preserved
 
 def test_main_function(tmp_path):
@@ -141,25 +141,44 @@ def test_main_function(tmp_path):
     assert output_file2.exists()
     with open(output_file2, 'r') as f:
         data2 = json.load(f)
-    assert data2['prediction'] == "∀ A : Point, (A = A)"
+    assert data2['prediction'] == "∀ (A : Point), (True) → (A = A)"
     assert data2['id'] == 2
 
 @pytest.mark.parametrize("prediction_str, expected_reformatted_str", [
     (
         "theorem construct_equilateral_triangle (a b : Point) (AB : Line) (h : a ≠ b ∧ a.onLine AB ∧ b.onLine AB) : ∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| ∧ |(b─c)| = |(a─b)| := by sorry.",
-        "∀ a : Point, b : Point, AB : Line, ((a ≠ b ∧ a.onLine AB ∧ b.onLine AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| ∧ |(b─c)| = |(a─b)|)"
+        "∀ (a : Point) (b : Point) (AB : Line), ((a ≠ b ∧ a.onLine AB ∧ b.onLine AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| ∧ |(b─c)| = |(a─b)|)"
     ),
     (
         "theorem bisect_segment (a b : Point) (AB : Line) (h : distinctPointsOnLine a b AB) :\n  ∃ d : Point, d.onLine AB ∧ (|(a─d)| = |(b─d)|) := by sorry\n",
-        "∀ a : Point, b : Point, AB : Line, ((distinctPointsOnLine a b AB)) → (∃ d : Point, d.onLine AB ∧ (|(a─d)| = |(b─d)|))"
+        "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ d : Point, d.onLine AB ∧ (|(a─d)| = |(b─d)|))"
     ),
     (
         """theorem vertical_angle_theorem (a b c d e : Point) (AB CD : Line)
-  (h1 : twoLinesIntersectAtPoint AB CD e) :
-  ∠ a:e:c = ∠ b:e:d ∧ ∠ c:e:b = ∠ a:e:d := by 
+  (h1 : twoLinesIntersectAtPoint AB CD e) :\n  ∠ a:e:c = ∠ b:e:d ∧ ∠ c:e:b = ∠ a:e:d := by 
   sorry
 """,
-        "∀ a : Point, b : Point, c : Point, d : Point, e : Point, AB : Line, CD : Line, ((twoLinesIntersectAtPoint AB CD e)) → (∠ a:e:c = ∠ b:e:d ∧ ∠ c:e:b = ∠ a:e:d)"
+        "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD e)) → (∠ a:e:c = ∠ b:e:d ∧ ∠ c:e:b = ∠ a:e:d)"
+    ),
+    (
+        "theorem exists_point_on_line (L : Line) : ∃ (p : Point), p.on_line L := by sorry",
+        "∀ (L : Line), (True) → (∃ (p : Point), p.on_line L)"
+    ),
+    (
+        "theorem exists_midpoint (A B : Point) (h : A ≠ B) : ∃ (M : Point), is_midpoint M A B := by sorry",
+        "∀ (A : Point) (B : Point), ((A ≠ B)) → (∃ (M : Point), is_midpoint M A B)"
+    ),
+    (
+        "theorem parallel_line_exists (L : Line) (p : Point) (h : ¬ p.on_line L) : ∃ (M : Line), p.on_line M ∧ parallel L M := by sorry",
+        "∀ (L : Line) (p : Point), ((¬ p.on_line L)) → (∃ (M : Line), p.on_line M ∧ parallel L M)"
+    ),
+    (
+        "theorem exists_two_points : ∃ (A B : Point), A ≠ B := by sorry",
+        "(∃ (A B : Point), A ≠ B)"
+    ),
+    (
+        "theorem exists_two_points_on_line (L : Line) : ∃ (A B : Point), A.on_line L ∧ B.on_line L ∧ A ≠ B := by sorry",
+        "∀ (L : Line), (True) → (∃ (A B : Point), A.on_line L ∧ B.on_line L ∧ A ≠ B)"
     )
 ])
 def test_reformat_prediction(prediction_str, expected_reformatted_str):

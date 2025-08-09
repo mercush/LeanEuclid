@@ -1,4 +1,4 @@
 {
-    "prediction": "∀ a : Point, b : Point, d₁ : Point, d₂ : Point, d₃ : Point, AB : Line, D₁₂ : Line, D₂₃ : Line, ((a.onLine AB) ∧ (b.onLine AB) ∧ (|(a─b)| > 0) ∧ (formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃)) → (exists (f g : Point) (FG : Line), f.onLine AB ∧ g.onLine AB ∧ formRectilinearAngle a f g AB FG ∧ (∠ a:f:g : ℝ) = (∠ d₁:d₂:d₃ : ℝ))",
+    "prediction": "∀ (a : Point) (b : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (D₁₂ : Line) (D₂₃ : Line), ((a.onLine AB) ∧ (b.onLine AB) ∧ (|(a─b)| > 0) ∧ (formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃)) → (exists (f g : Point) (FG : Line), f.onLine AB ∧ g.onLine AB ∧ formRectilinearAngle a f g AB FG ∧ (∠ a:f:g : ℝ) = (∠ d₁:d₂:d₃ : ℝ))",
     "groud_truth": "∀ (a b c d e : Point) (AB CD CE : Line), distinctPointsOnLine a b AB ∧ formRectilinearAngle d c e CD CE → ∃ f : Point, f ≠ a ∧ (∠ f:a:b = ∠ d:c:e)"
 }
