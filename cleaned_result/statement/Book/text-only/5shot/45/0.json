@@ -1,0 +1,4 @@
+{
+    "prediction": "(∀ (a b c d e : Point) (AB BC CD DA AC : Line), formQuadrilateral a b c d AB BC CD DA ∧ formTriangle a b d AB BD DA ∧ formTriangle b c d BC CD BD AC → ∃ (f g k l : Point) (FK KL LM MF : Line), formParallelogram f g k l FK KL LM MF ∧ (Triangle.area △ a:b:d + Triangle.area △ b:c:d = Triangle.area △ f:g:k + Triangle.area △ f:k:l))",
+    "groud_truth": "∀ (a b c d e₁ e₂ e₃ : Point) (AB BC CD AD DB E₁₂ E₂₃ : Line), formTriangle a b d AB DB AD ∧ formTriangle b c d BC CD DB ∧ a.opposingSides c DB ∧ formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃ ∧ ∠ e₁:e₂:e₃ > 0 ∧ ∠ e₁:e₂:e₃ < ∟ + ∟ → ∃ (f l k m : Point) (FL KM FK LM : Line), formParallelogram f l k m FL KM FK LM ∧ (∠ f:k:m = ∠ e₁:e₂:e₃) ∧ (Triangle.area △ f:k:m + Triangle.area △ f:l:m = Triangle.area △ a:b:d + Triangle.area △ d:b:c)"
+}

@@ -1,4 +1,4 @@
 {
-    "prediction": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((a ≠ b ∧ c ≠ a ∧ c ≠ b ∧ ∃ k : ℝ, |(c─a)| < k * |(a─b)| ∧ k > 0)) → (∃ e : Point, e.onLine AB ∧ (|(a─e)| = |(a─c)|) ∧ (e ≠ b))",
+    "prediction": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (|(a─b)| > |(a─c)|)) → (∃ e : Point, between a e b ∧ |(a─e)| = |(a─c)|)",
     "groud_truth": "∀ (a b c₀ c₁ : Point) (AB C : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c₀ c₁ C ∧ |(a─b)| > |(c₀─c₁)| → ∃ e : Point, between a e b ∧ |(a─e)| = |(c₀─c₁)|"
 }

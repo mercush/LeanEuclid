@@ -1,0 +1,4 @@
+{
+    "prediction": "∀ (a : Point) (b : Point) (c : Point) (e : Point) (AB : Line) (BC : Line) (CD : Line) (DA : Line) (AE : Line), ((formParallelogram a b c d AB BC CD DA) ∧ (formTriangle e b c EB BC CE : Line) ∧ (a.onLine AE) ∧ (d.onLine AE) ∧ (¬(AE.intersectsLine BC))) → (Triangle.area △ e:b:c + Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ a:d:c)",
+    "groud_truth": "∀ (a b c d e : Point) (AE BC AB CD BE CE : Line), formParallelogram a d b c AE BC AB CD ∧ formTriangle e b c BE BC CE ∧ e.onLine AE ∧ ¬(AE.intersectsLine BC) → (Triangle.area △ a:b:c : ℝ) + (Triangle.area △ a:c:d) = (Triangle.area △ e:b:c) + (Triangle.area △ e :b :c)"
+}

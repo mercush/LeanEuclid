@@ -1,1 +1,1 @@
-{"prediction": "theorem BAC (a b c : Point) (AB AC : Line) (h : formRectilinearAngle a b c AB AC) : ∃ d : Point, (∠ a:b:d : ℝ) = (∠ a:c:d : ℝ) := by sorry.", "groud_truth": "∀ (a b c : Point) (AB AC : Line), formRectilinearAngle b a c AB AC ∧ AB ≠ AC → ∃ f : Point, f ≠ a ∧ (∠ b:a:f = ∠ c:a:f)"}
+{"prediction": "()", "groud_truth": "∀ (a b c : Point) (AB AC : Line), formRectilinearAngle b a c AB AC ∧ AB ≠ AC → ∃ f : Point, f ≠ a ∧ (∠ b:a:f = ∠ c:a:f)"}

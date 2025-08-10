@@ -1,0 +1,4 @@
+{
+    "prediction": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (BC : Line) (AD : Line), ((Triangle.area △ a:b:c = Triangle.area △ d:b:c) ∧ (distinctPointsOnLine b c BC) ∧ (a.sameSide d BC)) → (¬(AD.intersectsLine BC))",
+    "groud_truth": "∀ (a b c d : Point) (AB BC AC BD CD AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d b c BD BC CD ∧ a.sameSide d BC ∧ (△ a:b:c : ℝ) = (△ d:b:c) ∧ distinctPointsOnLine a d AD → ¬(AD.intersectsLine BC)"
+}

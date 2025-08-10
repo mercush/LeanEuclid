@@ -1,0 +1,4 @@
+{
+    "prediction": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (DE : Line) (CE : Line), ((distinctPointsOnLine a b AB) ∧ (formRectilinearAngle d c e DE CE)) → (∃ (f g : Point) (AF AG : Line), distinctPointsOnLine a f AF ∧ formRectilinearAngle f a g AF AG ∧ ∠ f:a:g = ∠ d:c:e)",
+    "groud_truth": "∀ (a b c d e : Point) (AB CD CE : Line), distinctPointsOnLine a b AB ∧ formRectilinearAngle d c e CD CE → ∃ f : Point, f ≠ a ∧ (∠ f:a:b = ∠ d:c:e)"
+}

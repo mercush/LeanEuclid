@@ -1,1 +1,1 @@
-{"prediction": "theorem theorem_1 (a : Point) (b c : Point) (L : Line) (h : a ≠ c) (hc : c.onLine L) (hb : b.onLine L) : ∃ M : Line, a.onLine M ∧ ¬(L.intersectsLine M) := by sorry.", "groud_truth": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)"}
+{"prediction": "()", "groud_truth": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)"}

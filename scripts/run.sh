@@ -18,13 +18,21 @@ fi
 
 source ~/lean-experiments/mau/src/LeanEuclid/venv/bin/activate
 python3 -m AutoFormalization.proof.autoformalize \
+rm -rf result
+rm -rf tmp
+source ~/lean-experiments/mau/src/LeanEuclid/venv/bin/activate
+python3 AutoFormalization/statement/autoformalize.py \
 	--dataset Book \
 	--category "" \
 	--reasoning text-only \
 	--num_query 1 \
 	--num_examples 5 \
-	--model_type gemini \
-	--model_name "gemini-2.0-flash" \
 	--project_dir "." \
 	--tensor_parallel_size 1 \
-    --start_index "$START_INDEX"
+        --start_index "$START_INDEX"
+	--model_type base \
+	--model_name "AI-MO/Kimina-Prover-72B" \
+	--preamble "import SystemE" \
+	--project_dir "." \
+	--tensor_parallel_size 8
+deactivate

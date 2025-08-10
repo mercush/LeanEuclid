@@ -1,4 +1,4 @@
 {
-    "prediction": "∀ (a : Point) (b : Point) (c : Point) (L : Line), ((a ≠ c) ∧ (c.onLine L) ∧ (b.onLine L)) → (∃ M : Line, a.onLine M ∧ ¬(L.intersectsLine M))",
+    "prediction": "∀ (a : Point) (BC : Line), (True) → (∃ EF : Line, (¬ EF.intersectsLine BC) ∧ (∃ e f : Point, distinctPointsOnLine e f EF ∧ a.onLine EF))",
     "groud_truth": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)"
 }

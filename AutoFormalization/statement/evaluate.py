@@ -3,8 +3,8 @@ import json
 import argparse
 import tqdm
 
-from E3.checker import Checker
-from E3.utils import ROOT_DIR
+from LeanEuclid.E3.checker import Checker
+from LeanEuclid.E3.utils import ROOT_DIR
 
 
 def main():
@@ -56,7 +56,7 @@ def main():
         print("Category: ", c)
         pred_dir = os.path.join(
             ROOT_DIR,
-            "cleaned_result",
+            "result",
             "statement",
             args.dataset,
             args.reasoning,
@@ -65,7 +65,7 @@ def main():
         )
         result_dir = os.path.join(
             ROOT_DIR,
-            "cleaned_result",
+            "result",
             "equivalence",
             args.dataset,
             args.reasoning,
@@ -94,24 +94,23 @@ def main():
                 mode=args.mode,
                 result_path=os.path.join(result_dir, str(i)),
             )
+            tot += 1
             if os.path.isdir(prop_pred_dir):
                 json_files = sorted([f for f in os.listdir(prop_pred_dir) if f.endswith('.json')])
-                tot += len(json_files)
 
                 for pred_filename in json_files:
                     pred_file = os.path.join(prop_pred_dir, pred_filename)
-                    try:
-                        with open(pred_file, "r", encoding="utf-8") as f:
-                            data = json.load(f)
+                    # try:
+                    with open(pred_file, "r", encoding="utf-8") as f:
+                        data = json.load(f)
 
-                        pred = data["prediction"]
-                        formalization = data["groud_truth"]
+                    pred = data["prediction"]
+                    formalization = data["groud_truth"]
 
-                        if checker.check(formalization, pred, str(i)):
-                            cnt += 1
-                    except Exception as e:
-                        print(f"Error processing file {pred_file}: {e}")
-                        continue
+                    # if checker.check(formalization, pred, str(i)):
+                    instance_name = os.path.splitext(pred_filename)[0]
+                    if checker.check(formalization, pred, instance_name):
+                        cnt += 1
 
     if tot > 0:
         print(f"cnt: {cnt}, tot: {tot}, acc: {(cnt/tot)*100:.2f}%")

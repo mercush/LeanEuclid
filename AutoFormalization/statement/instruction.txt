@@ -52,7 +52,8 @@ def formQuadrilateral (a b c d : Point) (AB CD AC BD : Line) -- point a, b, d, a
 
 --  Guidelines --
 1. Your output must strictly follow this format: 
-theorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by sorry.
+theorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by sorry
+- Do not use the character "→". All hypotheses must be left of : and all conclusions must be to the right.
 - "theorem_name" should be a valid Lean identifier.
 - Each hypothesis must be inside parentheses and have the form (h : statement).
 - The conclusion must follow the colon ":" after the hypotheses.

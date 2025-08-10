@@ -2,7 +2,7 @@ import os
 import signal
 import json
 
-from E3.utils import ROOT_DIR, format_lean_checker_file
+from LeanEuclid.E3.utils import ROOT_DIR, format_lean_checker_file
 from subprocess import Popen, PIPE
 
 
@@ -47,10 +47,16 @@ class Checker:
             outputJsonFile,
         ]
         process = Popen(
-            command, stdin=PIPE, stdout=PIPE, cwd=ROOT_DIR, preexec_fn=os.setsid
+            # command, stdin=PIPE, stdout=PIPE, cwd=ROOT_DIR, preexec_fn=os.setsid
+            command, stdin=PIPE, stdout=PIPE, stderr=PIPE, cwd=ROOT_DIR, preexec_fn=os.setsid
         )
         try:
-            process.communicate()
+            # process.communicate()
+            stdout, stderr = process.communicate()
+            print("---------------")
+            print("stderr: ", stderr)
+            print("stdout: ", stdout)
+            print("---------------")
             with open(outputJsonFile, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
@@ -59,6 +65,9 @@ class Checker:
                 return True
             else:
                 return False
-        except:
-            os.killpg(os.getpgid(process.pid), signal.SIGTERM)
+        # except:
+        except Exception as e:
+            print(f"An exception occurred: {e}")
+            if 'process' in locals() and process.poll() is None:
+                os.killpg(os.getpgid(process.pid), signal.SIGTERM)
             return False

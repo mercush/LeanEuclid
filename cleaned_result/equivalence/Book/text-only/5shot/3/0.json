@@ -1,0 +1,5 @@
+{"0" : 
+ {"bvars" : {"uPoints": -1, "uLines": -1,"uCircles": 0, "ePoints": 0,"eLines": 0, "eCircles": 0}, 
+ "binary_check" : "no_conclusion", 
+ "approx_check" : "none", 
+"testUnsat" : "false"}}

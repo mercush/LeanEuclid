@@ -1,7 +1,7 @@
 import os
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-
+print(ROOT_DIR)
 
 def format_test_file(test):
     return f"""import SystemE

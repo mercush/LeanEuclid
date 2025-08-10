@@ -1,0 +1,4 @@
+{
+    "prediction": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (d e : Point) (AD DE EB BA : Line), formQuadrilateral a d e b AD DE EB BA ∧ (|(a─b)| = |(a─d)|) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─b)| = |(e─b)|) ∧ ((∠ d:a:b : ℝ) = ∟) ∧ ((∠ a:b:e : ℝ) = ∟) ∧ ((∠ b:e:d : ℝ) = ∟) ∧ ((∠ e:d:a : ℝ) = ∟))",
+    "groud_truth": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ (d e : Point) (DE AD BE : Line), formParallelogram d e a b DE AB AD BE ∧ |(d─e)| = |(a─b)| ∧ |(a─d)| = |(a─b)| ∧ |(b─e)| = |(a─b)| ∧ (∠ b:a:d = ∟) ∧ (∠ a:d:e = ∟) ∧ (∠ a:b:e = ∟) ∧ (∠ b:e:d = ∟)"
+}

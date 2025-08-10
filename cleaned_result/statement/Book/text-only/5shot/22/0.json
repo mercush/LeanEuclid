@@ -1,0 +1,4 @@
+{
+    "prediction": "(∀ (a b c k f g : Point) (KF FG GK : Line), |(k─f)| + |(f─g)| > |(g─k)| ∧ |(k─f)| + |(g─k)| > |(f─g)| ∧ |(f─g)| + |(g─k)| > |(k─f)| → ∃ (A B C : ℝ), |(k─f)| = A ∧ |(f─g)| = B ∧ |(g─k)| = C ∧ formTriangle k f g KF FG GK)",
+    "groud_truth": "∀ (a a' b b' c c' : Point) (A B C : Line), distinctPointsOnLine a a' A ∧ distinctPointsOnLine b b' B ∧ distinctPointsOnLine c c' C ∧ (|(a─a')| + |(b─b')| > |(c─c')|) ∧ (|(a─a')| + |(c─c')| > |(b─b')|) ∧ (|(b─b')| + |(c─c')| > |(a─a')|) → ∃ (k f g : Point), (|(f─k)| = |(a─a')|) ∧ (|(f─g)| = |(b─b')|) ∧ (|(k─g)| = |(c─c')|)"
+}

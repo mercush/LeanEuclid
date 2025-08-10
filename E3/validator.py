@@ -2,7 +2,7 @@ import os
 import re
 import signal
 
-from E3.utils import *
+from LeanEuclid.E3.utils import *
 from subprocess import Popen, PIPE
 
 

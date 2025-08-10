@@ -1,4 +1,4 @@
 {
-    "prediction": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (AC : Line), ((formRectilinearAngle a b c AB AC)) → (∃ d : Point, (∠ a:b:d : ℝ) = (∠ a:c:d : ℝ))",
+    "prediction": "(∀ (a b c : Point) (AB AC : Line), formRectilinearAngle b a c AB AC → ∃ (f : Point) (AF : Line), between b f c)",
     "groud_truth": "∀ (a b c : Point) (AB AC : Line), formRectilinearAngle b a c AB AC ∧ AB ≠ AC → ∃ f : Point, f ≠ a ∧ (∠ b:a:f = ∠ c:a:f)"
 }

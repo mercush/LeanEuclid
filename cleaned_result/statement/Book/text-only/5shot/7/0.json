@@ -1,0 +1,4 @@
+{
+    "prediction": "∀ (a : Point) (b : Point) (AB : Line) (c : Point) (d : Point) (AC : Line) (BC : Line) (AD : Line) (BD : Line), ((distinctPointsOnLine a b AB) ∧ (c ≠ d) ∧ (AC ≠ AD) ∧ (BC ≠ BD) ∧ (a.onLine AB) ∧ (b.onLine AB) ∧ (c.onLine AB) ∧ (d.onLine AB)) → (¬(|(a─c)| = |(a─d)| ∧ |(b─c)| = |(b─d)|))",
+    "groud_truth": "∀ (a b c d : Point) (AB AC CB AD DB : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine c b CB ∧ distinctPointsOnLine a d AD ∧ distinctPointsOnLine d b DB ∧ (c.sameSide d AB) ∧ c ≠ d ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|) → False"
+}

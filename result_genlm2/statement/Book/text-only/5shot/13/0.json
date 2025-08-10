@@ -1,0 +1,1 @@
+{"prediction": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD b)) → ((∠ a:b:c + ∠ c:b:d : ℝ) = ∟ + ∟)", "groud_truth": "∀ (a b c d : Point) (AB CD : Line), AB ≠ CD ∧ distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ between d b c → ∠ c:b:a + ∠ a:b:d = ∟ + ∟"}

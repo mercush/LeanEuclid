@@ -67,6 +67,7 @@ def reformat_theorem_string(lean_code: str) -> str:
     """
     Parses a Lean theorem string, reformats it, and returns the result.
     """
+    lean_code = "theorem" + lean_code.split("theorem")[-1]
     commands: List[LeanCommand] = LeanParser(lean_code).parse_lean()
     output_lines = []
     for command in commands:

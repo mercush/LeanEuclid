@@ -1,4 +1,4 @@
 {
-    "prediction": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (DB : Line) (DC : Line), (True) → (formTriangle a b c AB BC AC ∧ formTriangle d b c DB BC DC ∧ a ≠ d ∧ (∃ l : Line, a.onLine l ∧ d.onLine l ∧ ¬(l.intersectsLine BC)) →\n  Triangle.area △ a:b:c = Triangle.area △ d:b:c)",
+    "prediction": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AD : Line) (BC : Line) (AB : Line) (AC : Line) (DB : Line) (DC : Line), ((distinctPointsOnLine b c BC) ∧ (formTriangle a b c AB BC AC) ∧ (formTriangle d b c DB BC DC) ∧ (a.onLine AD) ∧ (d.onLine AD) ∧ (¬(AD.intersectsLine BC))) → (Triangle.area △ a:b:c = Triangle.area △ d:b:c)",
     "groud_truth": "∀ (a b c d : Point) (AB BC AC BD CD AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d b c BD BC CD ∧ distinctPointsOnLine a d AD ∧ ¬(AD.intersectsLine BC) ∧ d.sameSide c AB → Triangle.area △ a:b:c = Triangle.area △ d:b:c"
 }

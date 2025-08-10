@@ -6,10 +6,20 @@ import random
 import tqdm
 import json
 import asyncio
+import sys
 
 from copy import deepcopy
 from LeanEuclid.AutoFormalization.utils import *
-from E3.validator import Validator
+from LeanEuclid.E3.validator import Validator
+from LeanEuclid.reformat_theorems import reformat_theorem_string
+from LeanEuclid.AutoFormalization.unreformat_theorems import unreformat_theorem
+import re
+
+src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
+
+from LeanPotential.lean_potential import GenLMModel, BaseLMModel, GeminiModel
 
 
 def examples(dataset, category, num, reasoning):
@@ -40,10 +50,11 @@ def examples(dataset, category, num, reasoning):
         )
         with open(formalization_path) as f:
             formalization = f.read()
-            pattern = r"theorem\s?\w+\s?:\s?(.*?)\s?\:\="
+            pattern = r"theorem\s?\w+\s?:\s?(.*?)\s?:="
             match = re.search(pattern, formalization, re.DOTALL)
             formal_statement = match.group(1)
             formal_statement = re.sub(r"\s+", " ", formal_statement)
+            formal_statement = unreformat_theorem(formal_statement)
 
         if reasoning == "multi-modal":
             image_path = os.path.join(
@@ -105,15 +116,20 @@ async def main():
         "--num_examples", type=int, default=0, help="Number of examples"
     )
     parser.add_argument(
-        "--model_name", type=str)
+        "--model_type",
+        type=str,
+        choices=["genlm", "base", "gemini"],
+        required=True,
+        help="Model type",
+    )
     parser.add_argument(
-        "--preamble", type=str)
+        "--model_name", type=str, required=True, help="Model name")
     parser.add_argument(
-        "--lean_version", type=str)
+        "--preamble", type=str, default="", help="Preamble for GenLM")
     parser.add_argument(
-        "--project_dir", type=str)
+        "--project_dir", type=str, default=".", help="Project directory")
     parser.add_argument(
-        "--tensor_parallel_size", type=int)
+        "--tensor_parallel_size", type=int, default=1, help="Tensor parallel size for GenLM")
     args = parser.parse_args()
 
     random.seed(42)
@@ -131,14 +147,27 @@ async def main():
 
     with open("AutoFormalization/statement/instruction.txt") as f:
         instruction = instruction_head + f.read()
-    # model = GPT4()
-    model = GenLMModel(
-        args.model_name,
-        args.preamble,
-        args.lean_version,
-        args.project_dir,
-        args.tensor_parallel_size,
-    )
+    
+    # Initialize model based on model_type
+    if args.model_type.lower() == 'genlm':
+        model = GenLMModel(
+            args.model_name,
+            args.preamble,
+            args.project_dir,
+            args.tensor_parallel_size,
+        )
+    elif args.model_type.lower() == 'base':
+        model = BaseLMModel(
+            model_name=args.model_name,
+            tensor_parallel_size=args.tensor_parallel_size
+        )
+    elif args.model_type.lower() == 'gemini':
+        model = GeminiModel(
+            model=args.model_name,
+        )
+    else:
+        raise ValueError(f"Unknown model_type: {args.model_type}")
+    
     for c in args.category:
         print("Category: ", c)
         validator = Validator(
@@ -172,9 +201,7 @@ async def main():
         if args.dataset == "UniGeo":
             testing_idx = range(1, 21)
         else:
-            # testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
-            testing_idx = [4] # Only one example to test GenLM
-
+            testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
         for i in tqdm.tqdm(testing_idx):
             content = deepcopy(example_content)
 
@@ -196,7 +223,7 @@ async def main():
             formalization_path = os.path.join(ROOT_DIR, args.dataset, c, file_name)
             with open(formalization_path) as f:
                 formalization = f.read()
-                pattern = r"theorem\s?\w+\s?:\s?(.*?)\s?\:\="
+                pattern = r"theorem\s?\w+\s?:\s?(.*?)\s?:="
                 match = re.search(pattern, formalization, re.DOTALL)
                 formal_statement = match.group(1)
                 formal_statement = re.sub(r"\s+", " ", formal_statement)
@@ -226,39 +253,31 @@ async def main():
             model.add_message("user", str(content))
 
             for _ in range(args.num_query):
-                # try:
-                response = await model.retry_response()
-                # except Exception as e:
-                #     print(f"An error occurred: {e}")
+                # Handle different model types for response generation
+                response = await model.get_response()
+                pred = reformat_theorem_string(response)
+                error_message = validator.validate(pred, str(i))
+                print("response: ", response)
+                print("pred: ", pred)
+                print("error: ", error_message)
+                if error_message is None:
+                    break
+                else:
+                    model.add_message("assistant", response)
+                    model.add_message("user", lean_error(error_message))
 
-                if response:
-                    # pattern = r"<<<(.*?)>>>"
-                    # match = re.search(pattern, response, re.DOTALL)
-
-                    # if match:
-                    # pred = response # match.group(1)
-                    # pred = re.sub(r"\s+", " ", pred).strip()
-                    error_message = None # validator.validate(pred, str(i))
-                    print(f"❌ {error_message}")
-                    if error_message is None:
-                        for key, val in enumerate(response.items()):
-                            result_file = os.path.join(result_dir, str(i), str(key) + ".json")
-                            with open(result_file, "w", encoding="utf-8") as f:
-                                json.dump(
-                                    {
-                                        "prediction": val,
-                                        "groud_truth": formal_statement,
-                                    },
-                                    f,
-                                    ensure_ascii=False,
-                                )
-                            break
-                    else:
-                        model.add_message("assistant", response)
-                        model.add_message("user", lean_error(error_message))
-                    # else:
-                    #     model.add_message("assistant", response)
-                    #     model.add_message("user", parse_error())
+            # Handle non-GenLM responses
+            result_file = os.path.join(result_dir, str(i), "0.json")
+            os.makedirs(os.path.dirname(result_file), exist_ok=True)
+            with open(result_file, "w", encoding="utf-8") as f:
+                json.dump(
+                    {
+                        "prediction": pred,
+                        "groud_truth": formal_statement,
+                    },
+                    f,
+                    ensure_ascii=False,
+                )
             model.conversation = []
 
 

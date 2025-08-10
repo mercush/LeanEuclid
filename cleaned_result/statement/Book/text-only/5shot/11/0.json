@@ -1,4 +1,4 @@
 {
-    "prediction": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((c.onLine AB ∧ a ≠ b ∧ distinctPointsOnLine a b AB)) → (∃ f : Point, c.onLine (AB) ∧ (∠ a:c:f : ℝ) = ∟)",
+    "prediction": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ f : Point, ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟))",
     "groud_truth": "∀ (a b c : Point) (AB : Line), distinctPointsOnLine a b AB ∧ between a c b → exists f : Point, ¬(f.onLine AB) ∧ (∠ a:c:f = ∟)"
 }
