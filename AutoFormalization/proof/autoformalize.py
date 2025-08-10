@@ -177,6 +177,12 @@ def main():
         default=".",
         help="Project directory for GenLM",
     )
+    parser.add_argument(
+        "--start_index",
+        type=int,
+        default=1,
+        help="Starting index for processing.",
+    )
     args = parser.parse_args()
 
     random.seed(42)
@@ -214,6 +220,8 @@ def main():
         else:
             namespace = "Elements.Book1"
             testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
+
+        testing_idx = [i for i in testing_idx if i >= args.start_index]
 
         for i in tqdm.tqdm(testing_idx):
             if args.model_type.lower() == 'genlm':
