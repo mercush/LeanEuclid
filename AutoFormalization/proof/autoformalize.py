@@ -8,6 +8,7 @@ import sys
 
 from copy import deepcopy
 from LeanEuclid.AutoFormalization.utils import *
+from ..unreformat_theorems import unreformat_theorem
 
 src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 if src_path not in sys.path:
@@ -75,8 +76,9 @@ def examples(dataset, category, num, reasoning):
             formalization = f.read()
             pattern = r"theorem\s?\w+\s?:\s?(.*?)\s?\:\="
             match = re.search(pattern, formalization, re.DOTALL)
-            formal_statement = match.group(1)
-            formal_statement = re.sub(r"\s+", " ", formal_statement)
+            formal_statement_prop = match.group(1)
+            formal_statement_prop = re.sub(r"\s+", " ", formal_statement_prop).strip()
+            formal_statement = unreformat_theorem(formal_statement_prop, f"example_thm_{idx}")
 
             pattern = r"theorem.*?:=\s*\n*by\s*(.*?)(?=theorem|end|$)"
             match = re.search(pattern, formalization, re.DOTALL)
