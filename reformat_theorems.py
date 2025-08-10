@@ -63,6 +63,19 @@ def reformat_theorem(theorem: LeanTheorem) -> str:
         else:
             return conclusion_part
 
+def reformat_theorem_string(lean_code: str) -> str:
+    """
+    Parses a Lean theorem string, reformats it, and returns the result.
+    """
+    commands: List[LeanCommand] = LeanParser(lean_code).parse_lean()
+    output_lines = []
+    for command in commands:
+        if isinstance(command, LeanTheorem):
+            reformatted_theorem = reformat_theorem(command)
+            output_lines.append(reformatted_theorem)
+    return "\n".join(output_lines)
+
+
 def process_file(input_path: str, output_path: str):
     """
     Reads a JSON file, reformats the 'prediction' field, and writes the updated JSON data to an output file.
