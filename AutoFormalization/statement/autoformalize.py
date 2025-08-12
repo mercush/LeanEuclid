@@ -130,8 +130,11 @@ async def main():
         "--project_dir", type=str, default=".", help="Project directory")
     parser.add_argument(
         "--tensor_parallel_size", type=int, default=1, help="Tensor parallel size for GenLM")
+    parser.add_argument(
+        "--start_index", type=int, default=1, help="Start index")
+    parser.add_argument(
+        "--with_cot", type=bool)
     args = parser.parse_args()
-
     random.seed(42)
 
     if args.dataset == "UniGeo":
@@ -155,6 +158,7 @@ async def main():
             args.preamble,
             args.project_dir,
             args.tensor_parallel_size,
+            args.with_cot
         )
     elif args.model_type.lower() == 'base':
         model = BaseLMModel(
@@ -201,7 +205,7 @@ async def main():
         if args.dataset == "UniGeo":
             testing_idx = range(1, 21)
         else:
-            testing_idx = [i for i in range(1, 49) if i not in [2, 6, 12, 32, 42]]
+            testing_idx = [i for i in range(1, 49) if i >= args.start_index and i not in [2, 6, 12, 32, 42]]
         for i in tqdm.tqdm(testing_idx):
             content = deepcopy(example_content)
 

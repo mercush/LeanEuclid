@@ -1,1 +1,0 @@
-{"prediction": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((|(a─b)| > |(c─a)|)) → (∃ e : Point, e.onLine AB ∧ |(a─e)| = |(c─a)|)", "groud_truth": "∀ (a b c₀ c₁ : Point) (AB C : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c₀ c₁ C ∧ |(a─b)| > |(c₀─c₁)| → ∃ e : Point, between a e b ∧ |(a─e)| = |(c₀─c₁)|"}

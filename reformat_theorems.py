@@ -3,8 +3,9 @@ import os
 import argparse
 import json
 from typing import List
+import re
 
-from LeanPotential.lean_parse import LeanParser, LeanTheorem, LeanCommand
+from LeanPotential.lean_parse import LeanParser, LeanTheorem, LeanCommand, parse_lean
 
 GEOMETRIC_SORTS = {"Point", "Line", "Circle"}
 
@@ -67,14 +68,14 @@ def reformat_theorem_string(lean_code: str) -> str:
     """
     Parses a Lean theorem string, reformats it, and returns the result.
     """
-    lean_code = "theorem" + lean_code.split("theorem")[-1]
-    commands: List[LeanCommand] = LeanParser(lean_code).parse_lean()
-    output_lines = []
-    for command in commands:
-        if isinstance(command, LeanTheorem):
-            reformatted_theorem = reformat_theorem(command)
-            output_lines.append(reformatted_theorem)
-    return "\n".join(output_lines)
+    pattern = r'```\w+([\s\S]*?)```'
+    matches = re.findall(pattern, lean_code)
+    if matches:
+        lean_code = matches[-1].strip()
+    commands = parse_lean(lean_code)
+    theorems = [c for c in commands if type(c) == LeanTheorem]
+    reformatted_theorems = [reformat_theorem(t) for t in theorems]
+    return "\n".join(reformatted_theorems)
 
 
 def process_file(input_path: str, output_path: str):

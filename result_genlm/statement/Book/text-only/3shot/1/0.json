@@ -1,1 +1,0 @@
-{"prediction": "theorem construct_equilateral_triangle (a b : Point) (AB : Line) (h : a ≠ b ∧ a.onLine AB ∧ b.onLine AB) :\n    exists c : Point, a ≠ c ∧ b ≠ c ∧ |(a─c)| = |(a─b)| ∧ |(b─c)| = |(a─b)| ∧\n    collinear a b c := by sorry\n", "groud_truth": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)|"}

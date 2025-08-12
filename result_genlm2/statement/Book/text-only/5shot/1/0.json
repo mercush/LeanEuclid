@@ -1,1 +1,0 @@
-{"prediction": "∀ (a : Point) (b : Point) (AB : Line), ((a ≠ b)) → (exists l : Point, l.onLine AB ∧ |(a─l)| = |(a─b)| ∧ formTriangle a b l AB (show Line from sorry) (show Line from sorry))", "groud_truth": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)|"}
