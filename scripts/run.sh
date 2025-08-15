@@ -25,12 +25,14 @@ python3 AutoFormalization/statement/autoformalize.py \
 	--num_query 1 \
 	--num_examples 5 \
 	--project_dir "." \
-	--tensor_parallel_size 8 \
+	--tensor_parallel_size 1 \
         --start_index "$START_INDEX" \
-	--model_type genlm \
+	--model_type featherless \
 	--model_name "AI-MO/Kimina-Prover-72B" \
 	--preamble "import SystemE" \
-	--with_cot True
+	--with_cot True \
+	--max_tokens 4000
+
 python3 AutoFormalization/statement/evaluate.py \
 	--dataset Book \
 	--category "" \

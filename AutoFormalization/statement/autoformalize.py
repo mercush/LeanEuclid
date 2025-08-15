@@ -19,7 +19,7 @@ src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '
 if src_path not in sys.path:
     sys.path.insert(0, src_path)
 
-from LeanPotential.lean_potential import GenLMModel, BaseLMModel, GeminiModel
+from LeanPotential.lean_potential import GenLMModel, BaseLMModel, GeminiModel, Featherless
 
 
 def examples(dataset, category, num, reasoning):
@@ -118,7 +118,7 @@ async def main():
     parser.add_argument(
         "--model_type",
         type=str,
-        choices=["genlm", "base", "gemini"],
+        choices=["genlm", "base", "gemini", "featherless"],
         required=True,
         help="Model type",
     )
@@ -134,6 +134,8 @@ async def main():
         "--start_index", type=int, default=1, help="Start index")
     parser.add_argument(
         "--with_cot", type=bool)
+    parser.add_argument(
+        "--max_tokens", type=int)
     args = parser.parse_args()
     random.seed(42)
 
@@ -154,21 +156,28 @@ async def main():
     # Initialize model based on model_type
     if args.model_type.lower() == 'genlm':
         model = GenLMModel(
-            args.model_name,
-            args.preamble,
-            args.project_dir,
-            args.tensor_parallel_size,
-            args.with_cot
+            model_name=args.model_name,
+            preamble=args.preamble,
+            project_dir=args.project_dir,
+            tensor_parallel_size=args.tensor_parallel_size,
+            with_cot=args.with_cot,
+            max_tokens=args.max_tokens
         )
     elif args.model_type.lower() == 'base':
         model = BaseLMModel(
             model_name=args.model_name,
-            tensor_parallel_size=args.tensor_parallel_size
+            tensor_parallel_size=args.tensor_parallel_size,
+            max_tokens=args.max_tokens
         )
     elif args.model_type.lower() == 'gemini':
         model = GeminiModel(
-            model=args.model_name,
+            model_name=args.model_name,
+            max_tokens=args.max_tokens
         )
+    elif args.model_type.lower() == 'featherless':
+        model = Featherless(
+            model_name=args.model_name,
+            max_tokens=args.max_tokens)
     else:
         raise ValueError(f"Unknown model_type: {args.model_type}")
     
@@ -276,6 +285,7 @@ async def main():
             with open(result_file, "w", encoding="utf-8") as f:
                 json.dump(
                     {
+                        "full_response": response,
                         "prediction": pred,
                         "groud_truth": formal_statement,
                     },
