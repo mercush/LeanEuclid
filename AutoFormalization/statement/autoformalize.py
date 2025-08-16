@@ -1,6 +1,5 @@
 import os
 import re
-import base64
 import argparse
 import random
 import tqdm
@@ -13,16 +12,16 @@ from LeanEuclid.AutoFormalization.utils import *
 from LeanEuclid.E3.validator import Validator
 from LeanEuclid.reformat_theorems import reformat_theorem_string
 from LeanEuclid.AutoFormalization.unreformat_theorems import unreformat_theorem
-import re
+from LeanPotential.lean_potential import GenLMModel, BaseLMModel, GeminiModel, Featherless, BaseModelSMC, sample_posterior
+import openai
 
 src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 if src_path not in sys.path:
     sys.path.insert(0, src_path)
 
-from LeanPotential.lean_potential import GenLMModel, BaseLMModel, GeminiModel, Featherless
 
 
-def examples(dataset, category, num, reasoning):
+def examples(dataset: str, category: str, num: int, reasoning: str) -> list[dict[str, str]]:
     content = [
         {
             "type": "text",
@@ -78,7 +77,7 @@ def examples(dataset, category, num, reasoning):
     return content
 
 
-async def main():
+async def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--dataset",
@@ -118,7 +117,6 @@ async def main():
     parser.add_argument(
         "--model_type",
         type=str,
-        choices=["genlm", "base", "gemini", "featherless"],
         required=True,
         help="Model type",
     )
@@ -132,6 +130,8 @@ async def main():
         "--tensor_parallel_size", type=int, default=1, help="Tensor parallel size for GenLM")
     parser.add_argument(
         "--start_index", type=int, default=1, help="Start index")
+    parser.add_argument(
+        "--fully_constrained", type=bool)
     parser.add_argument(
         "--with_cot", type=bool)
     parser.add_argument(
@@ -157,10 +157,11 @@ async def main():
     if args.model_type.lower() == 'genlm':
         model = GenLMModel(
             model_name=args.model_name,
-            preamble=args.preamble,
+            lean_preamble=args.preamble,
             project_dir=args.project_dir,
             tensor_parallel_size=args.tensor_parallel_size,
             with_cot=args.with_cot,
+            fully_constrain=args.fully_constrained,
             max_tokens=args.max_tokens
         )
     elif args.model_type.lower() == 'base':
@@ -178,6 +179,11 @@ async def main():
         model = Featherless(
             model_name=args.model_name,
             max_tokens=args.max_tokens)
+    elif args.model_type.lower() == 'basesmc':
+        model = BaseModelSMC(
+            model_name=args.model_name,
+            max_tokens=args.max_tokens,
+            tensor_parallel_size=args.tensor_parallel_size)
     else:
         raise ValueError(f"Unknown model_type: {args.model_type}")
     
@@ -266,17 +272,33 @@ async def main():
             model.add_message("user", str(content))
 
             for _ in range(args.num_query):
-                # Handle different model types for response generation
-                response = await model.get_response()
-                pred = reformat_theorem_string(response)
-                error_message = validator.validate(pred, str(i))
-                print("response: ", response)
+                # Handle different model types for response generation with retry logic
+                response = None
+                for attempt in range(3):
+                    try:
+                        response = await model.get_response()
+                        break
+                    except openai.InternalServerError:
+                        wait_time = 2 ** attempt
+                        print(f"API error encountered, retrying in {wait_time} seconds... (attempt {attempt + 1}/3)")
+                        await asyncio.sleep(wait_time)
+                
+                if response is None:
+                    print("Failed to get response after retries")
+                    continue
+                    
+                output_response = sample_posterior(response)
+                cleaned_response = reformat_theorem_string(output_response)
+                pred = {reformat_theorem_string(k): v for k, v in response.items()}
+                error_message = validator.validate(cleaned_response, str(i))
+                print("response: ", output_response)
+                print("cleaned response: ", cleaned_response)
                 print("pred: ", pred)
                 print("error: ", error_message)
                 if error_message is None:
                     break
                 else:
-                    model.add_message("assistant", response)
+                    model.add_message("assistant", cleaned_response)
                     model.add_message("user", lean_error(error_message))
 
             # Handle non-GenLM responses
@@ -286,6 +308,7 @@ async def main():
                 json.dump(
                     {
                         "full_response": response,
+                        "output_response": output_response,
                         "prediction": pred,
                         "groud_truth": formal_statement,
                     },

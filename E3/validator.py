@@ -7,11 +7,11 @@ from subprocess import Popen, PIPE
 
 
 class Validator:
-    def __init__(self, tmp_path=os.path.join(ROOT_DIR, "tmp", "validate")):
+    def __init__(self, tmp_path: str = os.path.join(ROOT_DIR, "tmp", "validate")) -> None:
         self.tmp_path = tmp_path
         os.makedirs(self.tmp_path, exist_ok=True)
 
-    def validate(self, expression, instanceName):
+    def validate(self, expression: str, instanceName: str) -> str:
         tmpFile = os.path.join(self.tmp_path, instanceName + ".lean")
         os.makedirs(os.path.dirname(tmpFile), exist_ok=True)
 
@@ -26,7 +26,7 @@ class Validator:
         try:
             stdout, _ = process.communicate()
             if stdout == b"":
-                return None
+                return ""
             else:
                 error = stdout.decode()
                 error = re.sub(r"/[^:]+:\d+:\d+: ", "", error)

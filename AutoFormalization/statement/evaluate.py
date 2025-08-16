@@ -7,7 +7,7 @@ from LeanEuclid.E3.checker import Checker
 from LeanEuclid.E3.utils import ROOT_DIR
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--dataset",
@@ -109,8 +109,9 @@ def main():
 
                     # if checker.check(formalization, pred, str(i)):
                     instance_name = os.path.splitext(pred_filename)[0]
-                    if checker.check(formalization, pred, instance_name):
-                        cnt += 1
+                    for k, v in pred.items():
+                        if checker.check(formalization, k, instance_name):
+                            cnt += v
 
     if tot > 0:
         print(f"cnt: {cnt}, tot: {tot}, acc: {(cnt/tot)*100:.2f}%")

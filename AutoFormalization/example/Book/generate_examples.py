@@ -5,7 +5,7 @@ import shutil
 from E3.utils import ROOT_DIR
 
 
-def main():
+def main() -> None:
     random.seed(24)
 
     # os.makedirs(f'diagrams', exist_ok=True)

@@ -3,7 +3,7 @@ import os
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 print(ROOT_DIR)
 
-def format_test_file(test):
+def format_test_file(test: str) -> str:
     return f"""import SystemE
 import UniGeo.Relations
 import E3
@@ -20,7 +20,7 @@ def main : IO Unit := WfChecker testE
 """
 
 
-def format_lean_checker_file(ground, test):
+def format_lean_checker_file(ground: str, test: str) -> str:
     return f"""import SystemE
 import UniGeo.Relations
 import E3

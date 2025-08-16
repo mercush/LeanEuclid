@@ -17,7 +17,7 @@ if src_path not in sys.path:
 from LeanPotential.lean_potential import GenLMModel, BaseLMModel, GeminiModel
 
 
-def preceding_propositions(idx):
+def preceding_propositions(idx: int) -> str:
     with open(
         "AutoFormalization/proof/book_propositions.json", "r", encoding="utf-8"
     ) as f:
@@ -31,7 +31,7 @@ def preceding_propositions(idx):
     return "\n".join(pre_props)
 
 
-def examples(dataset, category, num, reasoning):
+def examples(dataset: str, category: str, num: int, reasoning: str) -> list[dict[str, str]]:
     content = [
         {
             "type": "text",

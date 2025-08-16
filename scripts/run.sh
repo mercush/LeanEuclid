@@ -18,6 +18,8 @@ else
 fi
 
 source ~/lean-experiments/mau/src/LeanEuclid/venv/bin/activate
+
+echo "Starting autoformalization..."
 python3 AutoFormalization/statement/autoformalize.py \
 	--dataset Book \
 	--category "" \
@@ -30,12 +32,16 @@ python3 AutoFormalization/statement/autoformalize.py \
 	--model_type featherless \
 	--model_name "AI-MO/Kimina-Prover-72B" \
 	--preamble "import SystemE" \
-	--with_cot True \
-	--max_tokens 4000
+	--fully_constrained False \
+	--with_cot False \
+	--max_tokens 4000 \
+	2>&1 | tee autoformalize_output.txt
 
+echo "Starting evaluation..."
 python3 AutoFormalization/statement/evaluate.py \
 	--dataset Book \
 	--category "" \
 	--reasoning text-only \
 	--num_examples 5
+
 deactivate
