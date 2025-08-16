@@ -29,12 +29,12 @@ python3 AutoFormalization/statement/autoformalize.py \
 	--project_dir "." \
 	--tensor_parallel_size 1 \
         --start_index "$START_INDEX" \
-	--model_type featherless \
+	--model_type genlm \
 	--model_name "AI-MO/Kimina-Prover-72B" \
 	--preamble "import SystemE" \
 	--fully_constrained False \
-	--with_cot False \
-	--max_tokens 4000 \
+	--with_cot True \
+	--max_tokens 2000 \
 	2>&1 | tee autoformalize_output.txt
 
 echo "Starting evaluation..."
