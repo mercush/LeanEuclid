@@ -65,6 +65,3 @@ theorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion :=
 5. Numeric Operators: You should only uses  addition (+), subtraction (-), multiplication (*), and division (/). Avoid using other mathematical operators such as exponentiation.
 6. Axioms: You should only use the provided axioms. For example, Line L is parallel to line M can be expressed as ¬(L.intersectsLine M). Do not use Line.Parallel L M.
 7. Do not import or open any libraries.
-
--- Output Format --
-Output your final answer in a Markdown Lean4 code environment: ```lean4...```.

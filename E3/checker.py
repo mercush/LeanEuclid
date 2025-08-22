@@ -26,7 +26,7 @@ class Checker:
         self.approxSolverTime = approxTime
         self.mode = mode
 
-    def check(self, ground, test, instanceName):
+    def check(self, ground, test, instanceName, weight):
         tmpFile = os.path.join(self.tmp_path, instanceName + ".lean")
         with open(tmpFile, "w") as file:
             leanFile = format_lean_checker_file(ground, test)
@@ -59,6 +59,9 @@ class Checker:
             print("---------------")
             with open(outputJsonFile, "r", encoding="utf-8") as f:
                 data = json.load(f)
+            data['weight'] = weight
+            with open(outputJsonFile, "w", encoding="utf-8") as f:
+                json.dump(data, f)
 
             result = data[instanceName]["binary_check"]
             if result == "equiv":

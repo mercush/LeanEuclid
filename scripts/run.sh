@@ -27,13 +27,13 @@ python3 AutoFormalization/statement/autoformalize.py \
 	--num_query 1 \
 	--num_examples 5 \
 	--project_dir "." \
-	--tensor_parallel_size 1 \
-        --start_index "$START_INDEX" \
+	--tensor_parallel_size 8 \
+    --start_index "$START_INDEX" \
 	--model_type genlm \
 	--model_name "AI-MO/Kimina-Prover-72B" \
 	--preamble "import SystemE" \
 	--fully_constrained False \
-	--with_cot True \
+	--with_cot False \
 	--max_tokens 2000 \
 	2>&1 | tee autoformalize_output.txt
 

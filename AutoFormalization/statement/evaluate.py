@@ -108,10 +108,10 @@ def main() -> None:
                     formalization = data["groud_truth"]
 
                     # if checker.check(formalization, pred, str(i)):
-                    instance_name = os.path.splitext(pred_filename)[0]
-                    for k, v in pred.items():
-                        if checker.check(formalization, k, instance_name):
-                            cnt += v
+                    normalizing = sum(pred.values())
+                    for idx, (k, v) in enumerate(pred.items()):
+                        if checker.check(formalization, k, str(idx), v / normalizing):
+                            cnt += v / normalizing
 
     if tot > 0:
         print(f"cnt: {cnt}, tot: {tot}, acc: {(cnt/tot)*100:.2f}%")

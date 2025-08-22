@@ -3,9 +3,8 @@ import os
 import argparse
 import json
 from typing import List
-import re
 
-from LeanPotential.lean_parse import LeanParser, LeanTheorem, LeanCommand, parse_lean
+from LeanPotential.lean_parse import LeanParser, LeanTheorem, LeanCommand
 
 GEOMETRIC_SORTS = {"Point", "Line", "Circle"}
 
@@ -67,15 +66,28 @@ def reformat_theorem(theorem: LeanTheorem) -> str:
 def reformat_theorem_string(lean_code: str) -> str:
     """
     Parses a Lean theorem string, reformats it, and returns the result.
+    If the string contains blocks enclosed in triple backticks, it uses the last one.
     """
-    pattern = r'```\w+([\s\S]*?)```'
-    matches = re.findall(pattern, lean_code)
+    import re
+    lean_code = lean_code.strip()
+    
+    # Regex to find all code blocks: ```optional_lang ... ```
+    pattern = r"""```(?:")?\w+(?:"?)?\s*\n?(.*?)\n?\s*```"""
+    matches = re.findall(pattern, lean_code, re.DOTALL)
+    
+    content_to_process = lean_code
     if matches:
-        lean_code = matches[-1].strip()
-    commands = parse_lean(lean_code)
-    theorems = [c for c in commands if type(c) == LeanTheorem]
-    reformatted_theorems = [reformat_theorem(t) for t in theorems]
-    return "\n".join(reformatted_theorems)
+        # Use the content of the last matched block
+        content_to_process = matches[-1].strip()
+
+    content_to_process = "theorem" + content_to_process.split("theorem")[-1]
+    commands: List[LeanCommand] = LeanParser(content_to_process).parse_lean()
+    output_lines = []
+    for command in commands:
+        if isinstance(command, LeanTheorem):
+            reformatted_theorem = reformat_theorem(command)
+            output_lines.append(reformatted_theorem)
+    return "\n".join(output_lines)
 
 
 def process_file(input_path: str, output_path: str):

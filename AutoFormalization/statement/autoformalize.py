@@ -269,7 +269,8 @@ async def main() -> None:
             )
             # Combine system role and instructions
             model.add_message("system", instruction)
-            model.add_message("user", str(content))
+            for con in content:
+                model.add_message("user", con["text"])
 
             for _ in range(args.num_query):
                 # Handle different model types for response generation with retry logic
@@ -287,11 +288,10 @@ async def main() -> None:
                     print("Failed to get response after retries")
                     continue
                     
-                output_response = sample_posterior(response)
-                cleaned_response = reformat_theorem_string(output_response)
                 pred = {reformat_theorem_string(k): v for k, v in response.items()}
+                cleaned_response = sample_posterior(pred)
                 error_message = validator.validate(cleaned_response, str(i))
-                print("response: ", output_response)
+                print("full_response: ", response)
                 print("cleaned response: ", cleaned_response)
                 print("pred: ", pred)
                 print("error: ", error_message)
@@ -308,8 +308,8 @@ async def main() -> None:
                 json.dump(
                     {
                         "full_response": response,
-                        "output_response": output_response,
-                        "prediction": pred,
+                        "cleaned_response": cleaned_response,
+                        "prediction": {cleaned_response: 1.0}, # might want this to be pred
                         "groud_truth": formal_statement,
                     },
                     f,
