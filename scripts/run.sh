@@ -27,14 +27,14 @@ python3 AutoFormalization/statement/autoformalize.py \
 	--num_query 1 \
 	--num_examples 5 \
 	--project_dir "." \
-	--tensor_parallel_size 8 \
+	--tensor_parallel_size 1 \
     --start_index "$START_INDEX" \
 	--model_type genlm \
-	--model_name "AI-MO/Kimina-Prover-72B" \
+	--model_name "deepseek-ai/DeepSeek-R1-Distill-Llama-8B" \
 	--preamble "import SystemE" \
-	--fully_constrained False \
-	--with_cot False \
-	--max_tokens 2000 \
+	--reasoning False \
+	--typecheck "none" \
+	--max_tokens 250 \
 	2>&1 | tee autoformalize_output.txt
 
 echo "Starting evaluation..."

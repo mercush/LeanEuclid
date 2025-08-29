@@ -1,17 +1,24 @@
+"""Validate results."""
 import os
 import re
 import signal
+from subprocess import PIPE, Popen
 
-from LeanEuclid.E3.utils import *
-from subprocess import Popen, PIPE
+from LeanEuclid.E3.utils import ROOT_DIR, format_test_file
 
 
 class Validator:
-    def __init__(self, tmp_path: str = os.path.join(ROOT_DIR, "tmp", "validate")) -> None:
+    """Validate expression."""
+
+    def __init__(
+        self, tmp_path: str = os.path.join(ROOT_DIR, "tmp", "validate")
+    ) -> None:
+        """Initialize validator."""
         self.tmp_path = tmp_path
         os.makedirs(self.tmp_path, exist_ok=True)
 
     def validate(self, expression: str, instanceName: str) -> str:
+        """Validate expression."""
         tmpFile = os.path.join(self.tmp_path, instanceName + ".lean")
         os.makedirs(os.path.dirname(tmpFile), exist_ok=True)
 

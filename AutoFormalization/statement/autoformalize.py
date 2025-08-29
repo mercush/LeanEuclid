@@ -1,32 +1,80 @@
-import os
-import re
+"""Logic for autoformalization LeanEuclid."""
+
 import argparse
-import random
-import tqdm
-import json
 import asyncio
-import sys
-
+import json
+import os
+import random
+import re
+import time
 from copy import deepcopy
-from LeanEuclid.AutoFormalization.utils import *
-from LeanEuclid.E3.validator import Validator
-from LeanEuclid.reformat_theorems import reformat_theorem_string
-from LeanEuclid.AutoFormalization.unreformat_theorems import unreformat_theorem
-from LeanPotential.lean_potential import GenLMModel, BaseLMModel, GeminiModel, Featherless, BaseModelSMC, sample_posterior
+
 import openai
+import tqdm
+from genlm.control import PromptedLLM
+from lean_interact import (
+    AutoLeanServer,
+    Command,
+    LeanREPLConfig,
+    LocalProject,
+)
+from lean_interact.interface import CommandResponse, LeanError
 
-src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
-if src_path not in sys.path:
-    sys.path.insert(0, src_path)
+from LeanEuclid.AutoFormalization.unreformat_theorems import unreformat_theorem
+
+# from LeanEuclid.AutoFormalization.utils import *
+from LeanEuclid.AutoFormalization.utils import EXAMPLE_DIR, ROOT_DIR
+from LeanEuclid.reformat_theorems import reformat_theorem_string
+from LeanPotential.models import (
+    ChatModel,
+    Featherless,
+    GeminiModel,
+    GenLMModel,
+)
+
+# src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
+# if src_path not in sys.path:
+#     sys.path.insert(0, src_path)
 
 
+async def check_well_typed(
+    formalization: str,
+    lean_server: AutoLeanServer,
+    environment: int,
+) -> bool:
+    """Check if a formalization is well-typed using Lean server."""
+    try:
+        # Add proper imports/preamble if needed for the theorem to typecheck
+        lean_code = f"import SystemE\n{formalization}"
 
-def examples(dataset: str, category: str, num: int, reasoning: str) -> list[dict[str, str]]:
+        response = await lean_server.async_run(
+            Command(cmd=lean_code, env=environment),
+            timeout=10,
+        )
+
+        match response:
+            case CommandResponse():
+                messages = response.messages
+                errors = [m for m in messages if m.severity == "error"]
+                return len(errors) == 0
+            case LeanError():
+                return False
+    except TimeoutError:
+        return False
+
+
+def examples(
+    dataset: str,
+    category: str,
+    num: int,
+    reasoning: str,
+) -> list[dict[str, str]]:
+    """Generate examples for few-shot autoformalization."""
     content = [
         {
             "type": "text",
             "text": "Here are some examples:\n" if num > 1 else "Here is an example:\n",
-        }
+        },
     ]
 
     indices = random.sample(range(1, 6), num)
@@ -35,7 +83,7 @@ def examples(dataset: str, category: str, num: int, reasoning: str) -> list[dict
         input_text = ""
         if dataset == "UniGeo":
             diagram2text_path = os.path.join(
-                EXAMPLE_DIR, dataset, category, "diagrams2texts", f"{idx}.txt"
+                EXAMPLE_DIR, dataset, category, "diagrams2texts", f"{idx}.txt",
             )
             with open(diagram2text_path) as f:
                 input_text += f.read().rstrip("\n") + " "
@@ -45,39 +93,28 @@ def examples(dataset: str, category: str, num: int, reasoning: str) -> list[dict
             input_text += f.read()
 
         formalization_path = os.path.join(
-            EXAMPLE_DIR, dataset, category, "formalizations", f"{idx}.lean"
+            EXAMPLE_DIR, dataset, category, "formalizations", f"{idx}.lean",
         )
         with open(formalization_path) as f:
             formalization = f.read()
             pattern = r"theorem\s?\w+\s?:\s?(.*?)\s?:="
             match = re.search(pattern, formalization, re.DOTALL)
-            formal_statement = match.group(1)
+            formal_statement = match.group(1)  # type: ignore[]
             formal_statement = re.sub(r"\s+", " ", formal_statement)
             formal_statement = unreformat_theorem(formal_statement)
-
-        if reasoning == "multi-modal":
-            image_path = os.path.join(
-                EXAMPLE_DIR, dataset, category, "diagrams", f"{idx}.png"
-            )
-            image = process_image(image_path)
-            content.append(
-                {
-                    "type": "image_url",
-                    "image_url": {"url": f"data:image/png;base64,{image}"},
-                }
-            )
 
         content.append(
             {
                 "type": "text",
                 "text": f"English Statement: {input_text}\nFormalized Statement: {formal_statement} \n",
-            }
+            },
         )
 
     return content
 
 
 async def main() -> None:
+    """Entrypoint function."""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--dataset",
@@ -103,16 +140,21 @@ async def main() -> None:
     )
     parser.add_argument(
         "--reasoning",
-        type=str,
-        choices=["text-only", "multi-modal"],
+        type=bool,
         required=True,
-        help="Reasoning Type",
+        help="Whether or not to include CoT",
     )
     parser.add_argument(
-        "--num_query", type=int, default=5, help="Maximum number of query per instance"
+        "--num_query",
+        type=int,
+        default=5,
+        help="Maximum number of query per instance",
     )
     parser.add_argument(
-        "--num_examples", type=int, default=0, help="Number of examples"
+        "--num_examples",
+        type=int,
+        default=0,
+        help="Number of examples",
     )
     parser.add_argument(
         "--model_type",
@@ -120,22 +162,23 @@ async def main() -> None:
         required=True,
         help="Model type",
     )
+    parser.add_argument("--model_name", type=str, required=True, help="Model name")
+    parser.add_argument("--preamble", type=str, default="", help="Preamble for GenLM")
     parser.add_argument(
-        "--model_name", type=str, required=True, help="Model name")
+        "--project_dir",
+        type=str,
+        default=".",
+        help="Project directory",
+    )
     parser.add_argument(
-        "--preamble", type=str, default="", help="Preamble for GenLM")
-    parser.add_argument(
-        "--project_dir", type=str, default=".", help="Project directory")
-    parser.add_argument(
-        "--tensor_parallel_size", type=int, default=1, help="Tensor parallel size for GenLM")
-    parser.add_argument(
-        "--start_index", type=int, default=1, help="Start index")
-    parser.add_argument(
-        "--fully_constrained", type=bool)
-    parser.add_argument(
-        "--with_cot", type=bool)
-    parser.add_argument(
-        "--max_tokens", type=int)
+        "--tensor_parallel_size",
+        type=int,
+        default=1,
+        help="Tensor parallel size for GenLM",
+    )
+    parser.add_argument("--start_index", type=int, default=1, help="Start index")
+    parser.add_argument("--typecheck", type=str, choices=["all", "none", "final"])
+    parser.add_argument("--max_tokens", type=int)
     args = parser.parse_args()
     random.seed(42)
 
@@ -152,54 +195,81 @@ async def main() -> None:
 
     with open("AutoFormalization/statement/instruction.txt") as f:
         instruction = instruction_head + f.read()
-    
+
+    # Initialize Lean server for type checking
+    lean_config = LeanREPLConfig(
+        lean_version="v4.8.0-rc2",
+        project=LocalProject(directory=args.project_dir),
+        memory_hard_limit_mb=4000,
+    )
+    lean_server = AutoLeanServer(lean_config)
+
+    # Initialize environment with SystemE import
+    import_response = lean_server.run(
+        Command(cmd="import SystemE"),
+        add_to_session_cache=True,
+    )
+    lean_environment = (
+        import_response.env if isinstance(import_response, CommandResponse) else 0
+    )
+
     # Initialize model based on model_type
-    if args.model_type.lower() == 'genlm':
+    model = PromptedLLM.from_name(
+        args.model_name,
+        temperature=1.0,
+        engine_opts={
+            "tensor_parallel_size": args.tensor_parallel_size,
+            "max_model_len": 6 * 4096,
+        },
+    )
+
+    if args.model_type.lower() == "genlm":
         model = GenLMModel(
-            model_name=args.model_name,
+            model=model,
             lean_preamble=args.preamble,
             project_dir=args.project_dir,
-            tensor_parallel_size=args.tensor_parallel_size,
-            with_cot=args.with_cot,
-            fully_constrain=args.fully_constrained,
-            max_tokens=args.max_tokens
-        )
-    elif args.model_type.lower() == 'base':
-        model = BaseLMModel(
-            model_name=args.model_name,
-            tensor_parallel_size=args.tensor_parallel_size,
-            max_tokens=args.max_tokens
-        )
-    elif args.model_type.lower() == 'gemini':
-        model = GeminiModel(
-            model_name=args.model_name,
-            max_tokens=args.max_tokens
-        )
-    elif args.model_type.lower() == 'featherless':
-        model = Featherless(
-            model_name=args.model_name,
-            max_tokens=args.max_tokens)
-    elif args.model_type.lower() == 'basesmc':
-        model = BaseModelSMC(
-            model_name=args.model_name,
+            reasoning=args.reasoning,  # type: ignore[]
+            typecheck=args.typecheck,
             max_tokens=args.max_tokens,
-            tensor_parallel_size=args.tensor_parallel_size)
+            n_particles=10,
+        )
+    elif args.model_type.lower() == "chat":
+        model = ChatModel(
+            model=model,
+            max_tokens=args.max_tokens,
+            reasoning=args.reasoning,  # type: ignore[]
+            potential=None,
+            n_particles=10,
+            ess_threshold=0.5,
+        )
+    elif args.model_type.lower() == "gemini":
+        model = GeminiModel(model_name=args.model_name, max_tokens=args.max_tokens)
+    elif args.model_type.lower() == "featherless":
+        model = Featherless(model_name=args.model_name, max_tokens=args.max_tokens)
     else:
         raise ValueError(f"Unknown model_type: {args.model_type}")
-    
+
     for c in args.category:
-        print("Category: ", c)
-        validator = Validator(
-            tmp_path=os.path.join(
-                ROOT_DIR,
-                "tmp",
-                "validate",
-                args.dataset,
-                args.reasoning,
-                str(args.num_examples) + "-shot",
-                c,
-            )
-        )
+        # validator = Validator(
+        #     tmp_path=str(
+        #         Path(ROOT_DIR)
+        #         / Path("tmp")
+        #         / Path("validate")
+        #         / Path(args.dataset)
+        #         / Path(args.reasoning)
+        #         / Path(str(args.num_examples) + "-shot")
+        #         / Path(c)
+        #     ),
+        # os.path.join(
+        #     ROOT_DIR,
+        #     "tmp",
+        #     "validate",
+        #     args.dataset,
+        #     args.reasoning,
+        #     str(args.num_examples) + "-shot",
+        #     c,
+        # )
+        # )
         result_dir = os.path.join(
             ROOT_DIR,
             "result",
@@ -214,20 +284,27 @@ async def main() -> None:
         example_content = []
         if args.num_examples > 0:
             example_content = examples(
-                args.dataset, c, args.num_examples, args.reasoning
+                args.dataset,
+                c,
+                args.num_examples,
+                args.reasoning,
             )
 
         if args.dataset == "UniGeo":
             testing_idx = range(1, 21)
         else:
-            testing_idx = [i for i in range(1, 49) if i >= args.start_index and i not in [2, 6, 12, 32, 42]]
+            testing_idx = [
+                i
+                for i in range(1, 49)
+                if i >= args.start_index and i not in [2, 6, 12, 32, 42]
+            ]
         for i in tqdm.tqdm(testing_idx):
             content = deepcopy(example_content)
 
             problem_text = ""
             if args.dataset == "UniGeo":
                 diagram2text_path = os.path.join(
-                    ROOT_DIR, args.dataset, c, "diagrams2texts", f"{i}.txt"
+                    ROOT_DIR, args.dataset, c, "diagrams2texts", f"{i}.txt",
                 )
                 with open(diagram2text_path) as f:
                     problem_text += f.read().rstrip("\n") + " "
@@ -247,59 +324,72 @@ async def main() -> None:
                 formal_statement = match.group(1)
                 formal_statement = re.sub(r"\s+", " ", formal_statement)
 
-            content.append({"type": "text", "text": f"Here is your problem:\n"})
+            content.append({"type": "text", "text": "Here is your problem:\n"})
 
-            if args.reasoning == "multi-modal":
-                image_path = os.path.join(
-                    ROOT_DIR, args.dataset, c, "diagrams", f"{i}.png"
-                )
-                image = process_image(image_path)
-                content.append(
-                    {
-                        "type": "image_url",
-                        "image_url": {"url": f"data:image/png;base64,{image}"},
-                    }
-                )
+            # if args.reasoning == "multi-modal":
+            #     image_path = os.path.join(
+            #         ROOT_DIR, args.dataset, c, "diagrams", f"{i}.png"
+            #     )
+            #     image = process_image(image_path)
+            #     content.append(
+            #         {
+            #             "type": "image_url",
+            #             "image_url": {"url": f"data:image/png;base64,{image}"},
+            #         },
+            #     )
 
             content.append(
                 {
                     "type": "text",
                     "text": f"English Statement: {problem_text}\nFormalized Statement: ",
-                }
+                },
             )
             # Combine system role and instructions
             model.add_message("system", instruction)
             for con in content:
                 model.add_message("user", con["text"])
 
-            for _ in range(args.num_query):
-                # Handle different model types for response generation with retry logic
-                response = None
-                for attempt in range(3):
-                    try:
-                        response = await model.get_response()
-                        break
-                    except openai.InternalServerError:
-                        wait_time = 2 ** attempt
-                        print(f"API error encountered, retrying in {wait_time} seconds... (attempt {attempt + 1}/3)")
-                        await asyncio.sleep(wait_time)
-                
-                if response is None:
-                    print("Failed to get response after retries")
-                    continue
-                    
-                pred = {reformat_theorem_string(k): v for k, v in response.items()}
-                cleaned_response = sample_posterior(pred)
-                error_message = validator.validate(cleaned_response, str(i))
-                print("full_response: ", response)
-                print("cleaned response: ", cleaned_response)
-                print("pred: ", pred)
-                print("error: ", error_message)
-                if error_message is None:
+            # Handle different model types for response generation with retry logic
+            start_time = time.time()
+            response = None
+            for attempt in range(3):
+                try:
+                    response = await model.get_outputs()
                     break
-                else:
-                    model.add_message("assistant", cleaned_response)
-                    model.add_message("user", lean_error(error_message))
+                except openai.InternalServerError:
+                    wait_time = 2**attempt
+                    print(
+                        f"API error encountered, retrying in {wait_time} seconds... (attempt {attempt + 1}/3)"
+                    )
+                    await asyncio.sleep(wait_time)
+
+            generation_time = time.time() - start_time
+
+            if response is None:
+                print("Failed to get response after retries")
+                continue
+
+            pred = {reformat_theorem_string(k): v for k, v in response.items()}
+
+            # Check well-typedness for each formalization
+            validated_formalizations = []
+            for formalization, probability in pred.items():
+                is_well_typed = await check_well_typed(
+                    formalization,
+                    lean_server,
+                    lean_environment,
+                )
+                validated_formalizations.append(
+                    {
+                        "formalization": formalization,
+                        "probability": probability,
+                        "source": args.model_type,
+                        "reasoning": args.reasoning,
+                        "leanpotential": args.typecheck,
+                        "time": generation_time,
+                        "well_typed": is_well_typed,
+                    },
+                )
 
             # Handle non-GenLM responses
             result_file = os.path.join(result_dir, str(i), "0.json")
@@ -307,10 +397,11 @@ async def main() -> None:
             with open(result_file, "w", encoding="utf-8") as f:
                 json.dump(
                     {
-                        "full_response": response,
-                        "cleaned_response": cleaned_response,
-                        "prediction": {cleaned_response: 1.0}, # might want this to be pred
-                        "groud_truth": formal_statement,
+                        "id": str(i),
+                        "formalizations": validated_formalizations,
+                        "reference_formalization": formal_statement,
+                        "nl_statement": problem_text,
+                        "lean4_header": "",
                     },
                     f,
                     ensure_ascii=False,
