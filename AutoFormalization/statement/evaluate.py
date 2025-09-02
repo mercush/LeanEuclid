@@ -1,6 +1,8 @@
-import os
-import json
+"""Check validity of formalizations."""
 import argparse
+import json
+import os
+
 import tqdm
 
 from LeanEuclid.E3.checker import Checker
@@ -45,7 +47,10 @@ def main() -> None:
         help="Reasoning Type",
     )
     parser.add_argument(
-        "--num_examples", type=int, default=0, help="Number of examples"
+        "--num_examples",
+        type=int,
+        default=0,
+        help="Number of examples",
     )
     args = parser.parse_args()
 
@@ -89,32 +94,56 @@ def main() -> None:
                     args.reasoning,
                     str(args.num_examples) + "-shot",
                     c,
-                    str(i)
+                    str(i),
                 ),
                 mode=args.mode,
                 result_path=os.path.join(result_dir, str(i)),
             )
             tot += 1
             if os.path.isdir(prop_pred_dir):
-                json_files = sorted([f for f in os.listdir(prop_pred_dir) if f.endswith('.json')])
+                json_files = sorted(
+                    [f for f in os.listdir(prop_pred_dir) if f.endswith(".json")],
+                )
 
                 for pred_filename in json_files:
                     pred_file = os.path.join(prop_pred_dir, pred_filename)
-                    # try:
                     with open(pred_file, "r", encoding="utf-8") as f:
                         data = json.load(f)
 
-                    pred = data["prediction"]
-                    formalization = data["groud_truth"]
+                    # Extract formalizations from the new JSON structure
+                    formalizations = data["formalizations"]
+                    reference_formalization = data["reference_formalization"]
 
-                    # if checker.check(formalization, pred, str(i)):
-                    normalizing = sum(pred.values())
-                    for idx, (k, v) in enumerate(pred.items()):
-                        if checker.check(formalization, k, str(idx), v / normalizing):
-                            cnt += v / normalizing
+                    # Filter well-typed formalizations
+                    well_typed_formalizations = [
+                        f for f in formalizations if f.get("well_typed", False)
+                    ]
+
+                    if well_typed_formalizations:
+                        # Normalize probabilities among well-typed formalizations
+                        total_prob = sum(
+                            f["probability"] for f in well_typed_formalizations
+                        )
+
+                        if total_prob > 0:
+                            for idx, formalization_data in enumerate(
+                                well_typed_formalizations,
+                            ):
+                                formalization_text = formalization_data["formalization"]
+                                normalized_prob = (
+                                    formalization_data["probability"] / total_prob
+                                )
+
+                                if checker.check(
+                                    reference_formalization,
+                                    formalization_text,
+                                    str(idx),
+                                    normalized_prob,
+                                ):
+                                    cnt += normalized_prob
 
     if tot > 0:
-        print(f"cnt: {cnt}, tot: {tot}, acc: {(cnt/tot)*100:.2f}%")
+        print(f"cnt: {cnt}, tot: {tot}, acc: {(cnt / tot) * 100:.2f}%")
     else:
         print("No prediction files found to evaluate.")
 

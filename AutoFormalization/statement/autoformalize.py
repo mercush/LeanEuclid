@@ -67,7 +67,7 @@ def examples(
     dataset: str,
     category: str,
     num: int,
-    reasoning: str,
+    _: str,
 ) -> list[dict[str, str]]:
     """Generate examples for few-shot autoformalization."""
     content = [
@@ -243,7 +243,7 @@ async def main() -> None:
             ess_threshold=0.5,
         )
     elif args.model_type.lower() == "gemini":
-        model = GeminiModel(model_name=args.model_name, max_tokens=args.max_tokens)
+        model = GeminiModel(model_name=args.model_name, max_tokens=args.max_tokens, n_particles=10)
     elif args.model_type.lower() == "featherless":
         model = Featherless(model_name=args.model_name, max_tokens=args.max_tokens)
     else:
@@ -373,21 +373,23 @@ async def main() -> None:
 
             # Check well-typedness for each formalization
             validated_formalizations = []
-            for formalization, probability in pred.items():
+            for original_formalization, probability in response.items():
+                reformatted_formalization = reformat_theorem_string(original_formalization)
                 is_well_typed = await check_well_typed(
-                    formalization,
+                    reformatted_formalization,
                     lean_server,
                     lean_environment,
                 )
                 validated_formalizations.append(
                     {
-                        "formalization": formalization,
+                        "formalization": reformatted_formalization,
                         "probability": probability,
                         "source": args.model_type,
                         "reasoning": args.reasoning,
                         "leanpotential": args.typecheck,
                         "time": generation_time,
                         "well_typed": is_well_typed,
+                        "tokens": len(original_formalization),
                     },
                 )
 
