@@ -1,0 +1,128 @@
+{
+  "id": "7",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (AC : Line) (CB : Line) (CA : Line) (DB : Line), ((onLine a AB) ∧ (onLine b AB) ∧ (onLine c AB) ∧ (onLine d AB) ∧ (sameSide c d AB) ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|)) → (c = d)",
+      "full_output": "theorem theorem_of_straight_line_equality (a b c d : Point) (AB : Line) (AC CB CA DB : Line) (h1 : onLine a AB) (h2 : onLine b AB) (h3 : onLine c AB) (h4 : onLine d AB) (h5 : sameSide c d AB) (h6 : |(a─c)| = |(a─d)|) (h7 : |(b─c)| = |(b─d)|) : c = d := by\n  -- Assume for contradiction that c ≠ d.\n  by_contra h\n  -- Since CB = DB, then ∠CDB = ∠DCB by Proposition 1.5.\n  have : ∠ c:d:b = ∠ d:c:b := by\n    apply Angle.right_right\n    <;> assumption\n  -- But it was shown that ∠CDB > ∠DCB, which is impossible.\n  <;> linarith\n```",
+      "probability": 0.1008639400630135,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.92971682548523,
+      "well_typed": false,
+      "token_counts": 216,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (¬(c.onLine AB)) ∧ (¬(d.onLine AB)) ∧ (sameSide a c AB) ∧ (sameSide b d AB) ∧ (sameSide c d AB)) → (∃ h : Point, h.onLine AB ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : ¬(c.onLine AB)) (h3 : ¬(d.onLine AB)) (h4 : sameSide a c AB) (h5 : sameSide b d AB) (h6 : sameSide c d AB) : ∃ h : Point, h.onLine AB ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|) := by\n  -- Use the given points and lines to construct the required point h on line AB.\n  apply Exists.intro a\n  apply And.intro\n  apply h1.1\n  apply And.intro\n  apply Eq.symm\n  apply h1.2.1\n  apply Eq.symm\n  apply h1.2.2\n```",
+      "probability": 0.10083921834511494,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.92971682548523,
+      "well_typed": false,
+      "token_counts": 205,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (|(a─c)| = |(b─d)|) ∧ (a ≠ b) ∧ (a ≠ c) ∧ (a ≠ d) ∧ (b ≠ c) ∧ (b ≠ d) ∧ (c ≠ d)) → (¬(∃ c' : Point, c' .onLine AC ∧ c' .onLine BD ∧ c' ≠ a ∧ c' ≠ b ∧ c' ≠ c ∧ c' ≠ d))",
+      "full_output": "theorem theorem_name (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : |(a─c)| = |(b─d)|) (h3 : a ≠ b) (h4 : a ≠ c) (h5 : a ≠ d) (h6 : b ≠ c) (h7 : b ≠ d) (h8 : c ≠ d) : ¬(∃ c' : Point, c' .onLine AC ∧ c' .onLine BD ∧ c' ≠ a ∧ c' ≠ b ∧ c' ≠ c ∧ c' ≠ d) := by\n  intro h\n  simp_all [Point.onLine, Line.intersectsLine, Circle.onCircle, Circle.insideCircle, Circle.outsideCircle, Circle.isCentre, Circle.intersectsCircle, Triangle.congruent, Triangle.similar, distinctPointsOnLine, twoLinesIntersectAtPoint, between, formTriangle, formRectilinearAngle, formParallelogram, formQuadrilateral]\n```",
+      "probability": 0.10038279413219944,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.92971682548523,
+      "well_typed": false,
+      "token_counts": 232,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d AB) ∧ (c ≠ d) ∧ (Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c AB) ∧ (Point.onLine d AB) ∧ (Point.sameSide c d AB) ∧ (Line.intersectsLine (Line.mk a c) (Line.mk b d) a Elab.tauto) ∧ (Line.intersectsLine (Line.mk b d) (Line.mk a c) b Elab.tauto)) → (a = b)",
+      "full_output": "theorem on_same_straight_line (a b c d : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d AB) (h3 : c ≠ d) (h4 : Point.onLine a AB) (h5 : Point.onLine b AB) (h6 : Point.onLine c AB) (h7 : Point.onLine d AB) (h8 : Point.sameSide c d AB) (h9 : Line.intersectsLine (Line.mk a c) (Line.mk b d) a Elab.tauto) (h10 : Line.intersectsLine (Line.mk b d) (Line.mk a c) b Elab.tauto) : a = b := by\n  -- Using the properties of points and lines, we can derive a contradiction.\n  have h11 := Point.onLine a AB\n  have h12 := Point.onLine b AB\n  have h13 := Point.onLine c AB\n  have h14 := Point.onLine d AB\n  have h15 := Point.sameSide c d AB\n  have h16 := Line.intersectsLine (Line.mk a c) (Line",
+      "probability": 0.10006470442933407,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.92971682548523,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line), ((twoLinesIntersectAtPoint AB AB a) ∧ (twoLinesIntersectAtPoint AB AB b) ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|) ∧ (c ≠ d)) → (c = d)",
+      "full_output": "theorem theorem_name (a b c d : Point) (AB : Line) (h1 : twoLinesIntersectAtPoint AB AB a) (h2 : twoLinesIntersectAtPoint AB AB b) (h3 : |(a─c)| = |(a─d)|) (h4 : |(b─c)| = |(b─d)|) (h5 : c ≠ d) : c = d := by\n  -- Use the equality of distances to show that c and d must be the same point.\n  apply Points不同點唯一\n  -- Simplify the given equalities and inequalities.\n  simp_all\n  -- Use the fact that the points are on the same line and the distances are equal to conclude that c and d must be the same point.\n  <;> linarith\n```",
+      "probability": 0.10005807312092929,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.92971682548523,
+      "well_typed": true,
+      "token_counts": 174,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (AB : Line), ((distinctPointsOnLine A B AB) ∧ (Point.onLine A AB) ∧ (Point.onLine B AB)) → (∀ (C D : Point), ¬(C.onLine AB ∧ D.onLine AB ∧ Point.sameSide C D AB ∧ |(A──C)| = |(A──D)| ∧ |(C──B)| = |(D──B)| ∧ C ≠ D))",
+      "full_output": "theorem thm_1 (A B : Point) (AB : Line) (h1 : distinctPointsOnLine A B AB) (h2 : Point.onLine A AB) (h3 : Point.onLine B AB) : ∀ (C D : Point), ¬(C.onLine AB ∧ D.onLine AB ∧ Point.sameSide C D AB ∧ |(A──C)| = |(A──D)| ∧ |(C──B)| = |(D──B)| ∧ C ≠ D) := by\n  intro C D h\n  simp [Point.sameSide] at h\n  -- Simplify the hypothesis to understand the conditions better.\n  aesop\n```",
+      "probability": 0.10005005862314792,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.92971682548523,
+      "well_typed": false,
+      "token_counts": 143,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (∠ a:b:c = ∠ c:d:a)) → (∃ h : Point, h.onLine AB ∧ ((h.onLine CD ∧ ∠ a:h:c = ∟) ∨ (h.onLine AC ∧ ∠ b:h:d = ∟)))",
+      "full_output": "theorem theorem_name (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : ∠ a:b:c = ∠ c:d:a) : ∃ h : Point, h.onLine AB ∧ ((h.onLine CD ∧ ∠ a:h:c = ∟) ∨ (h.onLine AC ∧ ∠ b:h:d = ∟)) := by\n  -- Use Axiom of Choice to select a point h on line AB\n  refine ⟨a, ?_, ?_⟩\n  -- Show that the selected point h is on line AB\n  <;> simp_all [Point.onLine]\n  -- Use Axiom of Choice to select a point h on line CD\n  <;> refine ⟨a, ?_, ?_⟩\n  -- Show that the selected point h is on line CD\n  <;> simp_all [Point.onLine]\n  -- Use Axiom of Choice to select a point h on line AC\n  <;> refine ⟨a, ?_, ?_⟩\n  -- Show that the selected point h is on line AC\n ",
+      "probability": 0.09997341154363411,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.92971682548523,
+      "well_typed": true,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (AB : Line), ((distinctPointsOnLine A B AB) ∧ (A ≠ B)) → (∃ l : Point, |(A─l)| = |(A─B)|)",
+      "full_output": "theorem example_thm (A B : Point) (AB : Line) (h1 : distinctPointsOnLine A B AB) (h2 : A ≠ B) : ∃ l : Point, |(A─l)| = |(A─B)| := by\n  -- I'm sorry, but I don't know how to prove this statement.\n  sorry\n  -- The system cannot provide a step-by-step explanation for this proof.\n  -- It seems like a non-trivial geometric construction problem.\n  -- Please consult a geometry expert or a relevant geometric proof resource for assistance.\n  <;> linarith\n```",
+      "probability": 0.09980582250776127,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.92971682548523,
+      "well_typed": true,
+      "token_counts": 130,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (AB : Line), ((distinctPointsOnLine A B AB) ∧ (|(A─C)| = |(A─D)|) ∧ (|(B─C)| = |(B─D)|) ∧ (Point.onLine C AB) ∧ (Point.onLine D AB) ∧ ((Point.opposingSides C D AB))) → (C = D)",
+      "full_output": "theorem theorem_name\n  (A B C D : Point)\n  (AB : Line)\n  (h1 : distinctPointsOnLine A B AB)\n  (h2 : |(A─C)| = |(A─D)|)\n  (h3 : |(B─C)| = |(B─D)|)\n  (h4 : Point.onLine C AB)\n  (h5 : Point.onLine D AB)\n  (h6 : (Point.opposingSides C D AB))\n  : C = D := by\n  -- Introduce the assumptions and start the proof by contradiction.\n  intro\n  exact absurd h6 (by simp_all [Point.onLine, Point.opposingSides])\n```",
+      "probability": 0.09899536804193663,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.92971682548523,
+      "well_typed": true,
+      "token_counts": 152,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a b AB) ∧ (¬(c.onLine AB)) ∧ (¬(d.onLine AB)) ∧ (Point.collinear c d a) ∧ (Point.collinear c d b) ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|)) → (c = d)",
+      "full_output": "theorem on_same_straight\n  (a b c d : Point)\n  (AB : Line)\n  (h1 : distinctPointsOnLine a b AB)\n  (h2 : distinctPointsOnLine a b AB)\n  (h3 : ¬(c.onLine AB))\n  (h4 : ¬(d.onLine AB))\n  (h5 : Point.collinear c d a)\n  (h6 : Point.collinear c d b)\n  (h7 : |(a─c)| = |(a─d)|)\n  (h8 : |(b─c)| = |(b─d)|)\n  : c = d := by\n  -- Assume the contrary, that c and d are distinct points on the same line AB.\n  apply eq_of_sub_eq_zero\n  -- Use the fact that the lengths of segments AC and AD are equal, and the lengths of segments BC and BD are equal.\n  apply mul_left_cancel₀ (sub_ne_zero.mpr h1)\n  apply mul_left_cancel₀ (sub_ne_zero.mpr h2)\n  -- Simplify the expressions using the given equalities and the properties of geometric entities.\n  nlinarith [h3",
+      "probability": 0.09896660919292889,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.92971682548523,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB AC CB AD DB : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine c b CB ∧ distinctPointsOnLine a d AD ∧ distinctPointsOnLine d b DB ∧ (c.sameSide d AB) ∧ c ≠ d ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|) → False",
+  "nl_statement": "On the same straight-line, two other straight-lines  equal, respectively, to  two (given) straight-lines (which meet) cannot be constructed (meeting) at  a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.     For, if possible, let the two straight-lines $AC$, $CB$, equal to two other straight-lines $AD$, $DB$, respectively, have been constructed on the same straight-line $AB$, meeting at different points, $C$ and $D$, on the same side (of $AB$), and having the same ends (on $AB$). So $CA$ is equal to $DA$, having the same end $A$ as it, and $CB$ is equal to $DB$, having the same end $B$ as it. And let $CD$ have been joined [Post.~1]. <prf> Again, since  $CB$ is equal to $DB$, the angle $CDB$ is also equal to angle $DCB$ [Prop.~1.5]. But it was shown that the former (angle) is also much greater (than the latter). The very thing is impossible. Thus, on the same straight-line, two other straight-lines equal, respectively, to two (given) straight-lines (which meet) cannot be constructed (meeting) at a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.",
+  "lean4_header": ""
+}

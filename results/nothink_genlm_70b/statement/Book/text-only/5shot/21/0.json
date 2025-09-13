@@ -1,0 +1,128 @@
+{
+  "id": "21",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d) ∧ (|(b─d)| + |(c─d)| < |(a─b)| + |(a─c)|)) → (|(b─d)| + |(c─d)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ a:b:c)",
+      "full_output": "theorem constructed_lines_less_than_remaining_sides_but_encompass_greater_angle (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : between b c d) (h3 : |(b─d)| + |(c─d)| < |(a─b)| + |(a─c)|) : |(b─d)| + |(c─d)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ a:b:c := by\n  -- Use the given triangle and points to derive the angle relationship\n  have h4 : ∠ b:d:c > ∠ a:b:c := by\n    -- Apply the lemma that states the constructed lines encompass a greater angle\n    apply Angle.construction_encompasses_greater_angle\n    -- Use the given points and properties to prove the angle relationship\n    <;> (try apply h2)\n    <;> (try apply h1)\n    <;> (try apply h3)\n  -- Combine the given side length relationship with the derived angle relationship\n  exact ⟨h3, h4",
+      "probability": 0.20110089513866078,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.19393134117126,
+      "well_typed": true,
+      "token_counts": 122,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (AB : Line) (BC : Line) (AC : Line) (CD₁ : Line) (CD₂ : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine d₁ BC) ∧ (Point.onLine d₂ BC)) → (|(b─d₁)| + |(c─d₂)| < |(a─b)| + |(a─c)| ∧ ∠ b:d₁:c > ∠ b:a:c)",
+      "full_output": "theorem if_two_internal_straight_lines_are_constructed_on_one_of_the_sides_of_a_triangle (a b c d₁ d₂ : Point) (AB BC AC CD₁ CD₂ : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine b BC) (h3 : Point.onLine c BC) (h4 : Point.onLine d₁ BC) (h5 : Point.onLine d₂ BC) : |(b─d₁)| + |(c─d₂)| < |(a─b)| + |(a─c)| ∧ ∠ b:d₁:c > ∠ b:a:c := by\n  -- Apply the triangle inequality to AB and AC to show that their sum is greater than BC.\n  have h6 : |(a─b)| + |(a─c)| > |(b─c)| := by\n    apply Triangle.two_sides_greater_than_third\n    assumption\n  -- Apply the triangle inequality to BD and DC to show that their sum is greater than BC.\n  have h7 : |(b─d₁)| + |(c─d₂)| > |(b─c)|",
+      "probability": 0.20052698984172593,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.19393134117126,
+      "well_typed": false,
+      "token_counts": 139,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CE : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d) ∧ (between c b e)) → (|(b─d)| < |(a─b)| + |(a─c)| ∧ |(c─e)| < |(a─b)| + |(a─c)| ∧ ∠ d:c:e > ∠ a:b:c)",
+      "full_output": "theorem example_thm (a b c d e : Point) (AB BC AC BD CE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : between b c d) (h3 : between c b e) : |(b─d)| < |(a─b)| + |(a─c)| ∧ |(c─e)| < |(a─b)| + |(a─c)| ∧ ∠ d:c:e > ∠ a:b:c := by\n  -- Use the properties of triangles and lines to prove the theorem\n  have h4 := Point.onLine a AB\n  have h5 := Point.onLine b AB\n  have h6 := Point.onLine c BC\n  have h7 := Point.onLine a AC\n  have h8 := Point.onLine c AC\n  have h9 := Point.onLine b BC\n  have h10 := Point.onLine d BC\n  have h11 := Point.onLine e BC\n  have h12 := Line.intersectsLine AB BC\n  have h13 := Line.intersectsLine AC BC\n  have h14 := Line.intersectsLine BD BC\n  have",
+      "probability": 0.1998426772102231,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.19393134117126,
+      "well_typed": false,
+      "token_counts": 107,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (CD : Line) (DE : Line) (EA : Line), ((formTriangle a b c AB BC CD) ∧ (between b c d) ∧ (between c d e) ∧ (Point.onLine d CD) ∧ (Point.onLine e CD)) → (|(b─d)| + |(c─e)| < |(a─b)| + |(a─c)| ∧ (∠ b:d:e > ∠ a:b:c))",
+      "full_output": "theorem if_two_internal_straight_lines_are_constructed_on_one_of_the_sides_of_a_triangle_the_construction_will_be_lessthan_the_two_remaining_sides_but_encompass_a_greater_angle (a b c d e : Point) (AB BC CD DE EA : Line) (h1 : formTriangle a b c AB BC CD) (h2 : between b c d) (h3 : between c d e) (h4 : Point.onLine d CD) (h5 : Point.onLine e CD) : |(b─d)| + |(c─e)| < |(a─b)| + |(a─c)| ∧ (∠ b:d:e > ∠ a:b:c) := by\n  -- Use the triangle inequality to show that the sum of the lengths of the constructed lines is less than the sum of the lengths of the two remaining sides.\n  have h6 : |(b─d)| + |(c─e)| < |(a─b)| + |(a─c)| := by\n    apply triangle_inquality_trans\n    exact h1\n    exact h2\n    exact h3\n    exact h4\n    exact h",
+      "probability": 0.19962375706553265,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.19393134117126,
+      "well_typed": false,
+      "token_counts": 150,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (BC : Line) (BA : Line) (AC : Line) (BD : Line) (DC : Line), ((formTriangle a b c BA BC AC) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Line.intersectsLine BD BC) ∧ (Line.intersectsLine DC BC) ∧ (Point.onLine d₁ BD) ∧ (Point.onLine d₂ DC)) → ((|(b─d₁)| + |(c─d₂)| < |(b─a)| + |(a─c)|) ∧ (∠ b:d₁:d₂ > ∠ b:a:c))",
+      "full_output": "theorem theorem_name (a b c d₁ d₂ : Point) (BC : Line) (BA : Line) (AC : Line) (BD : Line) (DC : Line)\n(h1 : formTriangle a b c BA BC AC)\n(h2 : Point.onLine b BC)\n(h3 : Point.onLine c BC)\n(h4 : Line.intersectsLine BD BC)\n(h5 : Line.intersectsLine DC BC)\n(h6 : Point.onLine d₁ BD)\n(h7 : Point.onLine d₂ DC)\n: (|(b─d₁)| + |(c─d₂)| < |(b─a)| + |(a─c)|) ∧ (∠ b:d₁:d₂ > ∠ b:a:c) := by\n  -- Use the triangle inequality to compare the lengths of the sides\n  have h8 := Triangle.area △ b:a:c\n  have h9 := Triangle.area △ b:d₁:d₂\n  have h10 := Triangle.area △ a:c:b\n  have h11 := Triangle.area △ d₁:b:d₂\n  have h12 := Triangle.area △ d₂:c:d₁\n  have h13 := Triangle.area △ c:d₁:d",
+      "probability": 0.19873443059762622,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.19393134117126,
+      "well_typed": true,
+      "token_counts": 155,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (b ≠ c)) → (|(b─d)| + |(c─d)| < |(b─a)| + |(a─c)| ∧ (∠ b:d:c : ℝ) > (∠ a:b:c : ℝ))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine b BC) (h3 : Point.onLine c BC) (h4 : b ≠ c) : |(b─d)| + |(c─d)| < |(b─a)| + |(a─c)| ∧ (∠ b:d:c : ℝ) > (∠ a:b:c : ℝ) := by\n  -- Use this to provide the constructed lines BD and DC\n  refine' ⟨_, _⟩\n  -- Prove the first part about the sum of the constructed lines being less than the sum of the two remaining sides\n  -- Prove the second part about the angle BDC being greater than angle BAC\n  -- The actual proof would involve geometric constructions and angle comparisons, which are beyond the scope of this example.\n``` \n```lean4\ntheorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine b BC) (h3 : Point.on",
+      "probability": 8.061431515509516e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.19393134117126,
+      "well_typed": true,
+      "token_counts": 106,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((d₁.onLine AB ∧ d₂.onLine AC) ∧ (Point.sameSide d₁ d₂ BC))) → (|(b─d₁)| < |(a─b)| + |(a─c)| ∧ |(c─d₁)| < |(a─b)| + |(a─c)| ∧ ∠ b:d₁:c > ∠ a:b:c)",
+      "full_output": "theorem thm_1 (a b c d₁ d₂ : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (d₁.onLine AB ∧ d₂.onLine AC) ∧ (Point.sameSide d₁ d₂ BC)) : |(b─d₁)| < |(a─b)| + |(a─c)| ∧ |(c─d₁)| < |(a─b)| + |(a─c)| ∧ ∠ b:d₁:c > ∠ a:b:c := by\n  -- Using the properties of the triangle and the internal lines, we can infer that BD and DC are shorter than BA and AC combined.\n  have h2' := Point.sameSide d₂ d₁ BC\n  have h3 := Point.onLine d₁ AB\n  have h4 := Point.onLine d₂ AC\n  constructor <;> norm_num <;>\n  (try constructor) <;>\n  (try simp_all) <;>\n  (try linarith) <;>\n  (try nlinarith [h1, h2, h3, h4])\n``` \n\nAlright,",
+      "probability": 5.668215665976053e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.19393134117126,
+      "well_typed": true,
+      "token_counts": 121,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (BD : Line) (DC : Line) (BA : Line) (AC : Line), ((formTriangle a b c BA BC AC) ∧ (Point.onLine b BD) ∧ (Point.onLine c DC) ∧ (Point.onLine d BD) ∧ (Point.onLine e DC) ∧ (between b c e)) → ()",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC : Line) (BD : Line) (DC : Line) (BA : Line) (AC : Line) (h1 : formTriangle a b c BA BC AC) (h2 : Point.onLine b BD) (h3 : Point.onLine c DC) (h4 : Point.onLine d BD) (h5 : Point.onLine e DC) (h6 : between b c e)) : (|(b─d)| + |(c─e)|) < (|(b─a)| + |(c─a)|) ∧ ∠ b:d:c > ∠ b:a:c := by sorry\n```\n\n\nAlright, so I'm trying to formalize this theorem from Euclidean geometry into Lean4. The theorem states that if we construct two internal straight-lines on one side of a triangle from its ends, these constructed lines will be shorter than the sum of the other two sides of the triangle but will form a larger angle than the original angle of the triangle at that side.\n\nFirst, I need to understand the components involved here. We have a triangle ABC, with side BC. On this side BC, we're",
+      "probability": 2.028932267010835e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.19393134117126,
+      "well_typed": false,
+      "token_counts": 142,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (between a b c) ∧ (¬(a.onLine BC))) → (|(b─d)| < |(a─b)| + |(a─c)| ∧ |(c─d)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ a:b:c)",
+      "full_output": "theorem theorem_name (a b c d : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : between a b c) (h3 : ¬(a.onLine BC)) : |(b─d)| < |(a─b)| + |(a─c)| ∧ |(c─d)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ a:b:c := by sorry\n```rooting around in my notes... Wait, I think I remember this theorem from Euclid's Elements. It's something about constructing perpendiculars in a triangle or something. Okay, so the statement is about if you have a triangle, and on one of its sides, you draw two lines from the ends, these lines will be shorter than the other two sides, but the angle they make will be bigger. Hmm.\n\nAlright, so I need to formalize this. Let's see, the triangle is ABC, and BC is one of its sides. We're constructing BD and DC on BC from B and C respectively. So BD and DC are shorter than BA and AC, but the angle BDC is greater",
+      "probability": 1.366435174503037e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.19393134117126,
+      "well_typed": true,
+      "token_counts": 102,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (BD : Line) (DC : Line), ((distinctPointsOnLine b d₁ BD) ∧ (distinctPointsOnLine d₂ c DC)) → ()",
+      "full_output": "theorem thm (a b c d₁ d₂ : Point) (BD DC : Line) (h1 : distinctPointsOnLine b d₁ BD) (h2 : distinctPointsOnLine d₂ c DC) (h3 : between b d₁ d₂ c BC h4 : |(d₁─d₂)| = |(b─c)| + |(c─d₁)| + |(d₁─d₂)| \\ sd : |(c─d₁)| < |(a─b)| + |(a─c)| \\ h5 : ∠ b:d₁:c > ∠ a:a:b \\ := by sorry\n``` \n\nOkay, I need to formalize the given English statement about triangle properties in Lean 4. Let's break down the problem first.\n\nSo, the problem says that if two internal straight-lines, BD and DC, are constructed on one side of a triangle ABC, from its ends B and C respectively, then BD and DC are less than the sum of the other two sides BA and AC. But the angle BDC is greater than angle BAC.\n\nHmm, okay, to formalize this, I need to reference the points and lines involved.",
+      "probability": 1.3113288423618809e-15,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.19393134117126,
+      "well_typed": false,
+      "token_counts": 134,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD DC : Line), formTriangle a b c AB BC AC ∧ (a.sameSide d BC) ∧ (c.sameSide d AB) ∧ (b.sameSide d AC) ∧ distinctPointsOnLine b d BD ∧ distinctPointsOnLine d c DC → (|(b─d)| + |(d─c)| < |(b─a)| + |(a─c)|) ∧ (∠ b:d:c > ∠ b:a:c)",
+  "nl_statement": "If two internal straight-lines are constructed on one of the sides of a triangle, from its ends, the constructed (straight-lines) will be less than the two remaining  sides of the triangle, but will encompass a greater angle. For let the two internal straight-lines $BD$ and $DC$ have been constructed on one of the sides $BC$ of the triangle $ABC$, from its ends $B$ and $C$ (respectively). I say that  $BD$ and $DC$ are less than the (sum of the) two  remaining sides of the triangle $BA$ and $AC$, but encompass an angle $BDC$ greater than $BAC$.    <prf>  Thus, $BDC$ is much greater than $BAC$.Thus, if two internal straight-lines are constructed on one of the sides of a triangle, from its ends,  the constructed (straight-lines) are less than the two remaining  sides of the triangle, but  encompass a greater angle.",
+  "lean4_header": ""
+}

@@ -21,20 +21,12 @@ from lean_interact import (
 from lean_interact.interface import CommandResponse, LeanError
 
 from LeanEuclid.AutoFormalization.unreformat_theorems import unreformat_theorem
-
-# from LeanEuclid.AutoFormalization.utils import *
 from LeanEuclid.AutoFormalization.utils import EXAMPLE_DIR, ROOT_DIR
+from LeanEuclid.E3.validator import Validator
 from LeanEuclid.reformat_theorems import reformat_theorem_string
-from LeanPotential.models import (
-    ChatModel,
-    Featherless,
-    GeminiModel,
-    GenLMModel,
-)
-
-# src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
-# if src_path not in sys.path:
-#     sys.path.insert(0, src_path)
+from LeanPotential.lean_potential import LeanPotential
+from LeanPotential.models import ChatModel, Featherless, GeminiModel
+from LeanPotential.roundtrip import RoundTripPotential
 
 
 async def check_well_typed(
@@ -45,12 +37,12 @@ async def check_well_typed(
     """Check if a formalization is well-typed using Lean server."""
     try:
         # Add proper imports/preamble if needed for the theorem to typecheck
-        lean_code = f"import SystemE\n{formalization}"
-
+        lean_code = formalization
         response = await lean_server.async_run(
             Command(cmd=lean_code, env=environment),
             timeout=10,
         )
+        print(response)
 
         match response:
             case CommandResponse():
@@ -83,7 +75,11 @@ def examples(
         input_text = ""
         if dataset == "UniGeo":
             diagram2text_path = os.path.join(
-                EXAMPLE_DIR, dataset, category, "diagrams2texts", f"{idx}.txt",
+                EXAMPLE_DIR,
+                dataset,
+                category,
+                "diagrams2texts",
+                f"{idx}.txt",
             )
             with open(diagram2text_path) as f:
                 input_text += f.read().rstrip("\n") + " "
@@ -93,7 +89,11 @@ def examples(
             input_text += f.read()
 
         formalization_path = os.path.join(
-            EXAMPLE_DIR, dataset, category, "formalizations", f"{idx}.lean",
+            EXAMPLE_DIR,
+            dataset,
+            category,
+            "formalizations",
+            f"{idx}.lean",
         )
         with open(formalization_path) as f:
             formalization = f.read()
@@ -141,8 +141,14 @@ async def main() -> None:
     parser.add_argument(
         "--reasoning",
         type=bool,
-        required=True,
+        default=False,
         help="Whether or not to include CoT",
+    )
+    parser.add_argument(
+        "--roundtrip",
+        type=bool,
+        default=False,
+        help="Round trip potential",
     )
     parser.add_argument(
         "--num_query",
@@ -179,6 +185,7 @@ async def main() -> None:
     parser.add_argument("--start_index", type=int, default=1, help="Start index")
     parser.add_argument("--typecheck", type=str, choices=["all", "none", "final"])
     parser.add_argument("--max_tokens", type=int)
+    parser.add_argument("--n_particles", type=int)
     args = parser.parse_args()
     random.seed(42)
 
@@ -196,25 +203,7 @@ async def main() -> None:
     with open("AutoFormalization/statement/instruction.txt") as f:
         instruction = instruction_head + f.read()
 
-    # Initialize Lean server for type checking
-    lean_config = LeanREPLConfig(
-        lean_version="v4.8.0-rc2",
-        project=LocalProject(directory=args.project_dir),
-        memory_hard_limit_mb=4000,
-    )
-    lean_server = AutoLeanServer(lean_config)
-
-    # Initialize environment with SystemE import
-    import_response = lean_server.run(
-        Command(cmd="import SystemE"),
-        add_to_session_cache=True,
-    )
-    lean_environment = (
-        import_response.env if isinstance(import_response, CommandResponse) else 0
-    )
-
-    # Initialize model based on model_type
-    model = PromptedLLM.from_name(
+    llm = PromptedLLM.from_name(
         args.model_name,
         temperature=1.0,
         engine_opts={
@@ -222,60 +211,24 @@ async def main() -> None:
             "max_model_len": 6 * 4096,
         },
     )
-
-    if args.model_type.lower() == "genlm":
-        model = GenLMModel(
-            model=model,
-            lean_preamble=args.preamble,
-            project_dir=args.project_dir,
-            reasoning=args.reasoning,  # type: ignore[]
-            typecheck=args.typecheck,
-            max_tokens=args.max_tokens,
-            n_particles=10,
-        )
-    elif args.model_type.lower() == "chat":
-        model = ChatModel(
-            model=model,
-            max_tokens=args.max_tokens,
-            reasoning=args.reasoning,  # type: ignore[]
-            potential=None,
-            n_particles=10,
-            ess_threshold=0.5,
-        )
-    elif args.model_type.lower() == "gemini":
-        model = GeminiModel(model_name=args.model_name, max_tokens=args.max_tokens, n_particles=10)
-    elif args.model_type.lower() == "featherless":
-        model = Featherless(model_name=args.model_name, max_tokens=args.max_tokens)
-    else:
-        raise ValueError(f"Unknown model_type: {args.model_type}")
-
     for c in args.category:
-        # validator = Validator(
-        #     tmp_path=str(
-        #         Path(ROOT_DIR)
-        #         / Path("tmp")
-        #         / Path("validate")
-        #         / Path(args.dataset)
-        #         / Path(args.reasoning)
-        #         / Path(str(args.num_examples) + "-shot")
-        #         / Path(c)
-        #     ),
-        # os.path.join(
-        #     ROOT_DIR,
-        #     "tmp",
-        #     "validate",
-        #     args.dataset,
-        #     args.reasoning,
-        #     str(args.num_examples) + "-shot",
-        #     c,
-        # )
-        # )
+        validator = Validator(
+            tmp_path=os.path.join(
+                ROOT_DIR,
+                "tmp",
+                "validate",
+                args.dataset,
+                "text-only",
+                str(args.num_examples) + "-shot",
+                c,
+            )
+        )
         result_dir = os.path.join(
             ROOT_DIR,
             "result",
             "statement",
             args.dataset,
-            args.reasoning,
+            "text-only",
             str(args.num_examples) + "shot",
             c,
         )
@@ -287,7 +240,7 @@ async def main() -> None:
                 args.dataset,
                 c,
                 args.num_examples,
-                args.reasoning,
+                "text-only",
             )
 
         if args.dataset == "UniGeo":
@@ -298,13 +251,18 @@ async def main() -> None:
                 for i in range(1, 49)
                 if i >= args.start_index and i not in [2, 6, 12, 32, 42]
             ]
+
         for i in tqdm.tqdm(testing_idx):
             content = deepcopy(example_content)
 
             problem_text = ""
             if args.dataset == "UniGeo":
                 diagram2text_path = os.path.join(
-                    ROOT_DIR, args.dataset, c, "diagrams2texts", f"{i}.txt",
+                    ROOT_DIR,
+                    args.dataset,
+                    c,
+                    "diagrams2texts",
+                    f"{i}.txt",
                 )
                 with open(diagram2text_path) as f:
                     problem_text += f.read().rstrip("\n") + " "
@@ -312,7 +270,45 @@ async def main() -> None:
             text_path = os.path.join(ROOT_DIR, args.dataset, c, "texts", f"{i}.txt")
             with open(text_path) as f:
                 problem_text += f.read()
+            # Initialize Lean server for type checking
+            lean_config = LeanREPLConfig(
+                project=LocalProject(directory=args.project_dir),
+                memory_hard_limit_mb=4000,
+            )
+            if args.model_type.lower() == "chat":
 
+                lean_potential = LeanPotential(
+                    llm=llm,
+                    lean_preamble=args.preamble,
+                    lean_config=lean_config,
+                    reasoning=args.reasoning,
+                    typecheck=args.typecheck,
+                )
+                cycle_potential = RoundTripPotential(
+                    target_str=problem_text, formal_prefix=""
+                    )
+                model = ChatModel(
+                    model=llm,
+                    max_tokens=args.max_tokens,
+                    reasoning=args.reasoning,  # type: ignore[]
+                    potential=None if args.typecheck == "none" else lean_potential,
+                    n_particles=args.n_particles,
+                    ess_threshold=0.5,
+                    critic=cycle_potential if args.roundtrip else None
+                )
+            elif args.model_type.lower() == "gemini":
+                model = GeminiModel(
+                    model_name=args.model_name,
+                    max_tokens=args.max_tokens,
+                    n_particles=args.n_particles,
+                    temperature=1.0,
+                )
+            elif args.model_type.lower() == "featherless":
+                model = Featherless(
+                    model_name=args.model_name, max_tokens=args.max_tokens
+                )
+            else:
+                raise ValueError(f"Unknown model_type: {args.model_type}")
             file_name = (
                 f"Prop{i:02d}.lean" if args.dataset == "Book" else f"Thm{i:02d}.lean"
             )
@@ -325,18 +321,6 @@ async def main() -> None:
                 formal_statement = re.sub(r"\s+", " ", formal_statement)
 
             content.append({"type": "text", "text": "Here is your problem:\n"})
-
-            # if args.reasoning == "multi-modal":
-            #     image_path = os.path.join(
-            #         ROOT_DIR, args.dataset, c, "diagrams", f"{i}.png"
-            #     )
-            #     image = process_image(image_path)
-            #     content.append(
-            #         {
-            #             "type": "image_url",
-            #             "image_url": {"url": f"data:image/png;base64,{image}"},
-            #         },
-            #     )
 
             content.append(
                 {
@@ -369,31 +353,37 @@ async def main() -> None:
                 print("Failed to get response after retries")
                 continue
 
-            pred = {reformat_theorem_string(k): v for k, v in response.items()}
-
             # Check well-typedness for each formalization
             validated_formalizations = []
             for original_formalization, probability in response.items():
-                reformatted_formalization = reformat_theorem_string(original_formalization)
-                is_well_typed = await check_well_typed(
-                    reformatted_formalization,
-                    lean_server,
-                    lean_environment,
+                reformatted_formalization = reformat_theorem_string(
+                    original_formalization, args.reasoning
                 )
+                validation = validator.validate(reformatted_formalization, str(i))
+                print("FORMALIZATION", original_formalization)
+                print("REFORMATTED", reformatted_formalization)
+                print("VALIDATION", validation)
+                is_well_typed = validation == ""
                 validated_formalizations.append(
                     {
                         "formalization": reformatted_formalization,
+                        "full_output": original_formalization,
                         "probability": probability,
                         "source": args.model_type,
                         "reasoning": args.reasoning,
                         "leanpotential": args.typecheck,
                         "time": generation_time,
                         "well_typed": is_well_typed,
-                        "tokens": len(original_formalization),
+                        "token_counts": len(
+                            model.llm.model.tokenizer.encode(
+                                original_formalization, add_special_tokens=False
+                            )
+                        )
+                        if args.model_type.lower() == "chat"
+                        else 4000,
                     },
                 )
 
-            # Handle non-GenLM responses
             result_file = os.path.join(result_dir, str(i), "0.json")
             os.makedirs(os.path.dirname(result_file), exist_ok=True)
             with open(result_file, "w", encoding="utf-8") as f:

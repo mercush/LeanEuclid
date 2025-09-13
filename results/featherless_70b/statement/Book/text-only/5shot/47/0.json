@@ -1,0 +1,20 @@
+{
+  "id": "47",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(b─c)|^2 = |(b─a)|^2 + |(a─c)|^2)",
+      "full_output": "Okay, so I'm trying to understand how to formalize this theorem about right-angled triangles into Lean 4. The theorem is the Pythagorean theorem, which states that in a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides.\n\nFirst, I need to identify the components involved. The theorem mentions a right-angled triangle ABC with the right angle at A. So, I'll need to represent points A, B, and C, and the lines AB, AC, and BC. The right angle at A implies that angle BAC is 90 degrees, which can be represented using the notation ∟.\n\nNext, the theorem talks about the squares on the sides. In Lean 4, I can represent the lengths of the sides using the notation |(a─b)|, which denotes the length of the segment between points a and b. To express the squares of these lengths, I'll use the power operation, so |(a─b)|^2.\n\nThe goal is to show that |(B─C)|^2 equals |(B─A)|^2 + |(A─C)|^2. This is the core of the Pythagorean theorem.\n\nNow, I need to structure this into a Lean 4 theorem. The theorem should take the points and lines as hypotheses and conclude the desired equality. The points A, B, and C are distinct, and they form a triangle with a right angle at A.\n\nI also need to ensure that all geometric entities are correctly represented using the provided axioms and notations. For example, the right angle at A is represented using the notation ∟, and the lengths are represented using the |(a─b)| notation.\n\nPutting it all together, the theorem will state that given a right-angled triangle ABC with the right angle at A, the square of the length of side BC is equal to the sum of the squares of the lengths of sides AB and AC.\n\nI should also make sure that the theorem name is a valid Lean identifier and that all hypotheses are correctly listed before the colon, with the conclusion after the colon. The final statement should end with \":= by sorry\" as per the guidelines.\n\nSo, the formalized statement should look something like:\n\ntheorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(b─c)|^2 = |(b─a)|^2 + |(a─c)|^2 := by sorry\n\nThis captures the essence of the Pythagorean theorem in the Lean 4 framework, using the specified notations and structures.\n</think>\n\ntheorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(b─c)|^2 = |(b─a)|^2 + |(a─c)|^2 := by sorry",
+      "probability": 1.0,
+      "source": "featherless",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.858484745025635,
+      "well_typed": false,
+      "token_counts": 650,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c: Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ b:a:c : ℝ) = ∟ → |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)|",
+  "nl_statement": "In right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides containing the right-angle. Let $ABC$ be a right-angled triangle having the angle $BAC$a right-angle. I say that the square on $BC$ is equal to the (sum of the) squares on $BA$ and $AC$.  <prf>  Thus, the square on the side $BC$ is equal to the (sum of the) squares on the sides $BA$ and $AC$. Thus, in right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides surrounding the right-[angle].",
+  "lean4_header": ""
+}

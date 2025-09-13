@@ -114,9 +114,29 @@ def main() -> None:
                     formalizations = data["formalizations"]
                     reference_formalization = data["reference_formalization"]
 
+                    # Add formalization_check attribute to each formalization
+                    for formalization_data in formalizations:
+                        if formalization_data["well_typed"]:
+                            # Only run checker on well-typed formalizations
+                            formalization_text = formalization_data["formalization"]
+                            check_result = checker.check(
+                                reference_formalization,
+                                formalization_text,
+                                "temp",
+                                1.0,
+                            )
+                            formalization_data["formalization_check"] = check_result
+                        else:
+                            # Set to False for non-well-typed formalizations
+                            formalization_data["formalization_check"] = False
+
+                    # Save updated data back to JSON file
+                    with open(pred_file, "w", encoding="utf-8") as f:
+                        json.dump(data, f, ensure_ascii=False, indent=2)
+
                     # Filter well-typed formalizations
                     well_typed_formalizations = [
-                        f for f in formalizations if f.get("well_typed", False)
+                        f for f in formalizations if f["well_typed"]
                     ]
 
                     if well_typed_formalizations:
@@ -134,12 +154,7 @@ def main() -> None:
                                     formalization_data["probability"] / total_prob
                                 )
 
-                                if checker.check(
-                                    reference_formalization,
-                                    formalization_text,
-                                    str(idx),
-                                    normalized_prob,
-                                ):
+                                if formalization_data["formalization_check"]:
                                     cnt += normalized_prob
 
     if tot > 0:

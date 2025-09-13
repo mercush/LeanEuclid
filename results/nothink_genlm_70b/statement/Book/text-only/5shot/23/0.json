@@ -1,0 +1,128 @@
+{
+  "id": "23",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (CD : Line) (CE : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine e f CE) ∧ (formRectilinearAngle d c e CD CE) ∧ (formRectilinearAngle a b f AB AB) ∧ (∠ d:c:e = ∠ a:b:f) ∧ (a ≠ b) ∧ (c ≠ d) ∧ (e ≠ c)) → (exists ag : Point, Point.onLine ag AB ∧ ∠ a:ag:g = ∠ d:c:e)",
+      "full_output": "theorem construct_rectilinear_angle (a b c d e f g : Point)\n  (AB CD CE : Line)\n  (h1 : distinctPointsOnLine a b AB)\n  (h2 : distinctPointsOnLine c d CD)\n  (h3 : distinctPointsOnLine e f CE)\n  (h4 : formRectilinearAngle d c e CD CE)\n  (h5 : formRectilinearAngle a b f AB AB)\n  (h6 : ∠ d:c:e = ∠ a:b:f)\n  (h7 : a ≠ b)\n  (h8 : c ≠ d)\n  (h9 : e ≠ c) :\nexists ag : Point, Point.onLine ag AB ∧ ∠ a:ag:g = ∠ d:c:e := by\n  -- We need to construct a point G on line AB such that the angle ∠FAG is equal to ∠DCE.\n  refine' ⟨g, _, _⟩\n  -- By the properties of the given points and lines, we can show that G lies on AB.\n  <;> try simp_all [Point.onLine, Line.intersectsLine, Triangle.area, Triangle.similar, Triangle.congr",
+      "probability": 0.1431592194195645,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.15176224708557,
+      "well_typed": true,
+      "token_counts": 161,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (CD : Line) (CE : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine e f CE) ∧ (formRectilinearAngle d c e CD CE) ∧ (formRectilinearAngle a b f AB AB) ∧ (∠ d:c:e = ∠ a:b:f) ∧ (a ≠ b) ∧ (c ≠ d) ∧ (e ≠ c)) → (exists ag : Point, Point.onLine ag AB ∧ ∠ a:ag:g = ∠ d:c:e)",
+      "full_output": "theorem construct_rectilinear_angle (a b c d e f g : Point)\n  (AB CD CE : Line)\n  (h1 : distinctPointsOnLine a b AB)\n  (h2 : distinctPointsOnLine c d CD)\n  (h3 : distinctPointsOnLine e f CE)\n  (h4 : formRectilinearAngle d c e CD CE)\n  (h5 : formRectilinearAngle a b f AB AB)\n  (h6 : ∠ d:c:e = ∠ a:b:f)\n  (h7 : a ≠ b)\n  (h8 : c ≠ d)\n  (h9 : e ≠ c) :\nexists ag : Point, Point.onLine ag AB ∧ ∠ a:ag:g = ∠ d:c:e := by\n  -- We need to construct a point G on line AB such that the angle ∠FAG is equal to ∠DCE.\n  refine' ⟨g, _, _⟩\n  -- By the properties of the given points and lines, we can show that G lies on AB.\n  <;> try simp_all [Point.onLine]\n  -- Using the given angles and the properties of rectilinear angles, we",
+      "probability": 0.14297643983130076,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.15176224708557,
+      "well_typed": true,
+      "token_counts": 161,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (CD : Line) (CE : Line) (AG : Line) (FG : Line), ((formRectilinearAngle d c e CD CE) ∧ (a ≠ b) ∧ (a ≠ c) ∧ (a ≠ d) ∧ (a ≠ e)) → (∃ f g : Point, formRectilinearAngle a b f AB FG ∧ ∠ a:b:f = ∠ d:c:e)",
+      "full_output": "theorem example_thm (a b c d e f g : Point) (AB CD CE AG FG : Line) (h1 : formRectilinearAngle d c e CD CE) (h2 : a ≠ b) (h3 : a ≠ c) (h4 : a ≠ d) (h5 : a ≠ e) : ∃ f g : Point, formRectilinearAngle a b f AB FG ∧ ∠ a:b:f = ∠ d:c:e := by\n  -- We need to find points F and G such that the rectilinear angle at point A is equal to the given angle DCE.\n  -- We will use the given point A and the line AB to construct the rectilinear angle.\n  -- First, we use the formRectilinearAngle axiom to get the necessary conditions for angle equality.\n  -- Then, we use the formParallelogram axiom to ensure the constructed angle is rectilinear.\n  -- Finally, we use the onLine and sameSide axioms to ensure the points are correctly positioned.\n  use a, b, c, d, e, f, g, AB, CD, CE, AG, FG\n  simp_all [formRectilinearAngle,",
+      "probability": 0.14297374826579506,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.15176224708557,
+      "well_typed": false,
+      "token_counts": 99,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (∠ d:c:e = ∟ + ∟)) → (∃ (f g : Point), (∠ f:a:g = ∠ d:c:e))",
+      "full_output": "theorem constructed_rectilinear_angle (a b c d e f g : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : ∠ d:c:e = ∟ + ∟) : ∃ (f g : Point), (∠ f:a:g = ∠ d:c:e) := by\n  -- We need to construct a rectilinear angle equal to the given rectilinear angle DCE at point A on the given straight-line AB.\n  use a, a, a\n  -- We can choose any two distinct points on the line AB to form the arms of the angle.\n  -- Since the angle DCE is a rectilinear angle, we can copy its measure to form the desired angle at point A.\n  -- The use of a, a, a ensures that the angle is constructed at point A with the same measure as DCE.\n  <;> simp_all [distinctPointsOnLine]\n  -- Simplify the context to ensure all points are distinct and lie on the line AB.\n  -- This is crucial for constructing a valid rectilinear angle at point A.\n  <;> exact h1\n  -- Ensure that the points used are indeed distinct",
+      "probability": 0.14275769605228272,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.15176224708557,
+      "well_typed": false,
+      "token_counts": 70,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (CD : Line) (CE : Line) (AG : Line) (FG : Line), ((formRectilinearAngle d c e CD CE) ∧ (a ≠ b) ∧ (a ≠ c) ∧ (a ≠ d) ∧ (a ≠ e)) → (∃ f g : Point, formRectilinearAngle a b f AB FG ∧ ∠ a:b:f = ∠ d:c:e)",
+      "full_output": "theorem example_thm (a b c d e f g : Point) (AB CD CE AG FG : Line) (h1 : formRectilinearAngle d c e CD CE) (h2 : a ≠ b) (h3 : a ≠ c) (h4 : a ≠ d) (h5 : a ≠ e) : ∃ f g : Point, formRectilinearAngle a b f AB FG ∧ ∠ a:b:f = ∠ d:c:e := by\n  -- We need to find points F and G such that the rectilinear angle at point A is equal to the given angle DCE.\n  -- We will use the given point A and the line AB to construct the rectilinear angle.\n  -- First, we use the formRectilinearAngle axiom to get the necessary conditions for angle equality.\n  -- Then, we use the formParallelogram axiom to ensure the constructed angle is rectilinear.\n  -- Finally, we use the onLine and sameSide axioms to ensure the points are correctly positioned.\n  use a, b, c, d, e, f, g, AB, CD, CE, AG, FG\n  simp_all\n  <;> aes",
+      "probability": 0.14272700163255447,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.15176224708557,
+      "well_typed": false,
+      "token_counts": 99,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (CE : Line) (CF : Line) (DG : Line), ((formTriangle c d e CD CE CF) ∧ (formRectilinearAngle d c e CD CE) ∧ (formRectilinearAngle a b f AB CF) ∧ (a ≠ b) ∧ (c ≠ d) ∧ (d ≠ e) ∧ (e ≠ c)) → (∃ (f g e c' : Point) (FG EC EF CG : Line), \nformParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d:c:e) \n∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ c:d:e))",
+      "full_output": "theorem example_thm (a b c d e f g : Point) (AB CD AC BD CE CF DG : Line) \n(h1 : formTriangle c d e CD CE CF) \n(h2 : formRectilinearAngle d c e CD CE) \n(h3 : formRectilinearAngle a b f AB CF) \n(h4 : a ≠ b) \n(h5 : c ≠ d) \n(h6 : d ≠ e) \n(h7 : e ≠ c) : \n∃ (f g e c' : Point) (FG EC EF CG : Line), \nformParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d:c:e) \n∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ c:d:e) := by\n  -- Use an existing point and line to construct the parallelogram.\n  use e, c, f, d\n  -- Use the given lines to form the parallelogram.\n  use CE, CF, CD, CE\n  -- Prove that the constructed figure is a parallelogram with the desired properties.\n  constructor <;> simp",
+      "probability": 0.14272538025338039,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.15176224708557,
+      "well_typed": false,
+      "token_counts": 175,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (CE : Line) (CF : Line) (DG : Line), ((formTriangle c d e CD CE CF) ∧ (formRectilinearAngle d c e CD CE) ∧ (formRectilinearAngle a b f AB CF) ∧ (a ≠ b) ∧ (c ≠ d) ∧ (d ≠ e) ∧ (e ≠ c)) → (∃ (f g e c' : Point) (FG EC EF CG : Line), \nformParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d:c:e) \n∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ c:d:e))",
+      "full_output": "theorem example_thm (a b c d e f g : Point) (AB CD AC BD CE CF DG : Line) \n(h1 : formTriangle c d e CD CE CF) \n(h2 : formRectilinearAngle d c e CD CE) \n(h3 : formRectilinearAngle a b f AB CF) \n(h4 : a ≠ b) \n(h5 : c ≠ d) \n(h6 : d ≠ e) \n(h7 : e ≠ c) : \n∃ (f g e c' : Point) (FG EC EF CG : Line), \nformParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d:c:e) \n∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ c:d:e) := by\n  -- Use an existing point and line to construct the parallelogram.\n  use e, c, f, d\n  -- Use the given lines to form the parallelogram.\n  use CE, CF, CD, CE\n  -- Prove that the constructed lines form a parallelogram.\n  constructor <;> simp_all [formPar",
+      "probability": 0.14263564136366821,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.15176224708557,
+      "well_typed": false,
+      "token_counts": 175,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (CD : Line) (CE : Line) (AG : Line) (FG : Line), ((formRectilinearAngle d c e CD CE) ∧ (a ≠ b) ∧ (a ≠ c) ∧ (a ≠ d) ∧ (a ≠ e)) → (∃ f g : Point, formRectilinearAngle a b f AB FG ∧ ∠ a:b:f = ∠ d:c:e)",
+      "full_output": "theorem example_thm (a b c d e f g : Point) (AB CD CE AG FG : Line) (h1 : formRectilinearAngle d c e CD CE) (h2 : a ≠ b) (h3 : a ≠ c) (h4 : a ≠ d) (h5 : a ≠ e) : ∃ f g : Point, formRectilinearAngle a b f AB FG ∧ ∠ a:b:f = ∠ d:c:e := by\n  -- We need to find points F and G such that the rectilinear angle at point A is equal to the given angle DCE.\n  -- We will use the given point A and the line AB to construct the rectilinear angle.\n  -- First, we use the formRectilinearAngle axiom to get the necessary conditions for angle equality.\n  -- Then, we use the formParallelogram axiom to ensure the constructed angle is rectilinear.\n  -- Finally, we use the onLine and sameSide axioms to ensure the points are correctly positioned.\n  use a, b, c, d, e, f, g, AB, CD, CE, AG, FG\n  aesop\n```  \nOkay, I",
+      "probability": 2.1741528095906825e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.15176224708557,
+      "well_typed": false,
+      "token_counts": 99,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (CD : Line) (CE : Line) (AG : Line) (FG : Line), ((formRectilinearAngle d c e CD CE) ∧ (a ≠ b) ∧ (a ≠ c) ∧ (a ≠ d) ∧ (a ≠ e)) → (∃ f g : Point, formRectilinearAngle a b f AB FG ∧ ∠ a:b:f = ∠ d:c:e)",
+      "full_output": "theorem example_thm (a b c d e f g : Point) (AB CD CE AG FG : Line) (h1 : formRectilinearAngle d c e CD CE) (h2 : a ≠ b) (h3 : a ≠ c) (h4 : a ≠ d) (h5 : a ≠ e) : ∃ f g : Point, formRectilinearAngle a b f AB FG ∧ ∠ a:b:f = ∠ d:c:e := by\n  -- We need to find points F and G such that the rectilinear angle at point A is equal to the given angle DCE.\n  -- We will use the given point A and the line AB to construct the rectilinear angle.\n  -- First, we use the formRectilinearAngle axiom to get the necessary conditions for angle equality.\n  -- Then, we use the formParallelogram axiom to ensure the constructed angle is rectilinear.\n  -- Finally, we use the onLine and sameSide axioms to ensure the points are correctly positioned.\n  use a, b, c, d, e, f, g, AB, CD, CE, AG, FG\n  aesop\n```  \n```lean4",
+      "probability": 1.2908243640056829e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.15176224708557,
+      "well_typed": false,
+      "token_counts": 99,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (CD : Line) (CE : Line) (AG : Line) (FG : Line), ((formRectilinearAngle d c e CD CE) ∧ (a ≠ b) ∧ (a ≠ c) ∧ (a ≠ d) ∧ (a ≠ e)) → (∃ f g : Point, formRectilinearAngle a b f AB FG ∧ ∠ a:b:f = ∠ d:c:e)",
+      "full_output": "theorem example_thm (a b c d e f g : Point) (AB CD CE AG FG : Line) (h1 : formRectilinearAngle d c e CD CE) (h2 : a ≠ b) (h3 : a ≠ c) (h4 : a ≠ d) (h5 : a ≠ e) : ∃ f g : Point, formRectilinearAngle a b f AB FG ∧ ∠ a:b:f = ∠ d:c:e := by\n  -- We need to find points F and G such that the rectilinear angle at point A is equal to the given angle DCE.\n  -- We will use the given point A and the line AB to construct the rectilinear angle.\n  -- First, we use the formRectilinearAngle axiom to get the necessary conditions for angle equality.\n  -- Then, we use the formParallelogram axiom to ensure the constructed angle is rectilinear.\n  -- Finally, we use the onLine and sameSide axioms to ensure the points are correctly positioned.\n  use a, b, c, d, e, f, g, AB, CD, CE, AG, FG\n  aesop\n``` \n\nHowever, since",
+      "probability": 1.0223409718011495e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.15176224708557,
+      "well_typed": false,
+      "token_counts": 99,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB CD CE : Line), distinctPointsOnLine a b AB ∧ formRectilinearAngle d c e CD CE → ∃ f : Point, f ≠ a ∧ (∠ f:a:b = ∠ d:c:e)",
+  "nl_statement": "To construct a rectilinear angle equal to a given rectilinear angle at a (given) point on a given straight-line.Let $AB$ be the given straight-line,  $A$ the (given) point on it, and  $DCE$ the given rectilinear angle.So it is required to construct a rectilinear angle equal to the given rectilinear angle $DCE$ at the (given) point $A$ on the given straight-line $AB$.  <prf> Thus, the rectilinear angle $FAG$,  equal to the  given rectilinear angle $DCE$, has been constructed at the (given) point $A$ on the given straight-line $AB$.",
+  "lean4_header": ""
+}

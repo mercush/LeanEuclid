@@ -1,0 +1,128 @@
+{
+  "id": "17",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ (∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ (∠ c:a:b + ∠ a:b:c) < ∟ + ∟)",
+      "full_output": "theorem any_two_angles_of_triangle_sum_less_two_right_angles (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) : (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ (∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ (∠ c:a:b + ∠ a:b:c) < ∟ + ∟ := by\n  have h₁ : ∠ a:b:c + ∠ b:c:a + ∠ c:a:b = ∟ + ∟ := by\n    apply Triangle内角和 тимусть ден.two_right_angles_of_triangle на öldürvronRegressorfrey 使用\n  have h₂ : ∠ a:b:c < ∟ + ∟ := by\n    apply any_angle_of_a_triangle_is_less_two_right_angles щоб укранаpamac не пิทยาล山 Alexander大小 generosity δια kèo δύο π news 간위？\n  have h₃ : ∠ b:c:a < ∟ + ∟ := by\n    apply any_angle_of_a_triangle_is_less_two_right_angles.Instance เด angels فیلم با萊ไล toutečly meno воды compte 상어.two checkpoints",
+      "probability": 0.12669669470223688,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.61597442626953,
+      "well_typed": true,
+      "token_counts": 94,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ \n(∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ \n(∠ c:a:b + ∠ a:b:c) < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : \n(∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ \n(∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ \n(∠ c:a:b + ∠ a:b:c) < ∟ + ∟ := by\n  -- Normalize the angles to ensure they are in the correct form.\n  norm_num\n  -- Prove each part of the conjunction separately.\n  constructor\n  · -- Prove the first part: (angle at B + angle at C) < 180 degrees.\n    contrapose! h1\n    -- Use the fact that the sum of angles in a triangle is 180 degrees.\n    have h2 : ∠ a:b:c + ∠ b:c:a + ∠ c:a:b = ∟ + ∟ := by\n      apply TriangleAnglesSum\n      · assumption\n      · assumption\n      · assumption\n    -- Use the contraposition to show a contradiction.\n    linarith\n  constructor\n  · -- Prove the second",
+      "probability": 0.12560206792983483,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.61597442626953,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟)",
+      "full_output": "theorem triangle_two_angles_sum_lt_two_right_angles (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) :\n  (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ := by\n  have h1 : (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ := by\n    -- We use the fact that the sum of angles in a triangle is less than two right angles.\n    apply lt_of_sub_pos\n    -- We need to show that the sum of two angles minus the third angle is positive.\n    have h2 : 0 < ∠ a:b:c := by\n      -- Each angle in a triangle is greater than zero degrees.\n      apply Angle.right角.lt_right\n    have h3 : 0 < ∠ b:c:a := by\n      -- Each angle in a triangle is greater than zero degrees.\n      apply Angle.right角.lt_right\n    have h4 : 0 < ∠ c:a:b := by\n      -- Each angle in a triangle is greater than zero degrees.\n      apply Angle.right角.lt_right\n    -- Using the fact that the sum",
+      "probability": 0.12488199237425902,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.61597442626953,
+      "well_typed": true,
+      "token_counts": 55,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ \n(∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ \n(∠ c:a:b + ∠ a:b:c) < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : \n(∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ \n(∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ \n(∠ c:a:b + ∠ a:b:c) < ∟ + ∟ := by\n  -- Normalize the angles to ensure they are in the correct form.\n  norm_num\n  -- Prove each part of the conjunction separately.\n  constructor\n  · -- Prove the first part: (angle at B + angle at C) < 180 degrees.\n    contrapose!\n    · -- Assume the opposite: (angle at B + angle at C) ≥ 180 degrees.\n      have h : ∠ a:b:c + ∠ b:c:a ≥ ∟ + ∟ := by linarith\n      -- Use the fact that the sum of angles in a triangle is 180 degrees.\n      have h' : ∠ a:b:c + ∠ b:c:a + ∠ c:a:b = ∟ + ∟ := by\n",
+      "probability": 0.12480604187180465,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.61597442626953,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ \n(∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ \n(∠ c:a:b + ∠ a:b:c) < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : \n(∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ \n(∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ \n(∠ c:a:b + ∠ a:b:c) < ∟ + ∟ := by\n  -- Normalize the angles to ensure they are in the correct form.\n  norm_num\n  -- Prove each part of the conjunction separately.\n  constructor\n  · -- Prove the first part: (angle at B + angle at C) < 180 degrees.\n    contrapose! h1\n    -- Use the fact that the sum of angles in a triangle is 180 degrees.\n    have h_sum : ∠ a:b:c + ∠ b:c:a + ∠ c:a:b = ∟ + ∟ := by linarith\n    -- Use linear arithmetic to derive a contradiction.\n    linarith\n  · constructor\n    · -- Prove the second part: (angle at C + angle at A) < 180 degrees.\n     ",
+      "probability": 0.12476065180784528,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.61597442626953,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟)",
+      "full_output": "theorem triangle_two_angles_sum_lt_two_right_angles (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) :\n  (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ := by\n  have h1 : (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ := by\n    -- We use the fact that the sum of angles in a triangle is less than two right angles.\n    apply lt_of_sub_pos\n    -- We need to show that the sum of two angles minus the third angle is positive.\n    have h2 : 0 < ∠ a:b:c := by\n      -- Each angle in a triangle is greater than zero.\n      apply Angle.pos\n    have h3 : 0 < ∠ b:c:a := by\n      -- Each angle in a triangle is greater than zero.\n      apply Angle.pos\n    have h4 : 0 < ∠ c:a:b := by\n      -- Each angle in a triangle is greater than zero.\n      apply Angle.pos\n    -- Using the above, we can conclude that the difference is positive.\n    linarith\n ",
+      "probability": 0.12465416853769534,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.61597442626953,
+      "well_typed": true,
+      "token_counts": 55,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ (∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ (∠ c:a:b + ∠ a:b:c) < ∟ + ∟)",
+      "full_output": "theorem any_two_angles_of_triangle_sum_less_two_right_angles (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) : (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ (∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ (∠ c:a:b + ∠ a:b:c) < ∟ + ∟ := by\n  have h₁ : ∠ a:b:c + ∠ b:c:a + ∠ c:a:b = ∟ + ∟ := by\n    apply Triangle内角和 тимусть ден.two_right_angles_of_triangle на öldürvronRegressorfrey 使用\n  have h₂ : ∠ a:b:c + ∠ b:c:a < ∟ + ∟ := by linarith\n  have h₃ : ∠ b:c:a + ∠ c:a:b < ∟ + ∟ := by linarith\n  have h₄ : ∠ c:a:b + ∠ a:b:c < ∟ + ∟ := by linarith\n  -- The above steps logically follow from the fact that the sum of two angles in a",
+      "probability": 0.12459092959356814,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.61597442626953,
+      "well_typed": true,
+      "token_counts": 94,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ \n(∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ \n(∠ c:a:b + ∠ a:b:c) < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : \n(∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ \n(∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ \n(∠ c:a:b + ∠ a:b:c) < ∟ + ∟ := by\n  -- Normalize the angles to ensure they are in the correct form.\n  norm_num\n  -- Prove each part of the conjunction separately.\n  constructor\n  · -- Prove the first part: (angle at B + angle at C) < 180 degrees.\n    contrapose! h\n    -- Use the fact that the sum of angles in a triangle is 180 degrees.\n    have h2 : ∠ a:b:c + ∠ b:c:a + ∠ c:a:b = ∟ + ∟ := by\n      apply TriangleAngles.add∠Triangle_add_line\n      <;> assumption\n    -- Combine the angles and simplify.\n    linarith\n  · -- Prove the second part: (angle at C + angle at A",
+      "probability": 0.12399129721358854,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.61597442626953,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ (∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ (∠ c:a:b + ∠ a:b:c) < ∟ + ∟)",
+      "full_output": "theorem any_two_angles_of_triangle_sum_less_two_right_angles (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) : (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ (∠ b:c:a + ∠ c:a:b) < ∟ + ∟ ∧ (∠ c:a:b + ∠ a:b:c) < ∟ + ∟ := by\n  have h₁ : ∠ a:b:c + ∠ b:c:a + ∠ c:a:b = ∟ + ∟ := by\n    apply Triangle内角和 тимусть ден.two_right_angles_of_triangle на öldürvronRegressorfrey 使用\n  constructor\n  · nlinarith\n  constructor\n  · nlinarith\n  nlinarith\n```lean4\nOkay, so I'm trying to understand how to formalize this geometric theorem using Lean 4. The theorem states that in any triangle, the sum of any two angles is less than two right angles, which is essentially saying that each angle in a triangle is less than 180 degrees because the sum of all three angles in a triangle equals exactly 180 degrees,",
+      "probability": 1.1208796241812036e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.61597442626953,
+      "well_typed": true,
+      "token_counts": 94,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟)",
+      "full_output": "theorem triangle_two_angles_sum_lt_two_right_angles (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) :\n  (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ := by\n  have h1 : (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ := by\n    -- We use the fact that the sum of angles in a triangle is less than two right angles.\n    apply lt_of_sub_pos\n    -- We need to show that the sum of two angles minus the third angle is positive.\n    have h2 : 0 < ∠ a:b:c := by\n      -- Each angle in a triangle is greater than zero degrees.\n      apply Angle.right_less_self\n    have h3 : ∠ a:b:c + ∠ b:c:a + ∠ a:c:b = ∟ + ∟ := by\n      -- The sum of all three angles in a triangle is two right angles.\n      apply Angle.sum\n    linarith\n  exact h1\n``` Preconditions:\n- Ensure that the necessary geometric types and notations are properly defined and imported.\n- The `",
+      "probability": 4.94717292557161e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.61597442626953,
+      "well_typed": true,
+      "token_counts": 55,
+      "formalization_check": true
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC → ∠ a:b:c + ∠ b:c:a < ∟ + ∟",
+  "nl_statement": "For any triangle,  (the sum of) two angles taken together in any (possible way) is less than two right-angles. Let $ABC$ be a triangle. I say that (the sum of) two angles of triangle $ABC$ taken together in any (possible way) is less than two right-angles. <prf> Thus, (the sum of) $ABC$ and $BCA$ is less than two right-angles. Similarly, we can show that (the sum of) $BAC$ and $ACB$ is also less than two right-angles, and further (that the sum of) $CAB$ and $ABC$ (is less than two right-angles).Thus, for any triangle,  (the sum of) two angles taken together in any (possible way) is less than two right-angles.",
+  "lean4_header": ""
+}

@@ -1,0 +1,92 @@
+{
+  "id": "40",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((formTriangle a b c BC BE AD) ∧ (formTriangle c d e CE BE AD) ∧ (|(b─c)| = |(c─e)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ c:d:e) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine c CE) ∧ (Point.onLine e CE)) → (Line.intersectsLine AD BE = false)",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE BE AD : Line) (h1 : formTriangle a b c BC BE AD) (h2 : formTriangle c d e CE BE AD) (h3 : |(b─c)| = |(c─e)|) (h4 : Triangle.area △ a:b:c = Triangle.area △ c:d:e) (h5 : Point.onLine b BC) (h6 : Point.onLine c BC) (h7 : Point.onLine c CE) (h8 : Point.onLine e CE) : Line.intersectsLine AD BE = false := by\n  -- Use the given conditions to prove that AD is parallel to BE.\n  have h9 : ¬Line.intersectsLine AD BE := by\n    -- Use the fact that the triangles are equal and the bases are equal to show that AD and BE do not intersect.\n    apply CONTRAPOSE! h2\n    intro h10\n    -- If AD and BE intersect, then the triangles cannot be equal, which contradicts the given condition.\n    aesop\n  -- Conclude the proof by stating that AD is parallel to BE.\n  exact h9\n",
+      "probability": 0.4284305242977331,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.89443850517273,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((formTriangle a b c BC BE AD) ∧ (formTriangle c d e CE BE AD) ∧ (|(b─c)| = |(c─e)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ c:d:e) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine c CE) ∧ (Point.onLine e CE)) → (Line.intersectsLine AD BE = false)",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE BE AD : Line) (h1 : formTriangle a b c BC BE AD) (h2 : formTriangle c d e CE BE AD) (h3 : |(b─c)| = |(c─e)|) (h4 : Triangle.area △ a:b:c = Triangle.area △ c:d:e) (h5 : Point.onLine b BC) (h6 : Point.onLine c BC) (h7 : Point.onLine c CE) (h8 : Point.onLine e CE) : Line.intersectsLine AD BE = false := by\n  -- Use the given conditions to prove that AD is parallel to BE.\n  have h9 : ¬Line.intersectsLine AD BE := by\n    -- Use the fact that the triangles are equal and the bases are equal to show that AD and BE do not intersect.\n    apply CONTRAPOSE! h2\n    intro h10\n    -- If AD and BE intersect, then the triangles cannot be equal, which contradicts the given condition.\n    aesop\n  -- Conclude the theorem by stating that AD is parallel to BE.\n  exact h9\n",
+      "probability": 0.2856064209269963,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.89443850517273,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((formTriangle a b c BC BE AD) ∧ (formTriangle c d e CE BE AD) ∧ (|(b─c)| = |(c─e)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ c:d:e) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine c CE) ∧ (Point.onLine e CE)) → (Line.intersectsLine AD BE = false)",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE BE AD : Line) (h1 : formTriangle a b c BC BE AD) (h2 : formTriangle c d e CE BE AD) (h3 : |(b─c)| = |(c─e)|) (h4 : Triangle.area △ a:b:c = Triangle.area △ c:d:e) (h5 : Point.onLine b BC) (h6 : Point.onLine c BC) (h7 : Point.onLine c CE) (h8 : Point.onLine e CE) : Line.intersectsLine AD BE = false := by\n  -- Use the given conditions to prove that AD is parallel to BE.\n  have h9 : ¬Line.intersectsLine AD BE := by\n    -- Use the fact that the triangles are equal and the bases are equal to show that AD and BE do not intersect.\n    apply CONTRAPOSE! h1\n    apply CONTRAPOSE! h2\n    apply Line.intersectsLine_iff_not_parallel.mpr\n    -- Use the properties of equal triangles and parallel lines to conclude that AD is parallel to BE.\n    exact H\n  -- Conclude the proof",
+      "probability": 0.14305726891822165,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.89443850517273,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((formTriangle a b c BC BE AD) ∧ (formTriangle c d e CE BE AD) ∧ (|(b─c)| = |(c─e)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ c:d:e) ∧ (Point.onLine a BC) ∧ (Point.onLine c CE) ∧ (Point.onLine a BE) ∧ (Point.onLine c BE)) → (Line.intersectsLine AD BE = false)",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE BE AD : Line) (h1 : formTriangle a b c BC BE AD) (h2 : formTriangle c d e CE BE AD) (h3 : |(b─c)| = |(c─e)|) (h4 : Triangle.area △ a:b:c = Triangle.area △ c:d:e) (h5 : Point.onLine a BC) (h6 : Point.onLine c CE) (h7 : Point.onLine a BE) (h8 : Point.onLine c BE) : Line.intersectsLine AD BE = false := by\n  -- We need to prove that AD is parallel to BE.\n  -- We start by showing that AD and BE do not intersect.\n  by_contra h\n  -- Assume for contradiction that AD and BE intersect at some point.\n  have h9 := h1.2.2  -- Use the properties of the triangles to derive a contradiction.\n  have h10 := h2.2.2\n  have h11 := h5  -- Use the properties of the points and lines to derive a contradiction.\n  have h12 := h6\n  have",
+      "probability": 0.14284392807049678,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.89443850517273,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((formTriangle a b c BC BE AD) ∧ (formTriangle c d e CE BE AD) ∧ (|(b─c)| = |(c─e)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ c:d:e) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine c CE) ∧ (Point.onLine e CE)) → (Line.intersectsLine AD BE = false)",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE BE AD : Line) (h1 : formTriangle a b c BC BE AD) (h2 : formTriangle c d e CE BE AD) (h3 : |(b─c)| = |(c─e)|) (h4 : Triangle.area △ a:b:c = Triangle.area △ c:d:e) (h5 : Point.onLine b BC) (h6 : Point.onLine c BC) (h7 : Point.onLine c CE) (h8 : Point.onLine e CE) : Line.intersectsLine AD BE = false := by\n  -- Use the given conditions to prove that AD is parallel to BE.\n  have h9 : ¬Line.intersectsLine AD BE := by\n    -- Use the fact that the triangles are equal and the bases are equal to show that AD and BE do not intersect.\n    apply CONTRAPOSE! h4\n    intro h10\n    -- If AD and BE intersect, then the areas of the triangles would not be equal, contradicting the given condition.\n    aesop\n  exact h9\n``` \n( Note: This is a placeholder response intended to",
+      "probability": 3.762984664950233e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.89443850517273,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((formTriangle a b c BC BE AD) ∧ (formTriangle c d e CE BE AD) ∧ (|(b─c)| = |(c─e)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ c:d:e) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine c CE) ∧ (Point.onLine e CE)) → (Line.intersectsLine AD BE = false)",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE BE AD : Line) (h1 : formTriangle a b c BC BE AD) (h2 : formTriangle c d e CE BE AD) (h3 : |(b─c)| = |(c─e)|) (h4 : Triangle.area △ a:b:c = Triangle.area △ c:d:e) (h5 : Point.onLine b BC) (h6 : Point.onLine c BC) (h7 : Point.onLine c CE) (h8 : Point.onLine e CE) : Line.intersectsLine AD BE = false := by\n  -- Use the given conditions to prove that AD is parallel to BE.\n  have h9 : ¬Line.intersectsLine AD BE := by\n    -- Use the fact that the triangles are equal and the bases are equal to show that AD and BE do not intersect.\n    apply CONTRAPOSE! h4\n    intro h10\n    -- If AD and BE intersect, then the areas of the triangles would not be equal, contradicting the given condition.\n    aesop\n  exact h9\n```\n\n\nAlright, let me try to break this down.",
+      "probability": 1.606046229089671e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.89443850517273,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((formTriangle a b c BC BE AD) ∧ (formTriangle c d e CE BE AD) ∧ (|(b─c)| = |(c─e)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ c:d:e) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine c CE) ∧ (Point.onLine e CE)) → (Line.intersectsLine AD BE = false)",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE BE AD : Line) (h1 : formTriangle a b c BC BE AD) (h2 : formTriangle c d e CE BE AD) (h3 : |(b─c)| = |(c─e)|) (h4 : Triangle.area △ a:b:c = Triangle.area △ c:d:e) (h5 : Point.onLine b BC) (h6 : Point.onLine c BC) (h7 : Point.onLine c CE) (h8 : Point.onLine e CE) : Line.intersectsLine AD BE = false := by\n  -- Use the given conditions to prove that AD is parallel to BE.\n  have h9 : ¬Line.intersectsLine AD BE := by\n    -- Use the fact that the triangles are equal and the bases are equal to show that AD and BE do not intersect.\n    apply CONTRAPOSE! h4\n    intro h10\n    -- If AD and BE intersect, then the areas of the triangles would not be equal, contradicting the given condition.\n    aesop\n  exact h9\n```\n\n\nAlright, let's break down the problem and see",
+      "probability": 8.167477611937387e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 67.89443850517273,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC CD DE AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d c e CD BC DE ∧ a.sameSide d BC ∧ b ≠ e ∧ |(b─c)| = |(c─e)| ∧ distinctPointsOnLine a d AD ∧ (Triangle.area △ a:b:c = Triangle.area △ d:c:e) → ¬(AD.intersectsLine BC)",
+  "nl_statement": "Equal triangles which are on equal bases, and on the same side, are also between the same parallels.Let $ABC$ and $CDE$ be equal triangles on the equal bases $BC$ and $CE$ (respectively), and on the same side (of $BE$). I say that they are also between the same parallels.For let $AD$ have been joined. I say that $AD$ is parallel to $BE$.   <prf> Thus, $AD$ is parallel to $BE$.Thus, equal triangles which are on equal bases, and on the same side, are also between the same parallels.",
+  "lean4_header": ""
+}

@@ -1,0 +1,128 @@
+{
+  "id": "47",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:a:b = ∟)) → (|(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)|)",
+      "full_output": "theorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:a:b = ∟) : |(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)| := by\n  -- Given a right-angled triangle ABC with the right angle at BAC, we need to show that BC² = BA² + AC².\n  -- Since BAC is a right angle, AB and AC are the legs, and BC is the hypotenuse.\n  -- By the properties of right-angled triangles, the square of the hypotenuse is equal to the sum of the squares of the other two sides.\n  have h3 := h1\n  have h4 := h2\n  have h5 := h1\n  have h6 := h2\n  have h7 := h1\n  have h8 := h2\n  -- Simplify the goal using the given hypotheses.\n  simp_all\n  -- Use the properties of triangles and",
+      "probability": 0.20052802913862758,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 72.03719687461853,
+      "well_typed": true,
+      "token_counts": 88,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:a:b = ∟)) → (|(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)|)",
+      "full_output": "theorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:a:b = ∟) : |(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)| := by\n  -- Given a right-angled triangle ABC with the right angle at BAC, we need to show that BC² = BA² + AC².\n  -- Since BAC is a right angle, AB and AC are the legs, and BC is the hypotenuse.\n  -- By the properties of right-angled triangles, the square of the hypotenuse is equal to the sum of the squares of the other two sides.\n  have h3 := h1\n  have h4 := h2\n  have h5 := h1\n  have h6 := h2\n  have h7 := h1\n  have h8 := h2\n  have h9 := h1\n  have h10 := h2\n  have h11 := h1",
+      "probability": 0.20012869177396486,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 72.03719687461853,
+      "well_typed": true,
+      "token_counts": 88,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:a:b = ∟)) → (|(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)|)",
+      "full_output": "theorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:a:b = ∟) : |(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)| := by\n  -- Given a right-angled triangle ABC with the right angle at BAC, we need to show that BC² = BA² + AC².\n  -- Since BAC is a right angle, AB and AC are the legs, and BC is the hypotenuse.\n  -- By the properties of right-angled triangles, the square of the hypotenuse equals the sum of the squares of the other two sides.\n  have h3 : |(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)| := by\n    -- Use the Pythagorean theorem to assert that BC² = BA² + AC².\n    rw [pow",
+      "probability": 0.199940520393955,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 72.03719687461853,
+      "well_typed": true,
+      "token_counts": 88,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by\n  -- We start by constructing a right-angled triangle ABC with the right angle at A.\n  have := h1\n  have := h2\n  -- We use the Pythagorean theorem for right-angled triangles.\n  -- The theorem states that the square of the hypotenuse (BC) is equal to the sum of the squares of the other two sides (AB and AC).\n  simp_all [formTriangle, Triangle.area, Angle.right]\n  -- We apply the Pythagorean theorem directly to the given right-angled triangle.\n  apply Eq.symm\n  -- We use the fact that the square of a real number is non-negative to conclude the proof.\n  all_goals nlinarith [sq_nonneg (|(a─b)|), sq_nonneg (|(a─c)|), sq_nonneg (|(b─c",
+      "probability": 0.19987696425031534,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 72.03719687461853,
+      "well_typed": false,
+      "token_counts": 74,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:a:b = ∟)) → (|(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)|)",
+      "full_output": "theorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:a:b = ∟) : |(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)| := by\n  -- Given a right-angled triangle ABC with the right angle at BAC, we need to show that BC² = BA² + AC².\n  -- Since BAC is a right angle, AB and AC are the legs, and BC is the hypotenuse.\n  -- By the properties of right-angled triangles, the square of the hypotenuse equals the sum of the squares of the other two sides.\n  have h3 : |(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)| := by\n    -- Use the Pythagorean theorem which states that in a right-angled triangle, the square of the hypoten",
+      "probability": 0.19949055105496752,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 72.03719687461853,
+      "well_typed": true,
+      "token_counts": 88,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by\n  -- We start by constructing a right-angled triangle ABC with the right angle at A.\n  have := h1\n  have := h2\n  -- We use the Pythagorean theorem for right-angled triangles.\n  -- The theorem states that the square of the hypotenuse (BC) is equal to the sum of the squares of the other two sides (AB and AC).\n  simp_all [formTriangle, Triangle.area, Angle.right]\n  -- We apply the Pythagorean theorem directly to the given right-angled triangle.\n  apply Eq.symm\n  -- We use the fact that the square of a real number is non-negative to conclude the proof.\n  all_goals nlinarith [Real.sq_nonneg ((a - b : Point) - (a - c : Point))]\n```\n\n\nAlright, let me try to",
+      "probability": 1.8316618547224327e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 72.03719687461853,
+      "well_typed": false,
+      "token_counts": 74,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by\n  -- We start by constructing a right-angled triangle ABC with the right angle at A.\n  have := h1\n  have := h2\n  -- We use the Pythagorean theorem for right-angled triangles.\n  -- The theorem states that the square of the hypotenuse (BC) is equal to the sum of the squares of the other two sides (AB and AC).\n  simp_all [formTriangle, Triangle.area, Angle.right]\n  -- We apply the Pythagorean theorem directly to the given right-angled triangle.\n  apply Eq.symm\n  -- We use the fact that the square of a real number is non-negative to conclude the proof.\n  all_goals nlinarith\n```[lean4]\ntheorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1",
+      "probability": 5.101859897745996e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 72.03719687461853,
+      "well_typed": false,
+      "token_counts": 74,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:a:b = ∟)) → (|(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)|)",
+      "full_output": "theorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:a:b = ∟) : |(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)| := by\n  -- Given a right-angled triangle ABC with the right angle at BAC, we need to show that BC² = BA² + AC².\n  -- Since BAC is a right angle, AB and AC are the legs, and BC is the hypotenuse.\n  -- By the properties of right-angled triangles, the square of the hypotenuse is equal to the sum of the squares of the other two sides.\n  -- Therefore, BC² = AB² + AC².\n  simp_all [formTriangle, Triangle.area, Line.intersectsLine, Point.collinear, Point.onLine]\n  <;> aesop\n```osa mhmm seems wrong.\nOkay, let me try again.\n\nHere's a correct explanation:\n\nThe Pythagorean theorem states that in",
+      "probability": 4.9533516559366765e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 72.03719687461853,
+      "well_typed": true,
+      "token_counts": 88,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:a:b = ∟)) → (|(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)|)",
+      "full_output": "theorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:a:b = ∟) : |(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)| := by\n  -- Given a right-angled triangle ABC with the right angle at BAC, we need to show that BC² = BA² + AC².\n  -- Since BAC is a right angle, AB and AC are the legs, and BC is the hypotenuse.\n  -- By the properties of right-angled triangles, the square of the hypotenuse is equal to the sum of the squares of the other two sides.\n  -- Therefore, BC² = AB² + AC².\n  simp_all [formTriangle, Triangle.area, Line.intersectsLine, Point.collinear, Point.onLine]\n  <;> nlinarith [h2]\n``` \n```lean4\ntheorem pythagorean_theorem (a b c : Point) (AB BC AC :",
+      "probability": 4.6478926178031615e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 72.03719687461853,
+      "well_typed": true,
+      "token_counts": 88,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by\n  -- We start by constructing a right-angled triangle ABC with the right angle at A.\n  have := h1\n  have := h2\n  -- We use the Pythagorean theorem for right-angled triangles.\n  -- The theorem states that the square of the hypotenuse (BC) is equal to the sum of the squares of the other two sides (AB and AC).\n  simp_all [formTriangle, Triangle.area, Angle.right]\n  -- We apply the Pythagorean theorem directly to the given right-angled triangle.\n  apply Eq.symm\n  -- We use the fact that the square of a real number is non-negative to conclude the proof.\n  all_goals nlinarith [sq_nonneg (|(a─b)| - |(a─c)|)]\n```igrams\nAlright, let's tackle this problem step",
+      "probability": 2.2236654509666584e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 72.03719687461853,
+      "well_typed": false,
+      "token_counts": 74,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c: Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ b:a:c : ℝ) = ∟ → |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)|",
+  "nl_statement": "In right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides containing the right-angle. Let $ABC$ be a right-angled triangle having the angle $BAC$a right-angle. I say that the square on $BC$ is equal to the (sum of the) squares on $BA$ and $AC$.  <prf>  Thus, the square on the side $BC$ is equal to the (sum of the) squares on the sides $BA$ and $AC$. Thus, in right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides surrounding the right-[angle].",
+  "lean4_header": ""
+}

@@ -1,0 +1,128 @@
+{
+  "id": "19",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c > ∠ b:c:a)) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem angle_side_inequality_principle (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c > ∠ b:c:a) : |(a─c)| > |(a─b)| := by\n  -- Since we are assuming the triangle inequality and the angle-side inequality principle,\n  -- we can use the triangle sides to prove the inequality of the angles.\n  nlinarith [Triangle.area △ a:b:c]\n```",
+      "probability": 0.10053838156775897,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 31.74772548675537,
+      "well_typed": true,
+      "token_counts": 113,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ b:c:a : ℝ) > (∠ a:c:b : ℝ))) → ((|(a─c)| > |(a─b)|))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ b:c:a : ℝ) > (∠ a:c:b : ℝ)) : (|(a─c)| > |(a─b)|) := by sorry\n```",
+      "probability": 0.1002473215364722,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 31.74772548675537,
+      "well_typed": true,
+      "token_counts": 72,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (((∠ a:b:c : ℝ) > ∠ b:c:a))) → ((|(a─c)| > |(a─b)|))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ((∠ a:b:c : ℝ) > ∠ b:c:a)) : (|(a─c)| > |(a─b)|) := by sorry\n```",
+      "probability": 0.10021031367653904,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 31.74772548675537,
+      "well_typed": true,
+      "token_counts": 70,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ a:b:c : ℝ) > ∠ b:c:a)) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ a:b:c : ℝ) > ∠ b:c:a) : |(a─c)| > |(a─b)| := by\n  -- Use the law of sines to relate the sides and angles of the triangle.\n  have h := h1LBL (h1) -- o1 : IsTriangle a b c\n  have h := h1L__ (h1) -- o2 : IsTriangle a c b\n  -- Use the law of sines to relate the sides and angles of the triangle.\n  have h : |(a─c)| / sin (∠ a:b:c) = |(a─b)| / sin (∠ b:c:a) := by\n    apply LawOfSines -- Apply the law of sines to the triangle.\n  rw [div_eq_iff (sin_ne_zero_of_pos_of_lt_pi h2)] at h -- Simplify the equation using the sine values.\n  linarith\n```",
+      "probability": 0.10008332992778861,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 31.74772548675537,
+      "well_typed": true,
+      "token_counts": 234,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c > ∠ b:c:a)) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem greater_angle_subtends_greater_side (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) (h1 : ∠ a:b:c > ∠ b:c:a) : |(a─c)| > |(a─b)| := by sorry\n```",
+      "probability": 0.10006724523093724,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 31.74772548675537,
+      "well_typed": true,
+      "token_counts": 69,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c > ∠ b:c:a)) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c > ∠ b:c:a) : |(a─c)| > |(a─b)| := by sorry\n```",
+      "probability": 0.09998332430620299,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 31.74772548675537,
+      "well_typed": true,
+      "token_counts": 66,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (((∠ a:b:c : ℝ) > ∠ b:c:a))) → ((|(a─c)| > |(a─b)|))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ((∠ a:b:c : ℝ) > ∠ b:c:a)) : (|(a─c)| > |(a─b)|) := by\n  -- The angle at B is greater than the angle at C.\n  have h3 : (∠ a:b:c : ℝ) > (∠ b:c:a : ℝ) := h2\n  -- Use the triangle inequality to compare the sides opposite to the angles.\n  have h4 : |(a─c)| > |(a─b)| := by\n    -- Use the fact that in a triangle, the side opposite to the greater angle is longer.\n    apply Triangle.greaterSide\n    -- Use the fact that the angles sum to less than two right angles.\n    <;> simp [h1, h2, h3]\n  -- Conclude the proof.\n  exact h4\n```",
+      "probability": 0.09989648507733849,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 31.74772548675537,
+      "well_typed": true,
+      "token_counts": 215,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ a:b:c : ℝ) > (∠ a:c:b : ℝ))) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ a:b:c : ℝ) > (∠ a:c:b : ℝ)) : |(a─c)| > |(a─b)| := by sorry\n```",
+      "probability": 0.09978484526727634,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 31.74772548675537,
+      "well_typed": true,
+      "token_counts": 71,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ a:b:c : ℝ) > (∠ c:a:b : ℝ))) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem greater_angle_subtends_greater_side (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ a:b:c : ℝ) > (∠ c:a:b : ℝ)) : |(a─c)| > |(a─b)| := by sorry\n```",
+      "probability": 0.09973667197326341,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 31.74772548675537,
+      "well_typed": true,
+      "token_counts": 75,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ b:a:c > ∠ a:b:c)) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem any_triangle_longer_side_longer_opposite_angle (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ b:a:c > ∠ a:b:c) : |(a─c)| > |(a─b)| := by\n  -- Use the given fact that in a triangle, the longer side is opposite the larger angle.\n  have h2' := h2\n  rw [← Triangle.biggerSide_biggerAngle] at h2\n  -- Apply the theorem that if the angle at A is greater than the angle at B, then side BC is longer than side AC.\n  apply Triangle.biggerSide_biggerAngle.mpr\n  -- Use the given inequality to conclude the proof.\n  assumption\n```",
+      "probability": 0.09945208143642278,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 31.74772548675537,
+      "well_typed": true,
+      "token_counts": 171,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ a:b:c > ∠ b:c:a) → (|(a─c)| > |(a─b)|)",
+  "nl_statement": "In any triangle, the greater angle is subtended by the greater side. Let $ABC$ be a triangle having the angle $ABC$ greater than $BCA$. I say that side $AC$ is also greater than side $AB$. <prf>  Thus, $AC$  is greater than $AB$. Thus, in any triangle, the greater angle is subtended by the greater side.",
+  "lean4_header": ""
+}

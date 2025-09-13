@@ -1,0 +1,128 @@
+{
+  "id": "20",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine c a AC)) → ((|(a─b)| + |(a─c)|) > |(b─c)| ∧ (|(a─b)| + |(b─c)|) > |(a─c)| ∧ (|(b─c)| + |(a─c)|) > |(a─b)|)",
+      "full_output": "theorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : distinctPointsOnLine a b AB) (h3 : distinctPointsOnLine b c BC) (h4 : distinctPointsOnLine c a AC) : (|(a─b)| + |(a─c)|) > |(b─c)| ∧ (|(a─b)| + |(b─c)|) > |(a─c)| ∧ (|(b─c)| + |(a─c)|) > |(a─b)| := by\n    -- We use the fact that the sum of two sides of a triangle is greater than the third side.\n    refine ⟨by nlinarith [h1.plot], by nlinarith [h1.plot], by nlinarith [h1.plot]⟩\n```",
+      "probability": 0.10084447367543574,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.640089988708496,
+      "well_typed": true,
+      "token_counts": 195,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─b)| + |(c─a)| > |(b─c)| ∧ |(b─c)| + |(c─a)| > |(a─b)|)",
+      "full_output": "theorem triangle_two_sides_greater_than第三 (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) : |(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─b)| + |(c─a)| > |(b─c)| ∧ |(b─c)| + |(c─a)| > |(a─b)| := by\n  refine' ⟨_, _, _⟩\n  -- Using the properties of triangle inequality, we know that the sum of the lengths of any two sides of a triangle is greater than the length of the remaining side.\n  -- Therefore, the sum of the lengths of sides a-b and b-c is greater than the length of side a-c.\n  -- Similarly, the sum of the lengths of sides a-b and c-a is greater than the length of side b-c.\n  -- Finally, the sum of the lengths of sides b-c and c-a is greater than the length of side a-b.\n  <;> apply Triangle.area_pos.2\n  -- Apply the triangle inequality theorem to each pair of sides.\n  <;> exact",
+      "probability": 0.10068727634802174,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.640089988708496,
+      "well_typed": true,
+      "token_counts": 250,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─a)| > |(a─b)| ∧ |(c─a)| + |(a─b)| > |(b─c)|)",
+      "full_output": "theorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) : \n  |(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─a)| > |(a─b)| ∧ |(c─a)| + |(a─b)| > |(b─c)| := by\n  constructor <;>\n  (try constructor) <;>\n  apply Nat.le_of_add_le_add_right <;>\n  nlinarith [h]\n```",
+      "probability": 0.10009754428232928,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.640089988708496,
+      "well_typed": true,
+      "token_counts": 135,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : \n  (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|) := by sorry\n```",
+      "probability": 0.10009164967888798,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.640089988708496,
+      "well_typed": true,
+      "token_counts": 104,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─b)| > |(a─b)| ∧ |(b─c)| + |(c─a)| > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : \n  |(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─b)| > |(a─b)| ∧ |(b─c)| + |(c─a)| > |(a─b)| := by\n  refine ⟨?_, ?_, ?_⟩\n  all_goals\n    norm_num at h1\n    linarith [h1.1.1, h1.1.2.1, h1.1.2.2.1, h1.1.2.2.2]\n```",
+      "probability": 0.0999394762140934,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.640089988708496,
+      "well_typed": true,
+      "token_counts": 164,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(a─c)| > |(b─c)|)",
+      "full_output": "theorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : |(a─b)| + |(a─c)| > |(b─c)| := by\n  -- Use the triangle inequality to assert that the sum of any two sides of a triangle is greater than the third side.\n  have h2 := h1getattr \"triangle_two_sides_greater_than_third\"\n  -- Use the triangle inequality to assert that the sum of any two sides of a triangle is greater than the third side.\n  have h3 := h1getattr \"triangle_two_sides_greater_than_third\"\n  -- Use the `linarith` tactic to solve the inequality involving the sum of the lengths of the sides.\n  exact h2\n```",
+      "probability": 0.0998148731212403,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.640089988708496,
+      "well_typed": true,
+      "token_counts": 172,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─b)| + |(c─a)| > |(b─c)| ∧ |(b─c)| + |(c─a)| > |(a─b)|)",
+      "full_output": "theorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : |(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─b)| + |(c─a)| > |(b─c)| ∧ |(b─c)| + |(c─a)| > |(a─b)| := by\n  -- Use the properties of the triangle to prove the inequalities.\n  refine' ⟨_, _, _⟩\n  <;> simp_all [formTriangle, distinctPointsOnLine]\n  -- The first inequality shows that the sum of BA and AC is greater than BC.\n  <;> linarith [h1.1, h1.2.1, h1.2.2]\n```",
+      "probability": 0.09970019494194689,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.640089988708496,
+      "well_typed": true,
+      "token_counts": 183,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)|)",
+      "full_output": "theorem triangle_inequality (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) :\n  |(a─b)| + |(b─c)| > |(a─c)| := by\n  -- Apply the triangle inequality axiom to the triangle formed by points a, b, and c, and the lines AB, BC, and AC.\n  apply Triangle.area_triangle_inequality\n  -- Use the given hypothesis that points a, b, and c form a triangle.\n  <;> assumption\n  -- Use the given hypothesis that points a, b, and c form a triangle.\n  <;> assumption\n  -- Use the given hypothesis that points a, b, and c form a triangle.\n  <;> assumption\n```",
+      "probability": 0.09966225372931316,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.640089988708496,
+      "well_typed": true,
+      "token_counts": 169,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─b)| > |(a─b)| ∧ |(b─c)| + |(c─a)| > |(a─b)|)",
+      "full_output": "theorem any_triangle_two_sides_sum_greater_than_third (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : \n  |(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─b)| > |(a─b)| ∧ |(b─c)| + |(c─a)| > |(a─b)| := by\n  -- We need to prove three parts: AB + BC > AC, AC + BC > AB, and BC + AC > AB.\n  refine' ⟨_, _, _⟩\n  -- For each part, we will use the fact that the triangle inequality holds for any triangle.\n  -- This means that the sum of any two sides of a triangle is greater than the third side.\n  all_goals\n    -- We use the `nlinarith` tactic to solve the inequality.\n    -- The `nlinarith` tactic is capable of solving simple linear arithmetic problems.\n    nlinarith [h1.1, h1.2.1, h1.2.2]\n```",
+      "probability": 0.09965156625485222,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.640089988708496,
+      "well_typed": true,
+      "token_counts": 246,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─a)| > |(a─b)|)",
+      "full_output": "theorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) : \n  |(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─a)| > |(a─b)| := by \n  no_outside_filter\n  constructor <;>\n  (try apply LT.trans) <;>\n  (try apply line_length_add) <;>\n  (try apply line_length_pos) <;>\n  linarith [h.2]\n```",
+      "probability": 0.09951069175387929,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.640089988708496,
+      "well_typed": true,
+      "token_counts": 133,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC → |(b─a)| + |(a─c)| > |(b─c)|",
+  "nl_statement": "In any triangle, (the sum of) two sides taken together in any (possible way) is greater than the remaining (side). For let $ABC$ be a triangle. I say that in triangle $ABC$ (the sum of) two sides taken together in any (possible way) is greater than the remaining (side). (So), (the sum of) $BA$ and $AC$ (is greater) than $BC$, (the sum of) $AB$ and $BC$ than $AC$, and (the sum of) $BC$ and $CA$ than $AB$.   <prf>  Thus, (the sum of) $BA$ and $AC$ is greater than $BC$. Similarly, we can show that (the sum of) $AB$ and $BC$ is also greater than $CA$, and (the sum of) $BC$ and $CA$ than $AB$.Thus, in any triangle, (the sum of) two sides taken together in any (possible way) is greater than the remaining (side).",
+  "lean4_header": ""
+}

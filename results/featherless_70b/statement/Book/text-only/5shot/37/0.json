@@ -1,0 +1,20 @@
+{
+  "id": "37",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (AD : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c BC AD (Line.intersectsLine BC AD)) ∧ (¬(AD.intersectsLine BC))) → (Triangle.area △ a:b:c = Triangle.area △ d:b:c)",
+      "full_output": "Okay, so I'm trying to formalize this geometry theorem into Lean4. The theorem is about triangles that are on the same base and between the same parallels being equal to one another. The given example uses triangles ABC and DBC, sharing the base BC, and between the parallels AD and BC. The conclusion is that triangle ABC is equal to triangle DBC.\n\nFirst, I need to understand the structure of the theorem. It involves two triangles sharing a common base BC, and both are between the same two parallel lines AD and BC. The goal is to show that these two triangles are equal in area or congruent.\n\nLooking at the guidelines, I need to define the points and lines involved. So, points A, B, C, D are involved. Lines AD and BC are the parallels. The triangles are ABC and DBC.\n\nI should use the provided axioms and inductive types. The triangles are defined using the ofPoints constructor, so I'll need to use that. The lines AD and BC are of type Line.\n\nThe key is to express that AD and BC are parallel. But the guidelines say to use ¬(L.intersectsLine M) to express that two lines are parallel. So, I'll need to state that AD does not intersect BC.\n\nI also need to ensure that points A, B, C, D are correctly placed. Since AD and BC are parallel, and ABC and DBC share the base BC, points A and D must be on the same side of BC or on opposite sides, but the exact configuration needs to be clear.\n\nI think I'll need to use the formTriangle function to define both triangles ABC and DBC, ensuring they share the base BC and are between the parallels AD and BC.\n\nThe conclusion is that the areas of the two triangles are equal. So, I'll need to use Triangle.area to express this equality.\n\nPutting it all together, I'll need to have hypotheses that establish the formation of the triangles and the parallelism of AD and BC. Then, the conclusion will state that the areas are equal.\n\nI should also make sure that all variables are properly quantified and that there are no intermediate variables defined within the proposition. Everything should be expressed using the provided axioms and types.\n\nSo, the final theorem should have points A, B, C, D, lines AD and BC, hypotheses that triangles ABC and DBC are formed between the same parallels, and the conclusion that their areas are equal.\n</think>\n\ntheorem example_thm (a b c d : Point) (AB BC AC AD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c BC AD (Line.intersectsLine BC AD)) (h3 : ¬(AD.intersectsLine BC)) : Triangle.area △ a:b:c = Triangle.area △ d:b:c := by sorry\n",
+      "probability": 1.0,
+      "source": "featherless",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 43.08034110069275,
+      "well_typed": false,
+      "token_counts": 584,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD CD AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d b c BD BC CD ∧ distinctPointsOnLine a d AD ∧ ¬(AD.intersectsLine BC) ∧ d.sameSide c AB → Triangle.area △ a:b:c = Triangle.area △ d:b:c",
+  "nl_statement": "Triangles which are on the same base and between the same parallels are equal to one another.  Let $ABC$ and $DBC$ be triangles on the same base $BC$, and between the same parallels $AD$ and $BC$. I say that triangle $ABC$ is equal to triangle $DBC$. <prf> Thus, triangle $ABC$ is equal to triangle $DBC$.Thus, triangles which are on the same base and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

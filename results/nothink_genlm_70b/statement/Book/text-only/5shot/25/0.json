@@ -1,0 +1,128 @@
+{
+  "id": "25",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line) (DE : Line), ((formTriangle a b c AB CD EF) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|)) → (∠ b:a:c = ∠ e:d:f ∧ ∠ b:a:c > ∠ e:d:f)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal_to_two_sides_respectively_but_one_has_a_base_greater_than_the_base_of_the_other_then_the_former_triangle_will_also_have_the_angle_encompassed_by_the_equal_straight_lines_greater_than_the_corresponding_angle_in_the_latter (a b c d e f : Point)\n  (AB CD EF DE : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : |(b─c)| > |(e─f)|) : ∠ b:a:c = ∠ e:d:f ∧ ∠ b:a:c > ∠ e:d:f := by\n  -- Use the given congruence to establish equality of sides and angles\n  have h6 := Triangle.congruent.injective h2\n  -- Establish the base angles are equal due to congruent sides\n  have h7 : ∠ b",
+      "probability": 0.11157737786642222,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.89742636680603,
+      "well_typed": false,
+      "token_counts": 195,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line) (DE : Line), ((formTriangle a b c AB CD EF) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|)) → (∠ b:a:c = ∠ e:d:f ∧ ∠ b:a:c > ∠ e:d:f)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal_to_two_sides_respectively_but_one_has_a_base_greater_than_the_base_of_the_other_then_the_former_triangle_will_also_have_the_angle_encompassed_by_the_equal_straight_lines_greater_than_the_corresponding_angle_in_the_latter (a b c d e f : Point)\n  (AB CD EF DE : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : |(b─c)| > |(e─f)|) : ∠ b:a:c = ∠ e:d:f ∧ ∠ b:a:c > ∠ e:d:f := by\n  -- We need to show that angle BAC is greater than angle EDF.\n  -- Given that triangles ABC and DEF have two sides equal to two sides respectively,\n  -- and BC > EF, we need to prove that angle BAC > angle E",
+      "probability": 0.11142331836873022,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.89742636680603,
+      "well_typed": false,
+      "token_counts": 195,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line) (DE : Line), ((formTriangle a b c AB CD EF) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) ∧ (|(b─c)| > |(e─f)|)) → (∠ a:b:c > ∠ d:e:f)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal_to_two_sides_respectively_but_one_has_a_base_greater_than_the_base_of_the_other_then_the_former_triangle_will_also_have_the_angle_encompassed_by_the_equal_straight_lines_greater_than_the_corresponding_angle_in_the_latter (a b c d e f : Point)\n  (AB CD EF DE : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) (h3 : |(b─c)| > |(e─f)|) : ∠ a:b:c > ∠ d:e:f := by\n  -- I need to show that angle BAC is greater than angle EDF.\n  -- Given that triangles ABC and DEF have two sides equal respectively (AB = DE and AC = DF),\n  -- and the base BC is greater than EF.\n  -- Since the triangles are congruent by SAS (Side-Angle-Side), the corresponding angles should be equal.\n  -- However, the user wants to show that angle BAC is greater than angle EDF, which seems contradictory to the congr",
+      "probability": 0.11134215174955472,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.89742636680603,
+      "well_typed": false,
+      "token_counts": 147,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line) (DE : Line), ((formTriangle a b c AB CD EF) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) ∧ (|(b─c)| > |(e─f)|)) → (∠ a:b:c > ∠ d:e:f)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal_to_two_sides_respectively_but_one_has_a_base_greater_than_the_base_of_the_other_then_the_former_triangle_will_also_have_the_angle_encompassed_by_the_equal_straight_lines_greater_than_the_corresponding_angle_in_the_latter (a b c d e f : Point)\n  (AB CD EF DE : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) (h3 : |(b─c)| > |(e─f)|) : ∠ a:b:c > ∠ d:e:f := by\n  -- I need to show that angle BAC is greater than angle EDF.\n  -- Given that triangles ABC and DEF have two sides equal respectively (AB = DE and AC = DF),\n  -- and the base BC is greater than EF, I need to prove that the angle encompassed by the equal sides is greater.\n  -- Since the triangles are congruent, their corresponding angles are equal.\n  -- However, with BC > EF, the base angles at B and C will be smaller",
+      "probability": 0.11102668790877576,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.89742636680603,
+      "well_typed": false,
+      "token_counts": 147,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line) (DE : Line), ((formTriangle a b c AB CD EF) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|)) → (∠ b:a:c = ∠ e:d:f ∧ ∠ b:a:c > ∠ e:d:f)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal_to_two_sides_respectively_but_one_has_a_base_greater_than_the_base_of_the_other_then_the_former_triangle_will_also_have_the_angle_encompassed_by_the_equal_straight_lines_greater_than_the_corresponding_angle_in_the_latter (a b c d e f : Point)\n  (AB CD EF DE : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : |(b─c)| > |(e─f)|) : ∠ b:a:c = ∠ e:d:f ∧ ∠ b:a:c > ∠ e:d:f := by\n  -- We start by noting the congruency of the two triangles, which gives us the equality of their corresponding sides and angles.\n  have h6 := h2\n  -- Simplify the congruency to get the basic properties of the triangles.\n",
+      "probability": 0.11101308356590392,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.89742636680603,
+      "well_typed": false,
+      "token_counts": 195,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line) (DE : Line), ((formTriangle a b c AB CD EF) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) ∧ (|(b─c)| > |(e─f)|)) → (∠ a:b:c > ∠ d:e:f)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal_to_two_sides_respectively_but_one_has_a_base_greater_than_the_base_of_the_other_then_the_former_triangle_will_also_have_the_angle_encompassed_by_the_equal_straight_lines_greater_than_the_corresponding_angle_in_the_latter (a b c d e f : Point)\n  (AB CD EF DE : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) (h3 : |(b─c)| > |(e─f)|) : ∠ a:b:c > ∠ d:e:f := by\n  -- I need to show that angle BAC is greater than angle EDF.\n  -- Given that triangles ABC and DEF have two sides equal respectively (AB = DE and AC = DF),\n  -- and the base BC is greater than EF, I can use the Law of Cosines to compare the angles.\n  have h4 : (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) := by\n",
+      "probability": 0.11093556734515982,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.89742636680603,
+      "well_typed": false,
+      "token_counts": 147,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line) (DE : Line), ((formTriangle a b c AB CD EF) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|)) → (∠ b:a:c = ∠ e:d:f ∧ ∠ b:a:c > ∠ e:d:f)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal_to_two_sides_respectively_but_one_has_a_base_greater_than_the_base_of_the_other_then_the_former_triangle_will_also_have_the_angle_encompassed_by_the_equal_straight_lines_greater_than_the_corresponding_angle_in_the_latter (a b c d e f : Point)\n  (AB CD EF DE : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : |(b─c)| > |(e─f)|) : ∠ b:a:c = ∠ e:d:f ∧ ∠ b:a:c > ∠ e:d:f := by\n  -- Use the congruent triangles to get the equality of the base angles\n  have h6 := Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)\n  have h7 := Triangle.congruent (Triangle",
+      "probability": 0.11090115070891,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.89742636680603,
+      "well_typed": false,
+      "token_counts": 195,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (BC : Line) (EF : Line) (FD : Line) (DE : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF FD) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|) ∧ (|(d─e)| = |(a─b)|) ∧ (|(d─f)| = |(a─c)|)) → (∠ b:a:c > ∠ e:d:f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB AC BC EF FD DE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF FD) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : |(b─c)| > |(e─f)|) (h6 : |(d─e)| = |(a─b)|) (h7 : |(d─f)| = |(a─c)|) : ∠ b:a:c > ∠ e:d:f := by\n  -- Use the `cases` tactic to handle the case analysis for the theorem.\n  cases' a with a\n  -- Use the `cases` tactic to handle the case analysis for the theorem.\n  cases' b with b\n  -- Use the `cases` tactic to handle the case analysis for the theorem.\n  cases' c with c\n  -- Use the `cases` tactic to handle the case analysis for the theorem.\n  cases' d with d",
+      "probability": 0.11088912012343366,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.89742636680603,
+      "well_typed": true,
+      "token_counts": 152,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line) (DE : Line), ((formTriangle a b c AB CD EF) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) ∧ (|(b─c)| > |(e─f)|)) → (∠ a:b:c > ∠ d:e:f)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal_to_two_sides_respectively_but_one_has_a_base_greater_than_the_base_of_the_other_then_the_former_triangle_will_also_have_the_angle_encompassed_by_the_equal_straight_lines_greater_than_the_corresponding_angle_in_the_latter (a b c d e f : Point)\n  (AB CD EF DE : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) (h3 : |(b─c)| > |(e─f)|) : ∠ a:b:c > ∠ d:e:f := by\n  -- I need to show that angle BAC is greater than angle EDF.\n  -- Given that triangles ABC and DEF have two sides equal respectively (AB = DE and AC = DF),\n  -- and the base BC is greater than EF, I need to prove that angle BAC is greater than angle EDF.\n  -- Since the triangles have two sides equal, they are congruent by the Side-Side (SS) congruence rule.\n  -- However, the base BC being",
+      "probability": 0.11088030069567871,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.89742636680603,
+      "well_typed": false,
+      "token_counts": 147,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line) (DE : Line), ((formTriangle a b c AB CD EF) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|)) → (∠ a:b:c > ∠ d:e:f)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal_to_two_sides_respectively_but_one_has_a_base_greater_than_the_base_of_the_other_then_the_former_triangle_will_also_have_the_angle_encompassed_by_the_equal_straight_lines_greater_than_the_corresponding_angle_in_the_latter (a b c d e f : Point)\n  (AB CD EF DE : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f)) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : |(b─c)| > |(e─f)|) : ∠ a:b:c > ∠ d:e:f := by\n  -- Simplify the proof by assuming the congruent triangles and the given conditions.\n  simp_all [Triangle.congruent_iff]\n  -- Use linear arithmetic to conclude the proof.\n  <;> linarith\n``` \n  \n  <;> linarith\n  <;> linarith\n  <;>",
+      "probability": 1.1241667430940302e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.89742636680603,
+      "well_typed": false,
+      "token_counts": 183,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|) → (∠ b:a:c > ∠ e:d:f)",
+  "nl_statement": "If two triangles have two sides equal to two sides, respectively, but (one) has a base greater than the base (of the other), then (the former triangle) will also have the angle encompassed by the equal straight-lines greater than the (corresponding) angle (in the latter).Let $ABC$ and $DEF$ be  two triangles having the two sides $AB$ and $AC$ equal to the two sides $DE$ and $DF$, respectively. (That is), $AB$ (equal) to $DE$, and $AC$ to $DF$. And let the base $BC$ be greater than the base $EF$. I say that angle $BAC$ is also greater than $EDF$. <prf>  Thus, $BAC$ is greater than $EDF$.Thus, if two triangles have two sides equal to two sides, respectively, but (one) has a base greater than the base (of the other), then (the former triangle) will also have the angle encompassed by the equal straight-lines greater than the (corresponding) angle (in the latter).",
+  "lean4_header": ""
+}

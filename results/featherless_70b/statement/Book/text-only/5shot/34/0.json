@@ -1,0 +1,20 @@
+{
+  "id": "34",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (BC : Line), ((formParallelogram a c d b AC DB AC DB)) → (|(a─c)| = |(d─b)| ∧ |(c─d)| = |(b─a)| ∧ ∠ a:c:b = ∠ d:b:c ∧ ∠ c:d:b = ∠ b:a:c ∧ Triangle.area △ a:c:b = Triangle.area △ d:b:c)",
+      "full_output": "Alright, so I'm trying to formalize this statement about parallelograms. The English statement says that in a parallelogram, the opposite sides and angles are equal, and the diagonal cuts it in half. The example given is parallelogram ACDB with diagonal BC. \n\nFirst, I need to understand what a parallelogram is in terms of the provided Lean 4 structures. From the guidelines, I see that there's a `formParallelogram` function that takes points and lines as arguments. So, I'll need to use that to define the parallelogram ACDB.\n\nThe statement mentions that opposite sides and angles are equal. So, I need to express that in terms of the given Lean 4 functions. The `|a─b|` notation represents the length of the segment between points a and b, so I can use that to denote the equality of opposite sides. For angles, the `∠ a:b:c` notation gives the degree of the angle at point b between points a and c.\n\nNext, the statement says that the diagonal cuts the parallelogram in half. This likely means that the diagonal divides the parallelogram into two congruent triangles. In the example, diagonal BC divides parallelogram ACDB into triangles ABC and BCD, which are said to be equal according to Prop. 1.4. So, I need to express that the areas of these two triangles are equal.\n\nPutting this together, the theorem should state that in a parallelogram, the opposite sides and angles are equal, and the diagonal splits the parallelogram into two triangles of equal area.\n\nNow, I need to translate this into the Lean 4 syntax. The theorem name should be a valid Lean identifier, so I'll call it `parallelogram_opposite_sides_angles_equal`. The hypotheses will include the formation of the parallelogram and the diagonal. The conclusion will include the equalities of opposite sides and angles, and the equality of the areas of the triangles formed by the diagonal.\n\nI should ensure that all quantified variables are among the allowed geometric types: points, lines, and circles. Also, I need to avoid using any intermediate variables or forbidden operators. The proof is omitted, so I'll end with `:= by sorry`.\n\nI think I've covered all the necessary parts. Now, I'll write the formalized statement accordingly.\n</think>\n\ntheorem parallelogram_opposite_sides_angles_equal (a c d b : Point) (AC DB BC : Line) (h1 : formParallelogram a c d b AC DB AC DB) : |(a─c)| = |(d─b)| ∧ |(c─d)| = |(b─a)| ∧ ∠ a:c:b = ∠ d:b:c ∧ ∠ c:d:b = ∠ b:a:c ∧ Triangle.area △ a:c:b = Triangle.area △ d:b:c := by sorry",
+      "probability": 1.0,
+      "source": "featherless",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 54.27697253227234,
+      "well_typed": false,
+      "token_counts": 599,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB CD AC BD BC : Line), formParallelogram a b c d AB CD AC BD ∧ distinctPointsOnLine b c BC → |(a─b)| = |(c─d)| ∧ |(a─c)| = |(b─d)| ∧ ∠ a:b:d = ∠ a:c:d ∧ ∠ b:a:c = ∠ c:d:b ∧ Triangle.area △ a:b:c = Triangle.area △ d:c:b",
+  "nl_statement": "In parallelogrammic figures the opposite sides and angles are equal to one another, and a diagonal cuts them in half.Let $ACDB$ be a parallelogrammic figure, and $BC$ its diagonal. I say that for parallelogram $ACDB$, the opposite sides and angles are equal to one another, and the diagonal $BC$ cuts it in half. <prf> Thus, the base $AC$ (is) also equal to $DB$, and triangle $ABC$ is equal to triangle $BCD$ [Prop.~1.4].Thus, the diagonal $BC$ cuts the parallelogram $ACDB$ in half.",
+  "lean4_header": ""
+}

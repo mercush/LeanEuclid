@@ -1,0 +1,20 @@
+{
+  "id": "20",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|))",
+      "full_output": "Okay, so I have to formalize this triangle inequality theorem using Lean 4. Let me first understand what the theorem is saying. It states that in any triangle, the sum of any two sides is greater than the remaining side. So, for triangle ABC, it means AB + BC > AC, AB + AC > BC, and BC + AC > AB.\n\nAlright, so I need to translate this into Lean 4 code. I remember from the guidelines that I have to use the given axioms and structures. The theorem should have a name, some hypotheses, and a conclusion.\n\nFirst, I need to define the triangle. In Lean, I can use the formTriangle function which takes points a, b, c and lines AB, BC, and AC. So, I'll include these as hypotheses.\n\nNext, I need to express the inequalities. The length of a segment is denoted by |(a─b)|. So, I'll write |(a─b)| + |(b─c)| > |(a─c)|, and similarly for the other sides.\n\nI also need to make sure that the theorem name is a valid Lean identifier. Maybe something like triangle_two_sides_greater_than_third.\n\nPutting it all together, the theorem should have three inequalities as the conclusion. But in Lean, I can't have multiple conclusions directly. Maybe I can use logical conjunctions to combine them. So, the conclusion would be something like (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|).\n\nWait, but in the examples, the conclusions are single statements. Maybe I can have separate inequalities as separate theorems, but the problem statement seems to want all three in one. Hmm, perhaps I can use a single theorem with all three inequalities combined using logical and.\n\nSo, the final theorem would have the form:\n\ntheorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) : (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|) := by sorry\n\nI think that covers all the requirements. I've used the formTriangle hypothesis to ensure that a, b, and c form a triangle with the given lines. The conclusion includes all three necessary inequalities combined with logical ands.\n\nI should also make sure that I'm not using any prohibited operators or defining intermediate variables. Everything seems to be in order with the guidelines provided.\n</think>\n\ntheorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) : (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|) := by sorry",
+      "probability": 1.0,
+      "source": "featherless",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.85014247894287,
+      "well_typed": true,
+      "token_counts": 708,
+      "formalization_check": true
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC → |(b─a)| + |(a─c)| > |(b─c)|",
+  "nl_statement": "In any triangle, (the sum of) two sides taken together in any (possible way) is greater than the remaining (side). For let $ABC$ be a triangle. I say that in triangle $ABC$ (the sum of) two sides taken together in any (possible way) is greater than the remaining (side). (So), (the sum of) $BA$ and $AC$ (is greater) than $BC$, (the sum of) $AB$ and $BC$ than $AC$, and (the sum of) $BC$ and $CA$ than $AB$.   <prf>  Thus, (the sum of) $BA$ and $AC$ is greater than $BC$. Similarly, we can show that (the sum of) $AB$ and $BC$ is also greater than $CA$, and (the sum of) $BC$ and $CA$ than $AB$.Thus, in any triangle, (the sum of) two sides taken together in any (possible way) is greater than the remaining (side).",
+  "lean4_header": ""
+}

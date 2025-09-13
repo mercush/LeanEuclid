@@ -1,0 +1,128 @@
+{
+  "id": "37",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Point) (B : Point) (D : Point) (C : Point) (AD : Line) (BC : Line), ((distinctPointsOnLine B C BC) ∧ (Point.onLine A AD) ∧ (Point.onLine D AD) ∧ (¬(B = C)) ∧ (¬(A = D))) → ((Triangle.area △ A:B:C = Triangle.area △ D:B:C))",
+      "full_output": "theorem same_base_between_parallels (A B D C : Point) (AD BC : Line) (h1 : distinctPointsOnLine B C BC) (h2 : Point.onLine A AD) (h3 : Point.onLine D AD) (h4 : ¬(B = C)) (h5 : ¬(A = D)) : (Triangle.area △ A:B:C = Triangle.area △ D:B:C) := by\n  -- I need to show that the areas of the two triangles are equal.\n  -- Since both triangles share the same base BC, the area depends on the height from A and D to BC.\n  -- Given that AD and BC are parallel, the distance between AD and BC is constant.\n  -- Therefore, the heights from A and D to BC are the same, making the areas equal.\n  by\n  -- Use the fact that the area of a triangle is 1/2 * base * height.\n  -- Since the base BC is the same for both triangles, and the height from A and D to BC is the same due to the parallel lines,\n  -- the areas of the two triangles must be equal.\n  simp_all [Triangle.area, Segment.length, Line",
+      "probability": 0.20063529784413378,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.47294688224792,
+      "well_typed": true,
+      "token_counts": 89,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (D : Point) (C : Point) (AD : Line) (BC : Line), ((distinctPointsOnLine B C BC) ∧ (Point.onLine A AD) ∧ (Point.onLine D AD) ∧ (¬(B = C)) ∧ (¬(A = D))) → ((Triangle.area △ A:B:C = Triangle.area △ D:B:C))",
+      "full_output": "theorem same_base_between_parallels (A B D C : Point) (AD BC : Line) (h1 : distinctPointsOnLine B C BC) (h2 : Point.onLine A AD) (h3 : Point.onLine D AD) (h4 : ¬(B = C)) (h5 : ¬(A = D)) : (Triangle.area △ A:B:C = Triangle.area △ D:B:C) := by\n  -- I need to show that the areas of the two triangles are equal.\n  -- Since both triangles share the same base BC, the area depends on the height from A and D to BC.\n  -- Given that AD and BC are parallel, the distance between AD and BC is constant.\n  -- Therefore, the heights from A and D to BC are the same, making the areas equal.\n  by\n  -- Use the fact that the area of a triangle is 1/2 * base * height.\n  -- Since the base BC is the same for both triangles, the height from A and D to BC must be the same due to the parallel lines.\n  simp only [Triangle.area, h1, h4, h5, mul_comm]\n  -- The areas",
+      "probability": 0.20026183490105467,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.47294688224792,
+      "well_typed": true,
+      "token_counts": 89,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (D : Point) (C : Point) (AD : Line) (BC : Line), ((distinctPointsOnLine B C BC) ∧ (Point.onLine A AD) ∧ (Point.onLine D AD) ∧ (¬(B = C)) ∧ (¬(A = D))) → ((Triangle.area △ A:B:C = Triangle.area △ D:B:C))",
+      "full_output": "theorem same_base_between_parallels (A B D C : Point) (AD BC : Line) (h1 : distinctPointsOnLine B C BC) (h2 : Point.onLine A AD) (h3 : Point.onLine D AD) (h4 : ¬(B = C)) (h5 : ¬(A = D)) : (Triangle.area △ A:B:C = Triangle.area △ D:B:C) := by\n  -- I need to show that the areas of the two triangles are equal.\n  -- Since both triangles share the same base BC, the area depends on the height from A and D to BC.\n  -- Given that AD and BC are parallel, the distance between AD and BC is constant.\n  -- Therefore, the heights from A and D to BC are the same, making the areas equal.\n  by\n  -- Use the fact that the area of a triangle is 1/2 * base * height.\n  -- Since the base BC is the same for both triangles, we only need to show the heights are equal.\n  simp_all [Triangle.area, h1, h2, h3, h4, h5]\n  -- The heights are equal because AD and",
+      "probability": 0.19998137090504653,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.47294688224792,
+      "well_typed": true,
+      "token_counts": 89,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (D : Point) (C : Point) (AD : Line) (BC : Line), ((distinctPointsOnLine B C BC) ∧ (Point.onLine A AD) ∧ (Point.onLine D AD) ∧ (¬(B = C)) ∧ (¬(A = D))) → ((Triangle.area △ A:B:C = Triangle.area △ D:B:C))",
+      "full_output": "theorem same_base_between_parallels (A B D C : Point) (AD BC : Line) (h1 : distinctPointsOnLine B C BC) (h2 : Point.onLine A AD) (h3 : Point.onLine D AD) (h4 : ¬(B = C)) (h5 : ¬(A = D)) : (Triangle.area △ A:B:C = Triangle.area △ D:B:C) := by\n  -- I need to show that the areas of the two triangles are equal.\n  -- Since both triangles share the same base BC, the area depends on the height from A and D to BC.\n  -- Given that AD and BC are parallel, the distance between AD and BC is constant.\n  -- Therefore, the heights from A and D to BC are the same, making the areas equal.\n  by\n  -- Use the fact that the area of a triangle is 1/2 * base * height.\n  -- Since the base BC is the same for both triangles, and the heights from A and D to BC are the same,\n  -- the areas of the two triangles must be equal.\n  have h6 : Triangle.area △ A:B:C = Triangle.area △ D",
+      "probability": 0.19991873200135452,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.47294688224792,
+      "well_typed": true,
+      "token_counts": 89,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (D : Point) (C : Point) (AD : Line) (BC : Line), ((distinctPointsOnLine B C BC) ∧ (Point.onLine A AD) ∧ (Point.onLine D AD) ∧ (¬(B = C)) ∧ (¬(A = D))) → ((Triangle.area △ A:B:C = Triangle.area △ D:B:C))",
+      "full_output": "theorem same_base_between_parallels (A B D C : Point) (AD BC : Line) (h1 : distinctPointsOnLine B C BC) (h2 : Point.onLine A AD) (h3 : Point.onLine D AD) (h4 : ¬(B = C)) (h5 : ¬(A = D)) : (Triangle.area △ A:B:C = Triangle.area △ D:B:C) := by\n  -- I need to show that the areas of the two triangles are equal.\n  -- Since both triangles share the same base BC, the area depends on the height from A and D to BC.\n  -- Given that AD and BC are parallel, the distance between AD and BC is constant.\n  -- Therefore, the heights from A and D to BC are the same, making the areas equal.\n  by\n  -- Use the fact that AD and BC are parallel to show that the heights from A and D to BC are the same.\n  have h6 : Triangle.area △ A:B:C = Triangle.area △ D:B:C := by\n    simp_all [Triangle.area, Area.of_triangle, Area.base, Area.height]\n  -- The areas of the triangles are equal because the",
+      "probability": 0.19913202460722085,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.47294688224792,
+      "well_typed": true,
+      "token_counts": 89,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (CA : Line) (AD : Line) (DB : Line) (DC : Line), ((formTriangle a b c AB BC CA) ∧ (formTriangle d b c DB BC DC) ∧ (¬(a.onLine BC)) ∧ (¬(d.onLine BC)) ∧ (a.onLine AD) ∧ (d.onLine AD) ∧ (¬(Line.intersectsLine AB DC)) ∧ (¬(Line.intersectsLine DB CA))) → ((Triangle.area △ a:b:c = Triangle.area △ d:b:c))",
+      "full_output": "theorem triangles_equal_same_base_same_parallel (a b c d : Point)\n  (AB BC CA AD DB DC : Line)\n  (h1 : formTriangle a b c AB BC CA)\n  (h2 : formTriangle d b c DB BC DC)\n  (h3 : ¬(a.onLine BC))\n  (h4 : ¬(d.onLine BC))\n  (h5 : a.onLine AD)\n  (h6 : d.onLine AD)\n  (h7 : ¬(Line.intersectsLine AB DC))\n  (h8 : ¬(Line.intersectsLine DB CA)) : (Triangle.area △ a:b:c = Triangle.area △ d:b:c) := by\n  -- Use the fact that the triangles are on the same base and between the same parallels to show they have the same area.\n  apply Eq.symm\n  -- Use the properties of the triangles and the lines to establish the equality of the areas.\n  <;> simp_all [Triangle.area, formTriangle, Line.onLine, Line.intersectsLine]\n  -- Use arithmetic to conclude the proof.\n  <;> linarith\n```出来7\nOkay, now I need to understand how to translate the given",
+      "probability": 2.0778596477137617e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.47294688224792,
+      "well_typed": true,
+      "token_counts": 142,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (CA : Line) (AD : Line) (DB : Line) (DC : Line), ((formTriangle a b c AB BC CA) ∧ (formTriangle d b c DB BC DC) ∧ (¬(a.onLine BC)) ∧ (¬(d.onLine BC)) ∧ (a.onLine AD) ∧ (d.onLine AD) ∧ (¬(Line.intersectsLine AB DC)) ∧ (¬(Line.intersectsLine DB CA))) → ((Triangle.area △ a:b:c = Triangle.area △ d:b:c))",
+      "full_output": "theorem triangles_equal_same_base_same_parallel (a b c d : Point)\n  (AB BC CA AD DB DC : Line)\n  (h1 : formTriangle a b c AB BC CA)\n  (h2 : formTriangle d b c DB BC DC)\n  (h3 : ¬(a.onLine BC))\n  (h4 : ¬(d.onLine BC))\n  (h5 : a.onLine AD)\n  (h6 : d.onLine AD)\n  (h7 : ¬(Line.intersectsLine AB DC))\n  (h8 : ¬(Line.intersectsLine DB CA)) : (Triangle.area △ a:b:c = Triangle.area △ d:b:c) := by\n  -- Use the fact that the triangles are on the same base and between the same parallels to show they have the same area.\n  apply Eq.symm\n  -- Use the properties of the triangles and the lines to establish the equality of the areas.\n  <;> simp_all [Triangle.area, formTriangle, Line.onLine]\n  -- Use arithmetic to conclude the proof.\n  <;> linarith\n```\tdef example_thm (a b c d : Point)\n  (AB BC CA AD DB DC",
+      "probability": 1.869429288508033e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.47294688224792,
+      "well_typed": true,
+      "token_counts": 142,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (CA : Line) (AD : Line) (DB : Line) (DC : Line), ((formTriangle a b c AB BC CA) ∧ (formTriangle d b c DB BC DC) ∧ (¬(a.onLine BC)) ∧ (¬(d.onLine BC)) ∧ (a.onLine AD) ∧ (d.onLine AD) ∧ (¬(Line.intersectsLine AB DC)) ∧ (¬(Line.intersectsLine DB CA))) → ((Triangle.area △ a:b:c = Triangle.area △ d:b:c))",
+      "full_output": "theorem triangles_equal_same_base_same_parallel (a b c d : Point)\n  (AB BC CA AD DB DC : Line)\n  (h1 : formTriangle a b c AB BC CA)\n  (h2 : formTriangle d b c DB BC DC)\n  (h3 : ¬(a.onLine BC))\n  (h4 : ¬(d.onLine BC))\n  (h5 : a.onLine AD)\n  (h6 : d.onLine AD)\n  (h7 : ¬(Line.intersectsLine AB DC))\n  (h8 : ¬(Line.intersectsLine DB CA)) : (Triangle.area △ a:b:c = Triangle.area △ d:b:c) := by\n  -- Use the fact that the triangles are on the same base and between the same parallels to show they have the same area.\n  apply Eq.symm\n  -- Use the properties of the triangles and the lines to establish the equality of the areas.\n  <;> simp_all [Triangle.area, formTriangle, Line.intersectsLine, Point.onLine]\n  -- Use arithmetic to conclude the proof.\n  <;> linarith\n``` \n```lean4\ntheorem triangles_equal_same_base_same_parallel (a b",
+      "probability": 1.206382913827556e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.47294688224792,
+      "well_typed": true,
+      "token_counts": 142,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (CA : Line) (AD : Line) (DB : Line) (DC : Line), ((formTriangle a b c AB BC CA) ∧ (formTriangle d b c DB BC DC) ∧ (¬(a.onLine BC)) ∧ (¬(d.onLine BC)) ∧ (a.onLine AD) ∧ (d.onLine AD) ∧ (¬(Line.intersectsLine AB DC)) ∧ (¬(Line.intersectsLine DB CA))) → ((Triangle.area △ a:b:c = Triangle.area △ d:b:c))",
+      "full_output": "theorem triangles_equal_same_base_same_parallel (a b c d : Point)\n  (AB BC CA AD DB DC : Line)\n  (h1 : formTriangle a b c AB BC CA)\n  (h2 : formTriangle d b c DB BC DC)\n  (h3 : ¬(a.onLine BC))\n  (h4 : ¬(d.onLine BC))\n  (h5 : a.onLine AD)\n  (h6 : d.onLine AD)\n  (h7 : ¬(Line.intersectsLine AB DC))\n  (h8 : ¬(Line.intersectsLine DB CA)) : (Triangle.area △ a:b:c = Triangle.area △ d:b:c) := by\n  -- Use the fact that the triangles are on the same base and between the same parallels to show they have the same area.\n  apply Eq.symm\n  -- Use the properties of the triangles and the lines to establish the equality of the areas.\n  <;> simp_all [Triangle.area, formTriangle, Line.intersectsLine, Point.onLine]\n  -- Use the given hypotheses to conclude the proof.\n  <;> linarith\n``` \nAlright, so I've got this geometry theorem to formalize",
+      "probability": 1.0066363464973864e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.47294688224792,
+      "well_typed": true,
+      "token_counts": 142,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (CA : Line) (AD : Line) (DB : Line) (DC : Line), ((formTriangle a b c AB BC CA) ∧ (formTriangle d b c DB BC DC) ∧ (¬(a.onLine BC)) ∧ (¬(d.onLine BC)) ∧ (a.onLine AD) ∧ (d.onLine AD) ∧ (¬(Line.intersectsLine AB DC)) ∧ (¬(Line.intersectsLine DB CA))) → ((Triangle.area △ a:b:c = Triangle.area △ d:b:c))",
+      "full_output": "theorem triangles_equal_same_base_same_parallel (a b c d : Point)\n  (AB BC CA AD DB DC : Line)\n  (h1 : formTriangle a b c AB BC CA)\n  (h2 : formTriangle d b c DB BC DC)\n  (h3 : ¬(a.onLine BC))\n  (h4 : ¬(d.onLine BC))\n  (h5 : a.onLine AD)\n  (h6 : d.onLine AD)\n  (h7 : ¬(Line.intersectsLine AB DC))\n  (h8 : ¬(Line.intersectsLine DB CA)) : (Triangle.area △ a:b:c = Triangle.area △ d:b:c) := by\n  -- Use the fact that the triangles are on the same base and between the same parallels to show they have the same area.\n  apply Eq.symm\n  -- Use the properties of the triangles and the lines to establish the equality of the areas.\n  <;> simp_all [Triangle.area, formTriangle, distinctPointsOnLine, Line.intersectsLine]\n  -- Use logical reasoning to conclude the proof.\n  <;> tauto\n``` \n[Note: The above Lean4 code is a rough attempt",
+      "probability": 9.136659224220105e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.47294688224792,
+      "well_typed": true,
+      "token_counts": 142,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD CD AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d b c BD BC CD ∧ distinctPointsOnLine a d AD ∧ ¬(AD.intersectsLine BC) ∧ d.sameSide c AB → Triangle.area △ a:b:c = Triangle.area △ d:b:c",
+  "nl_statement": "Triangles which are on the same base and between the same parallels are equal to one another.  Let $ABC$ and $DBC$ be triangles on the same base $BC$, and between the same parallels $AD$ and $BC$. I say that triangle $ABC$ is equal to triangle $DBC$. <prf> Thus, triangle $ABC$ is equal to triangle $DBC$.Thus, triangles which are on the same base and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

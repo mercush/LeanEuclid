@@ -1,0 +1,128 @@
+{
+  "id": "22",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b c BC) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|)) → (∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(c─a)|)",
+      "full_output": "theorem construct_triangle_from_three_lines (a b c : Point) (AB BC AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : distinctPointsOnLine b c BC) (h4 : |(a─b)| + |(b─c)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(b─c)|) (h6 : |(b─c)| + |(a─c)| > |(a─b)|) : ∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(c─a)| := by\n  -- We use the given lines AB, BC, and AC directly to form the triangle.\n  use a, b, c\n  -- Simplify the context by directly asserting the triangle form and side lengths.\n  simp_all\n  <;> use AB, BC, AC",
+      "probability": 0.16786491652712016,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.46140241622925,
+      "well_typed": true,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b c BC) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|)) → (∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)|)",
+      "full_output": "theorem construct_triangle_from_three_lines (a b c : Point) (AB BC AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : distinctPointsOnLine b c BC) (h4 : |(a─b)| + |(b─c)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(b─c)|) (h6 : |(b─c)| + |(a─c)| > |(a─b)|) : ∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)| := by\n  -- Use the given lines to form the triangle\n  refine' ⟨a, b, c, h1, h2, h3, h4, h5, h6⟩\n  -- Distance between a and b is equal to |(a─b)|\n",
+      "probability": 0.16712754325864937,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.46140241622925,
+      "well_typed": true,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b c BC) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|)) → (∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)|)",
+      "full_output": "theorem construct_triangle_from_three_lines (a b c : Point) (AB BC AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : distinctPointsOnLine b c BC) (h4 : |(a─b)| + |(b─c)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(b─c)|) (h6 : |(b─c)| + |(a─c)| > |(a─b)|) : ∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)| := by\n  -- Use the given lines AB, BC, and AC to form a triangle KFG\n  use a, b, c\n  -- Verify that the points a, b, and c form a triangle and satisfy the given line lengths\n  exact ⟨h1, h2",
+      "probability": 0.16654521477256748,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.46140241622925,
+      "well_typed": true,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b c BC) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|)) → (∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(c─a)|)",
+      "full_output": "theorem construct_triangle_from_three_lines (a b c : Point) (AB BC AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : distinctPointsOnLine b c BC) (h4 : |(a─b)| + |(b─c)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(b─c)|) (h6 : |(b─c)| + |(a─c)| > |(a─b)|) : ∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(c─a)| := by\n  -- Use the given points and lines to construct the triangle.\n  obtain ⟨k, h7⟩ := h1\n  obtain ⟨f, h8⟩ := h2\n  obtain ⟨g, h9⟩ := h3\n  -- Apply the triangle inequality to ensure",
+      "probability": 0.16639652782389824,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.46140241622925,
+      "well_typed": true,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b c BC) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|)) → (∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)|)",
+      "full_output": "theorem construct_triangle_from_three_lines (a b c : Point) (AB BC AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : distinctPointsOnLine b c BC) (h4 : |(a─b)| + |(b─c)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(b─c)|) (h6 : |(b─c)| + |(a─c)| > |(a─b)|) : ∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)| := by\n  -- Choose a straight-line AB to place one of the sides of the triangle\n  let a := a\n  let b := b\n  -- Use AB as a base to construct the triangle\n  let c := c\n  -- Verify that the points are distinct and form",
+      "probability": 0.16634791823880307,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.46140241622925,
+      "well_typed": true,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b c BC) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|)) → (∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)|)",
+      "full_output": "theorem construct_triangle_from_three_lines (a b c : Point) (AB BC AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : distinctPointsOnLine b c BC) (h4 : |(a─b)| + |(b─c)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(b─c)|) (h6 : |(b─c)| + |(a─c)| > |(a─b)|) : ∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)| := by\n  -- Use the given lines to form the sides of the triangle\n  use b, a, c\n  -- Prove that the points form a triangle\n  use AB, BC, AC\n  -- Verify the distinct points and lines\n  simp_all [distinctPointsOn",
+      "probability": 0.16559939964729367,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.46140241622925,
+      "well_typed": true,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b c BC) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|)) → (∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)|)",
+      "full_output": "theorem construct_triangle_from_three_lines (a b c : Point) (AB BC AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : distinctPointsOnLine b c BC) (h4 : |(a─b)| + |(b─c)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(b─c)|) (h6 : |(b─c)| + |(a─c)| > |(a─b)|) : ∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)| := by sorry\n``` \nOkay, so I have to construct a triangle from three straight-lines that are equal to three given straight-lines. Let me see how I can approach this.\n\nFirst, I need to understand what's given. There are three straight-lines, let's say A, B,",
+      "probability": 4.699460608473167e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.46140241622925,
+      "well_typed": true,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b c BC) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|)) → (∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)|)",
+      "full_output": "theorem construct_triangle_from_three_lines (a b c : Point) (AB BC AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : distinctPointsOnLine b c BC) (h4 : |(a─b)| + |(b─c)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(b─c)|) (h6 : |(b─c)| + |(a─c)| > |(a─b)|) : ∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)| := by sorry\n``` \n\nOkay, so I have this problem where I need to construct a triangle from three given straight lines. Let me see if I can understand and break this down step by step. \n\nFirst, the problem says that to construct a triangle from three straight-lines that are equal to",
+      "probability": 4.4532641527035236e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.46140241622925,
+      "well_typed": true,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b c BC) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|)) → (∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)|)",
+      "full_output": "theorem construct_triangle_from_three_lines (a b c : Point) (AB BC AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : distinctPointsOnLine b c BC) (h4 : |(a─b)| + |(b─c)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(b─c)|) (h6 : |(b─c)| + |(a─c)| > |(a─b)|) : ∃ k f g : Point, formTriangle k f g AB BC AC ∧ |(k─f)| = |(a─b)| ∧ |(f─g)| = |(b─c)| ∧ |(g─k)| = |(a─c)| := by sorry\n```[txn]\nAlright, so I'm trying to understand how to formalize this theorem in Lean4. The problem is about constructing a triangle from three given straight lines, ensuring that each side of the triangle is equal to one of these given lines. The theorem also mentions that",
+      "probability": 2.436279916720081e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.46140241622925,
+      "well_typed": true,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (P : Point) (Q : Point) (R : Point) (PQ : Line) (QR : Line) (RP : Line), ((distinctPointsOnLine P Q PQ) ∧ (distinctPointsOnLine Q R QR) ∧ (distinctPointsOnLine R P RP) ∧ (|(P─Q)| = |(A─B)|) ∧ (|(Q─R)| = |(B─C)|) ∧ (|(R─P)| = |(C─A)|) ∧ (|(A─B)| + |(B─C)| > |(C─A)|) ∧ (|(A─C)| + |(C─B)| > |(B─A)|) ∧ (|(B─A)| + |(A─C)| > |(C─B)|)) → ()",
+      "full_output": "theorem example_thm (A B C : Point) (P Q R : Point) (PQ QR RP : Line) (h1 : distinctPointsOnLine P Q PQ) (h2 : distinctPointsOnLine Q R QR) (h3 : distinctPointsOnLine R P RP) (h4 : |(P─Q)| = |(A─B)|) (h5 : |(Q─R)| = |(B─C)|) (h6 : |(R─P)| = |(C─A)|) (h7 : |(A─B)| + |(B─C)| > |(C─A)|) (h8 : |(A─C)| + |(C─B)| > |(B─A)|) (h9 : |(B─A)| + |(A─C)| > |(C─B)|) : Triangle OF Points P Q R = Triangle OF Points A B C ∧ |(P─Q)| = |(A─B)| ∧ |(Q─R)| = |(B─C)| ∧ |(R─P)| = |(C─A)| ∧ ∠",
+      "probability": 2.5896848889096373e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 69.46140241622925,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a a' b b' c c' : Point) (A B C : Line), distinctPointsOnLine a a' A ∧ distinctPointsOnLine b b' B ∧ distinctPointsOnLine c c' C ∧ (|(a─a')| + |(b─b')| > |(c─c')|) ∧ (|(a─a')| + |(c─c')| > |(b─b')|) ∧ (|(b─b')| + |(c─c')| > |(a─a')|) → ∃ (k f g : Point), (|(f─k)| = |(a─a')|) ∧ (|(f─g)| = |(b─b')|) ∧ (|(k─g)| = |(c─c')|)",
+  "nl_statement": "To construct a triangle from three straight-lines which are equal to three given [straight-lines]. It is necessary for (the sum of) two (of the straight-lines) taken together in any (possible way) to be greater than the remaining (one), on account of the (fact that) in any triangle (the sum of) two sides taken together in any (possible way) is greater than the remaining (one) [Prop.~1.20].Let $A$, $B$, and $C$ be the three given straight-lines, of which let (the sum of) two taken together in any (possible way)  be greater than the remaining (one).(Thus), (the sum of) $A$ and $B$ (is greater) than $C$, (the sum of) $A$ and $C$ than $B$,  and also (the sum of) $B$ and $C$ than $A$.So it is required to construct a triangle  from (straight-lines) equal to $A$, $B$, and $C$.    <prf>  Thus,  the three straight-lines $KF$, $FG$, and $GK$ are equal to $A$, $B$, and $C$ (respectively).   Thus, the triangle $KFG$ has been constructed from the three straight-lines  $KF$, $FG$, and $GK$, which are equal to the three given straight-lines  $A$, $B$, and $C$ (respectively).(Which is) the very thing it was required  to do.",
+  "lean4_header": ""
+}

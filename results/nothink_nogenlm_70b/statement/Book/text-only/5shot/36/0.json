@@ -1,0 +1,128 @@
+{
+  "id": "36",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line) (GH : Line) (EG : Line) (FH : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h EF GH EG FH) ∧ (|(b─c)| = |(f─g)|) ∧ (Line.onLine a (Line.ParallelERM warped h1)) ∧ (Line.onLine e (Line.ParallelERM warped h1)) ∧ (Line.onLine c (Line.ParallelERM warped h1)) ∧ (Line.onLine h (Line.ParallelERM warped h1))) → (|(a─b)| = |(e─f)|)",
+      "full_output": "theorem parallelograms_on_equal_bases_etc_are_equal (a b c d e f g h : Point)\n  (AB CD AC BD EF GH EG FH : Line)\n  (h1 : formParallelogram a b c d AB CD AC BD)\n  (h2 : formParallelogram e f g h EF GH EG FH)\n  (h3 : |(b─c)| = |(f─g)|)\n  (h4 : Line.onLine a (Line.ParallelERM warped h1))\n  (h5 : Line.onLine e (Line.ParallelERM warped h1))\n  (h6 : Line.onLine c (Line.ParallelERM warped h1))\n  (h7 : Line.onLine h (Line.ParallelERM warped h1))\n  : |(a─b)| = |(e─f)| := by\n  -- Start by assuming the given conditions and attempting to find a contradiction if the conclusion is not met.\n  by_contra!\n  -- Simplify the expression by casting out any assumptions that lead to a contradiction.\n  simp_all [formParallelogram, Line.onLine, Line.intersectsLine, Line.intersectsCircle,\n",
+      "probability": 0.10082220244925384,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.11690902709961,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line) (GH : Line) (AE : Line) (BG : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h EF GH AE BG) ∧ (|(b─c)| = |(f─g)|) ∧ (¬(AB.intersectsLine GH)) ∧ (¬(BD.intersectsLine AE))) → ((|(a─b)| * |(a─c)|) = (|(e─f)| * |(e─g)|))",
+      "full_output": "theorem parallelogram_equal_bases_parallels (a b c d e f g h : Point) (AB CD AC BD EF GH AE BG : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e f g h EF GH AE BG) (h3 : |(b─c)| = |(f─g)|) (h4 : ¬(AB.intersectsLine GH)) (h5 : ¬(BD.intersectsLine AE)) : (|(a─b)| * |(a─c)|) = (|(e─f)| * |(e─g)|) := by\n  -- Use the properties of the parallelogram and the given conditions to prove the equality.\n  simp_all [formParallelogram, Triangle.area, Segment.endpoints]\n  -- Use the given equal bases and the same parallels to conclude the equality of the areas.\n  <;> linarith [h3, h4, h5]\n```",
+      "probability": 0.10066892711752475,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.11690902709961,
+      "well_typed": true,
+      "token_counts": 216,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line) (GH : Line) (FG : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (a ≠ c) ∧ (formParallelogram e f g h EF GH FG BD) ∧ (e ≠ g) ∧ (|(a─b)| = |(e─f)|) ∧ (|(a─d)| = |(e─h)|)) → (|(a─b)| * |(a─d)| = |(e─f)| * |(e─h)|)",
+      "full_output": "theorem parallelograms_on_equal_bases_between_same_parallels_are_equal (a b c d e f g h : Point) (AB CD AC BD EF GH FG : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : a ≠ c) (h3 : formParallelogram e f g h EF GH FG BD) (h4 : e ≠ g) (h5 : |(a─b)| = |(e─f)|) (h6 : |(a─d)| = |(e─h)|) : |(a─b)| * |(a─d)| = |(e─f)| * |(e─h)| := by\n  -- Extracting the base lengths from the parallelograms\n  have h7 : |(a─b)| = |(e─f)| := by simp_all\n  have h8 : |(a─d)| = |(e─h)| := by simp_all\n  -- Calculating the area of the parallelograms\n  have h9 : |(a─b)| * |(a─d)| = |(e─",
+      "probability": 0.10043490108445458,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.11690902709961,
+      "well_typed": true,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (BC : Line) (CD : Line) (DA : Line) (EF : Line) (GH : Line) (FG : Line) (HE : Line), ((formParallelogram a b c d AB BC CD DA) ∧ (formParallelogram e f g h EF GH FG HE) ∧ (|(b─c)| = |(f─g)|) ∧ (Line.intersectsCircle BC GH) ∧ (Line.intersectsCircle DA HE) ∧ (Line.intersectsCircle AB EH) ∧ (Line.intersectsCircle CD HG)) → (|(a─b)| * |(b─c)| = |(e─f)| * |(f─g)|)",
+      "full_output": "theorem parallelogram_equality (a b c d e f g h : Point) (AB BC CD DA : Line) (EF GH FG HE : Line) (h1 : formParallelogram a b c d AB BC CD DA) (h2 : formParallelogram e f g h EF GH FG HE) (h3 : |(b─c)| = |(f─g)|) (h4 : Line.intersectsCircle BC GH) (h5 : Line.intersectsCircle DA HE) (h6 : Line.intersectsCircle AB EH) (h7 : Line.intersectsCircle CD HG) : |(a─b)| * |(b─c)| = |(e─f)| * |(f─g)| := by\n  have h8 : |(a─b)| * |(b─c)| = |(e─f)| * |(f─g)| := by\n    -- Using the properties of parallelograms and the given equal bases and parallels, calculate the area of both parallelograms.\n    -- Since the bases are equal and the heights are equal due to the same parallels, the area of both parallelograms must",
+      "probability": 0.10034752436004399,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.11690902709961,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h AB CD AC BD) ∧ (|(a─b)| = |(e─f)|) ∧ (|(a─c)| = |(e─g)|)) → ()",
+      "full_output": "theorem theorem_parallelogram_equality (a b c d e f g h : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e f g h AB CD AC BD) (h3 : |(a─b)| = |(e─f)|) (h4 : |(a─c)| = |(e─g)|) : (|(a─d)| = |(e─h)|) ∧ (|λ : Point => |(b─c)| | = |(f─g)|)) := by\n  -- Use the properties of parallelograms to establish equality of sides and diagonals.\n  have h5 : |(a─b)| = |(e─f)| := h3\n  have h6 : |(a─c)| = |(e─g)| := h4\n  have h7 : |(a─d)| = |(e─h)| := by\n    -- Use the parallelogram law to express the diagonals in terms of the sides.\n    rw [|(a─d)|",
+      "probability": 0.10029574499480498,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.11690902709961,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line) (GH : Line) (AE : Line) (FG : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h EF GH AE FG) ∧ (|(b─c)| = |(f─g)|) ∧ (¬(AB.intersectsLine EF)) ∧ (¬(AC.intersectsLine AE))) → ((Triangle.area △ a:b:c) = (Triangle.area △ e:f:g))",
+      "full_output": "theorem parallelogram_equality (a b c d e f g h : Point) (AB CD AC BD EF GH AE FG : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e f g h EF GH AE FG) (h3 : |(b─c)| = |(f─g)|) (h4 : ¬(AB.intersectsLine EF)) (h5 : ¬(AC.intersectsLine AE)) : (Triangle.area △ a:b:c) = (Triangle.area △ e:f:g) := by sorry\n```",
+      "probability": 0.09983523877318408,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.11690902709961,
+      "well_typed": true,
+      "token_counts": 131,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BH : Line) (EF : Line) (GG : Line) (CA : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h EF GG CA BH) ∧ (|(b─c)| = |(f─g)|) ∧ (|(a─b)| = |(h─e)|) ∧ (|(a─c)| = |(h─g)|) ∧ (|(b─d)| = |(f─h)|) ∧ (|(c─d)| = |(g─h)|)) → ((|(a─b)| * |(a─c)| = |(e─f)| * |(e─g)|))",
+      "full_output": "theorem parallelogram_area (a b c d e f g h : Point) (AB CD AC BH EF GG CA BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e f g h EF GG CA BH) (h3 : |(b─c)| = |(f─g)|) (h4 : |(a─b)| = |(h─e)|) (h5 : |(a─c)| = |(h─g)|) (h6 : |(b─d)| = |(f─h)|) (h7 : |(c─d)| = |(g─h)|) : (|(a─b)| * |(a─c)| = |(e─f)| * |(e─g)|) := by\n  -- Extract the areas of the parallelograms using the given hypotheses\n  have h8 : Triangle.area △ a:b:c = Triangle.area △ e:f:g := by\n    -- Use the fact that the parallelograms are congruent to equate the areas\n    simp_all [formParallelog",
+      "probability": 0.09978698434612723,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.11690902709961,
+      "well_typed": true,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h AB CD AC BD) ∧ (|(c─d)| = |(g─h)|) ∧ (¬(AB.intersectsLine CD)) ∧ (¬(AC.intersectsLine BD))) → ()",
+      "full_output": "theorem parallelogram_equal_bases_pr (a b c d e f g h : Point)\n  (AB CD AC BD : Line)\n  (h₁ : formParallelogram a b c d AB CD AC BD)\n  (h₂ : formParallelogram e f g h AB CD AC BD)\n  (h₃ : |(c─d)| = |(g─h)|)\n  (h₄ : ¬(AB.intersectsLine CD))\n  (h₅ : ¬(AC.intersectsLine BD)) := by\n  -- We need to prove that parallelogram ABCD is equal to parallelogram EFGH.\n  -- Given:\n  -- - ABCD and EFGH are parallelograms on the same bases BC and FG.\n  -- - They are between the same parallels AH and BG.\n  -- - Bases BC and FG are equal in length.\n  -- - Lines AB and CD are parallel.\n  -- - Lines AC and BD are parallel.\n  -- To prove:\n  -- - The area of parallelogram ABCD is equal to the area of parallelogram EFGH.\n  -- - Or, since the bases are equal and the",
+      "probability": 0.09966720334736545,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.11690902709961,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AH : Line) (BG : Line), ((formParallelogram a b c d AB CD AH BG) ∧ (formParallelogram e f g h AB CD AH BG) ∧ (|(b─c)| = |(f─g)|) ∧ (|(a─b)| = |(e─f)|)) → (|(a─b)| = |(e─f)|)",
+      "full_output": "theorem parallelogram_equality (a b c d e f g h : Point) (AB CD AH BG : Line)\n  (h1 : formParallelogram a b c d AB CD AH BG)\n  (h2 : formParallelogram e f g h AB CD AH BG)\n  (h3 : |(b─c)| = |(f─g)|)\n  (h4 : |(a─b)| = |(e─f)|)\n  : |(a─b)| = |(e─f)| := by\n  -- We start by noting the given conditions that the bases BC and FG are equal, and the parallels AH and BG are the same.\n  have h_base := h3\n  have h_parallels := h1.2\n  -- Since both parallelograms ABCD and EFGH share the same bases and parallels, their corresponding sides are equal.\n  -- This directly implies that the sides AB and EF are equal in length.\n  -- Therefore, |(a─b)| = |(e─f)|\n  simp_all\n  <;> linarith\n```",
+      "probability": 0.09920784556192201,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.11690902709961,
+      "well_typed": true,
+      "token_counts": 240,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (F : Point) (G : Point) (H : Point) (AB : Line) (CD : Line) (BC : Line) (EF : Line) (GH : Line) (AD : Line) (He : Line), ((formParallelogram A B C D AB CD BC GH) ∧ (formParallelogram E F G H AD He EF GH) ∧ (|(B─C)| = |(F─G)|) ∧ (¬(AB.intersectsLine AD)) ∧ (¬(EF.intersectsLine E G))) → (Triangle.area △ A:B:C = Triangle.area △ E:F:G)",
+      "full_output": "theorem parallelograms_on_equal_bases_are_equal (A B C D E F G H : Point) (AB CD BC EF GH AD He : Line) (h1 : formParallelogram A B C D AB CD BC GH) (h2 : formParallelogram E F G H AD He EF GH) (h3 : |(B─C)| = |(F─G)|) (h4 : ¬(AB.intersectsLine AD)) (h5 : ¬(EF.intersectsLine E G)) : Triangle.area △ A:B:C = Triangle.area △ E:F:G := by\n  -- Use the properties of parallelograms to show that the areas are equal.\n  have h6 : ∠ B:C:D = ∠ F:G:H := by\n    -- Since the bases are equal and the parallels are the same, the angles are equal.\n    -- This is a property of parallelograms on equal bases and between the same parallels.\n    simp [h1, h2, h3, h4, h5]\n  have h7 : ∠ A:B:C = ∠ E:F:G := by\n    -- Similarly, the other angles are",
+      "probability": 0.09893342796531913,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.11690902709961,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AH BG AB CD EF HG : Line), formParallelogram a d b c AH BG AB CD ∧ formParallelogram e h f g AH BG EF HG ∧ |(b─c)| = |(f─g)| ∧ (between a d h) ∧ (between a e h) → Triangle.area △ a:b:d + Triangle.area △ d:b:c = Triangle.area △ e:f:h + Triangle.area △ h:f:g",
+  "nl_statement": "Parallelograms which are on equal bases and between the same parallels are equal to one another. Let $ABCD$ and $EFGH$ be parallelograms which are on the equal bases $BC$ and $FG$, and (are) between the same parallels $AH$ and $BG$. I say that the parallelogram $ABCD$ is equal to $EFGH$. <prf> So that the parallelogram $ABCD$ is  also equal to $EFGH$.Thus, parallelograms which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

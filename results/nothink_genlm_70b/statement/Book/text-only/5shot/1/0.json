@@ -1,0 +1,128 @@
+{
+  "id": "1",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| := by\n  -- We need to construct point `c` such that `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  -- This means `c` should form an equilateral triangle with `a` and `b`.\n  use a\n  -- We start by using point `a` as a candidate for `c`.\n  constructor\n  -- We need to prove two things: `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  <;> simp [h1]\n  -- Simplifying using `h1` (which states that `a` and `b` are distinct points on line `AB`),\n  -- we see that `|(a─c)| = |(b─c)|` because `c` is",
+      "probability": 0.12533349459974694,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 75.62110543251038,
+      "well_typed": false,
+      "token_counts": 62,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| := by\n  -- We need to construct point `c` such that `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  -- This means `c` should form an equilateral triangle with `a` and `b`.\n  use a\n  -- We start by using point `a` as a candidate for `c`.\n  constructor\n  -- We need to prove two things: `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  <;> simp_all [distinctPointsOnLine]\n  -- Simplifying, since `c` is now `a`, `|(a─c)|` becomes `|(a─a)|`, which is trivially equal to `0`.\n  -- Similarly, `|(b─c)|`",
+      "probability": 0.1252632836065411,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 75.62110543251038,
+      "well_typed": false,
+      "token_counts": 62,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| := by\n  -- We need to construct point `c` such that `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  -- This means `c` should form an equilateral triangle with `a` and `b`.\n  use a\n  -- We start by using point `a` as a candidate for `c`.\n  constructor\n  -- We need to prove two things: `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  <;> simp_all [distinctPointsOnLine]\n  -- Simplifying, since `c` is now `a`, `|(a─c)|` becomes `|(a─a)|`, which is trivially equal to `|(b─a)|` and `|(a─b)|",
+      "probability": 0.12499764128175678,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 75.62110543251038,
+      "well_typed": false,
+      "token_counts": 62,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| := by\n  -- We need to construct point `c` such that `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  -- This means `c` should form an equilateral triangle with `a` and `b`.\n  use a\n  -- We start by using point `a` as a candidate for `c`.\n  constructor\n  -- We need to prove two things: `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  <;> simp [h1]\n  -- Simplifying using `h1` (which states that `a` and `b` are distinct points on line `AB`),\n  -- we see that `|(a─a)| = 0` and `|(b─a)| = |",
+      "probability": 0.1249826614821658,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 75.62110543251038,
+      "well_typed": false,
+      "token_counts": 62,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| := by\n  -- We need to construct point `c` such that `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  -- This means `c` should form an equilateral triangle with `a` and `b`.\n  use a\n  -- We start by using point `a` as a candidate for `c`.\n  constructor\n  -- We need to prove two things: `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  <;> simp_all [distinctPointsOnLine]\n  -- Simplifying, since `c` is now `a`, `|(a─c)|` becomes `|(a─a)|`, which is trivially true.\n  -- Similarly, `|(b─c)|` becomes `|(",
+      "probability": 0.12494745281639327,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 75.62110543251038,
+      "well_typed": false,
+      "token_counts": 62,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| := by\n  -- We need to construct point `c` such that `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  -- This means `c` should form an equilateral triangle with `a` and `b`.\n  use a\n  -- We start by using point `a` as a candidate for `c`.\n  constructor\n  -- We need to prove two things: `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  -- Since `c` is the same as `a`, the first part `|(a─c)| = |(b─c)|` simplifies to `|(a─a)| = |(b─a)|`.\n  -- Similarly, the second part `|(a─c)| =",
+      "probability": 0.12491122693986424,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 75.62110543251038,
+      "well_typed": false,
+      "token_counts": 62,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| := by\n  -- We need to construct point `c` such that `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  -- This means `c` should form an equilateral triangle with `a` and `b`.\n  use a\n  -- We start by using point `a` as a candidate for `c`.\n  constructor\n  -- We need to prove two things: `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  <;> simp [h1]\n  -- Simplifying using `h1` (which states that `a` and `b` are distinct points on line `AB`),\n  -- we see that `|(a─c)|` is simply the length from `a` to `a`,",
+      "probability": 0.12484548260494432,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 75.62110543251038,
+      "well_typed": false,
+      "token_counts": 62,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| := by\n  -- We need to construct point `c` such that `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  -- This means `c` should form an equilateral triangle with `a` and `b`.\n  use a\n  -- We start by using point `a` as a candidate for `c`.\n  constructor\n  -- We need to prove two things: `|(a─c)| = |(b─c)|` and `|(a─c)| = |(a─b)|`.\n  <;> simp_all [distinctPointsOnLine]\n  -- Simplifying, since `c` is now `a`, `|(a─c)|` becomes `|(a─a)|`, which is 0.\n  -- Similarly, `|(b─c)|` becomes `|(b",
+      "probability": 0.12470964140750648,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 75.62110543251038,
+      "well_typed": false,
+      "token_counts": 62,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(a─b)| ∧ |(a─c)| = |(b─c)| ∧ |(a─b)| = |(b─c)|)",
+      "full_output": "theorem constructEquilateralTriangle (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(a─b)| ∧ |(a─c)| = |(b─c)| ∧ |(a─b)| = |(b─c)| := by\n  -- Use an arbitrary point to complete the equilateral triangle\n  let c := Classical.choose (Point.onCircle ⟨a, b, by simp⟩)\n  -- Show that the chosen point forms an equilateral triangle\n  refine' ⟨c, _, _, _⟩\n  -- Prove that |(a─c)| = |(a─b)|\n  <;> simp_all [Point.onCircle, Circle.isCentre]\n  -- Prove that |(a─c)| = |(b─c)|\n  <;> apply Eq.symm\n  <;> apply Eq.symm\n  -- Prove that |(a─b)| = |(b─c)|\n  <;> aesop\n```恩，让我来看看这个问题。题目是“在给定的有限直",
+      "probability": 5.264179260443783e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 75.62110543251038,
+      "well_typed": true,
+      "token_counts": 76,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(a─b)| ∧ |(a─c)| = |(b─c)| ∧ |(a─b)| = |(b─c)|)",
+      "full_output": "theorem constructEquilateralTriangle (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(a─b)| ∧ |(a─c)| = |(b─c)| ∧ |(a─b)| = |(b─c)| := by\n  -- Use an arbitrary point to complete the equilateral triangle\n  let c := Classical.choose (Point.onCircle ⟨a, b, by simp⟩)\n  -- Show that the chosen point forms an equilateral triangle\n  refine' ⟨c, _, _, _⟩\n  -- Prove that |(a─c)| = |(a─b)|\n  <;> simp_all [Point.onCircle, Circle.isCentre]\n  -- Prove that |(a─c)| = |(b─c)|\n  <;> apply Eq.symm\n  <;> apply Eq.symm\n  -- Prove that |(a─b)| = |(b─c)|\n  <;> aesop\n``` \n\nOkay, so I need to formalize the English statement \"To construct an equ",
+      "probability": 3.851081820813008e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 75.62110543251038,
+      "well_typed": true,
+      "token_counts": 76,
+      "formalization_check": true
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)|",
+  "nl_statement": "To construct an equilateral triangle on a given finite straight-line. Let $AB$ be the given finite straight-line.  <prf> Thus, the three (straight-lines) $CA$, $AB$, and $BC$ are equal to one another.Thus, the triangle $ABC$ is equilateral, and has been constructed on the given finite straight-line $AB$.",
+  "lean4_header": ""
+}

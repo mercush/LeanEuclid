@@ -1,0 +1,104 @@
+{
+  "id": "3",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (∃ l : Point, |(a─l)| = |(b─c)|) ∧ (∃ l : Point, |(a─l)| = |(b─d)|)) → ((∃ l : Point, |(a─l)| = |(b─d)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : ∃ l : Point, |(a─l)| = |(b─c)|) (h3 : ∃ l : Point, |(a─l)| = |(b─d)|) : (∃ l : Point, |(a─l)| = |(b─d)|) := by\n  -- Extract the point l from the hypothesis h2 which satisfies |(a─l)| = |(b─c)|\n  cases' h2 with l hl\n  -- Extract the point m from the hypothesis h3 which satisfies |(a─m)| = |(b─d)|\n  cases' h3 with m hm\n  -- Show that there exists a point n such that |(a─n)| = |(b─d)|\n  refine' ⟨m, _⟩\n  -- Since |(a─l)| = |(b─c)| and |(a─m)| = |(b─d)|, we can conclude that",
+      "probability": 0.6002018662163294,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.45502591133118,
+      "well_typed": true,
+      "token_counts": 106,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (∃ l : Point, |(a─l)| = |(b─c)|) ∧ (∃ l : Point, |(a─l)| = |(b─d)|)) → ((∃ l : Point, |(a─l)| = |(b─d)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : ∃ l : Point, |(a─l)| = |(b─c)|) (h3 : ∃ l : Point, |(a─l)| = |(b─d)|) : (∃ l : Point, |(a─l)| = |(b─d)|) := by\n  -- Extract the point l from the hypothesis h2 which satisfies |(a─l)| = |(b─c)|\n  cases' h2 with l hl\n  -- Extract the point m from the hypothesis h3 which satisfies |(a─m)| = |(b─d)|\n  cases' h3 with m hm\n  -- Show that there exists a point n such that |(a─n)| = |(b─d)|\n  refine' ⟨m, _⟩\n  -- Since |(a─l)| = |(b─c)| and |(a─m)| = |(b─d)|, we can conclude |",
+      "probability": 0.1999756047724867,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.45502591133118,
+      "well_typed": true,
+      "token_counts": 106,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (C : Line), ((distinctPointsOnLine a b AB) ∧ (¬(a = c))) → (∃ l : Point, |(a─l)| = |(c─c)|)",
+      "full_output": "theorem theorem_for_two_unequal_straight_lines (a b c : Point) (AB C : Line) (h1 : distinctPointsOnLine a b AB) (h2 : ¬(a = c)) : ∃ l : Point, |(a─l)| = |(c─c)| := by\n  -- We need to find a point l on line AB such that the length of segment al is equal to the length of segment cc.\n  -- Since AB is a straight line and a ≠ c, we can use the properties of straight lines and distances to find such a point.\n  use a\n  -- By choosing l to be the same as a, we ensure that the segment al is degenerate (has zero length), which is trivially equal to the length of any segment.\n  simp [h2]\n  -- This simplifies the proof by using the fact that a ≠ c to conclude that the length of segment al is zero, which is equal to the length of segment cc.\n  -- This is a valid construction because we are allowed to cut off a zero-length segment from the greater straight-line AB.\n  <;> linarith [h1]\n  -- This line ensures that",
+      "probability": 0.19975154607461348,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.45502591133118,
+      "well_typed": false,
+      "token_counts": 65,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (∃ l : Point, |(a─l)| = |(b─c)|) ∧ (∃ l : Point, |(a─l)| = |(b─d)|)) → ((∃ l : Point, |(a─l)| = |(b─d)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : ∃ l : Point, |(a─l)| = |(b─c)|) (h3 : ∃ l : Point, |(a─l)| = |(b─d)|) : (∃ l : Point, |(a─l)| = |(b─d)|) := by\n  -- Extract the point l from the hypothesis h2 which satisfies |(a─l)| = |(b─c)|\n  cases' h2 with l hl\n  -- Extract the point m from the hypothesis h3 which satisfies |(a─m)| = |(b─d)|\n  cases' h3 with m hm\n  -- Show that there exists a point n such that |(a─n)| = |(b─d)|\n  refine' ⟨m, _⟩\n  -- Since |(a─m)| = |(b─d)|, we can directly use this to conclude the theorem\n  simp_all\n``` \n\nThis Lean",
+      "probability": 2.7644241864616078e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.45502591133118,
+      "well_typed": true,
+      "token_counts": 106,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (C : Line), ((distinctPointsOnLine a b AB) ∧ (¬(a = c))) → (∃ l : Point, |(a─l)| = |(c─c)|)",
+      "full_output": "theorem theorem_for_two_unequal_straight_lines (a b c : Point) (AB C : Line) (h1 : distinctPointsOnLine a b AB) (h2 : ¬(a = c)) : ∃ l : Point, |(a─l)| = |(c─c)| := by\n  -- We need to find a point l on line AB such that the length of segment al is equal to the length of segment cc.\n  -- Since AB is a straight line and a ≠ c, we can use the properties of straight lines and distances to find such a point.\n  use a\n  -- By choosing l to be the same as a, we ensure that the segment al is degenerate (has zero length), which is trivially equal to the length of any segment.\n  simp [h2]\n  -- This simplifies the proof by using the fact that a ≠ c to conclude that the length of segment al is zero, which is equal to the length of segment cc.\n  -- This is a valid construction because we are essentially cutting off a segment of zero length from AB, which does not change the length of AB.\n``` valeur_de_l'immobilier.unasadico",
+      "probability": 2.2411052943706595e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.45502591133118,
+      "well_typed": false,
+      "token_counts": 65,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (C : Line), ((distinctPointsOnLine a b AB) ∧ (¬(a = c))) → (∃ l : Point, |(a─l)| = |(c─c)|)",
+      "full_output": "theorem theorem_for_two_unequal_straight_lines (a b c : Point) (AB C : Line) (h1 : distinctPointsOnLine a b AB) (h2 : ¬(a = c)) : ∃ l : Point, |(a─l)| = |(c─c)| := by\n  -- We need to find a point l on line AB such that the length of segment al is equal to the length of segment cc.\n  -- Since AB is a straight line and a ≠ c, we can use the properties of straight lines and distances to find such a point.\n  use a\n  -- By choosing l to be the same as a, we ensure that the segment al is degenerate (has zero length), which is trivially equal to the length of any segment.\n  simp [h2]\n  -- This simplifies the proof by using the fact that a ≠ c to conclude that the length of segment al is zero, which is equal to the length of segment cc.\n  -- This is a valid construction because we are essentially cutting off a segment of zero length from AB, which does not change the length of AB.\n``` \n\nI'm sorry but I cannot provide a detailed",
+      "probability": 1.291256143622802e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.45502591133118,
+      "well_typed": false,
+      "token_counts": 65,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (C : Line), ((distinctPointsOnLine a b AB) ∧ (¬(a = c))) → (∃ l : Point, |(a─l)| = |(c─c)|)",
+      "full_output": "theorem theorem_for_two_unequal_straight_lines (a b c : Point) (AB C : Line) (h1 : distinctPointsOnLine a b AB) (h2 : ¬(a = c)) : ∃ l : Point, |(a─l)| = |(c─c)| := by\n  -- We need to find a point l on line AB such that the length of segment al is equal to the length of segment cc.\n  -- Since AB is a straight line and a ≠ c, we can use the properties of straight lines and distances to find such a point.\n  use a\n  -- By choosing l to be the same as a, we ensure that the segment al is degenerate (has zero length), which is trivially equal to the length of any segment.\n  simp [h2]\n  -- This simplifies the proof by using the fact that a ≠ c to conclude that the length of segment al is zero, which is equal to the length of segment cc.\n  -- This is a valid construction because we are allowed to cut off a zero-length segment from the greater straight-line AB.\n  <;> linarith\n```caf345b134fc7d4",
+      "probability": 4.8165327820427126e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.45502591133118,
+      "well_typed": false,
+      "token_counts": 65,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (C : Line), ((distinctPointsOnLine a b AB) ∧ (¬(a = c))) → (∃ l : Point, |(a─l)| = |(c─c)|)",
+      "full_output": "theorem theorem_for_two_unequal_straight_lines (a b c : Point) (AB C : Line) (h1 : distinctPointsOnLine a b AB) (h2 : ¬(a = c)) : ∃ l : Point, |(a─l)| = |(c─c)| := by\n  -- We need to find a point l on line AB such that the length of segment al is equal to the length of segment cc.\n  -- Since AB is a straight line and a ≠ c, we can use the properties of straight lines and distances to find such a point.\n  use a\n  -- By choosing l to be the same as a, we ensure that the segment al is degenerate (has zero length), which is trivially equal to the length of any segment.\n  simp [h2]\n  -- This simplifies the proof by using the fact that a ≠ c to conclude that the length of segment al is zero, which is equal to the length of segment cc.\n  -- This is a valid construction because we are allowed to cut off a zero-length segment from the greater straight-line AB.\n  <;> linarith\n```  \n```lean4\ntheorem theorem_for",
+      "probability": 3.1985475437814977e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.45502591133118,
+      "well_typed": false,
+      "token_counts": 65,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c₀ c₁ : Point) (AB C : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c₀ c₁ C ∧ |(a─b)| > |(c₀─c₁)| → ∃ e : Point, between a e b ∧ |(a─e)| = |(c₀─c₁)|",
+  "nl_statement": "For two given unequal straight-lines, to cut off from the greater a straight-line equal to the lesser. Let $AB$ and $C$ be the two given unequal straight-lines, of which let the greater be $AB$.  <prf> So $AE$ is also equal to $C$ [C.N.~1]. Thus, for two given unequal straight-lines, $AB$ and $C$, the (straight-line) $AE$, equal to the lesser $C$, has been cut off from the greater $AB$.",
+  "lean4_header": ""
+}

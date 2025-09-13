@@ -1,0 +1,128 @@
+{
+  "id": "44",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line), ((formLine AB a b) ∧ (formTriangle c d₁ d₂ d₃) ∧ (formRectilinearAngle a b c AB) ∧ (∠ a:b:c = ∠ d₁:d₂:d₃)) → (∃ (f g e : Point) (FG GAE FE : Line), formParallelogram f g e a FG GAE FE ∧ Triangle.area △ f:e:a = Triangle.area △ c:d₁:d₂ ⇒ Triangle.area △ f:g:a = Triangle.area △ c:d₂:d₃)",
+      "full_output": "theorem apply_parallelogram_equal_triangle_to_straight_line (a b c d₁ d₂ d₃ : Point) (AB : Line) (h1 : formLine AB a b) (h2 : formTriangle c d₁ d₂ d₃) (h3 : formRectilinearAngle a b c AB) (h4 : ∠ a:b:c = ∠ d₁:d₂:d₃) : ∃ (f g e : Point) (FG GAE FE : Line), formParallelogram f g e a FG GAE FE ∧ Triangle.area △ f:e:a = Triangle.area △ c:d₁:d₂ ⇒ Triangle.area △ f:g:a = Triangle.area △ c:d₂:d₃ := by\n  -- Existence of Points\n  obtain ⟨f, g, e, FG, GAE, FE⟩ := h4\n  -- Prove that the parallelogram fgea is equal to the triangle cd₁d₂d₃\n  refine' ⟨f, g, e, FG, GAE, FE, _⟩\n  -- Simplify the proof by using the given form of the parallelogram and triangle\n  simp_all [formParallelog",
+      "probability": 0.1010838894234978,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 48.64587950706482,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (ab : Line), ((Triangle) ∧ (Angle) ∧ (distinctPointsOnLine a b ab) ∧ (formParallelogram a b c a b ab ab ab ab) ∧ (Triangle.congruent c (Triangle.ofPoints a b c)) ∧ (∠ a:b:c = d)) → (∃ l : Point, |(a─l)| = |(b─c)|)",
+      "full_output": "theorem example_thm (a b c : Point) (ab : Line) (c : Triangle) (d : Angle) (h1 : distinctPointsOnLine a b ab) (h2 : formParallelogram a b c a b ab ab ab ab) (h3 : Triangle.congruent c (Triangle.ofPoints a b c)) (h4 : ∠ a:b:c = d) : ∃ l : Point, |(a─l)| = |(b─c)| := by sorry\n```",
+      "probability": 0.10055739228169741,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 48.64587950706482,
+      "well_typed": false,
+      "token_counts": 111,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line) (c₁ : Point) (c₂ : Point) (c₃ : Point) (C₁ : Line) (C₂ : Line) (C₃ : Line), ((formTriangle c₁ c₂ c₃ C₁ C₂ C₃) ∧ (distinctPointsOnLine a b AB) ∧ (a ≠ b)) → (∃ (d₁ d₂ d₃ d₄ : Point) (D₁ D₂ D₃ D₄ : Line), formParallelogram d₁ d₂ d₃ d₄ D₁ D₂ D₃ D₄ ∧ (|(c₁─c₂)| = |(d₁─d₂)|) ∧ (|(c₂─c₃)| = |(d₂─d₃)|) ∧ (|(c₃─c₁)| = |(d₃─d₁)|) ∧ (∠ d₁:d₂:d₃ = ∟ + ∟))",
+      "full_output": "theorem apply_parallelogram_to_line (a b : Point) (AB : Line) (c₁ c₂ c₃ : Point) (C₁ C₂ C₃ : Line) (h1 : formTriangle c₁ c₂ c₃ C₁ C₂ C₃) (h2 : distinctPointsOnLine a b AB) (h3 : a ≠ b) : ∃ (d₁ d₂ d₃ d₄ : Point) (D₁ D₂ D₃ D₄ : Line), formParallelogram d₁ d₂ d₃ d₄ D₁ D₂ D₃ D₄ ∧ (|(c₁─c₂)| = |(d₁─d₂)|) ∧ (|(c₂─c₃)| = |(d₂─d₃)|) ∧ (|(c₃─c₁)| = |(d₃─d₁)|) ∧ (∠ d₁:d₂:d₃ = ∟ + ∟) := by -- Assuming a proof is provided here to satisfy the requirements.\nsorry\n```",
+      "probability": 0.10034234122734724,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 48.64587950706482,
+      "well_typed": true,
+      "token_counts": 220,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (e : Point) (f : Point) (g : Point) (h : Point) (i : Point) (j : Point) (k : Point) (l : Point) (m : Point) (n : Point) (o : Point) (p : Point) (q : Point) (r : Point) (s : Point) (t : Point) (u : Point) (v : Point) (w : Point) (x : Point) (y : Point) (z : Point) (AB : Line) (AC : Line) (AD : Line) (AE : Line) (AF : Line) (AG : Line) (AH : Line) (AI : Line) (AJ : Line) (AK : Line) (AL : Line) (AM : Line) (AN : Line) (AO : Line) (AP : Line) (AQ : Line) (AR : Line) (AS : Line) (AT : Line) (AU : Line) (AV : Line) (AW : Line) (AX : Line) (AY : Line) (AZ : Line), ((formTriangle c d₁ d₂ AC AD AE) ∧ (formRectilinearAngle e f g AF AG AH) ∧ (formTriangle a b c AB AC AD) ∧ (formTriangle d₁ d₂ d₃ AE AF AG) ∧ (formParallelogram h i j k AL AM AN AO) ∧ (formParallelogram l m n o AP AQ AR AS) ∧ (formParallelogram p q r s AT AU AV AW) ∧ (formParallelogram x y z a AX AY AZ) ∧ (Triangle.congruent △ c:d₁:d₂ △ a:b:c)) → ()",
+      "full_output": "theorem to_apply_a_parallelogram_equal_to_a_given_triangle_to_a_given_straight_line_in_a_given_rectilinear_angle (a b c d₁ d₂ d₃ e f g h i j k l m n o p q r s t u v w x y z : Point) (AB AC AD AE AF AG AH AI AJ AK AL AM AN AO AP AQ AR AS AT AU AV AW AX AY AZ : Line) (h1 : formTriangle c d₁ d₂ AC AD AE) (h2 : formRectilinearAngle e f g AF AG AH) (h3 : formTriangle a b c AB AC AD) (h4 : formTriangle d₁ d₂ d₃ AE AF AG) (h5 : formParallelogram h i j k AL AM AN AO) (h6 : formParallelogram l m n o AP AQ AR AS) (h7 : formParallelogram p q r s AT AU AV AW) (h8 : formParallelogram x y z a AX AY AZ) (h9 : Triangle.congruent △ c:d₁:d₂ △ a:b:c) (h10 : Triangle.congruent △ h",
+      "probability": 0.10028313474366773,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 48.64587950706482,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (∠ a:b:c = ∟ + ∟)) → (∃ (l r : Point), |(a─l)| = |(b─r)| ∧ |(a─r)| = |(b─c)|)",
+      "full_output": "theorem apply_parallelogram_to_line_in_angle (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : ∠ a:b:c = ∟ + ∟) : ∃ (l r : Point), |(a─l)| = |(b─r)| ∧ |(a─r)| = |(b─c)| := by\n  -- Use the given line AB and apply the parallelogram to AB at point a.\n  use a, b\n  -- Simplify the goal using basic geometric properties.\n  simp [h1, h2]\n  -- Use Aesop to automatically solve the remaining goals.\n  <;> aesop\n```",
+      "probability": 0.10006491565446055,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 48.64587950706482,
+      "well_typed": true,
+      "token_counts": 155,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁₂ : Line) (D₂₃ : Line), ((formTriangle a b c AB BC AC) ∧ (formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) ∧ ((∠ d₁:d₂:d₃ : ℝ) ≠ 0) ∧ ((∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟)) → (∃ (f g e c' : Point) (FG EC EF CG : Line),\n    formParallelogram f g e c' FG EC EF CG ∧\n    (∠ c':e:f = ∠ d₁:d₂:d₃) ∧\n    (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c))",
+      "full_output": "theorem theorem_name\n  (a b c d₁ d₂ d₃ : Point)\n  (AB BC AC D₁₂ D₂₃ : Line)\n  (h1 : formTriangle a b c AB BC AC)\n  (h2 : formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃)\n  (h3 : (∠ d₁:d₂:d₃ : ℝ) ≠ 0)\n  (h4 : (∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟)\n  : ∃ (f g e c' : Point) (FG EC EF CG : Line),\n    formParallelogram f g e c' FG EC EF CG ∧\n    (∠ c':e:f = ∠ d₁:d₂:d₃) ∧\n    (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c) := by\n  -- Here, we need to provide a construction that satisfies all the given geometric conditions.\n  -- This involves defining points and lines that form the required parallelogram.\n  -- We will use the given rectilinear angle D₁₂ D₂₃ and the triangle AB",
+      "probability": 0.09982199058704747,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 48.64587950706482,
+      "well_typed": true,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (D₁₂ : Line) (D₂₃ : Line), ((distinctPointsOnLine a b AB) ∧ (formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) ∧ (Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine d₁ D₁₂) ∧ (Point.onLine d₂ D₁₂) ∧ (Point.onLine d₃ D₂₃)) → ()",
+      "full_output": "theorem apply_parallelogram_to_line_in_angle (a b c d₁ d₂ d₃ : Point) (AB D₁₂ D₂₃ : Line) (h1 : distinctPointsOnLine a b AB) (h2 : formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) (h3 : Point.onLine a AB) (h4 : Point.onLine b AB) (h5 : Point.onLine d₁ D₁₂) (h6 : Point.onLine d₂ D₁₂) (h7 : Point.onLine d₃ D₂₃)) : ∃ (e f g h : Point) (FG GH EF : Line), formParallelogram e f g h FG GH EF ∧ (∠ e:g:f = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ e:f:g + Triangle.area △ f:g:h = Triangle.area △ c:d₁:d₂) := by\n  -- Use the given line AB and the rectilinear angle D to construct the parallelogram.\n  obtain ⟨e, f, g, h, FG, GH, EF, hfg, hg⟩ := formParallelogram a b",
+      "probability": 0.09981515394718528,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 48.64587950706482,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (Triangle) ∧ (Triangle.area C = 0) ∧ (Angle) ∧ (formRectilinearAngle (a : Point) (b : Point) (c : Point) (AB : Line) (Line.mk a c))) → (∃ (p q r : Point) (PQ QR RP : Line), formParallelogram p q r a PQ QR RP ∧ Triangle.area C = Triangle.area △ p q r ∧ ∠ a:p:b = D)",
+      "full_output": "theorem apply_parallelogram_equal_to_triangle_to_straight_line (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (C : Triangle) (h2 : Triangle.area C = 0) (D : Angle) (h3 : formRectilinearAngle (a : Point) (b : Point) (c : Point) (AB : Line) (Line.mk a c)) : ∃ (p q r : Point) (PQ QR RP : Line), formParallelogram p q r a PQ QR RP ∧ Triangle.area C = Triangle.area △ p q r ∧ ∠ a:p:b = D := by\n  -- Use the kites 𐊊𐊪𐊅 and 𐊊𐊪𐊆\n  use a, b, c, AB, Line.mk a c, Line.mk b c, Line.mk a b\n```",
+      "probability": 0.09981140573326107,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 48.64587950706482,
+      "well_typed": false,
+      "token_counts": 202,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (formTriangle a b c AB AB AB) ∧ (formRectilinearAngle d d d AB AB)) → (∃ (l b' m' : Point) (LB' M'B' LM' : Line), formParallelogram l b' m' d LB' M'B' LM' ∧ (∠ d:l:b' = ∠ d:d:d) ∧ (Triangle.area △ l:b':m' = Triangle.area △ a:b:c))",
+      "full_output": "theorem apply_parallelogram_equal_to_triangle_on_straight_line (a b c d : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : formTriangle a b c AB AB AB) (h3 : formRectilinearAngle d d d AB AB) : ∃ (l b' m' : Point) (LB' M'B' LM' : Line), formParallelogram l b' m' d LB' M'B' LM' ∧ (∠ d:l:b' = ∠ d:d:d) ∧ (Triangle.area △ l:b':m' = Triangle.area △ a:b:c) := by\n  use a, b, c, AB, AB, AB\n  simp_all [formParallelogram, formRectilinearAngle, formTriangle]\n  <;> exact ⟨⟨⟨⟨⟨⟩, ⟨⟩, ⟨⟩⟩, ⟨⟩⟩⟩, ⟨⟩, ⟨⟩⟩\n```",
+      "probability": 0.09920534388071245,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 48.64587950706482,
+      "well_typed": false,
+      "token_counts": 209,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b d e AB CD AC BD) ∧ (formTriangle c d e CD BD AC) ∧ (formRectilinearAngle a b c AB CD AC) ∧ (∠ a:b:c = ∠ d:e:f)) → (∃ (l b m : Point) (LB BM LM : Line), formParallelogram l b m f LB BM LM ∧ ∠ a:b:c = ∠ b:l:m ∧ Triangle.area △ c:d:e = (Triangle.area △ c:d:e + Triangle.area △ c:e:f))",
+      "full_output": "theorem apply_parallelogram_thm (a b c d e f : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b d e AB CD AC BD) (h2 : formTriangle c d e CD BD AC) (h3 : formRectilinearAngle a b c AB CD AC) (h4 : ∠ a:b:c = ∠ d:e:f) : ∃ (l b m : Point) (LB BM LM : Line), formParallelogram l b m f LB BM LM ∧ ∠ a:b:c = ∠ b:l:m ∧ Triangle.area △ c:d:e = (Triangle.area △ c:d:e + Triangle.area △ c:e:f) := by\n  -- To be completed by the user\n  refine ⟨a, b, c, d, AB, AC, AD, ?_, ?_, ?_⟩ <;> simp_all\n```",
+      "probability": 0.09901443252112317,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 48.64587950706482,
+      "well_typed": false,
+      "token_counts": 194,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c₁ c₂ c₃ d₁ d₂ d₃ : Point) (AB C₁₂ C₂₃ C₃₁ D₁₂ D₂₃ : Line), formTriangle c₁ c₂ c₃ C₁₂ C₂₃ C₃₁ ∧ formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃ ∧ distinctPointsOnLine a b AB ∧ (∠ d₁:d₂:d₃ : ℝ) > 0 ∧ (∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟ → ∃ (m l : Point) (BM AL ML : Line), formParallelogram b m a l BM AL AB ML ∧ (∠ a:b:m = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ a:b:m + Triangle.area △ a:l:m = Triangle.area △ c₁:c₂:c₃)",
+  "nl_statement": "To apply a parallelogram equal to a given triangle to a given straight-line in a given rectilinear angle. Let $AB$ be the given straight-line,  $C$ the given triangle, and $D$ the given rectilinear angle. So it is required to apply a parallelogram equal to the given triangle $C$ to the given straight-line $AB$ in an angle equal to (angle) $D$. <prf> Thus, the parallelogram $LB$, equal to the given triangle $C$, has been applied to the given straight-line $AB$ in the angle $ABM$, which is equal to $D$.",
+  "lean4_header": ""
+}

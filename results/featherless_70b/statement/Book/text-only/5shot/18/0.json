@@ -1,0 +1,20 @@
+{
+  "id": "18",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((|(a─c)| > |(a─b)|)) → (∠ a:b:c > ∠ c:a:b)",
+      "full_output": "Alright, so I'm trying to formalize this theorem that says in any triangle, the greater side subtends the greater angle. Okay, let's break this down. \n\nFirst, I need to understand what it means for one side to be greater than another in a triangle. So, in triangle ABC, if side AC is longer than side AB, then the angle opposite AC, which is angle ABC, should be greater than the angle opposite AB, which is angle BCA. That makes sense intuitively because in a triangle, the larger side should be opposite the larger angle.\n\nNow, to formalize this, I need to use the given structures and guidelines. I see that there are axioms for points, lines, and circles, and various relations like congruent triangles, similar triangles, and so on. I also have notations for angles, segments, and areas.\n\nI think I should start by defining the triangle using the `formTriangle` function, which takes three points and three lines. So, let's say we have points A, B, and C, and lines AB, BC, and AC. Then, `formTriangle A B C AB BC AC` would give us a properly formed triangle.\n\nNext, I need to express that side AC is greater than side AB. Since the notation `|(a─b)|` represents the length of the segment between points a and b, I can write `|(a─c)| > |(a─b)|` to denote that side AC is longer than side AB.\n\nNow, I need to state that angle ABC is greater than angle BCA. The notation for angle is `∠ a:b:c`, which gives the degree of the angle at point b between points a and c. So, `∠ a:b:c` would be angle ABC, and `∠ c:a:b` would be angle BCA. Therefore, I can write `∠ a:b:c > ∠ c:a:b` to express that angle ABC is greater than angle BCA.\n\nPutting it all together, the theorem should take the points A, B, and C, the lines AB, BC, and AC, and the hypothesis that side AC is greater than side AB, and then conclude that angle ABC is greater than angle BCA.\n\nI also need to make sure that all variables are correctly bound and that I'm not introducing any intermediate variables, as per the guidelines. So, I'll define everything directly in the theorem statement.\n\nFinally, I'll end the statement with `:= by sorry` as instructed, indicating that the proof is omitted.\n\nSo, the formalized statement should look like this:\ntheorem example_thm (a b c : Point) (AB BC AC : Line) (h : |(a─c)| > |(a─b)|) : ∠ a:b:c > ∠ c:a:b := by sorry\n</think>\n\ntheorem example_thm (a b c : Point) (AB BC AC : Line) (h : |(a─c)| > |(a─b)|) : ∠ a:b:c > ∠ c:a:b := by sorry",
+      "probability": 1.0,
+      "source": "featherless",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 47.00244760513306,
+      "well_typed": false,
+      "token_counts": 637,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─c)| > |(a─b)|) → (∠ a:b:c > ∠ b:c:a)",
+  "nl_statement": "In any triangle, the greater side subtends the greater angle. For let $ABC$ be a triangle having side $AC$ greater than $AB$. I say that angle $ABC$ is also greater than $BCA$.   <prf>  Thus, $ABC$ is much greater than  $ACB$.  Thus, in any triangle, the greater side subtends the greater angle. (Which is) the very thing  it was required to show.",
+  "lean4_header": ""
+}

@@ -1,0 +1,128 @@
+{
+  "id": "13",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (¬(a = b)) ∧ (¬(c = b)) ∧ (¬(d = b))) → ((∠ c:b:a + ∠ a:b:d) = ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : twoLinesIntersectAtPoint AB CD b) (h4 : ¬(a = b)) (h5 : ¬(c = b)) (h6 : ¬(d = b)) : (∠ c:b:a + ∠ a:b:d) = ∟ + ∟ := by\n  -- We start by noting the given information and the relationships between the points and lines.\n  have h7 : a ≠ b := by intro h; apply h4; apply Points.onLine.inj h7 h7\n  have h8 : c ≠ b := by intro h; apply h5; apply Points.onLine.inj h8 h8\n  have h9 : d ≠ b := by intro h; apply h6; apply Points.onLine.inj h9 h9\n  -- Using the properties of angles formed by intersecting lines, we conclude that the sum of the angles around point b is two right angles.\n  have h10 : ∠ c:b:a +",
+      "probability": 0.1671738169000597,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.90645790100098,
+      "well_typed": true,
+      "token_counts": 105,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD b) ∧ (∠ a:b:c = ∟)) → (∠ a:b:d + ∠ a:b:c = ∟ + ∟)",
+      "full_output": "theorem angle_sum_eq_two_right_angles (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD b) (h2 : ∠ a:b:c = ∟) : ∠ a:b:d + ∠ a:b:c = ∟ + ∟ := by\n  -- We need to prove that the sum of angles ABD and ABC equals two right angles.\n  have h3 : ∠ a:b:d + ∠ a:b:c = ∟ + ∟ := by\n    -- Since angle ABC is given as a right angle, we can use this fact directly.\n    have h4 : ∠ a:b:c = ∟ := h2\n    -- Angle ABD is also a right angle because AB stands on CD and forms vertical angles with ABC.\n    have h5 : ∠ a:b:d = ∟ := by\n      apply Angle.right_angle\n      -- Since AB stands on CD, the angles ABD and ABC are vertical angles and thus equal.\n      exact h1\n    -- Summing the two right angles ABC and ABD gives us two right angles.\n    exact h4 + h5\n  -- The sum of angles ABD and",
+      "probability": 0.16701797592958006,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.90645790100098,
+      "well_typed": true,
+      "token_counts": 66,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (¬(a = b)) ∧ (¬(c = b)) ∧ (¬(d = b))) → ((∠ c:b:a + ∠ a:b:d) = ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : twoLinesIntersectAtPoint AB CD b) (h4 : ¬(a = b)) (h5 : ¬(c = b)) (h6 : ¬(d = b)) : (∠ c:b:a + ∠ a:b:d) = ∟ + ∟ := by\n  -- We start by noting the given information and the relationships between the points and lines.\n  have h7 : a ≠ b := by intro h; apply h4; apply Points.onLine.inj h7 h7\n  have h8 : c ≠ b := by intro h; apply h5; apply Points.onLine.inj h7 h7\n  have h9 : d ≠ b := by intro h; apply h6; apply Points.onLine.inj h7 h7\n  -- We use the properties of angles formed by intersecting lines and the fact that the sum of angles around a point is two right angles.\n  have h10 : (∠ c:b:a +",
+      "probability": 0.1668859628971011,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.90645790100098,
+      "well_typed": true,
+      "token_counts": 105,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD b) ∧ (∠ a:b:c = ∠ b:d:a)) → (∠ a:b:c = ∟ ∨ ∠ a:b:c + ∠ b:d:a = ∟ + ∟)",
+      "full_output": "theorem theorem_1_5 (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD b) (h2 : ∠ a:b:c = ∠ b:d:a) : ∠ a:b:c = ∟ ∨ ∠ a:b:c + ∠ b:d:a = ∟ + ∟ := by\n  -- We start by considering the angles formed by the intersecting lines AB and CD at point B.\n  have h3 := h2.symm\n  -- We use the fact that the sum of angles around a point is equal to two right angles.\n  have h4 : ∠ a:b:c + ∠ b:d:a = ∟ + ∟ := by\n    -- We know that the sum of angles around point B is two right angles.\n    apply Angle.sum_of_around_point\n  -- We now consider two cases: either angle ABC is a right angle, or it is not.\n  by_cases h5 : ∠ a:b:c = ∟\n  -- Case 1: If angle ABC is a right angle, then we have found our solution.\n  · exact Or.inl h5\n ",
+      "probability": 0.16640725355025243,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.90645790100098,
+      "well_typed": true,
+      "token_counts": 77,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD b) ∧ (∠ a:b:c = ∟)) → (∠ a:b:d + ∠ a:b:c = ∟ + ∟)",
+      "full_output": "theorem angle_sum_eq_two_right_angles (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD b) (h2 : ∠ a:b:c = ∟) : ∠ a:b:d + ∠ a:b:c = ∟ + ∟ := by\n  -- We need to prove that the sum of angles ABD and ABC equals two right angles.\n  have h3 : ∠ a:b:d + ∠ a:b:c = ∟ + ∟ := by\n    -- Since angle ABC is given as a right angle, we can use this fact directly.\n    have h4 : ∠ a:b:c = ∟ := h2\n    -- Angle ABD is also a right angle because AB stands on CD and forms vertical angles with ABC.\n    have h5 : ∠ a:b:d = ∟ := by\n      apply Angle.right_angle\n      -- The lines AB and CD intersect at point B, forming the vertical angles ABC and ABD.\n      apply twoLinesIntersectAtPoint\n      exact h1\n    -- Using the facts that both angles are right angles, we can conclude their sum is two right angles.\n    simp",
+      "probability": 0.16634183008815795,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.90645790100098,
+      "well_typed": true,
+      "token_counts": 66,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD b) ∧ (∠ a:b:c = ∟)) → (∠ a:b:d + ∠ a:b:c = ∟ + ∟)",
+      "full_output": "theorem angle_sum_eq_two_right_angles (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD b) (h2 : ∠ a:b:c = ∟) : ∠ a:b:d + ∠ a:b:c = ∟ + ∟ := by\n  -- We need to prove that the sum of angles ABD and ABC equals two right angles.\n  have h3 : ∠ a:b:d + ∠ a:b:c = ∟ + ∟ := by\n    -- Since angle ABC is given as a right angle, we can use this fact directly.\n    have h4 : ∠ a:b:c = ∟ := h2\n    -- Angle ABD is also a right angle because AB stands on CD and forms vertical angles with ABC.\n    have h5 : ∠ a:b:d = ∟ := by\n      -- Using the property of vertical angles, angles ABD and ABC are equal.\n      have h6 : ∠ a:b:d = ∠ a:b:c := by\n        apply Angle.right\n      -- Since angle ABC is a right angle, angle ABD must also be a right angle.\n      rw [h4",
+      "probability": 0.16614929442457818,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.90645790100098,
+      "well_typed": true,
+      "token_counts": 66,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (AB : Line) (CD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d₁ CD) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟)) → (∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟)",
+      "full_output": "theorem example_thm (a b c d₁ d₂ : Point) (AB CD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d₁ CD) (h3 : twoLinesIntersectAtPoint AB CD b) (h4 : ∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟) : ∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟ := by\n  -- We start by assuming the given conditions\n  have h5 : ∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟ := by\n    cases' h4 with h5 h6\n    -- If the first angle is a right angle, we are done\n    exact Or.inl h5\n    -- If the second angle is a right angle, we are done\n    exact Or.inr h6\n  -- We conclude the proof by exactness of the given conditions\n  exact h5\n```  \nAlright, so I have this problem here about angles formed by two intersecting straight lines. Okay, so let's see, it's saying that if a",
+      "probability": 9.085432676037202e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.90645790100098,
+      "well_typed": false,
+      "token_counts": 102,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (AB : Line) (CD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d₁ CD) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟)) → (∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟)",
+      "full_output": "theorem example_thm (a b c d₁ d₂ : Point) (AB CD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d₁ CD) (h3 : twoLinesIntersectAtPoint AB CD b) (h4 : ∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟) : ∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟ := by\n  -- We start by assuming the given conditions\n  have h5 : ∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟ := by\n    cases' h4 with h5 h6\n    -- If the first angle is a right angle, we are done\n    exact Or.inl h5\n    -- If the second angle is a right angle, we are done\n    exact Or.inr h6\n  -- Using the above, we conclude the proof\n  exact h5\n``` \nThe problem seems to be about proving that if a straight-line intersects another straight-line, forming two angles, then either one of these angles is a right angle (90 degrees",
+      "probability": 8.830079768387095e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.90645790100098,
+      "well_typed": false,
+      "token_counts": 102,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (AB : Line) (CD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d₁ CD) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟)) → (∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟)",
+      "full_output": "theorem example_thm (a b c d₁ d₂ : Point) (AB CD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d₁ CD) (h3 : twoLinesIntersectAtPoint AB CD b) (h4 : ∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟) : ∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟ := by\n  -- We start by assuming the given conditions\n  have h5 : ∠ a:b:c = ∟ ∨ ∠ b:d₁:a = ∟ := by\n    cases' h4 with h5 h6\n    -- If the first angle is a right angle, we are done\n    exact Or.inl h5\n    -- If the second angle is a right angle, we are done\n    exact Or.inr h6\n  -- We conclude that the angles must either be two right angles or their sum equals two right angles\n  exact h5\n``` \n\nAlright, let's break this down. So, the original theorem is about what happens when one straight line stands on another",
+      "probability": 4.23966266104493e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.90645790100098,
+      "well_typed": false,
+      "token_counts": 102,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD b) ∧ (∠ a:b:c = ∠ b:d:a)) → (∠ a:b:c = ∟ ∨ ∠ a:b:c + ∠ b:d:a = ∟ + ∟)",
+      "full_output": "theorem theorem_1_5 (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD b) (h2 : ∠ a:b:c = ∠ b:d:a) : ∠ a:b:c = ∟ ∨ ∠ a:b:c + ∠ b:d:a = ∟ + ∟ := by\n  -- We start by considering the angles formed by the intersecting lines AB and CD at point B.\n  have h3 := h2.symm\n  -- We use the fact that the sum of angles around a point is equal to two right angles.\n  have h4 : ∠ a:b:c + ∠ b:d:a = ∟ + ∟ := by\n    -- We know that the sum of angles around point B is two right angles.\n    apply Eq.symm\n    -- This is a fundamental property of Euclidean geometry.\n    aesop\n  -- We now conclude that either each angle is a right angle, or their sum is two right angles.\n  aesop\n```  \n\nOkay, so I've got to formalize this Euclidean geometry theorem into Lean 4 code. Alright, let's see.",
+      "probability": 1.7110351651878651e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.90645790100098,
+      "well_typed": true,
+      "token_counts": 77,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB CD : Line), AB ≠ CD ∧ distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ between d b c → ∠ c:b:a + ∠ a:b:d = ∟ + ∟",
+  "nl_statement": "If a straight-line stood on a(nother)  straight-line makes angles, it will certainly either make two right-angles, or (angles whose sum is) equal to two right-angles. For  let some straight-line $AB$ stood on the straight-line $CD$ make the angles $CBA$ and $ABD$. I say that the angles $CBA$ and $ABD$ are certainly either two right-angles, or (have a sum) equal to two right-angles. <prf> Thus, (the sum of) $ABD$ and $ABC$ is also equal to two right-angles.Thus, if a straight-line stood on a(nother)  straight-line makes angles, it will certainly either make two right-angles, or (angles whose sum is) equal to two right-angles.",
+  "lean4_header": ""
+}

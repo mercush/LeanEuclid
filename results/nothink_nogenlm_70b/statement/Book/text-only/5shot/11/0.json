@@ -1,0 +1,128 @@
+{
+  "id": "11",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (exists h : Point, h.onLine AB ∧ (|((c─h)| ⊥ |(a─b)|)))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : exists h : Point, h.onLine AB ∧ (|((c─h)| ⊥ |(a─b)|)) := by\n  -- Use classical logic to find a point h that will serve as the foot of the perpendicular from point C to line AB.\n  classical\n  -- Use an arbitrary point h on line AB and show that the line CH is perpendicular to AB.\n  use c\n  -- Show that point h (which is point C) is on line AB.\n  tauto\n```",
+      "probability": 0.10057128388596515,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 37.65189981460571,
+      "well_typed": false,
+      "token_counts": 143,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (exists h : Point, h.onLine AB ∧ (∠ a:h:c : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟)",
+      "full_output": "theorem to_draw_a_right_angle (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : exists h : Point, h.onLine AB ∧ (∠ a:h:c : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟ := by\n  -- This step is a placeholder to indicate the start of the proof.\n  have h3 : c.onLine AB := h2\n  -- This step is a placeholder to indicate the start of the proof.\n  use c\n  -- This step is a placeholder to indicate the start of the proof.\n  simp_all\n```",
+      "probability": 0.1004391890930736,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 37.65189981460571,
+      "well_typed": true,
+      "token_counts": 143,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ f : Point, c.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ f : Point, c.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟) := by\n  -- We need to show that there exists a point f such that CF is perpendicular to AB.\n  refine' ⟨c, h2, _⟩\n  -- We need to prove that the angle at c is a right angle.\n  -- Since AB is a straight line and c is on AB, the perpendicular CF at c is given.\n  right\n  -- This is an application of the given geometric construction.\n  <;> apply_rules [Point.onLine] <;> assumption\n```",
+      "probability": 0.10015440508433143,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 37.65189981460571,
+      "well_typed": true,
+      "token_counts": 178,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (Point.onLine c AB)) → (∃ h : Point, h.onLine AB ∧ ((∠ a:h:c : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : Point.onLine c AB) : ∃ h : Point, h.onLine AB ∧ ((∠ a:h:c : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟) := by\n  -- We start by using the given point c on the line AB.\n  have h2 : Point.onLine c AB := h2\n  -- We construct a point h such that the angles at h are right angles.\n  have h3 : ∃ h : Point, h.onLine AB ∧ ((∠ a:h:c : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟) := by\n    -- We use the fact that c is on AB to construct the right angles.\n    exact exists_right_angle a b c h1 h2\n  -- We conclude the existence of such a point h.\n  exact h3\n```",
+      "probability": 0.09997571910894919,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 37.65189981460571,
+      "well_typed": true,
+      "token_counts": 214,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ cf : Point, c.onLine AB ∧ ∠ b:c:cf = ∟ ∨ ∠ a:c:cf = ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ cf : Point, c.onLine AB ∧ ∠ b:c:cf = ∟ ∨ ∠ a:c:cf = ∟ := by\n  -- We use the given point C on line AB to draw a perpendicular line CF.\n  refine' ⟨c, by tauto, _⟩\n  -- We know that C is on line AB, so we only need to show that the angle at C is a right angle.\n  right\n  -- Since CF is drawn at right-angles to AB from point C, the angle ∠ a:c:cf is a right angle.\n  exact ∟\n```",
+      "probability": 0.09996452251380651,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 37.65189981460571,
+      "well_typed": true,
+      "token_counts": 167,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ f : Point, f.onLine AB ∧ ((∠ a:f:c : ℝ) = ∟ ∨ (∠ b:f:c : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ f : Point, f.onLine AB ∧ ((∠ a:f:c : ℝ) = ∟ ∨ (∠ b:f:c : ℝ) = ∟) := by\n  -- Use the given point c on line AB as the point where the perpendicular will be drawn.\n  use c\n  -- Simplify the context to show that the angles at c are right angles.\n  simp_all\n  -- Use Aesop to handle the logical implications and conclude the proof.\n  <;> aesop\n```",
+      "probability": 0.09992473830669707,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 37.65189981460571,
+      "well_typed": true,
+      "token_counts": 145,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ f : Point, f.onLine AB ∧ ((∠ a:f:c : ℝ) = ∟ ∨ (∠ b:f:c : ℝ) = ∟))",
+      "full_output": "theorem draw_perpendicular_from_point_on_line (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ f : Point, f.onLine AB ∧ ((∠ a:f:c : ℝ) = ∟ ∨ (∠ b:f:c : ℝ) = ∟) := by\n  refine' ⟨c, by simp [h2], _⟩\n  -- Since C is on AB, we need to find a point F such that CF is perpendicular to AB.\n  -- Given that C is on AB, the angle ∠a:f:c must be ∟ or the angle ∠b:f:c must be ∟.\n  by_cases h : c = a <;> simp_all [Line.onLine_def, distinctPointsOnLine]\n  <;> aesop\n```",
+      "probability": 0.09988759125084681,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 37.65189981460571,
+      "well_typed": true,
+      "token_counts": 183,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ f : Point, c.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ f : Point, c.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟) := by\n  obtain ⟨h, h_intersects, h_right⟩ := Point.hasPerp h1 h2\n  refine' ⟨h, h2, _⟩\n  cases' le_total ∟ ((∠ a:c:h : ℝ)) with h₁ h₁ <;> cases' le_total ∟ ((∠ b:c:h : ℝ)) with h₂ h₂ <;> simp_all [h_intersects, h_right]\n```",
+      "probability": 0.09979565325549251,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 37.65189981460571,
+      "well_typed": true,
+      "token_counts": 166,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((Point.onLine c AB)) → (∃ h : Point, h.onLine AB ∧ ∠ a:h:c = ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : Point.onLine c AB) : ∃ h : Point, h.onLine AB ∧ ∠ a:h:c = ∟ := by\n  -- Use the given point C on line AB.\n  use c\n  -- We need to prove that c is on AB and that the angle at c is a right angle.\n  constructor\n  -- The first part is straightforward since C is given on AB.\n  exact h1\n  -- For the second part, we use the fact that the angle at C is a right angle because we are to draw a straight-line at right-angles from C.\n  exact h1\n```",
+      "probability": 0.0997056034195128,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 37.65189981460571,
+      "well_typed": false,
+      "token_counts": 149,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ h : Point, h.onLine AB ∧ (∠ a:h:c = ∟ ∨ ∠ b:h:c = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ h : Point, h.onLine AB ∧ (∠ a:h:c = ∟ ∨ ∠ b:h:c = ∟) := by sorry\n```",
+      "probability": 0.0995812940813248,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 37.65189981460571,
+      "well_typed": true,
+      "token_counts": 72,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB : Line), distinctPointsOnLine a b AB ∧ between a c b → exists f : Point, ¬(f.onLine AB) ∧ (∠ a:c:f = ∟)",
+  "nl_statement": "To draw a straight-line at right-angles to a given straight-line from a given point on it. Let $AB$ be the given straight-line, and $C$ the given point on it. So it is required to draw a straight-line from the point $C$ at right-angles to the straight-line $AB$.  <prf> Thus, the straight-line $CF$ has been drawn at right-angles to the given straight-line $AB$ from the given point $C$ on it.",
+  "lean4_header": ""
+}

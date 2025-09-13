@@ -1,12 +1,12 @@
-import sys
-import os
 import argparse
 import json
-from typing import List
+import os
+import sys
 
-from LeanPotential.lean_parse import LeanParser, LeanTheorem, LeanCommand
+from LeanPotential.lean_parse import LeanCommand, LeanParser, LeanTheorem
 
 GEOMETRIC_SORTS = {"Point", "Line", "Circle"}
+
 
 def reformat_theorem(theorem: LeanTheorem) -> str:
     """
@@ -20,13 +20,13 @@ def reformat_theorem(theorem: LeanTheorem) -> str:
     if theorem.params:
         for param in theorem.params:
             content = param.strip()
-            if not content.startswith('(') or not content.endswith(')'):
+            if not content.startswith("(") or not content.endswith(")"):
                 continue  # Skip non-standard params like [DecidableEq Point]
-            
+
             content = content[1:-1]  # remove parentheses
-            
-            if ':' in content:
-                parts = content.split(':', 1)
+
+            if ":" in content:
+                parts = content.split(":", 1)
                 name_part = parts[0].strip()
                 type_part = parts[1].strip()
 
@@ -48,8 +48,8 @@ def reformat_theorem(theorem: LeanTheorem) -> str:
 
     hypotheses_part = ""
     if hypotheses:
-        hypotheses_part = f"({ ' ∧ '.join(hypotheses) })"
-    
+        hypotheses_part = f"({' ∧ '.join(hypotheses)})"
+
     conclusion_part = f"({theorem.typ})" if theorem.typ else "()"
 
     if forall_part:
@@ -63,31 +63,41 @@ def reformat_theorem(theorem: LeanTheorem) -> str:
         else:
             return conclusion_part
 
-def reformat_theorem_string(lean_code: str) -> str:
+
+def reformat_theorem_string(lean_code: str, reasoning: bool) -> str:
     """
     Parses a Lean theorem string, reformats it, and returns the result.
     If the string contains blocks enclosed in triple backticks, it uses the last one.
     """
     import re
-    lean_code = lean_code.strip()
-    
-    # Regex to find all code blocks: ```optional_lang ... ```
-    pattern = r"""```(?:")?\w+(?:"?)?\s*\n?(.*?)\n?\s*```"""
-    matches = re.findall(pattern, lean_code, re.DOTALL)
-    
-    content_to_process = lean_code
-    if matches:
-        # Use the content of the last matched block
-        content_to_process = matches[-1].strip()
 
-    content_to_process = "theorem" + content_to_process.split("theorem")[-1]
-    commands: List[LeanCommand] = LeanParser(content_to_process).parse_lean()
-    output_lines = []
+    lean_code = lean_code.strip()
+
+    if reasoning:
+        # Regex to find all code blocks: ```optional_lang ... ```
+        pattern = r"""```(?:")?\w+(?:"?)?\s*\n?(.*?)\n?\s*```"""
+        matches = re.findall(pattern, lean_code, re.DOTALL)
+
+        content_to_process = lean_code
+        if matches:
+            # Use the content of the last matched block
+            content_to_process = matches[-1].strip()
+
+        theorem_match = re.search(r'^theorem\s', content_to_process, re.MULTILINE)
+        if theorem_match:
+            content_to_process = content_to_process[theorem_match.start():]
+        else:
+            # Fallback to original logic if no line-starting theorem found
+            content_to_process = "theorem" + content_to_process.split("theorem")[-1]
+    else:
+        # When reasoning is off, process the input directly without any flexibility
+        content_to_process = lean_code
+
+    commands: list[LeanCommand] = LeanParser(content_to_process).parse_lean()
     for command in commands:
         if isinstance(command, LeanTheorem):
-            reformatted_theorem = reformat_theorem(command)
-            output_lines.append(reformatted_theorem)
-    return "\n".join(output_lines)
+            return reformat_theorem(command)
+    return "()"
 
 
 def process_file(input_path: str, output_path: str):
@@ -95,7 +105,7 @@ def process_file(input_path: str, output_path: str):
     Reads a JSON file, reformats the 'prediction' field, and writes the updated JSON data to an output file.
     """
     try:
-        with open(input_path, 'r') as f:
+        with open(input_path, "r") as f:
             data = json.load(f)
             lean_code = data.get("prediction", "")
     except (FileNotFoundError, json.JSONDecodeError) as e:
@@ -106,7 +116,7 @@ def process_file(input_path: str, output_path: str):
         print(f"No 'prediction' found in {input_path}", file=sys.stderr)
         return
 
-    commands: List[LeanCommand] = LeanParser(lean_code).parse_lean()
+    commands: list[LeanCommand] = LeanParser(lean_code).parse_lean()
 
     output_lines = []
     for command in commands:
@@ -117,14 +127,15 @@ def process_file(input_path: str, output_path: str):
     if not output_lines:
         print(f"No theorems found to reformat in {input_path}", file=sys.stderr)
         return
-    
-    data['prediction'] = "\n".join(output_lines)
+
+    data["prediction"] = "\n".join(output_lines)
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(output_path, 'w') as f:
+    with open(output_path, "w") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
-    
+
     print(f"Reformatted theorem written to {output_path}")
+
 
 def main(input_dir: str, output_dir: str):
     """
@@ -140,10 +151,22 @@ def main(input_dir: str, output_dir: str):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Reformat Lean theorems from JSON files.")
-    parser.add_argument("-i", "--input_dir", required=True, help="The input directory containing JSON files.")
-    parser.add_argument("-o", "--output_dir", required=True, help="The output directory to write the reformatted theorems to.")
-    
+    parser = argparse.ArgumentParser(
+        description="Reformat Lean theorems from JSON files."
+    )
+    parser.add_argument(
+        "-i",
+        "--input_dir",
+        required=True,
+        help="The input directory containing JSON files.",
+    )
+    parser.add_argument(
+        "-o",
+        "--output_dir",
+        required=True,
+        help="The output directory to write the reformatted theorems to.",
+    )
+
     args = parser.parse_args()
-    
+
     main(args.input_dir, args.output_dir)

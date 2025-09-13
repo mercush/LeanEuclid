@@ -1,0 +1,116 @@
+{
+  "id": "41",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (AE : Line) (BC : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AB AE) ∧ (¬(Point.onLine e BC))) → (2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c)",
+      "full_output": "theorem parallelogram_double_triangle_area (a b c d e : Point) (AB CD AE BC : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AB AE) (h3 : ¬(Point.onLine e BC)) : 2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c := by\n  -- Use the property of parallelograms and triangles to derive the area relationship.\n  have h4 : 2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c := by\n    -- Use the fact that the parallelogram and triangle share the same base and are between the same parallels.\n    have h5 : Line AE || BC := by\n      -- Since the parallelogram and triangle are between the same parallels, AE is parallel to BC.\n      apply h1.1\n    have h6 : Line AB || DC := by\n      -- In a parallelogram, opposite sides are parallel.\n      apply h1.2.1\n    have h7 : Line AD || BC := by",
+      "probability": 0.40030988974597076,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 64.73854804039001,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (AE : Line) (BC : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AB AE) ∧ (¬(Point.onLine e BC))) → (2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c)",
+      "full_output": "theorem parallelogram_double_triangle_area (a b c d e : Point) (AB CD AE BC : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AB AE) (h3 : ¬(Point.onLine e BC)) : 2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c := by\n  -- Use the property of parallelograms and triangles to derive the area relationship.\n  have h4 : 2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c := by\n    -- Use the fact that the parallelogram and triangle share the same base and are between the same parallels.\n    have h5 : Line AE || BC := by\n      -- Since the parallelogram and triangle are between the same parallels, AE is parallel to BC.\n      apply h1.1\n    have h6 : Line AB || DC := by\n      -- In a parallelogram, opposite sides are parallel.\n      apply h1.2\n    have h7 : Line AD || BC := by\n     ",
+      "probability": 0.1999533114031316,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 64.73854804039001,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (AE : Line) (BC : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AB AE) ∧ (¬(Point.onLine e BC))) → (2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c)",
+      "full_output": "theorem parallelogram_double_triangle_area (a b c d e : Point) (AB CD AE BC : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AB AE) (h3 : ¬(Point.onLine e BC)) : 2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c := by\n  -- Use the property of parallelograms and triangles to derive the area relationship.\n  have h4 : 2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c := by\n    -- Use the fact that the parallelogram and triangle share the same base and are between the same parallels.\n    have h5 : Line AE || BC := by\n      -- Since the parallelogram and triangle are between the same parallels, AE is parallel to BC.\n      apply Line.Parallel.symm\n      exact h1.1.2.2.2\n    have h6 : |(a─b)| = |(b─c)| := by\n      -- The base of the parallelogram and",
+      "probability": 0.1999402800870668,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 64.73854804039001,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (AE : Line) (BC : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AB AE) ∧ (¬(Point.onLine e BC))) → (2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c)",
+      "full_output": "theorem parallelogram_double_triangle_area (a b c d e : Point) (AB CD AE BC : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AB AE) (h3 : ¬(Point.onLine e BC)) : 2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c := by\n  -- Use the property of parallelograms and triangles to derive the area relationship.\n  have h4 : 2 * Triangle.area △ e:b:c = Triangle.area △ a:b:c + Triangle.area △ d:b:c := by\n    -- Use the fact that the parallelogram and triangle share the same base and are between the same parallels.\n    have h5 : Line AE || BC := by\n      -- Since the parallelogram and triangle are between the same parallels, AE is parallel to BC.\n      apply Line.Parallel.symm\n      exact h1.1.2.2.2\n    have h6 : |(a─b)| = |(b─c)| := by\n      -- Since the parallelogram has the same",
+      "probability": 0.19975627483750977,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 64.73854804039001,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (AE : Line) (BC : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AE BC) ∧ (¬(Point.onLine a BC)) ∧ (¬(Point.onLine d BC))) → (Triangle.area △ a:b:c = 2 * Triangle.area △ e:b:c)",
+      "full_output": "theorem parallelogram_double_area_triangle (a b c d e : Point) (AB CD AE BC : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AE BC) (h3 : ¬(Point.onLine a BC)) (h4 : ¬(Point.onLine d BC)) : Triangle.area △ a:b:c = 2 * Triangle.area △ e:b:c := by\n  -- Use the properties of the parallelogram and the triangle to derive the area relationship.\n  have h5 : formParallelogram a b c d AB CD AE BC := h1\n  have h6 : formTriangle e b c BC AE BC := h2\n  have h7 : ¬(Point.onLine a BC) := h3\n  have h8 : ¬(Point.onLine d BC) := h4\n  -- Apply the area doubling theorem for parallelograms and triangles.\n  apply Triangle.area_parallelogram_double_area_triangle\n  -- Use the given conditions to conclude the proof.\n  <;> aesop\n``` \n\nOkay, so I'm trying to formalize this theorem where it",
+      "probability": 1.3759826167171269e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 64.73854804039001,
+      "well_typed": true,
+      "token_counts": 96,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (AE : Line) (BC : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AE BC) ∧ (¬(Point.onLine a BC)) ∧ (¬(Point.onLine d BC))) → (Triangle.area △ a:b:c = 2 * Triangle.area △ e:b:c)",
+      "full_output": "theorem parallelogram_double_area_triangle (a b c d e : Point) (AB CD AE BC : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AE BC) (h3 : ¬(Point.onLine a BC)) (h4 : ¬(Point.onLine d BC)) : Triangle.area △ a:b:c = 2 * Triangle.area △ e:b:c := by\n  -- Use the properties of the parallelogram and the triangle to derive the area relationship.\n  have h5 : formParallelogram a b c d AB CD AE BC := h1\n  have h6 : formTriangle e b c BC AE BC := h2\n  have h7 : ¬(Point.onLine a BC) := h3\n  have h8 : ¬(Point.onLine d BC) := h4\n  -- Apply the area doubling theorem for parallelograms and triangles with the same base and between the same parallels.\n  apply Equiv.symm\n  apply area_parallelogram_double_area_triangle h1 h2 h3 h4\n``` yielded:\n\nAlright, I've got this problem",
+      "probability": 7.07683015765492e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 64.73854804039001,
+      "well_typed": true,
+      "token_counts": 96,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (AE : Line) (BC : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AE BC) ∧ (¬(Point.onLine a BC)) ∧ (¬(Point.onLine d BC))) → (Triangle.area △ a:b:c = 2 * Triangle.area △ e:b:c)",
+      "full_output": "theorem parallelogram_double_area_triangle (a b c d e : Point) (AB CD AE BC : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AE BC) (h3 : ¬(Point.onLine a BC)) (h4 : ¬(Point.onLine d BC)) : Triangle.area △ a:b:c = 2 * Triangle.area △ e:b:c := by\n  -- Use the properties of the parallelogram and the triangle to derive the area relationship.\n  have h5 : formParallelogram a b c d AB CD AE BC := h1\n  have h6 : formTriangle e b c BC AE BC := h2\n  have h7 : ¬(Point.onLine a BC) := h3\n  have h8 : ¬(Point.onLine d BC) := h4\n  -- Apply the area doubling theorem for parallelograms and triangles with the same base and between the same parallels.\n  apply Equiv.symm\n  apply area_parallelogram_double_area_triangle h1 h2 h3 h4\n```xyzzy\nAlright, I'm staring at",
+      "probability": 6.61309903171514e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 64.73854804039001,
+      "well_typed": true,
+      "token_counts": 96,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (AE : Line) (BC : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AE BC) ∧ (¬(Point.onLine a BC)) ∧ (¬(Point.onLine d BC))) → (Triangle.area △ a:b:c = 2 * Triangle.area △ e:b:c)",
+      "full_output": "theorem parallelogram_double_area_triangle (a b c d e : Point) (AB CD AE BC : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AE BC) (h3 : ¬(Point.onLine a BC)) (h4 : ¬(Point.onLine d BC)) : Triangle.area △ a:b:c = 2 * Triangle.area △ e:b:c := by\n  -- Use the properties of the parallelogram and the triangle to derive the area relationship.\n  have h5 : formParallelogram a b c d AB CD AE BC := h1\n  have h6 : formTriangle e b c BC AE BC := h2\n  have h7 : ¬(Point.onLine a BC) := h3\n  have h8 : ¬(Point.onLine d BC) := h4\n  -- Apply the area doubling theorem for parallelograms and triangles.\n  apply Triangle.area_parallelogram_double_area_triangle\n  -- Use the given conditions to conclude the proof.\n  <;> aesop\n```  \n```lean4\ntheorem parallelogram_double_area_triangle (a",
+      "probability": 6.5820678480565e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 64.73854804039001,
+      "well_typed": true,
+      "token_counts": 96,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (AE : Line) (BC : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AE BC) ∧ (¬(Point.onLine a BC)) ∧ (¬(Point.onLine d BC))) → (Triangle.area △ a:b:c = 2 * Triangle.area △ e:b:c)",
+      "full_output": "theorem parallelogram_double_area_triangle (a b c d e : Point) (AB CD AE BC : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AE BC) (h3 : ¬(Point.onLine a BC)) (h4 : ¬(Point.onLine d BC)) : Triangle.area △ a:b:c = 2 * Triangle.area △ e:b:c := by\n  -- Use the properties of the parallelogram and the triangle to derive the area relationship.\n  have h5 : formParallelogram a b c d AB CD AE BC := h1\n  have h6 : formTriangle e b c BC AE BC := h2\n  have h7 : ¬(Point.onLine a BC) := h3\n  have h8 : ¬(Point.onLine d BC) := h4\n  -- Apply the area doubling theorem for parallelograms and triangles with the same base and between the same parallels.\n  apply Equiv.symm\n  apply area_parallelogram_double_area_triangle h1 h2 h3 h4\n```[h1, h2, h3",
+      "probability": 6.212103116417221e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 64.73854804039001,
+      "well_typed": true,
+      "token_counts": 96,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AE BC AB CD BE CE : Line), formParallelogram a d b c AE BC AB CD ∧ formTriangle e b c BE BC CE ∧ e.onLine AE ∧ ¬(AE.intersectsLine BC) → (Triangle.area △ a:b:c : ℝ) + (Triangle.area △ a:c:d) = (Triangle.area △ e:b:c) + (Triangle.area △ e :b :c)",
+  "nl_statement": "If a parallelogram has the same base as a triangle, and is between the same parallels, then the parallelogram is double (the area) of the triangle. For let parallelogram $ABCD$ have the same base $BC$ as triangle $EBC$, and let it be between the same parallels, $BC$ and $AE$. I say that  parallelogram $ABCD$ is double (the area) of triangle $BEC$.  <prf> So parallelogram $ABCD$ is also double (the area) of triangle $EBC$.Thus, if a parallelogram has the same base as a triangle, and is between the same parallels, then the parallelogram is double (the area) of the triangle.",
+  "lean4_header": ""
+}

@@ -1,0 +1,128 @@
+{
+  "id": "47",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BA : Line) (AC : Line), ((formTriangle a b c BA AC (c.bходит?)) ∧ (∠ a:c:b = ∟)) → (|(b─c)|² = |(a─b)|² + |(a─c)|²)",
+      "full_output": "theorem example_thm (a b c : Point) (BA AC : Line) (h1 : formTriangle a b c BA AC (c.bходит?)) (h2 : ∠ a:c:b = ∟) : |(b─c)|² = |(a─b)|² + |(a─c)|² := by sorry\n-- theorem example_thm (a b c : Point) (BA AC : Line) (h1 : formTriangle a b c BA AC (c.bходит?)) (h2 : ∠ a:c:b = ∟) : |(b─c)|² = |(a─b)|² + |(a─c)|² := by sorry\n```",
+      "probability": 0.10086073757858643,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.9710750579834,
+      "well_typed": false,
+      "token_counts": 152,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BA : Line) (AC : Line) (BC : Line), ((formTriangle a b c BA AC BC) ∧ (((∠ a:a:b : ℝ) = ∟))) → (|(b─c)| ^ 2 = |(a─b)| ^ 2 + |(a─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (BA AC BC : Line) (h1 : formTriangle a b c BA AC BC) (h2 : ((∠ a:a:b : ℝ) = ∟)) : |(b─c)| ^ 2 = |(a─b)| ^ 2 + |(a─c)| ^ 2 := by\n  -- o overrides the default simplification to ensure the right-angle is properly handled\n  simp_all [pow_two]\n  -- Use the Pythagorean theorem for right-angled triangles\n  <;> apply Pythagoras\n  -- Apply the formTriangle and the right-angle hypothesis to conclude the proof\n  <;> assumption\n```",
+      "probability": 0.10053345876549923,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.9710750579834,
+      "well_typed": false,
+      "token_counts": 150,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (Angle.right (Angle.ofPoints a b c))) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Angle.right (Angle.ofPoints a b c)) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by sorry\n```",
+      "probability": 0.10021406083858445,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.9710750579834,
+      "well_typed": false,
+      "token_counts": 80,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem pythagoras_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by\n  -- Normalize the angles to ensure they are in the correct form\n  norm_num\n  -- Simplify the expression by expanding squares and using geometric properties\n  field_simp [sq]\n  -- Use linear arithmetic to conclude the proof\n  <;> nlinarith\n```",
+      "probability": 0.10007096511147766,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.9710750579834,
+      "well_typed": false,
+      "token_counts": 137,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:a:b = ∟)) → (|(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)|)",
+      "full_output": "theorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:a:b = ∟) : |(a─b)| * |(a─b)| = |(a─c)| * |(a─c)| + |(b─c)| * |(b─c)| := by\n  -- Use the geometric relations to prove the Pythagorean theorem.\n  -- The proof involves using the properties of right-angled triangles and the definition of squares on the sides.\n  sorry\n```",
+      "probability": 0.10004611673761182,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.9710750579834,
+      "well_typed": true,
+      "token_counts": 131,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─c)| ^ 2 = |(a─b)| ^ 2 + |(b─c)| ^ 2)",
+      "full_output": "theorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─c)| ^ 2 = |(a─b)| ^ 2 + |(b─c)| ^ 2 := by sorry\n```",
+      "probability": 0.1000129758655506,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.9710750579834,
+      "well_typed": false,
+      "token_counts": 81,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| * |(a─b)| = |(b─c)| * |(b─c)| + |(a─c)| * |(a─c)|)",
+      "full_output": "theorem pythagoras_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| * |(a─b)| = |(b─c)| * |(b─c)| + |(a─c)| * |(a─c)| := by sorry\n```",
+      "probability": 0.1000029965062167,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.9710750579834,
+      "well_typed": true,
+      "token_counts": 93,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ b:a:c = ∟)) → (|(b─c)| ^ 2 = |(b─a)| ^ 2 + |(c─a)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ b:a:c = ∟) : |(b─c)| ^ 2 = |(b─a)| ^ 2 + |(c─a)| ^ 2 := by sorry\n```",
+      "probability": 0.09989539367275077,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.9710750579834,
+      "well_typed": false,
+      "token_counts": 79,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BA : Line) (AC : Line) (BC : Line), ((formTriangle a b c BA AC BC) ∧ (∠ a:b:c = ∟)) → (|(b─c)| ^ 2 = |(a─b)| ^ 2 + |(a─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (BA AC BC : Line) (h1 : formTriangle a b c BA AC BC) (h2 : ∠ a:b:c = ∟) : |(b─c)| ^ 2 = |(a─b)| ^ 2 + |(a─c)| ^ 2 := by sorry\n```",
+      "probability": 0.09976374921944511,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.9710750579834,
+      "well_typed": false,
+      "token_counts": 79,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by\n  -- Use the geometric mean theorem (similar to the Pythagorean theorem) to relate the sides of the triangle.\n  have := congr_arg (fun x : Point => (|(a─x)| ^ 2)) (twoLinesIntersectAtPoint AB BC b)\n  -- Use algebraic manipulation to simplify the expression.\n  nlinarith [ae : AB ≠ BC] -- This line is incorrect because AB and BC are lines, not points.\n```",
+      "probability": 0.09859954570427734,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.9710750579834,
+      "well_typed": false,
+      "token_counts": 171,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c: Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ b:a:c : ℝ) = ∟ → |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)|",
+  "nl_statement": "In right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides containing the right-angle. Let $ABC$ be a right-angled triangle having the angle $BAC$a right-angle. I say that the square on $BC$ is equal to the (sum of the) squares on $BA$ and $AC$.  <prf>  Thus, the square on the side $BC$ is equal to the (sum of the) squares on the sides $BA$ and $AC$. Thus, in right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides surrounding the right-[angle].",
+  "lean4_header": ""
+}

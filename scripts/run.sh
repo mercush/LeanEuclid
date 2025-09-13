@@ -17,24 +17,24 @@ else
     echo "Starting from index $START_INDEX."
 fi
 
-source ~/lean-experiments/mau/src/LeanEuclid/venv/bin/activate
+source ~/lean-experiments/.venv/bin/activate
 
 echo "Starting autoformalization..."
-python3 AutoFormalization/statement/autoformalize.py \
+python3 ~/lean-experiments/src/LeanEuclid/AutoFormalization/statement/autoformalize.py \
 	--dataset Book \
 	--category "" \
-	--reasoning text-only \
 	--num_query 1 \
 	--num_examples 5 \
 	--project_dir "." \
-	--tensor_parallel_size 1 \
-    --start_index "$START_INDEX" \
-	--model_type genlm \
-	--model_name "deepseek-ai/DeepSeek-R1-Distill-Llama-8B" \
+	--tensor_parallel_size 4 \
+	--start_index "$START_INDEX" \
+	--model_type chat \
+	--model_name "deepseek-ai/DeepSeek-R1-Distill-Llama-70B" \
 	--preamble "import SystemE" \
-	--reasoning False \
 	--typecheck "none" \
-	--max_tokens 250 \
+	--max_tokens 2000 \
+    --n_particles 1 \
+    --reasoning True
 	2>&1 | tee autoformalize_output.txt
 
 echo "Starting evaluation..."

@@ -1,0 +1,128 @@
+{
+  "id": "40",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (BC : Line) (CE : Line) (AD : Line) (BE : Line), ((Triangle.congruent △ A:B:C △ C:D:E) ∧ (¬(BE.intersectsLine BC)) ∧ (Point.onLine A BC) ∧ (Point.onLine C CE) ∧ (Point.onLine B BE) ∧ (Point.onLine E BE)) → (¬(AD.intersectsLine BE))",
+      "full_output": "theorem example_thm (A B C D E : Point) (BC CE AD BE : Line) (h1 : Triangle.congruent △ A:B:C △ C:D:E) (h2 : ¬(BE.intersectsLine BC)) (h3 : Point.onLine A BC) (h4 : Point.onLine C CE) (h5 : Point.onLine B BE) (h6 : Point.onLine E BE) : ¬(AD.intersectsLine BE) := by\n  apply Triangle.congruent by\n  -- Use the fact that triangles ABC and CDE are congruent to deduce the required properties.\n  <;> simp_all [Line.intersectsLine]\n  <;> apply not_iff_not.mpr\n  <;> apply Triangle.congruent\n  <;> simp_all [Line.intersectsLine]\n  <;> apply not_iff_not.mpr\n  <;> apply Triangle.congruent\n  <;> simp_all [Line.intersectsLine]\n  <;> apply not_iff_not.mpr\n  <;> apply Triangle.congruent\n  <;> simp_all [Line.intersectsLine]\n  <;> apply not_iff_not",
+      "probability": 0.10107139676210092,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.37382364273071,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((congruent △ b c e △ b c e) ∧ (congruent △ b c e △ b c e) ∧ ((between b c e)) ∧ ((between b c e)) ∧ (¬(Line.intersectsLine BE AD))) → (¬(Line.intersectsLine BE AD))",
+      "full_output": "theorem example_thm (a b c d : Point) (BC CE BE AD : Line) (h1 : congruent △ b c e △ b c e) (h2 : congruent △ b c e △ b c e) (h3 : (between b c e)) (h4 : (between b c e)) (h5 : ¬(Line.intersectsLine BE AD)) : ¬(Line.intersectsLine BE AD) := by\n  -- This theorem states that if two triangles are equal and are on equal bases on the same side of a line, then they are between the same parallels.\n  -- Given the points a, b, c, d, and lines BC, CE, BE, AD, we need to show that AD is parallel to BE.\n  -- We use the properties of congruent triangles and the fact that the triangles are on equal bases and the same side of BE.\n  -- By the properties of congruent triangles, we know that corresponding parts of the triangles are equal.\n  -- Therefore, we can conclude that AD is parallel to BE.\n  tauto\n```",
+      "probability": 0.10056794591181566,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.37382364273071,
+      "well_typed": false,
+      "token_counts": 229,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints b c e)) ∧ (distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine c e CE) ∧ (distinctPointsOnLine b e BE) ∧ (distinctPointsOnLine a d AD) ∧ (between a b c) ∧ (between b c e) ∧ (between a b d) ∧ (between b c e) ∧ (between a d e) ∧ (sameSide a d AD) ∧ (sameSide b e BE)) → (¬(AD.intersectsLine BE))",
+      "full_output": "theorem equal_triangles_equal_bases_pr (a b c d e : Point) (BC CE BE AD : Line) (h1 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints b c e)) (h2 : distinctPointsOnLine b c BC) (h3 : distinctPointsOnLine c e CE) (h4 : distinctPointsOnLine b e BE) (h5 : distinctPointsOnLine a d AD) (h6 : between a b c) (h7 : between b c e) (h8 : between a b d) (h9 : between b c e) (h10 : between a d e) (h11 : sameSide a d AD) (h12 : sameSide b e BE) : ¬(AD.intersectsLine BE) := by\n  -- Use the `push_neg` tactic to negate the goal and simplify the proof.\n  push_neg\n  -- Use the `aesop` tactic to automatically solve the goal by applying known lemmas and rules.\n  aesop\n```",
+      "probability": 0.10021328343852194,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.37382364273071,
+      "well_typed": false,
+      "token_counts": 222,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((formTriangle a b c BC (Linegende) (Linegende)) ∧ (formTriangle a d e CE (Linegende) (Linegende)) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints a d e)) ∧ (Point.onLine a BE) ∧ (Point.onLine d BE) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine e CE) ∧ (Point.onLine a CE) ∧ (distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine c e CE) ∧ (distinctPointsOnLine a b (Linegende)) ∧ (distinctPointsOnLine d e (Linegende))) → ((¬(AD.intersectsLine BE)) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints a d e)))",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE BE AD : Line) (h1 : formTriangle a b c BC (Linegende) (Linegende)) (h2 : formTriangle a d e CE (Linegende) (Linegende)) (h3 : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints a d e)) (h4 : Point.onLine a BE) (h5 : Point.onLine d BE) (h6 : Point.onLine b BC) (h7 : Point.onLine c BC) (h8 : Point.onLine e CE) (h9 : Point.onLine a CE) (h10 : distinctPointsOnLine b c BC) (h11 : distinctPointsOnLine c e CE) (h12 : distinctPointsOnLine a b (Linegende)) (h13 : distinctPointsOnLine d e (Linegende)) : (¬(AD.intersectsLine BE)) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints a d e)) := by\n  -- This is a placeholder for the actual proof.\n  -- The actual proof would involve constructing the necessary geometric",
+      "probability": 0.10004153757956062,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.37382364273071,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((formTriangle b c a BC AD a) ∧ (formTriangle c e d CE BE f) ∧ (|(b─c)| = |(c─e)|) ∧ (Triangle.congruent (Triangle.ofPoints b c a) (Triangle.ofPoints c e d)) ∧ (b.onLine BC) ∧ (c.onLine BC) ∧ (c.onLine CE) ∧ (e.onLine CE) ∧ (b.onLine BE) ∧ (e.onLine BE) ∧ (a.onLine AD) ∧ (d.onLine AD)) → (¬(AD.intersectsLine BE))",
+      "full_output": "theorem if_equal_triangles_are_on_equal_bases_and_on_the_same_side_then_they_are_between_the_same_parallels (a b c d e f : Point) (BC CE BE AD : Line) (h1 : formTriangle b c a BC AD a) (h2 : formTriangle c e d CE BE f) (h3 : |(b─c)| = |(c─e)|) (h4 : Triangle.congruent (Triangle.ofPoints b c a) (Triangle.ofPoints c e d)) (h5 : b.onLine BC) (h6 : c.onLine BC) (h7 : c.onLine CE) (h8 : e.onLine CE) (h9 : b.onLine BE) (h10 : e.onLine BE) (h11 : a.onLine AD) (h12 : d.onLine AD) : ¬(AD.intersectsLine BE) := by\n  -- We need to prove that the lines AD and BE do not intersect.\n  -- This can be derived from the properties of congruent triangles and parallel lines.\n  have h13 : ¬(AD.intersectsLine BE) := by\n    -- Use the properties of congr",
+      "probability": 0.09995906195841013,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.37382364273071,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((formTriangle B C A BC (Line.intersectsLine BC BE) (Line.intersectsLine BE AD)) ∧ (formTriangle C E D CE (Line.intersectsLine CE BE) (Line.intersectsLine BE AD)) ∧ (|(B─C)| = |(C─E)|) ∧ (Triangle.congruent (Triangle.ofPoints B C A) (Triangle.ofPoints C E D)) ∧ (A.onLine AD) ∧ (D.onLine AD)) → (¬(AD.intersectsLine BE))",
+      "full_output": "theorem thm_1 (A B C D E : Point) (BC CE BE AD : Line) (h1 : formTriangle B C A BC (Line.intersectsLine BC BE) (Line.intersectsLine BE AD)) (h2 : formTriangle C E D CE (Line.intersectsLine CE BE) (Line.intersectsLine BE AD)) (h3 : |(B─C)| = |(C─E)|) (h4 : Triangle.congruent (Triangle.ofPoints B C A) (Triangle.ofPoints C E D)) (h5 : A.onLine AD) (h6 : D.onLine AD) : ¬(AD.intersectsLine BE) := by\n  -- Assuming the proof is a simple application of previously defined properties and theorems.\n  -- We use the fact that the triangles are equal and on the same base and side to conclude that AD is parallel to BE.\n  by_contra!\n  -- If AD were to intersect BE, it would contradict the properties of the triangles and the base.\n  <;> simp_all [Line.intersectsLine]\n  -- Simplifying the assumptions and using the properties of lines and triangles, we find a contradiction.\n ",
+      "probability": 0.09989467582211926,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.37382364273071,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line) (BE : Line) (AD : Line), ((distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine c e CE) ∧ (formTriangle a b c BC BE BC) ∧ (formTriangle d e c CE BE CE) ∧ (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e c))) → (Line.intersectsLine AD BE → ¬(Line.intersectsLine AD BE))",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE BE AD : Line) (h₁ : distinctPointsOnLine b c BC) (h₂ : distinctPointsOnLine c e CE) (h₃ : formTriangle a b c BC BE BC) (h₄ : formTriangle d e c CE BE CE) (h₅ : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e c)) : Line.intersectsLine AD BE → ¬(Line.intersectsLine AD BE) := by\n  intro h\n  simp_all\n  -- This is a placeholder for the actual proof, which would involve geometric reasoning and the use of Lean's tactics to establish the parallelism between AD and BE.\n  <;> aesop\n```",
+      "probability": 0.09979184660805633,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.37382364273071,
+      "well_typed": false,
+      "token_counts": 166,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (BC : Line) (CE : Line) (AD : Line) (BE : Line), ((formTriangle A B C BC AD BE) ∧ (formTriangle C D E CE AD BE) ∧ (|(B─C)| = |(C─E)|) ∧ (distinctPointsOnLine B C BC) ∧ (distinctPointsOnLine C E CE) ∧ (Triangle.congruent △ A B C △ C D E) ∧ (sameSide A D BE) ∧ (sameSide C D BE)) → (BE.intersectsLine AD ∧ BE.intersectsLine CE ∧ AD.intersectsLine BE)",
+      "full_output": "theorem equal_triangles_between_parallels (A B C D E : Point) (BC CE AD BE : Line) (h1 : formTriangle A B C BC AD BE) (h2 : formTriangle C D E CE AD BE) (h3 : |(B─C)| = |(C─E)|) (h4 : distinctPointsOnLine B C BC) (h5 : distinctPointsOnLine C E CE) (h6 : Triangle.congruent △ A B C △ C D E) (h7 : sameSide A D BE) (h8 : sameSide C D BE) : BE.intersectsLine AD ∧ BE.intersectsLine CE ∧ AD.intersectsLine BE := by\n  -- We start by assuming the given conditions and using the properties of congruent triangles and equal bases.\n  have h9 : AD.intersectsLine BE := by\n    apply twoLinesIntersectAtPoint\n    -- Using the fact that triangles ABC and CDE are congruent and on equal bases BC and CE, we can infer that AD and BE intersect.\n    apply twoLinesIntersectAtPoint\n    apply h1\n    apply h2\n  have h10 : BE",
+      "probability": 0.09977347153277379,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.37382364273071,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (BC : Line) (CE : Line), ((formTriangle b c a BC (Line endpoint (c := c, a := a)) (Line endpoint (a := b, c := c))) ∧ (formTriangle c b d CE (Line endpoint (c := c, a := d)) (Line endpoint (a := c, c := d))) ∧ (|(b─c)| = |(c─e)|) ∧ (sameSide a d (Line.endpoint (b := b, c := c)))) → ()",
+      "full_output": "theorem example_thm (a b c d : Point) (BC CE : Line) (h1 : formTriangle b c a BC (Line endpoint (c := c, a := a)) (Line endpoint (a := b, c := c))) (h2 : formTriangle c b d CE (Line endpoint (c := c, a := d)) (Line endpoint (a := c, c := d))) (h3 : |(b─c)| = |(c─e)|) (h4 : sameSide a d (Line.endpoint (b := b, c := c))) -- The formalized version of the theorem.\n```",
+      "probability": 0.09947938847321884,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.37382364273071,
+      "well_typed": false,
+      "token_counts": 134,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (BC : Line) (CE : Line), ((Triangle.congruent △ A:B:C △ C:D:E) ∧ (|(B─C)| = |(C─E)|) ∧ (Point.sameSide A D BC)) → (∃ h : Line, Line.intersectsLine BC h ∧ Line.intersectsLine CE h ∧ ¬(Line.intersectsLine BC (Line.intersectsLine CE h)))",
+      "full_output": "theorem equal_triangles_between_parallels (A B C D E : Point) (BC CE : Line) (h1 : Triangle.congruent △ A:B:C △ C:D:E) (h2 : |(B─C)| = |(C─E)|) (h3 : Point.sameSide A D BC) : ∃ h : Line, Line.intersectsLine BC h ∧ Line.intersectsLine CE h ∧ ¬(Line.intersectsLine BC (Line.intersectsLine CE h)) := by\n  -- Use the given conditions to find a line that is parallel to BE\n  obtain ⟨h, hh1, hh2⟩ := Line.intersectsLine BC CE\n  -- Show that AD is parallel to BE\n  refine ⟨h, hh1, hh2, ?_⟩\n  -- Use the properties of congruent triangles and intersecting lines to conclude\n  aesop\n```",
+      "probability": 0.09920739191342261,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 51.37382364273071,
+      "well_typed": false,
+      "token_counts": 189,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC CD DE AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d c e CD BC DE ∧ a.sameSide d BC ∧ b ≠ e ∧ |(b─c)| = |(c─e)| ∧ distinctPointsOnLine a d AD ∧ (Triangle.area △ a:b:c = Triangle.area △ d:c:e) → ¬(AD.intersectsLine BC)",
+  "nl_statement": "Equal triangles which are on equal bases, and on the same side, are also between the same parallels.Let $ABC$ and $CDE$ be equal triangles on the equal bases $BC$ and $CE$ (respectively), and on the same side (of $BE$). I say that they are also between the same parallels.For let $AD$ have been joined. I say that $AD$ is parallel to $BE$.   <prf> Thus, $AD$ is parallel to $BE$.Thus, equal triangles which are on equal bases, and on the same side, are also between the same parallels.",
+  "lean4_header": ""
+}

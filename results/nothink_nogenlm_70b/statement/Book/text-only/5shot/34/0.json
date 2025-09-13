@@ -1,0 +1,128 @@
+{
+  "id": "34",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AC : Line) (DB : Line) (BC : Line), ((formParallelogram a b c d AC DB BC) ∧ (Line.intersectsLine BC AC) ∧ (Point.onLine a AC) ∧ (Point.onLine b DB) ∧ (Point.onLine c DB) ∧ (Point.onLine c DB) ∧ (Point.onLine b AC) ∧ (Point.onLine a DB)) → (|(a─c)| = |(b─d)|)",
+      "full_output": "theorem parallelogrammic\n  (a b c d : Point)\n  (AC DB BC : Line)\n  (h1 : formParallelogram a b c d AC DB BC)\n  (h2 : Line.intersectsLine BC AC)\n  (h3 : Point.onLine a AC)\n  (h4 : Point.onLine b DB)\n  (h5 : Point.onLine c DB)\n  (h6 : Point.onLine c DB)\n  (h7 : Point.onLine b AC)\n  (h8 : Point.onLine a DB) :\n  |(a─c)| = |(b─d)| :=\n  by\n  -- This is a placeholder to satisfy the requirement, and the actual proof would go here.\n  -- The proof would involve showing that the opposite sides of the parallelogram are equal and the diagonal bisects the parallelogram.\n  -- The details of the proof would use properties of parallelograms and equalities of line segments and angles.\n  -- For now, we are using a placeholder to conclude the proof.\n  have h9 : |(a─c)| = |(b─d)| := by\n    -- This is a placeholder",
+      "probability": 0.10065168388559177,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.445114850997925,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (BC : Line), ((formParallelogram a c d b AC DB AC DB)) → (|(a─c)| = |(d─b)| ∧ ∠ a:c:d = ∠ b:d:a ∧ |(a─c)| = |(b─d)| ∧ |(a─d)| = |(c─b)|)",
+      "full_output": "theorem parallelogrammicFigureProperties (a c d b : Point) (AC DB BC : Line) (h : formParallelogram a c d b AC DB AC DB) : |(a─c)| = |(d─b)| ∧ ∠ a:c:d = ∠ b:d:a ∧ |(a─c)| = |(b─d)| ∧ |(a─d)| = |(c─b)| := by\n  -- Using the properties of parallelograms, we derive the equalities and bisecting properties.\n  refine ⟨?_, ?_, ?_, ?_⟩ <;>\n    (try simpa [h.1] using h.2) <;>\n      aesop\n```",
+      "probability": 0.10062745229070555,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.445114850997925,
+      "well_typed": false,
+      "token_counts": 155,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (CD : Line) (BC : Line), ((formParallelogram a c d b AC DB CD BC)) → (|(a─c)| = |(d─b)| ∧ ∠ a:c:d : ℝ = ∠ d:b:c ∧ (c : Point).onLine BC ∧ (b : Point).onLine BC ∧ ∠ a:c:b : ℝ = ∠ c : d : b)",
+      "full_output": "theorem parallelogrammic_figure_props (a c d b : Point) (AC DB CD BC : Line) (h1 : formParallelogram a c d b AC DB CD BC) : |(a─c)| = |(d─b)| ∧ ∠ a:c:d : ℝ = ∠ d:b:c ∧ (c : Point).onLine BC ∧ (b : Point).onLine BC ∧ ∠ a:c:b : ℝ = ∠ c : d : b := by\n  refine ⟨?_, ?_, ?_, ?_, ?_⟩\n  -- Each goal corresponds to a property of the parallelogrammic figure.\n  -- We use the properties of the parallelogram to prove the desired equalities.\n  all_goals\n    try\n      -- Use the properties of the parallelogram to prove the equality of sides and angles.\n      simp_all [formParallelogram, onLine, between]\n      -- Simplify the expressions using the definitions and properties of the parallelogram.\n      aesop\n    <;> aesop\n```",
+      "probability": 0.10049390588257262,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.445114850997925,
+      "well_typed": false,
+      "token_counts": 225,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → (|(a─c)| = |(b─d)| ∧ ∠ a:b:c = ∠ b:d:c ∧ ∠ a:c:d = ∠ b:c:a)",
+      "full_output": "theorem theorem_parallelogram (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) : |(a─c)| = |(b─d)| ∧ ∠ a:b:c = ∠ b:d:c ∧ ∠ a:c:d = ∠ b:c:a := by\n  constructor\n  <;> simp [formParallelogram] at h1 ⊢\n  <;> simp [formParallelogram] at h1 ⊢\n  <;> simp [formParallelogram] at h1 ⊢\n  <;> simp [formParallelogram] at h1 ⊢\n  <;> simp [formParallelogram] at h1 ⊢\n  <;> simp [formParallelogram] at h1 ⊢\n  <;> simp [formParallelogram] at h1 ⊢\n  <;> simp [formParallelogram] at h1 ⊢\n  <;> simp [formParallelogram] at h1 ⊢\n  <;>",
+      "probability": 0.10015640842020591,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.445114850997925,
+      "well_typed": true,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (AD : Line) (BC : Line), ((formParallelogram a c d b AC DB AD BC)) → (|(a─c)| = |(d─b)| ∧ |(a─d)| = |(c─b)| ∧ ∠ a:d:b = ∠ c:ad:b ∧ ∠ a:d:c = ∠ c:ad:d ∧ (|(a─d)| + |(d─b)|) / 2 = |(a─d)| ∧ (|(a─d)| + |(d─b)|) / 2 = |(d─b)|)",
+      "full_output": "theorem parallelogram_opposite_sides_angles_equal_diagonal_bisect (a c d b : Point) (AC DB AD BC : Line) (h1 : formParallelogram a c d b AC DB AD BC) : |(a─c)| = |(d─b)| ∧ |(a─d)| = |(c─b)| ∧ ∠ a:d:b = ∠ c:ad:b ∧ ∠ a:d:c = ∠ c:ad:d ∧ (|(a─d)| + |(d─b)|) / 2 = |(a─d)| ∧ (|(a─d)| + |(d─b)|) / 2 = |(d─b)| := by\n  -- Refresh the record to ensure all fields are correctly populated\n  have h1 : formParallelogram a c d b AC DB AD BC := h1\n  -- Since ACDB is a parallelogram, opposite sides are equal\n  have h2 : |(a─c)| = |(d─b)| := h1.1\n  -- Opposite sides are equal\n  have h3 : |(a─d)|",
+      "probability": 0.09999494634911295,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.445114850997925,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (ACDB : Line), ((formParallelogram a c d b AC DB ACDB)) → (|(a─c)| = |(d─b)| ∧ |(a─d)| = |(c─b)| ∧ ∠ a:c:d = ∠ d:b:a ∧ ∠ c:a:d = ∠ b:c:a ∧ ∃ c' : Point, c' = a)",
+      "full_output": "theorem parallelogram_opposite_sides_angles_equal (a c d b : Point) (AC DB ACDB : Line) (h1 : formParallelogram a c d b AC DB ACDB) : |(a─c)| = |(d─b)| ∧ |(a─d)| = |(c─b)| ∧ ∠ a:c:d = ∠ d:b:a ∧ ∠ c:a:d = ∠ b:c:a ∧ ∃ c' : Point, c' = a := by\n    -- We need to prove that opposite sides and angles are equal, and that the diagonal cuts the parallelogram in half.\n    refine ⟨?_, ?_, ?_, ?_, ?_⟩\n    -- Using the properties of a parallelogram, we know that opposite sides are equal.\n    -- This is a direct consequence of the definition of a parallelogram.\n    -- Similarly, opposite angles are equal because the opposite sides are parallel and equal.\n    -- The diagonal cuts the parallelogram in half by dividing it into two congruent triangles.\n    <;> simp_all [formParallelogram, formTriangle, distinctPointsOnLine, between, Segment.endpoints",
+      "probability": 0.09991561580175354,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.445114850997925,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (BC : Line), ((formParallelogram a c d b AC DB AC DB) ∧ (a ≠ c) ∧ (c ≠ d) ∧ (d ≠ b) ∧ (b ≠ a)) → (|(a─d)| = |(c─b)| ∧ |(a─c)| = |(d─b)| ∧ ∠ a:c:d = ∠ c:b:a ∧ ∠ a:c:b = ∠ d:c:a ∧ ∠ d:b:c = ∠ a:d:c ∧ ∠ c:b:d = ∠ c:a:b ∧ ∠ a:b:d = ∠ a:c:d ∧ Triangle.area △ a:c:d = Triangle.area △ c:b:a)",
+      "full_output": "theorem parallelogrammic_figure_props (a c d b : Point) (AC DB BC : Line) (h1 : formParallelogram a c d b AC DB AC DB) (h2 : a ≠ c) (h3 : c ≠ d) (h4 : d ≠ b) (h5 : b ≠ a) : |(a─d)| = |(c─b)| ∧ |(a─c)| = |(d─b)| ∧ ∠ a:c:d = ∠ c:b:a ∧ ∠ a:c:b = ∠ d:c:a ∧ ∠ d:b:c = ∠ a:d:c ∧ ∠ c:b:d = ∠ c:a:b ∧ ∠ a:b:d = ∠ a:c:d ∧ Triangle.area △ a:c:d = Triangle.area △ c:b:a := by\n  -- Use the properties of parallelograms to prove the statement.\n  have h6 := h1.2\n  have h7 := h1.1\n  have h8 := h1.2\n  have h9 := h1.1\n  have h10 := h1.2\n  have h11 := h1.1",
+      "probability": 0.09990091290666848,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.445114850997925,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (BC : Line), ((formParallelogram a c d b AC DB AC DB)) → (|(a─c)| = |(d─b)| ∧ ∠ a:c:d = ∠ d:b:a ∧ |(a─b)| = |(c─d)|)",
+      "full_output": "theorem parallelogram_properties (a c d b : Point) (AC DB BC : Line) (h1 : formParallelogram a c d b AC DB AC DB) : |(a─c)| = |(d─b)| ∧ ∠ a:c:d = ∠ d:b:a ∧ |(a─b)| = |(c─d)| := by\n  -- Extract the properties of the parallelogram from the hypothesis\n  have h2 : Point.onLine a AC := h1.1\n  have h3 : Point.onLine c AC := h1.2.1\n  have h4 : Point.onLine d DB := h1.2.2.1\n  have h5 : Point.onLine b DB := h1.2.2.2.1\n  have h6 : Point.onLine a AC := h1.2.2.2.2.1\n  have h7 : Point.onLine d DB := h1.2.2.2.2.2\n  -- Prove the opposite sides are equal\n  have h8 : |(a─c)| = |(d─b)| := by\n",
+      "probability": 0.0998739843407245,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.445114850997925,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (BC : Line) (BD : Line) (AD : Line), ((formParallelogram a c d b AC DB AD BC) ∧ (formQuadrilateral a c d b AC DB AD BC)) → (|(a─c)| = |(d─b)| ∧ |(c─d)| = |(b─a)| ∧ ∠ a:c:d = ∠ b:c:a ∧ ∠ d:c:b = ∠ c:a:b ∧ ∠ a:d:c = ∠ d:c:a ∧ ∠ d:a:c = ∠ d:c:a ∧ ∠ a:c:b = ∠ d:c:a)",
+      "full_output": "theorem parallelogrammic_figure_properties (a c d b : Point) (AC DB BC BD AD : Line)\n(h1 : formParallelogram a c d b AC DB AD BC)\n(h2 : formQuadrilateral a c d b AC DB AD BC)\n: |(a─c)| = |(d─b)| ∧ |(c─d)| = |(b─a)| ∧ ∠ a:c:d = ∠ b:c:a ∧ ∠ d:c:b = ∠ c:a:b ∧ ∠ a:d:c = ∠ d:c:a ∧ ∠ d:a:c = ∠ d:c:a ∧ ∠ a:c:b = ∠ d:c:a := by\n    -- Using the properties of a parallelogram, we can directly infer the required properties.\n    refine' ⟨|(_ := h1.1.2), (_ := h1.2.2)|⟩\n```",
+      "probability": 0.09945116120012566,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.445114850997925,
+      "well_typed": false,
+      "token_counts": 193,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (AD : Line) (DC : Line), ((formQuadrilateral a c d b AC DB AD DC) ∧ (∃ f g e c' : Point, ∃ FG EC EF CG : Line, formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d:ₐ:a) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:c:d))) → (|(a─c)| = |(d─b)|)",
+      "full_output": "theorem parallelogram_properties (a c d b : Point) (AC DB AD DC : Line) (h1 : formQuadrilateral a c d b AC DB AD DC) (h2 : ∃ f g e c' : Point, ∃ FG EC EF CG : Line, formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d:ₐ:a) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:c:d)) : |(a─c)| = |(d─b)| := by\n  -- Given a quadrilateral formed by points a, c, d, b and lines AC, DB, AD, DC.\n  have h1 : formQuadrilateral a c d b AC DB AD DC := h1\n  -- There exists a parallelogram structure within the quadrilateral.\n  have h2 : ∃ f g e c' : Point, ∃ FG EC EF CG : Line, formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d:ₐ:a) ∧ (",
+      "probability": 0.09893392892253901,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 53.445114850997925,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB CD AC BD BC : Line), formParallelogram a b c d AB CD AC BD ∧ distinctPointsOnLine b c BC → |(a─b)| = |(c─d)| ∧ |(a─c)| = |(b─d)| ∧ ∠ a:b:d = ∠ a:c:d ∧ ∠ b:a:c = ∠ c:d:b ∧ Triangle.area △ a:b:c = Triangle.area △ d:c:b",
+  "nl_statement": "In parallelogrammic figures the opposite sides and angles are equal to one another, and a diagonal cuts them in half.Let $ACDB$ be a parallelogrammic figure, and $BC$ its diagonal. I say that for parallelogram $ACDB$, the opposite sides and angles are equal to one another, and the diagonal $BC$ cuts it in half. <prf> Thus, the base $AC$ (is) also equal to $DB$, and triangle $ABC$ is equal to triangle $BCD$ [Prop.~1.4].Thus, the diagonal $BC$ cuts the parallelogram $ACDB$ in half.",
+  "lean4_header": ""
+}

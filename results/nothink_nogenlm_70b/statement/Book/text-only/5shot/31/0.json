@@ -1,0 +1,128 @@
+{
+  "id": "31",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ l : Point, |(a─l)| = |(b─c)|)",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ l : Point, |(a─l)| = |(b─c)| := by\n  -- Use the point b as the starting point for the new line segment.\n  use b\n  -- Use the definition of equality to show that the lengths are equal.\n  rw [eq_comm]\n  -- Apply the axiom that if two points form a line, the length is the same as any segment on that line.\n  apply Segment.equal_iff_endpointsTrans\n  -- Verify the conditions for the axiom to hold.\n  assumption\n  <;> assumption\n```",
+      "probability": 0.10075798389641903,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.89395356178284,
+      "well_typed": true,
+      "token_counts": 155,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b) ∧ (a ≠ c)) → (∃ l : Point, |(a─l)| = |(b─c)| ∧ ¬(a.onLine BC))",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) (h3 : a ≠ c) : ∃ l : Point, |(a─l)| = |(b─c)| ∧ ¬(a.onLine BC) := by\n  -- Use the fact that the point a is distinct from both b and c to find a point l such that the segment al is parallel to bc.\n  refine ⟨a, ?_, ?_⟩\n  -- Since the triangle is isosceles with AB = AC, we know that the angles at B and C are equal.\n  -- This implies that the triangle is isosceles, and thus the sides opposite the equal angles are equal.\n  all_goals simp_all [distinctPointsOnLine, Point.onLine]\n```",
+      "probability": 0.10070010970281766,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.89395356178284,
+      "well_typed": true,
+      "token_counts": 184,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (L : Line), ((Point.onLine b L) ∧ (Point.onLine c L) ∧ (a ≠ b) ∧ (a ≠ c)) → (∃ l : Line, Point.onLine a l ∧ ¬(L.intersectsLine l))",
+      "full_output": "theorem example_thm (a : Point) (b c : Point) (L : Line) (h1 : Point.onLine b L) (h2 : Point.onLine c L) (h3 : a ≠ b) (h4 : a ≠ c) : ∃ l : Line, Point.onLine a l ∧ ¬(L.intersectsLine l) := by\n  -- This is a placeholder for the actual implementation\n  use Line\n  -- This is a placeholder for the actual proof\n  tauto\n```",
+      "probability": 0.10018659613608226,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.89395356178284,
+      "well_typed": true,
+      "token_counts": 111,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ l : Point, |(a─l)| = |(b─c)|)",
+      "full_output": "theorem example_thm (a : Point) (b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ l : Point, |(a─l)| = |(b─c)| := by\n  -- Use the given straight-line BC and the point a to construct a parallel line.\n  use b\n  -- Since BC is already a straight-line and a is a distinct point, we can directly use it.\n  simp [h1, h2]\n  -- This simplifies the proof by using the distinctness and properties of the points and lines.\n  <;> aesop\n```",
+      "probability": 0.10018606482189041,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.89395356178284,
+      "well_typed": true,
+      "token_counts": 144,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((¬a.onLine BC)) → (∃ eaf : Line, a.onLine eaf ∧ ¬eaf.intersectsLine BC)",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : ¬a.onLine BC) : ∃ eaf : Line, a.onLine eaf ∧ ¬eaf.intersectsLine BC := by\n  -- This is a placeholder for the actual proof, which should be completed by the user.\n  refine' ⟨BC, _⟩\n  aesop\n```",
+      "probability": 0.10017622804833441,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.89395356178284,
+      "well_typed": false,
+      "token_counts": 83,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ l : Point, l.onLine (Linethrough a b) ∧ ¬(Line.intersectsLine BC (Linethrough a b)))",
+      "full_output": "theorem draw_parallel_line (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ l : Point, l.onLine (Linethrough a b) ∧ ¬(Line.intersectsLine BC (Linethrough a b)) := by\n  -- Use the given distinct points on the line BC\n  apply Exists.intro a\n  -- Simplify the context\n  simp\n```",
+      "probability": 0.10003865754456744,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.89395356178284,
+      "well_typed": false,
+      "token_counts": 100,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (¬(a.onLine BC))) → (∃ l : Line, ¬(l.intersectsLine BC) ∧ a.onLine l)",
+      "full_output": "theorem example_thm (a : Point) (b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : ¬(a.onLine BC)) : ∃ l : Line, ¬(l.intersectsLine BC) ∧ a.onLine l := by\n  -- Use the existence of a line through `a` that does not intersect `BC`.\n  have := exists_parallel_line a BC\n  -- Extract the line `l` from the existence statement.\n  cases' this with l hl\n  -- Use the non-intersection property as the first part of the conjunction.\n  refine' ⟨l, hl.1, _⟩\n  -- Use the fact that `a` is on `l` as the second part of the conjunction.\n  exact hl.2\n```",
+      "probability": 0.09961920093935277,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.89395356178284,
+      "well_typed": true,
+      "token_counts": 173,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (BC : Line), ((Point.onLine B BC) ∧ (Point.onLine C BC) ∧ (A ≠ B)) → (∃ E F : Point, Point.onLine E (Line_af A E) ∧ Point.onLine F (Line_af A F) ∧ ¬Line.intersectsLine (Line_af A E) BC)",
+      "full_output": "theorem example_thm (A B C : Point) (BC : Line) (h1 : Point.onLine B BC) (h2 : Point.onLine C BC) (h3 : A ≠ B) : ∃ E F : Point, Point.onLine E (Line_af A E) ∧ Point.onLine F (Line_af A F) ∧ ¬Line.intersectsLine (Line_af A E) BC := by\n  -- Step 1: We need to find two points E and F such that EAF is a straight line.\n  refine ⟨A, A,?_⟩\n  -- Step 2: Show that the line EAF intersects itself, which is trivially true.\n  norm_num\n  <;> simp_all\n  <;> aesop\n```",
+      "probability": 0.09958591247062744,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.89395356178284,
+      "well_typed": false,
+      "token_counts": 164,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ h : Point, h.onLine BC ∧ ¬(h.onLine BC))",
+      "full_output": "theorem to_draw_a_straight_line_parallel_to_a_given_straight_line_through_a_given_point (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ h : Point, h.onLine BC ∧ ¬(h.onLine BC) := by\n  -- I need to find a point h that is on the line BC and not on the same line as a and b.\n  use b\n  -- By choosing point b, which is already on line BC, I satisfy the condition for h being on BC.\n  -- Since a is not equal to b, a and b are distinct points on line BC.\n  simp_all\n  -- Simplifying the conditions, I conclude that point b itself satisfies the required properties.\n  <;> assumption\n```",
+      "probability": 0.09954370361625546,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.89395356178284,
+      "well_typed": true,
+      "token_counts": 175,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((¬(a.onLine BC))) → (exists l : Line, ¬(l.intersectsLine BC) ∧ a.onLine l)",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : ¬(a.onLine BC)) : exists l : Line, ¬(l.intersectsLine BC) ∧ a.onLine l := by\n  -- Use the given line BC and the given point a, which is not on BC.\n  -- We need to find a line l that does not intersect BC and passes through a.\n  -- By the properties of parallel lines, such a line exists.\n  exact ⟨Line\tclient_BC a (by assumption), by simp [h1]⟩\n```",
+      "probability": 0.09920554282365297,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.89395356178284,
+      "well_typed": false,
+      "token_counts": 121,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)",
+  "nl_statement": "To draw a straight-line parallel to a given straight-line, through a given point.Let $A$ be the given point, and $BC$ the given straight-line. So it is required to draw a straight-line parallel to the straight-line $BC$, through the point $A$.  <prf>  Thus, the straight-line $EAF$ has been drawn parallel to the given straight-line $BC$, through the  given point $A$.",
+  "lean4_header": ""
+}

@@ -1,0 +1,128 @@
+{
+  "id": "43",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (Point.onLine a AC) ∧ (Point.onLine c AC) ∧ (Point.onLine b BD) ∧ (Point.onLine d BD)) → ((|(a─b)| = |(c─d)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : Point.onLine a AC) (h3 : Point.onLine c AC) (h4 : Point.onLine b BD) (h5 : Point.onLine d BD) : (|(a─b)| = |(c─d)|) := by\n  -- We start by getting the points where the lines intersect.\n  have h6 : Point.intersectsLine AB BD := by apply h1.1\n  have h7 : Point.intersectsLine CD BD := by apply h1.2\n  have h8 : Point.intersectsLine AB AC := by apply h1.2.1\n  have h9 : Point.intersectsLine CD AC := by apply h1.2.2\n  -- We use the properties of the parallelogram to show that the complements are equal.\n  cases' h1 with h1 h1_1\n  cases' h1_1 with h2 h2_1\n  cases' h2_1 with h3 h3_",
+      "probability": 0.2006002095764684,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 65.7967517375946,
+      "well_typed": true,
+      "token_counts": 93,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (Point.onLine a AC) ∧ (Point.onLine c AC) ∧ (Point.onLine b BD) ∧ (Point.onLine d BD)) → ((|(a─b)| = |(c─d)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : Point.onLine a AC) (h3 : Point.onLine c AC) (h4 : Point.onLine b BD) (h5 : Point.onLine d BD) : (|(a─b)| = |(c─d)|) := by\n  -- We start by getting the points where the lines intersect.\n  have h6 : Point.intersectsLine AB BD := by apply h1.1\n  have h7 : Point.intersectsLine AB AC := by apply h1.2.1\n  have h8 : Point.intersectsLine CD AC := by apply h1.2.2.1\n  have h9 : Point.intersectsLine CD BD := by apply h1.2.2.2\n  -- We use the properties of the parallelogram to show that the sides are equal.\n  have h10 : |(a─b)| = |(c─d)| := by\n    -- Use the fact that opposite sides of a parallelogram are equal",
+      "probability": 0.2003215452227621,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 65.7967517375946,
+      "well_typed": true,
+      "token_counts": 93,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (Point.onLine a AC) ∧ (Point.onLine c AC) ∧ (Point.onLine b BD) ∧ (Point.onLine d BD)) → ((|(a─b)| = |(c─d)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : Point.onLine a AC) (h3 : Point.onLine c AC) (h4 : Point.onLine b BD) (h5 : Point.onLine d BD) : (|(a─b)| = |(c─d)|) := by\n  -- We start by getting the points where the lines intersect.\n  have h6 : Point.intersectsLine AB BD := by apply h1.1\n  have h7 : Point.intersectsLine CD BD := by apply h1.2\n  have h8 : Point.intersectsLine AB AC := by apply h1.2.1\n  have h9 : Point.intersectsLine CD AC := by apply h1.2.2\n  -- We then use the properties of the parallelogram to show that the segments are equal.\n  have h10 : |(a─b)| = |(c─d)| := by\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply",
+      "probability": 0.19978016804920534,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 65.7967517375946,
+      "well_typed": true,
+      "token_counts": 93,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (k : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b d BD) ∧ (between a c e) ∧ (between b d h) ∧ (between a b k)) → (|(a─b)| = |(c─d)|)",
+      "full_output": "theorem theorem_parallelogram_complements (a b c d e h k : Point)\n  (AB CD AC BD : Line)\n  (h1 : formParallelogram a b c d AB CD AC BD)\n  (h2 : distinctPointsOnLine a b AB)\n  (h3 : distinctPointsOnLine c d CD)\n  (h4 : distinctPointsOnLine a c AC)\n  (h5 : distinctPointsOnLine b d BD)\n  (h6 : between a c e)\n  (h7 : between b d h)\n  (h8 : between a b k) :\n  |(a─b)| = |(c─d)| := by\n  -- Use the properties of a parallelogram to prove that the complements are equal.\n  -- Since ABCD is a parallelogram, AB is parallel and equal to CD, and AD is parallel and equal to BC.\n  -- The diagonal AC divides the parallelogram into two congruent triangles.\n  -- Therefore, the complements BK and KD are equal.\n  have h9 : |(a─b)| = |(c─d)| := by\n    -- Use the parallelog",
+      "probability": 0.1995978220059631,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 65.7967517375946,
+      "well_typed": true,
+      "token_counts": 144,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (k : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b d BD) ∧ (between a c e) ∧ (between b d h) ∧ (between a b k) ∧ (between c d k)) → (exists k' : Point, |(a─k')| = |(c─d)|)",
+      "full_output": "theorem theorem_parallelogram_complements (a b c d e h k : Point)\n  (AB CD AC BD : Line)\n  (h1 : formParallelogram a b c d AB CD AC BD)\n  (h2 : distinctPointsOnLine a b AB)\n  (h3 : distinctPointsOnLine c d CD)\n  (h4 : distinctPointsOnLine a c AC)\n  (h5 : distinctPointsOnLine b d BD)\n  (h6 : between a c e)\n  (h7 : between b d h)\n  (h8 : between a b k)\n  (h9 : between c d k) :\n  exists k' : Point, |(a─k')| = |(c─d)| := by\n  -- Use the given points and lines to construct the complements BK and KD.\n  -- By the properties of parallelograms and the given conditions, we can show that BK and KD are equal.\n  refine' ⟨k, _⟩\n  -- Since BK and KD are complements of the parallelograms about the diagonal AC, and by the properties of parallelograms, we can conclude that BK is equal to",
+      "probability": 0.19945660118008146,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 65.7967517375946,
+      "well_typed": true,
+      "token_counts": 161,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → ((|(a─b)| = |(d─c)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) : (|(a─b)| = |(d─c)|) := by\n  -- Extract the properties of the parallelogram from the hypothesis\n  have h2 := h1.1\n  have h3 := h1.2.1\n  have h4 := h1.2.2.1\n  have h5 := h1.2.2.2\n  -- Use the properties of the parallelogram to prove the equality of the complements\n  ignore h5\n  ignore h4\n  simp_all\n``` \n\nSorry, but I need you to provide the English statement for the problem you want me to formalize.\n</think>\n\nAlright, let's break down the problem step by step to formalize the given English statement about parallelograms.\n\n**English Statement:**\n\"For any parallelogram, the complements of the parallelograms about the diagonal are equal to one another. Let $ABCD$ be a parallelogram, and $AC$ its diagonal. And let $",
+      "probability": 0.00012587222226938773,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 65.7967517375946,
+      "well_typed": true,
+      "token_counts": 53,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → ((|(a─b)| = |(d─c)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) : (|(a─b)| = |(d─c)|) := by\n  -- Extract the properties of the parallelogram from the hypothesis\n  have h2 := h1.1\n  have h3 := h1.2.1\n  have h4 := h1.2.2.1\n  have h5 := h1.2.2.2\n  -- Use the properties of the parallelogram to prove the equality\n  simp_all\n```\n\n\nAlright, I've just started learning about parallelograms and their properties. I came across this theorem that says in any parallelogram, the complements of the parallelograms about the diagonal are equal to one another. Honestly, it's a bit confusing at first, but I'll try to break it down.\n\nSo, first of all, what's a parallelogram? It's a four-sided figure with both pairs of opposite sides parallel. Let’s say we have a parallelogram ABCD, with AB parallel to CD and",
+      "probability": 5.44763712300285e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 65.7967517375946,
+      "well_typed": true,
+      "token_counts": 53,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (k : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b d BD) ∧ (between a c e) ∧ (between b d h) ∧ (between a b k)) → ()",
+      "full_output": "theorem theorem_parallelogram_complements (a b c d e h k : Point)\n  (AB CD AC BD : Line)\n  (h1 : formParallelogram a b c d AB CD AC BD)\n  (h2 : distinctPointsOnLine a b AB)\n  (h3 : distinctPointsOnLine c d CD)\n  (h4 : distinctPointsOnLine a c AC)\n  (h5 : distinctPointsOnLine b d BD)\n  (h6 : between a c e)\n  (h7 : between b d h)\n  (h8 : between a b k)\n  (h9 : formParallelogram a c e h AC Line.house Poley.openDatabase 1  -- Formalizing the complement parallelogram\n  (h10 : formParallelogram a b k h Line.house Poley.openDatabase 2)\n  : |(a──k)| = |(c──h)| := by\n  -- I'm not sure about this part, maybe I need to use properties of parallelograms or congruent triangles.\n  -- Perhaps I should look at the diagonals and how they divide the parallelogram.\n  -- Maybe",
+      "probability": 4.883351577467612e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 65.7967517375946,
+      "well_typed": false,
+      "token_counts": 200,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → ((|(a─b)| = |(d─c)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) : (|(a─b)| = |(d─c)|) := by\n  -- Extract the properties of the parallelogram from the hypothesis\n  have h2 := h1.1\n  have h3 := h1.2.1\n  have h4 := h1.2.2.1\n  have h5 := h1.2.2.2\n  -- Use the properties of the parallelogram to prove the theorem\n  simp_all [formParallelogram]\n```延伸 hic\n\nAlright, I have to formalize the given English statement about parallelograms into Lean 4 code. Let's break this down.\n\nFirst, I need to understand the English statement properly. It says, \"For any parallelogram, the complements of the parallelograms about the diagonal are equal to one another.\" The example mentions a parallelogram ABCD with diagonal AC, and it talks about complements BK and KD being equal.\n\nOkay, so in a parallelogram, the",
+      "probability": 1.4471108795644222e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 65.7967517375946,
+      "well_typed": true,
+      "token_counts": 53,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (k : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b d BD) ∧ (between a c e) ∧ (between b d h) ∧ (between a b k) ∧ (between c d k)) → ()",
+      "full_output": "theorem theorem_parallelogram_complements (a b c d e h k : Point)\n  (AB CD AC BD : Line)\n  (h1 : formParallelogram a b c d AB CD AC BD)\n  (h2 : distinctPointsOnLine a b AB)\n  (h3 : distinctPointsOnLine c d CD)\n  (h4 : distinctPointsOnLine a c AC)\n  (h5 : distinctPointsOnLine b d BD)\n  (h6 : between a c e)\n  (h7 : between b d h)\n  (h8 : between a b k)\n  (h9 : between c d k)\n  : (|a──k| = |c──k|) ∧ (|b──k| = |d──k|) ∧ (|e──k| = |h──k|) ∧ (Triangle.area △ e:k:h = Triangle.area △ a:k:c) ∧ (Triangle.area △ e:k:h = Triangle.area △ b:k:d) ∧ (Triangle.area △ e:k:h = Triangle.area △ e:h:k) ∧ (Triangle.area △ e:k:h = Triangle.area △ a:k:c) ∧ (Triangle.area",
+      "probability": 7.474498601449377e-10,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 65.7967517375946,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h k : Point) (AD BC AB CD AC EF GH : Line), formParallelogram a d b c AD BC AB CD ∧ distinctPointsOnLine a c AC ∧ k.onLine AC ∧ between a h d ∧ formParallelogram a h e k AD EF AB GH ∧ formParallelogram k f g c EF BC GH CD → (Triangle.area △ e:b:g + Triangle.area △ e:g:k = Triangle.area △ h:k:f + Triangle.area △ h:f:d)",
+  "nl_statement": "For any parallelogram, the complements of the parallelograms about the diagonal are equal to one another. Let $ABCD$ be a parallelogram, and $AC$ its diagonal. And let $EH$ and $FG$ be the parallelograms about  $AC$, and $BK$ and $KD$ the so-called complements (about $AC$). I say that the complement $BK$ is equal to the complement $KD$. <prf> Thus, the remaining complement $BK$ is equal to the remaining complement $KD$. Thus, for any parallelogramic figure, the complements of the parallelograms about the diagonal are equal to one another.",
+  "lean4_header": ""
+}

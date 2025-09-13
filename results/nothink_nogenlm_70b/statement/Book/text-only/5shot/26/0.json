@@ -1,0 +1,128 @@
+{
+  "id": "26",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (FE : Line) (FD : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE FE FD) ∧ ((∠ a:b:c : ℝ) = ∠ d:e:f) ∧ ((∠ b:c:a : ℝ) = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ (∠ c:a:b : ℝ) = ∠ f:d:e)",
+      "full_output": "theorem theorem_name (a b c d e f : Point) (AB BC AC DE FE FD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE FE FD) (h3 : (∠ a:b:c : ℝ) = ∠ d:e:f) (h4 : (∠ b:c:a : ℝ) = ∠ e:f:d) (h5 : |(b─c)| = |(e─f)|) : |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ (∠ c:a:b : ℝ) = ∠ f:d:e := by\n  refine' ⟨_, _, _⟩\n  -- Using the given equal angles and side, we can apply theorems related to triangle congruence (e.g., ASA or AAS congruence).\n  <;> apply congrArg\n  <;> nlinarith [h3, h4]\n  <;> assumption\n```",
+      "probability": 0.10069973865424037,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 56.89465808868408,
+      "well_typed": true,
+      "token_counts": 223,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (FE : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE FE DF) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (∠ c:a:b = ∠ f:d:e) ∧ (|(b─c)| = |(e─f)|)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:b:c = ∠ d:e:f)",
+      "full_output": "theorem angle_side_angle_congruence (a b c d e f : Point) (AB BC AC DE FE DF : Line)\n  (h₁ : formTriangle a b c AB BC AC) (h₂ : formTriangle d e f DE FE DF)\n  (h₃ : ∠ b:c:a = ∠ e:f:d) (h₄ : ∠ c:a:b = ∠ f:d:e) (h₅ : |(b─c)| = |(e─f)|) :\n  |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:b:c = ∠ d:e:f := by\n  apply And.intro\n  · -- Prove |(a─b)| = |(d─e)|\n    apply Triangle.congruent\n      <;> simp_all [Triangle.ofPoints]\n  apply And.intro\n  · -- Prove |(a─c)| = |(d─f)|\n    apply Triangle.congruent\n      <;> simp_all [Triangle.ofPoints]\n  -- Prove ∠ a:b:c = ∠ d:e",
+      "probability": 0.10053454889309218,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 56.89465808868408,
+      "well_typed": true,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (((∠ a:b:c : ℝ) = ∠ d:e:f : ℝ)) ∧ (((∠ b:c:a : ℝ) = ∠ e:f:d : ℝ)) ∧ ((|(b─c)| = |(e─f)|))) → ()",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC DE EF DF : Line)\n(h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF)\n(h3 : ((∠ a:b:c : ℝ) = ∠ d:e:f : ℝ)) (h4 : ((∠ b:c:a : ℝ) = ∠ e:f:d : ℝ))\n(h5 : (|(b─c)| = |(e─f)|)) : (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ ((∠ a:b:c : ℝ) = ∠ d:e:f : ℝ)) := by\n  -- We start by assuming the given conditions for the triangles.\n  have h6 : (|(a─b)| = |(d─e)|) := by\n    -- Using the given side equality and angle equalities, we apply the triangle congruence theorem.\n    apply Triangle.congruent\n    -- Ensure all conditions for triangle congruence are met.\n    <;> assumption\n  have h7 : (|(a─c",
+      "probability": 0.10013539384746083,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 56.89465808868408,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (FE : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE FE DF) ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:c:b = ∠ d:f:e)",
+      "full_output": "theorem triangle_congruence_by_ASA (a b c d e f : Point) (AB BC AC DE FE DF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE FE DF) (h3 : ∠ a:b:c = ∠ d:e:f) (h4 : ∠ b:c:a = ∠ e:f:d) (h5 : |(b─c)| = |(e─f)|) : |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:c:b = ∠ d:f:e := by\n  -- Congruency of sides AB and DE by the given conditions.\n  have h6 : |(a─b)| = |(d─e)| := by\n    apply Triangle.congruent.sides_congruent\n    apply Triangle.congruent_of_ASA\n    assumption\n    assumption\n    assumption\n  -- Congruency of sides AC and DF by the given conditions.\n  have h7 : |(a─c)| = |(d─f)| := by",
+      "probability": 0.1001124770419761,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 56.89465808868408,
+      "well_typed": true,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (F : Point) (AB : Line) (BC : Line) (CA : Line) (DE : Line) (EF : Line) (FD : Line), ((formTriangle A B C AB BC CA) ∧ (formTriangle D E F DE EF FD) ∧ (∠ A:B:C = ∠ D:E:F) ∧ (∠ B:C:A = ∠ E:F:D) ∧ (|(B─C)| = |(E─F)|)) → (|(A─B)| = |(D─E)| ∧ |(A─C)| = |(D─F)| ∧ ∠ A:B:C = ∠ D:E:F ∧ ∠ B:C:A = ∠ E:F:D)",
+      "full_output": "theorem theorem_name\n  (A B C D E F : Point)\n  (AB BC CA DE EF FD : Line)\n  (h1 : formTriangle A B C AB BC CA)\n  (h2 : formTriangle D E F DE EF FD)\n  (h3 : ∠ A:B:C = ∠ D:E:F)\n  (h4 : ∠ B:C:A = ∠ E:F:D)\n  (h5 : |(B─C)| = |(E─F)|)\n  : |(A─B)| = |(D─E)| ∧ |(A─C)| = |(D─F)| ∧ ∠ A:B:C = ∠ D:E:F ∧ ∠ B:C:A = ∠ E:F:D\n  := by\n  -- Use the Congruence theorem for triangles based on angle-side-angle (ASA) congruence.\n  refine' ⟨_, _, _, _⟩\n  -- Apply the ASA congruence theorem to show the corresponding sides are equal.\n  <;> apply Triangle.congruentASA\n  -- Use the given angles and side equality to prove the congruence.\n  <;> (try simp_all [",
+      "probability": 0.10004046440412902,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 56.89465808868408,
+      "well_typed": true,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (CA : Line) (DE : Line) (EF : Line) (FD : Line), ((formTriangle a b c AB BC CA) ∧ (formTriangle d e f DE EF FD) ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → ((|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─a)| = |(e─d)|))",
+      "full_output": "theorem Theo (a b c d e f : Point) (AB BC CA DE EF FD : Line) \n  (h1 : formTriangle a b c AB BC CA) \n  (h2 : formTriangle d e f DE EF FD) \n  (h3 : ∠ a:b:c = ∠ d:e:f) \n  (h4 : ∠ b:c:a = ∠ e:f:d) \n  (h5 : |(b─c)| = |(e─f)|) \n  : (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─a)| = |(e─d)|) := by\n  -- Apply the theorems that have already been proven to this specific case.\n  refine' ⟨_, _, _⟩ <;> apply Theo_prf <;> assumption\n```",
+      "probability": 0.09994397744473132,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 56.89465808868408,
+      "well_typed": true,
+      "token_counts": 196,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (ABC : Line) (DEF : Line), ((formTriangle a b c ABC DEF) ∧ (formTriangle d e f DEF a b) ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:c:b = ∠ d:f:e)",
+      "full_output": "theorem theorem_name (a b c d e f : Point) (ABC DEF : Line) (h1 : formTriangle a b c ABC DEF) (h2 : formTriangle d e f DEF a b) (h3 : ∠ a:b:c = ∠ d:e:f) (h4 : ∠ b:c:a = ∠ e:f:d) (h5 : |(b─c)| = |(e─f)|) : |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:c:b = ∠ d:f:e := by\n  -- We start by using the given equal angles and side to establish the first part of the theorem.\n  have h6 : ∠ a:c:b = ∠ d:f:e := by linarith [h3, h4]\n  -- Using the established angles, we can now show the equality of the remaining sides and angle.\n  have h7 : |(a─b)| = |(d─e)| := by linarith [h5, h6]\n  -- Finally, we conclude the equality of the last set of sides and the",
+      "probability": 0.09987576640968837,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 56.89465808868408,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (FE : Line) (FD : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE FE FD) ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → ((|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (∠ a:c:b = ∠ d:f:e))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC DE FE FD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE FE FD) (h3 : ∠ a:b:c = ∠ d:e:f) (h4 : ∠ b:c:a = ∠ e:f:d) (h5 : |(b─c)| = |(e─f)|) : (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (∠ a:c:b = ∠ d:f:e) := by\n  refine' ⟨_, _, _⟩\n  -- Prove that |(a─b)| = |(d─e)|\n  <;> apply Triangle.congruent\n  -- Prove that |(a─c)| = |(d─f)|\n  <;> hyp\n  -- Prove that ∠ a:c:b = ∠ d:f:e\n  <;> linarith [h3, h4, h5]\n```",
+      "probability": 0.09980028222186126,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 56.89465808868408,
+      "well_typed": true,
+      "token_counts": 243,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (CA : Line) (DE : Line) (EF : Line) (FD : Line), ((formTriangle a b c AB BC CA) ∧ (formTriangle d e f DE EF FD) ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:c:b = ∠ d:f:e)",
+      "full_output": "theorem if_two_triangles_have_two_angles_equal_to_two_angles_respectively_and_one_side_equal_to_one_side_then_the_remaining_sides_and_angles_are_equal (a b c d e f : Point) (AB BC CA DE EF FD : Line) (h1 : formTriangle a b c AB BC CA) (h2 : formTriangle d e f DE EF FD) (h3 : ∠ a:b:c = ∠ d:e:f) (h4 : ∠ b:c:a = ∠ e:f:d) (h5 : |(b─c)| = |(e─f)|) : |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:c:b = ∠ d:f:e := by\n  refine ⟨?_,?_,?_⟩\n  -- For the first part, use the given equal angles and side to prove the first pair of equal sides.\n  <;> try\n  {\n    aesop\n  }\n  -- For the second and third parts, use the same approach with the remaining sides and angles.\n  <;> aesop\n  <;>",
+      "probability": 0.09958353075537812,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 56.89465808868408,
+      "well_typed": true,
+      "token_counts": 249,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (FD : Line), ((∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|) ∧ (formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF FD)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:b:c = ∠ d:e:f)",
+      "full_output": "theorem triangle_congruence_ang_side_ang (a b c d e f : Point) (AB BC AC DE EF FD : Line) (h1 : ∠ a:b:c = ∠ d:e:f) (h2 : ∠ b:c:a = ∠ e:f:d) (h3 : |(b─c)| = |(e─f)|) (h4 : formTriangle a b c AB BC AC) (h5 : formTriangle d e f DE EF FD) : |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:b:c = ∠ d:e:f := by\n  apply And.intro <;> apply And.intro\n  · -- AB = DE\n    have : |(a─b)| = |(d─e)| := by\n      have h₄ := h4.left\n      have h₅ := h5.left\n      have h₆ := h4.right\n      have h₇ := h5.right\n      have h₈ := h1\n      have h₉ := h2\n      have h₁₀ := h",
+      "probability": 0.09927382032744246,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 56.89465808868408,
+      "well_typed": true,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)| ∨ |(a─b)| = |(d─e)|) → (|(a─b)| = |(d─e)|) ∧ (|(b─c)| = |(e─f)|) ∧ (|(a─c)| = |(d─f)|) ∧ (∠ b:a:c = ∠ e:d:f)",
+  "nl_statement": "If two triangles have two angles equal to two angles, respectively,  and one side equal to one side---in fact, either that by the equal angles, or that subtending one of the equal angles---then (the triangles) will also have the remaining sides equal to the [corresponding] remaining sides, and the remaining angle (equal) to the remaining angle.Let $ABC$ and $DEF$ be two triangles having the two angles $ABC$ and $BCA$ equal to the two (angles) $DEF$ and $EFD$, respectively. (That is) $ABC$ (equal) to $DEF$, and $BCA$ to $EFD$. And let them also have one side equal to one side. First of all, the (side) by the equal angles. (That is) $BC$ (equal) to $EF$. I say that they will have the  remaining sides equal to the corresponding remaining sides. (That is) $AB$ (equal) to $DE$, and $AC$ to $DF$. And (they will have) the remaining angle (equal) to the remaining angle. (That is) $BAC$ (equal) to $EDF$. <prf> Thus, the base $AC$ is equal to the base $DF$, and triangle $ABC$ (is) equal to triangle $DEF$, and the remaining angle $BAC$ (is) equal to the remaining angle $EDF$ [Prop.~1.4].Thus, if two triangles have two angles equal to two angles, respectively, and one side equal to one side---in fact, either that by the equal angles, or that subtending one of the equal angles---then (the triangles) will also have the remaining sides equal to the (corresponding) remaining sides, and the remaining angle (equal) to the remaining angle.",
+  "lean4_header": ""
+}

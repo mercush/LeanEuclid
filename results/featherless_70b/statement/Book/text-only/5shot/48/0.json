@@ -1,0 +1,20 @@
+{
+  "id": "48",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(b─c)|^2 = |(b─a)|^2 + |(a─c)|^2)) → (∠ a:b:c = ∟)",
+      "full_output": "Alright, so I'm trying to formalize this theorem from Euclidean geometry using Lean 4. The theorem states that if the square of one side of a triangle is equal to the sum of the squares of the other two sides, then the angle opposite that side is a right angle. \n\nFirst, I need to understand the structure of the theorem. It mentions a triangle ABC, with BC being one of its sides. The condition is that the square on BC is equal to the sum of the squares on BA and AC. The conclusion is that angle BAC is a right angle.\n\nI need to map this into the Lean 4 framework provided. The framework has definitions for points, lines, circles, angles, segments, and triangles. There are also various relations and axioms defined, like points being on lines, lines intersecting, circles intersecting, and so on.\n\nSo, the first step is to identify the hypotheses and the conclusion. The hypothesis is that the square of the length of BC is equal to the sum of the squares of BA and AC. The conclusion is that angle BAC is a right angle.\n\nIn Lean 4, I need to express this using the provided structures. The angle BAC can be represented as ∠ a:b:c, where a, b, and c are points. The right angle is represented by ∟.\n\nFor the lengths, the notation |(a─b)| represents the length of the segment between points a and b. So, the square of BC would be |(b─c)|^2, BA is |(b─a)|^2, and AC is |(a─c)|^2.\n\nPutting this together, the hypothesis is |(b─c)|^2 = |(b─a)|^2 + |(a─c)|^2, and the conclusion is ∠ a:b:c = ∟.\n\nI also need to ensure that the points a, b, and c form a triangle, so I should include a hypothesis that formTriangle a b c AB BC AC holds.\n\nNow, considering the guidelines, I need to make sure that all variables are of the correct type. Points a, b, c are of type Point, and AB, BC, AC are of type Line. The hypotheses should be inside parentheses and follow the colon, and the conclusion should be on the right side of the colon.\n\nI also need to avoid using any intermediate variables or additional axioms beyond what's provided. The proof is omitted, so I end with := by sorry.\n\nPutting it all together, the formalized statement should look like this:\n\ntheorem theorem_name (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(b─c)|^2 = |(b─a)|^2 + |(a─c)|^2) : ∠ a:b:c = ∟ := by sorry\n\nI think this captures the essence of the theorem in the Lean 4 framework, adhering to the provided structures and guidelines.\n</think>\n\ntheorem theorem_name (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(b─c)| ^ 2 = |(b─a)| ^ 2 + |(a─c)| ^ 2) : ∠ a:b:c = ∟ := by sorry",
+      "probability": 1.0,
+      "source": "featherless",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 52.77446937561035,
+      "well_typed": false,
+      "token_counts": 709,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)| → ∠ b:a:c = ∟",
+  "nl_statement": "For let the square on one of the sides, $BC$, of triangle $ABC$ be equal to the (sum of the) squares on the sides $BA$ and $AC$. I say that angle $BAC$ is a right-angle. <prf>  Thus, $BAC$ is also a right-angle.Thus, if the square on one of the sides of a triangle is equal to the (sum of the) squares on the remaining two sides of the triangle then the angle contained by the remaining two sides of the triangle is a right-angle.",
+  "lean4_header": ""
+}

@@ -1,0 +1,20 @@
+{
+  "id": "30",
+  "formalizations": [
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "Okay, so I'm trying to formalize this Euclidean geometry theorem using Lean 4. The theorem is that if two straight lines are each parallel to a third straight line, then they are parallel to each other. In the English statement, we have lines AB and CD both parallel to EF, and we need to conclude that AB is parallel to CD.\n\nFirst, I need to understand how to express parallelism in Lean 4. From the guidelines, it says that to express that two lines are parallel, I should use the negation of intersectsLine. So, for example, AB is parallel to EF would be ¬(AB.intersectsLine EF). Similarly, CD is parallel to EF would be ¬(CD.intersectsLine EF).\n\nNow, I need to structure this into a theorem. The theorem should have hypotheses and a conclusion. The hypotheses are that AB is parallel to EF and CD is parallel to EF. The conclusion is that AB is parallel to CD.\n\nLooking at the examples provided, the theorem name should be a valid Lean identifier, probably something like `parallel_to_same_parallel` or similar. The hypotheses will be statements about the lines not intersecting, and the conclusion will be another statement about lines not intersecting.\n\nI also need to make sure that all variables are properly bound and mentioned. So, I'll need to have lines AB, CD, and EF as parameters to the theorem, along with the hypotheses that AB is parallel to EF and CD is parallel to EF.\n\nPutting it all together, the theorem should look something like:\n\ntheorem parallel_to_same_parallel (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by sorry\n\nThis seems to fit the required format: theorem name, parameters, hypotheses in parentheses, and the conclusion after the colon, ending with \":= by sorry\".\n\nI should double-check that I'm using the correct axioms and not introducing any intermediate variables. Since I'm only using the intersectsLine method and negation, I think this is compliant with the guidelines.\n\nSo, the final formalized statement should correctly capture the idea that if AB is parallel to EF and CD is parallel to EF, then AB is parallel to CD, all expressed using the intersectsLine method and negation as per the provided structures.\n</think>\n\ntheorem parallel_to_same_parallel (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by sorry",
+      "probability": 1.0,
+      "source": "featherless",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 39.56972074508667,
+      "well_typed": true,
+      "token_counts": 533,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (AB CD EF : Line), AB ≠ CD ∧ CD ≠ EF ∧ EF ≠ AB ∧ ¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "(Straight-lines) parallel to the same straight-line are also parallel to one another.Let each of the (straight-lines) $AB$ and $CD$ be parallel to $EF$. I say that $AB$ is also parallel to $CD$. <prf>  Thus, $AB$ is parallel to $CD$ [Prop.~1.27]. Thus, (straight-lines) parallel to the same straight-line are also parallel to one another.",
+  "lean4_header": ""
+}

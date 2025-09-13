@@ -1,19 +1,18 @@
-import os
 import base64
-from LeanPotential.lean_potential import *
-from transformers import AutoTokenizer, AutoModelForCausalLM
-from vllm import LLM, SamplingParams
+import os
 
 from openai import OpenAI
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from vllm import LLM, SamplingParams
 
+from LeanPotential.lean_potential import *
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 EXAMPLE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "example"))
 
 
 class BaseLMModel:
-    """
-    Need: add_message(role, content) method to add messages to the conversation.
+    """Need: add_message(role, content) method to add messages to the conversation.
     Get response with get_response() method.
     """
     def __init__(self, model_name: str = "AI-MO/Kimina-Autoformalizer-7B", temperature: float = 1., max_tokens: int = 2000, n_particles: int = 20) -> None:

@@ -1,0 +1,128 @@
+{
+  "id": "27",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (EF : Line) (AB : Line) (CD : Line), ((¬(EF.intersectsLine AB)) ∧ (¬(EF.intersectsLine CD)) ∧ ((∠ a:e:f : ℝ) = ∠ e:f:d)) → (AB.parallel CD)",
+      "full_output": "theorem alternate_angles_parallel (a b c d e f : Point) (EF : Line) (AB CD : Line) (h1 : ¬(EF.intersectsLine AB)) (h2 : ¬(EF.intersectsLine CD)) (h3 : (∠ a:e:f : ℝ) = ∠ e:f:d) : AB.parallel CD := by\n  -- Since angles AEF and EFD are equal, by the converse of the alternate angles theorem, AB and CD must be parallel.\n  have h4 := h3\n  -- Simplify the context by removing unnecessary assumptions.\n  simp_all\n  -- Apply the converse of the alternate angles theorem to conclude that AB is parallel to CD.\n  apply parallel_of_alternate_angles h4\n```",
+      "probability": 0.10093966388831875,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 44.82170033454895,
+      "well_typed": false,
+      "token_counts": 156,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (Line.intersectsLine EF AB) ∧ (Line.intersectsLine EF CD) ∧ (∠ a:EF.a:b = ∠ c:EF.a:d)) → (¬(Line.intersectsLine AB CD))",
+      "full_output": "theorem if_straight_line_cutting_two_straight_lines_make_alternate_angles_equal_then_straight_lines_are_parallel (a b c d : Point) (AB CD : Line) (EF : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : Line.intersectsLine EF AB) (h4 : Line.intersectsLine EF CD) (h5 : ∠ a:EF.a:b = ∠ c:EF.a:d) : ¬(Line.intersectsLine AB CD) := by\n  intro h\n  apply h3\n  apply h4\n  apply h\n```",
+      "probability": 0.1005646726593945,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 44.82170033454895,
+      "well_typed": false,
+      "token_counts": 139,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (F : Point) (EF : Line) (AB : Line) (CD : Line), ((distinctPointsOnLine E F EF) ∧ (distinctPointsOnLine A B AB) ∧ (distinctPointsOnLine C D CD) ∧ (between A E F) ∧ (between C E F) ∧ ((between A B E)) ∧ ((between C D E)) ∧ ((between E F D)) ∧ ((between E F B)) ∧ ((between E F A)) ∧ (∠ A:E:F = ∠ E:F:D)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (A B C D E F : Point) (EF AB CD : Line) (h1 : distinctPointsOnLine E F EF) (h2 : distinctPointsOnLine A B AB) (h3 : distinctPointsOnLine C D CD) (h4 : between A E F) (h5 : between C E F) (h6 : (between A B E)) (h7 : (between C D E)) (h8 : (between E F D)) (h9 : (between E F B)) (h10 : (between E F A)) (h11 : ∠ A:E:F = ∠ E:F:D) : ¬(AB.intersectsLine CD) := by\n  -- Assume AB and CD intersect at some point G.\n  intro G hg\n  -- Since AB and CD intersect at G, we have a contradiction with the alternate angles being equal.\n  apply hg\n  -- Use the properties of angles and lines to derive the contradiction.\n  <;> simp_all [Line.intersectsLine, Point.onLine]\n```",
+      "probability": 0.10049112805696274,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 44.82170033454895,
+      "well_typed": true,
+      "token_counts": 226,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line) (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine e f EF) ∧ (twoLinesIntersectAtPoint AB EF a) ∧ (twoLinesIntersectAtPoint CD EF c) ∧ (∠ a:e:c = ∠ c:e:d)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem if_straight_line_falling_across_two_straight_lines_makes_alternate_angles_equal_then_the_two_straight_lines_are_parallel (AB CD EF : Line) (a b c d e f : Point) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : distinctPointsOnLine e f EF) (h4 : twoLinesIntersectAtPoint AB EF a) (h5 : twoLinesIntersectAtPoint CD EF c) (h6 : ∠ a:e:c = ∠ c:e:d) : ¬(AB.intersectsLine CD) := by\n  -- Use tauto to automatically handle the logical reasoning and simplify the expression.\n  tauto\n```",
+      "probability": 0.10032753674784206,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 44.82170033454895,
+      "well_typed": true,
+      "token_counts": 157,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (EF : Line), ((Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c CD) ∧ (Point.onLine d CD) ∧ (Point.onLine e EF) ∧ (Point.onLine e AB) ∧ (Point.onLine e CD) ∧ (∠ a:e:b = ∠ c:e:d) ∧ (Angle.ofPoints a e b) ∧ (Angle.ofPoints c e d)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem theorem_par_1__alt_int_angles_eq_are_parallel (a b c d e : Point) (AB CD EF : Line) (h1 : Point.onLine a AB) (h2 : Point.onLine b AB) (h3 : Point.onLine c CD) (h4 : Point.onLine d CD) (h5 : Point.onLine e EF) (h6 : Point.onLine e AB) (h7 : Point.onLine e CD) (h8 : ∠ a:e:b = ∠ c:e:d) (h9 : Angle.ofPoints a e b) (h10 : Angle.ofPoints c e d) : ¬(AB.intersectsLine CD) := by\n  -- Use the given angles equality to show that lines AB and CD do not intersect.\n  apply AB.intersectsLine_CD_of_not_par_atinfinity\n  intro h\n  -- If AB and CD intersect, then the angles would not be equal, contradicting the given equality.\n  apply h8\n  -- Simplify the expression using the given angles equality.\n  simp_all\n```",
+      "probability": 0.09987824044184944,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 44.82170033454895,
+      "well_typed": false,
+      "token_counts": 227,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF) ∧ (∠ a:E:F = ∠ b:E:D)) → (¬(Line.intersectsLine AB CD))",
+      "full_output": "theorem alternateAnglesEqual_then_linesParallel (a b c d : Point) (AB CD EF : Line) (h1 : Line.intersectsLine AB EF) (h2 : Line.intersectsLine CD EF) (h3 : ∠ a:E:F = ∠ b:E:D) : ¬(Line.intersectsLine AB CD) := by sorry\n```",
+      "probability": 0.09973067290860577,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 44.82170033454895,
+      "well_typed": false,
+      "token_counts": 75,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (EF : Line) (AB : Line) (CD : Line), ((Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF) ∧ (∠ AB:EF:CD = ∠ CD:EF:AB)) → (¬Line.intersectsLine AB CD)",
+      "full_output": "theorem IfAlternateAnglesEqualThenLinesParallel (EF AB CD : Line) (h1 : Line.intersectsLine AB EF) (h2 : Line.intersectsLine CD EF) (h3 : ∠ AB:EF:CD = ∠ CD:EF:AB) : ¬Line.intersectsLine AB CD := by\n    -- Assume the lines AB and CD are not parallel.\n    intro h4\n    -- Use the fact that if two lines are not parallel, they intersect at some point.\n    have h5 : Line.intersectsLine AB CD := by\n        apply h4\n    -- Use the given angles equality and the fact that AB and CD intersect to derive a contradiction.\n    have h6 : ∠ AB:EF:CD ≠ ∠ CD:EF:AB := h5\n    -- Conclude that the assumption that AB and CD are not parallel leads to a contradiction.\n    contradiction\n```",
+      "probability": 0.09965959826722777,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 44.82170033454895,
+      "well_typed": false,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((twoLinesIntersectAtPoint AB EF a) ∧ (twoLinesIntersectAtPoint EF CD b) ∧ (((∠ a:e:d : ℝ) = ∠ e:c:d))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem alternate_angles_implies_parallel (a b c d : Point) (AB CD EF : Line) (h1 : twoLinesIntersectAtPoint AB EF a) (h2 : twoLinesIntersectAtPoint EF CD b) (h3 : ((∠ a:e:d : ℝ) = ∠ e:c:d)) : ¬(AB.intersectsLine CD) := by\n  -- Assume the angles at points a and c are equal.\n  have h4 := h3\n  -- Use the equality of angles to show that the lines do not intersect.\n  have h5 := h1\n  have h6 := h2\n  -- Conclude that the lines AB and CD are parallel.\n  have h7 : ¬(AB.intersectsLine CD) := by\n    intro h\n    -- If AB and CD intersect, then the angles at a and c cannot both be equal and less than or equal to 180 degrees.\n    have h8 : ∠ a:e:d = ∠ e:c:d := h4\n    have h9 : ∠ a:e:d + ∠ e:c:d = ∟ + ∟ := by linarith [h8]\n    have h10 :",
+      "probability": 0.09959267284329801,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 44.82170033454895,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (E : Point) (F : Point) (D : Point) (C : Point) (EF : Line) (AB : Line) (CD : Line), ((distinctPointsOnLine A B AB) ∧ (distinctPointsOnLine C D CD) ∧ (Point.onLine E AB) ∧ (Point.onLine F CD) ∧ (Line.intersectsLine EF AB) ∧ (Line.intersectsLine EF CD) ∧ (∠ A:E:F = ∠ E:F:D)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem alternate_angles_thm (A B E F D C : Point) (EF AB CD : Line) (h1 : distinctPointsOnLine A B AB) (h2 : distinctPointsOnLine C D CD) (h3 : Point.onLine E AB) (h4 : Point.onLine F CD) (h5 : Line.intersectsLine EF AB) (h6 : Line.intersectsLine EF CD) (h7 : ∠ A:E:F = ∠ E:F:D) : ¬(AB.intersectsLine CD) := by\n  -- We use the fact that if two lines are intersected by a transversal and the alternate angles are equal, then the lines are parallel.\n  apply Line.not_intersects_ofAlternateAngleE\n  -- We provide the necessary points and lines to satisfy the conditions of the theorem.\n  exact ⟨E, F, h3, h4, h5, h6, h7⟩\n```",
+      "probability": 0.09955473263459337,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 44.82170033454895,
+      "well_typed": true,
+      "token_counts": 199,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (EF : Line), ((Line.intersectsLine EF AB) ∧ (Line.intersectsLine EF CD) ∧ (between a b c) ∧ (between e f d) ∧ (∠ a:e:b = ∠ e:f:d)) → (¬(Line.intersectsLine AB CD))",
+      "full_output": "theorem theorem_1_27 (a b c d e : Point) (AB CD EF : Line) (h1 : Line.intersectsLine EF AB) (h2 : Line.intersectsLine EF CD) (h3 : between a b c) (h4 : between e f d) (h5 : ∠ a:e:b = ∠ e:f:d) : ¬(Line.intersectsLine AB CD) := by\n    -- Use the given hypotheses to prove that AB and CD are parallel.\n    -- This involves using the properties of alternate angles and the fact that EF intersects both AB and CD.\n    -- By showing that the alternate angles are equal, we can conclude that AB and CD do not intersect, hence they are parallel.\n    apply Line.intersectsLine_iff_not_parallel.mpr\n    apply Line.parallel_of_theory\n    <;> simp_all [Line.intersectsLine_iff_not_parallel]\n    <;> aesop\n```",
+      "probability": 0.09926108155190753,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 44.82170033454895,
+      "well_typed": false,
+      "token_counts": 197,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a d e f : Point) (AE FD EF : Line), distinctPointsOnLine a e AE ∧ distinctPointsOnLine f d FD ∧ distinctPointsOnLine e f EF ∧ a.opposingSides d EF ∧ (∠ a:e:f = ∠ e:f:d) → ¬(AE.intersectsLine FD)",
+  "nl_statement": "If a straight-line falling across two straight-lines makes the alternate angles equal to one another then the (two) straight-lines will be parallel to one another.For let the straight-line $EF$, falling across the two straight-lines $AB$ and $CD$, make the alternate angles $AEF$ and $EFD$ equal to one another. I say that $AB$ and $CD$ are parallel. <prf> Thus, $AB$ and $CD$ are parallel.Thus, if a straight-line falling across two straight-lines makes the alternate angles equal to one another then the (two) straight-lines will be parallel (to one another).",
+  "lean4_header": ""
+}

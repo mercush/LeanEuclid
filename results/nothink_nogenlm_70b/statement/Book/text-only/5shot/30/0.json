@@ -1,0 +1,128 @@
+{
+  "id": "30",
+  "formalizations": [
+    {
+      "formalization": "∀ (AB : Line) (EF : Line) (CD : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_to_same_line (AB EF CD : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by\n  -- Use the property that if two lines do not intersect a third line, they do not intersect each other.\n  apply by contrapositive\n  intro h\n  apply h1\n  apply AB.intersectsLine_trans h\n  apply EF.intersectsLine_trans h2\n```",
+      "probability": 0.10053728732379569,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 35.12330198287964,
+      "well_typed": true,
+      "token_counts": 107,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_to_same_line_parallel_to_each_other (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by\n  -- We use the property that if two lines are not parallel, they must intersect.\n  apply by_contradiction\n  intro h\n  -- If AB and CD were to intersect, then one of them would have to intersect EF, which contradicts the given conditions.\n  have h3 : AB.intersectsLine EF ∨ CD.intersectsLine EF := by tauto\n  -- This leads to a contradiction with the given non-intersection conditions.\n  tauto\n```",
+      "probability": 0.10035570490297413,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 35.12330198287964,
+      "well_typed": true,
+      "token_counts": 149,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_to_same_line (a b c d e f : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by\n  -- Use the property that if AB and CD are both parallel to EF, then AB and CD must be parallel to each other.\n  apply by_agreement a\n  apply by_agreement b\n  apply by_agreement c\n  apply by_agreement d\n  apply by_agreement e\n  apply by_agreement f\n  <;> simp_all\n```",
+      "probability": 0.10029358874938893,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 35.12330198287964,
+      "well_typed": false,
+      "token_counts": 135,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_to_same_are_parallel (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by\n  intro h\n  have h3 : AB.intersectsLine EF := by\n    apply h1\n    simp_all\n  have h4 : CD.intersectsLine EF := by\n    apply h2\n    simp_all\n```",
+      "probability": 0.10006907582233708,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 35.12330198287964,
+      "well_typed": true,
+      "token_counts": 98,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (EF : Line) (AB : Line) (CD : Line), ((¬(EF.intersectsLine AB)) ∧ (¬(EF.intersectsLine CD))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (EF AB CD : Line) (h1 : ¬(EF.intersectsLine AB)) (h2 : ¬(EF.intersectsLine CD)) : ¬(AB.intersectsLine CD) := by\n  intro h\n  apply h1\n  apply Line.intersectsLine_trans h\n  apply h2\n```",
+      "probability": 0.10003622935236582,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 35.12330198287964,
+      "well_typed": true,
+      "token_counts": 71,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_to_same_are_parallel (a b c d e f : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by\n  apply Classical.by_contradiction\n  intro h\n  have h3 := h1\n  have h4 := h2\n  have h5 : AB.intersectsLine EF ∨ CD.intersectsLine EF := by\n    apply Classical.em\n  cases' h5 with h6 h7\n  -- If AB intersects EF, then by hypothesis h1, AB does not intersect EF, which is a contradiction.\n  . contradiction\n  -- If CD intersects EF, then by hypothesis h2, CD does not intersect EF, which is a contradiction.\n  . contradiction\n```",
+      "probability": 0.09993683267783718,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 35.12330198287964,
+      "well_typed": false,
+      "token_counts": 179,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by sorry\n```",
+      "probability": 0.09986010494710439,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 35.12330198287964,
+      "well_typed": false,
+      "token_counts": 57,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((¬AB.intersectsLine EF) ∧ (¬CD.intersectsLine EF)) → (¬AB.intersectsLine CD)",
+      "full_output": "theorem example_thm (AB CD EF : Line) (h1 : ¬AB.intersectsLine EF) (h2 : ¬CD.intersectsLine EF) : ¬AB.intersectsLine CD := by\n  -- Assume AB and CD are parallel to EF.\n  -- We need to show AB is parallel to CD.\n  intro h3\n  -- If AB and CD are not parallel, they would intersect.\n  -- If AB intersects CD, then AB and EF would also intersect, which contradicts h1.\n  apply h1\n  -- Use the fact that AB and EF are parallel to EF to conclude that AB does not intersect EF.\n  apply AB.intersectsLine_trans _ h3\n  apply h2\n```",
+      "probability": 0.09965246582785107,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 35.12330198287964,
+      "well_typed": true,
+      "token_counts": 150,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem if_two_straight_lines_are_parallel_to_a_third_then_they_are_parallel_to_each_other (a b c d₁ d₂ e f : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by\n  -- Assume that AB and CD are both parallel to EF.\n  -- We need to show that AB and CD do not intersect each other.\n  intro h3\n  -- If AB and CD were to intersect, then EF would have to intersect one of them as well, contradicting the parallelism.\n  have h4 : EF.intersectsLine AB ∨ EF.intersectsLine CD := by\n    apply or_iff_not_imp_left.mpr\n    intro h5\n    -- If EF does not intersect AB, then EF being parallel to AB implies CD intersects EF.\n    apply Line.intersectsLine_trans h3 h5\n  -- This contradicts the assumption that AB and CD are both parallel to EF.\n  cases h4 with\n  | inl h4 => contradiction\n  | inr h4 => contradiction\n```",
+      "probability": 0.09964646399308584,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 35.12330198287964,
+      "well_typed": false,
+      "token_counts": 245,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), (True) → (¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD))",
+      "full_output": "theorem proposition_2_28 (AB CD EF : Line) : ¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD) := by\n  -- Introduce the assumption that AB and CD are both parallel to EF\n  rintro ⟨h1, h2⟩\n  -- Use the property that two lines parallel to a third line do not intersect each other\n  have := h1.trans h2\n  -- Conclude that AB and CD do not intersect each other\n  exact this\n```",
+      "probability": 0.09961224640326001,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 35.12330198287964,
+      "well_typed": true,
+      "token_counts": 117,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (AB CD EF : Line), AB ≠ CD ∧ CD ≠ EF ∧ EF ≠ AB ∧ ¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "(Straight-lines) parallel to the same straight-line are also parallel to one another.Let each of the (straight-lines) $AB$ and $CD$ be parallel to $EF$. I say that $AB$ is also parallel to $CD$. <prf>  Thus, $AB$ is parallel to $CD$ [Prop.~1.27]. Thus, (straight-lines) parallel to the same straight-line are also parallel to one another.",
+  "lean4_header": ""
+}

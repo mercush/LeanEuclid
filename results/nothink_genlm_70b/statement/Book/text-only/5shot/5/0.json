@@ -1,0 +1,128 @@
+{
+  "id": "5",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|)) → (∠ a:b:c = ∠ a:c:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) : ∠ a:b:c = ∠ a:c:b := by\n  -- Assuming the triangle ABC with AB = AC, we need to prove ∠ABC = ∠ACB and ∠CBD = ∠BCE.\n  have h3 : Triangeongruent △ a:b:c △ a:c:b := by\n    -- To prove the triangles congruent, we use the fact that AB = AC.\n    apply Triangeongruent.congr\n    apply h2\n    apply h2\n  -- Since the triangles are congruent, the corresponding angles are equal.\n  have h4 : ∠ a:b:c = ∠ a:c:b := by\n    -- Using the congruence of triangles, we conclude the equality of the base angles.\n    apply Triangeongruent.angle\n    apply h3\n  have h5 : ∠ b:c:d = ∠ c:b:e := by\n    -- Similarly, the angles under the",
+      "probability": 0.12541133930012363,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.05123567581177,
+      "well_typed": true,
+      "token_counts": 61,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CE : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine b BD) ∧ (Point.onLine c CE) ∧ (Line.intersectsLine BD CE) ∧ ((|(a─b)| = |(a─c)|))) → (((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ (∠ a:b:d = ∠ c:e:a))",
+      "full_output": "theorem theorem_name (a b c d e : Point) (AB BC AC BD CE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine b BD) (h3 : Point.onLine c CE) (h4 : Line.intersectsLine BD CE) (h5 : (|(a─b)| = |(a─c)|)) : ((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ (∠ a:b:d = ∠ c:e:a) := by\n  -- Use the given equal sides to show that the triangle is isosceles\n  have h6 : Triangle.congruent (Triangle.ofPoints b a c) (Triangle.ofPoints c a b) := by\n    -- Use the congruent triangle axiom to show that the two triangles are congruent\n    apply Triangle.congruent\n    -- Use the given equal sides and the fact that the triangle is isosceles to conclude\n    <;> simp_all [Point.onLine, Line.intersectsLine, formTriangle, formParallelogram, Triangle.congruent, Triangle.area]\n  -- Use the congruent triangle axiom to conclude",
+      "probability": 0.12515898362205072,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.05123567581177,
+      "well_typed": true,
+      "token_counts": 112,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CE : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine b BD) ∧ (Point.onLine c CE) ∧ (Line.intersectsLine BD CE) ∧ ((|(a─b)| = |(a─c)|))) → (((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ (∠ a:b:d = ∠ c:e:a))",
+      "full_output": "theorem theorem_name (a b c d e : Point) (AB BC AC BD CE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine b BD) (h3 : Point.onLine c CE) (h4 : Line.intersectsLine BD CE) (h5 : (|(a─b)| = |(a─c)|)) : ((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ (∠ a:b:d = ∠ c:e:a) := by\n  -- Use the given equal sides to show that the triangle is isosceles\n  have h6 : Triangle.congruent (Triangle.ofPoints b a c) (Triangle.ofPoints c a b) := by\n    -- Use the congruent triangle axiom to show that the two triangles are congruent\n    apply Triangle.congruent\n    -- Use the given equal sides to prove the congruent triangles\n    <;> simp_all [Triangle.ofPoints, Segment.endpoints]\n    <;> assumption\n  -- Use the congruent triangles to show that the angles at the base are equal\n  have h7 : ∠ b:a:c =",
+      "probability": 0.1251383216867614,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.05123567581177,
+      "well_typed": true,
+      "token_counts": 112,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CE : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine b BD) ∧ (Point.onLine c CE) ∧ (Line.intersectsLine BD CE) ∧ ((|(a─b)| = |(a─c)|))) → (((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ ((∠ b:a:e : ℝ) = ∠ c:a:d))",
+      "full_output": "theorem theorem_name (a b c d e : Point) (AB BC AC BD CE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine b BD) (h3 : Point.onLine c CE) (h4 : Line.intersectsLine BD CE) (h5 : (|(a─b)| = |(a─c)|)) : ((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ ((∠ b:a:e : ℝ) = ∠ c:a:d) := by\n  apply And.intro\n  case left =>\n    -- Using the properties of isosceles triangles and the given conditions, we can show that the angles at the base are equal.\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    -- Using the properties of isosceles triangles and the given conditions, we can show that the angles at the base are equal.\n    <;> simp_all [formTriangle, Point.onLine, Line.intersectsLine, distinctPointsOnLine]\n    <;> linarith\n  case right =>\n    -- Similarly, using the properties of",
+      "probability": 0.12504132131084877,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.05123567581177,
+      "well_typed": true,
+      "token_counts": 115,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CE : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine b BD) ∧ (Point.onLine c CE) ∧ (Line.intersectsLine BD CE) ∧ ((|(a─b)| = |(a─c)|))) → (((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ ((∠ b:a:e : ℝ) = ∠ c:a:d))",
+      "full_output": "theorem theorem_name (a b c d e : Point) (AB BC AC BD CE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine b BD) (h3 : Point.onLine c CE) (h4 : Line.intersectsLine BD CE) (h5 : (|(a─b)| = |(a─c)|)) : ((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ ((∠ b:a:e : ℝ) = ∠ c:a:d) := by\n  apply And.intro\n  case left =>\n    -- Using the properties of isosceles triangles and the given conditions, we can show that the angles at the base are equal.\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    -- Using the properties of isosceles triangles and the given conditions, we can show that the angles at the base are equal.\n    <;> simp_all\n    <;> linarith",
+      "probability": 0.12494154477822272,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.05123567581177,
+      "well_typed": true,
+      "token_counts": 115,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CE : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine b BD) ∧ (Point.onLine c CE) ∧ (Line.intersectsLine BD CE) ∧ ((|(a─b)| = |(a─c)|))) → (((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ ((∠ b:a:e : ℝ) = ∠ c:a:d))",
+      "full_output": "theorem theorem_name (a b c d e : Point) (AB BC AC BD CE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine b BD) (h3 : Point.onLine c CE) (h4 : Line.intersectsLine BD CE) (h5 : (|(a─b)| = |(a─c)|)) : ((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ ((∠ b:a:e : ℝ) = ∠ c:a:d) := by\n  apply And.intro\n  case left =>\n    -- Using the properties of isosceles triangles and the given conditions, we can show that the angles at the base are equal.\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    simp_all [Triangle, Point, Line, Segment, Circle]\n  case right =>\n    -- Using the properties of isosceles triangles and the given conditions, we can show that the angles under the base are equal.\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n   ",
+      "probability": 0.12486494942459664,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.05123567581177,
+      "well_typed": true,
+      "token_counts": 115,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|)) → (∠ a:b:c = ∠ a:c:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) : ∠ a:b:c = ∠ a:c:b := by\n  -- Assuming the triangle ABC with AB = AC, we need to prove ∠ABC = ∠ACB and ∠CBD = ∠BCE.\n  have h3 : Triangeongruent △ a:b:c △ a:c:b := by\n    -- To prove the triangles congruent, we use the fact that AB = AC.\n    apply Triangeongruent.congr\n    apply h2\n    apply h2\n  -- Since the triangles are congruent, the corresponding angles are equal.\n  have h4 : ∠ a:b:c = ∠ a:c:b := by\n    apply Triangeongruent.base_angles\n    apply h3\n  have h5 : ∠ a:b:c = ∠ a:c:b := by\n    apply Triangeongruent.base_angles\n    apply h3\n  -- Therefore, the angles at the base are equal",
+      "probability": 0.12480710323359008,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.05123567581177,
+      "well_typed": true,
+      "token_counts": 61,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|)) → (∠ a:b:c = ∠ a:c:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) : ∠ a:b:c = ∠ a:c:b := by\n  -- Assuming the triangle ABC with AB = AC, we need to prove ∠ABC = ∠ACB and ∠CBD = ∠BCE.\n  have h3 : Triangeongruent △ a:b:c △ a:c:b := by\n    -- To prove the triangles congruent, we use the fact that AB = AC.\n    apply Triangeongruent.congr\n    apply h2\n    apply h2\n  -- Since the triangles are congruent, the corresponding angles are equal.\n  have h4 : ∠ a:b:c = ∠ a:c:b := by\n    apply Triangeongruent.angle_congr\n    apply h3\n  -- The angles under the base are also equal due to the congruence.\n  have h5 : ∠ a:b:c = ∠ a:c:b := by\n    apply h4\n  -- The",
+      "probability": 0.12461220245466689,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.05123567581177,
+      "well_typed": true,
+      "token_counts": 61,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CE : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine b BD) ∧ (Point.onLine c CE) ∧ (Line.intersectsLine BD CE) ∧ ((|(a─b)| = |(a─c)|))) → (((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ ((∠ b:a:e : ℝ) = ∠ c:a:d))",
+      "full_output": "theorem theorem_name (a b c d e : Point) (AB BC AC BD CE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine b BD) (h3 : Point.onLine c CE) (h4 : Line.intersectsLine BD CE) (h5 : (|(a─b)| = |(a─c)|)) : ((∠ b:a:c : ℝ) = ∠ c:a:b) ∧ ((∠ b:a:e : ℝ) = ∠ c:a:d) := by\n  apply And.intro\n  case left =>\n    -- Using the properties of isosceles triangles and the given conditions, we can show that the angles at the base are equal.\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n  case right =>\n    -- Similarly, we can show that the angles under the base are equal.\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n    apply Eq.symm\n``` \n```",
+      "probability": 1.4726724644184389e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.05123567581177,
+      "well_typed": true,
+      "token_counts": 115,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|)) → (∠ a:b:c = ∠ a:c:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) : ∠ a:b:c = ∠ a:c:b := by\n  -- Assuming the triangle ABC with AB = AC, we need to prove ∠ABC = ∠ACB and ∠CBD = ∠BCE.\n  have h3 : Triangeongruent △ a:b:c △ a:c:b := by\n    -- To prove the triangles congruent, we use the fact that AB = AC.\n    apply Triangeongruent.congr\n    apply h2\n    apply h2\n  -- Since the triangles are congruent, the corresponding angles are equal.\n  have h4 : ∠ a:b:c = ∠ a:c:b := by\n    apply h3.angles_equal\n  -- Therefore, the angles at the base of the isosceles triangle are equal.\n  exact h4\n```owards as follows:\ntheorem isosceles_base_angles (a b c : Point) (AB BC AC : Line) (h",
+      "probability": 9.507464494696447e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.05123567581177,
+      "well_typed": true,
+      "token_counts": 61,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─b)| = |(a─c)|) ∧ (between a b d) ∧ (between a c e) → (∠ a:b:c = ∠ a:c:b) ∧ (∠ c:b:d = ∠ b:c:e)",
+  "nl_statement": "For isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another. Let $ABC$ be an isosceles triangle having the side $AB$ equal to the side $AC$, and let the straight-lines $BD$ and $CE$ have been produced in a straight-line with $AB$ and $AC$ (respectively) [Post.~2]. I say that the angle $ABC$ is equal to $ACB$, and (angle) $CBD$  to $BCE$.  <prf> Therefore, since the whole angle $ABG$ was shown (to be) equal to the whole angle $ACF$, within which $CBG$ is equal to $BCF$, the remainder $ABC$ is thus equal to the remainder $ACB$ [C.N.~3]. And they are at the base of triangle $ABC$. And $FBC$ was also shown (to be) equal to $GCB$. And they are under the base. Thus, for isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another.",
+  "lean4_header": ""
+}

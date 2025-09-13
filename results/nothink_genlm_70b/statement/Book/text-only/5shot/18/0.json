@@ -1,0 +1,128 @@
+{
+  "id": "18",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| < |(a─c)|)) → ((∠ b:a:c : ℝ) > (∠ c:a:b : ℝ))",
+      "full_output": "theorem greater_side_subtends_greater_angle (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| < |(a─c)|) : (∠ b:a:c : ℝ) > (∠ c:a:b : ℝ) := by\n  -- Consider triangle ABC with side AC greater than AB.\n  have h2 : |(a─b)| < |(a─c)| := h2\n  -- Using the law of sines, the ratio of the length of a side to the sine of its opposite angle is constant in a triangle.\n  have h3 : |(a─b)| / Real.sin(∠ b:a:c) = |(a─c)| / Real.sin(∠ c:a:b) := by\n    rw [← h1 area]\n    -- Using the law of sines, we can equate the ratios.\n    <;> simp_all [Triangle.area, Real.sin_lt_sin_of_lt]\n  -- Since AC > AB, and the sine function is increasing in the interval (0, π), we have sin(angle opposite AC) > sin(angle opposite",
+      "probability": 0.2013974362499803,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.4499020576477,
+      "well_typed": true,
+      "token_counts": 71,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| < |(a─c)|)) → ((∠ b:a:c : ℝ) > (∠ c:a:b : ℝ))",
+      "full_output": "theorem greater_side_subtends_greater_angle (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| < |(a─c)|) : (∠ b:a:c : ℝ) > (∠ c:a:b : ℝ) := by\n  -- Consider triangle ABC with side AC greater than AB.\n  have h2 : |(a─b)| < |(a─c)| := h2\n  have h1 : formTriangle a b c AB BC AC := h1\n  -- Using the Law of Sines, we relate the sides and angles of the triangle.\n  apply lt_of_sub_pos\n  -- Use the fact that in a triangle, the ratio of a side to the sine of its opposite angle is constant.\n  simp [formTriangle, formParallelogram, formQuadrilateral, Triangle.area, Point.onLine, Line.intersectsLine, Circle.onCircle, Circle.isCentre, Circle.intersectsCircle, Triangle.similar, Triangle.congruent, distinctPointsOnLine, between, formAngle, formSegment, formLine, formCircle]\n  -- Since |",
+      "probability": 0.20051696515152004,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.4499020576477,
+      "well_typed": true,
+      "token_counts": 71,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ a:b:c > ∠ b:c:a)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : ∠ a:b:c > ∠ b:c:a := by\n    -- We start by noting the given conditions and what needs to be proven.\n    have h₃ := h1.2.2.2\n    have h₄ := h1.2.2.1\n    have h₅ := h1.2.1.1\n    have h₆ := h1.2.1.2\n    -- We use the given conditions to establish the relationships between the sides and angles.\n    have h₇ : ∠ a:b:c > ∠ b:c:a := by\n        -- By the properties of triangles, if one side is longer than another, the angle opposite the longer side is larger.\n        linarith [h1.1.1.1, h1.1.1.2, h1.1.2.1, h1.1.2.2]\n    -- We conclude the proof by showing that",
+      "probability": 0.20000618255632668,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.4499020576477,
+      "well_typed": true,
+      "token_counts": 61,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ b:a:c > ∠ c:a:b)",
+      "full_output": "theorem greater_side_subtends_greater_angle (a b c : Point) (AB BC AC : Line) (h₁ : formTriangle a b c AB BC AC) (h₂ : |(a─c)| > |(a─b)|) : ∠ b:a:c > ∠ c:a:b := by\n  -- We need to show that angle ∠ b:a:c is greater than angle ∠ c:a:b given that |(a─c)| > |(a─b)|.\n  have h₃ : ∠ b:a:c > ∠ c:a:b := by\n    -- Use the law of sines or another geometric principle to relate the sides and angles.\n    -- However, since we are not using Lean's library, we will use basic geometric intuition here.\n    -- Given that side AC is greater than AB, by the geometric principle that in a triangle,\n    -- the longer side subtends the larger angle, we can conclude that ∠ b:a:c is greater than ∠ c:a:b.\n    apply lt_of_le_of_lt _ h₂\n    -- Use the fact that the sides are positive lengths to establish the inequality.\n    <;> linarith [|(a",
+      "probability": 0.1995678593452587,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.4499020576477,
+      "well_typed": true,
+      "token_counts": 65,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c AB) ∧ (b ≠ a) ∧ (c ≠ a) ∧ (c ≠ b)) → ((∠ a:b:c : ℝ) ≥ ∠ b:c:a ∧ (∠ a:b:c : ℝ) ≥ ∠ c:a:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : Point.onLine a AB) (h2 : Point.onLine b AB) (h3 : Point.onLine c AB) (h4 : b ≠ a) (h5 : c ≠ a) (h6 : c ≠ b) : (∠ a:b:c : ℝ) ≥ ∠ b:c:a ∧ (∠ a:b:c : ℝ) ≥ ∠ c:a:b := by\n  -- Given the triangle ABC with AC greater than AB, we need to show that angle ABC is greater than angle BCA.\n  -- We assume AB is on the line AB with points A and B on it, and C is also on the line AB.\n  have h7 : b ≠ c := by\n    intro h\n    apply h6\n    apply h.symm\n  have h8 : a ≠ c := by\n    intro h\n    apply h5\n    apply h.symm\n  -- Since AC is greater than AB, and all points are on the line AB, we can infer that the angle at B (angle ABC) is greater than the angle at C (angle BCA).\n",
+      "probability": 0.19847283055795,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.4499020576477,
+      "well_typed": true,
+      "token_counts": 100,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c AB) ∧ (b ≠ a) ∧ (c ≠ a) ∧ (c ≠ b)) → ((∠ a:b:c : ℝ) ≥ ∠ b:c:a ∧ (∠ a:b:c : ℝ) ≥ ∠ c:a:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : Point.onLine a AB) (h2 : Point.onLine b AB) (h3 : Point.onLine c AB) (h4 : b ≠ a) (h5 : c ≠ a) (h6 : c ≠ b) : (∠ a:b:c : ℝ) ≥ ∠ b:c:a ∧ (∠ a:b:c : ℝ) ≥ ∠ c:a:b := by sorry\n``` \nAlright, I need to formalize the English statement: \"In any triangle, the greater side subtends the greater angle.\" Let's break it down step by step.\n\nFirst, the theorem is about triangles, angles, and sides. It states that in any triangle, if one side is longer than another, the angle opposite the longer side is also larger.\n\nI'll start by identifying the components mentioned:\n\n- Points A, B, C forming a triangle.\n- Angles at points B and C.\n- Sides AB, BC, AC with their lengths.\n\nIn Lean, we have definitions for points, lines, and angles. I need to use the appropriate types and notations. For example, \"Point\"",
+      "probability": 1.5523259770286208e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.4499020576477,
+      "well_typed": true,
+      "token_counts": 100,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ a:b:c > ∠ b:c:a)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : ∠ a:b:c > ∠ b:c:a := by\n    -- We start by noting the given conditions and what needs to be proven.\n    have h₃ := h1.2.2.2\n    have h₄ := h1.2.2.1\n    have h₅ := h1.2.1.2\n    have h₆ := h1.2.1.1\n    -- Use the properties of the triangle and the given inequality to deduce the desired result.\n    linarith [h₃, h₄, h₅, h₆]\n```stitute a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : ∠ a:b:c > ∠ b:c:a := by\n    -- We start by noting the given conditions and what needs",
+      "probability": 1.0600221652012593e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.4499020576477,
+      "well_typed": true,
+      "token_counts": 61,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ b:a:c > ∠ c:a:b)",
+      "full_output": "theorem greater_side_subtends_greater_angle (a b c : Point) (AB BC AC : Line) (h₁ : formTriangle a b c AB BC AC) (h₂ : |(a─c)| > |(a─b)|) : ∠ b:a:c > ∠ c:a:b := by\n  -- We need to show that angle ∠ b:a:c is greater than angle ∠ c:a:b given that |(a─c)| > |(a─b)|\n  rcases Angle.right with ⟨h_right, h_ofPoints⟩\n  -- Using the right angle definition and the given triangle properties, we can infer the relationship between the sides and angles.\n  cases h_ofPoints b a c\n  -- By the properties of angles and sides in a triangle, if one side is longer, the angle opposite to it must be larger.\n  simp_all\n  <;> nlinarith\n```{{span}}akter.model Kemal quán duplicate\nAlright, so I'm looking at this theorem here: \"In any triangle, the greater side subtends the greater angle.\" The idea is that if you have a triangle with one side longer than another, the angle opposite the longer",
+      "probability": 7.555384908596466e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.4499020576477,
+      "well_typed": true,
+      "token_counts": 65,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ b:a:c > ∠ c:a:b)",
+      "full_output": "theorem greater_side_subtends_greater_angle (a b c : Point) (AB BC AC : Line) (h₁ : formTriangle a b c AB BC AC) (h₂ : |(a─c)| > |(a─b)|) : ∠ b:a:c > ∠ c:a:b := by\n  -- We need to show that angle ∠ b:a:c is greater than angle ∠ c:a:b given that |(a─c)| > |(a─b)|.\n  have h₃ : ∠ b:a:c > ∠ c:a:b := by\n    -- Use the theorem `greater_side_subtends_greater_angle` to conclude the proof.\n    linarith [Triangle.congruent h₁ h₁]\n  -- The result follows from the theorem `greater_side_subtends_greater_angle`.\n  exact h₃\n``` \n\nOkay, so I need to formalize this theorem that says in any triangle, the greater side subtends the greater angle. The English statement says that if in triangle ABC, side AC is greater than side AB, then angle ABC is greater than angle BCA. \n\nFirst, I need to identify the types of the geometric entities involved. In",
+      "probability": 4.877679939160952e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.4499020576477,
+      "well_typed": true,
+      "token_counts": 65,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ a:b:c > ∠ b:c:a)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : ∠ a:b:c > ∠ b:c:a := by\n    -- We start by noting the given conditions and what needs to be proven.\n    have h₃ := h1.2.2.2\n    have h₄ := h1.2.2.1\n    -- We use the fact that in any triangle, the greater side subtends the greater angle.\n    apply lt_of_le_of_lt _ (Angle.right_angle_lt (by simpa using h1.2.1) (by simpa using h1.2.2.2))\n    -- We conclude that angle ABC is greater than angle BCA.\n    <;> simp_all\n```solve_by_elim\n```lean4\ntheorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : ∠",
+      "probability": 1.695926942146965e-07,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 70.4499020576477,
+      "well_typed": true,
+      "token_counts": 61,
+      "formalization_check": true
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─c)| > |(a─b)|) → (∠ a:b:c > ∠ b:c:a)",
+  "nl_statement": "In any triangle, the greater side subtends the greater angle. For let $ABC$ be a triangle having side $AC$ greater than $AB$. I say that angle $ABC$ is also greater than $BCA$.   <prf>  Thus, $ABC$ is much greater than  $ACB$.  Thus, in any triangle, the greater side subtends the greater angle. (Which is) the very thing  it was required to show.",
+  "lean4_header": ""
+}
