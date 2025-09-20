@@ -31,10 +31,10 @@ python3 ~/lean-experiments/src/LeanEuclid/AutoFormalization/statement/autoformal
 	--model_type chat \
 	--model_name "deepseek-ai/DeepSeek-R1-Distill-Llama-70B" \
 	--preamble "import SystemE" \
-	--typecheck "none" \
-	--max_tokens 2000 \
-    --n_particles 1 \
-    --reasoning True
+	--typecheck "all" \
+	--max_tokens 250 \
+    --n_particles 10 \
+    --roundtrip True
 	2>&1 | tee autoformalize_output.txt
 
 echo "Starting evaluation..."

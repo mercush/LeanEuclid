@@ -11,7 +11,6 @@ from copy import deepcopy
 
 import openai
 import tqdm
-from genlm.control import PromptedLLM
 from lean_interact import (
     AutoLeanServer,
     Command,
@@ -24,36 +23,34 @@ from LeanEuclid.AutoFormalization.unreformat_theorems import unreformat_theorem
 from LeanEuclid.AutoFormalization.utils import EXAMPLE_DIR, ROOT_DIR
 from LeanEuclid.E3.validator import Validator
 from LeanEuclid.reformat_theorems import reformat_theorem_string
+from LeanPotential import device_llm
 from LeanPotential.lean_potential import LeanPotential
 from LeanPotential.models import ChatModel, Featherless, GeminiModel
 from LeanPotential.roundtrip import RoundTripPotential
 
 
-async def check_well_typed(
-    formalization: str,
-    lean_server: AutoLeanServer,
-    environment: int,
-) -> bool:
-    """Check if a formalization is well-typed using Lean server."""
-    try:
-        # Add proper imports/preamble if needed for the theorem to typecheck
-        lean_code = formalization
-        response = await lean_server.async_run(
-            Command(cmd=lean_code, env=environment),
-            timeout=10,
-        )
-        print(response)
+async def run_generation(llm, potential, instruction, content, cycle_potential=None, reasoning=False, max_tokens=500, n_particles=10, ess_threshold=0.5):
+    """Create ChatModel and run generation with timing."""
+    model = ChatModel(
+        model=llm,
+        potential=potential,
+        reasoning=reasoning,
+        max_tokens=max_tokens,
+        n_particles=n_particles,
+        ess_threshold=ess_threshold,
+        critic=cycle_potential,
+    )
 
-        match response:
-            case CommandResponse():
-                messages = response.messages
-                errors = [m for m in messages if m.severity == "error"]
-                return len(errors) == 0
-            case LeanError():
-                return False
-    except TimeoutError:
-        return False
+    # Add messages in the same way as the original code
+    model.add_message("system", instruction)
+    for con in content:
+        model.add_message("user", con["text"])
 
+    start_time = time.time()
+    sequences = await model.get_outputs()
+    elapsed_time = time.time() - start_time
+
+    return sequences, elapsed_time
 
 def examples(
     dataset: str,
@@ -203,13 +200,13 @@ async def main() -> None:
     with open("AutoFormalization/statement/instruction.txt") as f:
         instruction = instruction_head + f.read()
 
-    llm = PromptedLLM.from_name(
+    llm = device_llm(
         args.model_name,
         temperature=1.0,
-        engine_opts={
-            "tensor_parallel_size": args.tensor_parallel_size,
-            "max_model_len": 6 * 4096,
-        },
+        tensor_parallel_size=args.tensor_parallel_size
+    )
+    lean_config = LeanREPLConfig(
+        project=LocalProject(directory=args.project_dir),
     )
     for c in args.category:
         validator = Validator(
@@ -271,10 +268,6 @@ async def main() -> None:
             with open(text_path) as f:
                 problem_text += f.read()
             # Initialize Lean server for type checking
-            lean_config = LeanREPLConfig(
-                project=LocalProject(directory=args.project_dir),
-                memory_hard_limit_mb=4000,
-            )
             if args.model_type.lower() == "chat":
 
                 lean_potential = LeanPotential(
@@ -285,17 +278,8 @@ async def main() -> None:
                     typecheck=args.typecheck,
                 )
                 cycle_potential = RoundTripPotential(
-                    target_str=problem_text, formal_prefix=""
-                    )
-                model = ChatModel(
-                    model=llm,
-                    max_tokens=args.max_tokens,
-                    reasoning=args.reasoning,  # type: ignore[]
-                    potential=None if args.typecheck == "none" else lean_potential,
-                    n_particles=args.n_particles,
-                    ess_threshold=0.5,
-                    critic=cycle_potential if args.roundtrip else None
-                )
+                    target_str=unreformat_theorem(problem_text), formal_prefix=""
+                    ) if args.roundtrip else None
             elif args.model_type.lower() == "gemini":
                 model = GeminiModel(
                     model_name=args.model_name,
@@ -328,17 +312,31 @@ async def main() -> None:
                     "text": f"English Statement: {problem_text}\nFormalized Statement: ",
                 },
             )
-            # Combine system role and instructions
-            model.add_message("system", instruction)
-            for con in content:
-                model.add_message("user", con["text"])
-
             # Handle different model types for response generation with retry logic
-            start_time = time.time()
             response = None
+            generation_time = 0
             for attempt in range(3):
                 try:
-                    response = await model.get_outputs()
+                    if args.model_type.lower() == "chat":
+                        response, generation_time = await run_generation(
+                            llm=llm,
+                            potential=lean_potential,
+                            instruction=instruction,
+                            content=content,
+                            cycle_potential=cycle_potential,
+                            reasoning=args.reasoning,
+                            max_tokens=args.max_tokens,
+                            n_particles=args.n_particles,
+                            ess_threshold=0.5
+                        )
+                    else:
+                        # For non-chat models, use the original approach
+                        model.add_message("system", instruction)
+                        for con in content:
+                            model.add_message("user", con["text"])
+                        start_time = time.time()
+                        response = await model.get_outputs()
+                        generation_time = time.time() - start_time
                     break
                 except openai.InternalServerError:
                     wait_time = 2**attempt
@@ -346,8 +344,6 @@ async def main() -> None:
                         f"API error encountered, retrying in {wait_time} seconds... (attempt {attempt + 1}/3)"
                     )
                     await asyncio.sleep(wait_time)
-
-            generation_time = time.time() - start_time
 
             if response is None:
                 print("Failed to get response after retries")
@@ -375,7 +371,7 @@ async def main() -> None:
                         "time": generation_time,
                         "well_typed": is_well_typed,
                         "token_counts": len(
-                            model.llm.model.tokenizer.encode(
+                            llm.model.tokenizer.encode(
                                 original_formalization, add_special_tokens=False
                             )
                         )
@@ -398,7 +394,6 @@ async def main() -> None:
                     f,
                     ensure_ascii=False,
                 )
-            model.conversation = []
 
 
 if __name__ == "__main__":
