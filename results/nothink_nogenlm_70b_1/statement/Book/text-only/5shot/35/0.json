@@ -1,0 +1,20 @@
+{
+  "id": "35",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CF : Line) (AE : Line) (BC : Line), ((formParallelogram a b c d AB CF BC AE) ∧ (formParallelogram e b c f BC CF AE FB) ∧ (sameSide a e BC) ∧ (sameSide f d BC)) → (Triangle.area △ a:b:c = Triangle.area △ e:b:f)",
+      "full_output": "theorem parallelogram_equality (a b c d e f : Point) (AB CF AE BC: Line) (h1 : formParallelogram a b c d AB CF BC AE) (h2 : formParallelogram e b c f BC CF AE FB) (h3 : sameSide a e BC) (h4 : sameSide f d BC) : Triangle.area △ a:b:c = Triangle.area △ e:b:f := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 6.419677257537842,
+      "well_typed": false,
+      "token_counts": 96,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g : Point) (AF BC AB CD EB FC : Line), formParallelogram a d b c AF BC AB CD ∧ formParallelogram e f b c AF BC EB FC ∧ between a d e ∧ between d e f ∧ g.onLine CD ∧ g.onLine EB → Triangle.area △a:b:d + Triangle.area △d:b:c = Triangle.area △e:b:c + Triangle.area △ e:c:f",
+  "nl_statement": "Parallelograms which are on the same base and between the same parallels are equal to one another. Let $ABCD$ and $EBCF$ be parallelograms on the same base $BC$, and between the same parallels $AF$ and $BC$. I say that $ABCD$ is equal to parallelogram $EBCF$. <prf> Thus, the whole parallelogram $ABCD$ is equal to the whole parallelogram $EBCF$.Thus, parallelograms which are on the same base and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

@@ -1,0 +1,68 @@
+{
+  "id": "43",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (f : Point) (g : Point) (k : Point) (AB : Line) (CD : Line) (AD : Line) (BC : Line) (AC : Line), ((formParallelogram a b c d AB CD AD BC) ∧ (c ≠ d) ∧ (formQuadrilateral e h f g EH FG EF HG) ∧ (formQuadrilateral k d e h kg EH EF kg) ∧ (formQuadrilateral k b f g kb FG EF kb) ∧ (a.centre b c d k f g k)) → ((|(k─d)| * |(k─e)|) = (|(k─b)| * |(k─f)|))",
+      "full_output": "theorem example_thm (a b c d e h f g k : Point) (AB CD AD BC AC : Line) (h1 : formParallelogram a b c d AB CD AD BC) (h2 : c ≠ d) (h3 : formQuadrilateral e h f g EH FG EF HG) (h4 : formQuadrilateral k d e h kg EH EF kg) (h5 : formQuadrilateral k b f g kb FG EF kb) (h6 : a.centre b c d k f g k) : (|(k─d)| * |(k─e)|) = (|(k─b)| * |(k─f)|) := by",
+      "probability": 0.201566182298941,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.107731819152832,
+      "well_typed": false,
+      "token_counts": 150,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (k : Point) (AB : Line) (CD : Line) (AC : Line), ((formParallelogram a b c d AB CD AC) ∧ (formParallelogram e h c g (show Line from sorry) (show Line from sorry) (show Line from sorry)) ∧ (formParallelogram f k d (show Point from sorry) (show Line from sorry) (show Line from sorry))) → (|(b─k)| = |(k─d)|)",
+      "full_output": "theorem example_thm (a b c d e f g k : Point) (AB CD AC : Line) (h1 : formParallelogram a b c d AB CD AC) (h2 : formParallelogram e h c g (show Line from sorry) (show Line from sorry) (show Line from sorry)) (h3 : formParallelogram f k d (show Point from sorry) (show Line from sorry) (show Line from sorry)) : |(b─k)| = |(k─d)| := by",
+      "probability": 0.20078524640135184,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.107731819152832,
+      "well_typed": false,
+      "token_counts": 117,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (k : Point) (AB : Line) (CD : Line) (AD : Line) (BC : Line) (AC : Line), ((formParallelogram a b c d AB CD AD BC) ∧ (formParallelogram e h c a AC AD) ∧ (formParallelogram f g d c AC CD) ∧ (a ≠ c) ∧ (formQuadrilateral b k d f BC AB CD)) → ((∃ l : Point, l = k) ∧ (|(e─h)| + |(f─g)| = |(a─b)| + |(b─c)|))",
+      "full_output": "theorem example_thm (a b c d e f g h k : Point) (AB CD AD BC AC : Line) (h1 : formParallelogram a b c d AB CD AD BC) (h2 : formParallelogram e h c a AC AD ) (h3 : formParallelogram f g d c AC CD) (h4 : a ≠ c) (h5 : formQuadrilateral b k d f BC AB CD) : (∃ l : Point, l = k) ∧ (|(e─h)| + |(f─g)| = |(a─b)| + |(b─c)|) := by",
+      "probability": 0.199644636793581,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.107731819152832,
+      "well_typed": false,
+      "token_counts": 142,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (f : Point) (g : Point) (k : Point) (AB : Line) (CD : Line) (AD : Line) (BC : Line) (AC : Line), ((formParallelogram a b c d AB CD AD BC) ∧ (formParallelogram e h c a AC AB) ∧ (formParallelogram f g a c AC AD) ∧ (k.onLine AB) ∧ (k.onLine BC) ∧ (between b k c)) → (|(f─g)| = |(k─d)|)",
+      "full_output": "theorem example_thm (a b c d e h f g k : Point) (AB CD AD BC AC : Line) (h1 : formParallelogram a b c d AB CD AD BC) (h2 : formParallelogram e h c a AC AB) (h3 : formParallelogram f g a c AC AD) (h4 : k.onLine AB) (h5 : k.onLine BC) (h6 : between b k c) : |(f─g)| = |(k─d)| := by",
+      "probability": 0.19956829901872689,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.107731819152832,
+      "well_typed": false,
+      "token_counts": 119,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (AD : Line) (AC : Line), ((formParallelogram a b d c AB AD AC) ∧ (between a c b) ∧ (between a c d) ∧ (exists k : Point, k.onLine AC ∧ ¬(c = k))) → (∃ (k : Point), k.onLine AC ∧ ¬(c = k) ∧ ∃ (e h f g : Point) (EH FG : Line), formParallelogram e h f g EH FG ∧ (|(a─b)| * |(a─d)| = |(e─h)| * |(e─f)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB AD AC : Line) (h1 : formParallelogram a b d c AB AD AC) (h2 : between a c b) (h3 : between a c d) (h4 : exists k : Point, k.onLine AC ∧ ¬(c = k)) : ∃ (k : Point), k.onLine AC ∧ ¬(c = k) ∧ ∃ (e h f g : Point) (EH FG : Line), formParallelogram e h f g EH FG ∧ (|(a─b)| * |(a─d)| = |(e─h)| * |(e─f)|) := by",
+      "probability": 0.19843563548739937,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.107731819152832,
+      "well_typed": false,
+      "token_counts": 152,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h k : Point) (AD BC AB CD AC EF GH : Line), formParallelogram a d b c AD BC AB CD ∧ distinctPointsOnLine a c AC ∧ k.onLine AC ∧ between a h d ∧ formParallelogram a h e k AD EF AB GH ∧ formParallelogram k f g c EF BC GH CD → (Triangle.area △ e:b:g + Triangle.area △ e:g:k = Triangle.area △ h:k:f + Triangle.area △ h:f:d)",
+  "nl_statement": "For any parallelogram, the complements of the parallelograms about the diagonal are equal to one another. Let $ABCD$ be a parallelogram, and $AC$ its diagonal. And let $EH$ and $FG$ be the parallelograms about  $AC$, and $BK$ and $KD$ the so-called complements (about $AC$). I say that the complement $BK$ is equal to the complement $KD$. <prf> Thus, the remaining complement $BK$ is equal to the remaining complement $KD$. Thus, for any parallelogramic figure, the complements of the parallelograms about the diagonal are equal to one another.",
+  "lean4_header": ""
+}

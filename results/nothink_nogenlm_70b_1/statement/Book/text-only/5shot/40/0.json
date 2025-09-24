@@ -1,0 +1,20 @@
+{
+  "id": "40",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line), ((distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine c e CE) ∧ (Segment.endpoints a b) ∧ (Segment.endpoints a d) ∧ (Triangle.congruent △ a:b:c △ a:d:e)) → (¬Line.intersectsLine (Line.AppendLine a d) (Line.AppendLine b e))",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE : Line) (h1 : distinctPointsOnLine b c BC) (h2 : distinctPointsOnLine c e CE) (h3 : Segment.endpoints a b) (h4 : Segment.endpoints a d) (h5 : Triangle.congruent △ a:b:c △ a:d:e) : ¬Line.intersectsLine (Line.AppendLine a d) (Line.AppendLine b e) := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 6.802872896194458,
+      "well_typed": false,
+      "token_counts": 100,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC CD DE AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d c e CD BC DE ∧ a.sameSide d BC ∧ b ≠ e ∧ |(b─c)| = |(c─e)| ∧ distinctPointsOnLine a d AD ∧ (Triangle.area △ a:b:c = Triangle.area △ d:c:e) → ¬(AD.intersectsLine BC)",
+  "nl_statement": "Equal triangles which are on equal bases, and on the same side, are also between the same parallels.Let $ABC$ and $CDE$ be equal triangles on the equal bases $BC$ and $CE$ (respectively), and on the same side (of $BE$). I say that they are also between the same parallels.For let $AD$ have been joined. I say that $AD$ is parallel to $BE$.   <prf> Thus, $AD$ is parallel to $BE$.Thus, equal triangles which are on equal bases, and on the same side, are also between the same parallels.",
+  "lean4_header": ""
+}

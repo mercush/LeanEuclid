@@ -1,0 +1,68 @@
+{
+  "id": "33",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((|(a─b)| = |(c─d)|) ∧ (∠ a:c:d = ∟ + ∟ ∧ ∠ b:d:c = ∟ + ∟) ∧ (∠ a:c:c + ∠ a:d:d = ∟ + ∟)) → ((∠ a:c:c = ∠ b:d:d) ∧ (∠ a:c:c + ∠ a:c:d = ∟ + ∟))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : |(a─b)| = |(c─d)|) (h2 : ∠ a:c:d = ∟ + ∟ ∧ ∠ b:d:c = ∟ + ∟) (h3 : ∠ a:c:c + ∠ a:d:d = ∟ + ∟) : (∠ a:c:c = ∠ b:d:d) ∧ (∠ a:c:c + ∠ a:c:d = ∟ + ∟) := by",
+      "probability": 0.33469428584000727,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.65003538131714,
+      "well_typed": false,
+      "token_counts": 120,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (|(a─b)| = |(c─d)|) ∧ (|(a─c)| = |(b─d)|)) → (|(a─c)| = |(b─d)| ∧ ¬(AC.intersectsLine BD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : |(a─b)| = |(c─d)|) (h3 : |(a─c)| = |(b─d)|) : |(a─c)| = |(b─d)| ∧ ¬(AC.intersectsLine BD) := by",
+      "probability": 0.3341916414884162,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.65003538131714,
+      "well_typed": true,
+      "token_counts": 99,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (|(a─b)| = |(c─d)|) ∧ (¬(AB.intersectsLine CD)) ∧ (a.onLine AC ∧ c.onLine AC) ∧ (b.onLine BD ∧ d.onLine BD)) → (|(a─c)| = |(b─d)| ∧ ¬(AC.intersectsLine BD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : |(a─b)| = |(c─d)|) (h4 : ¬(AB.intersectsLine CD)) (h5 : a.onLine AC ∧ c.onLine AC) (h6 : b.onLine BD ∧ d.onLine BD) : |(a─c)| = |(b─d)| ∧ ¬(AC.intersectsLine BD) := by",
+      "probability": 0.33111407267157217,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.65003538131714,
+      "well_typed": true,
+      "token_counts": 127,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (|(a─b)| = |(c─d)|) ∧ (¬(AB.intersectsLine CD))) → ()",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : |(a─b)| = |(c─d)|) (h4 : ¬(AB.intersectsLine CD)) (h5 : sameSide a c (AB) ∨ sameSide a c (CD) ∨ a = c ∨ (opposingSides a c (AB) ∧ opposingSides a c (CD)) ∨ (AB = CD ∧ distinctPointsOnLine c d CD) ∨ (a.onLine CD ∧ c.onLine AB) ∨ (b.onLine CD ∧ d.onLine AB) ∨ (a = c ∧ b = d) ∨ (a = d ∧ b = c) ∨ (∃ k : Point, k.onLine AB ∧ k.onLine CD ∧ (|(a─k)| < |(a─b)| ∨ |(a─k)| > |(a─b)| ∨ |(c─k)| < |(c─d)| ∨ |(c─",
+      "probability": 4.45299393672861e-15,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.65003538131714,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (|(a─b)| = |(c─d)|) ∧ (¬(AB.intersectsLine CD))) → (∃ (A C : Point) (AC BD : Line), formParallelogram a b c d AB CD AC BD ∧ (|(a─c)| = |(b─d)|) ∧ ¬((a─c).Line.intersectsLine (b─d).Line))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : |(a─b)| = |(c─d)|) (h4 : ¬(AB.intersectsLine CD)) : ∃ (A C : Point) (AC BD : Line), formParallelogram a b c d AB CD AC BD ∧ (|(a─c)| = |(b─d)|) ∧ ¬((a─c).Line.intersectsLine (b─d).Line) :=",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.65003538131714,
+      "well_typed": false,
+      "token_counts": 134,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB CD AC BD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine b d BD ∧ (a.sameSide c BD) ∧ ¬(AB.intersectsLine CD) ∧ |(a─b)| = |(c─d)| → AC ≠ BD ∧ ¬(AC.intersectsLine BD) ∧ |(a─c)|= |(b─d)|",
+  "nl_statement": "Straight-lines joining equal and parallel (straight-lines) on the same sides are  themselves also equal and parallel.Let $AB$ and $CD$ be equal and parallel (straight-lines), and let the straight-lines $AC$ and $BD$ join them on the same sides. I say that $AC$ and $BD$ are also equal and parallel. <prf> Thus, straight-lines joining equal and parallel (straight-lines) on the same sides are themselves also equal and parallel.",
+  "lean4_header": ""
+}

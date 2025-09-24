@@ -1,0 +1,20 @@
+{
+  "id": "31",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b) ∧ (a ≠ c)) → (∃ l : Point, Point.onLine l (Line.parallel BC (Point_mk a h3)))",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) (h3 : a ≠ c) : ∃ l : Point, Point.onLine l (Line.parallel BC (Point_mk a h3)) := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 4.568905353546143,
+      "well_typed": false,
+      "token_counts": 68,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)",
+  "nl_statement": "To draw a straight-line parallel to a given straight-line, through a given point.Let $A$ be the given point, and $BC$ the given straight-line. So it is required to draw a straight-line parallel to the straight-line $BC$, through the point $A$.  <prf>  Thus, the straight-line $EAF$ has been drawn parallel to the given straight-line $BC$, through the  given point $A$.",
+  "lean4_header": ""
+}

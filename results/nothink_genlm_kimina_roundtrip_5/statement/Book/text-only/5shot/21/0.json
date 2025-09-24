@@ -1,0 +1,78 @@
+{
+  "id": "21",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CD : Line), ((formTriangle a b c AB BC AC) ∧ (d≠b) ∧ (d≠c) ∧ (d.onLine BC) ∧ (between b d c)) → (|(b─d)| + |(d─c)| < |(b─a)| + |(a─c)| ∧ (∠ b:d:c : ℝ) > ∠ a:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC BD CD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : d≠b) (h3 : d≠c) (h4 : d.onLine BC) (h5 : between b d c) : |(b─d)| + |(d─c)| < |(b─a)| + |(a─c)| ∧ (∠ b:d:c : ℝ) > ∠ a:b:c := by",
+      "probability": 0.10485870343553949,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 17.074729919433594,
+      "well_typed": false,
+      "token_counts": 113,
+      "formalization_check": false,
+      "original_probability": 0.20033144798398678,
+      "roundtrip_score": -360.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CD : Line), ((formTriangle a b c AB BC AC) ∧ (d≠b) ∧ (d≠c) ∧ (d.onLine BC) ∧ (between b d c)) → (|(b─d)| + |(d─c)| < |(a─b)| + |(a─c)| ∧ (∠ b:d:c) > (∠ a:b:c))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC BD CD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : d≠b) (h3 : d≠c) (h4 : d.onLine BC) (h5 : between b d c) : |(b─d)| + |(d─c)| < |(a─b)| + |(a─c)| ∧ (∠ b:d:c) > (∠ a:b:c) := by",
+      "probability": 0.7744342783566314,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 17.074729919433594,
+      "well_typed": false,
+      "token_counts": 112,
+      "formalization_check": false,
+      "original_probability": 0.20023511914511777,
+      "roundtrip_score": -358.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CD : Line), ((formTriangle a b c AB BC AC) ∧ (d≠b) ∧ (d≠c) ∧ (d.onLine BC) ∧ (between b d c)) → (|(b─d)| + |(d─c)| < |(a─b)| + |(a─c)| ∧ (∠ b:d:c : ℝ) > ∠ a:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC BD CD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : d≠b) (h3 : d≠c) (h4 : d.onLine BC) (h5 : between b d c) : |(b─d)| + |(d─c)| < |(a─b)| + |(a─c)| ∧ (∠ b:d:c : ℝ) > ∠ a:b:c := by",
+      "probability": 0.014165488118745264,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 17.074729919433594,
+      "well_typed": false,
+      "token_counts": 113,
+      "formalization_check": false,
+      "original_probability": 0.19997014183862577,
+      "roundtrip_score": -362.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (d ≠ a ∧ d ≠ b ∧ d ≠ c) ∧ (d.onLine BC)) → (|(b─d)| + |(d─c)| < |(a─b)| + |(a─c)| ∧ (∠ b:d:c : ℝ) > (∠ a:b:c : ℝ))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : d ≠ a ∧ d ≠ b ∧ d ≠ c) (h3 : d.onLine BC) : |(b─d)| + |(d─c)| < |(a─b)| + |(a─c)| ∧ (∠ b:d:c : ℝ) > (∠ a:b:c : ℝ) := by",
+      "probability": 0.10462825561571006,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 17.074729919433594,
+      "well_typed": true,
+      "token_counts": 105,
+      "formalization_check": false,
+      "original_probability": 0.19989117985250895,
+      "roundtrip_score": -360.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (d ≠ a ∧ d ≠ b ∧ d ≠ c) ∧ (d.onLine BC)) → (|(b─d)| + |(d─c)| < |(a─b)| + |(a─c)| ∧ (∠ d:b:c : ℝ) > (∠ a:b:c : ℝ) ∧ (∠ b:c:d : ℝ) > (∠ a:c:b : ℝ))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : d ≠ a ∧ d ≠ b ∧ d ≠ c) (h3 : d.onLine BC) : |(b─d)| + |(d─c)| < |(a─b)| + |(a─c)| ∧ (∠ d:b:c : ℝ) > (∠ a:b:c : ℝ) ∧ (∠ b:c:d : ℝ) > (∠ a:c:b : ℝ) := by",
+      "probability": 0.0019132744733913428,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 17.074729919433594,
+      "well_typed": true,
+      "token_counts": 123,
+      "formalization_check": false,
+      "original_probability": 0.19957211117976079,
+      "roundtrip_score": -364.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD DC : Line), formTriangle a b c AB BC AC ∧ (a.sameSide d BC) ∧ (c.sameSide d AB) ∧ (b.sameSide d AC) ∧ distinctPointsOnLine b d BD ∧ distinctPointsOnLine d c DC → (|(b─d)| + |(d─c)| < |(b─a)| + |(a─c)|) ∧ (∠ b:d:c > ∠ b:a:c)",
+  "nl_statement": "If two internal straight-lines are constructed on one of the sides of a triangle, from its ends, the constructed (straight-lines) will be less than the two remaining  sides of the triangle, but will encompass a greater angle. For let the two internal straight-lines $BD$ and $DC$ have been constructed on one of the sides $BC$ of the triangle $ABC$, from its ends $B$ and $C$ (respectively). I say that  $BD$ and $DC$ are less than the (sum of the) two  remaining sides of the triangle $BA$ and $AC$, but encompass an angle $BDC$ greater than $BAC$.    <prf>  Thus, $BDC$ is much greater than $BAC$.Thus, if two internal straight-lines are constructed on one of the sides of a triangle, from its ends,  the constructed (straight-lines) are less than the two remaining  sides of the triangle, but  encompass a greater angle.",
+  "lean4_header": ""
+}

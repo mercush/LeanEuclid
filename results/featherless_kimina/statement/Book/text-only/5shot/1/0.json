@@ -1,0 +1,20 @@
+{
+  "id": "1",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((a.onLine AB ∧ b.onLine AB) ∧ (a ≠ b)) → (∃ c : Point, (|(a─c)| = |(a─b)|) ∧ (|(b─c)| = |(a─b)|))",
+      "full_output": "Alright, I need to formalize the theorem about constructing an equilateral triangle on a given finite straight-line. \n\nFirst, let's think about what the theorem states. We need to prove that given a finite straight-line segment $AB$, we can construct an equilateral triangle on it. \n\nIn the formalized version, we need to show the existence of points $c$ such that the triangle formed by points $a$, $b$, and $c$ is equilateral. \n\nLooking at the structure of the theorem, it should state that given points $a$ and $b$ forming a line segment, there exists a point $c$ such that the lengths $|a-c|$ and $|b-c|$ are equal to $|a-b|$, which would make the triangle equilateral.\n\nLet me try to write this out:\n\n```tactics\ntheorem example_thm (a b : Point) (AB : Line) (h1 : a.onLine AB ∧ b.onLine AB) (h2 : a ≠ b) : ∃ c : Point, (|(a─c)| = |(a─b)|) ∧ (|(b─c)| = |(a─b)|) := by sorry\n```\n\nWait, but looking at the previous examples, they all had `:= by sorry` at the end. So I need to make sure my theorem follows that format.\n\nBut actually, looking more carefully at the examples, they all had specific structures. Let me analyze them:\n\nThe first example had:\n```tactics\ntheorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ l : Point, |(a─l)| = |(b─c)| := by sorry\n```\n\nThis seems similar to what I need. In my case, I need to construct a point $c$ such that $|a-c| = |a-b|$ and $|b-c| = |a-b|$.\n\nSo, given that $a$ and $b$ are distinct points on line $AB$, I need to show there exists a point $c$ such that both conditions hold.\n\nTherefore, my proposed theorem is:\n\n```tactics\ntheorem example_thm (a b : Point) (AB : Line) (h1 : a.onLine AB ∧ b.onLine AB) (h2 : a ≠ b) : ∃ c : Point, (|(a─c)| = |(a─b)|) ∧ (|(b─c)| = |(a─b)|) := by sorry\n```\n\nBut wait, looking at the second example, it uses `exists` instead of `∃`. Is that important?\n\nActually, in Lean 4, `∃` is the standard notation for existential quantification. So I should probably use that.\n\nAlso, the second example has a more complex conclusion with multiple conditions. But in my case, I just need the existence of a point $c$ satisfying two distance conditions.\n\nSo my theorem seems reasonable. It states that given two distinct points $a$ and $b$ on a line $AB$, there exists a point $c$ such that the distances $|a-c|$, $|b-c|$, and $|a-b|$ are all equal.\n</think>\n```lean4\ntheorem example_thm (a b : Point) (AB : Line) (h1 : a.onLine AB ∧ b.onLine AB) (h2 : a ≠ b) : ∃ c : Point, (|(a─c)| = |(a─b)|) ∧ (|(b─c)| = |(a─b)|) := by sorry\n```",
+      "probability": 1.0,
+      "source": "featherless",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 141.7325677871704,
+      "well_typed": true,
+      "token_counts": 4000,
+      "formalization_check": true
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)|",
+  "nl_statement": "To construct an equilateral triangle on a given finite straight-line. Let $AB$ be the given finite straight-line.  <prf> Thus, the three (straight-lines) $CA$, $AB$, and $BC$ are equal to one another.Thus, the triangle $ABC$ is equilateral, and has been constructed on the given finite straight-line $AB$.",
+  "lean4_header": ""
+}

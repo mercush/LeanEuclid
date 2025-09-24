@@ -1,0 +1,68 @@
+{
+  "id": "27",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((a ≠ e) ∧ (e ≠ c) ∧ (d ≠ e) ∧ (e ≠ b) ∧ (between a e c) ∧ (between d e b) ∧ (∠ a:e:f = ∠ f:e:c)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB CD EF : Line) (h1 : a ≠ e) (h2 : e ≠ c) (h3 : d ≠ e) (h4 : e ≠ b) (h5 : between a e c) (h6 : between d e b) (h7 : ∠ a:e:f = ∠ f:e:c) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.2007367681321913,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.35961079597473,
+      "well_typed": false,
+      "token_counts": 98,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine e f EF) ∧ (e.onLine AB ∧ e.onLine CD) ∧ (f.onLine AB ∧ f.onLine CD) ∧ (a ≠ c) ∧ (b ≠ d) ∧ ((∠ a:e:f : ℝ) = (∠ c:e:f : ℝ))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB CD EF : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : distinctPointsOnLine e f EF) (h4 : e.onLine AB ∧ e.onLine CD) (h5 : f.onLine AB ∧ f.onLine CD) (h6 : a ≠ c) (h7 : b ≠ d) (h8 : (∠ a:e:f : ℝ) = (∠ c:e:f : ℝ)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.200353413933825,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.35961079597473,
+      "well_typed": true,
+      "token_counts": 133,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine e f EF) ∧ (e ≠ a) ∧ (e ≠ b) ∧ (e ≠ c) ∧ (e ≠ d) ∧ (f ≠ a) ∧ (f ≠ b) ∧ (f ≠ c) ∧ (f ≠ d) ∧ (a ≠ c) ∧ (a ≠ d) ∧ (b ≠ c) ∧ (b ≠ d) ∧ ((∠ a:e:c : ℝ) = ∠ b:e:d)) → (¬ (AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB CD EF : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : distinctPointsOnLine e f EF) (h4 : e ≠ a) (h5 : e ≠ b) (h6 : e ≠ c) (h7 : e ≠ d) (h8 : f ≠ a) (h9 : f ≠ b) (h10 : f ≠ c) (h11 : f ≠ d) (h12 : a ≠ c) (h13 : a ≠ d) (h14 : b ≠ c) (h15 : b ≠ d) (h16 : (∠ a:e:c : ℝ) = ∠ b:e:d) : ¬ (AB.intersectsLine CD) := by",
+      "probability": 0.20006685443293398,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.35961079597473,
+      "well_typed": true,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (between e a b) ∧ (between e c d) ∧ (e = f ∨ (¬e = f ∧ (∠ a:e:c : ℝ) = ∠ b:e:d))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB CD EF : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : between e a b) (h4 : between e c d) (h5 : e = f ∨ (¬e = f ∧ (∠ a:e:c : ℝ) = ∠ b:e:d)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.19958451481251305,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.35961079597473,
+      "well_typed": false,
+      "token_counts": 104,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (EF : Line) (CD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (between a e f) ∧ (e = c) ∧ (f = d) ∧ (∠ a:e:c = ∠ c:e:d) ∧ (e.onLine EF) ∧ (a.onLine AB) ∧ (b.onLine AB) ∧ (c.onLine CD) ∧ (d.onLine CD)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB EF CD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : between a e f) (h4 : e = c) (h5 : f = d) (h6 : ∠ a:e:c = ∠ c:e:d) (h7 : e.onLine EF) (h8 : a.onLine AB) (h9 : b.onLine AB) (h10 : c.onLine CD) (h11 : d.onLine CD) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.1992584486885367,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.35961079597473,
+      "well_typed": true,
+      "token_counts": 144,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a d e f : Point) (AE FD EF : Line), distinctPointsOnLine a e AE ∧ distinctPointsOnLine f d FD ∧ distinctPointsOnLine e f EF ∧ a.opposingSides d EF ∧ (∠ a:e:f = ∠ e:f:d) → ¬(AE.intersectsLine FD)",
+  "nl_statement": "If a straight-line falling across two straight-lines makes the alternate angles equal to one another then the (two) straight-lines will be parallel to one another.For let the straight-line $EF$, falling across the two straight-lines $AB$ and $CD$, make the alternate angles $AEF$ and $EFD$ equal to one another. I say that $AB$ and $CD$ are parallel. <prf> Thus, $AB$ and $CD$ are parallel.Thus, if a straight-line falling across two straight-lines makes the alternate angles equal to one another then the (two) straight-lines will be parallel (to one another).",
+  "lean4_header": ""
+}

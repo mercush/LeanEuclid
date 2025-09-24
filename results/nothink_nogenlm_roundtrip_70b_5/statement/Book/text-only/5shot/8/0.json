@@ -1,0 +1,78 @@
+{
+  "id": "8",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (F : Point) (AB : Line) (AC : Line) (DE : Line) (DF : Line) (BC : Line) (EF : Line), ((formTriangle A B C AB BC AC) ∧ (formTriangle D E F DE EF DF) ∧ (|(A─B)| = |(D─E)|) ∧ (|(A─C)| = |(D─F)|) ∧ (|(B─C)| = |(E─F)|)) → (∠ A:B:C = ∠ D:E:F)",
+      "full_output": "theorem example_thm (A B C D E F : Point) (AB AC DE DF BC EF : Line)\n  (h1 : formTriangle A B C AB BC AC)\n  (h2 : formTriangle D E F DE EF DF)\n  (h3 : |(A─B)| = |(D─E)|)\n  (h4 : |(A─C)| = |(D─F)|)\n  (h5 : |(B─C)| = |(E─F)|) :\n  ∠ A:B:C = ∠ D:E:F := by",
+      "probability": 0.014241609314722282,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.692988634109497,
+      "well_typed": true,
+      "token_counts": 124,
+      "formalization_check": true,
+      "original_probability": 0.20045170392129835,
+      "roundtrip_score": -362.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d1 : Point) (d2 : Point) (d3 : Point) (AB : Line) (BC : Line) (AC : Line) (DEF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d1 d2 d3 DEF BC AC) ∧ (|(a─b)| = |(d1─d2)|) ∧ (|(a─c)| = |(d1─d3)|)) → ((∠ a:b:c : ℝ) = (∠ d1:d2:d3 : ℝ))",
+      "full_output": "theorem example_thm (a b c d1 d2 d3 : Point) (AB BC AC DEF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d1 d2 d3 DEF BC AC) (h3 : |(a─b)| = |(d1─d2)|) (h4 : |(a─c)| = |(d1─d3)|) : (∠ a:b:c : ℝ) = (∠ d1:d2:d3 : ℝ) := by",
+      "probability": 3.527136882933132e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.692988634109497,
+      "well_typed": true,
+      "token_counts": 117,
+      "formalization_check": false,
+      "original_probability": 0.20028106415638267,
+      "roundtrip_score": -368.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (DE : Line) (DF : Line) (BC : Line) (EF : Line), (((|(a─b)| = |(d─e)|)) ∧ ((|(a─c)| = |(d─f)|)) ∧ ((|(b─c)| = |(e─f)|))) → (∠ a:b:c = ∠ d:e:f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB AC DE DF BC EF : Line) (h1 : (|(a─b)| = |(d─e)|)) (h2 : (|(a─c)| = |(d─f)|)) (h3 : (|(b─c)| = |(e─f)|)) : ∠ a:b:c = ∠ d:e:f := by",
+      "probability": 0.7761656508736186,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.692988634109497,
+      "well_typed": false,
+      "token_counts": 92,
+      "formalization_check": false,
+      "original_probability": 0.20009082556397945,
+      "roundtrip_score": -358.0
+    },
+    {
+      "formalization": "()",
+      "full_output": "theorem m Rails s HatcharacteristicReiterationpoint (a b c d e f : Point) (AB AC DE DF BC EF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : |(b─c)| = |(e─f)|) : ∠ b:a:c = ∠ e:d:f := by",
+      "probability": 0.10485908859221066,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.692988634109497,
+      "well_typed": false,
+      "token_counts": 125,
+      "formalization_check": false,
+      "original_probability": 0.19974126653313723,
+      "roundtrip_score": -360.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (BC : Line) (DE : Line) (DF : Line) (EF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| = |(e─f)|)) → (∠ a:b:c = ∠ d:e:f)",
+      "full_output": "theorem triangleCongruence_rst (a b c d e f : Point) (AB AC BC DE DF EF : Line)\n(h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF)\n(h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : |(b─c)| = |(e─f)|)\n: ∠ a:b:c = ∠ d:e:f := by",
+      "probability": 0.10469837985062123,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.692988634109497,
+      "well_typed": true,
+      "token_counts": 119,
+      "formalization_check": true,
+      "original_probability": 0.19943513982520236,
+      "roundtrip_score": -360.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ |(b─c)| = |(e─f)| → ∠ b:a:c = ∠ e:d:f",
+  "nl_statement": "If two triangles have  two sides equal to two sides, respectively,  and also have the base equal to the base, then they will also have equal the angles  encompassed by the equal straight-lines.     Let $ABC$ and $DEF$ be two triangles having the two sides $AB$ and $AC$ equal to the two sides $DE$ and $DF$, respectively. (That is) $AB$ to $DE$, and $AC$ to $DF$. Let them also have the base $BC$ equal to the base $EF$. I say that the angle $BAC$ is also equal to the angle $EDF$. <prf>   Thus, they will coincide. So the angle $BAC$ will also coincide with angle $EDF$, and will be equal to it [C.N.~4].Thus, if two triangles have  two  sides equal to two side, respectively, and  have the base equal to the base, then they will also have equal the angles  encompassed by the equal straight-lines.",
+  "lean4_header": ""
+}

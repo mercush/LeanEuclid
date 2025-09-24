@@ -1,0 +1,68 @@
+{
+  "id": "9",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (b ≠ c)) → (∃ d e : Point, d ≠ e ∧ (∠ b:a:d : ℝ) = (∠ c:a:e : ℝ))",
+      "full_output": "theorem example_thm (a b c : Point) (AB AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : b ≠ c) : ∃ d e : Point, d ≠ e ∧ (∠ b:a:d : ℝ) = (∠ c:a:e : ℝ) := by",
+      "probability": 0.20057191905374702,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.397956609725952,
+      "well_typed": true,
+      "token_counts": 80,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (AC : Line), ((formRectilinearAngle a b c AB AC) ∧ ((∠ a:b:c : ℝ) > 0) ∧ ((∠ a:b:c : ℝ) < ∟ + ∟)) → (∃ f : Point, (∠ a:b:f : ℝ) = (∠ f:b:c : ℝ))",
+      "full_output": "theorem example_thm (a b c : Point) (AB AC : Line) (h1 : formRectilinearAngle a b c AB AC) (h2 : (∠ a:b:c : ℝ) > 0) (h3 : (∠ a:b:c : ℝ) < ∟ + ∟) : ∃ f : Point, (∠ a:b:f : ℝ) = (∠ f:b:c : ℝ) := by",
+      "probability": 0.20021992086748805,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.397956609725952,
+      "well_typed": true,
+      "token_counts": 92,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (AC : Line), ((formRectilinearAngle a b c AB AC) ∧ ((∠ a:b:c : ℝ) > 0) ∧ ((∠ a:b:c : ℝ) < ∟ + ∟)) → (∃ l : Point, l.onLine AB ∨ l.onLine AC ∧ (∠ a:b:l : ℝ) = (∠ a:b:c : ℝ) / 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB AC : Line) (h1 : formRectilinearAngle a b c AB AC) (h2 : (∠ a:b:c : ℝ) > 0) (h3 : (∠ a:b:c : ℝ) < ∟ + ∟) : ∃ l : Point, l.onLine AB ∨ l.onLine AC ∧ (∠ a:b:l : ℝ) = (∠ a:b:c : ℝ) / 2 := by",
+      "probability": 0.19987326528149899,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.397956609725952,
+      "well_typed": true,
+      "token_counts": 106,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (AC : Line) (BC : Line), ((formRectilinearAngle a b c AB AC) ∧ (∠ a:b:c > 0) ∧ (∠ a:b:c < ∟ + ∟)) → (∃ l : Point, (∠ a:b:l : ℝ) = (∠ l:b:c : ℝ))",
+      "full_output": "theorem example_thm (a b c : Point) (AB AC BC : Line) (h1 : formRectilinearAngle a b c AB AC) (h2 : ∠ a:b:c > 0) (h3 : ∠ a:b:c < ∟ + ∟) : ∃ l : Point, (∠ a:b:l : ℝ) = (∠ l:b:c : ℝ) := by",
+      "probability": 0.19982673371905882,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.397956609725952,
+      "well_typed": false,
+      "token_counts": 87,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (AC : Line), ((formRectilinearAngle a b c AB AC) ∧ ((∠ a:b:c : ℝ) > 0) ∧ ((∠ a:b:c : ℝ) < ∟ + ∟)) → (∃ d : Point, d.onLine AB ∨ d.onLine AC ∧ (∠ a:d:c : ℝ) = (∠ a:b:c : ℝ) / 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB AC : Line) (h1 : formRectilinearAngle a b c AB AC) (h2 : (∠ a:b:c : ℝ) > 0) (h3 : (∠ a:b:c : ℝ) < ∟ + ∟) : ∃ d : Point, d.onLine AB ∨ d.onLine AC ∧ (∠ a:d:c : ℝ) = (∠ a:b:c : ℝ) / 2 := by",
+      "probability": 0.19950816107820707,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.397956609725952,
+      "well_typed": true,
+      "token_counts": 106,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB AC : Line), formRectilinearAngle b a c AB AC ∧ AB ≠ AC → ∃ f : Point, f ≠ a ∧ (∠ b:a:f = ∠ c:a:f)",
+  "nl_statement": "To cut a given rectilinear angle in half. Let $BAC$ be the given rectilinear angle. So it is required to cut it in half.    <prf>  Thus, angle $DAF$ is equal to angle $EAF$ [Prop.~1.8]. Thus, the given rectilinear angle $BAC$ has been cut in half by the straight-line $AF$.",
+  "lean4_header": ""
+}

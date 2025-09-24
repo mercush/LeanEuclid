@@ -1,0 +1,20 @@
+{
+  "id": "7",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (AB : Line), ((distinctPointsOnLine A B AB) ∧ (distinctPointsOnLine C B AB) ∧ (|(A─C)| = |(C─B)|) ∧ (|(A─D)| = |(D─B)|)) → ((C = D))",
+      "full_output": "theorem example_thm (A B C D : Point) (AB : Line) (h1 : distinctPointsOnLine A B AB) (h2 : distinctPointsOnLine C B AB) (h3 : |(A─C)| = |(C─B)|) (h4 : |(A─D)| = |(D─B)|) : (C = D) := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 5.956635475158691,
+      "well_typed": true,
+      "token_counts": 85,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB AC CB AD DB : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine c b CB ∧ distinctPointsOnLine a d AD ∧ distinctPointsOnLine d b DB ∧ (c.sameSide d AB) ∧ c ≠ d ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|) → False",
+  "nl_statement": "On the same straight-line, two other straight-lines  equal, respectively, to  two (given) straight-lines (which meet) cannot be constructed (meeting) at  a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.     For, if possible, let the two straight-lines $AC$, $CB$, equal to two other straight-lines $AD$, $DB$, respectively, have been constructed on the same straight-line $AB$, meeting at different points, $C$ and $D$, on the same side (of $AB$), and having the same ends (on $AB$). So $CA$ is equal to $DA$, having the same end $A$ as it, and $CB$ is equal to $DB$, having the same end $B$ as it. And let $CD$ have been joined [Post.~1]. <prf> Again, since  $CB$ is equal to $DB$, the angle $CDB$ is also equal to angle $DCB$ [Prop.~1.5]. But it was shown that the former (angle) is also much greater (than the latter). The very thing is impossible. Thus, on the same straight-line, two other straight-lines equal, respectively, to two (given) straight-lines (which meet) cannot be constructed (meeting) at a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.",
+  "lean4_header": ""
+}

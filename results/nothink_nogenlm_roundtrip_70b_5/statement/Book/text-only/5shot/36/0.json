@@ -1,0 +1,78 @@
+{
+  "id": "36",
+  "formalizations": [
+    {
+      "formalization": "∀ (AB : Line) (BC : Line) (AC : Line) (BD : Line) (AE : Line) (EF : Line) (FG : Line) (GH : Line), ((formParallelogram A B E F AE EF AB BC) ∧ (formParallelogram E F G H EF FG AE BC) ∧ (|(B--C)| = |(F--G)|) ∧ (¬(AB.intersectsLine AE)) ∧ (¬(BC.intersectsLine BD))) → ((|(A--B)| = |(E--F)|) ∧ (|(B--C)| = |(F--G)|))",
+      "full_output": "theorem parallelograms_on_equal_bases_between_same_parallels_are_equal (AB : Line) (BC : Line) (AC : Line) (BD : Line) (AE : Line) (EF : Line) (FG : Line) (GH : Line) (h1 : formParallelogram A B E F AE EF AB BC) (h2 : formParallelogram E F G H EF FG AE BC) (h3 : |(B--C)| = |(F--G)|) (h4 : ¬(AB.intersectsLine AE)) (h5 : ¬(BC.intersectsLine BD)) : (|(A--B)| = |(E--F)|) ∧ (|(B--C)| = |(F--G)|) := by",
+      "probability": 2.0870980785989596e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.301753044128418,
+      "well_typed": false,
+      "token_counts": 164,
+      "formalization_check": false,
+      "original_probability": 0.20079572897523387,
+      "roundtrip_score": -193.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line) (GH : Line) (FG : Line), ((formParallelogram a b d c AB CD AC BD) ∧ (formParallelogram e f g h EF GH FG) ∧ (|(a─d)| = |(e─g)|) ∧ (Line interlictingLine AC GH) ∧ (Line interlictingLine BD FG)) → ((Point.onCircle a Circleิกา))",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD AC BD EF GH FG : Line) (h1 : formParallelogram a b d c AB CD AC BD) (h2 : formParallelogram e f g h EF GH FG) (h3 : |(a─d)| = |(e─g)|) (h4 : Line interlictingLine AC GH) (h5 : Line interlictingLine BD FG) : (Point.onCircle a Circleิกา) := by",
+      "probability": 0.062127364983601885,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.301753044128418,
+      "well_typed": false,
+      "token_counts": 113,
+      "formalization_check": false,
+      "original_probability": 0.20051122563170712,
+      "roundtrip_score": -185.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h AB CD AC BD) ∧ (|(a─b)| = |(e─f)|) ∧ (|(a─c)| = |(e─g)|)) → ((Triangle.area △ a:b:c = Triangle.area △ e:f:g))",
+      "full_output": "theorem parallelograms_on_equal_bases_between_same_parallels_are_equal (a b c d e f g h : Point)\n  (AB CD AC BD : Line)\n  (h1 : formParallelogram a b c d AB CD AC BD)\n  (h2 : formParallelogram e f g h AB CD AC BD)\n  (h3 : |(a─b)| = |(e─f)|)\n  (h4 : |(a─c)| = |(e─g)|) :\n  (Triangle.area △ a:b:c = Triangle.area △ e:f:g) := by",
+      "probability": 0.4578898194695866,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.301753044128418,
+      "well_typed": true,
+      "token_counts": 130,
+      "formalization_check": false,
+      "original_probability": 0.1999989802645617,
+      "roundtrip_score": -183.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (FG : Line) (AH : Line) (BG : Line), ((formParallelogram a b c d AB CD AH BG) ∧ (formParallelogram e f g h FG CD AH BG) ∧ (|(c─d)| = |(f─g)|) ∧ (¬(AH.intersectsLine BG))) → ()",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD FG AH BG : Line) (h1 : formParallelogram a b c d AB CD AH BG) (h2 : formParallelogram e f g h FG CD AH BG) (h3 : |(c─d)| = |(f─g)|) (h4 : ¬(AH.intersectsLine BG))) : |(a─b)| + |(c─d)| = |(e─f)| + |(f─g)| := by",
+      "probability": 0.4572833854693263,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.301753044128418,
+      "well_typed": false,
+      "token_counts": 121,
+      "formalization_check": false,
+      "original_probability": 0.19973409955201593,
+      "roundtrip_score": -183.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (EF : Line) (GH : Line) (BC : Line) (FG : Line), ((formParallelogram a b c d AB CD BC GH) ∧ (formParallelogram e f g h EF GH FG BC) ∧ (|(b─c)| = |(f─g)|) ∧ (between a b c) ∧ (between e f g)) → (|(a─b)| = |(e─f)|)",
+      "full_output": "theorem parallelograms_equal_bases_same_parallels (a b c d e f g h : Point) (AB CD EF GH BC FG : Line) (h1 : formParallelogram a b c d AB CD BC GH) (h2 : formParallelogram e f g h EF GH FG BC) (h3 : |(b─c)| = |(f─g)|) (h4 : between a b c) (h5 : between e f g) : |(a─b)| = |(e─f)| := by",
+      "probability": 0.02267855909668609,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.301753044128418,
+      "well_typed": true,
+      "token_counts": 120,
+      "formalization_check": false,
+      "original_probability": 0.19895996557648138,
+      "roundtrip_score": -186.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AH BG AB CD EF HG : Line), formParallelogram a d b c AH BG AB CD ∧ formParallelogram e h f g AH BG EF HG ∧ |(b─c)| = |(f─g)| ∧ (between a d h) ∧ (between a e h) → Triangle.area △ a:b:d + Triangle.area △ d:b:c = Triangle.area △ e:f:h + Triangle.area △ h:f:g",
+  "nl_statement": "Parallelograms which are on equal bases and between the same parallels are equal to one another. Let $ABCD$ and $EFGH$ be parallelograms which are on the equal bases $BC$ and $FG$, and (are) between the same parallels $AH$ and $BG$. I say that the parallelogram $ABCD$ is equal to $EFGH$. <prf> So that the parallelogram $ABCD$ is  also equal to $EFGH$.Thus, parallelograms which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

@@ -1,0 +1,20 @@
+{
+  "id": "26",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "theorem triangle_congruence ASA (h1 : ∠ Point.right a b c : ℝ) (h2 : ∠ Point.right d e f : ℝ) (h3 : |(b─c)| = |(e─f)|) := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 3.8545756340026855,
+      "well_typed": false,
+      "token_counts": 55,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)| ∨ |(a─b)| = |(d─e)|) → (|(a─b)| = |(d─e)|) ∧ (|(b─c)| = |(e─f)|) ∧ (|(a─c)| = |(d─f)|) ∧ (∠ b:a:c = ∠ e:d:f)",
+  "nl_statement": "If two triangles have two angles equal to two angles, respectively,  and one side equal to one side---in fact, either that by the equal angles, or that subtending one of the equal angles---then (the triangles) will also have the remaining sides equal to the [corresponding] remaining sides, and the remaining angle (equal) to the remaining angle.Let $ABC$ and $DEF$ be two triangles having the two angles $ABC$ and $BCA$ equal to the two (angles) $DEF$ and $EFD$, respectively. (That is) $ABC$ (equal) to $DEF$, and $BCA$ to $EFD$. And let them also have one side equal to one side. First of all, the (side) by the equal angles. (That is) $BC$ (equal) to $EF$. I say that they will have the  remaining sides equal to the corresponding remaining sides. (That is) $AB$ (equal) to $DE$, and $AC$ to $DF$. And (they will have) the remaining angle (equal) to the remaining angle. (That is) $BAC$ (equal) to $EDF$. <prf> Thus, the base $AC$ is equal to the base $DF$, and triangle $ABC$ (is) equal to triangle $DEF$, and the remaining angle $BAC$ (is) equal to the remaining angle $EDF$ [Prop.~1.4].Thus, if two triangles have two angles equal to two angles, respectively, and one side equal to one side---in fact, either that by the equal angles, or that subtending one of the equal angles---then (the triangles) will also have the remaining sides equal to the (corresponding) remaining sides, and the remaining angle (equal) to the remaining angle.",
+  "lean4_header": ""
+}

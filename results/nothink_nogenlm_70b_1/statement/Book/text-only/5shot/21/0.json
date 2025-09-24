@@ -1,0 +1,20 @@
+{
+  "id": "21",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (BD : Line) (DC : Line) (AB : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (distinctPointsOnLine b d BD) ∧ (distinctPointsOnLine d c DC) ∧ (sameSide a d BD) ∧ (sameSide a c DC)) → (|(b─d)| + |(d─c)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ b:a:c)",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC : Line) (BD : Line) (DC : Line) (AB : Line) (AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : distinctPointsOnLine b d BD) (h3 : distinctPointsOnLine d c DC) (h4 : sameSide a d BD) (h5 : sameSide a c DC) : |(b─d)| + |(d─c)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ b:a:c := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.192101240158081,
+      "well_typed": false,
+      "token_counts": 137,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD DC : Line), formTriangle a b c AB BC AC ∧ (a.sameSide d BC) ∧ (c.sameSide d AB) ∧ (b.sameSide d AC) ∧ distinctPointsOnLine b d BD ∧ distinctPointsOnLine d c DC → (|(b─d)| + |(d─c)| < |(b─a)| + |(a─c)|) ∧ (∠ b:d:c > ∠ b:a:c)",
+  "nl_statement": "If two internal straight-lines are constructed on one of the sides of a triangle, from its ends, the constructed (straight-lines) will be less than the two remaining  sides of the triangle, but will encompass a greater angle. For let the two internal straight-lines $BD$ and $DC$ have been constructed on one of the sides $BC$ of the triangle $ABC$, from its ends $B$ and $C$ (respectively). I say that  $BD$ and $DC$ are less than the (sum of the) two  remaining sides of the triangle $BA$ and $AC$, but encompass an angle $BDC$ greater than $BAC$.    <prf>  Thus, $BDC$ is much greater than $BAC$.Thus, if two internal straight-lines are constructed on one of the sides of a triangle, from its ends,  the constructed (straight-lines) are less than the two remaining  sides of the triangle, but  encompass a greater angle.",
+  "lean4_header": ""
+}

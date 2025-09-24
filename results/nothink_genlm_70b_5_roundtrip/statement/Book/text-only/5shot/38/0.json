@@ -1,0 +1,50 @@
+{
+  "id": "38",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (F : Point) (AD : Line) (BF : Line), ((¬(A.onLine BF)) ∧ (¬(D.onLine BF)) ∧ (¬(E.onLine AD)) ∧ (¬(F.onLine AD)) ∧ (|(B─C)| = |(E─F)|)) → (Triangle.area △ A:B:C = Triangle.area △ D:E:F)",
+      "full_output": "theorem example_thm (A B C D E F : Point) (AD BF : Line) (h1 : ¬(A.onLine BF)) (h2 : ¬(D.onLine BF)) (h3 : ¬(E.onLine AD)) (h4 : ¬(F.onLine AD)) (h5 : |(B─C)| = |(E─F)|) : Triangle.area △ A:B:C = Triangle.area △ D:E:F := by",
+      "probability": 0.6002469244831623,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.027026653289795,
+      "well_typed": true,
+      "token_counts": 98,
+      "formalization_check": false,
+      "original_probability": 0.6002469244831656,
+      "roundtrip_score": -157.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (BC : Line) (EF : Line), ((|(b─c)| = |(e─f)|)) → ()",
+      "full_output": "theorem thm_triangles_on_equal_bases (a b c d e f : Point)\n  (BC EF : Line) (h1 : |(b─c)| = |(e─f)|)   -- Given that BC and EF are equal in length\n  (h2 : ¬(b.onLine EF))                     -- Point b is not on line EF\n  (h3 : ¬(e.onLine BC))                     -- Point e is not on line BC\n  (h4 : (between b c d))                    -- Points b, c, d are collinear\n  (h5 : (between e f g))                    -- Points e, f, g are collinear\n  (h6 : (between a b c))                    -- Points a, b, c are collinear\n  (h7 : (between d e f))                    -- Points d, e, f are collinear\n  (h8 : (between f a b))                    -- Points f, a, b are collinear\n  (h9 : (between g a b))                    -- Points g, a, b are collinear\n  (h10 : Line.intersectsLine BC EF)        ",
+      "probability": 0.200187993316453,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.027026653289795,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false,
+      "original_probability": 0.20018799331645568,
+      "roundtrip_score": -157.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (BC : Line) (EF : Line), ((|(b─c)| = |(e─f)|)) → ()",
+      "full_output": "theorem thm_triangles_on_equal_bases (a b c d e f : Point)\n  (BC EF : Line) (h1 : |(b─c)| = |(e─f)|)   -- Given that BC and EF are equal in length\n  (h2 : ¬(b.onLine EF))                     -- Point b is not on line EF\n  (h3 : ¬(e.onLine BC))                     -- Point e is not on line BC\n  (h4 : (between b c f))            -- Points b, c, and f are collinear\n  (h5 : (between e f d))            -- Points e, f, and d are collinear\n  (h6 : (between a b d))            -- Points a, b, and d are collinear\n  (h7 : (between c a e))            -- Points c, a, and e are collinear\n  (T : Triangle.ofPoints a b c)     -- Triangle ABC is formed\n  (T' : Triangle.ofPoints d e f)    -- Triangle DEF is formed\n  (h8 : ¬(T'.congruent T))          -- Hypo",
+      "probability": 0.19956508220038097,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.027026653289795,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false,
+      "original_probability": 0.19956508220037875,
+      "roundtrip_score": -157.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f: Point) (AD BF AB AC DE DF : Line), a.onLine AD ∧ d.onLine AD ∧ formTriangle a b c AB BF AC ∧ formTriangle d e f DE BF DF ∧ ¬(AD.intersectsLine BF) ∧ (between b c f) ∧ (between b e f) ∧ |(b─c)| = |(e─f)| → Triangle.area △ a:b:c = Triangle.area △ d:e:f",
+  "nl_statement": "Triangles which are on equal bases and between the same parallels are equal to one another. Let $ABC$ and $DEF$ be triangles on the equal bases $BC$ and $EF$, and between the same parallels $BF$ and $AD$. I say that triangle $ABC$ is equal to triangle $DEF$.  <prf> Thus, triangle $ABC$ is equal to triangle $DEF$.Thus, triangles which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

@@ -1,0 +1,68 @@
+{
+  "id": "43",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (f : Point) (g : Point) (k : Point) (AB : Line) (CD : Line) (AD : Line) (BC : Line) (AC : Line), ((formParallelogram a b c d AB CD AD BC) ∧ ((a ≠ e)) ∧ ((h ≠ k)) ∧ ((g ≠ k)) ∧ ((a ≠ k)) ∧ (a.onLine AC) ∧ (c.onLine AC) ∧ ((between a e c)) ∧ (b.onLine AC) ∧ (d.onLine AC) ∧ ((between b k d))) → ()",
+      "full_output": "theorem example_thm (a b c d e h f g k : Point) (AB CD AD BC AC : Line) (h1 : formParallelogram a b c d AB CD AD BC) (h2 : (a ≠ e)) (h3 : (h ≠ k)) (h4 : (g ≠ k)) (h5 : (a ≠ k)) (h6 : a.onLine AC) (h7 : c.onLine AC) (h8 : (between a e c)) (h9 : b.onLine AC) (h10 : d.onLine AC) (h11 : (between b k d)) (h12 : formParallelogram e h c a EH AC EH_1 AC_1 : Line [(a ≠ e) ∧ (h ≠ k) ∧ (g ≠ k) ∧ (a ≠ k) ∧ e.onLine AC ∧ h.onLine AC ∧ a.onLine AC ∧ c.onLine AC ∧ b.onLine AC ∧ d.onLine AC ∧ between a e c ∧ between b k d ∧ |(e─h)| = |(a─c)| ∧ |(a─e)| = |(h",
+      "probability": 0.39810439017278004,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 35.79012703895569,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (f : Point) (g : Point) (k : Point) (AB : Line) (CD : Line) (AD : Line) (BC : Line) (AC : Line), ((formParallelogram a b c d AB CD AD BC) ∧ ((a ≠ e)) ∧ ((h ≠ k)) ∧ ((g ≠ k)) ∧ ((a ≠ k)) ∧ (a.onLine AC) ∧ (c.onLine AC) ∧ ((between a e c)) ∧ (b.onLine AC) ∧ (d.onLine AC) ∧ ((between b k d))) → ()",
+      "full_output": "theorem example_thm (a b c d e h f g k : Point) (AB CD AD BC AC : Line) (h1 : formParallelogram a b c d AB CD AD BC) (h2 : (a ≠ e)) (h3 : (h ≠ k)) (h4 : (g ≠ k)) (h5 : (a ≠ k)) (h6 : a.onLine AC) (h7 : c.onLine AC) (h8 : (between a e c)) (h9 : b.onLine AC) (h10 : d.onLine AC) (h11 : (between b k d)) (h12 : formParallelogram e h c a EH AC EH_1 AC_1 : Line [(? : Point) ...)  ) : sorry\n```\nBut looking at my solution, I realize something is wrong here. The theorem is full of quantified variables and hypothesis, making it difficult to analyze. Let's try to understand what's going on here.\n\nThe theorem is about a property in Euclidean geometry: for any parallelogram, the complements of the parallelograms about the diagonal are equal to one another.",
+      "probability": 0.39668890536968604,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 35.79012703895569,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (f : Point) (g : Point) (k : Point) (AB : Line) (CD : Line) (AD : Line) (BC : Line) (AC : Line), ((formParallelogram a b c d AB CD AD BC) ∧ ((a ≠ e)) ∧ ((h ≠ k)) ∧ ((g ≠ k)) ∧ ((a ≠ k)) ∧ (a.onLine AC) ∧ (c.onLine AC) ∧ ((between a e c)) ∧ (b.onLine AC) ∧ (d.onLine AC) ∧ ((between b k d))) → ()",
+      "full_output": "theorem example_thm (a b c d e h f g k : Point) (AB CD AD BC AC : Line) (h1 : formParallelogram a b c d AB CD AD BC) (h2 : (a ≠ e)) (h3 : (h ≠ k)) (h4 : (g ≠ k)) (h5 : (a ≠ k)) (h6 : a.onLine AC) (h7 : c.onLine AC) (h8 : (between a e c)) (h9 : b.onLine AC) (h10 : d.onLine AC) (h11 : (between b k d)) (h12 : formParallelogram e h c a EH AC EH_1 AC_1 : Line [(a ≠ e) ∧ (h ≠ k) ∧ (g ≠ k) ∧ (a ≠ k) ∧ e.onLine AC ∧ c.onLine AC ∧ (between a e c) ∧ b.onLine AC ∧ d.onLine AC ∧ (between b k d) ∧ formParallelogram e h c a EH AC EH_1 AC_1 ∧ formParallelogram f k d b FG AC FG",
+      "probability": 0.199271749962971,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 35.79012703895569,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (f : Point) (g : Point) (k : Point) (AB : Line) (CD : Line) (AD : Line) (BC : Line) (AC : Line), ((formParallelogram a b c d AB CD AD BC) ∧ ((a ≠ e)) ∧ ((h ≠ k)) ∧ ((g ≠ k)) ∧ ((a ≠ k)) ∧ (a.onLine AC) ∧ (c.onLine AC) ∧ ((between a e c)) ∧ (b.onLine AC) ∧ (d.onLine AC) ∧ ((between b k d))) → ()",
+      "full_output": "theorem example_thm (a b c d e h f g k : Point) (AB CD AD BC AC : Line) (h1 : formParallelogram a b c d AB CD AD BC) (h2 : (a ≠ e)) (h3 : (h ≠ k)) (h4 : (g ≠ k)) (h5 : (a ≠ k)) (h6 : a.onLine AC) (h7 : c.onLine AC) (h8 : (between a e c)) (h9 : b.onLine AC) (h10 : d.onLine AC) (h11 : (between b k d)) (h12 : formParallelogram e h c a EH AC EH_1 AC_1 : Line [(h13 : formParallelogram e h c a EH AC EH_1 AC_1) ∧ (h14 : formParallelogram g k d b FG AC FG_1 AC_2 : Line [h14]) ∧ (h15 : |(b─k)| = |(a─e)|) ∧ (h16 : |(a─k)| = |(",
+      "probability": 0.00400734091155892,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 35.79012703895569,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (h : Point) (f : Point) (g : Point) (k : Point) (AB : Line) (CD : Line) (AD : Line) (BC : Line) (AC : Line), ((formParallelogram a b c d AB CD AD BC) ∧ ((a ≠ e)) ∧ ((h ≠ k)) ∧ ((g ≠ k)) ∧ ((a ≠ k)) ∧ (a.onLine AC) ∧ (c.onLine AC) ∧ ((between a e c)) ∧ (b.onLine AC) ∧ (d.onLine AC) ∧ ((between b k d))) → ()",
+      "full_output": "theorem example_thm (a b c d e h f g k : Point) (AB CD AD BC AC : Line) (h1 : formParallelogram a b c d AB CD AD BC) (h2 : (a ≠ e)) (h3 : (h ≠ k)) (h4 : (g ≠ k)) (h5 : (a ≠ k)) (h6 : a.onLine AC) (h7 : c.onLine AC) (h8 : (between a e c)) (h9 : b.onLine AC) (h10 : d.onLine AC) (h11 : (between b k d)) (h12 : formParallelogram e h c a EH AC EH_1 AC_1 : Line [(h13 : formParallelogram e h c a EH AC EH_1 AC_1) ∧ (h14 : formParallelogram g k d b FG AC FG_1 AC_2 : Line [h14]) ∧ (h15 : ¬(c.onLine FG_1)) ∧ (h16 : ¬(b.onLine EH_1)) ∧ (h17",
+      "probability": 0.0019276135830040455,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 35.79012703895569,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h k : Point) (AD BC AB CD AC EF GH : Line), formParallelogram a d b c AD BC AB CD ∧ distinctPointsOnLine a c AC ∧ k.onLine AC ∧ between a h d ∧ formParallelogram a h e k AD EF AB GH ∧ formParallelogram k f g c EF BC GH CD → (Triangle.area △ e:b:g + Triangle.area △ e:g:k = Triangle.area △ h:k:f + Triangle.area △ h:f:d)",
+  "nl_statement": "For any parallelogram, the complements of the parallelograms about the diagonal are equal to one another. Let $ABCD$ be a parallelogram, and $AC$ its diagonal. And let $EH$ and $FG$ be the parallelograms about  $AC$, and $BK$ and $KD$ the so-called complements (about $AC$). I say that the complement $BK$ is equal to the complement $KD$. <prf> Thus, the remaining complement $BK$ is equal to the remaining complement $KD$. Thus, for any parallelogramic figure, the complements of the parallelograms about the diagonal are equal to one another.",
+  "lean4_header": ""
+}

@@ -1,0 +1,68 @@
+{
+  "id": "45",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e₁ : Point) (e₂ : Point) (e₃ : Point) (AB : Line) (BC : Line) (CD : Line) (DA : Line) (E₁₂ : Line) (E₂₃ : Line), ((formQuadrilateral a b c d AB CD DA) ∧ (formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃) ∧ ((∠ e₁:e₂:e₃ : ℝ) > 0) ∧ ((∠ e₁:e₂:e₃ : ℝ) < ∟ + ∟)) → (∃ (k f l m : Point) (KF FL LM MK : Line), formParallelogram k f l m KF FL LM MK ∧ (∠ k:f:m : ℝ) = ∠ e₁:e₂:e₃ ∧ (Triangle.area (△ a:b:d) + Triangle.area (△ d:c:b) = Triangle.area (△ k:f:m) + Triangle.area (△ k:m:l)))",
+      "full_output": "theorem example_thm (a b c d e₁ e₂ e₃ : Point) (AB BC CD DA E₁₂ E₂₃ : Line) (h1 : formQuadrilateral a b c d AB CD DA) (h2 : formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃) (h3 : (∠ e₁:e₂:e₃ : ℝ) > 0) (h4 : (∠ e₁:e₂:e₃ : ℝ) < ∟ + ∟) : ∃ (k f l m : Point) (KF FL LM MK : Line), formParallelogram k f l m KF FL LM MK ∧ (∠ k:f:m : ℝ) = ∠ e₁:e₂:e₃ ∧ (Triangle.area (△ a:b:d) + Triangle.area (△ d:c:b) = Triangle.area (△ k:f:m) + Triangle.area (△ k:m:l)) := by",
+      "probability": 0.2004509250467446,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.56675720214844,
+      "well_typed": false,
+      "token_counts": 207,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (e₁ : Point) (e₂ : Point) (e₃ : Point) (AB : Line) (BC : Line) (CD : Line) (DA : Line) (E₁₂ : Line) (E₂₃ : Line), ((formQuadrilateral a b c d₁ AB CD DA E₁₂ E₂₃) ∧ (formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃) ∧ ((∠ e₁:e₂:e₃ : ℝ) > 0) ∧ ((∠ e₁:e₂:e₃ : ℝ) < ∟ + ∟)) → (∃ (k f l m : Point) (KF LM FK KL : Line), formParallelogram k f l m KF LM FK KL ∧ (∠ k:f:m = ∠ e₁:e₂:e₃) ∧ (Triangle.area △ k:f:l + Triangle.area △ k:l:m = Triangle.area △ a:b:d₁ + Triangle.area △ b:c:d₁))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ e₁ e₂ e₃ : Point) (AB BC CD DA E₁₂ E₂₃ : Line) (h1 : formQuadrilateral a b c d₁ AB CD DA E₁₂ E₂₃) (h2 : formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃) (h3 : (∠ e₁:e₂:e₃ : ℝ) > 0) (h4 : (∠ e₁:e₂:e₃ : ℝ) < ∟ + ∟) : ∃ (k f l m : Point) (KF LM FK KL : Line), formParallelogram k f l m KF LM FK KL ∧ (∠ k:f:m = ∠ e₁:e₂:e₃) ∧ (Triangle.area △ k:f:l + Triangle.area △ k:l:m = Triangle.area △ a:b:d₁ + Triangle.area △ b:c:d₁) := by",
+      "probability": 0.20028265974255707,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.56675720214844,
+      "well_typed": false,
+      "token_counts": 218,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (e₁₂ : Point) (e₂₃ : Point) (e₃₄ : Point) (e₄₁ : Point) (l : Point) (AB : Line) (BC : Line) (CD : Line) (DA : Line) (E₁₂ : Line) (E₂₃ : Line) (E₃₄ : Line) (E₄₁ : Line), ((formQuadrilateral a b c d₁ AB E₃₄ E₄₁) ∧ (formQuadrilateral a b c d₁ AB E₃₄ E₄₁) ∧ (formRectilinearAngle e₁₂ e₂₃ e₃₄ E₁₂ E₂₃) ∧ ((∠ e₁₂:e₂₃:e₃₄ : ℝ) > 0) ∧ ((∠ e₁₂:e₂₃:e₃₄ : ℝ) < ∟ + ∟)) → ()",
+      "full_output": "theorem example_thm (a b c d₁ e₁₂ e₂₃ e₃₄ e₄₁ l : Point) (AB BC CD DA E₁₂ E₂₃ E₃₄ E₄₁ : Line) (h1 : formQuadrilateral a b c d₁ AB E₃₄ E₄₁) (h2 : formQuadrilateral a b c d₁ AB E₃₄ E₄₁) (h3 : formRectilinearAngle e₁₂ e₂₃ e₃₄ E₁₂ E₂₃) (h4 : (∠ e₁₂:e₂₃:e₃₄ : ℝ) > 0) (h5 : (∠ e₁₂:e₂₃:e₃₄ : ℝ) < ∟ + ∟) : ∃ (f k m n : Point) (FK KM MN NF : Line), formParallelogram f k m n FK KM MN NF ∧ (∠ f:k:m : ℝ) = ∠ e₁₂:e₂₃:e₃₄ ∧ (Triangle.area △ f:k:n + Triangle",
+      "probability": 0.2000488226512396,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.56675720214844,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e₁ : Point) (e₂ : Point) (e₃ : Point) (AB : Line) (BC : Line) (CD : Line) (AD : Line) (E₁₂ : Line) (E₂₃ : Line), ((formQuadrilateral a b c d AB CD AD E₁₂ E₂₃) ∧ (formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃) ∧ ((∠ e₁:e₂:e₃ : ℝ) > 0) ∧ ((∠ e₁:e₂:e₃ : ℝ) < ∟ + ∟)) → (∃ (k f l m : Point) (KF LM : Line), formParallelogram k f l m KF LM E₁₂ E₂₃ ∧ (∠ k:f:m : ℝ) = ∠ e₁:e₂:e₃ ∧ (Triangle.area (△ a:b:d) + Triangle.area (△ b:c:d)) = (Triangle.area (△ k:f:m) + Triangle.area (△ k:m:l)))",
+      "full_output": "theorem example_thm (a b c d e₁ e₂ e₃ : Point) (AB BC CD AD E₁₂ E₂₃ : Line) (h1 : formQuadrilateral a b c d AB CD AD E₁₂ E₂₃) (h2 : formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃) (h3 : (∠ e₁:e₂:e₃ : ℝ) > 0) (h4 : (∠ e₁:e₂:e₃ : ℝ) < ∟ + ∟) : ∃ (k f l m : Point) (KF LM : Line), formParallelogram k f l m KF LM E₁₂ E₂₃ ∧ (∠ k:f:m : ℝ) = ∠ e₁:e₂:e₃ ∧ (Triangle.area (△ a:b:d) + Triangle.area (△ b:c:d)) = (Triangle.area (△ k:f:m) + Triangle.area (△ k:m:l)) := by",
+      "probability": 0.19968033440893965,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.56675720214844,
+      "well_typed": false,
+      "token_counts": 218,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e₁ : Point) (e₂ : Point) (e₃ : Point) (AB : Line) (BC : Line) (CD : Line) (AD : Line) (E₁₂ : Line) (E₂₃ : Line), ((formQuadrilateral a b c d AB CD AD E₁₂ E₂₃) ∧ (formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃) ∧ ((∠ e₁:e₂:e₃ : ℝ) > 0) ∧ ((∠ e₁:e₂:e₃ : ℝ) < ∟ + ∟)) → (∃ (k f l m : Point) (KF LM FK FL KM : Line), formParallelogram k f l m KF LM FK FL KM ∧ (∠ k:f:m = ∠ e₁:e₂:e₃) ∧ (Triangle.area △ k:f:m + Triangle.area △ k:m:l + Triangle.area △ k:l:f + Triangle.area △ f:m:l) = (Triangle.area △ a:b:c + Triangle.area △ a:c:d))",
+      "full_output": "theorem example_thm (a b c d e₁ e₂ e₃ : Point) (AB BC CD AD E₁₂ E₂₃ : Line) (h1 : formQuadrilateral a b c d AB CD AD E₁₂ E₂₃) (h2 : formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃) (h3 : (∠ e₁:e₂:e₃ : ℝ) > 0) (h4 : (∠ e₁:e₂:e₃ : ℝ) < ∟ + ∟) : ∃ (k f l m : Point) (KF LM FK FL KM : Line), formParallelogram k f l m KF LM FK FL KM ∧ (∠ k:f:m = ∠ e₁:e₂:e₃) ∧ (Triangle.area △ k:f:m + Triangle.area △ k:m:l + Triangle.area △ k:l:f + Triangle.area △ f:m:l) = (Triangle.area △ a:b:c + Triangle.area △ a:c:d) := by",
+      "probability": 0.19953725815051912,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 33.56675720214844,
+      "well_typed": false,
+      "token_counts": 229,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e₁ e₂ e₃ : Point) (AB BC CD AD DB E₁₂ E₂₃ : Line), formTriangle a b d AB DB AD ∧ formTriangle b c d BC CD DB ∧ a.opposingSides c DB ∧ formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃ ∧ ∠ e₁:e₂:e₃ > 0 ∧ ∠ e₁:e₂:e₃ < ∟ + ∟ → ∃ (f l k m : Point) (FL KM FK LM : Line), formParallelogram f l k m FL KM FK LM ∧ (∠ f:k:m = ∠ e₁:e₂:e₃) ∧ (Triangle.area △ f:k:m + Triangle.area △ f:l:m = Triangle.area △ a:b:d + Triangle.area △ d:b:c)",
+  "nl_statement": "To construct a parallelogram equal to a given rectilinear figure in a given rectilinear angle.Let $ABCD$ be the given rectilinear figure, and $E$ the given rectilinear angle. So it is required to construct a parallelogram equal to the rectilinear figure $ABCD$ in the given angle $E$.  <prf> And since triangle $ABD$ is equal to parallelogram $FH$, and $DBC$ to $GM$, the whole rectilinear figure $ABCD$ is thus equal to the whole parallelogram $KFLM$. Thus, the parallelogram $KFLM$, equal to the given rectilinear figure $ABCD$, has been constructed in the angle $FKM$, which is equal to the given (angle) $E$.",
+  "lean4_header": ""
+}

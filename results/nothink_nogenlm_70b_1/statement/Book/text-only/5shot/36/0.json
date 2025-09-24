@@ -1,0 +1,20 @@
+{
+  "id": "36",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (BC : Line) (AD : Line) (GH : Line) (EH : Line), ((formParallelogram a b c d AB CD BC AD) ∧ (formParallelogram e f g h GH EH CD BC) ∧ (|(b─c)| = |(f─g)|) ∧ (¬(a.onLine CD)) ∧ (¬(e.onLine CD))) → ()",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD BC AD GH EH : Line) (h1 : formParallelogram a b c d AB CD BC AD) (h2 : formParallelogram e f g h GH EH CD BC) (h3 : |(b─c)| = |(f─g)|) (h4 : ¬(a.onLine CD)) (h5 : ¬(e.onLine CD))) : |(a─b)| = |(e─f)| ∧ |(a─d)| = |(e─h)| := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 8.80874752998352,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AH BG AB CD EF HG : Line), formParallelogram a d b c AH BG AB CD ∧ formParallelogram e h f g AH BG EF HG ∧ |(b─c)| = |(f─g)| ∧ (between a d h) ∧ (between a e h) → Triangle.area △ a:b:d + Triangle.area △ d:b:c = Triangle.area △ e:f:h + Triangle.area △ h:f:g",
+  "nl_statement": "Parallelograms which are on equal bases and between the same parallels are equal to one another. Let $ABCD$ and $EFGH$ be parallelograms which are on the equal bases $BC$ and $FG$, and (are) between the same parallels $AH$ and $BG$. I say that the parallelogram $ABCD$ is equal to $EFGH$. <prf> So that the parallelogram $ABCD$ is  also equal to $EFGH$.Thus, parallelograms which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

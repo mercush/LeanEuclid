@@ -1,0 +1,68 @@
+{
+  "id": "1",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, formTriangle a b c AB (a:Line) (b:Line) ∧ (|(a─c)| = |(a─b)| ∧ |(b─c)| = |(a─b)|))",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, formTriangle a b c AB (a:Line) (b:Line) ∧ (|(a─c)| = |(a─b)| ∧ |(b─c)| = |(a─b)|) := by",
+      "probability": 0.2002635376986715,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.664353847503662,
+      "well_typed": false,
+      "token_counts": 81,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, c ≠ a ∧ c ≠ b ∧ (|(a─b)| = |(a─c)| ∧ |(a─b)| = |(b─c)|) ∧ ¬(a.between b c))",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, c ≠ a ∧ c ≠ b ∧ (|(a─b)| = |(a─c)| ∧ |(a─b)| = |(b─c)|) ∧ ¬(a.between b c) := by",
+      "probability": 0.20010244669198757,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.664353847503662,
+      "well_typed": false,
+      "token_counts": 80,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, (∠ a:b:c : ℝ) = ∟ ∧ (∠ a:c:b : ℝ) = ∟ ∧ (∠ a:c:b : ℝ) = ∟ ∧ |(a─b)| = |(b─c)| ∧ |(a─b)| = |(a─c)|)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, (∠ a:b:c : ℝ) = ∟ ∧ (∠ a:c:b : ℝ) = ∟ ∧ (∠ a:c:b : ℝ) = ∟ ∧ |(a─b)| = |(b─c)| ∧ |(a─b)| = |(a─c)| := by",
+      "probability": 0.19999390190865443,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.664353847503662,
+      "well_typed": true,
+      "token_counts": 99,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, formTriangle a b c AB (Line.mk a c) (Line.mk b c) ∧ |(a─c)| = |(a─b)| ∧ |(b─c)| = |(a─b)|)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, formTriangle a b c AB (Line.mk a c) (Line.mk b c) ∧ |(a─c)| = |(a─b)| ∧ |(b─c)| = |(a─b)| := by",
+      "probability": 0.19990354688525103,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.664353847503662,
+      "well_typed": false,
+      "token_counts": 82,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((a ≠ b)) → (exists c : Point, formTriangle a b c AB (a.onLine AB).choose (b.onLine AB).choose)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h : a ≠ b) : exists c : Point, formTriangle a b c AB (a.onLine AB).choose (b.onLine AB).choose := by",
+      "probability": 0.1997365668154355,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.664353847503662,
+      "well_typed": false,
+      "token_counts": 50,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)|",
+  "nl_statement": "To construct an equilateral triangle on a given finite straight-line. Let $AB$ be the given finite straight-line.  <prf> Thus, the three (straight-lines) $CA$, $AB$, and $BC$ are equal to one another.Thus, the triangle $ABC$ is equilateral, and has been constructed on the given finite straight-line $AB$.",
+  "lean4_header": ""
+}

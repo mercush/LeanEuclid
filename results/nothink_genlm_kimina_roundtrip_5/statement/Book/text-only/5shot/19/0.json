@@ -1,0 +1,78 @@
+{
+  "id": "19",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (((∠ b:c:a : ℝ) > ∠ c:a:b))) → (((|(a─c)| > |(a─b)|)))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ((∠ b:c:a : ℝ) > ∠ c:a:b)) : ((|(a─c)| > |(a─b)|)) := by",
+      "probability": 0.19187561767441672,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 10.577528476715088,
+      "well_typed": true,
+      "token_counts": 67,
+      "formalization_check": false,
+      "original_probability": 0.20033895967931048,
+      "roundtrip_score": -156.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (((∠ a:b:c : ℝ) > ∠ b:c:a))) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ((∠ a:b:c : ℝ) > ∠ b:c:a)) : |(a─c)| > |(a─b)| := by",
+      "probability": 0.1915944553084294,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 10.577528476715088,
+      "well_typed": true,
+      "token_counts": 66,
+      "formalization_check": true,
+      "original_probability": 0.20004539566848908,
+      "roundtrip_score": -156.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ b:c:a : ℝ) > (∠ c:a:b : ℝ))) → (|(b─c)| > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ b:c:a : ℝ) > (∠ c:a:b : ℝ)) : |(b─c)| > |(a─b)| := by",
+      "probability": 0.025919767289533012,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 10.577528476715088,
+      "well_typed": true,
+      "token_counts": 68,
+      "formalization_check": false,
+      "original_probability": 0.1999703861479709,
+      "roundtrip_score": -158.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ a : b : c : ℝ) > (∠ b : c : a : ℝ))) → (|(b─c)| > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ a : b : c : ℝ) > (∠ b : c : a : ℝ)) : |(b─c)| > |(a─b)| := by",
+      "probability": 0.0704087371393493,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 10.577528476715088,
+      "well_typed": true,
+      "token_counts": 72,
+      "formalization_check": false,
+      "original_probability": 0.19983274775557577,
+      "roundtrip_score": -157.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ a:b:c : ℝ) > (∠ a:c:b : ℝ))) → ((|(a─c)| > |(a─b)|))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ a:b:c : ℝ) > (∠ a:c:b : ℝ)) : (|(a─c)| > |(a─b)|) := by",
+      "probability": 0.5202014225882735,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 10.577528476715088,
+      "well_typed": true,
+      "token_counts": 69,
+      "formalization_check": true,
+      "original_probability": 0.1998125107486538,
+      "roundtrip_score": -155.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ a:b:c > ∠ b:c:a) → (|(a─c)| > |(a─b)|)",
+  "nl_statement": "In any triangle, the greater angle is subtended by the greater side. Let $ABC$ be a triangle having the angle $ABC$ greater than $BCA$. I say that side $AC$ is also greater than side $AB$. <prf>  Thus, $AC$  is greater than $AB$. Thus, in any triangle, the greater angle is subtended by the greater side.",
+  "lean4_header": ""
+}

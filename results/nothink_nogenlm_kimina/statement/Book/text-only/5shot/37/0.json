@@ -1,0 +1,68 @@
+{
+  "id": "37",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (AD : Line) (DC : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c DB BC DC) ∧ (¬(b = c)) ∧ (a.onLine AD) ∧ (d.onLine AD) ∧ (a ≠ d) ∧ (¬(b = c))) → (|(a─b)| * |(c─d)| = |(a─d)| * |(b─c)|)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC BD AD DC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c DB BC DC) (h3 : ¬(b = c)) (h4 : a.onLine AD) (h5 : d.onLine AD) (h6 : a ≠ d) (h7 : ¬(b = c)) : |(a─b)| * |(c─d)| = |(a─d)| * |(b─c)| := by",
+      "probability": 0.20187946504191712,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 17.62834095954895,
+      "well_typed": false,
+      "token_counts": 124,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (DB : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c DB BC (show Line by sorry)) ∧ (sameSide a d BC) ∧ (¬(AB.intersectsLine DB)) ∧ (exists a' : Point, a'.onLine AB ∧ a'.onLine DB)) → ((Triangle.area △ a:b:c = Triangle.area △ d:b:c))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC DB : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c DB BC (show Line by sorry)) (h3 : sameSide a d BC) (h4 : ¬(AB.intersectsLine DB)) (h5 : exists a' : Point, a'.onLine AB ∧ a'.onLine DB) : (Triangle.area △ a:b:c = Triangle.area △ d:b:c) := by",
+      "probability": 0.2001112930439453,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 17.62834095954895,
+      "well_typed": false,
+      "token_counts": 114,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (DB : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c DB BC AC) ∧ (¬(a.onLine DB)) ∧ (¬(d.onLine AB)) ∧ ((∃ l : Point, l.onLine AB ∧ l.onLine DB ∧ l = a ∨ l = d))) → (Triangle.area △ a:b:c = Triangle.area △ d:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC DB : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c DB BC AC) (h3 : ¬(a.onLine DB)) (h4 : ¬(d.onLine AB)) (h5 : (∃ l : Point, l.onLine AB ∧ l.onLine DB ∧ l = a ∨ l = d)) : Triangle.area △ a:b:c = Triangle.area △ d:b:c := by",
+      "probability": 0.19966900870993984,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 17.62834095954895,
+      "well_typed": true,
+      "token_counts": 115,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (DB : Line) (DC : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c DB BC) ∧ ((∃ l : Line, a.onLine l ∧ d.onLine l ∧ ¬(l.intersectsLine BC)))) → ((Triangle.area △ a:b:c = Triangle.area △ d:b:c))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC DB DC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c DB BC) (h3 : (∃ l : Line, a.onLine l ∧ d.onLine l ∧ ¬(l.intersectsLine BC))) : (Triangle.area △ a:b:c = Triangle.area △ d:b:c) := by",
+      "probability": 0.19955920471615687,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 17.62834095954895,
+      "well_typed": false,
+      "token_counts": 94,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c BD BC (show Line from sorry))) → ()",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC BD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c BD BC (show Line from sorry)) -- need to define a way to form triangle DBC with line segments.\n(h3 : (a.differentSide d BC)) (h4 : ∃ l : Line, (a.onLine l ∧ d.onLine l ∧ l ∥ AB ∧ l ∥ BD)) : -- here distinct side needs to be formalized.\n(Triangle.area △ a:b:c) = (Triangle.area △ d:b:c) := by",
+      "probability": 0.19878102848804088,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 17.62834095954895,
+      "well_typed": false,
+      "token_counts": 139,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD CD AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d b c BD BC CD ∧ distinctPointsOnLine a d AD ∧ ¬(AD.intersectsLine BC) ∧ d.sameSide c AB → Triangle.area △ a:b:c = Triangle.area △ d:b:c",
+  "nl_statement": "Triangles which are on the same base and between the same parallels are equal to one another.  Let $ABC$ and $DBC$ be triangles on the same base $BC$, and between the same parallels $AD$ and $BC$. I say that triangle $ABC$ is equal to triangle $DBC$. <prf> Thus, triangle $ABC$ is equal to triangle $DBC$.Thus, triangles which are on the same base and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

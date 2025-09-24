@@ -1,0 +1,20 @@
+{
+  "id": "3",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "theorem gaveunequal_linenoequal_line 落实 (a b : Point) (L : Line) (h1 : distinctPointsOnLine a b L) (h2 : b ≠ a) : ∃ c : Point, (c.onLine L) ∧ (|(a─c)| = |(a─b)|) := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 5.015472650527954,
+      "well_typed": false,
+      "token_counts": 73,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c₀ c₁ : Point) (AB C : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c₀ c₁ C ∧ |(a─b)| > |(c₀─c₁)| → ∃ e : Point, between a e b ∧ |(a─e)| = |(c₀─c₁)|",
+  "nl_statement": "For two given unequal straight-lines, to cut off from the greater a straight-line equal to the lesser. Let $AB$ and $C$ be the two given unequal straight-lines, of which let the greater be $AB$.  <prf> So $AE$ is also equal to $C$ [C.N.~1]. Thus, for two given unequal straight-lines, $AB$ and $C$, the (straight-line) $AE$, equal to the lesser $C$, has been cut off from the greater $AB$.",
+  "lean4_header": ""
+}

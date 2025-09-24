@@ -1,0 +1,68 @@
+{
+  "id": "23",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line) (d : Point) (c : Point) (e : Point) (DCE : Line) (D₂E : Line) (CD : Line), ((a ≠ b) ∧ (distinctPointsOnLine a b AB) ∧ (formRectilinearAngle d c e DCE D₂E)) → (∃ l : Point, l.onLine AB ∧ l ≠ a ∧ l ≠ b ∧ ((∠ a:b:l : ℝ) = (∠ d:c:e : ℝ) ∨ (∠ a:l:b : ℝ) = (∠ d:c:e : ℝ)))",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (d c e : Point) (DCE D₂E CD : Line) (h1 : a ≠ b) (h2 : distinctPointsOnLine a b AB) (h3 : formRectilinearAngle d c e DCE D₂E) : ∃ l : Point, l.onLine AB ∧ l ≠ a ∧ l ≠ b ∧ ((∠ a:b:l : ℝ) = (∠ d:c:e : ℝ) ∨ (∠ a:l:b : ℝ) = (∠ d:c:e : ℝ)) := by",
+      "probability": 0.20074236133900958,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 21.820817947387695,
+      "well_typed": false,
+      "token_counts": 127,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line) (d : Point) (c : Point) (e : Point) (D₁ : Line) (E : Line), ((a.onLine AB ∧ b.onLine AB) ∧ (a ≠ b) ∧ (formRectilinearAngle d c e D₁ E) ∧ ((∠ d:c:e : ℝ) > 0) ∧ ((∠ d:c:e : ℝ) < ∟ + ∟)) → (∃ f g : Point, f.onLine AB ∧ g.onLine AB ∧ (∠ f:a:g : ℝ) = (∠ d:c:e : ℝ) ∧ a ≠ f ∧ a ≠ g)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : a.onLine AB ∧ b.onLine AB) (h2 : a ≠ b) (d c e : Point) (D₁ E : Line) (h3 : formRectilinearAngle d c e D₁ E) (h4 : (∠ d:c:e : ℝ) > 0) (h5 : (∠ d:c:e : ℝ) < ∟ + ∟) : ∃ f g : Point, f.onLine AB ∧ g.onLine AB ∧ (∠ f:a:g : ℝ) = (∠ d:c:e : ℝ) ∧ a ≠ f ∧ a ≠ g := by",
+      "probability": 0.20072315817950476,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 21.820817947387695,
+      "well_typed": true,
+      "token_counts": 146,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line) (d : Point) (c : Point) (e : Point) (DC : Line) (DE : Line), ((a.onLine AB) ∧ (b.onLine AB) ∧ (a ≠ b) ∧ (formRectilinearAngle d c e DC DE)) → (∃ f g : Point, f ≠ a ∧ a.onLine AB ∧ f.onLine AB ∧ ((∠ a:c:e : ℝ) > 0 → (∃ l : Line, (a.onLine l) ∧ (f.onLine l) ∧ (g.onLine l) ∧ (∠ f:a:g = ∠ d:c:e : ℝ))))",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : a.onLine AB) (h2 : b.onLine AB) (h3 : a ≠ b) (d c e : Point) (DC DE : Line) (h4 : formRectilinearAngle d c e DC DE) : ∃ f g : Point, f ≠ a ∧ a.onLine AB ∧ f.onLine AB ∧ ((∠ a:c:e : ℝ) > 0 → (∃ l : Line, (a.onLine l) ∧ (f.onLine l) ∧ (g.onLine l) ∧ (∠ f:a:g = ∠ d:c:e : ℝ))) := by",
+      "probability": 0.19988435568099497,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 21.820817947387695,
+      "well_typed": false,
+      "token_counts": 145,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line) (d : Point) (c : Point) (e : Point) (DC : Line) (DE : Line), ((a.onLine AB ∧ b.onLine AB ∧ a ≠ b) ∧ (formRectilinearAngle d c e DC DE) ∧ ((∠ d:c:e : ℝ) > 0) ∧ ((∠ d:c:e : ℝ) < ∟ + ∟)) → (∃ f g : Point, f ≠ g ∧ |(f─g)| > 0 ∧ ((∠ f:a:g : ℝ) = ∠ d:c:e) ∧ f.onLine AB ∧ g.onLine AB ∧ ¬(a Between f g) ∧ ¬(a Between g f))",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : a.onLine AB ∧ b.onLine AB ∧ a ≠ b) (d c e : Point) (DC DE : Line) (h2 : formRectilinearAngle d c e DC DE) (h3 : (∠ d:c:e : ℝ) > 0) (h4 : (∠ d:c:e : ℝ) < ∟ + ∟) : ∃ f g : Point, f ≠ g ∧ |(f─g)| > 0 ∧ ((∠ f:a:g : ℝ) = ∠ d:c:e) ∧ f.onLine AB ∧ g.onLine AB ∧ ¬(a Between f g) ∧ ¬(a Between g f) := by",
+      "probability": 0.19933445960287377,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 21.820817947387695,
+      "well_typed": false,
+      "token_counts": 160,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line) (d₁ : Point) (d₂ : Point) (d₃ : Point) (D₁₂ : Line) (D₂₃ : Line), ((a.onLine AB) ∧ (¬ b.onLine AB) ∧ (formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) ∧ ((∠ d₁:d₂:d₃ : ℝ) > 0) ∧ ((∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟)) → (∃ (f g : Point) (FG : Line), f ≠ a ∧ f.onLine AB ∧ g.onLine AB ∧ formRectilinearAngle f a g FG AB)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : a.onLine AB) (h2 : ¬ b.onLine AB) (d₁ d₂ d₃ : Point) (D₁₂ D₂₃: Line) (h3 : formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) (h4 : (∠ d₁:d₂:d₃ : ℝ) > 0) (h5 : (∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟) : ∃ (f g : Point) (FG : Line), f ≠ a ∧ f.onLine AB ∧ g.onLine AB ∧ formRectilinearAngle f a g FG AB := by",
+      "probability": 0.19931566519761695,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 21.820817947387695,
+      "well_typed": true,
+      "token_counts": 161,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB CD CE : Line), distinctPointsOnLine a b AB ∧ formRectilinearAngle d c e CD CE → ∃ f : Point, f ≠ a ∧ (∠ f:a:b = ∠ d:c:e)",
+  "nl_statement": "To construct a rectilinear angle equal to a given rectilinear angle at a (given) point on a given straight-line.Let $AB$ be the given straight-line,  $A$ the (given) point on it, and  $DCE$ the given rectilinear angle.So it is required to construct a rectilinear angle equal to the given rectilinear angle $DCE$ at the (given) point $A$ on the given straight-line $AB$.  <prf> Thus, the rectilinear angle $FAG$,  equal to the  given rectilinear angle $DCE$, has been constructed at the (given) point $A$ on the given straight-line $AB$.",
+  "lean4_header": ""
+}

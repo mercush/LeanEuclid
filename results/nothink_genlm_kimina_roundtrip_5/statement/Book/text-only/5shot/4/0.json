@@ -1,0 +1,64 @@
+{
+  "id": "4",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (BC : Line) (DE : Line) (DF : Line) (EF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ ((∠ a:b:c : ℝ) = ∠ d:e:f)) → (Triangle.congruent (△ a:b:c) (△ d:e:f) ∧ (∠ a:b:c : ℝ) = ∠ d:e:f ∧ (∠ b:c:a : ℝ) = ∠ e:f:d ∧ (∠ c:a:b : ℝ) = ∠ f:d:e ∧ |(b─c)| = |(e─f)| ∧ Triangle.area △ a:b:c = Triangle.area △ d:e:f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB AC BC DE DF EF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : (∠ a:b:c : ℝ) = ∠ d:e:f) : Triangle.congruent (△ a:b:c) (△ d:e:f) ∧ (∠ a:b:c : ℝ) = ∠ d:e:f ∧ (∠ b:c:a : ℝ) = ∠ e:f:d ∧ (∠ c:a:b : ℝ) = ∠ f:d:e ∧ |(b─c)| = |(e─f)| ∧ Triangle.area △ a:b:c = Triangle.area △ d:e:f := by",
+      "probability": 0.1754486237228653,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 33.19759917259216,
+      "well_typed": false,
+      "token_counts": 199,
+      "formalization_check": false,
+      "original_probability": 0.3999324492790488,
+      "roundtrip_score": -416.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (BC : Line) (DE : Line) (DF : Line) (EF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ ((∠ a:b:c : ℝ) = ∠ d:e:f)) → (Triangle.congruent (△ a:b:c) (△ d:e:f) ∧ (∠ a:b:c : ℝ) = ∠ d:e:f ∧ (∠ b:c:a : ℝ) = ∠ e:f:d ∧ (∠ c:a:b : ℝ) = ∠ f:d:e ∧ |(b─c)| = |(e─f)| ∧ (Triangle.area △ a:b:c) = Triangle.area (△ d:e:f))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB AC BC DE DF EF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : (∠ a:b:c : ℝ) = ∠ d:e:f) : Triangle.congruent (△ a:b:c) (△ d:e:f) ∧ (∠ a:b:c : ℝ) = ∠ d:e:f ∧ (∠ b:c:a : ℝ) = ∠ e:f:d ∧ (∠ c:a:b : ℝ) = ∠ f:d:e ∧ |(b─c)| = |(e─f)| ∧ (Triangle.area △ a:b:c) = Triangle.area (△ d:e:f) := by",
+      "probability": 0.649158389712233,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 33.19759917259216,
+      "well_typed": false,
+      "token_counts": 202,
+      "formalization_check": false,
+      "original_probability": 0.20026192549095764,
+      "roundtrip_score": -414.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ ((∠ a:b:c : ℝ) = ∠ d:e:f)) → (Triangle.congruent (△ a:b:c) (△ d:e:f))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC DE EF DF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : (∠ a:b:c : ℝ) = ∠ d:e:f) : Triangle.congruent (△ a:b:c) (△ d:e:f) := by",
+      "probability": 0.0877018556541897,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 33.19759917259216,
+      "well_typed": false,
+      "token_counts": 124,
+      "formalization_check": false,
+      "original_probability": 0.19991503605922306,
+      "roundtrip_score": -416.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (BC : Line) (DE : Line) (DF : Line) (EF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ ((∠ a:b:c : ℝ) = ∠ d:e:f)) → (Triangle.congruent (△ a:b:c) (△ d:e:f) ∧ (∠ a:b:c : ℝ) = ∠ d:e:f ∧ (∠ b:c:a : ℝ) = ∠ e:f:d ∧ (∠ c:a:b : ℝ) = ∠ f:d:e ∧ |(b─c)| = |(e─f)|)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB AC BC DE DF EF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : (∠ a:b:c : ℝ) = ∠ d:e:f) : Triangle.congruent (△ a:b:c) (△ d:e:f) ∧ (∠ a:b:c : ℝ) = ∠ d:e:f ∧ (∠ b:c:a : ℝ) = ∠ e:f:d ∧ (∠ c:a:b : ℝ) = ∠ f:d:e ∧ |(b─c)| = |(e─f)| := by",
+      "probability": 0.08769113091069965,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 33.19759917259216,
+      "well_typed": false,
+      "token_counts": 183,
+      "formalization_check": false,
+      "original_probability": 0.1998905891707703,
+      "roundtrip_score": -416.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ (∠ b:a:c = ∠ e:d:f) → |(b─c)| = |(e─f)| ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ a:c:b = ∠ d:f:e)",
+  "nl_statement": "If two triangles have two  sides equal to two sides, respectively, and have the angle(s) enclosed by the equal straight-lines equal, then they will also have the base equal to the base, and the triangle will be equal to the triangle, and the remaining angles subtended by the equal sides will be equal to the corresponding remaining angles. Let $ABC$ and $DEF$ be  two triangles having the two sides $AB$ and $AC$ equal to the two sides $DE$ and $DF$, respectively. (That is) $AB$ to $DE$, and $AC$ to $DF$. And (let) the angle $BAC$ (be) equal to the angle $EDF$.  <prf>  Thus, the base $BC$ will coincide with $EF$, and will be equal to it [C.N.~4]. So the whole triangle $ABC$ will coincide with the whole triangle $DEF$, and will be equal to it [C.N.~4]. And the remaining angles will coincide with the remaining angles, and  will be equal to them [C.N.~4]. (That is) $ABC$ to $DEF$, and $ACB$ to $DFE$ [C.N.~4]. Thus, if two triangles have two  sides equal to two sides, respectively, and have the angle(s) enclosed by the equal straight-line equal, then they will also have the base equal to the base, and the triangle will be equal to the triangle,  and the remaining angles subtended by the equal sides will be equal to the corresponding remaining angles. .",
+  "lean4_header": ""
+}

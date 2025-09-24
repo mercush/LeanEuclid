@@ -1,0 +1,92 @@
+{
+  "id": "35",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram a b c d AB CD AC BD)) → (|(a─b)| = |(c─d)|)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram a b c d AB CD AC BD) : |(a─b)| = |(c─d)| := by\n  -- Use the properties of parallelogram to show equal sides\n  have h3 : |(a─b)| = |(c─d)| := by\n    -- Use the fact that in a parallelogram, opposite sides are equal\n    have h4 : |(a─b)| = |(c─d)| := by\n      -- Use the properties of the parallelogram to show equal sides\n      have h5 : |(a─b)| = |(c─d)| := by\n        -- Use the properties of the parallelogram to show equal sides\n        have h6 : |(a─b)| = |(c─d)| := by\n          -- Use the properties of the parallelogram to show equal sides\n          have h7 : |(a─b)| = |(c─d",
+      "probability": 0.01114255770360067,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.04047799110413,
+      "well_typed": true,
+      "token_counts": 70,
+      "formalization_check": false,
+      "original_probability": 0.6257939110237288,
+      "roundtrip_score": -164.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (BC : Line) (EF : Line) (AF : Line), ((formParallelogram a b c d AB CD BC EF) ∧ (formParallelogram e b c f BC EF AF CD) ∧ (a ≠ b) ∧ (b ≠ c) ∧ (c ≠ d) ∧ (b ≠ f) ∧ (f ≠ e) ∧ (e ≠ b)) → ((|(a─b)| = |(e─b)|) ∧ (|(b─c)| = |(e─f)|))",
+      "full_output": "theorem parallelograms_on_same_base_and_between_same_parallels_are_equal (a b c d e f : Point) (AB CD BC EF AF : Line) (h1 : formParallelogram a b c d AB CD BC EF) (h2 : formParallelogram e b c f BC EF AF CD) (h3 : a ≠ b) (h4 : b ≠ c) (h5 : c ≠ d) (h6 : b ≠ f) (h7 : f ≠ e) (h8 : e ≠ b) : (|(a─b)| = |(e─b)|) ∧ (|(b─c)| = |(e─f)|) := by\n  -- We start by showing that the area of parallelogram ABCD is equal to the area of parallelogram EBCF.\n  have h9 : Triangle.area △ a:b:c + Triangle.area △ a:c:b + Triangle.area △ b:c:a + Triangle.area △ c:a:b = Triangle.area △ e:b:c + Triangle.area △ e:c:b + Triangle.area △ b:c:e + Triangle.area △ c:e:b := by\n    -- Using the properties of parallelog",
+      "probability": 0.3301689109105565,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.04047799110413,
+      "well_typed": true,
+      "token_counts": 148,
+      "formalization_check": false,
+      "original_probability": 0.12494250500318758,
+      "roundtrip_score": -159.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (BC : Line) (EF : Line) (AF : Line), ((formParallelogram a b c d AB CD BC EF) ∧ (formParallelogram e b c f BC EF AF CD) ∧ (a ≠ b) ∧ (b ≠ c) ∧ (c ≠ d) ∧ (b ≠ f) ∧ (f ≠ e) ∧ (e ≠ b)) → ((|(a─b)| = |(e─b)|) ∧ (|(b─c)| = |(e─f)|))",
+      "full_output": "theorem parallelograms_on_same_base_and_between_same_parallels_are_equal (a b c d e f : Point) (AB CD BC EF AF : Line) (h1 : formParallelogram a b c d AB CD BC EF) (h2 : formParallelogram e b c f BC EF AF CD) (h3 : a ≠ b) (h4 : b ≠ c) (h5 : c ≠ d) (h6 : b ≠ f) (h7 : f ≠ e) (h8 : e ≠ b) : (|(a─b)| = |(e─b)|) ∧ (|(b─c)| = |(e─f)|) := by\n  -- We start by showing that the area of parallelogram ABCD is equal to the area of parallelogram EBCF.\n  have h9 : (|(a─b)| * |(b─c)|) = (|(e─b)| * |(e─f)|) := by\n    -- Since both parallelograms share the same base and are between the same parallels, their heights are the same.\n    -- Therefore, the area of ABCD is",
+      "probability": 0.32939714595126457,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.04047799110413,
+      "well_typed": true,
+      "token_counts": 148,
+      "formalization_check": false,
+      "original_probability": 0.12465045374063342,
+      "roundtrip_score": -159.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (BC : Line) (EF : Line) (AF : Line), ((formParallelogram a b c d AB CD BC EF) ∧ (formParallelogram e b c f BC EF AF CD) ∧ (a ≠ b) ∧ (b ≠ c) ∧ (c ≠ d) ∧ (b ≠ f) ∧ (f ≠ e) ∧ (e ≠ b)) → ((|(a─b)| = |(e─b)|) ∧ (|(b─c)| = |(e─f)|))",
+      "full_output": "theorem parallelograms_on_same_base_and_between_same_parallels_are_equal (a b c d e f : Point) (AB CD BC EF AF : Line) (h1 : formParallelogram a b c d AB CD BC EF) (h2 : formParallelogram e b c f BC EF AF CD) (h3 : a ≠ b) (h4 : b ≠ c) (h5 : c ≠ d) (h6 : b ≠ f) (h7 : f ≠ e) (h8 : e ≠ b) : (|(a─b)| = |(e─b)|) ∧ (|(b─c)| = |(e─f)|) := by\n  -- We start by showing that the area of parallelogram ABCD is equal to the area of parallelogram EBCF.\n  have h9 : (|(a─b)| * |(b─c)|) = (|(e─b)| * |(e─f)|) := by\n    -- Since both parallelograms share the same base and are between the same parallels, their areas are equal.\n    apply mul_right_cancel₀ (show (|(a",
+      "probability": 0.3292872355597493,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.04047799110413,
+      "well_typed": true,
+      "token_counts": 148,
+      "formalization_check": false,
+      "original_probability": 0.12460886145502455,
+      "roundtrip_score": -159.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e b c f EF CD AC BD)) → (|(a─c)| = |(e─f)|)",
+      "full_output": "theorem parallelogram_equality (a b c d e f : Point) (AB CD AC BD EF : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e b c f EF CD AC BD) : |(a─c)| = |(e─f)| := by\n  -- Use the properties of parallelograms to show that the diagonals are equal\n  have h3 : |(a─c)| = |(e─f)| := by\n    -- Use the fact that opposite sides of a parallelogram are equal and parallel\n    -- to show that the diagonals are equal in length.\n    apply Eq.symm\n    -- Use the properties of the parallelogram and the given hypotheses to prove the equality.\n    <;> simp_all [formParallelogram, Line.intersectsLine, Point.onLine, Point.sameSide, Point.opposingSides, Point.collinear]\n    <;> linarith\n  -- Conclude the proof by stating the equality of the diagonals.\n  exact h3\n```liestyles: none\nOkay, so I have this geometry problem",
+      "probability": 2.3292277747494385e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.04047799110413,
+      "well_typed": true,
+      "token_counts": 75,
+      "formalization_check": false,
+      "original_probability": 2.395965023457888e-06,
+      "roundtrip_score": -160.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e b c f EF CD AC BD)) → (|(a─c)| = |(e─f)|)",
+      "full_output": "theorem parallelogram_equality (a b c d e f : Point) (AB CD AC BD EF : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e b c f EF CD AC BD) : |(a─c)| = |(e─f)| := by\n  -- Use the properties of parallelograms to show that the diagonals are equal\n  have h3 : |(a─c)| = |(e─f)| := by\n    -- Use the fact that opposite sides of a parallelogram are equal and parallel\n    -- to show that the diagonals are equal in length.\n    apply Eq.symm\n    -- Use the properties of the parallelogram and the given hypotheses to prove the equality.\n    <;> simp_all [formParallelogram, Line.intersectsLine, Point.onLine, Point.sameSide, Point.opposingSides, Point.collinear]\n    <;> linarith\n  -- Conclude the proof by stating the equality of the diagonals.\n  exact h3\n``` kaybet\nAlright, so I'm looking at this problem about paralle",
+      "probability": 1.8206470551207343e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 66.04047799110413,
+      "well_typed": true,
+      "token_counts": 75,
+      "formalization_check": false,
+      "original_probability": 1.872812402213473e-06,
+      "roundtrip_score": -160.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g : Point) (AF BC AB CD EB FC : Line), formParallelogram a d b c AF BC AB CD ∧ formParallelogram e f b c AF BC EB FC ∧ between a d e ∧ between d e f ∧ g.onLine CD ∧ g.onLine EB → Triangle.area △a:b:d + Triangle.area △d:b:c = Triangle.area △e:b:c + Triangle.area △ e:c:f",
+  "nl_statement": "Parallelograms which are on the same base and between the same parallels are equal to one another. Let $ABCD$ and $EBCF$ be parallelograms on the same base $BC$, and between the same parallels $AF$ and $BC$. I say that $ABCD$ is equal to parallelogram $EBCF$. <prf> Thus, the whole parallelogram $ABCD$ is equal to the whole parallelogram $EBCF$.Thus, parallelograms which are on the same base and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

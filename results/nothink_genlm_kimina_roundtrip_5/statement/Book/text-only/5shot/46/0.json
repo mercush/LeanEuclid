@@ -1,0 +1,78 @@
+{
+  "id": "46",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (c d : Point) (BC CD DA : Line), formQuadrilateral a b c d AB BC CD DA ∧ (∠ a:b:c : ℝ) = ∟ ∧ (∠ b:c:d : ℝ) = ∟ ∧ (∠ c:d:a : ℝ) = ∟ ∧ (∠ d:a:b : ℝ) = ∟ ∧ (∠ b:c:d : ℝ) = ∟)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ (c d : Point) (BC CD DA : Line), formQuadrilateral a b c d AB BC CD DA ∧ (∠ a:b:c : ℝ) = ∟ ∧ (∠ b:c:d : ℝ) = ∟ ∧ (∠ c:d:a : ℝ) = ∟ ∧ (∠ d:a:b : ℝ) = ∟ ∧ (∠ b:c:d : ℝ) = ∟ := by",
+      "probability": 0.004864845502789827,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.6026508808136,
+      "well_typed": true,
+      "token_counts": 117,
+      "formalization_check": false,
+      "original_probability": 0.20056456961213276,
+      "roundtrip_score": -258.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (c d : Point) (CD AD BC : Line), formQuadrilateral a b c d AB CD AD BC ∧ (∠ a:b:c = ∟) ∧ (∠ b:c:d = ∟) ∧ (∠ c:d:a = ∟) ∧ (∠ d:a:b = ∟) ∧ (|(a─b)| = |(b─c)|) ∧ (|(b─c)| = |(c─d)|) ∧ (|(c─d)| = |(d─a)|) ∧ (|(d─a)| = |(a─b)|))",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ (c d : Point) (CD AD BC : Line), formQuadrilateral a b c d AB CD AD BC ∧ (∠ a:b:c = ∟) ∧ (∠ b:c:d = ∟) ∧ (∠ c:d:a = ∟) ∧ (∠ d:a:b = ∟) ∧ (|(a─b)| = |(b─c)|) ∧ (|(b─c)| = |(c─d)|) ∧ (|(c─d)| = |(d─a)|) ∧ (|(d─a)| = |(a─b)|) := by",
+      "probability": 0.7215484310689605,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.6026508808136,
+      "well_typed": true,
+      "token_counts": 157,
+      "formalization_check": false,
+      "original_probability": 0.20043715998526643,
+      "roundtrip_score": -253.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (c d : Point) (CD BC AD : Line), formQuadrilateral a b c d AB CD AD BC ∧ (∠ a:b:c : ℝ) = ∟ ∧ (∠ b:c:d : ℝ) = ∟ ∧ (∠ c:d:a : ℝ) = ∟ ∧ (∠ d:a:b : ℝ) = ∟ ∧ (∠ b:a:d : ℝ) = ∟ ∧ (∠ a:d:c : ℝ) = ∟ ∧ (∠ d:c:b : ℝ) = ∟ ∧ (∠ c:b:a : ℝ) = ∟ ∧ |(a─b)| = |(b─c)| ∧ |(b─c)| = |(c─d)| ∧ |(c─d)| = |(d─a)|)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ (c d : Point) (CD BC AD : Line), formQuadrilateral a b c d AB CD AD BC ∧ (∠ a:b:c : ℝ) = ∟ ∧ (∠ b:c:d : ℝ) = ∟ ∧ (∠ c:d:a : ℝ) = ∟ ∧ (∠ d:a:b : ℝ) = ∟ ∧ (∠ b:a:d : ℝ) = ∟ ∧ (∠ a:d:c : ℝ) = ∟ ∧ (∠ d:c:b : ℝ) = ∟ ∧ (∠ c:b:a : ℝ) = ∟ ∧ |(a─b)| = |(b─c)| ∧ |(b─c)| = |(c─d)| ∧ |(c─d)| = |(d─a)| := by",
+      "probability": 0.00485712165219189,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.6026508808136,
+      "well_typed": true,
+      "token_counts": 195,
+      "formalization_check": false,
+      "original_probability": 0.2002461359085279,
+      "roundtrip_score": -258.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c d e : Point, |(c─d)| = |(d─e)| ∧ |(d─e)| = |(e─c)| ∧ |(c─d)| = |(a─b)| ∧ (∠ c:d:a : ℝ) = ∟ ∧ (∠ b:e:d : ℝ) = ∟)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c d e : Point, |(c─d)| = |(d─e)| ∧ |(d─e)| = |(e─c)| ∧ |(c─d)| = |(a─b)| ∧ (∠ c:d:a : ℝ) = ∟ ∧ (∠ b:e:d : ℝ) = ∟ := by",
+      "probability": 0.004838704576863526,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.6026508808136,
+      "well_typed": true,
+      "token_counts": 103,
+      "formalization_check": false,
+      "original_probability": 0.1994868491470854,
+      "roundtrip_score": -258.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (c d : Point) (AC AD BC BD : Line), formParallelogram a c b d AC BD AB BC ∧ (∠ a:c:b + ∠ c:b:a + ∠ b:a:c = ∟ + ∟) ∧ (∠ a:c:b = ∟) ∧ (∠ c:b:a = ∟) ∧ (∠ b:a:c = ∟))",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h : distinctPointsOnLine a b AB) :\n  ∃ (c d : Point) (AC AD BC BD : Line), formParallelogram a c b d AC BD AB BC ∧ (∠ a:c:b + ∠ c:b:a + ∠ b:a:c = ∟ + ∟) ∧ (∠ a:c:b = ∟) ∧ (∠ c:b:a = ∟) ∧ (∠ b:a:c = ∟) := by",
+      "probability": 0.26389089719920794,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.6026508808136,
+      "well_typed": true,
+      "token_counts": 114,
+      "formalization_check": false,
+      "original_probability": 0.1992652853469876,
+      "roundtrip_score": -254.0
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ (d e : Point) (DE AD BE : Line), formParallelogram d e a b DE AB AD BE ∧ |(d─e)| = |(a─b)| ∧ |(a─d)| = |(a─b)| ∧ |(b─e)| = |(a─b)| ∧ (∠ b:a:d = ∟) ∧ (∠ a:d:e = ∟) ∧ (∠ a:b:e = ∟) ∧ (∠ b:e:d = ∟)",
+  "nl_statement": "To describe a square on a given straight-line. Let $AB$ be the given straight-line.So it is required to describe a square on the straight-line $AB$. <prf> Thus, $ADEB$ is right-angled. And it was also shown (to be) equilateral.Thus, ($ADEB$) is a square [Def.~1.22]. And it is described on the straight-line $AB$.",
+  "lean4_header": ""
+}

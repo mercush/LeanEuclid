@@ -1,0 +1,68 @@
+{
+  "id": "25",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (DE : Line), ((|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|)) → ((∠ a:b:c : ℝ) > (∠ d:e:f : ℝ))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB DE : Line) (h1 : |(a─b)| = |(d─e)|) (h2 : |(a─c)| = |(d─f)|) (h3 : |(b─c)| > |(e─f)|) : (∠ a:b:c : ℝ) > (∠ d:e:f : ℝ) := by",
+      "probability": 0.25040843354097,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.125921487808228,
+      "well_typed": false,
+      "token_counts": 94,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (BC : Line) (DE : Line) (DF : Line) (EF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|)) → (((∠ b:a:c : ℝ) > (∠ e:d:f : ℝ)))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB AC BC DE DF EF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : |(b─c)| > |(e─f)| ) : ((∠ b:a:c : ℝ) > (∠ e:d:f : ℝ)) := by",
+      "probability": 0.2500538986176333,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.125921487808228,
+      "well_typed": true,
+      "token_counts": 124,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|)) → ((∠ a:b:c : ℝ) > (∠ d:e:f : ℝ))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC DE EF DF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : |(b─c)| > |(e─f)|) : (∠ a:b:c : ℝ) > (∠ d:e:f : ℝ) := by",
+      "probability": 0.24996752383700763,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.125921487808228,
+      "well_typed": true,
+      "token_counts": 124,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (BC : Line) (DE : Line) (DF : Line) (EF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ ((∠ b:a:c : ℝ) > 0) ∧ ((∠ e:d:f : ℝ) > 0) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|)) → ((∠ b:a:c : ℝ) > (∠ e:d:f : ℝ))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB AC BC DE DF EF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : (∠ b:a:c : ℝ) > 0) (h4 : (∠ e:d:f : ℝ) > 0) (h5 : |(a─b)| = |(d─e)|) (h6 : |(a─c)| = |(d─f)|) (h7 : |(b─c)| > |(e─f)|) : (∠ b:a:c : ℝ) > (∠ e:d:f : ℝ) := by",
+      "probability": 0.2495701440043891,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.125921487808228,
+      "well_typed": true,
+      "token_counts": 156,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (DE : Line) (DF : Line), ((formTriangle a b c AB BC AC)) → ()",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB AC DE DF : Line) (h1 : formTriangle a b c AB BC AC)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.125921487808228,
+      "well_typed": false,
+      "token_counts": 35,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|) → (∠ b:a:c > ∠ e:d:f)",
+  "nl_statement": "If two triangles have two sides equal to two sides, respectively, but (one) has a base greater than the base (of the other), then (the former triangle) will also have the angle encompassed by the equal straight-lines greater than the (corresponding) angle (in the latter).Let $ABC$ and $DEF$ be  two triangles having the two sides $AB$ and $AC$ equal to the two sides $DE$ and $DF$, respectively. (That is), $AB$ (equal) to $DE$, and $AC$ to $DF$. And let the base $BC$ be greater than the base $EF$. I say that angle $BAC$ is also greater than $EDF$. <prf>  Thus, $BAC$ is greater than $EDF$.Thus, if two triangles have two sides equal to two sides, respectively, but (one) has a base greater than the base (of the other), then (the former triangle) will also have the angle encompassed by the equal straight-lines greater than the (corresponding) angle (in the latter).",
+  "lean4_header": ""
+}

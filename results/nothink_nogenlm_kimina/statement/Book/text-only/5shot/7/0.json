@@ -1,0 +1,68 @@
+{
+  "id": "7",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (AC : Line) (AD : Line) (BC : Line) (BD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AB) ∧ (distinctPointsOnLine a d AB) ∧ (sameSide c d AB) ∧ (twoLinesIntersectAtPoint AB AC a) ∧ (twoLinesIntersectAtPoint AB AD a) ∧ (twoLinesIntersectAtPoint AB BC b) ∧ (twoLinesIntersectAtPoint AB BD b) ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|)) → (¬(c ≠ d))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB AC AD BC BD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AB) (h3 : distinctPointsOnLine a d AB) (h4 : sameSide c d AB) (h5 : twoLinesIntersectAtPoint AB AC a) (h6 : twoLinesIntersectAtPoint AB AD a) (h7 : twoLinesIntersectAtPoint AB BC b) (h8 : twoLinesIntersectAtPoint AB BD b) (h9 : |(a─c)| = |(a─d)|) (h10 : |(b─c)| = |(b─d)|) : ¬(c ≠ d) := by",
+      "probability": 0.20051505264716474,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 23.05655264854431,
+      "well_typed": false,
+      "token_counts": 169,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line), ((distinctPointsOnLine a b AB) ∧ (c ≠ d) ∧ (a ≠ c) ∧ (a ≠ d) ∧ (b ≠ c) ∧ (b ≠ d) ∧ (c and d are on the same side of line AB) ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|)) → (False)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB : Line) (AC CB AD DB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c ≠ d) (h3 : a ≠ c) (h4 : a ≠ d) (h5 : b ≠ c) (h6 : b ≠ d) (h7 : c and d are on the same side of line AB) (h8 : |(a─c)| = |(a─d)|) (h9 : |(b─c)| = |(b─d)|) : False := by",
+      "probability": 0.20038888758237325,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 23.05655264854431,
+      "well_typed": false,
+      "token_counts": 133,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line) (c : Point) (d : Point) (AC : Line) (AD : Line) (CB : Line) (DB : Line), ((distinctPointsOnLine a b AB) ∧ (a ≠ d) ∧ (b ≠ c) ∧ (a ≠ c) ∧ (b ≠ d) ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|) ∧ (c.onLine AB) ∧ (d.onLine AB) ∧ (sameSide c d AB) ∧ ((c ≠ d))) → (False)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (c d : Point) (AC AD CB DB : Line) (h2 : a ≠ d) (h3 : b ≠ c) (h4 : a ≠ c) (h5 : b ≠ d) (h6 : |(a─c)| = |(a─d)|) (h7 : |(b─c)| = |(b─d)|) (h8 : c.onLine AB) (h9 : d.onLine AB) (h10 : sameSide c d AB) (h11 : (c ≠ d)) : False := by",
+      "probability": 0.20006819460617348,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 23.05655264854431,
+      "well_typed": false,
+      "token_counts": 152,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (AC : Line) (DB : Line), ((distinctPointsOnLine a b AB) ∧ (onLine c AB) ∧ (onLine d AB) ∧ (c = d) ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|)) → (c = d)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : onLine c AB) (h3 : onLine d AB) (h4 : c = d) (AC DB : Line) (h5 : |(a─c)| = |(a─d)|) (h6 : |(b─c)| = |(b─d)|) : c = d := by",
+      "probability": 0.19953465040738744,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 23.05655264854431,
+      "well_typed": false,
+      "token_counts": 103,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line) (c : Point) (d : Point) (AC : Line) (CB : Line) (AD : Line) (DB : Line), ((distinctPointsOnLine a b AB) ∧ (c ≠ d) ∧ (a ≠ c) ∧ (b ≠ c) ∧ (a ≠ d) ∧ (b ≠ d) ∧ (c.onLine AB → False) ∧ (d.onLine AB → False) ∧ (between a c d → False) ∧ (between b c d → False) ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|) ∧ (c.d ≠ d.d)) → (False)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (c d : Point) (h2 : c ≠ d) (h3 : a ≠ c) (h4 : b ≠ c) (h5 : a ≠ d) (h6 : b ≠ d) (h7 : c.onLine AB → False) (h8 : d.onLine AB → False) (h9 : between a c d → False) (h10 : between b c d → False) (AC CB AD DB : Line) (h11 : |(a─c)| = |(a─d)|) (h12 : |(c─b)| = |(d─b)|) (h13 : c.d ≠ d.d) : False := by",
+      "probability": 0.199493214756901,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 23.05655264854431,
+      "well_typed": false,
+      "token_counts": 179,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB AC CB AD DB : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine c b CB ∧ distinctPointsOnLine a d AD ∧ distinctPointsOnLine d b DB ∧ (c.sameSide d AB) ∧ c ≠ d ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|) → False",
+  "nl_statement": "On the same straight-line, two other straight-lines  equal, respectively, to  two (given) straight-lines (which meet) cannot be constructed (meeting) at  a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.     For, if possible, let the two straight-lines $AC$, $CB$, equal to two other straight-lines $AD$, $DB$, respectively, have been constructed on the same straight-line $AB$, meeting at different points, $C$ and $D$, on the same side (of $AB$), and having the same ends (on $AB$). So $CA$ is equal to $DA$, having the same end $A$ as it, and $CB$ is equal to $DB$, having the same end $B$ as it. And let $CD$ have been joined [Post.~1]. <prf> Again, since  $CB$ is equal to $DB$, the angle $CDB$ is also equal to angle $DCB$ [Prop.~1.5]. But it was shown that the former (angle) is also much greater (than the latter). The very thing is impossible. Thus, on the same straight-line, two other straight-lines equal, respectively, to two (given) straight-lines (which meet) cannot be constructed (meeting) at a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.",
+  "lean4_header": ""
+}

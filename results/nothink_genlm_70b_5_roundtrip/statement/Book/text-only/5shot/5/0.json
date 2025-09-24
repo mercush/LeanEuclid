@@ -1,0 +1,78 @@
+{
+  "id": "5",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point), (True) → ()",
+      "full_output": "theorem isosceles_triangles_base_angles_equal (a b c d e : Point)\n -- We assume the following:\n -- - AB and AC are sides of the triangle ABC\n -- - BD and CE are lines extending BA and CA respectively\n (AB AC : Line)\n (h1 : formTriangle a b c AB AC (Line.intersectsLine AB AC))\n -- Hypotheses:\n -- - Triangle ABC is isosceles with AB equal to AC\n -- - BD and CE are lines extending BA and CA respectively\n (h2 : |(a─b)| = |(a─c)|)\n (h3 : between b a d)\n (h4 : between c a e)\n -- We need to prove:\n -- - Angle ABC is equal to angle ACB\n -- - Angle CBD is equal to angle BCE\n : ∠ b:a:c = ∠ c:a:b ∧ ∠ b:c:d = ∠ c:d:e := by",
+      "probability": 0.20067423399009693,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.375267505645752,
+      "well_typed": false,
+      "token_counts": 197,
+      "formalization_check": false,
+      "original_probability": 0.20067423399010265,
+      "roundtrip_score": -462.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point), (True) → ()",
+      "full_output": "theorem isosceles_triangles_base_angles_equal (a b c d e : Point)\n -- We assume the following:\n -- - AB and AC are sides of the triangle ABC\n -- - BD and CE are lines extending BA and CA respectively\n (AB AC : Line)\n (h1 : formTriangle a b c AB AC (Line.intersectsLine AC AB))\n (h2 : Segment.endpoints a b AB)\n (h3 : Segment.endpoints a c AC)\n (h4 : Line.intersectsLine AB AC)\n -- We need to prove:\n -- - The angles ABC and ACB are equal\n -- - The angles CBD and BCE are equal\n (h5 : Line.intersectsLine AC AB)\n (h6 : Line.intersectsLine AB AC)\n -- This is a placeholder for the actual proof\n : ∠ b:a:c = ∠ a:c:b ∧ ∠ a:b:c = ∠ c:a:b := by",
+      "probability": 0.20058887452765503,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.375267505645752,
+      "well_typed": false,
+      "token_counts": 193,
+      "formalization_check": false,
+      "original_probability": 0.2005888745276577,
+      "roundtrip_score": -462.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point), (True) → ()",
+      "full_output": "theorem isosceles_triangles_base_angles_equal (a b c d e : Point)\n -- We assume the following:\n -- - AB and AC are sides of the triangle ABC\n -- - BD and CE are lines extending BA and CA respectively\n (AB AC : Line)\n (h1 : formTriangle a b c AB AC (Line.intersectsLine AB AC))\n -- The triangle ABC is isosceles with AB equal to AC\n (h2 : |(a─b)| = |(a─c)|)\n -- Therefore, the angles at the base (ABC and ACB) are equal\n : ∠ a:b:c = ∠ a:c:b ∧ ∠ a:b:d = ∠ a:c:e := by",
+      "probability": 0.19980172421501688,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.375267505645752,
+      "well_typed": false,
+      "token_counts": 151,
+      "formalization_check": false,
+      "original_probability": 0.19980172421501272,
+      "roundtrip_score": -462.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point), (True) → ()",
+      "full_output": "theorem isosceles_triangles_base_angles_equal (a b c d e : Point)\n -- We assume the following:\n -- - AB and AC are sides of the triangle ABC\n -- - BD and CE are lines extending BA and CA respectively\n (AB AC : Line)\n (h1 : formTriangle a b c AB AC (Line.intersectsLine AC AB))\n (h2 : Line.intersectsLine AB AC |>.onLine a)\n (h3 : Line.intersectsLine AB AC |>.onLine b)\n (h4 : Line.intersectsLine AC AB |>.onLine c)\n (h5 : Line.intersectsLine AB AC |>.onLine d)\n (h6 : Line.intersectsLine AC AB |>.onLine e)\n -- We need to prove:\n -- - angle ABC equals angle ACB (angles at the base are equal)\n -- - angle CBD equals angle BCE (angles under the base are equal)\n : ∠ b:c:a = ∠ a:c:e ∧ ∠ b:d:c = ∠ a:e:c := by",
+      "probability": 0.19973075337289173,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.375267505645752,
+      "well_typed": false,
+      "token_counts": 218,
+      "formalization_check": false,
+      "original_probability": 0.19973075337289242,
+      "roundtrip_score": -462.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point), (True) → ()",
+      "full_output": "theorem isosceles_triangles_base_angles_equal (a b c d e : Point)\n -- We assume the following:\n -- - AB and AC are sides of the triangle ABC\n -- - BD and CE are lines extending BA and CA respectively\n (AB AC : Line)\n (h1 : formTriangle a b c AB AC (Line.intersectsLine AB AC))\n (h2 : distinctPointsOnLine b c (Line.intersectsLine AB AC))\n (h3 : formTriangle a b d AB (Line.intersectsLine AB (Line.intersectsLine AB AC)))\n (h4 : formTriangle a c e AC (Line.intersectsLine AC (Line.intersectsLine AB AC)))\n -- We need to prove the following:\n -- 1. Angles at the base (ABC and ACB) are equal\n -- 2. If the equal sides are produced, the angles under the base (CBD and BCE) are equal\n : (∠ b:c:a = ∠ a:c:b) ∧ (∠ c:b:d = ∠ b:c:e) := by",
+      "probability": 0.19920441389433266,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.375267505645752,
+      "well_typed": false,
+      "token_counts": 219,
+      "formalization_check": false,
+      "original_probability": 0.19920441389433452,
+      "roundtrip_score": -462.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─b)| = |(a─c)|) ∧ (between a b d) ∧ (between a c e) → (∠ a:b:c = ∠ a:c:b) ∧ (∠ c:b:d = ∠ b:c:e)",
+  "nl_statement": "For isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another. Let $ABC$ be an isosceles triangle having the side $AB$ equal to the side $AC$, and let the straight-lines $BD$ and $CE$ have been produced in a straight-line with $AB$ and $AC$ (respectively) [Post.~2]. I say that the angle $ABC$ is equal to $ACB$, and (angle) $CBD$  to $BCE$.  <prf> Therefore, since the whole angle $ABG$ was shown (to be) equal to the whole angle $ACF$, within which $CBG$ is equal to $BCF$, the remainder $ABC$ is thus equal to the remainder $ACB$ [C.N.~3]. And they are at the base of triangle $ABC$. And $FBC$ was also shown (to be) equal to $GCB$. And they are under the base. Thus, for isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another.",
+  "lean4_header": ""
+}

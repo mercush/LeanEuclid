@@ -1,0 +1,20 @@
+{
+  "id": "38",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (BC : Line) (EF : Line), ((Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine e EF) ∧ (Point.onLine f EF) ∧ (Point.onLine d BC) ∧ (Point.onLine a EF) ∧ (Point.onLine f BC) ∧ (Point.onLine e EF) ∧ (Point.onLine a EF) ∧ (Point.onLine d BC) ∧ (Point.onLine c BC) ∧ (Point.onLine b BC) ∧ (|(b─c)| = |(e─f)|) ∧ (¬(Line.intersectsLine BC EF)) ∧ (¬(Line.intersectsLine BC EF))) → (Triangle.area △ a:b:c = Triangle.area △ d:e:f)",
+      "full_output": "theorem triangles_on_equal_bases_between_same_parallels_are_equal (a b c d e f : Point) \n  (BC EF : Line) \n  (h1 : Point.onLine b BC) \n  (h2 : Point.onLine c BC) \n  (h3 : Point.onLine e EF) \n  (h4 : Point.onLine f EF) \n  (h5 : Point.onLine d BC) \n  (h6 : Point.onLine a EF) \n  (h7 : Point.onLine f BC) \n  (h8 : Point.onLine e EF) \n  (h9 : Point.onLine a EF) \n  (h10 : Point.onLine d BC) \n  (h11 : Point.onLine c BC) \n  (h12 : Point.onLine b BC) \n  (h13 : |(b─c)| = |(e─f)|) \n  (h14 : ¬(Line.intersectsLine BC EF)) \n  (h15 : ¬(Line.intersectsLine BC EF)) : Triangle.area △ a:b:c = Triangle.area △ d:e:f := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 16.125492095947266,
+      "well_typed": true,
+      "token_counts": 240,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f: Point) (AD BF AB AC DE DF : Line), a.onLine AD ∧ d.onLine AD ∧ formTriangle a b c AB BF AC ∧ formTriangle d e f DE BF DF ∧ ¬(AD.intersectsLine BF) ∧ (between b c f) ∧ (between b e f) ∧ |(b─c)| = |(e─f)| → Triangle.area △ a:b:c = Triangle.area △ d:e:f",
+  "nl_statement": "Triangles which are on equal bases and between the same parallels are equal to one another. Let $ABC$ and $DEF$ be triangles on the equal bases $BC$ and $EF$, and between the same parallels $BF$ and $AD$. I say that triangle $ABC$ is equal to triangle $DEF$.  <prf> Thus, triangle $ABC$ is equal to triangle $DEF$.Thus, triangles which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

@@ -1,0 +1,20 @@
+{
+  "id": "44",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (∠ a:d:b = ∠ a:d:b) ∧ (formTriangle a b c AB CD AC) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (distinctPointsOnLine b d BD)) → (∃ (l m n o : Point) (LM MO LN LO : Line), formParallelogram l m n o LM MO LN LO ∧ |(l─m)| = |(a─b)| ∧ |(m─n)| = |(b─c)| ∧ |(n─o)| = |(c─d)| ∧ |(o─l)| = |(d─a)|)",
+      "full_output": "theorem apply_parallelogram (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : ∠ a:d:b = ∠ a:d:b) (h3 : formTriangle a b c AB CD AC) (h4 : distinctPointsOnLine a b AB) (h5 : distinctPointsOnLine a c AC) (h6 : distinctPointsOnLine b d BD) : ∃ (l m n o : Point) (LM MO LN LO : Line), formParallelogram l m n o LM MO LN LO ∧ |(l─m)| = |(a─b)| ∧ |(m─n)| = |(b─c)| ∧ |(n─o)| = |(c─d)| ∧ |(o─l)| = |(d─a)| := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.155592679977417,
+      "well_typed": true,
+      "token_counts": 194,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c₁ c₂ c₃ d₁ d₂ d₃ : Point) (AB C₁₂ C₂₃ C₃₁ D₁₂ D₂₃ : Line), formTriangle c₁ c₂ c₃ C₁₂ C₂₃ C₃₁ ∧ formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃ ∧ distinctPointsOnLine a b AB ∧ (∠ d₁:d₂:d₃ : ℝ) > 0 ∧ (∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟ → ∃ (m l : Point) (BM AL ML : Line), formParallelogram b m a l BM AL AB ML ∧ (∠ a:b:m = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ a:b:m + Triangle.area △ a:l:m = Triangle.area △ c₁:c₂:c₃)",
+  "nl_statement": "To apply a parallelogram equal to a given triangle to a given straight-line in a given rectilinear angle. Let $AB$ be the given straight-line,  $C$ the given triangle, and $D$ the given rectilinear angle. So it is required to apply a parallelogram equal to the given triangle $C$ to the given straight-line $AB$ in an angle equal to (angle) $D$. <prf> Thus, the parallelogram $LB$, equal to the given triangle $C$, has been applied to the given straight-line $AB$ in the angle $ABM$, which is equal to $D$.",
+  "lean4_header": ""
+}

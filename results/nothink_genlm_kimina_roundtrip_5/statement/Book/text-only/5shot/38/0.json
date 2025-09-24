@@ -1,0 +1,78 @@
+{
+  "id": "38",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(b─c)| = |(e─f)|) ∧ (exists l : Line, a.onLine l ∧ d.onLine l ∧ (a ≠ d ∨ a = d) ∧ (b.onLine l ∨ c.onLine l) ∧ (∀ s : Point, s.onLine BC → s.onLine EF → s = b ∨ s = c ∨ s = e ∨ s = f))) → ((Triangle.area △ a:b:c = Triangle.area △ d:e:f))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC DE EF DF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(b─c)| = |(e─f)|) (h4 : exists l : Line, a.onLine l ∧ d.onLine l ∧ (a ≠ d ∨ a = d) ∧ (b.onLine l ∨ c.onLine l) ∧ (∀ s : Point, s.onLine BC → s.onLine EF → s = b ∨ s = c ∨ s = e ∨ s = f)) : (Triangle.area △ a:b:c = Triangle.area △ d:e:f) := by",
+      "probability": 0.03474040752712833,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.904163122177124,
+      "well_typed": true,
+      "token_counts": 166,
+      "formalization_check": false,
+      "original_probability": 0.24726261783042666,
+      "roundtrip_score": -159.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(b─c)| = |(e─f)|) ∧ (exists l : Line, a.onLine l ∧ f.onLine l ∧ ((l.intersectsLine BC) = False) ∧ ((l.intersectsLine EF) = False)) ∧ (exists l : Line, b.onLine l ∧ e.onLine l ∧ c.onLine l ∧ f.onLine l)) → (Triangle.area △ a:b:c = Triangle.area △ d:e:f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC DE EF DF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(b─c)| = |(e─f)|) (h4 : exists l : Line, a.onLine l ∧ f.onLine l ∧ ((l.intersectsLine BC) = False) ∧ ((l.intersectsLine EF) = False)) (h5 : exists l : Line, b.onLine l ∧ e.onLine l ∧ c.onLine l ∧ f.onLine l) : Triangle.area △ a:b:c = Triangle.area △ d:e:f := by",
+      "probability": 0.256381244238168,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.904163122177124,
+      "well_typed": false,
+      "token_counts": 155,
+      "formalization_check": false,
+      "original_probability": 0.24695671598293592,
+      "roundtrip_score": -157.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (C1 : Line) (C2 : Line) (DE : Line) (EF : Line) (F1 : Line) (F2 : Line), ((formTriangle a b c AB BC C1) ∧ (formTriangle d e f DE EF F1) ∧ (|(b─c)| = |(e─f)|) ∧ (¬(AB.intersectsLine F2)) ∧ (¬(DE.intersectsLine C2)) ∧ (between a b c) ∧ (between d e f) ∧ (a.onLine C2) ∧ (c.onLine C2) ∧ (d.onLine F2) ∧ (f.onLine F2)) → (Triangle.area △ a:b:c = Triangle.area △ d:e:f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC C1 C2 DE EF F1 F2 : Line) (h1 : formTriangle a b c AB BC C1) (h2 : formTriangle d e f DE EF F1) (h3 : |(b─c)| = |(e─f)|) (h4 : ¬(AB.intersectsLine F2)) (h5 : ¬(DE.intersectsLine C2)) (h6 : between a b c) (h7 : between d e f) (h8 : a.onLine C2) (h9 : c.onLine C2) (h10 : d.onLine F2) (h11 : f.onLine F2) : Triangle.area △ a:b:c = Triangle.area △ d:e:f := by",
+      "probability": 0.0006336159181636827,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.904163122177124,
+      "well_typed": true,
+      "token_counts": 180,
+      "formalization_check": false,
+      "original_probability": 0.24622240058530745,
+      "roundtrip_score": -163.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(b─c)| = |(e─f)|) ∧ (exists l : Line, a.onLine l ∧ f.onLine l ∧ ¬(l.intersectsLine BC)) ∧ (exists l : Line, a.onLine l ∧ d.onLine l ∧ ¬(l.intersectsLine EF))) → (Triangle.area △ a:b:c = Triangle.area △ d:e:f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC DE EF DF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(b─c)| = |(e─f)|) (h4 : exists l : Line, a.onLine l ∧ f.onLine l ∧ ¬(l.intersectsLine BC)) (h5 : exists l : Line, a.onLine l ∧ d.onLine l ∧ ¬(l.intersectsLine EF)) : Triangle.area △ a:b:c = Triangle.area △ d:e:f := by",
+      "probability": 0.6941413683221892,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.904163122177124,
+      "well_typed": true,
+      "token_counts": 140,
+      "formalization_check": false,
+      "original_probability": 0.2459733387214118,
+      "roundtrip_score": -156.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(b─c)| = |(e─f)|)) → ()",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC DE EF DF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(b─c)| = |(e─f)|) (h4 : exists l : Line, a.onLine l ∧ d.onLine l ∧ (a ≠ d) ∧ l ∩ AB = some g ⊢ ¬(c.onLine (l ∩ AB)) ∧ l ∩ DE = some g ⊢ ¬(f.onLine (l ∩ DE)) ∧ a and d are on the same side of the line BF := by",
+      "probability": 0.014103363994355453,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.904163122177124,
+      "well_typed": false,
+      "token_counts": 149,
+      "formalization_check": false,
+      "original_probability": 0.01358492687991823,
+      "roundtrip_score": -157.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f: Point) (AD BF AB AC DE DF : Line), a.onLine AD ∧ d.onLine AD ∧ formTriangle a b c AB BF AC ∧ formTriangle d e f DE BF DF ∧ ¬(AD.intersectsLine BF) ∧ (between b c f) ∧ (between b e f) ∧ |(b─c)| = |(e─f)| → Triangle.area △ a:b:c = Triangle.area △ d:e:f",
+  "nl_statement": "Triangles which are on equal bases and between the same parallels are equal to one another. Let $ABC$ and $DEF$ be triangles on the equal bases $BC$ and $EF$, and between the same parallels $BF$ and $AD$. I say that triangle $ABC$ is equal to triangle $DEF$.  <prf> Thus, triangle $ABC$ is equal to triangle $DEF$.Thus, triangles which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

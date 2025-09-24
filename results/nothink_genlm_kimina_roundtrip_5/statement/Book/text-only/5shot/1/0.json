@@ -1,0 +1,36 @@
+{
+  "id": "1",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (c : Point) (AC BC : Line), formTriangle a b c AB BC AC ∧ (|(a─b)| = |(a─c)|) ∧ (|(a─c)| = |(b─c)|))",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ (c : Point) (AC BC : Line), formTriangle a b c AB BC AC ∧ (|(a─b)| = |(a─c)|) ∧ (|(a─c)| = |(b─c)|) := by",
+      "probability": 0.7999999999999894,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 32.49782109260559,
+      "well_typed": true,
+      "token_counts": 81,
+      "formalization_check": false,
+      "original_probability": 0.8,
+      "roundtrip_score": -182.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (c : Point) (AC BC : Line), formTriangle a b c AB BC AC ∧ |(a─b)| = |(a─c)| ∧ |(a─b)| = |(b─c)|)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ (c : Point) (AC BC : Line), formTriangle a b c AB BC AC ∧ |(a─b)| = |(a─c)| ∧ |(a─b)| = |(b─c)| := by",
+      "probability": 0.2000000000000023,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 32.49782109260559,
+      "well_typed": true,
+      "token_counts": 79,
+      "formalization_check": false,
+      "original_probability": 0.2,
+      "roundtrip_score": -182.0
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)|",
+  "nl_statement": "To construct an equilateral triangle on a given finite straight-line. Let $AB$ be the given finite straight-line.  <prf> Thus, the three (straight-lines) $CA$, $AB$, and $BC$ are equal to one another.Thus, the triangle $ABC$ is equilateral, and has been constructed on the given finite straight-line $AB$.",
+  "lean4_header": ""
+}

@@ -1,0 +1,92 @@
+{
+  "id": "14",
+  "formalizations": [
+    {
+      "formalization": "∀ (B : Point) (C : Point) (D : Point) (AB : Line) (BC : Line) (BD : Line), ((distinctPointsOnLine B C BC) ∧ (distinctPointsOnLine B D BD) ∧ (¬Point.onLine B AB) ∧ (¬Point.onLine B AB) ∧ (∠ B : B : C = ∟ + ∟ - ∠ B : B : D) ∧ (∠ B : B : D = ∟ + ∟ - ∠ B : B : C)) → (∟ = ∠ B : B : C + ∠ B : B : D)",
+      "full_output": "theorem theorem_name\n  (B C D : Point)\n  (AB BC BD : Line)\n  (h1 : distinctPointsOnLine B C BC)\n  (h2 : distinctPointsOnLine B D BD)\n  (h3 : ¬Point.onLine B AB)\n  (h4 : ¬Point.onLine B AB)\n  (h5 : ∠ B : B : C = ∟ + ∟ - ∠ B : B : D)\n  (h6 : ∠ B : B : D = ∟ + ∟ - ∠ B : B : C)\n  : ∟ = ∠ B : B : C + ∠ B : B : D := by\n  -- Using the properties of angles and lines, we can derive the desired result.\n  -- The sum of adjacent angles ABC and ABD is equal to two right angles.\n  -- Therefore, the angles must be supplementary.\n  -- This implies that the lines BC and BD are straight with respect to each other.\n  simp_all only [Nat.right_angle, Nat.right_angle]\n  -- Using the properties of angles and lines, we can derive the desired result.\n  -- The sum of adjacent angles ABC and ABD is",
+      "probability": 0.71431259231538,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.09892201423645,
+      "well_typed": false,
+      "token_counts": 144,
+      "formalization_check": false,
+      "original_probability": 0.7143125923153794,
+      "roundtrip_score": -302.0
+    },
+    {
+      "formalization": "∀ (B : Point) (C : Point) (D : Point) (AB : Line) (BC : Line) (BD : Line), ((distinctPointsOnLine B C BC) ∧ (distinctPointsOnLine B D BD) ∧ (¬Point.onLine B AB) ∧ (¬Point.onLine B AB) ∧ (∠ B : B : C = ∟ + ∟ - ∠ B : B : D) ∧ (∠ B : B : D = ∟ + ∟ - ∠ B : B : C)) → (∟ = ∠ B : B : C + ∠ B : B : D)",
+      "full_output": "theorem theorem_name\n  (B C D : Point)\n  (AB BC BD : Line)\n  (h1 : distinctPointsOnLine B C BC)\n  (h2 : distinctPointsOnLine B D BD)\n  (h3 : ¬Point.onLine B AB)\n  (h4 : ¬Point.onLine B AB)\n  (h5 : ∠ B : B : C = ∟ + ∟ - ∠ B : B : D)\n  (h6 : ∠ B : B : D = ∟ + ∟ - ∠ B : B : C)\n  : ∟ = ∠ B : B : C + ∠ B : B : D := by\n  -- Using the properties of angles and lines, we can derive the desired result.\n  -- Since the sum of the adjacent angles is two right angles, we can directly conclude that the sum of ∠B:C:B and ∠B:D:B is equal to two right angles.\n  have h : ∟ = ∠ B : B : C + ∠ B : B : D := by linarith\n  -- By solving the equation, we confirm that the two straight-lines are collinear, meaning",
+      "probability": 0.14291172293285143,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.09892201423645,
+      "well_typed": false,
+      "token_counts": 144,
+      "formalization_check": false,
+      "original_probability": 0.14291172293284923,
+      "roundtrip_score": -302.0
+    },
+    {
+      "formalization": "∀ (B : Point) (C : Point) (D : Point) (AB : Line) (BC : Line) (BD : Line), ((distinctPointsOnLine B C BC) ∧ (distinctPointsOnLine B D BD) ∧ (¬Point.onLine B AB) ∧ (¬Point.onLine B AB) ∧ (∠ B : B : C = ∟ + ∟ - ∠ B : B : D) ∧ (∠ B : B : D = ∟ + ∟ - ∠ B : B : C)) → (∟ = ∠ B : B : C + ∠ B : B : D)",
+      "full_output": "theorem theorem_name\n  (B C D : Point)\n  (AB BC BD : Line)\n  (h1 : distinctPointsOnLine B C BC)\n  (h2 : distinctPointsOnLine B D BD)\n  (h3 : ¬Point.onLine B AB)\n  (h4 : ¬Point.onLine B AB)\n  (h5 : ∠ B : B : C = ∟ + ∟ - ∠ B : B : D)\n  (h6 : ∠ B : B : D = ∟ + ∟ - ∠ B : B : C)\n  : ∟ = ∠ B : B : C + ∠ B : B : D := by\n  -- Using the properties of angles and lines, we can derive the desired result.\n  -- Since the sum of the adjacent angles is two right angles, we can directly conclude that the sum of ∠B:C:B and ∠B:D:B is equal to two right angles.\n  have h : ∟ = ∠ B : B : C + ∠ B : B : D := by linarith\n  -- By solving the equation, we confirm that the two lines are straight-on with respect to",
+      "probability": 0.1427641818031542,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.09892201423645,
+      "well_typed": false,
+      "token_counts": 144,
+      "formalization_check": false,
+      "original_probability": 0.142764181803152,
+      "roundtrip_score": -302.0
+    },
+    {
+      "formalization": "∀ (B : Point) (C : Point) (D : Point) (AB : Line) (BC : Line) (BD : Line), ((distinctPointsOnLine B C BC) ∧ (distinctPointsOnLine B D BD) ∧ (¬Point.onLine B AB) ∧ (¬Point.onLine B AB) ∧ (∠ B : B : C = ∟ + ∟ - ∠ B : B : D) ∧ (∠ B : B : D = ∟ + ∟ - ∠ B : B : C)) → (∟ = ∠ B : B : C + ∠ B : B : D)",
+      "full_output": "theorem theorem_name\n  (B C D : Point)\n  (AB BC BD : Line)\n  (h1 : distinctPointsOnLine B C BC)\n  (h2 : distinctPointsOnLine B D BD)\n  (h3 : ¬Point.onLine B AB)\n  (h4 : ¬Point.onLine B AB)\n  (h5 : ∠ B : B : C = ∟ + ∟ - ∠ B : B : D)\n  (h6 : ∠ B : B : D = ∟ + ∟ - ∠ B : B : C)\n  : ∟ = ∠ B : B : C + ∠ B : B : D := by\n  -- Using the properties of angles and lines, we can derive the desired result.\n  -- The sum of angles around point B on line AB is two right angles.\n  -- Therefore, the sum of angles ∠ B : B : C and ∠ B : B : D must be two right angles.\n  -- This is a direct consequence of the angle properties in Euclidean geometry.\n  linarith [h5, h6]\n``` \n[Note: This formalization assumes the properties of angles around",
+      "probability": 5.211717742472274e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.09892201423645,
+      "well_typed": false,
+      "token_counts": 144,
+      "formalization_check": false,
+      "original_probability": 5.211717742472126e-06,
+      "roundtrip_score": -302.0
+    },
+    {
+      "formalization": "∀ (B : Point) (C : Point) (D : Point) (AB : Line) (BC : Line) (BD : Line), ((distinctPointsOnLine B C BC) ∧ (distinctPointsOnLine B D BD) ∧ (¬Point.onLine B AB) ∧ (¬Point.onLine B AB) ∧ (∠ B : B : C = ∟ + ∟ - ∠ B : B : D) ∧ (∠ B : B : D = ∟ + ∟ - ∠ B : B : C)) → (∟ = ∠ B : B : C + ∠ B : B : D)",
+      "full_output": "theorem theorem_name\n  (B C D : Point)\n  (AB BC BD : Line)\n  (h1 : distinctPointsOnLine B C BC)\n  (h2 : distinctPointsOnLine B D BD)\n  (h3 : ¬Point.onLine B AB)\n  (h4 : ¬Point.onLine B AB)\n  (h5 : ∠ B : B : C = ∟ + ∟ - ∠ B : B : D)\n  (h6 : ∠ B : B : D = ∟ + ∟ - ∠ B : B : C)\n  : ∟ = ∠ B : B : C + ∠ B : B : D := by\n  -- Using the properties of angles and lines, we can derive the desired result.\n  -- The sum of angles around point B on line AB is two right angles.\n  -- Therefore, the sum of angles ∠ B : B : C and ∠ B : B : D must be two right angles.\n  -- This directly leads to the conclusion that the two lines are straight-on with respect to one another.\n  linarith [h5, h6]\n```\n\n\ntheorem theorem_name\n  (B",
+      "probability": 3.4807133911517607e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.09892201423645,
+      "well_typed": false,
+      "token_counts": 144,
+      "formalization_check": false,
+      "original_probability": 3.4807133911516807e-06,
+      "roundtrip_score": -302.0
+    },
+    {
+      "formalization": "∀ (B : Point) (C : Point) (D : Point) (AB : Line) (BC : Line) (BD : Line), ((distinctPointsOnLine B C BC) ∧ (distinctPointsOnLine B D BD) ∧ (¬Point.onLine B AB) ∧ (¬Point.onLine B AB) ∧ (∠ B : B : C = ∟ + ∟ - ∠ B : B : D) ∧ (∠ B : B : D = ∟ + ∟ - ∠ B : B : C)) → (∟ = ∠ B : B : C + ∠ B : B : D)",
+      "full_output": "theorem theorem_name\n  (B C D : Point)\n  (AB BC BD : Line)\n  (h1 : distinctPointsOnLine B C BC)\n  (h2 : distinctPointsOnLine B D BD)\n  (h3 : ¬Point.onLine B AB)\n  (h4 : ¬Point.onLine B AB)\n  (h5 : ∠ B : B : C = ∟ + ∟ - ∠ B : B : D)\n  (h6 : ∠ B : B : D = ∟ + ∟ - ∠ B : B : C)\n  : ∟ = ∠ B : B : C + ∠ B : B : D := by\n  -- Using the properties of angles and lines, we can derive the desired result.\n  -- The sum of angles around point B on line AB is two right angles.\n  -- Therefore, the sum of angles ∠ B : B : C and ∠ B : B : D must be two right angles.\n  -- This directly leads to the conclusion that the two lines are straight-on with respect to one another.\n  linarith [h5, h6]\n``` \n```lean4\ntheorem theorem_name",
+      "probability": 2.810517485736304e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 68.09892201423645,
+      "well_typed": false,
+      "token_counts": 144,
+      "formalization_check": false,
+      "original_probability": 2.8105174857362692e-06,
+      "roundtrip_score": -302.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC BD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine b c BC ∧ distinctPointsOnLine b d BD ∧ (c.opposingSides d AB) ∧ (∠ a:b:c + ∠ a:b:d) = ∟ + ∟ → BC = BD",
+  "nl_statement": "If two straight-lines, not lying on the same side,  make adjacent angles (whose sum is) equal to two right-angles  with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another. For let two straight-lines $BC$ and $BD$, not lying on the same side, make adjacent angles $ABC$ and $ABD$ (whose sum is) equal to two right-angles with some straight-line $AB$, at the point $B$ on it. I say that $BD$ is  straight-on with respect to $CB$. <prf> Thus, $CB$ is straight-on with respect to $BD$.Thus, if two straight-lines, not lying on the same side, make adjacent angles (whose sum is) equal to two right-angles with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another.",
+  "lean4_header": ""
+}

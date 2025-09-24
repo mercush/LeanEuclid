@@ -1,0 +1,68 @@
+{
+  "id": "29",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (¬(AB.intersectsLine CD)) ∧ (e ≠ g) ∧ (f ≠ h) ∧ ((a ≠ g ∨ b ≠ g)) ∧ ((c ≠ h ∨ d ≠ h)) ∧ (e ≠ f) ∧ (g ≠ h) ∧ (e.onLine EF) ∧ (f.onLine EF) ∧ (g.onLine EF) ∧ (h.onLine EF) ∧ (e.onLine AB ∨ f.onLine AB ∨ g.onLine AB ∨ h.onLine AB) ∧ (e.onLine CD ∨ f.onLine CD ∨ g.onLine CD ∨ h.onLine CD)) → ()",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD EF : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : ¬(AB.intersectsLine CD)) (h4 : e ≠ g) (h5 : f ≠ h) (h6 : (a ≠ g ∨ b ≠ g)) (h7 : (c ≠ h ∨ d ≠ h)) (h8 : e ≠ f) (h9 : g ≠ h) (h10 : e.onLine EF) (h11 : f.onLine EF) (h12 : g.onLine EF) (h13 : h.onLine EF) (h14 : e.onLine AB ∨ f.onLine AB ∨ g.onLine AB ∨ h.onLine AB) (h15 : e.onLine CD ∨ f.onLine CD ∨ g.onLine CD ∨ h.onLine CD) : (∠ a:g:h = ∠ c:h:d) ∧ (∠ a:g:e = ∠ c:h:d) ∧ (∠ b:g:h + ∠",
+      "probability": 0.20041555588787038,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.55361723899841,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "()",
+      "full_output": "import Mathlib\n\nopen Real\nopen scoped BigOperators\n\n-- Basic Geometric Sorts --\naxiom Point : Type\naxiom Line : Type\naxiom Circle : Type\n\n-- Inductive Types for Geometric Entities --\ninductive Angle | right | ofPoints (A B C : Point)\ninductive Segment | endpoints (a b : Point)\ninductive Triangle | ofPoints (a b c : Point)\n\n-- Notations and Macros for Geometric Entities --\n\"|(a─b)|\" means the length of the line segment between point a and point b.\n\"∠ a:b:c\" means the degree of the angle formed by points a, b, and c.\n\"∟\" means the right angle.\n\"△ a:b:c\" means the triangle formed from points a, b and c.\n\"Triangle.area △ a:b:c\" means the area of the triangle formed by points a, b and c.\n\n-- Relations and Axioms for Geometric Sorts --\nnamespace Point\ndef onLine (a : Point) (L : Line) -- point a is on line L.\ndef sameSide (a b : Point) (L : Line) -- point a and b are on the same side of line",
+      "probability": 0.20028115179054565,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.55361723899841,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine b a AB) ∧ (distinctPointsOnLine c d CD) ∧ (¬(AB.intersectsLine CD)) ∧ (a = a) ∧ ((g.onLine AB ∧ g.onLine EF) ∧ (h.onLine CD ∧ h.onLine EF))) → ((∠ a:g:h : ℝ) = ∠ g:h:d ∧ (∠ e:g:b : ℝ) = ∠ g:h:d ∧ (∠ b:g:h + ∠ g:h:d : ℝ) = ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD : Line) (h1 : distinctPointsOnLine b a AB) (h2 : distinctPointsOnLine c d CD) (h3 : ¬(AB.intersectsLine CD)) (h4 : a = a) (EF : Line) (h5 : (g.onLine AB ∧ g.onLine EF) ∧ (h.onLine CD ∧ h.onLine EF)) : (∠ a:g:h : ℝ) = ∠ g:h:d ∧ (∠ e:g:b : ℝ) = ∠ g:h:d ∧ (∠ b:g:h + ∠ g:h:d : ℝ) = ∟ + ∟ := by",
+      "probability": 0.20000920495015936,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.55361723899841,
+      "well_typed": false,
+      "token_counts": 151,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (EF : Line), ((formQuadrilateral a b d c AB CD (by sorry) (by sorry)) ∧ ((a.onLine EF) ∧ (h.onLine EF)) ∧ ((b.onLine EF) ∧ (g.onLine EF)) ∧ (¬(EF.intersectsLine AB)) ∧ (¬(EF.intersectsLine CD))) → ((∠ a:g:h : ℝ) = (∠ g:h:d : ℝ) ∧ (∠ e:g:b : ℝ) = (∠ g:h:d : ℝ) ∧ (∠ b:g:h : ℝ) + (∠ g:h:d : ℝ) = ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD EF : Line) (h1 : formQuadrilateral a b d c AB CD (by sorry) (by sorry)) (h2 : (a.onLine EF) ∧ (h.onLine EF)) (h3 : (b.onLine EF) ∧ (g.onLine EF)) (h4 : ¬(EF.intersectsLine AB)) (h5 : ¬(EF.intersectsLine CD)) : (∠ a:g:h : ℝ) = (∠ g:h:d : ℝ) ∧ (∠ e:g:b : ℝ) = (∠ g:h:d : ℝ) ∧ (∠ b:g:h : ℝ) + (∠ g:h:d : ℝ) = ∟ + ∟ := by",
+      "probability": 0.2000005310568706,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.55361723899841,
+      "well_typed": false,
+      "token_counts": 165,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (EF : Line), (((b.onLine AB) ∧ (c.onLine AB)) ∧ ((e.onLine CD) ∧ (f.onLine CD)) ∧ ((g.onLine EF) ∧ (h.onLine EF)) ∧ ((g.onLine AB) ∧ (g ≠ b) ∧ (g ≠ c)) ∧ ((g.onLine CD) ∧ (g ≠ e) ∧ (g ≠ f)) ∧ ((h.onLine AB) ∧ (h ≠ b) ∧ (h ≠ c)) ∧ ((h.onLine CD) ∧ (h ≠ e) ∧ (h ≠ f)) ∧ (¬(AB.intersectsLine CD))) → ((∠ a:g:h = ∠ g:h:d) ∧ (∠ e:g:b = ∠ g:h:d) ∧ (∠ b:g:h + ∠ g:h:d = ∟ + ∟))",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD EF : Line)\n  (h1 : (b.onLine AB) ∧ (c.onLine AB)) (h2 : (e.onLine CD) ∧ (f.onLine CD))\n  (h3 : (g.onLine EF) ∧ (h.onLine EF)) (h4 : (g.onLine AB) ∧ (g ≠ b) ∧ (g ≠ c))\n  (h5 : (g.onLine CD) ∧ (g ≠ e) ∧ (g ≠ f)) (h6 : (h.onLine AB) ∧ (h ≠ b) ∧ (h ≠ c))\n  (h7 : (h.onLine CD) ∧ (h ≠ e) ∧ (h ≠ f)) (h8 : ¬(AB.intersectsLine CD)) :\n  (∠ a:g:h = ∠ g:h:d) ∧ (∠ e:g:b = ∠ g:h:d) ∧ (∠ b:g:h + ∠ g:h:d = ∟ + ∟) := by",
+      "probability": 0.19929355631455403,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.55361723899841,
+      "well_typed": true,
+      "token_counts": 226,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AB CD EF : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine e f EF ∧ (between a g b) ∧ (between c h d) ∧ (between e g h) ∧ (between g h f) ∧ (b.sameSide d EF) ∧ ¬(AB.intersectsLine CD) → ∠ a:g:h = ∠ g:h:d ∧ ∠ e:g:b = ∠ g:h:d ∧ ∠ b:g:h + ∠ g:h:d = ∟ + ∟",
+  "nl_statement": "A straight-line falling across  parallel straight-lines makes the alternate angles equal to one another, the external (angle) equal to the internal and opposite (angle), and the (sum of the) internal (angles) on the same side equal to two right-angles. For let the straight-line $EF$ fall across the parallel straight-lines $AB$ and $CD$. I say that it makes the  alternate angles, $AGH$ and $GHD$,  equal,  the external angle $EGB$ equal to the internal and opposite (angle) $GHD$, and the (sum of the) internal (angles) on the same side, $BGH$ and $GHD$, equal to two right-angles. <prf>  Thus, (the sum of) $BGH$ and $GHD$ is also equal to two right-angles.Thus, a straight-line falling across parallel straight-lines makes the alternate angles equal to one another,  the external (angle) equal to the internal and opposite (angle), and the (sum of the) internal (angles) on the same side equal to two right-angles.",
+  "lean4_header": ""
+}

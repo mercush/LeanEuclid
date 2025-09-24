@@ -1,0 +1,78 @@
+{
+  "id": "11",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ h : Point, h.onLine AB ∧ ((∠ a:c:h : ℝ) = ∟ ∨ (∠ b:c:h : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ h : Point, h.onLine AB ∧ ((∠ a:c:h : ℝ) = ∟ ∨ (∠ b:c:h : ℝ) = ∟) := by",
+      "probability": 0.10260231987878186,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 12.058902978897095,
+      "well_typed": true,
+      "token_counts": 76,
+      "formalization_check": false,
+      "original_probability": 0.20047721633753296,
+      "roundtrip_score": -163.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ l : Point, l.onLine AB ∧ c ≠ l ∧ (∠ a:c:l : ℝ) = ∟ ∨ (∠ b:c:l : ℝ) = ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ l : Point, l.onLine AB ∧ c ≠ l ∧ (∠ a:c:l : ℝ) = ∟ ∨ (∠ b:c:l : ℝ) = ∟ := by",
+      "probability": 0.0018754830036246941,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 12.058902978897095,
+      "well_typed": true,
+      "token_counts": 79,
+      "formalization_check": false,
+      "original_probability": 0.20007779999046746,
+      "roundtrip_score": -167.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (exists h : Point, h.onLine AB ∧ ((∠ a:c:h : ℝ) = ∟ ∨ (∠ b:c:h : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : exists h : Point, h.onLine AB ∧ ((∠ a:c:h : ℝ) = ∟ ∨ (∠ b:c:h : ℝ) = ∟) := by",
+      "probability": 0.03763539085586151,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 12.058902978897095,
+      "well_typed": true,
+      "token_counts": 75,
+      "formalization_check": false,
+      "original_probability": 0.19989353834478654,
+      "roundtrip_score": -164.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (f : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB) ∧ (between a c b)) → (exists h : Point, h.onLine AB ∧ ((∠ c:h:f : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c f : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) (h3 : between a c b) : exists h : Point, h.onLine AB ∧ ((∠ c:h:f : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟) := by",
+      "probability": 0.7556688613846715,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 12.058902978897095,
+      "well_typed": true,
+      "token_counts": 85,
+      "formalization_check": false,
+      "original_probability": 0.19982526883424503,
+      "roundtrip_score": -161.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (exists h : Point, h.onLine AB ∧ (∠ c:h:a = ∟ ∨ ∠ c:h:b = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : exists h : Point, h.onLine AB ∧ (∠ c:h:a = ∟ ∨ ∠ c:h:b = ∟) := by",
+      "probability": 0.102217944877066,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 12.058902978897095,
+      "well_typed": true,
+      "token_counts": 69,
+      "formalization_check": false,
+      "original_probability": 0.19972617649296787,
+      "roundtrip_score": -163.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB : Line), distinctPointsOnLine a b AB ∧ between a c b → exists f : Point, ¬(f.onLine AB) ∧ (∠ a:c:f = ∟)",
+  "nl_statement": "To draw a straight-line at right-angles to a given straight-line from a given point on it. Let $AB$ be the given straight-line, and $C$ the given point on it. So it is required to draw a straight-line from the point $C$ at right-angles to the straight-line $AB$.  <prf> Thus, the straight-line $CF$ has been drawn at right-angles to the given straight-line $AB$ from the given point $C$ on it.",
+  "lean4_header": ""
+}

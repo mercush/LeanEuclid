@@ -1,0 +1,68 @@
+{
+  "id": "44",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁₂ : Line) (D₂₃ : Line), ((formTriangle a b c AB BC AC) ∧ (formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) ∧ ((∠ d₁:d₂:d₃ : ℝ) > 0) ∧ ((∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟)) → (∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ : Point) (AB BC AC D₁₂ D₂₃ : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) (h3 : (∠ d₁:d₂:d₃ : ℝ) > 0) (h4 : (∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟) : ∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c) := by",
+      "probability": 0.3334888378467856,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.206435441970825,
+      "well_typed": true,
+      "token_counts": 183,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁₂ : Line) (D₂₃ : Line), ((formTriangle a b c AB BC AC) ∧ (formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) ∧ ((∠ d₁:d₂:d₃ : ℝ) > 0) ∧ ((∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟)) → (∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ : Point) (AB BC AC D₁₂ D₂₃: Line) (h1 : formTriangle a b c AB BC AC) (h2 : formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) (h3 : (∠ d₁:d₂:d₃ : ℝ) > 0) (h4 : (∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟) : ∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c) := by",
+      "probability": 0.3333260231893094,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.206435441970825,
+      "well_typed": true,
+      "token_counts": 183,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁₂ : Line), ((formTriangle a b c AB BC AC) ∧ (formRectilinearAngle d₁ d₂ d₂ D₁₂ D₁₂) ∧ (∠ d₁:d₂:d₂ = ∟)) → (∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (|(a─b)| + |(a─c)| = |(f─e)| + |(e─c')|))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ : Point) (AB BC AC D₁₂ : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formRectilinearAngle d₁ d₂ d₂ D₁₂ D₁₂) (h3 : ∠ d₁:d₂:d₂ = ∟) : ∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (|(a─b)| + |(a─c)| = |(f─e)| + |(e─c')|) := by",
+      "probability": 0.3331851389628391,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.206435441970825,
+      "well_typed": true,
+      "token_counts": 141,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (d₄ : Point) (d₅ : Point) (d₆ : Point) (AB : Line) (LC : Line) (FG : Line) (IH : Line) (GH : Line), (True) → ()",
+      "full_output": "theorem apply_parallelogram_to_line_at_rectilinear_angle (a b c d₁ d₂ d₃ d₄ d₅ d₆ : Point) (AB LC FG IH GH : Line) (h₁ : formTriangle c d₁ d₂ AB LC d₁d₂_line_1 : Line ∣> formParallelogram a b d₃ d₄ AB d₁d₂_line_1 LC FG IH GH : formParallelogram a b d₃ d₄ AB d₁d₂_line_1 LC FG IH GH ∧ (∠ c:a:d₂ = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ c:a:d₂ + Triangle.area △ c:d₂:a = Triangle.area △ a:b:c) := by",
+      "probability": 1.0658893065310243e-12,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.206435441970825,
+      "well_typed": false,
+      "token_counts": 161,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line), ((Triangle) ∧ (Angle) ∧ (distinctPointsOnLine a b AB) ∧ (formTriangle c (C.ofPoints a b c) (Point.opposingSides a b AB) (Point.sameSide (C.ofPoints a b c) (Point.opposingSides a b AB) AB) (Point.opposingSides a b AB).onLine AB)) → ()",
+      "full_output": "theorem apply_parallelogram (a b c d : Point) (AB : Line) (C : Triangle) (D : Angle) (h1 : distinctPointsOnLine a b AB) (h2 : formTriangle c (C.ofPoints a b c) (Point.opposingSides a b AB) (Point.sameSide (C.ofPoints a b c) (Point.opposingSides a b AB) AB) (Point.opposingSides a b AB).onLine AB)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.206435441970825,
+      "well_typed": false,
+      "token_counts": 104,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c₁ c₂ c₃ d₁ d₂ d₃ : Point) (AB C₁₂ C₂₃ C₃₁ D₁₂ D₂₃ : Line), formTriangle c₁ c₂ c₃ C₁₂ C₂₃ C₃₁ ∧ formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃ ∧ distinctPointsOnLine a b AB ∧ (∠ d₁:d₂:d₃ : ℝ) > 0 ∧ (∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟ → ∃ (m l : Point) (BM AL ML : Line), formParallelogram b m a l BM AL AB ML ∧ (∠ a:b:m = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ a:b:m + Triangle.area △ a:l:m = Triangle.area △ c₁:c₂:c₃)",
+  "nl_statement": "To apply a parallelogram equal to a given triangle to a given straight-line in a given rectilinear angle. Let $AB$ be the given straight-line,  $C$ the given triangle, and $D$ the given rectilinear angle. So it is required to apply a parallelogram equal to the given triangle $C$ to the given straight-line $AB$ in an angle equal to (angle) $D$. <prf> Thus, the parallelogram $LB$, equal to the given triangle $C$, has been applied to the given straight-line $AB$ in the angle $ABM$, which is equal to $D$.",
+  "lean4_header": ""
+}

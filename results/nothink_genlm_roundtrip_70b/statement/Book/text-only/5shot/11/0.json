@@ -1,0 +1,92 @@
+{
+  "id": "11",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((twoLinesIntersectAtPoint AB AB a) ∧ (twoLinesIntersectAtPoint AB AB b) ∧ (a ≠ b)) → (∃ c : Point, a ≠ c ∧ b ≠ c ∧ ∠ a:c:b = ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : twoLinesIntersectAtPoint AB AB a) (h2 : twoLinesIntersectAtPoint AB AB b) (h3 : a ≠ b) : ∃ c : Point, a ≠ c ∧ b ≠ c ∧ ∠ a:c:b = ∟ := by\n  -- Use the axiom Point.onLine to find a point c on line AB such that the angle at c is a right angle.\n  have h4 := Point.onLine c AB\n  -- Use the axiom Point.onLine to find a point c on line AB such that the angle at c is a right angle.\n  have h5 := Point.onLine c AB\n  -- Use the axiom Point.onLine to find a point c on line AB such that the angle at c is a right angle.\n  have h6 := Point.onLine c AB\n  -- Use the axiom Point.onLine to find a point c on line AB such that the angle at c is a right angle.\n  have h7 := Point.onLine c AB\n  -- Use the axiom Point.onLine to find a point c on line AB such that the angle",
+      "probability": 0.05390498261306375,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 71.9344117641449,
+      "well_typed": false,
+      "token_counts": 75,
+      "formalization_check": false,
+      "original_probability": 0.4998868164122644,
+      "roundtrip_score": -165.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ f : Point, f.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟))",
+      "full_output": "theorem draw_perpendicular_from_point_on_line (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ f : Point, f.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟) := by\n  -- We need to find a point f such that f is on line AB and either angle a:c:f or angle b:c:f is a right angle.\n  refine' ⟨c, h2, _⟩\n  -- Since point c is already on line AB, we only need to check that one of the angles a:c:f or b:c:f is a right angle.\n  right\n  -- Given that C is on AB, the angle at C (between a, c, f) is a straight angle, which is 180 degrees.\n  -- We need to construct a perpendicular to AB at C, which means one of the angles a:c:f or b:c:f must be 90 degrees.\n  -- This can be achieved by ensuring that the line CF is perpendicular to AB at point C.\n  -- Therefore, we can",
+      "probability": 0.21699340208512521,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 71.9344117641449,
+      "well_typed": true,
+      "token_counts": 77,
+      "formalization_check": false,
+      "original_probability": 0.10018572747331116,
+      "roundtrip_score": -162.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ f : Point, c.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ f : Point, c.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟) := by\n  -- We need to find a point f such that c is on AB and either angle a:c:f or b:c:f is 90 degrees.\n  -- We know that AB is a line with distinct points a and b.\n  -- c is a given point on AB.\n  -- We use Lean's `exists` to construct such a point f.\n  refine' ⟨c, h2, _⟩\n  -- We need to show that either angle a:c:f or b:c:f is 90 degrees.\n  -- Since f is chosen to be c, we need to check the angles at c.\n  -- However, since f is the same as c, the angles a:c:f and b:c:f are not applicable.\n  -- This suggests a problem in the construction of the theorem.\n  -- To fix this, we need to choose a different",
+      "probability": 0.07979237758932378,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 71.9344117641449,
+      "well_typed": true,
+      "token_counts": 73,
+      "formalization_check": false,
+      "original_probability": 0.10014175889838745,
+      "roundtrip_score": -163.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ f : Point, f.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟))",
+      "full_output": "theorem draw_perpendicular_from_point_on_line (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ f : Point, f.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟) := by\n  -- We need to find a point f such that f is on line AB and either angle a:c:f or angle b:c:f is a right angle.\n  refine' ⟨c, h2, _⟩\n  -- Since point c is already on line AB, we only need to check that one of the angles a:c:f or b:c:f is a right angle.\n  right\n  -- Given that C is on AB, the angle at C (between a, c, f) is a straight angle, which is 180 degrees.\n  -- We need to construct a perpendicular to AB at C, which means one of the angles a:c:f or b:c:f must be 90 degrees.\n  -- This is a fundamental construction in geometry, and we assume it can be done, so we assert the existence of such a",
+      "probability": 0.21684588153572276,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 71.9344117641449,
+      "well_typed": true,
+      "token_counts": 77,
+      "formalization_check": false,
+      "original_probability": 0.10011761732149689,
+      "roundtrip_score": -162.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ f : Point, f.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟))",
+      "full_output": "theorem draw_perpendicular_from_point_on_line (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ f : Point, f.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟) := by\n  -- We need to find a point f such that f is on line AB and either angle a:c:f or angle b:c:f is a right angle.\n  refine' ⟨c, h2, _⟩\n  -- Since point c is already on line AB, we only need to check that one of the angles a:c:f or b:c:f is a right angle.\n  right\n  -- Given that C is on AB, the angle at C (between a, c, f) is a straight angle, which is 180 degrees.\n  -- We need to construct a perpendicular to AB at C, which means one of the angles a:c:f or b:c:f must be 90 degrees.\n  -- Since f is on AB, the angle a:c:f or b:c:f must be 90 degrees for the line to",
+      "probability": 0.21663262094931432,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 71.9344117641449,
+      "well_typed": true,
+      "token_counts": 77,
+      "formalization_check": false,
+      "original_probability": 0.10001915503284954,
+      "roundtrip_score": -162.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ f : Point, f.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟))",
+      "full_output": "theorem draw_perpendicular_from_point_on_line (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ f : Point, f.onLine AB ∧ ((∠ a:c:f : ℝ) = ∟ ∨ (∠ b:c:f : ℝ) = ∟) := by\n  -- We need to find a point f such that f is on line AB and either angle a:c:f or angle b:c:f is a right angle.\n  refine' ⟨c, h2, _⟩\n  -- Since point c is already on line AB, we only need to check that one of the angles a:c:f or b:c:f is a right angle.\n  right\n  -- Given that C is on AB, the angle at C (between a, c, f) is a straight angle, which is 180 degrees.\n  -- We need to construct a perpendicular to AB at C, which means one of the angles a:c:f or b:c:f must be 90 degrees.\n  -- Since AB is a straight line, and C is on AB, the perpendicular to AB at C will form a 90",
+      "probability": 0.21583073522746296,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 71.9344117641449,
+      "well_typed": true,
+      "token_counts": 77,
+      "formalization_check": false,
+      "original_probability": 0.09964892486169069,
+      "roundtrip_score": -162.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB : Line), distinctPointsOnLine a b AB ∧ between a c b → exists f : Point, ¬(f.onLine AB) ∧ (∠ a:c:f = ∟)",
+  "nl_statement": "To draw a straight-line at right-angles to a given straight-line from a given point on it. Let $AB$ be the given straight-line, and $C$ the given point on it. So it is required to draw a straight-line from the point $C$ at right-angles to the straight-line $AB$.  <prf> Thus, the straight-line $CF$ has been drawn at right-angles to the given straight-line $AB$ from the given point $C$ on it.",
+  "lean4_header": ""
+}

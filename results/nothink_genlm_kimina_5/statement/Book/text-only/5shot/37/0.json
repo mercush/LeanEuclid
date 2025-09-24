@@ -1,0 +1,32 @@
+{
+  "id": "37",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (DC : Line) (DB : Line) (AD : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c DB BC DC) ∧ (a ≠ d) ∧ (¬ (AB.intersectsLine DC)) ∧ (¬ (AC.intersectsLine DB))) → (Triangle.area △ a:b:c = Triangle.area △ d:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC DC DB AD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c DB BC DC) (h3 : a ≠ d) (h4 : ¬ (AB.intersectsLine DC)) (h5 : ¬ (AC.intersectsLine DB)) : Triangle.area △ a:b:c = Triangle.area △ d:b:c := by",
+      "probability": 0.799999236607446,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 13.897478103637695,
+      "well_typed": false,
+      "token_counts": 98,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (a' : Point) (AB : Line) (BC : Line) (AC : Line) (DB : Line) (AD : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c DB BC (show Line by sorry)) ∧ (a' ∈ [a, d]) ∧ (a ≠ d) ∧ (|(a─d)| > 0)) → (Triangle.area △ a:b:c = Triangle.area △ d:b:c)",
+      "full_output": "theorem example_thm (a b c d a' : Point) (AB BC AC DB AD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c DB BC (show Line by sorry)) (h3 : a' ∈ [a, d]) (h4 : a ≠ d) (h5 : |(a─d)| > 0) : Triangle.area △ a:b:c = Triangle.area △ d:b:c := by",
+      "probability": 0.20000076339255393,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 13.897478103637695,
+      "well_typed": false,
+      "token_counts": 105,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD CD AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d b c BD BC CD ∧ distinctPointsOnLine a d AD ∧ ¬(AD.intersectsLine BC) ∧ d.sameSide c AB → Triangle.area △ a:b:c = Triangle.area △ d:b:c",
+  "nl_statement": "Triangles which are on the same base and between the same parallels are equal to one another.  Let $ABC$ and $DBC$ be triangles on the same base $BC$, and between the same parallels $AD$ and $BC$. I say that triangle $ABC$ is equal to triangle $DBC$. <prf> Thus, triangle $ABC$ is equal to triangle $DBC$.Thus, triangles which are on the same base and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

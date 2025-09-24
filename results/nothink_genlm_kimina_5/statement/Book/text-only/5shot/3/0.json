@@ -1,0 +1,68 @@
+{
+  "id": "3",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c' : Point) (AB : Line) (c : Point) (C : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c c' C) ∧ (¬ (c' = c))) → (∃ e : Point, e.onLine AB ∧ |(c─c')| = |(a─e)|)",
+      "full_output": "theorem example_thm (a b c' : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (c : Point) (C : Line) (h2 : distinctPointsOnLine c c' C) (hc : ¬ (c' = c)) : ∃ e : Point, e.onLine AB ∧ |(c─c')| = |(a─e)| := by",
+      "probability": 0.251352225052957,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 16.713809728622437,
+      "well_typed": true,
+      "token_counts": 90,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (¬(c.onLine AB)) ∧ (|(a─c)| < |(a─b)|)) → (∃ (e : Point), e.onLine AB ∧ ((|(a─e)| = |(a─c)|) ∨ (|(b─e)| = |(a─c)|)))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : ¬(c.onLine AB)) (h3 : |(a─c)| < |(a─b)|) : ∃ (e : Point), e.onLine AB ∧ ((|(a─e)| = |(a─c)|) ∨ (|(b─e)| = |(a─c)|)) := by",
+      "probability": 0.250063076673402,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 16.713809728622437,
+      "well_typed": true,
+      "token_counts": 102,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c ≠ a) ∧ (c ≠ b) ∧ (between a c b)) → (exists e : Point, ((a ≠ e) ∧ |(a─e)| = |(c─b)|))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c ≠ a) (h3 : c ≠ b) (h4 : between a c b) : exists e : Point, ((a ≠ e) ∧ |(a─e)| = |(c─b)|) := by",
+      "probability": 0.24991906307351472,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 16.713809728622437,
+      "well_typed": true,
+      "token_counts": 81,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line), ((distinctPointsOnLine a b AB) ∧ (a ≠ c) ∧ (|(a─c)| < |(a─b)|)) → (∃ e : Point, |(a─e)| = |(a─c)| ∧ e.onLine AB ∧ ¬(e.onLine BC))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (BC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : a ≠ c) (h3 : |(a─c)| < |(a─b)|) : ∃ e : Point, |(a─e)| = |(a─c)| ∧ e.onLine AB ∧ ¬(e.onLine BC) := by",
+      "probability": 0.24866563520012633,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 16.713809728622437,
+      "well_typed": true,
+      "token_counts": 94,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (C : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d C)) → ()",
+      "full_output": "theorem example_thm (a b c : Point) (AB C : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d C)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 16.713809728622437,
+      "well_typed": false,
+      "token_counts": 41,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c₀ c₁ : Point) (AB C : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c₀ c₁ C ∧ |(a─b)| > |(c₀─c₁)| → ∃ e : Point, between a e b ∧ |(a─e)| = |(c₀─c₁)|",
+  "nl_statement": "For two given unequal straight-lines, to cut off from the greater a straight-line equal to the lesser. Let $AB$ and $C$ be the two given unequal straight-lines, of which let the greater be $AB$.  <prf> So $AE$ is also equal to $C$ [C.N.~1]. Thus, for two given unequal straight-lines, $AB$ and $C$, the (straight-line) $AE$, equal to the lesser $C$, has been cut off from the greater $AB$.",
+  "lean4_header": ""
+}

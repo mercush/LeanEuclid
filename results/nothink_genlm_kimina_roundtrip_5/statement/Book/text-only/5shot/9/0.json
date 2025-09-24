@@ -1,0 +1,78 @@
+{
+  "id": "9",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (AC : Line), ((formRectilinearAngle a b c AB AC) ∧ ((∠ a:b:c : ℝ) > 0) ∧ ((∠ a:b:c : ℝ) < ∟ + ∟)) → (∃ f : Point, (∠ a:b:f : ℝ) = (∠ f:b:c : ℝ))",
+      "full_output": "theorem example_thm (a b c : Point) (AB AC : Line) (h1 : formRectilinearAngle a b c AB AC) (h2 : (∠ a:b:c : ℝ) > 0) (h3 : (∠ a:b:c : ℝ) < ∟ + ∟) : ∃ f : Point, (∠ a:b:f : ℝ) = (∠ f:b:c : ℝ) := by",
+      "probability": 0.045785941140056796,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.454911470413208,
+      "well_typed": true,
+      "token_counts": 92,
+      "formalization_check": false,
+      "original_probability": 0.20025482135695902,
+      "roundtrip_score": -225.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (AC : Line) (D₁₂ : Line) (D₂₃ : Line), ((formRectilinearAngle a b c AB AC) ∧ (formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) ∧ ((∠ a:b:c : ℝ) > 0) ∧ ((∠ a:b:c : ℝ) < ∟ + ∟)) → (∃ (f : Point) (AF : Line), f.onLine AB ∨ f.onLine AC ∧ (∠ a:b:f : ℝ) = (∠ a:c:f : ℝ))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ : Point) (AB AC D₁₂ D₂₃ : Line) (h1 : formRectilinearAngle a b c AB AC) (h2 : formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) (h3 : (∠ a:b:c : ℝ) > 0) (h4 : (∠ a:b:c : ℝ) < ∟ + ∟) : ∃ (f : Point) (AF : Line), f.onLine AB ∨ f.onLine AC ∧ (∠ a:b:f : ℝ) = (∠ a:c:f : ℝ) := by",
+      "probability": 0.016831362797459178,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.454911470413208,
+      "well_typed": true,
+      "token_counts": 146,
+      "formalization_check": false,
+      "original_probability": 0.2001080677927576,
+      "roundtrip_score": -226.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (h : Point) (AB : Line) (AC : Line), ((formRectilinearAngle a b c AB AC) ∧ ((∠ a:b:c : ℝ) > 0) ∧ ((∠ a:b:c : ℝ) < ∟ + ∟) ∧ (a ≠ h ∧ b ≠ h ∧ c ≠ h)) → (∃ l : Point, (∠ c:l:b : ℝ) = (∠ a:b:c) / 2 ∧ (∠ a:l:b : ℝ) = (∠ a:b:c) / 2)",
+      "full_output": "theorem example_thm (a b c h : Point) (AB AC : Line) (h1 : formRectilinearAngle a b c AB AC) (h3 : (∠ a:b:c : ℝ) > 0) (h4 : (∠ a:b:c : ℝ) < ∟ + ∟) (h' : a ≠ h ∧ b ≠ h ∧ c ≠ h) : ∃ l : Point, (∠ c:l:b : ℝ) = (∠ a:b:c) / 2 ∧ (∠ a:l:b : ℝ) = (∠ a:b:c) / 2 := by",
+      "probability": 0.9182998320728154,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.454911470413208,
+      "well_typed": true,
+      "token_counts": 129,
+      "formalization_check": false,
+      "original_probability": 0.1999640363461199,
+      "roundtrip_score": -222.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (x : Point) (y : Point) (z : Point) (AB : Line) (BC : Line) (AC : Line) (XY : Line) (YZ : Line) (XZ : Line), ((formRectilinearAngle a b c AB BC) ∧ (formRectilinearAngle x y z XY YZ) ∧ ((∠ x:y:z : ℝ) = ∟)) → (∃ (d : Point) (AD : Line), (d.onLine AB ∨ d.onLine BC) ∧ (∠ a:b:d = (∠ x:y:z) / 2))",
+      "full_output": "theorem example_thm (a b c x y z : Point) (AB BC AC XY YZ XZ : Line) (h1 : formRectilinearAngle a b c AB BC) (h2 : formRectilinearAngle x y z XY YZ) (h3 : (∠ x:y:z : ℝ) = ∟) : ∃ (d : Point) (AD : Line), (d.onLine AB ∨ d.onLine BC) ∧ (∠ a:b:d = (∠ x:y:z) / 2) := by",
+      "probability": 0.002274856218379716,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.454911470413208,
+      "well_typed": true,
+      "token_counts": 117,
+      "formalization_check": false,
+      "original_probability": 0.19984267461122426,
+      "roundtrip_score": -228.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (AC : Line), ((formRectilinearAngle a b c AB AC) ∧ ((∠ a:b:c : ℝ) > 0) ∧ ((∠ a:b:c : ℝ) < ∟ + ∟)) → (∃ l : Point, (l ≠ a) ∧ (∠ a:b:c = (∠ a:b:l : ℝ) * 2))",
+      "full_output": "theorem example_thm (a b c : Point) (AB AC : Line) (h1 : formRectilinearAngle a b c AB AC) (h2 : (∠ a:b:c : ℝ) > 0) (h3 : (∠ a:b:c : ℝ) < ∟ + ∟) : ∃ l : Point, (l ≠ a) ∧ (∠ a:b:c = (∠ a:b:l : ℝ) * 2) := by",
+      "probability": 0.016808007771294667,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.454911470413208,
+      "well_typed": true,
+      "token_counts": 99,
+      "formalization_check": false,
+      "original_probability": 0.1998303998929393,
+      "roundtrip_score": -226.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB AC : Line), formRectilinearAngle b a c AB AC ∧ AB ≠ AC → ∃ f : Point, f ≠ a ∧ (∠ b:a:f = ∠ c:a:f)",
+  "nl_statement": "To cut a given rectilinear angle in half. Let $BAC$ be the given rectilinear angle. So it is required to cut it in half.    <prf>  Thus, angle $DAF$ is equal to angle $EAF$ [Prop.~1.8]. Thus, the given rectilinear angle $BAC$ has been cut in half by the straight-line $AF$.",
+  "lean4_header": ""
+}

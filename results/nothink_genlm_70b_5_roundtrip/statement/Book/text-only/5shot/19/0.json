@@ -1,0 +1,78 @@
+{
+  "id": "19",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c > ∠ a:c:b)) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem greater_angle_subtends_greater_side (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c > ∠ a:c:b) : |(a─c)| > |(a─b)| := by",
+      "probability": 0.1490438570787164,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 8.879537105560303,
+      "well_typed": true,
+      "token_counts": 67,
+      "formalization_check": true,
+      "original_probability": 0.2002807575576936,
+      "roundtrip_score": -156.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c > ∠ a:c:b)) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem greater_angle_greater_side (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h : ∠ a:b:c > ∠ a:c:b) : |(a─c)| > |(a─b)| := by",
+      "probability": 0.14894466384942737,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 8.879537105560303,
+      "well_typed": true,
+      "token_counts": 63,
+      "formalization_check": true,
+      "original_probability": 0.20014746460958982,
+      "roundtrip_score": -156.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ a:b:c : ℝ) > (∠ b:c:a : ℝ))) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ a:b:c : ℝ) > (∠ b:c:a : ℝ)) : |(a─c)| > |(a─b)| := by",
+      "probability": 0.4047097887902512,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 8.879537105560303,
+      "well_typed": true,
+      "token_counts": 68,
+      "formalization_check": true,
+      "original_probability": 0.20006649851525637,
+      "roundtrip_score": -155.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c > ∠ b:c:a)) → (|(a─c)| > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c > ∠ b:c:a) : |(a─c)| > |(a─b)| := by",
+      "probability": 0.14867896399191188,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 8.879537105560303,
+      "well_typed": true,
+      "token_counts": 63,
+      "formalization_check": true,
+      "original_probability": 0.19979042494496047,
+      "roundtrip_score": -156.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (((∠ a:b:c : ℝ) > ∠ b:c:a))) → ((|(a─c)| > |(a─b)|))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ((∠ a:b:c : ℝ) > ∠ b:c:a)) : (|(a─c)| > |(a─b)|) := by",
+      "probability": 0.148622726289706,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 8.879537105560303,
+      "well_typed": true,
+      "token_counts": 67,
+      "formalization_check": true,
+      "original_probability": 0.19971485437249972,
+      "roundtrip_score": -156.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ a:b:c > ∠ b:c:a) → (|(a─c)| > |(a─b)|)",
+  "nl_statement": "In any triangle, the greater angle is subtended by the greater side. Let $ABC$ be a triangle having the angle $ABC$ greater than $BCA$. I say that side $AC$ is also greater than side $AB$. <prf>  Thus, $AC$  is greater than $AB$. Thus, in any triangle, the greater angle is subtended by the greater side.",
+  "lean4_header": ""
+}

@@ -29,13 +29,11 @@ python3 ~/lean-experiments/src/LeanEuclid/AutoFormalization/statement/autoformal
 	--tensor_parallel_size 4 \
 	--start_index "$START_INDEX" \
 	--model_type chat \
-	--model_name "deepseek-ai/DeepSeek-R1-Distill-Llama-70B" \
+	--model_name "AI-MO/Kimina-Prover-72B" \
 	--preamble "import SystemE" \
-	--typecheck "all" \
+	--typecheck "none" \
 	--max_tokens 250 \
-    --n_particles 10 \
-    --roundtrip True
-	2>&1 | tee autoformalize_output.txt
+    --n_particles 5 \
 
 echo "Starting evaluation..."
 python3 AutoFormalization/statement/evaluate.py \

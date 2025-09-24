@@ -1,0 +1,68 @@
+{
+  "id": "40",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (CE : Line) (DE : Line) (AB1 : Line) (BC1 : Line) (DE1 : Line), ((formTriangle a b c AB BC1 AB1) ∧ (formTriangle c d e CE DE1 BC1) ∧ ((∃ l : Line, c.onLine l ∧ d.onLine l ∧ e.onLine l ∧ b.onLine l ∧ a.onLine l ∧ (b ≠ c) ∧ ¬(a = b))) ∧ (|(b─c)| = |(c─e)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ c:d:e)) → (∃ (h6 : Line), a.onLine h6 ∧ d.onLine h6 ∧ h6 ≠ BE)",
+      "full_output": "theorem example_thm (a b c d e : Point) (AB BC CE DE AB1 BC1 DE1 : Line) (h1 : formTriangle a b c AB BC1 AB1) (h2 : formTriangle c d e CE DE1 BC1) (h3 : (∃ l : Line, c.onLine l ∧ d.onLine l ∧ e.onLine l ∧ b.onLine l ∧ a.onLine l ∧ (b ≠ c) ∧ ¬(a = b)) ) (h4 : |(b─c)| = |(c─e)|) (h5 : Triangle.area △ a:b:c = Triangle.area △ c:d:e) : ∃ (h6 : Line), a.onLine h6 ∧ d.onLine h6 ∧ h6 ≠ BE := by",
+      "probability": 0.2007335810496925,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.8014395236969,
+      "well_typed": false,
+      "token_counts": 170,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (CE : Line) (DE : Line), ((formTriangle a b c AB BC (by sorry)) ∧ (formTriangle c d e CE DE (by sorry)) ∧ (|(b─c)| = |(c─e)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ c:d:e) ∧ (sameSide a d (by sorry))) → (¬(AB.intersectsLine DE))",
+      "full_output": "theorem example_thm (a b c d e : Point) (AB BC CE DE : Line) (h1 : formTriangle a b c AB BC (by sorry)) (h2 : formTriangle c d e CE DE (by sorry)) (h3 : |(b─c)| = |(c─e)|) (h4 : Triangle.area △ a:b:c = Triangle.area △ c:d:e) (h5 : sameSide a d (by sorry)) : ¬(AB.intersectsLine DE) := by",
+      "probability": 0.20055289533370643,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.8014395236969,
+      "well_typed": false,
+      "token_counts": 112,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (CE : Line) (DE : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle c d e BC DE CE) ∧ (|(b─c)| = |(c─e)|) ∧ ((Triangle.area △ a:b:c) = (Triangle.area △ c:d:e)) ∧ (sameSide a d BC)) → (¬ (AB.intersectsLine DE))",
+      "full_output": "theorem example_thm (a b c d e : Point) (AB BC CE DE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle c d e BC DE CE) (h3 : |(b─c)| = |(c─e)|) (h4 : (Triangle.area △ a:b:c) = (Triangle.area △ c:d:e)) (h5 : sameSide a d BC) : ¬ (AB.intersectsLine DE) := by",
+      "probability": 0.20030498901216118,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.8014395236969,
+      "well_typed": false,
+      "token_counts": 109,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (BC : Line) (CE : Line) (BE : Line), ((|(b─c)| = |(c─e)|) ∧ (formTriangle a b c AB BC (a ─ c)) ∧ (formTriangle d e c CD CE (d ─ e)) ∧ (a and d are on the same side of BE) ∧ (Triangle.area △ a:b:c = Triangle.area △ d:e:c)) → (¬(AD.intersectsLine BE))",
+      "full_output": "theorem example_thm (a b c d e : Point) (AB CD BC CE BE : Line) (h1 : |(b─c)| = |(c─e)|) (h2 : formTriangle a b c AB BC (a ─ c)) (h3 : formTriangle d e c CD CE (d ─ e)) (h4 : a and d are on the same side of BE) (h5 : Triangle.area △ a:b:c = Triangle.area △ d:e:c) : ¬(AD.intersectsLine BE) := by",
+      "probability": 0.20008176951245596,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.8014395236969,
+      "well_typed": false,
+      "token_counts": 120,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (CE : Line), ((between b c e) ∧ (between c d e) ∧ (formTriangle a b c (Line.mk a b) BC (Line.mk a c)) ∧ (formTriangle d c e (Line.mk d e) CE (Line.mk d c)) ∧ (Triangle.area △ a:b:c = Triangle.area △ d:c:e)) → (exists l : Line, l.intersectsCircle (Circle.mk a (|(a─d)|)) ∧ l.intersectsCircle (Circle.mk e (|(e─c)|)) ∧ ¬ (l.intersectsLine BC))",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC CE : Line) (h1 : between b c e) (h2 : between c d e) (h3 : formTriangle a b c (Line.mk a b) BC (Line.mk a c)) (h4 : formTriangle d c e (Line.mk d e) CE (Line.mk d c)) (h5 : Triangle.area △ a:b:c = Triangle.area △ d:c:e) : exists l : Line, l.intersectsCircle (Circle.mk a (|(a─d)|)) ∧ l.intersectsCircle (Circle.mk e (|(e─c)|)) ∧ ¬ (l.intersectsLine BC) := by",
+      "probability": 0.19832676509198396,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.8014395236969,
+      "well_typed": false,
+      "token_counts": 149,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC CD DE AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d c e CD BC DE ∧ a.sameSide d BC ∧ b ≠ e ∧ |(b─c)| = |(c─e)| ∧ distinctPointsOnLine a d AD ∧ (Triangle.area △ a:b:c = Triangle.area △ d:c:e) → ¬(AD.intersectsLine BC)",
+  "nl_statement": "Equal triangles which are on equal bases, and on the same side, are also between the same parallels.Let $ABC$ and $CDE$ be equal triangles on the equal bases $BC$ and $CE$ (respectively), and on the same side (of $BE$). I say that they are also between the same parallels.For let $AD$ have been joined. I say that $AD$ is parallel to $BE$.   <prf> Thus, $AD$ is parallel to $BE$.Thus, equal triangles which are on equal bases, and on the same side, are also between the same parallels.",
+  "lean4_header": ""
+}

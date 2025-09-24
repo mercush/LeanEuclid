@@ -1,0 +1,20 @@
+{
+  "id": "23",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (DC : Line) (EG : Line), ((formRectilinearAngle a b c AB DC) ∧ (a ≠ b) ∧ (formRectilinearAngle d e f EG DC)) → (∃ (h₁ h₂ h₃ h₄ : Point), formRectilinearAngle a h₁ h₂ AB h₁ h₂ h₃ h₄ ∧ ∠ a:h₁:h₂ = ∠ d:e:f)",
+      "full_output": "theorem example_thm (a b c d e f g : Point) (AB DC EG : Line) (h1 : formRectilinearAngle a b c AB DC) (h2 : a ≠ b) (h3 : formRectilinearAngle d e f EG DC) : ∃ (h₁ h₂ h₃ h₄ : Point), formRectilinearAngle a h₁ h₂ AB h₁ h₂ h₃ h₄ ∧ ∠ a:h₁:h₂ = ∠ d:e:f := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 7.428843259811401,
+      "well_typed": false,
+      "token_counts": 109,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB CD CE : Line), distinctPointsOnLine a b AB ∧ formRectilinearAngle d c e CD CE → ∃ f : Point, f ≠ a ∧ (∠ f:a:b = ∠ d:c:e)",
+  "nl_statement": "To construct a rectilinear angle equal to a given rectilinear angle at a (given) point on a given straight-line.Let $AB$ be the given straight-line,  $A$ the (given) point on it, and  $DCE$ the given rectilinear angle.So it is required to construct a rectilinear angle equal to the given rectilinear angle $DCE$ at the (given) point $A$ on the given straight-line $AB$.  <prf> Thus, the rectilinear angle $FAG$,  equal to the  given rectilinear angle $DCE$, has been constructed at the (given) point $A$ on the given straight-line $AB$.",
+  "lean4_header": ""
+}

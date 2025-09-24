@@ -1,0 +1,78 @@
+{
+  "id": "17",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ (∠ a:c:b + ∠ c:a:b) < ∟ + ∟ ∧ (∠ b:a:c + ∠ c:b:a) < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ (∠ a:c:b + ∠ c:a:b) < ∟ + ∟ ∧ (∠ b:a:c + ∠ c:b:a) < ∟ + ∟ := by",
+      "probability": 0.3997668408607702,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.699753761291504,
+      "well_typed": true,
+      "token_counts": 90,
+      "formalization_check": true,
+      "original_probability": 0.20065024090059214,
+      "roundtrip_score": -242.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (∠ a:b:c + ∠ a:c:b < ∟ + ∟ ∧ ∠ a:b:c + ∠ b:c:a < ∟ + ∟ ∧ ∠ a:c:b + ∠ b:c:a < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) :\n    ∠ a:b:c + ∠ a:c:b < ∟ + ∟ ∧ ∠ a:b:c + ∠ b:c:a < ∟ + ∟ ∧ ∠ a:c:b + ∠ b:c:a < ∟ + ∟ := by",
+      "probability": 0.054035533945169585,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.699753761291504,
+      "well_typed": true,
+      "token_counts": 88,
+      "formalization_check": false,
+      "original_probability": 0.20040166632666362,
+      "roundtrip_score": -244.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (∠ a:b:c + ∠ b:c:a < ∟ + ∟)",
+      "full_output": "theorem theorem_2 (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : ∠ a:b:c + ∠ b:c:a < ∟ + ∟ := by",
+      "probability": 0.002683539254131829,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.699753761291504,
+      "well_typed": true,
+      "token_counts": 51,
+      "formalization_check": true,
+      "original_probability": 0.19990022328565493,
+      "roundtrip_score": -247.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c : ℝ < ∟ + ∟) ∧ (∠ b:c:a : ℝ < ∟ + ∟) ∧ (∠ c:a:b : ℝ < ∟ + ∟)) → (∠ a:b:c + ∠ b:c:a < ∟ + ∟ ∧ ∠ b:c:a + ∠ c:a:b < ∟ + ∟ ∧ ∠ c:a:b + ∠ a:b:c < ∟ + ∟)",
+      "full_output": "theorem triangle_two_angles_sum_less_two_right_angles (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c : ℝ < ∟ + ∟) (h3 : ∠ b:c:a : ℝ < ∟ + ∟) (h4 : ∠ c:a:b : ℝ < ∟ + ∟) : ∠ a:b:c + ∠ b:c:a < ∟ + ∟ ∧ ∠ b:c:a + ∠ c:a:b < ∟ + ∟ ∧ ∠ c:a:b + ∠ a:b:c < ∟ + ∟ := by",
+      "probability": 0.14638552564667615,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.699753761291504,
+      "well_typed": false,
+      "token_counts": 146,
+      "formalization_check": false,
+      "original_probability": 0.19972182953897363,
+      "roundtrip_score": -243.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ (∠ a:c:b + ∠ a:b:c) < ∟ + ∟ ∧ (∠ b:a:c + ∠ b:c:a) < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : (∠ a:b:c + ∠ b:c:a) < ∟ + ∟ ∧ (∠ a:c:b + ∠ a:b:c) < ∟ + ∟ ∧ (∠ b:a:c + ∠ b:c:a) < ∟ + ∟ := by",
+      "probability": 0.39712856029325017,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.699753761291504,
+      "well_typed": true,
+      "token_counts": 90,
+      "formalization_check": true,
+      "original_probability": 0.19932603994811574,
+      "roundtrip_score": -242.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC → ∠ a:b:c + ∠ b:c:a < ∟ + ∟",
+  "nl_statement": "For any triangle,  (the sum of) two angles taken together in any (possible way) is less than two right-angles. Let $ABC$ be a triangle. I say that (the sum of) two angles of triangle $ABC$ taken together in any (possible way) is less than two right-angles. <prf> Thus, (the sum of) $ABC$ and $BCA$ is less than two right-angles. Similarly, we can show that (the sum of) $BAC$ and $ACB$ is also less than two right-angles, and further (that the sum of) $CAB$ and $ABC$ (is less than two right-angles).Thus, for any triangle,  (the sum of) two angles taken together in any (possible way) is less than two right-angles.",
+  "lean4_header": ""
+}

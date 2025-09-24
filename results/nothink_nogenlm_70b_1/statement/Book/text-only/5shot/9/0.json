@@ -1,0 +1,20 @@
+{
+  "id": "9",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (AF : Line), ((formRectilinearAngle a b c AB BC) ∧ (a ≠ c) ∧ (d.onLine AB) ∧ (e.onLine BC) ∧ (formParallelogram d e f c AB AF AC) ∧ (f ≠ c)) → (∠ d:a:f = ∠ c:e:f ∧ ∠ d:a:f + ∠ c:e:f = ∟)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC AF : Line) (h1 : formRectilinearAngle a b c AB BC) (h2 : a ≠ c) (h3 : d.onLine AB) (h4 : e.onLine BC) (h5 : formParallelogram d e f c AB AF AC) (h6 : f ≠ c) : ∠ d:a:f = ∠ c:e:f ∧ ∠ d:a:f + ∠ c:e:f = ∟ := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 7.900278568267822,
+      "well_typed": false,
+      "token_counts": 116,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB AC : Line), formRectilinearAngle b a c AB AC ∧ AB ≠ AC → ∃ f : Point, f ≠ a ∧ (∠ b:a:f = ∠ c:a:f)",
+  "nl_statement": "To cut a given rectilinear angle in half. Let $BAC$ be the given rectilinear angle. So it is required to cut it in half.    <prf>  Thus, angle $DAF$ is equal to angle $EAF$ [Prop.~1.8]. Thus, the given rectilinear angle $BAC$ has been cut in half by the straight-line $AF$.",
+  "lean4_header": ""
+}

@@ -1,0 +1,20 @@
+{
+  "id": "29",
+  "formalizations": [
+    {
+      "formalization": "∀ (E : Point) (F : Point) (G : Point) (H : Point) (D : Point) (EF : Line) (AB : Line) (CD : Line) (GH : Line), ((twoLinesIntersectAtPoint AB CD G) ∧ (twoLinesIntersectAtPoint AB EF E) ∧ (twoLinesIntersectAtPoint CD EF F) ∧ (¬(AB.intersectsLine CD))) → ()",
+      "full_output": "theorem example_thm (E F G H D : Point) (EF AB CD GH : Line) (h1 : twoLinesIntersectAtPoint AB CD G) (h2 : twoLinesIntersectAtPoint AB EF E) (h3 : twoLinesIntersectAtPoint CD EF F) (h4 : ¬(AB.intersectsLine CD))) : \n  -- Alternate angles AGH and GHD are equal\n  ∠ E:G:H = ∠ F:G:D \n  -- External angle EGB equals internal and opposite angle GHD\n  ∧ ∠ E:G:B = ∠ F:G:D \n  -- Sum of internal angles BGH and GHD is equal to two right angles\n  ∧ ∠ E:G:H + ∠ F:G:D = ∟ + ∟ := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 11.81817364692688,
+      "well_typed": false,
+      "token_counts": 175,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AB CD EF : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine e f EF ∧ (between a g b) ∧ (between c h d) ∧ (between e g h) ∧ (between g h f) ∧ (b.sameSide d EF) ∧ ¬(AB.intersectsLine CD) → ∠ a:g:h = ∠ g:h:d ∧ ∠ e:g:b = ∠ g:h:d ∧ ∠ b:g:h + ∠ g:h:d = ∟ + ∟",
+  "nl_statement": "A straight-line falling across  parallel straight-lines makes the alternate angles equal to one another, the external (angle) equal to the internal and opposite (angle), and the (sum of the) internal (angles) on the same side equal to two right-angles. For let the straight-line $EF$ fall across the parallel straight-lines $AB$ and $CD$. I say that it makes the  alternate angles, $AGH$ and $GHD$,  equal,  the external angle $EGB$ equal to the internal and opposite (angle) $GHD$, and the (sum of the) internal (angles) on the same side, $BGH$ and $GHD$, equal to two right-angles. <prf>  Thus, (the sum of) $BGH$ and $GHD$ is also equal to two right-angles.Thus, a straight-line falling across parallel straight-lines makes the alternate angles equal to one another,  the external (angle) equal to the internal and opposite (angle), and the (sum of the) internal (angles) on the same side equal to two right-angles.",
+  "lean4_header": ""
+}

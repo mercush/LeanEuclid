@@ -1,0 +1,68 @@
+{
+  "id": "5",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((|(a─b)| = |(a─c)|)) ∧ (between b a d) ∧ (between c a e)) → ((∠ b:c:a = ∠ c:b:a) ∧ (∠ d:c:b = ∠ e:b:c))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (|(a─b)| = |(a─c)|)) (h3 : between b a d) (h4 : between c a e) : (∠ b:c:a = ∠ c:b:a) ∧ (∠ d:c:b = ∠ e:b:c) := by",
+      "probability": 0.25072170545993455,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.489400386810303,
+      "well_typed": false,
+      "token_counts": 98,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (f : Point) (g : Point) (AB : Line) (AC : Line) (BC : Line) (F : Line) (G : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|) ∧ (distinctPointsOnLine b c BC) ∧ (f ≠ a) ∧ (f.onLine AB) ∧ ((between a b f)) ∧ (g ≠ a) ∧ (g.onLine AC) ∧ ((between a c g))) → (∠ a:b:c = ∠ a:c:b ∧ ∠ c:b:f = ∠ b:c:g)",
+      "full_output": "theorem example_thm (a b c f g : Point) (AB : Line) (AC : Line) (BC : Line) (F : Line) (G : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) (h3 : distinctPointsOnLine b c BC) (h4 : f ≠ a) (h5 : f.onLine AB) (h6 : (between a b f)) (h7 : g ≠ a) (h8 : g.onLine AC) (h9 : (between a c g)) : ∠ a:b:c = ∠ a:c:b ∧ ∠ c:b:f = ∠ b:c:g := by",
+      "probability": 0.25004136730666965,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.489400386810303,
+      "well_typed": false,
+      "token_counts": 161,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CE : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|) ∧ (between b a d) ∧ (between c a e) ∧ (between a c f) ∧ (between a b g)) → ((∠ b:c:a = ∠ c:b:a) ∧ (∠ a:c:e = ∠ a:b:d))",
+      "full_output": "theorem example_thm (a b c d e f g : Point) (AB BC AC BD CE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) (h3 : between b a d) (h4 : between c a e) (h5 : between a c f) (h6 : between a b g) : (∠ b:c:a = ∠ c:b:a) ∧ (∠ a:c:e = ∠ a:b:d) := by",
+      "probability": 0.24974581844761426,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.489400386810303,
+      "well_typed": false,
+      "token_counts": 119,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (f : Point) (g : Point) (AB : Line) (AC : Line) (BC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|) ∧ (between a b f) ∧ (between a c g)) → (∠ b:a:c = ∠ c:b:a ∧ ∠ b:c:g = ∠ c:b:f)",
+      "full_output": "theorem example_thm (a b c f g : Point) (AB AC BC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) (h3 : between a b f) (h4 : between a c g) : ∠ b:a:c = ∠ c:b:a ∧ ∠ b:c:g = ∠ c:b:f := by",
+      "probability": 0.24949110878578165,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.489400386810303,
+      "well_typed": true,
+      "token_counts": 95,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|)) → ((∠ a:b:c = ∠ a:c:b) ∧ (∃ d e : Point, onLine b d (AB) ∧ onLine c e (AC) ∧ ¬(b = d) ∧ ¬(c = e) ∧ (∠ c:b:d = ∠ b:c:e)))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) : (∠ a:b:c = ∠ a:c:b) ∧ (∃ d e : Point, onLine b d (AB) ∧ onLine c e (AC) ∧ ¬(b = d) ∧ ¬(c = e) ∧ (∠ c:b:d = ∠ b:c:e)) :=",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.489400386810303,
+      "well_typed": false,
+      "token_counts": 113,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─b)| = |(a─c)|) ∧ (between a b d) ∧ (between a c e) → (∠ a:b:c = ∠ a:c:b) ∧ (∠ c:b:d = ∠ b:c:e)",
+  "nl_statement": "For isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another. Let $ABC$ be an isosceles triangle having the side $AB$ equal to the side $AC$, and let the straight-lines $BD$ and $CE$ have been produced in a straight-line with $AB$ and $AC$ (respectively) [Post.~2]. I say that the angle $ABC$ is equal to $ACB$, and (angle) $CBD$  to $BCE$.  <prf> Therefore, since the whole angle $ABG$ was shown (to be) equal to the whole angle $ACF$, within which $CBG$ is equal to $BCF$, the remainder $ABC$ is thus equal to the remainder $ACB$ [C.N.~3]. And they are at the base of triangle $ABC$. And $FBC$ was also shown (to be) equal to $GCB$. And they are under the base. Thus, for isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another.",
+  "lean4_header": ""
+}

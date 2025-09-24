@@ -1,0 +1,78 @@
+{
+  "id": "20",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((|(a─b)| + |(b─c)| > |(a─c)|) ∧ \n  (|(a─c)| + |(c─b)| > |(a─b)|) ∧ \n  (|(b─c)| + |(c─a)| > |(a─b)|))",
+      "full_output": "theorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : \n  (|(a─b)| + |(b─c)| > |(a─c)|) ∧ \n  (|(a─c)| + |(c─b)| > |(a─b)|) ∧ \n  (|(b─c)| + |(c─a)| > |(a─b)|) := by",
+      "probability": 0.3196235755189515,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.014397144317627,
+      "well_typed": true,
+      "token_counts": 109,
+      "formalization_check": true,
+      "original_probability": 0.20050075702154513,
+      "roundtrip_score": -260.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((|(a─b)| + |(b─c)|) > |(a─c)| ∧ (|(a─b)| + |(a─c)|) > |(b─c)| ∧ (|(b─c)| + |(a─c)|) > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h : formTriangle a b c AB BC AC) : (|(a─b)| + |(b─c)|) > |(a─c)| ∧ (|(a─b)| + |(a─c)|) > |(b─c)| ∧ (|(b─c)| + |(a─c)|) > |(a─b)| := by",
+      "probability": 0.04318865052384397,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.014397144317627,
+      "well_typed": true,
+      "token_counts": 98,
+      "formalization_check": true,
+      "original_probability": 0.20018697141382355,
+      "roundtrip_score": -262.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)|)",
+      "full_output": "theorem triangle_two_sides_greater_than_third_side (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : |(a─b)| + |(b─c)| > |(a─c)| := by",
+      "probability": 0.0007906785534410257,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.014397144317627,
+      "well_typed": true,
+      "token_counts": 59,
+      "formalization_check": true,
+      "original_probability": 0.20009860533994053,
+      "roundtrip_score": -266.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((|(a─b)| + |(b─c)| > |(c─a)|) ∧ (|(b─c)| + |(c─a)| > |(a─b)|) ∧ (|(c─a)| + |(a─b)| > |(b─c)|))",
+      "full_output": "theorem triangle_inequality (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : (|(a─b)| + |(b─c)| > |(c─a)|) ∧ (|(b─c)| + |(c─a)| > |(a─b)|) ∧ (|(c─a)| + |(a─b)| > |(b─c)|) := by",
+      "probability": 0.31827757773817555,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.014397144317627,
+      "well_typed": true,
+      "token_counts": 100,
+      "formalization_check": true,
+      "original_probability": 0.1996564088737018,
+      "roundtrip_score": -260.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─b)| + |(c─a)| > |(b─c)| ∧ |(b─c)| + |(c─a)| > |(a─b)|)",
+      "full_output": "theorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : |(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─b)| + |(c─a)| > |(b─c)| ∧ |(b─c)| + |(c─a)| > |(a─b)| := by",
+      "probability": 0.31811951766558805,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.014397144317627,
+      "well_typed": true,
+      "token_counts": 100,
+      "formalization_check": true,
+      "original_probability": 0.19955725735098892,
+      "roundtrip_score": -260.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC → |(b─a)| + |(a─c)| > |(b─c)|",
+  "nl_statement": "In any triangle, (the sum of) two sides taken together in any (possible way) is greater than the remaining (side). For let $ABC$ be a triangle. I say that in triangle $ABC$ (the sum of) two sides taken together in any (possible way) is greater than the remaining (side). (So), (the sum of) $BA$ and $AC$ (is greater) than $BC$, (the sum of) $AB$ and $BC$ than $AC$, and (the sum of) $BC$ and $CA$ than $AB$.   <prf>  Thus, (the sum of) $BA$ and $AC$ is greater than $BC$. Similarly, we can show that (the sum of) $AB$ and $BC$ is also greater than $CA$, and (the sum of) $BC$ and $CA$ than $AB$.Thus, in any triangle, (the sum of) two sides taken together in any (possible way) is greater than the remaining (side).",
+  "lean4_header": ""
+}

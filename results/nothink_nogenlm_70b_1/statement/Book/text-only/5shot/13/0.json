@@ -1,0 +1,20 @@
+{
+  "id": "13",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (d₄ : Point) (d₅ : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formTriangle a b c AB BC AC) ∧ (formParallelogram d₁ d₂ d₃ d₄ AB CD AC BD) ∧ ((|(d₁⟶d₂)| = |(d₃⟶d₄)|)) ∧ ((|(d₂⟶d₃)| = |(d₄⟶d₁)|))) → ((|(d₁⟶d₃)| = |(d₂⟶d₄)|))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ d₄ d₅ : Point) (AB CD AC BD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formParallelogram d₁ d₂ d₃ d₄ AB CD AC BD) (h3 : (|(d₁⟶d₂)| = |(d₃⟶d₄)|)) (h4 : (|(d₂⟶d₃)| = |(d₄⟶d₁)|)) : (|(d₁⟶d₃)| = |(d₂⟶d₄)|) := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.60603928565979,
+      "well_typed": false,
+      "token_counts": 141,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB CD : Line), AB ≠ CD ∧ distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ between d b c → ∠ c:b:a + ∠ a:b:d = ∟ + ∟",
+  "nl_statement": "If a straight-line stood on a(nother)  straight-line makes angles, it will certainly either make two right-angles, or (angles whose sum is) equal to two right-angles. For  let some straight-line $AB$ stood on the straight-line $CD$ make the angles $CBA$ and $ABD$. I say that the angles $CBA$ and $ABD$ are certainly either two right-angles, or (have a sum) equal to two right-angles. <prf> Thus, (the sum of) $ABD$ and $ABC$ is also equal to two right-angles.Thus, if a straight-line stood on a(nother)  straight-line makes angles, it will certainly either make two right-angles, or (angles whose sum is) equal to two right-angles.",
+  "lean4_header": ""
+}

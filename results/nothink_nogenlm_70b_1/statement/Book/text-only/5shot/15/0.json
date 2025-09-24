@@ -1,0 +1,20 @@
+{
+  "id": "15",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (twoLinesIntersectAtPoint AB CD c) ∧ (twoLinesIntersectAtPoint AB CD d)) → (∠ a:b:c = ∠ b:c:d ∧ ∠ c:d:a = ∠ d:a:b)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD a) (h2 : twoLinesIntersectAtPoint AB CD b) (h3 : twoLinesIntersectAtPoint AB CD c) (h4 : twoLinesIntersectAtPoint AB CD d) : ∠ a:b:c = ∠ b:c:d ∧ ∠ c:d:a = ∠ d:a:b := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 6.964626312255859,
+      "well_typed": true,
+      "token_counts": 100,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB CD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ e.onLine AB ∧ e.onLine CD ∧ CD ≠ AB ∧ (between d e c) ∧ (between a e b) → (∠ a:e:c = ∠ d:e:b) ∧ (∠ c:e:b = ∠ a:e:d)",
+  "nl_statement": "If two straight-lines cut one another then they make the vertically opposite angles equal to one another.For let the two straight-lines $AB$ and $CD$ cut one another at the point $E$. I say that  angle $AEC$ is equal to (angle) $DEB$, and (angle) $CEB$ to (angle) $AED$. <prf>  Thus, the remainder $CEA$ is equal to the remainder $BED$ [C.N.~3]. Similarly, it can be shown that $CEB$ and $DEA$ are also equal.Thus, if two straight-lines cut one another then they make the vertically opposite angles equal to one another.",
+  "lean4_header": ""
+}

@@ -1,0 +1,36 @@
+{
+  "id": "30",
+  "formalizations": [
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((AB.intersectsLine EF) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD)) → ()",
+      "full_output": "theorem proposition_2_28 (AB CD EF : Line)\n  (h1 : AB.intersectsLine EF)\n  (h2 : CD.intersectsLine EF)\n  (h3 : AB.intersectsLine CD)\n  (h4 : CD.intersectsLine EF)\n  (h5 : AB.intersectsLine CD)\n  (h6 : CD.intersectsLine EF)\n  (h7 : AB.intersectsLine CD)\n  (h8 : CD.intersectsLine EF)\n  (h9 : AB.intersectsLine CD)\n  (h10 : CD.intersectsLine EF)\n  (h11 : AB.intersectsLine CD)\n  (h12 : CD.intersectsLine EF)\n  (h13 : AB.intersectsLine CD)\n  (h14 : CD.intersectsLine EF)\n  (h15 : AB.intersectsLine CD)\n  (h16 : CD.intersectsLine EF)\n  (h17 : AB.intersectsLine CD)\n  (h18 : CD.intersectsLine EF)\n  (h19 : AB.intersectsLine CD)\n  (h20 : CD.intersectsLine EF)\n  (h21 : AB.intersectsLine CD)\n  (h22 : CD",
+      "probability": 0.9999903546959003,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 79.47034478187561,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false,
+      "original_probability": 0.9999903546958893,
+      "roundtrip_score": -205.0
+    },
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((AB.intersectsLine EF) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF) ∧ (AB.intersectsLine CD) ∧ (CD.intersectsLine EF)) → (AB.intersectsLine CD)",
+      "full_output": "theorem proposition_2_28 (AB CD EF : Line)\n  (h1 : AB.intersectsLine EF)\n  (h2 : CD.intersectsLine EF)\n  (h3 : AB.intersectsLine CD)\n  (h4 : CD.intersectsLine EF)\n  (h5 : AB.intersectsLine CD)\n  (h6 : CD.intersectsLine EF)\n  (h7 : AB.intersectsLine CD)\n  (h8 : CD.intersectsLine EF)\n  (h9 : AB.intersectsLine CD)\n  (h10 : CD.intersectsLine EF)\n  (h11 : AB.intersectsLine CD)\n  (h12 : CD.intersectsLine EF)\n  (h13 : AB.intersectsLine CD)\n  (h14 : CD.intersectsLine EF)\n  (h15 : AB.intersectsLine CD)\n  (h16 : CD.intersectsLine EF)\n  (h17 : AB.intersectsLine CD)\n  (h18 : CD.intersectsLine EF)\n  (h19 : AB.intersectsLine CD)\n  (h20 : CD.intersectsLine EF) :\n  AB.intersectsLine CD := by\n  tauto\n```  \n ",
+      "probability": 9.64530411069666e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 79.47034478187561,
+      "well_typed": true,
+      "token_counts": 240,
+      "formalization_check": true,
+      "original_probability": 9.645304110696677e-06,
+      "roundtrip_score": -205.0
+    }
+  ],
+  "reference_formalization": "∀ (AB CD EF : Line), AB ≠ CD ∧ CD ≠ EF ∧ EF ≠ AB ∧ ¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "(Straight-lines) parallel to the same straight-line are also parallel to one another.Let each of the (straight-lines) $AB$ and $CD$ be parallel to $EF$. I say that $AB$ is also parallel to $CD$. <prf>  Thus, $AB$ is parallel to $CD$ [Prop.~1.27]. Thus, (straight-lines) parallel to the same straight-line are also parallel to one another.",
+  "lean4_header": ""
+}

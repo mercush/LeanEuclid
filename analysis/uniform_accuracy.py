@@ -240,6 +240,15 @@ async def calculate_accuracy(
                                     if formalization_check:
                                         cnt += normalized_prob
 
+                        elif aggregation == "any":
+                            # Count problem correct if ANY well-typed formalization is correct
+                            any_correct = any(
+                                f.get("formalization_check", False)
+                                for f in well_typed_formalizations
+                            )
+                            if any_correct:
+                                cnt += 1
+
     # Calculate accuracy: cnt / tot
     accuracy = (cnt / tot * 100) if tot > 0 else 0
 
@@ -248,6 +257,7 @@ async def calculate_accuracy(
         "uniform": "Uniform Weighting",
         "smc": "SMC Probability Weighting",
         "theorem_statement": "SMC with Proof Scoring Adjustment",
+        "any": "Any Correct Formalization",
     }
 
     print(f"\n=== {method_names.get(aggregation, aggregation)} Accuracy Results ===")
@@ -260,8 +270,8 @@ async def calculate_accuracy(
     print(f"Total problems processed: {tot}")
     print(f"Problems with data: {problems_with_data}")
 
-    if aggregation == "best":
-        print(f"Correct problems (best sample): {int(cnt)}")
+    if aggregation in ["best", "any"]:
+        print(f"Correct problems: {int(cnt)}")
     else:
         print(f"Weighted correct count (cnt): {cnt:.4f}")
 
@@ -299,9 +309,9 @@ def main():
     )
     parser.add_argument(
         "--aggregation",
-        choices=["smc", "best", "uniform", "theorem_statement"],
+        choices=["smc", "best", "uniform", "theorem_statement", "any"],
         default="uniform",
-        help="Aggregation method: smc (probability weighting like evaluate.py), best (highest probability sample), uniform (equal weighting), theorem_statement (SMC with proof scoring adjustment)",
+        help="Aggregation method: smc (probability weighting like evaluate.py), best (highest probability sample), uniform (equal weighting), theorem_statement (SMC with proof scoring adjustment), any (count problem correct if any formalization is correct)",
     )
 
     args = parser.parse_args()

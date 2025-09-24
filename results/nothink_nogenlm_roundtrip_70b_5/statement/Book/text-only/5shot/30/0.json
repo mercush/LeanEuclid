@@ -1,0 +1,78 @@
+{
+  "id": "30",
+  "formalizations": [
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_lines_parallel_to_each_other (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.07654608886116661,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 7.036487817764282,
+      "well_typed": true,
+      "token_counts": 49,
+      "formalization_check": false,
+      "original_probability": 0.20043559066316766,
+      "roundtrip_score": -208.0
+    },
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (AB CD EF : Line) (h_AB_EF : ¬(AB.intersectsLine EF)) (h_CD_EF : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.07650051659712576,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 7.036487817764282,
+      "well_typed": true,
+      "token_counts": 50,
+      "formalization_check": false,
+      "original_probability": 0.20031625989400015,
+      "roundtrip_score": -208.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_to_same_are_parallel (a b c d e f : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.20762395945946902,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 7.036487817764282,
+      "well_typed": false,
+      "token_counts": 58,
+      "formalization_check": false,
+      "original_probability": 0.20000222263353673,
+      "roundtrip_score": -207.0
+    },
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.0762696380454415,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 7.036487817764282,
+      "well_typed": true,
+      "token_counts": 46,
+      "formalization_check": false,
+      "original_probability": 0.1997117054410307,
+      "roundtrip_score": -208.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), (True) → (¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD EF : Line) : ¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD) := by",
+      "probability": 0.5630597970368095,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 7.036487817764282,
+      "well_typed": false,
+      "token_counts": 48,
+      "formalization_check": false,
+      "original_probability": 0.19953422136826482,
+      "roundtrip_score": -206.0
+    }
+  ],
+  "reference_formalization": "∀ (AB CD EF : Line), AB ≠ CD ∧ CD ≠ EF ∧ EF ≠ AB ∧ ¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "(Straight-lines) parallel to the same straight-line are also parallel to one another.Let each of the (straight-lines) $AB$ and $CD$ be parallel to $EF$. I say that $AB$ is also parallel to $CD$. <prf>  Thus, $AB$ is parallel to $CD$ [Prop.~1.27]. Thus, (straight-lines) parallel to the same straight-line are also parallel to one another.",
+  "lean4_header": ""
+}

@@ -1,0 +1,20 @@
+{
+  "id": "41",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((Triangle) ∧ (formParallelogram a b d c AB CD AC BD) ∧ (EBC.ofPoints b c EBC) ∧ (EBC onLine AC)) → ((Triangle.area ABCD = 2 * Triangle.area EBC))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (EBC : Triangle) (h1 : formParallelogram a b d c AB CD AC BD) (h2 : EBC.ofPoints b c EBC) (h3 : EBC onLine AC) : (Triangle.area ABCD = 2 * Triangle.area EBC) := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 5.729294776916504,
+      "well_typed": false,
+      "token_counts": 84,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AE BC AB CD BE CE : Line), formParallelogram a d b c AE BC AB CD ∧ formTriangle e b c BE BC CE ∧ e.onLine AE ∧ ¬(AE.intersectsLine BC) → (Triangle.area △ a:b:c : ℝ) + (Triangle.area △ a:c:d) = (Triangle.area △ e:b:c) + (Triangle.area △ e :b :c)",
+  "nl_statement": "If a parallelogram has the same base as a triangle, and is between the same parallels, then the parallelogram is double (the area) of the triangle. For let parallelogram $ABCD$ have the same base $BC$ as triangle $EBC$, and let it be between the same parallels, $BC$ and $AE$. I say that  parallelogram $ABCD$ is double (the area) of triangle $BEC$.  <prf> So parallelogram $ABCD$ is also double (the area) of triangle $EBC$.Thus, if a parallelogram has the same base as a triangle, and is between the same parallels, then the parallelogram is double (the area) of the triangle.",
+  "lean4_header": ""
+}

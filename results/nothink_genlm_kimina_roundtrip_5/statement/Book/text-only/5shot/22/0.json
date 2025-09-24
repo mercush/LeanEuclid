@@ -1,0 +1,50 @@
+{
+  "id": "22",
+  "formalizations": [
+    {
+      "formalization": "((ℝ) ∧ (A > 0) ∧ (B > 0) ∧ (C > 0) ∧ ((A + B > C) ∧ (A + C > B) ∧ (B + C > A))) → (exists a b c : Point, exists AB BC AC : Line, formTriangle a b c AB BC AC ∧ (|(a─b)| = A) ∧ (|(a─c)| = B) ∧ (|(b─c)| = C))",
+      "full_output": "theorem example_thm (A B C : ℝ) (h1 : A > 0) (h2 : B > 0) (h3 : C > 0) (h4 : (A + B > C) ∧ (A + C > B) ∧ (B + C > A)) : exists a b c : Point, exists AB BC AC : Line, formTriangle a b c AB BC AC ∧ (|(a─b)| = A) ∧ (|(a─c)| = B) ∧ (|(b─c)| = C) := by",
+      "probability": 0.831266483076055,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 33.9682297706604,
+      "well_typed": false,
+      "token_counts": 120,
+      "formalization_check": false,
+      "original_probability": 0.4000227718124918,
+      "roundtrip_score": -510.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (A' : Line) (B' : Line) (C' : Line), ((distinctPointsOnLine a b A') ∧ (distinctPointsOnLine a c B') ∧ (distinctPointsOnLine b c C') ∧ (|(a─b)| + |(c─b)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(c─b)|) ∧ (|(c─b)| + |(a─c)| > |(a─b)|)) → ()",
+      "full_output": "theorem example_thm (a b c : Point) (A' B' C' : Line) (h1 : distinctPointsOnLine a b A') (h2 : distinctPointsOnLine a c B') (h3 : distinctPointsOnLine b c C') (h4 : |(a─b)| + |(c─b)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(c─b)|) (h6 : |(c─b)| + |(a─c)| > |(a─b)|) : ∃ (x y z : Point) (X Y Z : Line), formTriangle x y z X Y Z ∧ (∃ (L1 : Line), distinctPointsOnLine x y L1 ∧ |(x─y)| = |(a─b)|) ∧ (∃ (L2 : Line), distinctPointsOnLine y z L2 ∧ |(y─z)| = |(c─b)|) ∧ (∃ (L3 : Line), distinctPointsOnLine z x L3 ∧ |(z─x)| = |(a─",
+      "probability": 0.11248901642329913,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 33.9682297706604,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false,
+      "original_probability": 0.39998483707069676,
+      "roundtrip_score": -512.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (A' : Line) (B' : Line) (C' : Line), ((distinctPointsOnLine a b A') ∧ (distinctPointsOnLine a c B') ∧ (distinctPointsOnLine b c C') ∧ (|(a─b)| + |(c─b)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(c─b)|) ∧ (|(c─b)| + |(a─c)| > |(a─b)|)) → ()",
+      "full_output": "theorem example_thm (a b c : Point) (A' B' C' : Line) (h1 : distinctPointsOnLine a b A') (h2 : distinctPointsOnLine a c B') (h3 : distinctPointsOnLine b c C') (h4 : |(a─b)| + |(c─b)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(c─b)|) (h6 : |(c─b)| + |(a─c)| > |(a─b)|) : ∃ (x y z : Point) (X Y Z : Line), formTriangle x y z X Y Z ∧ (∃ (L1 : Line), distinctPointsOnLine x y L1 ∧ |(x─y)| = |(a─b)|) ∧ (∃ (L2 : Line), distinctPointsOnLine y z L2 ∧ |(y─z)| = |(c─b)|) ∧ (∃ (L3 : Line), distinctPointsOnLine x z L3 ∧ |(x─z)| = |(a─",
+      "probability": 0.05624450050064846,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 33.9682297706604,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false,
+      "original_probability": 0.1999923911168114,
+      "roundtrip_score": -512.0
+    }
+  ],
+  "reference_formalization": "∀ (a a' b b' c c' : Point) (A B C : Line), distinctPointsOnLine a a' A ∧ distinctPointsOnLine b b' B ∧ distinctPointsOnLine c c' C ∧ (|(a─a')| + |(b─b')| > |(c─c')|) ∧ (|(a─a')| + |(c─c')| > |(b─b')|) ∧ (|(b─b')| + |(c─c')| > |(a─a')|) → ∃ (k f g : Point), (|(f─k)| = |(a─a')|) ∧ (|(f─g)| = |(b─b')|) ∧ (|(k─g)| = |(c─c')|)",
+  "nl_statement": "To construct a triangle from three straight-lines which are equal to three given [straight-lines]. It is necessary for (the sum of) two (of the straight-lines) taken together in any (possible way) to be greater than the remaining (one), on account of the (fact that) in any triangle (the sum of) two sides taken together in any (possible way) is greater than the remaining (one) [Prop.~1.20].Let $A$, $B$, and $C$ be the three given straight-lines, of which let (the sum of) two taken together in any (possible way)  be greater than the remaining (one).(Thus), (the sum of) $A$ and $B$ (is greater) than $C$, (the sum of) $A$ and $C$ than $B$,  and also (the sum of) $B$ and $C$ than $A$.So it is required to construct a triangle  from (straight-lines) equal to $A$, $B$, and $C$.    <prf>  Thus,  the three straight-lines $KF$, $FG$, and $GK$ are equal to $A$, $B$, and $C$ (respectively).   Thus, the triangle $KFG$ has been constructed from the three straight-lines  $KF$, $FG$, and $GK$, which are equal to the three given straight-lines  $A$, $B$, and $C$ (respectively).(Which is) the very thing it was required  to do.",
+  "lean4_header": ""
+}

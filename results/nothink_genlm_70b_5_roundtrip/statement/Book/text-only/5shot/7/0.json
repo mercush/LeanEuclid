@@ -1,0 +1,78 @@
+{
+  "id": "7",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c CD) ∧ (Point.onLine d CD) ∧ ((|(a─b)| = |(c─d)|)) ∧ ((|(a─c)| = |(b─d)|))) → ((Point.onLine a AB ∧ Point.onLine b AB) ∧ (Point.onLine c CD ∧ Point.onLine d CD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : Point.onLine a AB) (h3 : Point.onLine b AB) (h4 : Point.onLine c CD) (h5 : Point.onLine d CD) (h6 : (|(a─b)| = |(c─d)|)) (h7 : (|(a─c)| = |(b─d)|)) : (Point.onLine a AB ∧ Point.onLine b AB) ∧ (Point.onLine c CD ∧ Point.onLine d CD) := by",
+      "probability": 0.3339843777595618,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.8261821269989,
+      "well_typed": true,
+      "token_counts": 143,
+      "formalization_check": false,
+      "original_probability": 0.3339843777595681,
+      "roundtrip_score": -536.0
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (AB : Line), ((distinctPointsOnLine A B AB) ∧ (¬(A = B)) ∧ (¬(A.onLine AB)) ∧ (¬(B.onLine AB)) ∧ (∃ C, A.onLine AB ∧ B.onLine AB ∧ A ≠ C ∧ B ≠ C ∧ C.onLine AB) ∧ (∃ D, A.onLine AB ∧ B.onLine AB ∧ A ≠ D ∧ B ≠ D ∧ D.onLine AB)) → (False)",
+      "full_output": "theorem thm_uniqueness_of_construction (A B : Point) (AB : Line) (h1 : distinctPointsOnLine A B AB) (h2 : ¬(A = B)) (h3 : ¬(A.onLine AB)) (h4 : ¬(B.onLine AB)) (h5 : ∃ C, A.onLine AB ∧ B.onLine AB ∧ A ≠ C ∧ B ≠ C ∧ C.onLine AB) (h6 : ∃ D, A.onLine AB ∧ B.onLine AB ∧ A ≠ D ∧ B ≠ D ∧ D.onLine AB) : False := by",
+      "probability": 0.33304324998680884,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.8261821269989,
+      "well_typed": true,
+      "token_counts": 130,
+      "formalization_check": false,
+      "original_probability": 0.33304324998682455,
+      "roundtrip_score": -536.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (¬(Point.onLine c AB)) ∧ (|(a─b)| < |(a─c)|)) → (false)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : ¬(Point.onLine c AB)) (h3 : |(a─b)| < |(a─c)|) : false := by",
+      "probability": 0.33275653829605384,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.8261821269989,
+      "well_typed": false,
+      "token_counts": 71,
+      "formalization_check": false,
+      "original_probability": 0.3327565382960454,
+      "roundtrip_score": -536.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → ()",
+      "full_output": "theorem onSameLineTwoOtherLinesNotConstructible (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB)\n: ∃ h : Angle, h.right\n  | h2 : ∃ h : Angle, h.right\n  | h3 : ∃ h : Angle, h.right\n  | h4 : ∃ h : Angle, h.right\n  | h5 : ∃ h : Angle, h.right\n  | h6 : Angle.right\n  | h7 : Angle.right\n  | h8 : Angle.right\n  | h9 : Angle.right\n  | h10 : Angle.right\n  | h11 : Angle.right\n  | h12 : Angle.right\n  | h13 : Angle.right\n  | h14 : Angle.right\n  | h15 : Angle.right\n  | h16 : Angle.right\n  | h17 : Angle.right\n  | h18 : Angle.right\n  | h19 : Angle.right\n  | h20 : Angle.right\n  | h21 : Angle.right\n  | h22 : Angle.right\n  | h23 : Angle.right\n  | h24 : Angle.right",
+      "probability": 0.00021583395756197401,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.8261821269989,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false,
+      "original_probability": 0.0002158339575619802,
+      "roundtrip_score": -536.0
+    },
+    {
+      "formalization": "((hypothesis_1)) → ()",
+      "full_output": "theorem theorem_name (h1 : hypothesis_1)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 22.8261821269989,
+      "well_typed": false,
+      "token_counts": 11,
+      "formalization_check": false,
+      "original_probability": 0.0,
+      "roundtrip_score": -540.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB AC CB AD DB : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine c b CB ∧ distinctPointsOnLine a d AD ∧ distinctPointsOnLine d b DB ∧ (c.sameSide d AB) ∧ c ≠ d ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|) → False",
+  "nl_statement": "On the same straight-line, two other straight-lines  equal, respectively, to  two (given) straight-lines (which meet) cannot be constructed (meeting) at  a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.     For, if possible, let the two straight-lines $AC$, $CB$, equal to two other straight-lines $AD$, $DB$, respectively, have been constructed on the same straight-line $AB$, meeting at different points, $C$ and $D$, on the same side (of $AB$), and having the same ends (on $AB$). So $CA$ is equal to $DA$, having the same end $A$ as it, and $CB$ is equal to $DB$, having the same end $B$ as it. And let $CD$ have been joined [Post.~1]. <prf> Again, since  $CB$ is equal to $DB$, the angle $CDB$ is also equal to angle $DCB$ [Prop.~1.5]. But it was shown that the former (angle) is also much greater (than the latter). The very thing is impossible. Thus, on the same straight-line, two other straight-lines equal, respectively, to two (given) straight-lines (which meet) cannot be constructed (meeting) at a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.",
+  "lean4_header": ""
+}

@@ -1,0 +1,36 @@
+{
+  "id": "26",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → ((∠ c:a:b = ∠ f:d:e) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC DE EF DF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : ∠ a:b:c = ∠ d:e:f) (h4 : ∠ b:c:a = ∠ e:f:d) (h5 : |(b─c)| = |(e─f)|) : (∠ c:a:b = ∠ f:d:e) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) := by",
+      "probability": 0.8000000000000121,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.934678077697754,
+      "well_typed": true,
+      "token_counts": 145,
+      "formalization_check": false,
+      "original_probability": 0.8,
+      "roundtrip_score": -494.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ ((∠ a:b:c : ℝ) = ∠ d:e:f ∧ (∠ b:c:a : ℝ) = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → ((|(a─b)| = |(d─e)|) ∧ (∠ a:c:b = ∠ d:f:e) ∧ (|(a─c)| = |(d─f)|))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC AC DE EF DF : Line) \n(h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) \n(h3 : (∠ a:b:c : ℝ) = ∠ d:e:f ∧ (∠ b:c:a : ℝ) = ∠ e:f:d) \n(h4 : |(b─c)| = |(e─f)|) : \n(|(a─b)| = |(d─e)|) ∧ (∠ a:c:b = ∠ d:f:e) ∧ (|(a─c)| = |(d─f)|) := by",
+      "probability": 0.2000000000000023,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.934678077697754,
+      "well_typed": true,
+      "token_counts": 148,
+      "formalization_check": false,
+      "original_probability": 0.2,
+      "roundtrip_score": -494.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)| ∨ |(a─b)| = |(d─e)|) → (|(a─b)| = |(d─e)|) ∧ (|(b─c)| = |(e─f)|) ∧ (|(a─c)| = |(d─f)|) ∧ (∠ b:a:c = ∠ e:d:f)",
+  "nl_statement": "If two triangles have two angles equal to two angles, respectively,  and one side equal to one side---in fact, either that by the equal angles, or that subtending one of the equal angles---then (the triangles) will also have the remaining sides equal to the [corresponding] remaining sides, and the remaining angle (equal) to the remaining angle.Let $ABC$ and $DEF$ be two triangles having the two angles $ABC$ and $BCA$ equal to the two (angles) $DEF$ and $EFD$, respectively. (That is) $ABC$ (equal) to $DEF$, and $BCA$ to $EFD$. And let them also have one side equal to one side. First of all, the (side) by the equal angles. (That is) $BC$ (equal) to $EF$. I say that they will have the  remaining sides equal to the corresponding remaining sides. (That is) $AB$ (equal) to $DE$, and $AC$ to $DF$. And (they will have) the remaining angle (equal) to the remaining angle. (That is) $BAC$ (equal) to $EDF$. <prf> Thus, the base $AC$ is equal to the base $DF$, and triangle $ABC$ (is) equal to triangle $DEF$, and the remaining angle $BAC$ (is) equal to the remaining angle $EDF$ [Prop.~1.4].Thus, if two triangles have two angles equal to two angles, respectively, and one side equal to one side---in fact, either that by the equal angles, or that subtending one of the equal angles---then (the triangles) will also have the remaining sides equal to the (corresponding) remaining sides, and the remaining angle (equal) to the remaining angle.",
+  "lean4_header": ""
+}

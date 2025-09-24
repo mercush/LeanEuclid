@@ -1,0 +1,78 @@
+{
+  "id": "24",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁₂ : Line) (D₂₃ : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d₁ d₂ d₃ D₁₂ D₂₃ AC) ∧ (|(a─b)| = |(d₁─d₂)|) ∧ (|(a─c)| = |(d₁─d₃)|) ∧ ((∠ a:b:c : ℝ) > (∠ d₁:d₂:d₃ : ℝ))) → (|(b─c)| > |(d₂─d₃)|)",
+      "full_output": "theorem ex_thm (a b c d₁ d₂ d₃ : Point) (AB BC AC D₁₂ D₂₃ : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d₁ d₂ d₃ D₁₂ D₂₃ AC) (h3 : |(a─b)| = |(d₁─d₂)|) (h4 : |(a─c)| = |(d₁─d₃)|) (h5 : (∠ a:b:c : ℝ) > (∠ d₁:d₂:d₃ : ℝ)) : |(b─c)| > |(d₂─d₃)| := by",
+      "probability": 0.250373620682211,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.61638379096985,
+      "well_typed": true,
+      "token_counts": 145,
+      "formalization_check": false,
+      "original_probability": 0.2503736206822072,
+      "roundtrip_score": -348.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁₂ : Line) (D₂₃ : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d₁ d₂ d₃ D₁₂ D₂₃ AC) ∧ (((∠ a:b:c : ℝ) > ∠ d₁:d₂:d₃))) → ((|(a─b)| = |(d₁─d₂)|) ∧ (|(b─c)| = |(d₂─d₃)|) ∧ (|(a─c)| = |(d₁─d₃)|) ∧ ((∠ a:b:c : ℝ) > ∠ d₁:d₂:d₃))",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal (a b c d₁ d₂ d₃ : Point) (AB BC AC D₁₂ D₂₃: Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d₁ d₂ d₃ D₁₂ D₂₃ AC) (h3 : ((∠ a:b:c : ℝ) > ∠ d₁:d₂:d₃) ) : (|(a─b)| = |(d₁─d₂)|) ∧ (|(b─c)| = |(d₂─d₃)|) ∧ (|(a─c)| = |(d₁─d₃)|) ∧ ((∠ a:b:c : ℝ) > ∠ d₁:d₂:d₃) := by",
+      "probability": 0.250023649058965,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.61638379096985,
+      "well_typed": true,
+      "token_counts": 164,
+      "formalization_check": false,
+      "original_probability": 0.2500236490589691,
+      "roundtrip_score": -348.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁₂ : Line) (D₂₃ : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d₁ d₂ d₃ D₁₂ D₂₃ D₁₂) ∧ (|(a─b)| = |(d₁─d₂)|) ∧ (|(a─c)| = |(d₁─d₃)|) ∧ ((∠ a:b:c : ℝ) > (∠ d₁:d₂:d₃ : ℝ))) → (|(b─c)| > |(d₂─d₃)|)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal (a b c d₁ d₂ d₃ : Point) (AB BC AC D₁₂ D₂₃: Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d₁ d₂ d₃ D₁₂ D₂₃ D₁₂) (h3 : |(a─b)| = |(d₁─d₂)|) (h4 : |(a─c)| = |(d₁─d₃)|) (h5 : (∠ a:b:c : ℝ) > (∠ d₁:d₂:d₃ : ℝ)) : |(b─c)| > |(d₂─d₃)| := by",
+      "probability": 0.24989548583678395,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.61638379096985,
+      "well_typed": true,
+      "token_counts": 153,
+      "formalization_check": false,
+      "original_probability": 0.24989548583678106,
+      "roundtrip_score": -348.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁₂ : Line) (D₂₃ : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d₁ d₂ d₃ D₁₂ D₂₃ D₁₂) ∧ (|(a─b)| = |(d₁─d₂)|) ∧ (|(b─c)| = |(d₂─d₃)|) ∧ ((∠ a:b:c : ℝ) > ∠ d₁:d₂:d₃)) → (|(b─c)| = |(d₂─d₃)|)",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal (a b c d₁ d₂ d₃ : Point) (AB BC AC D₁₂ D₂₃: Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d₁ d₂ d₃ D₁₂ D₂₃ D₁₂) (h3 : |(a─b)| = |(d₁─d₂)|) (h4 : |(b─c)| = |(d₂─d₃)|) (h5 : (∠ a:b:c : ℝ) > ∠ d₁:d₂:d₃) : |(b─c)| = |(d₂─d₃)| := by",
+      "probability": 0.24970724442203848,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.61638379096985,
+      "well_typed": true,
+      "token_counts": 151,
+      "formalization_check": false,
+      "original_probability": 0.2497072444220426,
+      "roundtrip_score": -348.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁₂ : Line) (D₂₃ : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d₁ d₂ d₃ D₁₂ D₂₃ AC) ∧ (|(a─b)| = |(d₁─d₂)|) ∧ (|(a─c)| = |(d₁─d₃)|) ∧ (∠ a:b:c : ℝ < ∠ d₁:d₂:d₃ : ℝ)) → ()",
+      "full_output": "theorem if_two_triangles_have_two_sides_equal (a b c d₁ d₂ d₃ : Point) (AB BC AC D₁₂ D₂₃: Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d₁ d₂ d₃ D₁₂ D₂₃ AC) (h3 : |(a─b)| = |(d₁─d₂)|) (h4 : |(a─c)| = |(d₁─d₃)|) (h5 : ∠ a:b:c : ℝ < ∠ d₁:d₂:d₃ : ℝ)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.61638379096985,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false,
+      "original_probability": 0.0,
+      "roundtrip_score": -346.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (∠ b:a:c > ∠ e:d:f) → |(b─c)| > |(e─f)|",
+  "nl_statement": "If two triangles have two sides equal to two sides, respectively,  but (one) has the angle encompassed by the equal straight-lines greater than the (corresponding)  angle (in the other), then (the former triangle) will also have a base greater than the base (of the latter). Let  $ABC$ and $DEF$ be two triangles having the two sides $AB$ and $AC$  equal to the two sides $DE$ and $DF$, respectively.(That is), $AB$ (equal) to $DE$, and  $AC$ to $DF$. Let them also have the angle at $A$ greater than the angle at $D$. I say that the base $BC$ is also greater than the base $EF$.  <prf>  Thus, $BC$ (is) also greater than $EF$. Thus, if two triangles have two sides equal to two sides, respectively,  but (one) has the angle encompassed by the equal straight-lines greater than the   (corresponding) angle (in the other), then (the former triangle) will also have a base greater than the base (of the latter).",
+  "lean4_header": ""
+}

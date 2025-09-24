@@ -1,0 +1,32 @@
+{
+  "id": "36",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (BC : Line) (CD : Line) (DA : Line) (EF : Line) (FG : Line) (GH : Line) (HE : Line), ((formParallelogram a b c d AB BC CD DA) ∧ (formParallelogram e f g h EF FG GH HE) ∧ (|(b─c)| = |(f─g)|) ∧ (∃ l r : Point, l.onLine AB ∧ r.onLine GH ∧ l = r ∧ ∃ l r : Point, l.onLine BC ∧ r.onLine FG ∧ l = r)) → ((|(a─b)| * |(b─c)|) = (|(e─f)| * |(f─g)|))",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB BC CD DA EF FG GH HE : Line) (h1 : formParallelogram a b c d AB BC CD DA) (h2 : formParallelogram e f g h EF FG GH HE) (h3 : |(b─c)| = |(f─g)|) (h4 : ∃ l r : Point, l.onLine AB ∧ r.onLine GH ∧ l = r ∧ ∃ l r : Point, l.onLine BC ∧ r.onLine FG ∧ l = r) : (|(a─b)| * |(b─c)|) = (|(e─f)| * |(f─g)|) := by",
+      "probability": 0.6000000000000001,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.24935293197632,
+      "well_typed": true,
+      "token_counts": 160,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (EF : Line) (GH : Line), ((formParallelogram a b c d AB CD (by sorry) (by sorry)) ∧ (formParallelogram e f g h EF GH (by sorry) (by sorry)) ∧ (|(c─b)| = |(g─f)|) ∧ (between b c g)) → ((|(a─d)| = |(e─h)|))",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD EF GH : Line) (h1 : formParallelogram a b c d AB CD (by sorry) (by sorry)) (h2 : formParallelogram e f g h EF GH (by sorry) (by sorry)) (h3 : |(c─b)| = |(g─f)|) (h4 : between b c g) : (|(a─d)| = |(e─h)|) := by",
+      "probability": 0.4,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 26.24935293197632,
+      "well_typed": false,
+      "token_counts": 114,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AH BG AB CD EF HG : Line), formParallelogram a d b c AH BG AB CD ∧ formParallelogram e h f g AH BG EF HG ∧ |(b─c)| = |(f─g)| ∧ (between a d h) ∧ (between a e h) → Triangle.area △ a:b:d + Triangle.area △ d:b:c = Triangle.area △ e:f:h + Triangle.area △ h:f:g",
+  "nl_statement": "Parallelograms which are on equal bases and between the same parallels are equal to one another. Let $ABCD$ and $EFGH$ be parallelograms which are on the equal bases $BC$ and $FG$, and (are) between the same parallels $AH$ and $BG$. I say that the parallelogram $ABCD$ is equal to $EFGH$. <prf> So that the parallelogram $ABCD$ is  also equal to $EFGH$.Thus, parallelograms which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

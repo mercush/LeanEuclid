@@ -1,0 +1,68 @@
+{
+  "id": "17",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c : ℝ) + (∠ b:c:a : ℝ) < ∟ + ∟ ∧ (∠ c:a:b : ℝ) + (∠ a:b:c : ℝ) < ∟ + ∟ ∧ (∠ b:c:a : ℝ) + (∠ c:a:b : ℝ) < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : (∠ a:b:c : ℝ) + (∠ b:c:a : ℝ) < ∟ + ∟ ∧ (∠ c:a:b : ℝ) + (∠ a:b:c : ℝ) < ∟ + ∟ ∧ (∠ b:c:a : ℝ) + (∠ c:a:b : ℝ) < ∟ + ∟ := by",
+      "probability": 0.20015691995220808,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.996941804885864,
+      "well_typed": true,
+      "token_counts": 105,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c : ℝ) + (∠ b:c:a : ℝ) < ∟ + ∟ ∧ (∠ b:c:a : ℝ) + (∠ c:a:b : ℝ) < ∟ + ∟ ∧ (∠ c:a:b : ℝ) + (∠ a:b:c : ℝ) < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : (∠ a:b:c : ℝ) + (∠ b:c:a : ℝ) < ∟ + ∟ ∧ (∠ b:c:a : ℝ) + (∠ c:a:b : ℝ) < ∟ + ∟ ∧ (∠ c:a:b : ℝ) + (∠ a:b:c : ℝ) < ∟ + ∟ := by",
+      "probability": 0.20013839048040566,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.996941804885864,
+      "well_typed": true,
+      "token_counts": 105,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c : ℝ) + (∠ b:c:a) < ∟ + ∟ ∧ (∠ c:a:b : ℝ) + (∠ a:b:c) < ∟ + ∟ ∧ (∠ b:c:a : ℝ) + (∠ c:a:b) < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : (∠ a:b:c : ℝ) + (∠ b:c:a) < ∟ + ∟ ∧ (∠ c:a:b : ℝ) + (∠ a:b:c) < ∟ + ∟ ∧ (∠ b:c:a : ℝ) + (∠ c:a:b) < ∟ + ∟ := by",
+      "probability": 0.20001573614848456,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.996941804885864,
+      "well_typed": true,
+      "token_counts": 99,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (∠ a:b:c + ∠ b:c:a < ∟ + ∟ ∧ ∠ a:b:c + ∠ c:a:b < ∟ + ∟ ∧ ∠ c:a:b + ∠ a:b:c < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : ∠ a:b:c + ∠ b:c:a < ∟ + ∟ ∧ ∠ a:b:c + ∠ c:a:b < ∟ + ∟ ∧ ∠ c:a:b + ∠ a:b:c < ∟ + ∟ := by",
+      "probability": 0.19988729715199782,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.996941804885864,
+      "well_typed": true,
+      "token_counts": 87,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((∠ a:b:c : ℝ) + (∠ a:c:b : ℝ) < ∟ + ∟ ∧ (∠ b:c:a : ℝ) + (∠ c:a:b : ℝ) < ∟ + ∟ ∧ (∠ c:a:b : ℝ) + (∠ a:b:c : ℝ) < ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : (∠ a:b:c : ℝ) + (∠ a:c:b : ℝ) < ∟ + ∟ ∧ (∠ b:c:a : ℝ) + (∠ c:a:b : ℝ) < ∟ + ∟ ∧ (∠ c:a:b : ℝ) + (∠ a:b:c : ℝ) < ∟ + ∟ := by",
+      "probability": 0.19980165626690372,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.996941804885864,
+      "well_typed": true,
+      "token_counts": 105,
+      "formalization_check": true
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC → ∠ a:b:c + ∠ b:c:a < ∟ + ∟",
+  "nl_statement": "For any triangle,  (the sum of) two angles taken together in any (possible way) is less than two right-angles. Let $ABC$ be a triangle. I say that (the sum of) two angles of triangle $ABC$ taken together in any (possible way) is less than two right-angles. <prf> Thus, (the sum of) $ABC$ and $BCA$ is less than two right-angles. Similarly, we can show that (the sum of) $BAC$ and $ACB$ is also less than two right-angles, and further (that the sum of) $CAB$ and $ABC$ (is less than two right-angles).Thus, for any triangle,  (the sum of) two angles taken together in any (possible way) is less than two right-angles.",
+  "lean4_header": ""
+}

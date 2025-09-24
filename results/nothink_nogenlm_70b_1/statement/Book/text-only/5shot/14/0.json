@@ -1,0 +1,20 @@
+{
+  "id": "14",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (BD : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c + ∠ a:b:d = ∟ + ∟)) → (∠ c:b:d = ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC BD : Line) \n  (h1 : formTriangle a b c AB BC AC) \n  (h2 : ∠ a:b:c + ∠ a:b:d = ∟ + ∟) : \n  ∠ c:b:d = ∟ := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 4.926339626312256,
+      "well_typed": false,
+      "token_counts": 70,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC BD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine b c BC ∧ distinctPointsOnLine b d BD ∧ (c.opposingSides d AB) ∧ (∠ a:b:c + ∠ a:b:d) = ∟ + ∟ → BC = BD",
+  "nl_statement": "If two straight-lines, not lying on the same side,  make adjacent angles (whose sum is) equal to two right-angles  with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another. For let two straight-lines $BC$ and $BD$, not lying on the same side, make adjacent angles $ABC$ and $ABD$ (whose sum is) equal to two right-angles with some straight-line $AB$, at the point $B$ on it. I say that $BD$ is  straight-on with respect to $CB$. <prf> Thus, $CB$ is straight-on with respect to $BD$.Thus, if two straight-lines, not lying on the same side, make adjacent angles (whose sum is) equal to two right-angles with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another.",
+  "lean4_header": ""
+}

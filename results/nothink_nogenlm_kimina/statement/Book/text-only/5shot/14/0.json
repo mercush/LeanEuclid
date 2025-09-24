@@ -1,0 +1,68 @@
+{
+  "id": "14",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (BD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine b d BD) ∧ (¬(c.onLine BD) ∨ ¬(d.onLine BC)) ∧ (¬(c = d)) ∧ ((∠ c:b:d : ℝ) + (∠ a:b:c : ℝ) = ∟ + ∟)) → (b ≠ c ∧ b ≠ d ∧ (c ≠ d ∨ d ≠ c) → (b = a ∨ b = d))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC BD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine b c BC) (h3 : distinctPointsOnLine b d BD) (h4 : ¬(c.onLine BD) ∨ ¬(d.onLine BC)) (h5 : ¬(c = d)) (h6 : (∠ c:b:d : ℝ) + (∠ a:b:c : ℝ) = ∟ + ∟) : b ≠ c ∧ b ≠ d ∧ (c ≠ d ∨ d ≠ c) → (b = a ∨ b = d) := by",
+      "probability": 0.2004782859352664,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 19.51248049736023,
+      "well_typed": true,
+      "token_counts": 145,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (BD : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine b d BD) ∧ (¬(c.onLine BD)) ∧ (¬(d.onLine BC)) ∧ ((∠ a:b:c + ∠ a:b:d : ℝ) = ∟ + ∟)) → (¬(c.onLine BD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC BD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine b c BC) (h3 : distinctPointsOnLine b d BD) (h4 : ¬(c.onLine BD)) (h5 : ¬(d.onLine BC)) (h6 : (∠ a:b:c + ∠ a:b:d : ℝ) = ∟ + ∟) : ¬(c.onLine BD) := by",
+      "probability": 0.20037479123986102,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 19.51248049736023,
+      "well_typed": true,
+      "token_counts": 112,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (BD : Line), ((a ≠ b) ∧ (b ≠ c) ∧ (b ≠ d) ∧ (∠ c:a:b + ∠ a:b:d = ∟ + ∟) ∧ (c ≠ d)) → (b.onLine (Line))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC BD : Line) (h1 : a ≠ b) (h2 : b ≠ c) (h3 : b ≠ d) (h4 : ∠ c:a:b + ∠ a:b:d = ∟ + ∟) (h5 : c ≠ d) : b.onLine (Line) := by",
+      "probability": 0.2002679595394039,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 19.51248049736023,
+      "well_typed": false,
+      "token_counts": 82,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line) (c : Point) (d : Point) (BC : Line) (BD : Line), ((distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine b d BD) ∧ (¬(c.sameSide d AB)) ∧ (∠ a:b:c + ∠ a:b:d = ∟ + ∟)) → (c = d)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (c d : Point) (BC BD : Line) (h1 : distinctPointsOnLine b c BC) (h2 : distinctPointsOnLine b d BD) (h3 : ¬(c.sameSide d AB)) (h4 : ∠ a:b:c + ∠ a:b:d = ∟ + ∟) : c = d := by",
+      "probability": 0.1998760386014468,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 19.51248049736023,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AB : Line) (AB' : Line), ((distinctPointsOnLine a b AB) ∧ ((c ≠ d)) ∧ (c.onLine AB) ∧ (d.onLine AB) ∧ (c = a ∨ c = b) ∧ (d = a ∨ d = b) ∧ (¬ sameSide c d AB) ∧ (between a c b ∨ between a d b) ∧ ((∠ c:b:d + ∠ a:b:c : ℝ) = ∟ + ∟)) → (∃ (l : Line), (c.onLine l ∧ d.onLine l ∧ ¬(c = d) ∧ l = AB))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AB AB' : Line) (h1 : distinctPointsOnLine a b AB) (h2 : (c ≠ d)) (h3 : c.onLine AB) (h4 : d.onLine AB) (h5 : c = a ∨ c = b) (h6 : d = a ∨ d = b) (h7 : ¬ sameSide c d AB) (h8 : between a c b ∨ between a d b) (h10 : (∠ c:b:d + ∠ a:b:c : ℝ) = ∟ + ∟) : ∃ (l : Line), (c.onLine l ∧ d.onLine l ∧ ¬(c = d) ∧ l = AB) := by",
+      "probability": 0.1990029246840219,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 19.51248049736023,
+      "well_typed": false,
+      "token_counts": 170,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC BD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine b c BC ∧ distinctPointsOnLine b d BD ∧ (c.opposingSides d AB) ∧ (∠ a:b:c + ∠ a:b:d) = ∟ + ∟ → BC = BD",
+  "nl_statement": "If two straight-lines, not lying on the same side,  make adjacent angles (whose sum is) equal to two right-angles  with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another. For let two straight-lines $BC$ and $BD$, not lying on the same side, make adjacent angles $ABC$ and $ABD$ (whose sum is) equal to two right-angles with some straight-line $AB$, at the point $B$ on it. I say that $BD$ is  straight-on with respect to $CB$. <prf> Thus, $CB$ is straight-on with respect to $BD$.Thus, if two straight-lines, not lying on the same side, make adjacent angles (whose sum is) equal to two right-angles with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another.",
+  "lean4_header": ""
+}

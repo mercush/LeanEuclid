@@ -1,0 +1,56 @@
+{
+  "id": "31",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ l : Point, |(a─l)| = |(b─c)|)",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ l : Point, |(a─l)| = |(b─c)| := by",
+      "probability": 0.40022701194983534,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.066307067871094,
+      "well_typed": true,
+      "token_counts": 58,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (¬(a.onLine BC))) → (∃ L : Line, a.onLine L ∧ ¬(L.intersectsLine BC))",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : ¬(a.onLine BC)) : ∃ L : Line, a.onLine L ∧ ¬(L.intersectsLine BC) := by",
+      "probability": 0.20017582333755507,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.066307067871094,
+      "well_typed": true,
+      "token_counts": 61,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (¬(a.onLine BC))) → (∃ l : Line, (a.onLine l) ∧ ¬(l.intersectsLine BC))",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : ¬(a.onLine BC)) : ∃ l : Line, (a.onLine l) ∧ ¬(l.intersectsLine BC) := by",
+      "probability": 0.1999854045946519,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.066307067871094,
+      "well_typed": true,
+      "token_counts": 63,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ∉ onLine BC)) → (∃ l : Line, a.onLine l ∧ ¬(l.intersectsLine BC))",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ∉ onLine BC) : ∃ l : Line, a.onLine l ∧ ¬(l.intersectsLine BC) := by",
+      "probability": 0.19961176011795762,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.066307067871094,
+      "well_typed": false,
+      "token_counts": 61,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)",
+  "nl_statement": "To draw a straight-line parallel to a given straight-line, through a given point.Let $A$ be the given point, and $BC$ the given straight-line. So it is required to draw a straight-line parallel to the straight-line $BC$, through the point $A$.  <prf>  Thus, the straight-line $EAF$ has been drawn parallel to the given straight-line $BC$, through the  given point $A$.",
+  "lean4_header": ""
+}
