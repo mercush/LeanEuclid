@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 from LeanPotential.roundtrip import RoundTripPotential
 
 
-async def score_formalization(formalization_text: str, natural_language: str) -> float:
+async def score_formalization(formalization_text: str, natural_language: str, temperature: float = 1.0) -> float:
     """Score a single formalization using RoundTripPotential."""
     try:
         # Create RoundTripPotential instance
@@ -30,7 +30,11 @@ async def score_formalization(formalization_text: str, natural_language: str) ->
         formal_theorem = unreformat_theorem(formalization_text, "example_thm")
 
         # Get the roundtrip score using evaluate_roundtrip_probability directly
-        roundtrip_score = await potential.evaluate_roundtrip_probability(formal_theorem)
+        roundtrip_score = await potential.evaluate_roundtrip_probability(formalization_text)
+
+        # Apply temperature scaling to the roundtrip score
+        if roundtrip_score != float("-inf") and temperature > 0:
+            roundtrip_score = roundtrip_score / temperature
 
         return roundtrip_score if roundtrip_score != float("-inf") else -1000.0
 
@@ -40,7 +44,7 @@ async def score_formalization(formalization_text: str, natural_language: str) ->
 
 
 async def process_json_file(
-    input_file: str, output_file: str, combination_method: str = "add"
+    input_file: str, output_file: str, combination_method: str = "add", temperature: float = 1.0
 ) -> bool:
     """Process a single JSON file and create output with updated probabilities."""
     try:
@@ -48,7 +52,7 @@ async def process_json_file(
             data = json.load(f)
 
         formalizations = data.get("formalizations", [])
-        natural_language = data.get("nl_statement", "")
+        natural_language = data.get("nl_statement", "").split(".")[0]
 
         if not formalizations or not natural_language:
             print(f"Warning: Missing formalizations or nl_statement in {input_file}")
@@ -70,7 +74,7 @@ async def process_json_file(
             if formalization_text:
                 # Get roundtrip score
                 roundtrip_score = await score_formalization(
-                    formalization_text, natural_language
+                    formalization_text, natural_language, temperature
                 )
 
                 # Convert original probability to log space
@@ -132,7 +136,7 @@ async def process_json_file(
 
 
 async def process_results_directory(
-    input_dir: str, output_dir: str, combination_method: str = "add"
+    input_dir: str, output_dir: str, combination_method: str = "add", temperature: float = 1.0
 ) -> None:
     """Process all JSON files in a results directory."""
 
@@ -154,7 +158,7 @@ async def process_results_directory(
     # Process each file
     for input_file, output_file in tqdm.tqdm(json_files, desc="Processing files"):
         print(f"\nProcessing: {input_file}")
-        success = await process_json_file(input_file, output_file, combination_method)
+        success = await process_json_file(input_file, output_file, combination_method, temperature)
 
         if success:
             successful += 1
@@ -188,6 +192,12 @@ def main():
         default="add",
         help="How to combine original probability with roundtrip score (default: add)",
     )
+    parser.add_argument(
+        "--temperature",
+        type=float,
+        default=1.0,
+        help="Temperature for scaling roundtrip logprobs (default: 1.0)",
+    )
 
     args = parser.parse_args()
 
@@ -197,7 +207,7 @@ def main():
 
     # Run the async processing
     asyncio.run(
-        process_results_directory(args.input_dir, args.output_dir, args.combination)
+        process_results_directory(args.input_dir, args.output_dir, args.combination, args.temperature)
     )
 
 

@@ -200,46 +200,6 @@ async def calculate_accuracy(
                                     if formalization_check:
                                         cnt += normalized_prob
 
-                        elif aggregation == "theorem_statement":
-                            # SMC with proof scoring adjustment
-                            # First adjust probabilities by subtracting proof scores
-                            adjusted_formalizations = []
-                            for formalization_data in well_typed_formalizations:
-                                formalization_copy = formalization_data.copy()
-                                full_output = formalization_copy.get("full_output", "")
-                                original_prob = formalization_copy.get(
-                                    "probability", 0.0
-                                )
-
-                                if full_output:
-                                    proof_part = extract_proof_part(full_output)
-                                    proof_score = await score_proof_part(proof_part)
-                                    # Work in log space for numerical stability
-                                    log_original_prob = np.log(original_prob)
-                                    adjusted_log_prob = np.clip(log_original_prob - proof_score, -700, 700)
-                                    formalization_copy["probability"] = np.exp(adjusted_log_prob)
-
-                                adjusted_formalizations.append(formalization_copy)
-
-                            # Now do SMC weighting with adjusted probabilities
-                            total_prob = sum(
-                                f.get("probability", 0.0)
-                                for f in adjusted_formalizations
-                            )
-
-                            if total_prob > 0:
-                                for formalization_data in adjusted_formalizations:
-                                    normalized_prob = (
-                                        formalization_data.get("probability", 0.0)
-                                        / total_prob
-                                    )
-                                    formalization_check = formalization_data.get(
-                                        "formalization_check", False
-                                    )
-
-                                    if formalization_check:
-                                        cnt += normalized_prob
-
                         elif aggregation == "any":
                             # Count problem correct if ANY well-typed formalization is correct
                             any_correct = any(
@@ -257,7 +217,6 @@ async def calculate_accuracy(
         "uniform": "Uniform Weighting",
         "smc": "SMC Probability Weighting",
         "theorem_statement": "SMC with Proof Scoring Adjustment",
-        "any": "Any Correct Formalization",
     }
 
     print(f"\n=== {method_names.get(aggregation, aggregation)} Accuracy Results ===")
@@ -270,8 +229,8 @@ async def calculate_accuracy(
     print(f"Total problems processed: {tot}")
     print(f"Problems with data: {problems_with_data}")
 
-    if aggregation in ["best", "any"]:
-        print(f"Correct problems: {int(cnt)}")
+    if aggregation == "best":
+        print(f"Correct problems (best sample): {int(cnt)}")
     else:
         print(f"Weighted correct count (cnt): {cnt:.4f}")
 
@@ -311,7 +270,7 @@ def main():
         "--aggregation",
         choices=["smc", "best", "uniform", "theorem_statement", "any"],
         default="uniform",
-        help="Aggregation method: smc (probability weighting like evaluate.py), best (highest probability sample), uniform (equal weighting), theorem_statement (SMC with proof scoring adjustment), any (count problem correct if any formalization is correct)",
+        help="Aggregation method: smc (probability weighting like evaluate.py), best (highest probability sample), uniform (equal weighting), theorem_statement (SMC with proof scoring adjustment)",
     )
 
     args = parser.parse_args()

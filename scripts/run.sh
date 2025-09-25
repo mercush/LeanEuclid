@@ -29,9 +29,9 @@ python3 ~/lean-experiments/src/LeanEuclid/AutoFormalization/statement/autoformal
 	--tensor_parallel_size 4 \
 	--start_index "$START_INDEX" \
 	--model_type chat \
-	--model_name "AI-MO/Kimina-Prover-72B" \
+	--model_name "deepseek-ai/DeepSeek-R1-Distill-Llama-70B" \
 	--preamble "import SystemE" \
-	--typecheck "none" \
+	--typecheck "all" \
 	--max_tokens 250 \
     --n_particles 5 \
 
