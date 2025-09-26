@@ -1,0 +1,78 @@
+{
+  "id": "1",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)|)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h : distinctPointsOnLine a b AB) : ∃ c : Point, |(a─c)| = |(b─c)| ∧ |(a─c)| = |(a─b)| := by",
+      "probability": 0.4971108030120982,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.26052713394165,
+      "well_typed": true,
+      "token_counts": 62,
+      "formalization_check": true,
+      "original_probability": 0.25076073318982856,
+      "roundtrip_score": -422.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, (|(a─c)| = |(a─b)| ∧ |(b─c)| = |(a─b)|))",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, (|(a─c)| = |(a─b)| ∧ |(b─c)| = |(a─b)|) := by",
+      "probability": 0.49622484663833205,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.26052713394165,
+      "well_typed": true,
+      "token_counts": 64,
+      "formalization_check": true,
+      "original_probability": 0.2503138246364152,
+      "roundtrip_score": -422.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (c : Point) (AC BC : Line), formTriangle a b c AB BC AC ∧ |(a─b)| = |(b─c)| ∧ |(b─c)| = |(a─c)|)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ (c : Point) (AC BC : Line), formTriangle a b c AB BC AC ∧ |(a─b)| = |(b─c)| ∧ |(b─c)| = |(a─c)| := by",
+      "probability": 0.0033406297207926095,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.26052713394165,
+      "well_typed": true,
+      "token_counts": 79,
+      "formalization_check": false,
+      "original_probability": 0.250096192464263,
+      "roundtrip_score": -427.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, formTriangle a b c AB AB AB ∧ (|(a─b)| = |(a─c)|) ∧ (|(a─c)| = |(b─c)|))",
+      "full_output": "theorem equilateral_triangle (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, formTriangle a b c AB AB AB ∧ (|(a─b)| = |(a─c)|) ∧ (|(a─c)| = |(b─c)|) := by",
+      "probability": 0.003323706678065947,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.26052713394165,
+      "well_typed": true,
+      "token_counts": 74,
+      "formalization_check": false,
+      "original_probability": 0.24882924913184173,
+      "roundtrip_score": -427.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → ()",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, distinctPointsOnLine a c (Line.endpoints a c) ∧ distinctPointsOnLine b c (Line.endpoints b c) ∧ [(|(a─c)|, |(b─c)|, |(a─b)|)]. 호텔러 توسط ساختگahoo بحثogeneratedAMEXasts equals 3 ∧ |(a─c)| = |(b─c)| ∧ |(a─b)| = |(a─c)| ∧ |(b─c)| = |(a─b)| ∧ (Triangle.ofPoints a b c).area > 0 ∧ (Triangle.ofPoints a b c).area > 0 ∧ (Triangle.ofPoints a b c).area > 0) := by",
+      "probability": 1.3950692137914721e-08,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 19.26052713394165,
+      "well_typed": false,
+      "token_counts": 182,
+      "formalization_check": false,
+      "original_probability": 5.776514661054812e-10,
+      "roundtrip_score": -420.0
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)|",
+  "nl_statement": "To construct an equilateral triangle on a given finite straight-line. Let $AB$ be the given finite straight-line.  <prf> Thus, the three (straight-lines) $CA$, $AB$, and $BC$ are equal to one another.Thus, the triangle $ABC$ is equilateral, and has been constructed on the given finite straight-line $AB$.",
+  "lean4_header": ""
+}

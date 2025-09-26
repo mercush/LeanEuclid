@@ -1,0 +1,36 @@
+{
+  "id": "46",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (d e : Point) (AD EB DE : Line), formParallelogram a b d e AB AD EB DE ∧ |(a─b)| = |(a─d)| ∧ |(a─d)| = |(d─e)| ∧ |(d─e)| = |(e─b)|)",
+      "full_output": "theorem describe_square (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ (d e : Point) (AD EB DE : Line), formParallelogram a b d e AB AD EB DE ∧ |(a─b)| = |(a─d)| ∧ |(a─d)| = |(d─e)| ∧ |(d─e)| = |(e─b)| := by",
+      "probability": 0.7999999999999666,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 17.17370843887329,
+      "well_typed": true,
+      "token_counts": 99,
+      "formalization_check": false,
+      "original_probability": 0.8,
+      "roundtrip_score": -1000.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (d e : Point) (AD EB : Line) (DE AB : Line), formParallelogram a d e b AD EB DE AB ∧ |(a─b)| = |(d─e)| ∧ |(a─b)| = |(a─d)|)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) \n  : ∃ (d e : Point) (AD EB : Line) (DE AB : Line), formParallelogram a d e b AD EB DE AB ∧ |(a─b)| = |(d─e)| ∧ |(a─b)| = |(a─d)| := by",
+      "probability": 0.1999999999999909,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 17.17370843887329,
+      "well_typed": true,
+      "token_counts": 93,
+      "formalization_check": false,
+      "original_probability": 0.2,
+      "roundtrip_score": -1000.0
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ (d e : Point) (DE AD BE : Line), formParallelogram d e a b DE AB AD BE ∧ |(d─e)| = |(a─b)| ∧ |(a─d)| = |(a─b)| ∧ |(b─e)| = |(a─b)| ∧ (∠ b:a:d = ∟) ∧ (∠ a:d:e = ∟) ∧ (∠ a:b:e = ∟) ∧ (∠ b:e:d = ∟)",
+  "nl_statement": "To describe a square on a given straight-line. Let $AB$ be the given straight-line.So it is required to describe a square on the straight-line $AB$. <prf> Thus, $ADEB$ is right-angled. And it was also shown (to be) equilateral.Thus, ($ADEB$) is a square [Def.~1.22]. And it is described on the straight-line $AB$.",
+  "lean4_header": ""
+}

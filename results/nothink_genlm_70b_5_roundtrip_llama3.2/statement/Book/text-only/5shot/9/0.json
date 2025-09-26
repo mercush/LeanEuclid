@@ -1,0 +1,78 @@
+{
+  "id": "9",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (BAC : Line) (AC : Line) (AF : Line), ((formRectilinearAngle a b c BAC AC) ∧ (distinctPointsOnLine d e AF) ∧ (Point.onLine f AF) ∧ (∠ e:a:f = ∠ d:a:f)) → (∠ e:a:f = ∠ d:a:f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (BAC AC AF : Line) (h1 : formRectilinearAngle a b c BAC AC) (h2 : distinctPointsOnLine d e AF) (h3 : Point.onLine f AF) (h4 : ∠ e:a:f = ∠ d:a:f) : ∠ e:a:f = ∠ d:a:f := by",
+      "probability": 0.000548938228024944,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 16.78402042388916,
+      "well_typed": true,
+      "token_counts": 89,
+      "formalization_check": false,
+      "original_probability": 0.3165335281486894,
+      "roundtrip_score": -467.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (p : Point) (ABAC : Line), ((formRectilinearAngle a b p ABAC ABAC) ∧ (a ≠ b) ∧ (b ≠ p) ∧ (a ≠ p)) → (∃ a' : Point, |(a─a')| = |(b─p)|)",
+      "full_output": "theorem example_thm (a b p : Point) (ABAC : Line) (h1 : formRectilinearAngle a b p ABAC ABAC) (h2 : a ≠ b) (h3 : b ≠ p) (h4 : a ≠ p) : ∃ a' : Point, |(a─a')| = |(b─p)| := by",
+      "probability": 0.0005485453184513287,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 16.78402042388916,
+      "well_typed": true,
+      "token_counts": 81,
+      "formalization_check": false,
+      "original_probability": 0.31630696521823753,
+      "roundtrip_score": -467.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BA : Line) (AC : Line), ((formRectilinearAngle a b c BA AC) ∧ (distinctPointsOnLine a b BA) ∧ (distinctPointsOnLine a c AC) ∧ (a ≠ c) ∧ (a ≠ b)) → (∃ f : Point, ∠ b:a:f = ∠ c:a:f)",
+      "full_output": "theorem example_thm (a b c d e : Point) (BA AC : Line) (h1 : formRectilinearAngle a b c BA AC) (h2 : distinctPointsOnLine a b BA) (h3 : distinctPointsOnLine a c AC) (h4 : a ≠ c) (h5 : a ≠ b) : ∃ f : Point, ∠ b:a:f = ∠ c:a:f := by",
+      "probability": 0.9852793592674692,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 16.78402042388916,
+      "well_typed": false,
+      "token_counts": 93,
+      "formalization_check": false,
+      "original_probability": 0.3142295423986145,
+      "roundtrip_score": -460.0
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (AB : Line) (BC : Line), ((formRectilinearAngle A B C AB BC)) → ()",
+      "full_output": "theorem example_thm (A B C : Point) (AB BC : Line) (h1 : formRectilinearAngle A B C AB BC) : ∃ D : Point, (D.onLine AB) ∧ (D.onLine BC) ∧ (∠ A:B:D : ℝ) = ∠ D:B:C : ℝ) := by",
+      "probability": 0.013623157186038666,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 16.78402042388916,
+      "well_typed": false,
+      "token_counts": 71,
+      "formalization_check": false,
+      "original_probability": 0.05292996423445862,
+      "roundtrip_score": -462.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (AF : Line) (FE : Line) (FD : Line), ((formRectilinearAngle a b c AB AC) ∧ (Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c AC) ∧ (Point.onLine d AF) ∧ (Point.onLine e FE) ∧ (Point.onLine f FD) ∧ ((∠ a:b:c : ℝ) = (|(a─b)| * |(a─c)|))) → (∃ af : Point, AF.onLine af ∧ ∠ a:af:c = ∠ a:b:af ∧ (|(a─af)| = |(a─c)| / 2))",
+      "full_output": "theorem to_bisect_a_rectilinear_angle (a b c d e f : Point) (AB AC AF FE FD : Line) (h1 : formRectilinearAngle a b c AB AC) (h2 : Point.onLine a AB) (h3 : Point.onLine b AB) (h4 : Point.onLine c AC) (h5 : Point.onLine d AF) (h6 : Point.onLine e FE) (h7 : Point.onLine f FD) (h8 : (∠ a:b:c : ℝ) = (|(a─b)| * |(a─c)|)) : ∃ af : Point, AF.onLine af ∧ ∠ a:af:c = ∠ a:b:af ∧ (|(a─af)| = |(a─c)| / 2) :=",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 16.78402042388916,
+      "well_typed": false,
+      "token_counts": 173,
+      "formalization_check": false,
+      "original_probability": 0.0,
+      "roundtrip_score": -467.5
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB AC : Line), formRectilinearAngle b a c AB AC ∧ AB ≠ AC → ∃ f : Point, f ≠ a ∧ (∠ b:a:f = ∠ c:a:f)",
+  "nl_statement": "To cut a given rectilinear angle in half. Let $BAC$ be the given rectilinear angle. So it is required to cut it in half.    <prf>  Thus, angle $DAF$ is equal to angle $EAF$ [Prop.~1.8]. Thus, the given rectilinear angle $BAC$ has been cut in half by the straight-line $AF$.",
+  "lean4_header": ""
+}

@@ -1,0 +1,68 @@
+{
+  "id": "46",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (exists (a' b' c' d' : Point) (AB' A'B' C'D' : Line), formParallelogram a b a' b' AB' A'B' AB C'D' ∧ Point.onLine a AB ∧ Point.onLine b AB ∧ |(a─b)| = |(a'─b')| ∧ |(a─b)| = |(a─a')| ∧ |(a─b)| = |(b─b')| ∧ |(a─b)| = |(a'─c')| ∧ |(a─b)| = |(b'─d')|)",
+      "full_output": "theorem describe_square (a b : Point) (AB : Line) (h : distinctPointsOnLine a b AB) : exists (a' b' c' d' : Point) (AB' A'B' C'D' : Line), formParallelogram a b a' b' AB' A'B' AB C'D' ∧ Point.onLine a AB ∧ Point.onLine b AB ∧ |(a─b)| = |(a'─b')| ∧ |(a─b)| = |(a─a')| ∧ |(a─b)| = |(b─b')| ∧ |(a─b)| = |(a'─c')| ∧ |(a─b)| = |(b'─d')| := by",
+      "probability": 0.3341319790932413,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.08667802810669,
+      "well_typed": true,
+      "token_counts": 163,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (DE : Line) (CD : Line) (EA : Line), ((formTriangle a b c AB DE CD) ∧ (formTriangle d e a DE CD EA) ∧ (Line.intersectsLine AB DE) ∧ (Line.intersectsLine AB CD) ∧ (Line.intersectsLine DE EA) ∧ (Line.intersectsLine CD EA)) → (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e a) ∧ ∟ = ∠ d:e:a)",
+      "full_output": "theorem describe_square (a b c d e : Point) (AB DE CD EA : Line) (h1 : formTriangle a b c AB DE CD) (h2 : formTriangle d e a DE CD EA) (h3 : Line.intersectsLine AB DE) (h4 : Line.intersectsLine AB CD) (h5 : Line.intersectsLine DE EA) (h6 : Line.intersectsLine CD EA) : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e a) ∧ ∟ = ∠ d:e:a := by",
+      "probability": 0.33343669912322926,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.08667802810669,
+      "well_typed": false,
+      "token_counts": 122,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ a' b' : Point, Point.onLine a' AB ∧ Point.onLine b' AB ∧ |(a'─b')| = |(a─b)| ∧ ∠ a':b':a = ∟ ∧ ∠ b':a':b = ∟ ∧ formParallelogram a b a' b' AB AB AB AB)",
+      "full_output": "theorem describe_square_on_line (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ a' b' : Point, Point.onLine a' AB ∧ Point.onLine b' AB ∧ |(a'─b')| = |(a─b)| ∧ ∠ a':b':a = ∟ ∧ ∠ b':a':b = ∟ ∧ formParallelogram a b a' b' AB AB AB AB := by",
+      "probability": 0.33243117852144577,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.08667802810669,
+      "well_typed": true,
+      "token_counts": 107,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → ()",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c d : Point, Point.collinear a c d ∧ Point.collinear c d b ∧ |(a─c)| = |(c─d)| ∧ |(c─d)| = |(d─b)| ∧ (|(a─c)| = |(c─b)| ∧ |(c─d)| = |(d─a)|) ∧ (Angle.right (∠ c:a:d) ∧ Angle.right (∠ a:d:b)) → ∃ c d : Point, Point(collinear a c d ∧ collinear c d b) ∧ |(a─c)| = |(c─d)| ∧ |(d─b)| = 0 ∧ Angle.right (∠ c:a:d) ∧ Angle.right (∠ a:d:b) ∧ (Angle.right (∠ c:a:d) ∧ Angle.right (∠ a:d:b)) ∧ |(a─c)| = |(c─b)| ∧ |(c─d)| = |(d─a)|) := by",
+      "probability": 1.432620836685444e-07,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.08667802810669,
+      "well_typed": false,
+      "token_counts": 237,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ (d e : Point) (AB NIR RIN : Line), formParallelogram a b d e AB NIR RIN ∧ Triangle.congruent △ a:b:d △ a:e:d ∧ Triangle.congruent △ b:e:d △ a:e:d ∧ ¬Line.intersectsLine AB NIR ∧ ¬Line.intersectsLine NIR RIN ∧ ¬Line.intersectsLine AB RIN)",
+      "full_output": "theorem describe_square_on_given_straight_line (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ (d e : Point) (AB NIR RIN : Line), formParallelogram a b d e AB NIR RIN ∧ Triangle.congruent △ a:b:d △ a:e:d ∧ Triangle.congruent △ b:e:d △ a:e:d ∧ ¬Line.intersectsLine AB NIR ∧ ¬Line.intersectsLine NIR RIN ∧ ¬Line.intersectsLine AB RIN :=",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.08667802810669,
+      "well_typed": false,
+      "token_counts": 114,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ (d e : Point) (DE AD BE : Line), formParallelogram d e a b DE AB AD BE ∧ |(d─e)| = |(a─b)| ∧ |(a─d)| = |(a─b)| ∧ |(b─e)| = |(a─b)| ∧ (∠ b:a:d = ∟) ∧ (∠ a:d:e = ∟) ∧ (∠ a:b:e = ∟) ∧ (∠ b:e:d = ∟)",
+  "nl_statement": "To describe a square on a given straight-line. Let $AB$ be the given straight-line.So it is required to describe a square on the straight-line $AB$. <prf> Thus, $ADEB$ is right-angled. And it was also shown (to be) equilateral.Thus, ($ADEB$) is a square [Def.~1.22]. And it is described on the straight-line $AB$.",
+  "lean4_header": ""
+}

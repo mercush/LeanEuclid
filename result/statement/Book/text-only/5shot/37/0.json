@@ -1,0 +1,32 @@
+{
+  "id": "37",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (D : Line) (BC : Line), ((twoLinesIntersectAtPoint BC D a) ∧ (twoLinesIntersectAtPoint BC D b) ∧ (twoLinesIntersectAtPoint BC D c)) → ((Triangle.area △ a:b:c = Triangle.area △ a:c:b))",
+      "full_output": "theorem example_thm (a b c : Point) (D BC : Line) (h1 : twoLinesIntersectAtPoint BC D a) (h2 : twoLinesIntersectAtPoint BC D b) (h3 : twoLinesIntersectAtPoint BC D c) : (Triangle.area △ a:b:c = Triangle.area △ a:c:b) := by",
+      "probability": 0.5999958900353063,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.668891429901123,
+      "well_typed": true,
+      "token_counts": 77,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (AD : Line) (DB : Line) (DC : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c DB BC DC) ∧ (¬(Line.intersectsLine AB DC)) ∧ (¬(Line.intersectsLine AC DB))) → (Triangle.area △ a:b:c = Triangle.area △ d:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC AD DB DC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c DB BC DC) (h3 : ¬(Line.intersectsLine AB DC)) (h4 : ¬(Line.intersectsLine AC DB)) : Triangle.area △ a:b:c = Triangle.area △ d:b:c := by",
+      "probability": 0.4000041099646937,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.668891429901123,
+      "well_typed": false,
+      "token_counts": 90,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD CD AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d b c BD BC CD ∧ distinctPointsOnLine a d AD ∧ ¬(AD.intersectsLine BC) ∧ d.sameSide c AB → Triangle.area △ a:b:c = Triangle.area △ d:b:c",
+  "nl_statement": "Triangles which are on the same base and between the same parallels are equal to one another.  Let $ABC$ and $DBC$ be triangles on the same base $BC$, and between the same parallels $AD$ and $BC$. I say that triangle $ABC$ is equal to triangle $DBC$. <prf> Thus, triangle $ABC$ is equal to triangle $DBC$.Thus, triangles which are on the same base and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

@@ -1,0 +1,68 @@
+{
+  "id": "11",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ h : Point, h.onLine AB ∧ (|(c─h)| = |(a─b)|) ∧ (∠ a:h:c = ∟ ∨ ∠ b:h:c = ∟))",
+      "full_output": "theorem thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ h : Point, h.onLine AB ∧ (|(c─h)| = |(a─b)|) ∧ (∠ a:h:c = ∟ ∨ ∠ b:h:c = ∟) := by",
+      "probability": 0.2009016966073528,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.25095796585083,
+      "well_typed": true,
+      "token_counts": 83,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (exists CF : Line, c.onLine CF ∧ ((∠ a:c:b : ℝ) = ∟ ∨ (∠ b:c:a : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : exists CF : Line, c.onLine CF ∧ ((∠ a:c:b : ℝ) = ∟ ∨ (∠ b:c:a : ℝ) = ∟) := by",
+      "probability": 0.2001729610154177,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.25095796585083,
+      "well_typed": true,
+      "token_counts": 74,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ h : Point, h.onLine AB ∧ ∠ b:c:h = ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ h : Point, h.onLine AB ∧ ∠ b:c:h = ∟ := by",
+      "probability": 0.19991072503313248,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.25095796585083,
+      "well_typed": true,
+      "token_counts": 59,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (∃ h : Point, h.onLine AB ∧ ((∠ a:h:b : ℝ) = ∟ ∨ (∠ c:h:b : ℝ) = ∟ ∨ (∠ c:h:a : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : ∃ h : Point, h.onLine AB ∧ ((∠ a:h:b : ℝ) = ∟ ∨ (∠ c:h:b : ℝ) = ∟ ∨ (∠ c:h:a : ℝ) = ∟) := by",
+      "probability": 0.19965163467563482,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.25095796585083,
+      "well_typed": true,
+      "token_counts": 87,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c.onLine AB)) → (exists h : Point, h.onLine AB ∧ (|(c─h)| > 0) ∧ (∠ a:c:h = ∟ ∨ ∠ b:c:h = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c.onLine AB) : exists h : Point, h.onLine AB ∧ (|(c─h)| > 0) ∧ (∠ a:c:h = ∟ ∨ ∠ b:c:h = ∟) := by",
+      "probability": 0.19936298266846217,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.25095796585083,
+      "well_typed": true,
+      "token_counts": 79,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB : Line), distinctPointsOnLine a b AB ∧ between a c b → exists f : Point, ¬(f.onLine AB) ∧ (∠ a:c:f = ∟)",
+  "nl_statement": "To draw a straight-line at right-angles to a given straight-line from a given point on it. Let $AB$ be the given straight-line, and $C$ the given point on it. So it is required to draw a straight-line from the point $C$ at right-angles to the straight-line $AB$.  <prf> Thus, the straight-line $CF$ has been drawn at right-angles to the given straight-line $AB$ from the given point $C$ on it.",
+  "lean4_header": ""
+}

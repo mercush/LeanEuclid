@@ -1,0 +1,78 @@
+{
+  "id": "4",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line) (AC : Line) (DF : Line) (DE : Line) (BC : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (∠ a:b:c = ∠ d:e:f)) → (|(b─c)| = |(e─f)| ∧ Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f) ∧ ∠ b:c:a = ∠ e:f:d ∧ ∠ a:c:b = ∠ d:f:e)",
+      "full_output": "theorem sas_congruence (a b c d e f : Point) (AB CD EF AC DF DE BC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : ∠ a:b:c = ∠ d:e:f) :\n  |(b─c)| = |(e─f)| ∧ Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f) ∧ ∠ b:c:a = ∠ e:f:d ∧ ∠ a:c:b = ∠ d:f:e := by",
+      "probability": 2.2830016570640923e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.621761560440063,
+      "well_typed": false,
+      "token_counts": 168,
+      "formalization_check": false,
+      "original_probability": 0.20092986653616912,
+      "roundtrip_score": -1510.0
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (F : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((Segment.endpoints AB) ∧ (Segment.endpoints AC) ∧ (Segment.endpoints DE) ∧ (Segment.endpoints DF) ∧ (|(A─B)| = |(D─E)|) ∧ (|(A─C)| = |(D─F)|) ∧ (∠ A:B:C =∠ D:E:F)) → (Triangle.congruent △ A:B:C △ D:E:F)",
+      "full_output": "theorem SAS_congruence (A B C D E F : Point) (AB BC AC DE EF DF : Line)\n  (h1 : Segment.endpoints AB)\n  (h2 : Segment.endpoints AC)\n  (h3 : Segment.endpoints DE)\n  (h4 : Segment.endpoints DF)\n  (h5 : |(A─B)| = |(D─E)|)\n  (h6 : |(A─C)| = |(D─F)|)\n  (h7 :∠ A:B:C =∠ D:E:F)\n  : Triangle.congruent △ A:B:C △ D:E:F := by",
+      "probability": 2.1307520089993947e-18,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.621761560440063,
+      "well_typed": false,
+      "token_counts": 135,
+      "formalization_check": false,
+      "original_probability": 0.20040365257127493,
+      "roundtrip_score": -1540.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (DF : Line) (EF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (∠ a:b:c = ∠ d:e:f)) → (( (|(b─c)| = |(e─f)|)\n    ∧ (Triangle.congruent △ a:b:c △ d:e:f)\n    ∧ (∠ b:c:a = ∠ e:f:d)\n    ∧ (∠ a:c:b = ∠ d:f:e)))",
+      "full_output": "theorem SAS_congruence (a b c d e f : Point) (AB BC AC DE DF EF : Line)\n(h1 : formTriangle a b c AB BC AC)\n(h2 : formTriangle d e f DE EF DF)\n(h3 : |(a─b)| = |(d─e)|)\n(h4 : |(a─c)| = |(d─f)|)\n(h5 : ∠ a:b:c = ∠ d:e:f) :\n( (|(b─c)| = |(e─f)|)\n    ∧ (Triangle.congruent △ a:b:c △ d:e:f)\n    ∧ (∠ b:c:a = ∠ e:f:d)\n    ∧ (∠ a:c:b = ∠ d:f:e))\n    := by",
+      "probability": 0.5002283830333825,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.621761560440063,
+      "well_typed": false,
+      "token_counts": 162,
+      "formalization_check": false,
+      "original_probability": 0.1998765202805846,
+      "roundtrip_score": -1500.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (DF : Line) (EF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE DF EF) ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (∠ a:b:c = ∠ d:e:f)) → ((|(b─c)| = |(e─f)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (∠ a:c:b = ∠ d:f:e))",
+      "full_output": "theorem sas_congruence (a b c d e f : Point) (AB BC AC DE DF EF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE DF EF) (h3 : |(a─b)| = |(d─e)|) (h4 : |(a─c)| = |(d─f)|) (h5 : ∠ a:b:c = ∠ d:e:f) : (|(b─c)| = |(e─f)|) ∧ (Triangle.area △ a:b:c = Triangle.area △ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (∠ a:c:b = ∠ d:f:e) := by",
+      "probability": 0.4997487869501414,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.621761560440063,
+      "well_typed": true,
+      "token_counts": 164,
+      "formalization_check": false,
+      "original_probability": 0.19968488781929103,
+      "roundtrip_score": -1500.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (a' : Point) (b' : Point) (c' : Point), ((Triangle) ∧ (formTriangle a b c b', h2 : formTriangle a' b' c' b') ∧ (|(a─b)| = |(a'─b')|) ∧ (|(b─c)| = |(b'─c')|) ∧ (∠ a:b:c = ∠ a':b':c')) → (Triangle.congruent T1 T2)",
+      "full_output": "theorem Triangle.congruent_SAS (T1 T2 : Triangle) (a b c a' b' c' : Point) (h1 : formTriangle a b c b', h2 : formTriangle a' b' c' b') (h3 : |(a─b)| = |(a'─b')|) (h4 : |(b─c)| = |(b'─c')|) (h5 : ∠ a:b:c = ∠ a':b':c') : Triangle.congruent T1 T2 := by",
+      "probability": 8.993532798468892e-36,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.621761560440063,
+      "well_typed": false,
+      "token_counts": 121,
+      "formalization_check": false,
+      "original_probability": 0.1991050727926804,
+      "roundtrip_score": -1580.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ (∠ b:a:c = ∠ e:d:f) → |(b─c)| = |(e─f)| ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ a:c:b = ∠ d:f:e)",
+  "nl_statement": "If two triangles have two  sides equal to two sides, respectively, and have the angle(s) enclosed by the equal straight-lines equal, then they will also have the base equal to the base, and the triangle will be equal to the triangle, and the remaining angles subtended by the equal sides will be equal to the corresponding remaining angles. Let $ABC$ and $DEF$ be  two triangles having the two sides $AB$ and $AC$ equal to the two sides $DE$ and $DF$, respectively. (That is) $AB$ to $DE$, and $AC$ to $DF$. And (let) the angle $BAC$ (be) equal to the angle $EDF$.  <prf>  Thus, the base $BC$ will coincide with $EF$, and will be equal to it [C.N.~4]. So the whole triangle $ABC$ will coincide with the whole triangle $DEF$, and will be equal to it [C.N.~4]. And the remaining angles will coincide with the remaining angles, and  will be equal to them [C.N.~4]. (That is) $ABC$ to $DEF$, and $ACB$ to $DFE$ [C.N.~4]. Thus, if two triangles have two  sides equal to two sides, respectively, and have the angle(s) enclosed by the equal straight-line equal, then they will also have the base equal to the base, and the triangle will be equal to the triangle,  and the remaining angles subtended by the equal sides will be equal to the corresponding remaining angles. .",
+  "lean4_header": ""
+}

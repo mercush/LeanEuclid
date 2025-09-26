@@ -1,0 +1,78 @@
+{
+  "id": "23",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (DC : Line), ((distinctPointsOnLine a b AB) ∧ (a ≠ c) ∧ (∠ d₁:a:d₂ = ∟) ∧ (∠ d₁:a:d₂ = ∠ c:a:b)) → (∃ (f g h : Point) (FG FE : Line), formRectilinearAngle f a g FG FE ∧ ∠ f:a:g = ∠ d₁:a:d₂)",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ : Point) (AB DC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : a ≠ c) (h3 : ∠ d₁:a:d₂ = ∟) (h4 : ∠ d₁:a:d₂ = ∠ c:a:b): ∃ (f g h : Point) (FG FE : Line), formRectilinearAngle f a g FG FE ∧ ∠ f:a:g = ∠ d₁:a:d₂ := by",
+      "probability": 0.0018298751436733925,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.05838680267334,
+      "well_typed": false,
+      "token_counts": 116,
+      "formalization_check": false,
+      "original_probability": 0.33526954480376836,
+      "roundtrip_score": -217.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (p : Point) (q : Point) (AB : Line) (DC : Line) (EG : Line), ((distinctPointsOnLine a b AB) ∧ (formRectilinearAngle c d e DC EG) ∧ (a ≠ c)) → (∃ (f g : Point) (FG : Line), formRectilinearAngle a f g FG AB ∧ ∠ a:f:g = ∠ c:d:e)",
+      "full_output": "theorem construct_rectilinear_angle (a b c d e f g p q : Point) (AB DC EG : Line) (h1 : distinctPointsOnLine a b AB) (h2 : formRectilinearAngle c d e DC EG) (h3 : a ≠ c) : ∃ (f g : Point) (FG : Line), formRectilinearAngle a f g FG AB ∧ ∠ a:f:g = ∠ c:d:e := by",
+      "probability": 0.2709035134985037,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.05838680267334,
+      "well_typed": false,
+      "token_counts": 96,
+      "formalization_check": false,
+      "original_probability": 0.33443742819259253,
+      "roundtrip_score": -212.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (CE : Line), ((formRectilinearAngle d c e CD CE) ∧ (distinctPointsOnLine a b AB) ∧ (a ≠ c)) → (∃ fag : Point, ∃ lineFAG : Line, formRectilinearAngle fag a g lineFAG lineFAG ∧ ∠ fag:a:g = ∠ d:c:e)",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD CE : Line) (h1 : formRectilinearAngle d c e CD CE) (h2 : distinctPointsOnLine a b AB) (h3 : a ≠ c) : ∃ fag : Point, ∃ lineFAG : Line, formRectilinearAngle fag a g lineFAG lineFAG ∧ ∠ fag:a:g = ∠ d:c:e := by",
+      "probability": 0.7272666113578177,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.05838680267334,
+      "well_typed": false,
+      "token_counts": 102,
+      "formalization_check": false,
+      "original_probability": 0.33029302700363916,
+      "roundtrip_score": -211.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (i : Point) (j : Point) (AB : Line) (DC : Line) (DQ : Line) (CE : Line) (QG : Line) (AG : Line), ((Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c DC) ∧ (Point.onLine d DC) ∧ (Point.onLine e DC) ∧ (Point.onLine f DC) ∧ (formRectilinearAngle a b c AB DC) ∧ (formRectilinearAngle d e f DC DQ) ∧ (Point.onLine g DQ) ∧ (Point.onLine h DQ) ∧ (Point.onLine i DQ) ∧ (Point.onLine j DQ) ∧ (formTriangle a b c AB BC AC)) → ()",
+      "full_output": "theorem example_thm (a b c d e f g h i j : Point) (AB DC DQ CE QG AG : Line) \n  (h1 : Point.onLine a AB) \n  (h2 : Point.onLine b AB) \n  (h3 : Point.onLine c DC) \n  (h4 : Point.onLine d DC) \n  (h5 : Point.onLine e DC) \n  (h6 : Point.onLine f DC) \n  (h7 : formRectilinearAngle a b c AB DC) \n  (h8 : formRectilinearAngle d e f DC DQ) \n  (h9 : Point.onLine g DQ) \n  (h10 : Point.onLine h DQ) \n  (h11 : Point.onLine i DQ) \n  (h12 : Point.onLine j DQ) \n  (h13 : formTriangle a b c AB BC AC)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.05838680267334,
+      "well_typed": false,
+      "token_counts": 202,
+      "formalization_check": false,
+      "original_probability": 0.0,
+      "roundtrip_score": -217.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (i : Point) (j : Point) (k : Point) (l : Point) (m : Point) (n : Point) (o : Point) (p : Point) (q : Point) (r : Point) (s : Point) (t : Point) (u : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (formRectilinearAngle d c e AB o p AB q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z : Line)) → ()",
+      "full_output": "theorem example_thm (a b c d e f g h i j k l m n o p q r s t u : Point) (AB : Line) (h₁ : distinctPointsOnLine a b AB) (h₂ : formRectilinearAngle d c e AB o p AB q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z : Line)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 20.05838680267334,
+      "well_typed": false,
+      "token_counts": 100,
+      "formalization_check": false,
+      "original_probability": 0.0,
+      "roundtrip_score": -212.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB CD CE : Line), distinctPointsOnLine a b AB ∧ formRectilinearAngle d c e CD CE → ∃ f : Point, f ≠ a ∧ (∠ f:a:b = ∠ d:c:e)",
+  "nl_statement": "To construct a rectilinear angle equal to a given rectilinear angle at a (given) point on a given straight-line.Let $AB$ be the given straight-line,  $A$ the (given) point on it, and  $DCE$ the given rectilinear angle.So it is required to construct a rectilinear angle equal to the given rectilinear angle $DCE$ at the (given) point $A$ on the given straight-line $AB$.  <prf> Thus, the rectilinear angle $FAG$,  equal to the  given rectilinear angle $DCE$, has been constructed at the (given) point $A$ on the given straight-line $AB$.",
+  "lean4_header": ""
+}

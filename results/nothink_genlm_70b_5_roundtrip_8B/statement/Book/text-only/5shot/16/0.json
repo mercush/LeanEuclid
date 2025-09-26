@@ -1,0 +1,78 @@
+{
+  "id": "16",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d)) → (∠ a:c:d > ∠ a:b:c ∧ ∠ a:c:d > ∠ b:c:a)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : between b c d) : ∠ a:c:d > ∠ a:b:c ∧ ∠ a:c:d > ∠ b:c:a := by",
+      "probability": 0.24920157255202002,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 9.38227891921997,
+      "well_typed": true,
+      "token_counts": 67,
+      "formalization_check": false,
+      "original_probability": 0.2003712586032891,
+      "roundtrip_score": -350.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d)) → (∠ a:c:d > ∠ b:c:a ∧ ∠ a:c:d > ∠ c:a:b)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : between b c d) : ∠ a:c:d > ∠ b:c:a ∧ ∠ a:c:d > ∠ c:a:b := by",
+      "probability": 0.24913377430503714,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 9.38227891921997,
+      "well_typed": true,
+      "token_counts": 67,
+      "formalization_check": false,
+      "original_probability": 0.2003167452230566,
+      "roundtrip_score": -350.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d)) → (∠ a:c:d > ∠ a:b:c ∧ ∠ a:c:d > ∠ c:a:b)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : between b c d) : ∠ a:c:d > ∠ a:b:c ∧ ∠ a:c:d > ∠ c:a:b := by",
+      "probability": 0.24898206724108146,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 9.38227891921997,
+      "well_typed": true,
+      "token_counts": 67,
+      "formalization_check": true,
+      "original_probability": 0.20019476471132494,
+      "roundtrip_score": -350.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d)) → ((∠ a:c:d > ∠ b:a:c) ∧ (∠ a:c:d > ∠ a:b:c))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : between b c d) : (∠ a:c:d > ∠ b:a:c) ∧ (∠ a:c:d > ∠ a:b:c) := by",
+      "probability": 0.00454678365733776,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 9.38227891921997,
+      "well_typed": true,
+      "token_counts": 69,
+      "formalization_check": true,
+      "original_probability": 0.19960290861472077,
+      "roundtrip_score": -354.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((between b c d))) → (∠ a:c:d > ∠ c:a:b ∧ ∠ a:c:d > ∠ a:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (between b c d)) : ∠ a:c:d > ∠ c:a:b ∧ ∠ a:c:d > ∠ a:b:c := by",
+      "probability": 0.24813580224454104,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 9.38227891921997,
+      "well_typed": true,
+      "token_counts": 68,
+      "formalization_check": true,
+      "original_probability": 0.19951432284760856,
+      "roundtrip_score": -350.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC: Line), formTriangle a b c AB BC AC ∧ (between b c d) → (∠ a:c:d > ∠ c:b:a) ∧ (∠ a:c:d > ∠ b:a:c)",
+  "nl_statement": "For any triangle, when one of the sides is produced, the external angle is greater than each of the internal and opposite angles.Let $ABC$ be a triangle, and let one of its sides $BC$ have been produced to $D$. I say that the external angle $ACD$ is greater than each of the  internal and opposite angles, $CBA$ and $BAC$.  Let the (straight-line) $AC$ have been cut in half at (point) $E$ [Prop.~1.10]. <prf> Thus,  $ACD$ is greater than $BAE$. Similarly, by having cut $BC$ in half,  it can  be shown (that) $BCG$ ---that is to say, $ACD$---(is) also greater than $ABC$. Thus, for any triangle, when one of the sides is produced, the external angle is greater than each of the internal and opposite angles.",
+  "lean4_header": ""
+}

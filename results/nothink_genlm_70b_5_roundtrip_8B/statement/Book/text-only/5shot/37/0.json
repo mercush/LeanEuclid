@@ -1,0 +1,78 @@
+{
+  "id": "37",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c BC AB AC) ∧ (Line.intersectsLine AB AC) ∧ (Line.intersectsLine BC AC) ∧ (Line.intersectsLine AB BC) ∧ (Line.intersectsLine BC AC) ∧ (Line.intersectsLine AB BC)) → (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d b c))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c BC AB AC) (h3 : Line.intersectsLine AB AC) (h4 : Line.intersectsLine BC AC) (h5 : Line.intersectsLine AB BC) (h6 : Line.intersectsLine BC AC) (h7 : Line.intersectsLine AB BC) : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d b c) := by",
+      "probability": 0.4228455765984368,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.837682962417603,
+      "well_typed": false,
+      "token_counts": 123,
+      "formalization_check": false,
+      "original_probability": 0.3338022096724873,
+      "roundtrip_score": -152.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c BC AB AC) ∧ (Line.intersectsLine AB AC) ∧ (Line.intersectsLine BC AC) ∧ (Line.intersectsLine AB BC) ∧ (Line.intersectsLine AC BC)) → (Triangle.area △ a:b:c = Triangle.area △ d:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c BC AB AC) (h3 : Line.intersectsLine AB AC) (h4 : Line.intersectsLine BC AC) (h5 : Line.intersectsLine AB BC) (h6 : Line.intersectsLine AC BC) : Triangle.area △ a:b:c = Triangle.area △ d:b:c := by",
+      "probability": 0.15524512406005705,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.837682962417603,
+      "well_typed": true,
+      "token_counts": 105,
+      "formalization_check": false,
+      "original_probability": 0.3331346954395514,
+      "roundtrip_score": -153.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d b c BC AB AC) ∧ (Line.intersectsLine AB AC) ∧ (Line.intersectsLine BC AC) ∧ (Line.intersectsLine AB BC) ∧ (Line.intersectsLine BC AB) ∧ (Line.intersectsLine AC AB) ∧ (Line.intersectsLine AC BC) ∧ (Line.intersectsLine BC AC) ∧ (Line.intersectsLine AB BC)) → (Triangle.area △ a:b:c = Triangle.area △ d:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d b c BC AB AC) (h3 : Line.intersectsLine AB AC) (h4 : Line.intersectsLine BC AC) (h5 : Line.intersectsLine AB BC) (h6 : Line.intersectsLine BC AB) (h7 : Line.intersectsLine AC AB) (h8 : Line.intersectsLine AC BC) (h9 : Line.intersectsLine BC AC) (h10 : Line.intersectsLine AB BC) : Triangle.area △ a:b:c = Triangle.area △ d:b:c := by",
+      "probability": 0.4219092993413281,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.837682962417603,
+      "well_typed": true,
+      "token_counts": 149,
+      "formalization_check": false,
+      "original_probability": 0.3330630948878314,
+      "roundtrip_score": -152.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (CD : Line) (DA : Line), ((formTriangle a b c AB BC DA) ∧ (formTriangle d b c CD BC DA)) → ()",
+      "full_output": "theorem triangles_on_same_base_between_same_parallels_are_equal (a b c d : Point) (AB BC CD DA : Line) (h1 : formTriangle a b c AB BC DA) (h2 : formTriangle d b c CD BC DA) (h .: Point.onLine a (Line.AD := DA) ∧ Point.onLine d (Line.AD := DA) ∧ ¬Line.intersectsLine DA BC ∧ ¬Line.intersectsLine AB CD ∧ Line.intersectsLine BC CD ∧ Line.intersectsLine AB CD ∧ Point.onLine a (Line.AD := DA) ∧ Point.onLine d (Line.AD := DA) ∧ ¬Line.intersectsLine DA BC ∧ ¬Line.intersectsLine AB CD ∧ Line.intersectsLine BC CD ∧ Line.intersectsLine AB CD ∧ Triangle.area △ a:b:c = Triangle.area △ d:b:c ∧ |(a─b)| = |(d─b)| ∧ |(c─b)| = |c─b|⟩ : Triangle.area △ a:b:c = Triangle.area △ d:b:c ∧ |(a─b)| = |(d─b)| ∧ |(c─b)| = |(c─b)| := by",
+      "probability": 1.647210204935752e-13,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.837682962417603,
+      "well_typed": false,
+      "token_counts": 246,
+      "formalization_check": false,
+      "original_probability": 1.300338555332202e-13,
+      "roundtrip_score": -152.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (BC : Line) (AD : Line), ((distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine a d AD) ∧ (¬(Line.intersectsLine BC AD)) ∧ (formTriangle a b c (Line.endpoints a b) (Line.endpoints b c) (Line.endpoints c a))) → ()",
+      "full_output": "theorem example_thm (a b c d : Point) (BC : Line) (AD : Line) (h1 : distinctPointsOnLine b c BC) (h2 : distinctPointsOnLine a d AD) (h3 : ¬(Line.intersectsLine BC AD)) (h4 : formTriangle a b c (Line.endpoints a b) (Line.endpoints b c) (Line.endpoints c a))",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.837682962417603,
+      "well_typed": false,
+      "token_counts": 89,
+      "formalization_check": false,
+      "original_probability": 0.0,
+      "roundtrip_score": -152.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD CD AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d b c BD BC CD ∧ distinctPointsOnLine a d AD ∧ ¬(AD.intersectsLine BC) ∧ d.sameSide c AB → Triangle.area △ a:b:c = Triangle.area △ d:b:c",
+  "nl_statement": "Triangles which are on the same base and between the same parallels are equal to one another.  Let $ABC$ and $DBC$ be triangles on the same base $BC$, and between the same parallels $AD$ and $BC$. I say that triangle $ABC$ is equal to triangle $DBC$. <prf> Thus, triangle $ABC$ is equal to triangle $DBC$.Thus, triangles which are on the same base and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

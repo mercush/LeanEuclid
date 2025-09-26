@@ -1,0 +1,68 @@
+{
+  "id": "22",
+  "formalizations": [
+    {
+      "formalization": "∀ (a₁ : Point) (a₂ : Point) (a₃ : Point) (AB : Line), ((distinctPointsOnLine a₁ a₂ AB) ∧ (distinctPointsOnLine a₂ a₃ AB) ∧ (distinctPointsOnLine a₃ a₁ AB) ∧ (|(a₁─a₂)| < |(a₂─a₃)| + |(a₃─a₁)|) ∧ (|(a₂─a₃)| < |(a₃─a₁)| + |(a₁─a₂)|) ∧ (|(a₃─a₁)| < |(a₁─a₂)| + |(a₂─a₃)|)) → ()",
+      "full_output": "theorem example_thm (a₁ a₂ a₃ : Point) (AB : Line) (h1 : distinctPointsOnLine a₁ a₂ AB) (h2 : distinctPointsOnLine a₂ a₃ AB) (h3 : distinctPointsOnLine a₃ a₁ AB) (h4 : |(a₁─a₂)| < |(a₂─a₃)| + |(a₃─a₁)|) (h5 : |(a₂─a₃)| < |(a₃─a₁)| + |(a₁─a₂)|) (h6 : |(a₃─a₁)| < |(a₁─a₂)| + |(a₂─a₃)|) : ∃ a₄ a₅ a₆ a₇ a₈ a₉ : Point, (|(a₄─a₅)| = |(a₁─a₂)|) ∧ (|(a₅─a₆)| = |(a₂─a₃)|) ∧ (|(a₆─a₇)| = |(a₃─a₁)|) ∧ (|(a₇─a₈",
+      "probability": 0.3269356860910642,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 29.090914487838745,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a₁ : Point) (a₂ : Point) (a₃ : Point) (AB : Line), ((distinctPointsOnLine a₁ a₂ AB) ∧ (distinctPointsOnLine a₂ a₃ AB) ∧ (distinctPointsOnLine a₁ a₃ AB)) → (∃ k f g : Point, between k f g ∧ between g k f ∧ between f g k)",
+      "full_output": "theorem example_thm (a₁ a₂ a₃ : Point) (AB : Line) (h1 : distinctPointsOnLine a₁ a₂ AB) (h2 : distinctPointsOnLine a₂ a₃ AB) (h3 : distinctPointsOnLine a₁ a₃ AB) : ∃ k f g : Point, between k f g ∧ between g k f ∧ between f g k := by",
+      "probability": 0.3265630903832864,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 29.090914487838745,
+      "well_typed": true,
+      "token_counts": 86,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (CA : Line), ((|(a─b)| > 0) ∧ (|(b─c)| > 0) ∧ (|(c─a)| > 0) ∧ (|(a─b)| + |(b─c)| > |(c─a)|) ∧ (|(a─b)| + |(c─a)| > |(b─c)|) ∧ (|(b─c)| + |(c─a)| > |(a─b)|)) → (∃ k f g : Point, (|(k─f)| = |(a─b)|) ∧ (|(f─g)| = |(b─c)|) ∧ (|(g─k)| = |(c─a)|))",
+      "full_output": "theorem triangle_construction (a b c : Point) (AB BC CA : Line) (h1 : |(a─b)| > 0) (h2 : |(b─c)| > 0) (h3 : |(c─a)| > 0) (h4 : |(a─b)| + |(b─c)| > |(c─a)|) (h5 : |(a─b)| + |(c─a)| > |(b─c)|) (h6 : |(b─c)| + |(c─a)| > |(a─b)|) : ∃ k f g : Point, (|(k─f)| = |(a─b)|) ∧ (|(f─g)| = |(b─c)|) ∧ (|(g─k)| = |(c─a)|) := by",
+      "probability": 0.3260794883090642,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 29.090914487838745,
+      "well_typed": false,
+      "token_counts": 190,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a₁ : Point) (a₂ : Point) (a₃ : Point) (AB : Line), ((distinctPointsOnLine a₁ a₂ AB) ∧ (distinctPointsOnLine a₂ a₃ AB) ∧ (distinctPointsOnLine a₁ a₃ AB) ∧ (|(a₁─a₂)| + |(a₂─a₃)| > |(a₁─a₃)|) ∧ (|(a₁─a₂)| + |(a₁─a₃)| > |(a₂─a₃)|) ∧ (|(a₂─a₃)| + |(a₁─a₃)| > |(a₁─a₂)|)) → ()",
+      "full_output": "theorem example_thm (a₁ a₂ a₃ : Point) (AB : Line) (h1 : distinctPointsOnLine a₁ a₂ AB) (h2 : distinctPointsOnLine a₂ a₃ AB) (h3 : distinctPointsOnLine a₁ a₃ AB) (h4 : |(a₁─a₂)| + |(a₂─a₃)| > |(a₁─a₃)|) (h5 : |(a₁─a₂)| + |(a₁─a₃)| > |(a₂─a₃)|) (h6 : |(a₂─a₃)| + |(a₁─a₃)| > |(a₁─a₂)|) : ∃ a a₁' a₂' a₃' : Point, |(a₁'─a₂')| = |(a₁─a₂)| ∧ |(a₂'─a₃')| = |(a₂─a₃)| ∧ |(a₃'─a₁')| = |(a₁─a₃)| ∧ formTriangle a₁' a₂' a₃' (AB biểu đạt.weight update) (AB",
+      "probability": 0.02042173521658515,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 29.090914487838745,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point), ((Triangle) ∧ (Triangle.congruent KFG KFG)) → (∃ K F G : Point, formTriangle K F G KFG KFG KFG ∧ |(K─F)| = a ∧ |(F─G)| = b ∧ |(G─K)| = c ∧ |(K─F)| + |(F─G)| > |(G─K)| ∧ |(K─F)| + |(G─K)| > |(F─G)| ∧ |(F─G)| + |(G─K)| > |(K─F)|)",
+      "full_output": "theorem example_thm (a b c : Point) (KFG : Triangle) (h1 : Triangle.congruent KFG KFG) : ∃ K F G : Point, formTriangle K F G KFG KFG KFG ∧ |(K─F)| = a ∧ |(F─G)| = b ∧ |(G─K)| = c ∧ |(K─F)| + |(F─G)| > |(G─K)| ∧ |(K─F)| + |(G─K)| > |(F─G)| ∧ |(F─G)| + |(G─K)| > |(K─F)| :=",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 29.090914487838745,
+      "well_typed": false,
+      "token_counts": 141,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a a' b b' c c' : Point) (A B C : Line), distinctPointsOnLine a a' A ∧ distinctPointsOnLine b b' B ∧ distinctPointsOnLine c c' C ∧ (|(a─a')| + |(b─b')| > |(c─c')|) ∧ (|(a─a')| + |(c─c')| > |(b─b')|) ∧ (|(b─b')| + |(c─c')| > |(a─a')|) → ∃ (k f g : Point), (|(f─k)| = |(a─a')|) ∧ (|(f─g)| = |(b─b')|) ∧ (|(k─g)| = |(c─c')|)",
+  "nl_statement": "To construct a triangle from three straight-lines which are equal to three given [straight-lines]. It is necessary for (the sum of) two (of the straight-lines) taken together in any (possible way) to be greater than the remaining (one), on account of the (fact that) in any triangle (the sum of) two sides taken together in any (possible way) is greater than the remaining (one) [Prop.~1.20].Let $A$, $B$, and $C$ be the three given straight-lines, of which let (the sum of) two taken together in any (possible way)  be greater than the remaining (one).(Thus), (the sum of) $A$ and $B$ (is greater) than $C$, (the sum of) $A$ and $C$ than $B$,  and also (the sum of) $B$ and $C$ than $A$.So it is required to construct a triangle  from (straight-lines) equal to $A$, $B$, and $C$.    <prf>  Thus,  the three straight-lines $KF$, $FG$, and $GK$ are equal to $A$, $B$, and $C$ (respectively).   Thus, the triangle $KFG$ has been constructed from the three straight-lines  $KF$, $FG$, and $GK$, which are equal to the three given straight-lines  $A$, $B$, and $C$ (respectively).(Which is) the very thing it was required  to do.",
+  "lean4_header": ""
+}

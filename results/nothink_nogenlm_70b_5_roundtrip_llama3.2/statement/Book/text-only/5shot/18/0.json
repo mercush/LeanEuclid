@@ -1,0 +1,78 @@
+{
+  "id": "18",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → ((∠ a:b:c : ℝ) > ∠ c:a:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : (∠ a:b:c : ℝ) > ∠ c:a:b := by",
+      "probability": 3.43322397332124e-06,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 8.91152548789978,
+      "well_typed": true,
+      "token_counts": 66,
+      "formalization_check": false,
+      "original_probability": 0.20037131618614046,
+      "roundtrip_score": -457.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → ((∠ a:b:c : ℝ) > (∠ b:c:a : ℝ))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : (∠ a:b:c : ℝ) > (∠ b:c:a : ℝ) := by",
+      "probability": 2.81499906496652e-07,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 8.91152548789978,
+      "well_typed": true,
+      "token_counts": 69,
+      "formalization_check": true,
+      "original_probability": 0.20014644207133267,
+      "roundtrip_score": -460.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ b:c:a > ∠ c:a:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : ∠ b:c:a > ∠ c:a:b := by",
+      "probability": 0.006193853127235798,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 8.91152548789978,
+      "well_typed": true,
+      "token_counts": 63,
+      "formalization_check": false,
+      "original_probability": 0.19993356186437178,
+      "roundtrip_score": -450.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ b:a:c > ∠ b:c:a)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : ∠ b:a:c > ∠ b:c:a := by",
+      "probability": 0.07540643949863657,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 8.91152548789978,
+      "well_typed": true,
+      "token_counts": 63,
+      "formalization_check": false,
+      "original_probability": 0.19980071152085196,
+      "roundtrip_score": -447.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ b:a:c > ∠ c:a:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : ∠ b:a:c > ∠ c:a:b := by",
+      "probability": 0.9183959926502527,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 8.91152548789978,
+      "well_typed": true,
+      "token_counts": 63,
+      "formalization_check": false,
+      "original_probability": 0.1997479683573031,
+      "roundtrip_score": -445.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─c)| > |(a─b)|) → (∠ a:b:c > ∠ b:c:a)",
+  "nl_statement": "In any triangle, the greater side subtends the greater angle. For let $ABC$ be a triangle having side $AC$ greater than $AB$. I say that angle $ABC$ is also greater than $BCA$.   <prf>  Thus, $ABC$ is much greater than  $ACB$.  Thus, in any triangle, the greater side subtends the greater angle. (Which is) the very thing  it was required to show.",
+  "lean4_header": ""
+}

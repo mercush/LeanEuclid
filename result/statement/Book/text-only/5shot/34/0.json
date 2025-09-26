@@ -1,0 +1,68 @@
+{
+  "id": "34",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → ()",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) : (|(a─b)| = |(c─d)|) ∧ (∠ a:b:c = ∠ c:d:a) ∧ ((|(a─c)|) / 2 = ((|(a─c)|)) / 2 := by",
+      "probability": 0.33445549685022136,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.496559858322144,
+      "well_typed": false,
+      "token_counts": 90,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (AC_ : Line) (DB_ : Line), ((formParallelogram a c d b AC DB AC_ DB_)) → (|(a─c)| = |(d─b)| ∧ Triangle.congruent (Triangle.ofPoints a c b) (Triangle.ofPoints d b c))",
+      "full_output": "theorem parallelogrammic_figure (a c d b : Point) (AC DB AC_ DB_ : Line) (h : formParallelogram a c d b AC DB AC_ DB_) : |(a─c)| = |(d─b)| ∧ Triangle.congruent (Triangle.ofPoints a c b) (Triangle.ofPoints d b c) := by",
+      "probability": 0.3330350380166833,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.496559858322144,
+      "well_typed": false,
+      "token_counts": 79,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → (|(a─b)| = |(c─d)| ∧ |(b─c)| = |(a─d)| ∧ ∠ a:b:c = ∠ b:c:d ∧ ∠ b:c:d = ∠ a:d:c ∧ ∠ a:d:c = ∠ b:a:d ∧ ∠ b:a:d = ∠ c:b:a ∧ ∠ c:b:a = ∠ a:c:d)",
+      "full_output": "theorem parallelogram_properties (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) : |(a─b)| = |(c─d)| ∧ |(b─c)| = |(a─d)| ∧ ∠ a:b:c = ∠ b:c:d ∧ ∠ b:c:d = ∠ a:d:c ∧ ∠ a:d:c = ∠ b:a:d ∧ ∠ b:a:d = ∠ c:b:a ∧ ∠ c:b:a = ∠ a:c:d := by",
+      "probability": 0.33250946513308854,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.496559858322144,
+      "well_typed": true,
+      "token_counts": 129,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (AC : Line) (DB : Line) (BC : Line), ((Triangle)) → ()",
+      "full_output": "theorem parallelogram_opposite_sides_angles_equal (a c d b : Point) (AC DB BC : Line) (ACD DB ACBD : Triangle) (h1 : formParallelogram a c d b AC DB ACBD DBDC ??, h2 : Triangle.congruent ACD DB ACBD ??, h3 : Line.intersectsCircle ACDB BC ??, h4 : Point.onLine a BC ??, h5 : Point.onLine c BC ??, h6 : Line.onCircle ACDB BC ??, h7 : Triangle.onCircle ACDB ACBD ??, h8 : Point.onCircle ACDB d ??, h9 : Point.onCircle ACDB b ??, h10 : Point.onCircle ACDB A ??, h11 : Point.onCircle ACDB C ??, h12 : Point.onCircle ACDB D ??, h13 : Point.onCircle ACDB B ??, h14 : Line.onCircle ACDB AC ??, h15 : Line.onCircle ACDB DB ??, h16 : Line.onCircle ACDB ACBD ??, h17 : Line.onCircle ACDB DBDC ??, h18 : Triangle.onCircle ACDB ACBD ??, h19",
+      "probability": 6.844580410975631e-15,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.496559858322144,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (c : Point) (d : Point) (b : Point) (ACD : Line) (B : Line) (AC : Line) (DB : Line) (BC : Line), ((formParallelogram a c d b ACD B AC DB BC)) → ()",
+      "full_output": "theorem example_thm (a c d b : Point) (ACD B AC DB BC : Line) (h1 : formParallelogram a c d b ACD B AC DB BC)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 23.496559858322144,
+      "well_typed": false,
+      "token_counts": 42,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB CD AC BD BC : Line), formParallelogram a b c d AB CD AC BD ∧ distinctPointsOnLine b c BC → |(a─b)| = |(c─d)| ∧ |(a─c)| = |(b─d)| ∧ ∠ a:b:d = ∠ a:c:d ∧ ∠ b:a:c = ∠ c:d:b ∧ Triangle.area △ a:b:c = Triangle.area △ d:c:b",
+  "nl_statement": "In parallelogrammic figures the opposite sides and angles are equal to one another, and a diagonal cuts them in half.Let $ACDB$ be a parallelogrammic figure, and $BC$ its diagonal. I say that for parallelogram $ACDB$, the opposite sides and angles are equal to one another, and the diagonal $BC$ cuts it in half. <prf> Thus, the base $AC$ (is) also equal to $DB$, and triangle $ABC$ is equal to triangle $BCD$ [Prop.~1.4].Thus, the diagonal $BC$ cuts the parallelogram $ACDB$ in half.",
+  "lean4_header": ""
+}

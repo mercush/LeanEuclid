@@ -1,0 +1,68 @@
+{
+  "id": "21",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁D₂ : Line) (D₂D₁ : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine d₁ AB) ∧ (Point.onLine d₂ AB) ∧ (Point.onLine d₁ BC) ∧ (Point.onLine d₂ BC) ∧ (d₁ ≠ d₂)) → (|(d₁─d₂)| < |(a─b)| + |(a─c)| ∧ ∠ d₁:d₂:a > ∠ a:b:c)",
+      "full_output": "theorem example_thm (a b c d₁ d₂ : Point) (AB BC AC D₁D₂ D₂D₁ : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine d₁ AB) (h3 : Point.onLine d₂ AB) (h4 : Point.onLine d₁ BC) (h5 : Point.onLine d₂ BC) (h6 : d₁ ≠ d₂) : |(d₁─d₂)| < |(a─b)| + |(a─c)| ∧ ∠ d₁:d₂:a > ∠ a:b:c := by",
+      "probability": 0.20048093666537758,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 28.3933584690094,
+      "well_typed": false,
+      "token_counts": 136,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (DC : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d) ∧ (twoLinesIntersectAtPoint AB BC b) ∧ (twoLinesIntersectAtPoint BC BD c) ∧ (twoLinesIntersectAtPoint BC DC d)) → (|(b─d)| + |(c─d)| < |(a─b)| + |(a─c)| ∧ ∟ < ∠ b:d:c)",
+      "full_output": "theorem thm (a b c d : Point) (AB BC AC BD DC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : between b c d) (h3 : twoLinesIntersectAtPoint AB BC b) (h4 : twoLinesIntersectAtPoint BC BD c) (h5 : twoLinesIntersectAtPoint BC DC d) : |(b─d)| + |(c─d)| < |(a─b)| + |(a─c)| ∧ ∟ < ∠ b:d:c := by",
+      "probability": 0.20019438392634645,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 28.3933584690094,
+      "well_typed": true,
+      "token_counts": 123,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (BC : Line) (AB : Line) (AC : Line), ((twoLinesIntersectAtPoint AB BC b) ∧ (formTriangle a b c AB BC AC) ∧ ((|(b─d₁)| < |(a─b)|)) ∧ ((|(d₂─c)| < |(a─c)|)) ∧ ((|(d₁─d₂)| < |(a─b)| + |(a─c)|)) ∧ ((|(d₁─d₂)| > |(b─c)|)) ∧ (∠ d₁:a:c > ∠ a:b:c) ∧ (∠ d₁:a:c > ∠ b:c:a) ∧ (∠ d₁:a:c = ∠ a:c:d₂)) → ()",
+      "full_output": "theorem example_thm (a b c d₁ d₂ : Point) (BC AB AC : Line) \n  (h1 : twoLinesIntersectAtPoint AB BC b) \n  (h2 : formTriangle a b c AB BC AC) \n  (h3 : (|(b─d₁)| < |(a─b)|)) \n  (h4 : (|(d₂─c)| < |(a─c)|)) \n  (h5 : (|(d₁─d₂)| < |(a─b)| + |(a─c)|)) \n  (h6 : (|(d₁─d₂)| > |(b─c)|)) \n  (h7 : ∠ d₁:a:c > ∠ a:b:c) \n  (h8 : ∠ d₁:a:c > ∠ b:c:a) \n  (h9 : ∠ d₁:a:c = ∠ a:c:d₂) : \n  ∃ h₁ h₂ : Point, \n    (|(b─h₁)| < |(a─b)|) ∧ \n    (|(h₁─h₂)| < |(a─b",
+      "probability": 0.19994888481474282,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 28.3933584690094,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line) (CD : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle b c d BC CD AC) ∧ (formTriangle c d b CD AB BC) ∧ (twoLinesIntersectAtPoint BC CD b) ∧ (twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint AC BC c)) → (|(b─d)| + |(c─d)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ a:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC CD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle b c d BC CD AC) (h3 : formTriangle c d b CD AB BC) (h4 : twoLinesIntersectAtPoint BC CD b) (h5 : twoLinesIntersectAtPoint AB CD a) (h6 : twoLinesIntersectAtPoint AC BC c) : |(b─d)| + |(c─d)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ a:b:c := by",
+      "probability": 0.1998759484134024,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 28.3933584690094,
+      "well_typed": true,
+      "token_counts": 143,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (BC : Line) (AB : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (twoLinesIntersectAtPoint BC AB b) ∧ (twoLinesIntersectAtPoint BC AC c)) → (|(b─d)| < |(a─b)| + |(a─c)| ∧ |(c─d)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ b:a:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (BC AB AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : twoLinesIntersectAtPoint BC AB b) (h3 : twoLinesIntersectAtPoint BC AC c) : |(b─d)| < |(a─b)| + |(a─c)| ∧ |(c─d)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ b:a:c := by",
+      "probability": 0.19949984618013084,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 28.3933584690094,
+      "well_typed": true,
+      "token_counts": 116,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD DC : Line), formTriangle a b c AB BC AC ∧ (a.sameSide d BC) ∧ (c.sameSide d AB) ∧ (b.sameSide d AC) ∧ distinctPointsOnLine b d BD ∧ distinctPointsOnLine d c DC → (|(b─d)| + |(d─c)| < |(b─a)| + |(a─c)|) ∧ (∠ b:d:c > ∠ b:a:c)",
+  "nl_statement": "If two internal straight-lines are constructed on one of the sides of a triangle, from its ends, the constructed (straight-lines) will be less than the two remaining  sides of the triangle, but will encompass a greater angle. For let the two internal straight-lines $BD$ and $DC$ have been constructed on one of the sides $BC$ of the triangle $ABC$, from its ends $B$ and $C$ (respectively). I say that  $BD$ and $DC$ are less than the (sum of the) two  remaining sides of the triangle $BA$ and $AC$, but encompass an angle $BDC$ greater than $BAC$.    <prf>  Thus, $BDC$ is much greater than $BAC$.Thus, if two internal straight-lines are constructed on one of the sides of a triangle, from its ends,  the constructed (straight-lines) are less than the two remaining  sides of the triangle, but  encompass a greater angle.",
+  "lean4_header": ""
+}

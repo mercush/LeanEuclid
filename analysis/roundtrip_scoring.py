@@ -20,17 +20,23 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 from LeanPotential.roundtrip import RoundTripPotential
 
 
-async def score_formalization(formalization_text: str, natural_language: str, temperature: float = 1.0) -> float:
+async def score_formalization(
+    formalization_text: str, natural_language: str, temperature: float = 1.0
+) -> float:
     """Score a single formalization using RoundTripPotential."""
     try:
         # Create RoundTripPotential instance
-        potential = RoundTripPotential(target_str=natural_language, formal_prefix="")
+        potential = RoundTripPotential(
+            target_str=natural_language, formal_prefix="", temperature=1.0
+        )
 
         # Create the theorem statement for evaluation
         formal_theorem = unreformat_theorem(formalization_text, "example_thm")
 
         # Get the roundtrip score using evaluate_roundtrip_probability directly
-        roundtrip_score = await potential.evaluate_roundtrip_probability(formalization_text)
+        roundtrip_score = await potential.evaluate_roundtrip_probability(
+            formalization_text
+        )
 
         # Apply temperature scaling to the roundtrip score
         if roundtrip_score != float("-inf") and temperature > 0:
@@ -44,7 +50,10 @@ async def score_formalization(formalization_text: str, natural_language: str, te
 
 
 async def process_json_file(
-    input_file: str, output_file: str, combination_method: str = "add", temperature: float = 1.0
+    input_file: str,
+    output_file: str,
+    combination_method: str = "add",
+    temperature: float = 1.0,
 ) -> bool:
     """Process a single JSON file and create output with updated probabilities."""
     try:
@@ -78,7 +87,9 @@ async def process_json_file(
                 )
 
                 # Convert original probability to log space
-                log_original_prob = math.log(original_prob) if original_prob > 0 else float("-inf")
+                log_original_prob = (
+                    math.log(original_prob) if original_prob > 0 else float("-inf")
+                )
 
                 # Add log probabilities for cycle consistency
                 combined_log_prob = log_original_prob + roundtrip_score
@@ -98,7 +109,9 @@ async def process_json_file(
         # Normalize probabilities using log-sum-exp for numerical stability
         if log_probs and not all(p == float("-inf") for p in log_probs):
             max_log_prob = max(p for p in log_probs if p != float("-inf"))
-            log_sum = math.log(sum(math.exp(p - max_log_prob) for p in log_probs if p != float("-inf")))
+            log_sum = math.log(
+                sum(math.exp(p - max_log_prob) for p in log_probs if p != float("-inf"))
+            )
             log_normalizer = max_log_prob + log_sum
 
             # Update normalized probabilities
@@ -119,7 +132,9 @@ async def process_json_file(
             # All probabilities are -inf, keep original probabilities
             for i, formalization_data in enumerate(formalizations):
                 print(f"  {i + 1}: All scores -inf, keeping original probability")
-                formalization_data["probability"] = formalization_data["original_probability"]
+                formalization_data["probability"] = formalization_data[
+                    "original_probability"
+                ]
 
         # Create output directory
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -136,7 +151,10 @@ async def process_json_file(
 
 
 async def process_results_directory(
-    input_dir: str, output_dir: str, combination_method: str = "add", temperature: float = 1.0
+    input_dir: str,
+    output_dir: str,
+    combination_method: str = "add",
+    temperature: float = 1.0,
 ) -> None:
     """Process all JSON files in a results directory."""
 
@@ -158,7 +176,9 @@ async def process_results_directory(
     # Process each file
     for input_file, output_file in tqdm.tqdm(json_files, desc="Processing files"):
         print(f"\nProcessing: {input_file}")
-        success = await process_json_file(input_file, output_file, combination_method, temperature)
+        success = await process_json_file(
+            input_file, output_file, combination_method, temperature
+        )
 
         if success:
             successful += 1
@@ -207,10 +227,11 @@ def main():
 
     # Run the async processing
     asyncio.run(
-        process_results_directory(args.input_dir, args.output_dir, args.combination, args.temperature)
+        process_results_directory(
+            args.input_dir, args.output_dir, args.combination, args.temperature
+        )
     )
 
 
 if __name__ == "__main__":
     main()
-

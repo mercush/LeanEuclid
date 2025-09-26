@@ -1,0 +1,68 @@
+{
+  "id": "18",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → ((∠ b:a:c : ℝ) > ∠ c:a:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : (∠ b:a:c : ℝ) > ∠ c:a:b := by",
+      "probability": 0.20027812918877128,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 9.361355304718018,
+      "well_typed": true,
+      "token_counts": 66,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ b:a:c > ∠ c:a:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : ∠ b:a:c > ∠ c:a:b := by",
+      "probability": 0.20005945727303637,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 9.361355304718018,
+      "well_typed": true,
+      "token_counts": 63,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(c─a)| > |(a─b)|)) → (∠ b:c:a > ∠ a:c:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(c─a)| > |(a─b)|) : ∠ b:c:a > ∠ a:c:b := by",
+      "probability": 0.200024421140149,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 9.361355304718018,
+      "well_typed": true,
+      "token_counts": 63,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → ((∠ b:c:a : ℝ) > (∠ a:c:b : ℝ))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : (∠ b:c:a : ℝ) > (∠ a:c:b : ℝ) := by",
+      "probability": 0.19985358363146663,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 9.361355304718018,
+      "well_typed": true,
+      "token_counts": 69,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → ((∠ b:c:a : ℝ) > ∠ a:c:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : (∠ b:c:a : ℝ) > ∠ a:c:b := by",
+      "probability": 0.19978440876657674,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 9.361355304718018,
+      "well_typed": true,
+      "token_counts": 66,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─c)| > |(a─b)|) → (∠ a:b:c > ∠ b:c:a)",
+  "nl_statement": "In any triangle, the greater side subtends the greater angle. For let $ABC$ be a triangle having side $AC$ greater than $AB$. I say that angle $ABC$ is also greater than $BCA$.   <prf>  Thus, $ABC$ is much greater than  $ACB$.  Thus, in any triangle, the greater side subtends the greater angle. (Which is) the very thing  it was required to show.",
+  "lean4_header": ""
+}

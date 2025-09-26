@@ -1,0 +1,78 @@
+{
+  "id": "15",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint CD AB a)) → (∠ a:b:c = ∠ a:d:c ∧ ∠ a:c:d = ∠ a:b:d)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD a) (h2 : twoLinesIntersectAtPoint CD AB a) : ∠ a:b:c = ∠ a:d:c ∧ ∠ a:c:d = ∠ a:b:d := by",
+      "probability": 2.0738384126082743e-09,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 11.212523698806763,
+      "well_typed": true,
+      "token_counts": 72,
+      "formalization_check": false,
+      "original_probability": 0.20080601112543953,
+      "roundtrip_score": -765.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint AB CD b)) → (∠ a:b:c = ∠ c:b:d)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD a) (h2 : twoLinesIntersectAtPoint AB CD b) : ∠ a:b:c = ∠ c:b:d := by",
+      "probability": 2.0660648620200846e-09,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 11.212523698806763,
+      "well_typed": true,
+      "token_counts": 60,
+      "formalization_check": false,
+      "original_probability": 0.2000533123247861,
+      "roundtrip_score": -765.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (twoLinesIntersectAtPoint AB CD c) ∧ (twoLinesIntersectAtPoint AB CD d)) → (∠ a:b:c = ∠ d:b:a ∧ ∠ c:b:a = ∠ d:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD a) (h2 : twoLinesIntersectAtPoint AB CD b) (h3 : twoLinesIntersectAtPoint AB CD c) (h4 : twoLinesIntersectAtPoint AB CD d) : ∠ a:b:c = ∠ d:b:a ∧ ∠ c:b:a = ∠ d:b:c := by",
+      "probability": 9.379294379157772e-14,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 11.212523698806763,
+      "well_typed": true,
+      "token_counts": 100,
+      "formalization_check": false,
+      "original_probability": 0.20003997000107515,
+      "roundtrip_score": -775.0
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD E)) → (∠ A:E:C = ∠ D:E:B ∧ ∠ C:E:B = ∠ A:E:D)",
+      "full_output": "theorem example_thm (A B C D E : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD E) : ∠ A:E:C = ∠ D:E:B ∧ ∠ C:E:B = ∠ A:E:D := by",
+      "probability": 0.9999996900416389,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 11.212523698806763,
+      "well_typed": true,
+      "token_counts": 59,
+      "formalization_check": false,
+      "original_probability": 0.19957770404530922,
+      "roundtrip_score": -745.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD e) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD)) → (∠ a:e:c = ∠ d:e:b ∧ ∠ c:e:b = ∠ a:e:d)",
+      "full_output": "theorem example_thm (a b c d e : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD e) (h2 : distinctPointsOnLine a b AB) (h3 : distinctPointsOnLine c d CD) : ∠ a:e:c = ∠ d:e:b ∧ ∠ c:e:b = ∠ a:e:d := by",
+      "probability": 3.0581838203354285e-07,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 11.212523698806763,
+      "well_typed": true,
+      "token_counts": 83,
+      "formalization_check": false,
+      "original_probability": 0.19952300250338992,
+      "roundtrip_score": -760.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB CD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ e.onLine AB ∧ e.onLine CD ∧ CD ≠ AB ∧ (between d e c) ∧ (between a e b) → (∠ a:e:c = ∠ d:e:b) ∧ (∠ c:e:b = ∠ a:e:d)",
+  "nl_statement": "If two straight-lines cut one another then they make the vertically opposite angles equal to one another.For let the two straight-lines $AB$ and $CD$ cut one another at the point $E$. I say that  angle $AEC$ is equal to (angle) $DEB$, and (angle) $CEB$ to (angle) $AED$. <prf>  Thus, the remainder $CEA$ is equal to the remainder $BED$ [C.N.~3]. Similarly, it can be shown that $CEB$ and $DEA$ are also equal.Thus, if two straight-lines cut one another then they make the vertically opposite angles equal to one another.",
+  "lean4_header": ""
+}

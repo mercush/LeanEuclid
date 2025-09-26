@@ -1,0 +1,32 @@
+{
+  "id": "5",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|) ∧ ((between b c d)) ∧ ((between a c e))) → (∠ b:a:c = ∠ c:a:b)",
+      "full_output": "theorem theorem_isosceles_base_angles_equal (a b c d e : Point) (AB BC AC : Line)\n  (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) (h3 : (between b c d)) (h4 : (between a c e)) : ∠ b:a:c = ∠ c:a:b := by",
+      "probability": 0.6000000000000001,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.741991996765137,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line) (BD : Line) (CE : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|) ∧ (formRectilinearAngle b d a BD AB) ∧ (formRectilinearAngle c e a CE AC) ∧ (∠ a:b:c = ∠ a:c:b)) → (∠ b:c:d = ∠ c:b:e)",
+      "full_output": "theorem isosceles_base_angles_equal (a b c d e : Point) (AB BC AC BD CE : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) (h3 : formRectilinearAngle b d a BD AB) (h4 : formRectilinearAngle c e a CE AC) (h5 : ∠ a:b:c = ∠ a:c:b) : ∠ b:c:d = ∠ c:b:e := by",
+      "probability": 0.4,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.741991996765137,
+      "well_typed": true,
+      "token_counts": 115,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─b)| = |(a─c)|) ∧ (between a b d) ∧ (between a c e) → (∠ a:b:c = ∠ a:c:b) ∧ (∠ c:b:d = ∠ b:c:e)",
+  "nl_statement": "For isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another. Let $ABC$ be an isosceles triangle having the side $AB$ equal to the side $AC$, and let the straight-lines $BD$ and $CE$ have been produced in a straight-line with $AB$ and $AC$ (respectively) [Post.~2]. I say that the angle $ABC$ is equal to $ACB$, and (angle) $CBD$  to $BCE$.  <prf> Therefore, since the whole angle $ABG$ was shown (to be) equal to the whole angle $ACF$, within which $CBG$ is equal to $BCF$, the remainder $ABC$ is thus equal to the remainder $ACB$ [C.N.~3]. And they are at the base of triangle $ABC$. And $FBC$ was also shown (to be) equal to $GCB$. And they are under the base. Thus, for isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another.",
+  "lean4_header": ""
+}

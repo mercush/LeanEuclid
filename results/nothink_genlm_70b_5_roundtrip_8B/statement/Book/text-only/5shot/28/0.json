@@ -1,0 +1,64 @@
+{
+  "id": "28",
+  "formalizations": [
+    {
+      "formalization": "∀ (E : Point) (F : Point) (G : Point) (H : Point) (D : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine E F EF) ∧ (distinctPointsOnLine G H CD) ∧ (twoLinesIntersectAtPoint AB EF G) ∧ (twoLinesIntersectAtPoint CD EF H) ∧ (∠ E:G:F = ∠ G:H:D ∧ (|(E─G)| / |(G─H)|) = (|(E─F)| / |(H─D)|))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem prop1_27 (E F G H D : Point) (AB CD EF : Line) (h1 : distinctPointsOnLine E F EF) (h2 : distinctPointsOnLine G H CD) (h3 : twoLinesIntersectAtPoint AB EF G) (h4 : twoLinesIntersectAtPoint CD EF H) (h5 : ∠ E:G:F = ∠ G:H:D ∧ (|(E─G)| / |(G─H)|) = (|(E─F)| / |(H─D)|)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.034056210009422425,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.316065788269043,
+      "well_typed": true,
+      "token_counts": 130,
+      "formalization_check": false,
+      "original_probability": 0.3995734399085868,
+      "roundtrip_score": -306.0
+    },
+    {
+      "formalization": "∀ (E : Point) (F : Point) (G : Point) (H : Point) (D : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine E F EF) ∧ (distinctPointsOnLine G H CD) ∧ (twoLinesIntersectAtPoint AB EF G) ∧ (twoLinesIntersectAtPoint CD EF H) ∧ (∠ E:G:F = ∠ G:H:D ∧ (|(E─G)| / |(G─H)|) = (|(E─F)| / |(H─D)|)) ∧ (¬(AB.intersectsLine CD))) → ()",
+      "full_output": "theorem prop1_27 (E F G H D : Point) (AB CD EF : Line) (h1 : distinctPointsOnLine E F EF) (h2 : distinctPointsOnLine G H CD) (h3 : twoLinesIntersectAtPoint AB EF G) (h4 : twoLinesIntersectAtPoint CD EF H) (h5 : ∠ E:G:F = ∠ G:H:D ∧ (|(E─G)| / |(G─H)|) = (|(E─F)| / |(H─D)|)) (h6 : ¬(AB.intersectsLine CD))) : ABparallel CD := by",
+      "probability": 0.017074402986014522,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.316065788269043,
+      "well_typed": false,
+      "token_counts": 137,
+      "formalization_check": false,
+      "original_probability": 0.20032992319520096,
+      "roundtrip_score": -306.0
+    },
+    {
+      "formalization": "∀ (E : Point) (F : Point) (G : Point) (H : Point) (D : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine E F EF) ∧ (distinctPointsOnLine G H CD) ∧ (twoLinesIntersectAtPoint AB EF G) ∧ (twoLinesIntersectAtPoint CD EF H) ∧ (∠ E:G:F = ∠ G:H:D ∧ (|(E─G)| / |(G─H)|) = (|(E─F)| / |(H─D)|)) ∧ (∠ G:E:F + ∠ G:H:D = ∟ + ∟)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem prop1_27 (E F G H D : Point) (AB CD EF : Line) (h1 : distinctPointsOnLine E F EF) (h2 : distinctPointsOnLine G H CD) (h3 : twoLinesIntersectAtPoint AB EF G) (h4 : twoLinesIntersectAtPoint CD EF H) (h5 : ∠ E:G:F = ∠ G:H:D ∧ (|(E─G)| / |(G─H)|) = (|(E─F)| / |(H─D)|)) (h6 : ∠ G:E:F + ∠ G:H:D = ∟ + ∟) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.9318357512995321,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.316065788269043,
+      "well_typed": true,
+      "token_counts": 152,
+      "formalization_check": false,
+      "original_probability": 0.20024502654611265,
+      "roundtrip_score": -302.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (BC : Line), ((Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c CD) ∧ (Point.onLine d CD) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (∠ a:b:d = ∠ d:c:b ∨ (∠ a:b:c + ∠ d:c:b) = ∟ + ∟)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD BC : Line) (h1 : Point.onLine a AB) (h2 : Point.onLine b AB) (h3 : Point.onLine c CD) (h4 : Point.onLine d CD) (h5 : Point.onLine b BC) (h6 : Point.onLine c BC) (h7 : ∠ a:b:d = ∠ d:c:b ∨ (∠ a:b:c + ∠ d:c:b) = ∟ + ∟) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.017033635705019406,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.316065788269043,
+      "well_typed": true,
+      "token_counts": 125,
+      "formalization_check": false,
+      "original_probability": 0.19985161035009966,
+      "roundtrip_score": -306.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AB CD EF : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine e f EF ∧ (between a g b) ∧ (between c h d) ∧ (between e g h) ∧ (between g h f) ∧ (b.sameSide d EF) ∧ (∠ e:g:b = ∠ g:h:d ∨ ∠ b:g:h + ∠ g:h:d = ∟ + ∟) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "If a straight-line falling across two straight-lines makes the external angle equal to the internal and opposite angle on the same side, or (makes) the (sum  of the) internal (angles) on the same side equal to two right-angles, then the (two) straight-lines will be parallel to one another.   For let $EF$, falling across the two straight-lines $AB$ and $CD$, make the external angle $EGB$ equal to the internal and opposite angle $GHD$, or the (sum of the) internal (angles) on the same side, $BGH$ and $GHD$, equal to two right-angles. I say that $AB$ is parallel to $CD$.   <prf> Thus, $AB$ is parallel to $CD$ [Prop.~1.27].  Thus, if a straight-line falling across two straight-lines makes the external angle equal to the internal and opposite angle on the same side, or (makes) the (sum of the) internal (angles) on the same side equal to two right-angles, then the (two) straight-lines will be parallel (to one another).",
+  "lean4_header": ""
+}

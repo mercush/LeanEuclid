@@ -1,0 +1,32 @@
+{
+  "id": "38",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (BC : Line) (EF : Line) (BF : Line) (AD : Line), ((|(b─c)| = |(e─f)|) ∧ (Line.intersectsLine BF AD) ∧ (Point.onLine b BF) ∧ (Point.onLine c BF) ∧ (Point.onLine e AD) ∧ (Point.onLine f AD)) → (Triangle.area △ a:b:c = Triangle.area △ d:e:f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (BC EF BF AD : Line) (h1 : |(b─c)| = |(e─f)|) (h2 : Line.intersectsLine BF AD) (h3 : Point.onLine b BF) (h4 : Point.onLine c BF) (h5 : Point.onLine e AD) (h6 : Point.onLine f AD) : Triangle.area △ a:b:c = Triangle.area △ d:e:f := by",
+      "probability": 0.7999999518472791,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 15.44553256034851,
+      "well_typed": false,
+      "token_counts": 107,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (d₄ : Point) (AB : Line) (BC : Line) (AC : Line) (DEF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d₁ d₂ d₃ DEF BC AC) ∧ (|(b─c)| = |(d₁─d₂)|) ∧ (¬(a.onLine DEF)) ∧ (¬(d₁.onLine AB))) → (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d₁ d₂ d₃))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ d₄ : Point) (AB BC AC DEF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d₁ d₂ d₃ DEF BC AC) (h3 : |(b─c)| = |(d₁─d₂)|) (h4 : ¬(a.onLine DEF)) (h5 : ¬(d₁.onLine AB)) : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d₁ d₂ d₃) := by",
+      "probability": 0.2000000481527209,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 15.44553256034851,
+      "well_typed": false,
+      "token_counts": 126,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f: Point) (AD BF AB AC DE DF : Line), a.onLine AD ∧ d.onLine AD ∧ formTriangle a b c AB BF AC ∧ formTriangle d e f DE BF DF ∧ ¬(AD.intersectsLine BF) ∧ (between b c f) ∧ (between b e f) ∧ |(b─c)| = |(e─f)| → Triangle.area △ a:b:c = Triangle.area △ d:e:f",
+  "nl_statement": "Triangles which are on equal bases and between the same parallels are equal to one another. Let $ABC$ and $DEF$ be triangles on the equal bases $BC$ and $EF$, and between the same parallels $BF$ and $AD$. I say that triangle $ABC$ is equal to triangle $DEF$.  <prf> Thus, triangle $ABC$ is equal to triangle $DEF$.Thus, triangles which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

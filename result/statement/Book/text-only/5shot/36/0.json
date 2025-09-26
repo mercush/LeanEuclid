@@ -1,0 +1,68 @@
+{
+  "id": "36",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (BC : Line) (FG : Line) (AH : Line) (BG : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h BC FG AH BG) ∧ (|(b─c)| = |(f─g)|)) → (|(a─b)| = |(e─f)|)",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD AC BD : Line) (BC FG AH BG : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e f g h BC FG AH BG) (h3 : |(b─c)| = |(f─g)|) : |(a─b)| = |(e─f)| := by",
+      "probability": 0.25077013701620454,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.425190925598145,
+      "well_typed": true,
+      "token_counts": 102,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (BC : Line) (FG : Line) (AG : Line) (BH : Line), ((formParallelogram a b c d AB CD BC FG) ∧ (|(b─c)| = |(f─g)|) ∧ (¬(AB.intersectsLine BH)) ∧ (¬(FG.intersectsLine AG))) → ((|(a─b)| * |(b─c)|) = (|(e─f)| * |(f─g)|))",
+      "full_output": "theorem parallelograms_on_equal_bases_between_same_parallels_are_equal (a b c d e f g h : Point) (AB CD BC FG AG BH : Line) (h1 : formParallelogram a b c d AB CD BC FG) (h2 : |(b─c)| = |(f─g)|) (h3 : ¬(AB.intersectsLine BH)) (h4 : ¬(FG.intersectsLine AG)) : (|(a─b)| * |(b─c)|) = (|(e─f)| * |(f─g)|) := by",
+      "probability": 0.2504000474025897,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.425190925598145,
+      "well_typed": false,
+      "token_counts": 128,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EA : Line) (FB : Line) (GC : Line) (HD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h EA FB GC HD) ∧ (|(b─c)| = |(f─g)|) ∧ (¬(AB.intersectsLine EA))) → ((|(a─b)| * |(b─c)|) = (|(e─f)| * |(f─g)|))",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD AC BD : Line) (EA FB GC HD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e f g h EA FB GC HD) (h3 : |(b─c)| = |(f─g)|) (h4 : ¬(AB.intersectsLine EA)) : (|(a─b)| * |(b─c)|) = (|(e─f)| * |(f─g)|) := by",
+      "probability": 0.2495565577260568,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.425190925598145,
+      "well_typed": true,
+      "token_counts": 130,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (AE : Line) (FG : Line) (AH : Line) (EG : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h AE FG AH EG) ∧ (|(b─c)| = |(f─g)|) ∧ (¬(AB.intersectsLine AE)) ∧ (¬(AC.intersectsLine FG))) → ((|(a─b)| * |(b─c)|) = (|(e─f)| * |(f─g)|))",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD AC BD AE FG AH EG : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e f g h AE FG AH EG) (h3 : |(b─c)| = |(f─g)|) (h4 : ¬(AB.intersectsLine AE)) (h5 : ¬(AC.intersectsLine FG)) : (|(a─b)| * |(b─c)|) = (|(e─f)| * |(f─g)|) := by",
+      "probability": 0.24927325735581188,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.425190925598145,
+      "well_typed": true,
+      "token_counts": 138,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line) (GH : Line) (EG : Line) (FH : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h EF GH EG FH) ∧ (|(b─c)| = |(f─g)|) ∧ (|(a─c)| = |(e─g)|)) → ()",
+      "full_output": "theorem parallelogram_equality (a b c d e f g h : Point) (AB CD AC BD EF GH EG FH : Line) \n(h1 : formParallelogram a b c d AB CD AC BD) \n(h2 : formParallelogram e f g h EF GH EG FH) \n(h3 : |(b─c)| = |(f─g)|) \n(h4 : |(a─c)| = |(e─g)|) \n(h5 : Line.parallels AB EF h4 h3 h1 h2 h5 h6 h7 h8 h9 h10 h11 h12 h13 h14 h15 h16 h17 h18 h19 h20 h21 h22 h23 h24 h25 h26 h27 h28 h29 h30 h31 h32 h33 h34 h35 h36 h37 h38 h39 h40 h41 h42 h43 h44 h45 h46 h47 h48 h49 h50 h51 h52 h53 h54 h55 h56 h57 h58 h59 h60 h61 h62 h63 h64 h65 h66 h67 h68 h69",
+      "probability": 4.993371112326694e-10,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.425190925598145,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AH BG AB CD EF HG : Line), formParallelogram a d b c AH BG AB CD ∧ formParallelogram e h f g AH BG EF HG ∧ |(b─c)| = |(f─g)| ∧ (between a d h) ∧ (between a e h) → Triangle.area △ a:b:d + Triangle.area △ d:b:c = Triangle.area △ e:f:h + Triangle.area △ h:f:g",
+  "nl_statement": "Parallelograms which are on equal bases and between the same parallels are equal to one another. Let $ABCD$ and $EFGH$ be parallelograms which are on the equal bases $BC$ and $FG$, and (are) between the same parallels $AH$ and $BG$. I say that the parallelogram $ABCD$ is equal to $EFGH$. <prf> So that the parallelogram $ABCD$ is  also equal to $EFGH$.Thus, parallelograms which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

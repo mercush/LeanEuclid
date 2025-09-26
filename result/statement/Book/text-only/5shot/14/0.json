@@ -1,0 +1,68 @@
+{
+  "id": "14",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c + ∠ a:c:b = ∟ + ∟) ∧ (twoLinesIntersectAtPoint AB BC b) ∧ (twoLinesIntersectAtPoint AB AC b)) → (∠ a:b:c = ∟ - ∠ a:c:b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c + ∠ a:c:b = ∟ + ∟) (h3 : twoLinesIntersectAtPoint AB BC b) (h4 : twoLinesIntersectAtPoint AB AC b) : ∠ a:b:c = ∟ - ∠ a:c:b := by",
+      "probability": 0.33369632189081455,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.100841283798218,
+      "well_typed": false,
+      "token_counts": 98,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (BD : Line), ((twoLinesIntersectAtPoint AB BC b) ∧ (twoLinesIntersectAtPoint AB BD b) ∧ (∠ a:b:c + ∠ a:b:d = ∟ + ∟)) → (∠ c:b:d + ∠ d:b:c = ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC BD : Line) (h1 : twoLinesIntersectAtPoint AB BC b) (h2 : twoLinesIntersectAtPoint AB BD b) (h3 : ∠ a:b:c + ∠ a:b:d = ∟ + ∟) : ∠ c:b:d + ∠ d:b:c = ∟ + ∟ := by",
+      "probability": 0.3332897630569148,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.100841283798218,
+      "well_typed": true,
+      "token_counts": 89,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (AC : Line) (D₁₂ : Line) (D₂₃ : Line), ((formTriangle a b c AB BC AC) ∧ (formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) ∧ ((∠ d₁:d₂:d₃ : ℝ) > 0) ∧ ((∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟)) → (∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ : Point) (AB BC AC D₁₂ D₂₃ : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃) (h3 : (∠ d₁:d₂:d₃ : ℝ) > 0) (h4 : (∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟) : ∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c) := by",
+      "probability": 0.3330139150522707,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.100841283798218,
+      "well_typed": true,
+      "token_counts": 183,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (Point.onLine c AB) ∧ (Point.onLine d AB) ∧ (h1 = h2 = h3 = h4 = true)) → ()",
+      "full_output": "theorem example_thm (a b c d : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : Point.onLine c AB) (h3 : Point.onLine d AB) (h4 : h1 = h2 = h3 = h4 = true)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.100841283798218,
+      "well_typed": false,
+      "token_counts": 67,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (BD : Line), ((formTriangle a b c AB BC (Line.endpoints b d))) → ()",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC BD : Line) (h1 : formTriangle a b c AB BC (Line.endpoints b d))",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 18.100841283798218,
+      "well_typed": false,
+      "token_counts": 37,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC BD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine b c BC ∧ distinctPointsOnLine b d BD ∧ (c.opposingSides d AB) ∧ (∠ a:b:c + ∠ a:b:d) = ∟ + ∟ → BC = BD",
+  "nl_statement": "If two straight-lines, not lying on the same side,  make adjacent angles (whose sum is) equal to two right-angles  with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another. For let two straight-lines $BC$ and $BD$, not lying on the same side, make adjacent angles $ABC$ and $ABD$ (whose sum is) equal to two right-angles with some straight-line $AB$, at the point $B$ on it. I say that $BD$ is  straight-on with respect to $CB$. <prf> Thus, $CB$ is straight-on with respect to $BD$.Thus, if two straight-lines, not lying on the same side, make adjacent angles (whose sum is) equal to two right-angles with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another.",
+  "lean4_header": ""
+}

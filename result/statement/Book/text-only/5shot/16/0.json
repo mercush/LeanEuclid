@@ -1,0 +1,56 @@
+{
+  "id": "16",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d)) → (∠ a:c:d > ∠ c:a:b ∧ ∠ a:c:d > ∠ a:b:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : between b c d) : ∠ a:c:d > ∠ c:a:b ∧ ∠ a:c:d > ∠ a:b:c := by",
+      "probability": 0.6659178606473796,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 21.67156171798706,
+      "well_typed": true,
+      "token_counts": 67,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d)) → (∠ a:c:d > ∠ a:b:c ∧ ∠ a:c:d > ∠ b:a:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : between b c d) : ∠ a:c:d > ∠ a:b:c ∧ ∠ a:c:d > ∠ b:a:c := by",
+      "probability": 0.3339019594287079,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 21.67156171798706,
+      "well_typed": true,
+      "token_counts": 67,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine c BC)) → ()",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine c BC) (h3 : Point.between a c dmarkup => h4 : Point.between b c dmarkup => h5 : Point.between a c dmarkup => h6 : Point.between b c dmarkup => h7 : Point.between a c dmarkup => h8 : Point.between b c dmarkup => h9 : Point.between a c dmarkup => h10 : Point.between b c dmarkup => h11 : Point.between a c dmarkup => h12 : Point.between b c dmarkup => h13 : Point.between a c d markup => h14 : Point.between b c d markup => h15 : Point.between a c d markup => h16 : Point.between b c d markup => h17 : Point.between a c d markup => h18 : Point.between b c d markup => h19 : Point.between a c d markup => h20 : Point.between b c d markup => h21 : Point.between a c d markup => h22 : Point.between b c d markup => h23 : Point.between a c",
+      "probability": 0.00018017992391252438,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 21.67156171798706,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (Point.between b c d)) → ()",
+      "full_output": "theorem example_thm (a b c d : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.between b c d)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 21.67156171798706,
+      "well_typed": false,
+      "token_counts": 42,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC: Line), formTriangle a b c AB BC AC ∧ (between b c d) → (∠ a:c:d > ∠ c:b:a) ∧ (∠ a:c:d > ∠ b:a:c)",
+  "nl_statement": "For any triangle, when one of the sides is produced, the external angle is greater than each of the internal and opposite angles.Let $ABC$ be a triangle, and let one of its sides $BC$ have been produced to $D$. I say that the external angle $ACD$ is greater than each of the  internal and opposite angles, $CBA$ and $BAC$.  Let the (straight-line) $AC$ have been cut in half at (point) $E$ [Prop.~1.10]. <prf> Thus,  $ACD$ is greater than $BAE$. Similarly, by having cut $BC$ in half,  it can  be shown (that) $BCG$ ---that is to say, $ACD$---(is) also greater than $ABC$. Thus, for any triangle, when one of the sides is produced, the external angle is greater than each of the internal and opposite angles.",
+  "lean4_header": ""
+}

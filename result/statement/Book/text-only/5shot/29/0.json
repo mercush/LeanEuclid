@@ -1,0 +1,68 @@
+{
+  "id": "29",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (d₁ : Point) (AB : Line) (CD : Line) (EF : Line) (GH : Line), ((formTriangle a b c AB CD EF) ∧ (Line.intersectsLine AB CD) ∧ (Line.intersectsLine EF GH) ∧ (¬(Line.intersectsLine AB GH)) ∧ (¬(Line.intersectsLine CD GH))) → (∠ a:b:h = ∠ f:g:h ∧ ∠ b:c:d = ∠ g:f:h ∧ ∠ a:b:h + ∠ b:c:d = ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c d e f g h d₁ : Point) (AB CD EF GH : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Line.intersectsLine AB CD) (h3 : Line.intersectsLine EF GH) (h4 : ¬(Line.intersectsLine AB GH)) (h5 : ¬(Line.intersectsLine CD GH)) : ∠ a:b:h = ∠ f:g:h ∧ ∠ b:c:d = ∠ g:f:h ∧ ∠ a:b:h + ∠ b:c:d = ∟ + ∟ := by",
+      "probability": 0.3343371354390032,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 27.5175199508667,
+      "well_typed": false,
+      "token_counts": 131,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine CD)) ∧ ((Point.onLine a AB) ∧ (Point.onLine b CD) ∧ (Point.onLine e EF) ∧ (Point.onLine f EF)) ∧ ((between a b e) ∧ (between b c d) ∧ (between e f d))) → (∠ a:e:b = ∠ e:d:c ∧ ∠ e:b:d = ∠ b:e:f ∧ (∠ a:e:b + ∠ e:d:c) = ∟ + ∟)",
+      "full_output": "theorem ex_thm (a b c d e f : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine CD)) (h2 : (Point.onLine a AB) ∧ (Point.onLine b CD) ∧ (Point.onLine e EF) ∧ (Point.onLine f EF)) (h3 : (between a b e) ∧ (between b c d) ∧ (between e f d)) : ∠ a:e:b = ∠ e:d:c ∧ ∠ e:b:d = ∠ b:e:f ∧ (∠ a:e:b + ∠ e:d:c) = ∟ + ∟ := by",
+      "probability": 0.33378443300914745,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 27.5175199508667,
+      "well_typed": true,
+      "token_counts": 137,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine CD)) ∧ ((Point.onLine a AB) ∧ (Point.onLine b AB) ∧ a ≠ b) ∧ ((Point.onLine c CD) ∧ (Point.onLine d CD) ∧ c ≠ d) ∧ ((Point.onLine e EF) ∧ (Point.onLine f EF) ∧ e ≠ f) ∧ ((Point.onLine a EF) ∧ (Point.onLine b EF) ∧ a ≠ b) ∧ ((Point.onLine c EF) ∧ (Point.onLine d EF) ∧ c ≠ d)) → ()",
+      "full_output": "theorem ex_thm (a b c d e f : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine CD)) (h2 : (Point.onLine a AB) ∧ (Point.onLine b AB) ∧ a ≠ b) (h3 : (Point.onLine c CD) ∧ (Point.onLine d CD) ∧ c ≠ d) (h4 : (Point.onLine e EF) ∧ (Point.onLine f EF) ∧ e ≠ f) (h5 : (Point.onLine a EF) ∧ (Point.onLine b EF) ∧ a ≠ b) (h6 : (Point.onLine c EF) ∧ (Point.onLine d EF) ∧ c ≠ d) ) : (∠ a:e:b = ∠ c:e:d) ∧ (∠ a:f:b = ∠ d:f:c) ∧ (∠ a:e:b + ∠ c:e:d = ∟ + ∟) := by",
+      "probability": 0.3318784314743185,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 27.5175199508667,
+      "well_typed": false,
+      "token_counts": 201,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (d₁ : Point) (AB : Line) (CD : Line) (EF : Line) (GH : Line), ((formTriangle a b c AB CD EF) ∧ (Line.intersectsLine AB CD) ∧ (Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF) ∧ (Line.intersectsLine AB GH) ∧ (Line.intersectsLine CD GH)) → ()",
+      "full_output": "theorem example_thm (a b c d e f g h d₁ : Point) (AB CD EF GH : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Line.intersectsLine AB CD) (h3 : Line.intersectsLine AB EF) (h4 : Line.intersectsLine CD EF) (h5 : Line.intersectsLine AB GH) (h6 : Line.intersectsLine CD GH) (h7 : h1.onLine AB [h5, h6] d₁.onLine CD [h5, h6] d.onLine EF [h2, h3, h4, h5, h6] d₁.onLine GH [h5, h6] a.onLine AB [h1.2.1, h2] b.onLine AB [h1.2.1, h2] c.onLine CD [h1.2.2.2, h2] d.onLine EF [h2, h3, h4, h5, h6] d₁.onLine GH [h5, h6] a ≠ b [h1.2.1] b ≠ c [h1",
+      "probability": 7.753092628740465e-11,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 27.5175199508667,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (d₁ : Point) (AB : Line) (CD : Line) (EF : Line) (GH : Line), ((formTriangle a b c AB CD EF) ∧ (Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF)) → ()",
+      "full_output": "theorem example_thm (a b c d e f g h d₁ : Point) (AB CD EF GH : Line) (h1 : formTriangle a b c AB CD EF) (h2 : Line.intersectsLine AB EF) (h3 : Line.intersectsLine CD EF) (h4 : ABтурбо969_Line_1 h1_line_spec h2_line_spec : AB Parallel to CD using something like h1_line_1 := h1_line_1, h1_line_2 := h2_line_2 etc. But I think the exact code would require a better setup, but as a beginner, I might have gotten part of it correct. : Angleγάμα Alternate angles thingy.\n```",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 27.5175199508667,
+      "well_typed": false,
+      "token_counts": 149,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AB CD EF : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine e f EF ∧ (between a g b) ∧ (between c h d) ∧ (between e g h) ∧ (between g h f) ∧ (b.sameSide d EF) ∧ ¬(AB.intersectsLine CD) → ∠ a:g:h = ∠ g:h:d ∧ ∠ e:g:b = ∠ g:h:d ∧ ∠ b:g:h + ∠ g:h:d = ∟ + ∟",
+  "nl_statement": "A straight-line falling across  parallel straight-lines makes the alternate angles equal to one another, the external (angle) equal to the internal and opposite (angle), and the (sum of the) internal (angles) on the same side equal to two right-angles. For let the straight-line $EF$ fall across the parallel straight-lines $AB$ and $CD$. I say that it makes the  alternate angles, $AGH$ and $GHD$,  equal,  the external angle $EGB$ equal to the internal and opposite (angle) $GHD$, and the (sum of the) internal (angles) on the same side, $BGH$ and $GHD$, equal to two right-angles. <prf>  Thus, (the sum of) $BGH$ and $GHD$ is also equal to two right-angles.Thus, a straight-line falling across parallel straight-lines makes the alternate angles equal to one another,  the external (angle) equal to the internal and opposite (angle), and the (sum of the) internal (angles) on the same side equal to two right-angles.",
+  "lean4_header": ""
+}

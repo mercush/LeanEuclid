@@ -1,0 +1,78 @@
+{
+  "id": "7",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (a ≠ b)) → (¬∃ c d : Point, (distinctPointsOnLine a c AB ∧ distinctPointsOnLine b d AB ∧ ∠ a:c:b = ∠ a:d:b ∧ ∠ b:c:a = ∠ b:d:a ∧ ∠ c:a:d = ∠ c:b:d ∧ |(a─c)| = |(a─d)| ∧ |(b─c)| = |(b─d)|))",
+      "full_output": "theorem on_same_straight_line_two_other_straight_lines_equal_respectively_to_two_given_straight_lines_meeting_cannot_be_constructed_meeting_at_different_point_on_same_side_of_straight_line_but_having_same_ends_as_given_straight_lines (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : a ≠ b) : ¬∃ c d : Point, (distinctPointsOnLine a c AB ∧ distinctPointsOnLine b d AB ∧ ∠ a:c:b = ∠ a:d:b ∧ ∠ b:c:a = ∠ b:d:a ∧ ∠ c:a:d = ∠ c:b:d ∧ |(a─c)| = |(a─d)| ∧ |(b─c)| = |(b─d)|) := by",
+      "probability": 4.569424353970777e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 26.61930775642395,
+      "well_typed": true,
+      "token_counts": 173,
+      "formalization_check": false,
+      "original_probability": 0.201238025005366,
+      "roundtrip_score": -1920.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (AC : Line) (BC : Line) (BD : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle a b d AB BD AC) ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|) ∧ (c.onLine AB) ∧ (d.onLine AB) ∧ (distinctPointsOnLine a b AB)) → (c = d)",
+      "full_output": "theorem theorem_name (a b c d : Point) (AB AC BC BD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle a b d AB BD AC) (h3 : |(a─c)| = |(a─d)|) (h4 : |(b─c)| = |(b─d)|) (h5 : c.onLine AB) (h6 : d.onLine AB) (h7 : distinctPointsOnLine a b AB) : c = d := by",
+      "probability": 4.554011839684385e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 26.61930775642395,
+      "well_typed": true,
+      "token_counts": 117,
+      "formalization_check": false,
+      "original_probability": 0.20055925593182547,
+      "roundtrip_score": -1920.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((between a b c) ∧ (between b c d) ∧ (between c d a) ∧ (Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c AB) ∧ (Point.onLine d AB) ∧ (Point.onLine a AC) ∧ (Point.onLine c AC) ∧ (Point.onLine b BD) ∧ (Point.onLine d BD) ∧ ((|(a─c)| = |(a─d)|)) ∧ ((|(b─c)| = |(b─d)|))) → ((c = d))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : between a b c) (h2 : between b c d) (h3 : between c d a) (h4 : Point.onLine a AB) (h5 : Point.onLine b AB) (h6 : Point.onLine c AB) (h7 : Point.onLine d AB) (h8 : Point.onLine a AC) (h9 : Point.onLine c AC) (h10 : Point.onLine b BD) (h11 : Point.onLine d BD) (h12 : (|(a─c)| = |(a─d)|)) (h13 : (|(b─c)| = |(b─d)|)) : (c = d) := by",
+      "probability": 0.9999087656379158,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 26.61930775642395,
+      "well_typed": false,
+      "token_counts": 171,
+      "formalization_check": false,
+      "original_probability": 0.19992362184918622,
+      "roundtrip_score": -1910.0
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (AB : Line), ((distinctPointsOnLine A B AB) ∧ ((A ≠ C) ∧ (B ≠ C)) ∧ (Point.onLine C AB) ∧ (Point.onLine D AB) ∧ (Point.onLine D AB) ∧ ((Point.onLine C AB ∧ Point.onLine D AB)) ∧ ((C ≠ D)) ∧ (Point.onLine C AB ∧ Point.onLine D AB) ∧ (Point.onLine C AB ∧ Point.onLine D AB) ∧ (Point.onLine C AB ∧ Point.onLine D AB) ∧ (distinctPointsOnLine A B AB) ∧ ((A ≠ C) ∧ (B ≠ C)) ∧ (Point.onLine C AB) ∧ (Point.onLine D AB) ∧ (Point.onLine D AB) ∧ ((Point.onLine C AB ∧ Point.onLine D AB)) ∧ ((C ≠ D))) → ()",
+      "full_output": "theorem thm (A B C D : Point)\n  (AB : Line)\n  (h1 : distinctPointsOnLine A B AB)\n  (h2 : (A ≠ C) ∧ (B ≠ C))\n  (h3 : Point.onLine C AB)\n  (h4 : Point.onLine D AB)\n  (h5 : Point.onLine D AB)\n  (h6 : (Point.onLine C AB ∧ Point.onLine D AB))\n  (h7 : (C ≠ D))\n  (h8 : Point.onLine C AB ∧ Point.onLine D AB)\n  (h9 : Point.onLine C AB ∧ Point.onLine D AB)\n  (h10 : Point.onLine C AB ∧ Point.onLine D AB)\n  (h11 : distinctPointsOnLine A B AB)\n  (h12 : (A ≠ C) ∧ (B ≠ C))\n  (h13 : Point.onLine C AB)\n  (h14 : Point.onLine D AB)\n  (h15 : Point.onLine D AB)\n  (h16 : (Point.onLine C AB ∧ Point.onLine D AB))\n  (h17 : (C ≠ D))\n  (",
+      "probability": 9.32224475859688e-14,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 26.61930775642395,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false,
+      "original_probability": 0.19918594652458274,
+      "roundtrip_score": -1940.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line), ((Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c AB) ∧ (Point.onLine d AB) ∧ (Point.sameSide a c AB) ∧ (Point.sameSide b d AB) ∧ (Point.opposingSides c d AB) ∧ (Point.opposingSides a b AB) ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|) ∧ (c ≠ d)) → (a = d)",
+      "full_output": "theorem same_line_distribution (a b c d : Point) (AB : Line) \n(h1 : Point.onLine a AB) (h2 : Point.onLine b AB) \n(h3 : Point.onLine c AB) (h4 : Point.onLine d AB) \n(h5 : Point.sameSide a c AB) (h6 : Point.sameSide b d AB) \n(h7 : Point.opposingSides c d AB) \n(h8 : Point.opposingSides a b AB) \n(h9 : |(a─c)| = |(a─d)|) (h10 : |(b─c)| = |(b─d)|) \n(h11 : c ≠ d) : a = d := by",
+      "probability": 1.920562695368156e-22,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 26.61930775642395,
+      "well_typed": true,
+      "token_counts": 155,
+      "formalization_check": false,
+      "original_probability": 0.19909315068903952,
+      "roundtrip_score": -1960.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB AC CB AD DB : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine c b CB ∧ distinctPointsOnLine a d AD ∧ distinctPointsOnLine d b DB ∧ (c.sameSide d AB) ∧ c ≠ d ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|) → False",
+  "nl_statement": "On the same straight-line, two other straight-lines  equal, respectively, to  two (given) straight-lines (which meet) cannot be constructed (meeting) at  a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.     For, if possible, let the two straight-lines $AC$, $CB$, equal to two other straight-lines $AD$, $DB$, respectively, have been constructed on the same straight-line $AB$, meeting at different points, $C$ and $D$, on the same side (of $AB$), and having the same ends (on $AB$). So $CA$ is equal to $DA$, having the same end $A$ as it, and $CB$ is equal to $DB$, having the same end $B$ as it. And let $CD$ have been joined [Post.~1]. <prf> Again, since  $CB$ is equal to $DB$, the angle $CDB$ is also equal to angle $DCB$ [Prop.~1.5]. But it was shown that the former (angle) is also much greater (than the latter). The very thing is impossible. Thus, on the same straight-line, two other straight-lines equal, respectively, to two (given) straight-lines (which meet) cannot be constructed (meeting) at a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.",
+  "lean4_header": ""
+}

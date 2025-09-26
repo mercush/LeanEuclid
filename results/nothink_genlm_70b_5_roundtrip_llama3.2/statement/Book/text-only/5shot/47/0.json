@@ -1,0 +1,78 @@
+{
+  "id": "47",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by",
+      "probability": 0.3247957020225615,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.571429252624512,
+      "well_typed": false,
+      "token_counts": 76,
+      "formalization_check": false,
+      "original_probability": 0.20028948543601516,
+      "roundtrip_score": -600.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (((∠ a:b:c : ℝ) = ∟))) → (|(a─b)| * |(a─b)| = |(b─c)| * |(b─c)| + |(a─c)| * |(a─c)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ((∠ a:b:c : ℝ) = ∟)) : |(a─b)| * |(a─b)| = |(b─c)| * |(b─c)| + |(a─c)| * |(a─c)| := by",
+      "probability": 0.00017955815101272974,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.571429252624512,
+      "well_typed": true,
+      "token_counts": 91,
+      "formalization_check": false,
+      "original_probability": 0.20019886734747655,
+      "roundtrip_score": -607.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| ^ 2 + |(b─c)| ^ 2 = |(a─c)| ^ 2)",
+      "full_output": "theorem pythagoras_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| ^ 2 + |(b─c)| ^ 2 = |(a─c)| ^ 2 := by",
+      "probability": 0.32432570468891286,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.571429252624512,
+      "well_typed": false,
+      "token_counts": 78,
+      "formalization_check": false,
+      "original_probability": 0.19999965547972748,
+      "roundtrip_score": -600.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem Pythagoras_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by",
+      "probability": 0.3241251668061369,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.571429252624512,
+      "well_typed": false,
+      "token_counts": 78,
+      "formalization_check": false,
+      "original_probability": 0.19987599119138677,
+      "roundtrip_score": -600.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BA : Line) (AC : Line) (BC : Line), ((formTriangle a b c BA AC BC) ∧ (∠ a:b:c = ∟)) → (|(b─c)| ^ 2 = |(b─a)| ^ 2 + |(a─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (BA AC BC : Line) (h1 : formTriangle a b c BA AC BC) (h2 : ∠ a:b:c = ∟) : |(b─c)| ^ 2 = |(b─a)| ^ 2 + |(a─c)| ^ 2 := by",
+      "probability": 0.026573868331320836,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.571429252624512,
+      "well_typed": false,
+      "token_counts": 76,
+      "formalization_check": false,
+      "original_probability": 0.19963600054539413,
+      "roundtrip_score": -602.5
+    }
+  ],
+  "reference_formalization": "∀ (a b c: Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ b:a:c : ℝ) = ∟ → |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)|",
+  "nl_statement": "In right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides containing the right-angle. Let $ABC$ be a right-angled triangle having the angle $BAC$a right-angle. I say that the square on $BC$ is equal to the (sum of the) squares on $BA$ and $AC$.  <prf>  Thus, the square on the side $BC$ is equal to the (sum of the) squares on the sides $BA$ and $AC$. Thus, in right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides surrounding the right-[angle].",
+  "lean4_header": ""
+}

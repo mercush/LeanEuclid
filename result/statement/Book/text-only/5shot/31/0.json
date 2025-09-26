@@ -1,0 +1,44 @@
+{
+  "id": "31",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ l : Point, |(a─l)| = |(b─c)|)",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ l : Point, |(a─l)| = |(b─c)| := by",
+      "probability": 0.7502486666363388,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 21.01559543609619,
+      "well_typed": true,
+      "token_counts": 58,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((a ≠ b ∧ b ≠ c ∧ a ≠ c)) → (∃ l : Line, ¬(l.intersectsLine BC) ∧ a.onLine l)",
+      "full_output": "theorem draw_parallel_line (a b c : Point) (BC : Line) (h1 : a ≠ b ∧ b ≠ c ∧ a ≠ c) : ∃ l : Line, ¬(l.intersectsLine BC) ∧ a.onLine l := by",
+      "probability": 0.2497513333636611,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 21.01559543609619,
+      "well_typed": true,
+      "token_counts": 54,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b) ∧ (a ≠ c)) → ()",
+      "full_output": "theorem example_thm (a : Point) (b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) (h3 : a ≠ c) : ∃ l : Point, l.onLine (Line.through a (fun h ↦ ∟)) ∧ ¬(l.onLine BC) ∧ |(a─l)| > 0 ∧ |(a─l)| = |(b─c)| ∧ ¬(l = a) ∧ ¬(l = b) ∧ ¬(l = c) ∧ ¬(l.onLine BC) ∧ ¬(l.onLine (Line.through a (fun h ↦ ∟))) : by\n  -- We need to find a point l that satisfies the conditions of being on the line through a at a right angle, not on the line BC, and with the length from a to l equal to the length from b to c.\n  refine' ⟨c, by linarith, by linarith, by linarith, by linarith, by linarith, by linarith, by linarith, by linarith, by linarith⟩\n```",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 21.01559543609619,
+      "well_typed": false,
+      "token_counts": 246,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)",
+  "nl_statement": "To draw a straight-line parallel to a given straight-line, through a given point.Let $A$ be the given point, and $BC$ the given straight-line. So it is required to draw a straight-line parallel to the straight-line $BC$, through the point $A$.  <prf>  Thus, the straight-line $EAF$ has been drawn parallel to the given straight-line $BC$, through the  given point $A$.",
+  "lean4_header": ""
+}

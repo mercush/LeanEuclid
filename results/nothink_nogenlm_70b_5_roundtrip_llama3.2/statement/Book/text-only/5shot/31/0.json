@@ -1,0 +1,64 @@
+{
+  "id": "31",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ l : Point, |(a─l)| = |(b─c)|)",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ l : Point, |(a─l)| = |(b─c)| := by",
+      "probability": 0.0011035152701071491,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.110635995864868,
+      "well_typed": true,
+      "token_counts": 58,
+      "formalization_check": false,
+      "original_probability": 0.399826284987658,
+      "roundtrip_score": -630.0
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((¬(a.onLine BC))) → (∃ e f : Point, Line a e f ∧ ¬(e.onLine BC) ∧ a ≠ e ∧ b ≠ c)",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : ¬(a.onLine BC)) : ∃ e f : Point, Line a e f ∧ ¬(e.onLine BC) ∧ a ≠ e ∧ b ≠ c := by",
+      "probability": 4.5378904704360965e-05,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.110635995864868,
+      "well_typed": false,
+      "token_counts": 57,
+      "formalization_check": false,
+      "original_probability": 0.20030104197560464,
+      "roundtrip_score": -632.5
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (E : Point) (F : Point) (BC : Line) (EF : Line), ((distinctPointsOnLine B C BC) ∧ (¬(A.onLine BC))) → (∃ h : Line, ¬(h.intersectsLine BC) ∧ A.onLine h)",
+      "full_output": "theorem example_thm (A B C E F : Point) (BC EF : Line) (h1 : distinctPointsOnLine B C BC) (h2 : ¬(A.onLine BC)) : ∃ h : Line, ¬(h.intersectsLine BC) ∧ A.onLine h := by",
+      "probability": 0.9988510808009693,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.110635995864868,
+      "well_typed": false,
+      "token_counts": 64,
+      "formalization_check": false,
+      "original_probability": 0.2001636095764641,
+      "roundtrip_score": -622.5
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ l : Point, distinctPointsOnLine a l ⟨a, l, h2, rfl⟩ ∧ ¬⟨a, l, h2, rfl⟩.intersectsLine BC)",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ l : Point, distinctPointsOnLine a l ⟨a, l, h2, rfl⟩ ∧ ¬⟨a, l, h2, rfl⟩.intersectsLine BC := by",
+      "probability": 2.502418611996048e-08,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.110635995864868,
+      "well_typed": false,
+      "token_counts": 79,
+      "formalization_check": false,
+      "original_probability": 0.1997090634602733,
+      "roundtrip_score": -640.0
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)",
+  "nl_statement": "To draw a straight-line parallel to a given straight-line, through a given point.Let $A$ be the given point, and $BC$ the given straight-line. So it is required to draw a straight-line parallel to the straight-line $BC$, through the point $A$.  <prf>  Thus, the straight-line $EAF$ has been drawn parallel to the given straight-line $BC$, through the  given point $A$.",
+  "lean4_header": ""
+}

@@ -1,0 +1,68 @@
+{
+  "id": "7",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (d : Point) (c : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line), ((formTriangle a b c AB CB AC) ∧ (formTriangle a b d AB DB AD) ∧ (a ≠ b) ∧ (a ≠ d) ∧ (b ≠ d) ∧ ((|(a─c)| = |(a─d)|)) ∧ ((|(b─c)| = |(b─d)|))) → (c = d)",
+      "full_output": "theorem theorem_name (a b d c : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line) (h1 : formTriangle a b c AB CB AC) (h2 : formTriangle a b d AB DB AD) (h3 : a ≠ b) (h4 : a ≠ d) (h5 : b ≠ d) (h6 : (|(a─c)| = |(a─d)|)) (h7 : (|(b─c)| = |(b─d)|)) : c = d := by",
+      "probability": 0.25093301993377476,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.910058975219727,
+      "well_typed": true,
+      "token_counts": 128,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (d : Point) (c : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line), ((distinctPointsOnLine a b AB) ∧ (between a c b) ∧ (distinctPointsOnLine a b AB) ∧ (between a d b) ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|)) → ()",
+      "full_output": "theorem theorem_name (a b d c : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : between a c b) (h3 : distinctPointsOnLine a b AB) (h4 : between a d b) (h5 : |(a─c)| = |(a─d)|) (h6 : |(b─c)| = |(b─d)|)) : c = d := by",
+      "probability": 0.2506113606741623,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.910058975219727,
+      "well_typed": false,
+      "token_counts": 120,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line), ((distinctPointsOnLine a b AB) ∧ ((between a c b)) ∧ ((between a d b)) ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|)) → (c = d)",
+      "full_output": "theorem theorem_name (a b c d : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : (between a c b)) (h3 : (between a d b)) (h4 : |(a─c)| = |(a─d)|) (h5 : |(c─b)| = |(d─b)|) : c = d := by",
+      "probability": 0.2500503693892581,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.910058975219727,
+      "well_typed": false,
+      "token_counts": 110,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (d : Point) (c : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line), ((distinctPointsOnLine a b AB) ∧ (formTriangle a c b AC CB AB) ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|) ∧ (¬(c = d))) → (∃ h : Point, h.onLine AB ∧ (∠ a:h:c = ∟ ∨ ∠ b:h:c = ∟))",
+      "full_output": "theorem theorem_name (a b d c : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : formTriangle a c b AC CB AB) (h3 : |(a─c)| = |(a─d)|) (h4 : |(c─b)| = |(d─b)|) (h5 : ¬(c = d)) : ∃ h : Point, h.onLine AB ∧ (∠ a:h:c = ∟ ∨ ∠ b:h:c = ∟) := by",
+      "probability": 0.24840525000280042,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.910058975219727,
+      "well_typed": false,
+      "token_counts": 139,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (d : Point) (c : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a b AB)) → ()",
+      "full_output": "theorem theorem_name (a b d c : Point) (AB : Line) (AC : Line) (CB : Line) (AD : Line) (DB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a b AB) (h3 : onLine a AC ∧ onLine a AD ∧ a ≠ b ∧ a ≠ c ∧ a ≠ d ∧ b ≠ c ∧ b ≠ d ∧ c ≠ d ∧ Line.intersectsLine AC CB ∧ Line.intersectsLine AD DB ∧ Line.intersectsLine AC AD ∧ Line.intersectsLine CB DB ∧ Line.intersectsLine AC DB ∧ Line.intersectsLine CB AD ∧ (|(a─c)| = |(a─d)|) ∧ (|(b─c)| = |(b─d)|) ∧ (c.onLine AB ∧ d.onLine AB ∧ c ≠ d ∧ c.onSameSide AB d ∧ d.onSameSide AB c ∧ c.onSameSide AB a ∧ d.onSameSide AB a ∧ c.onSameSide AB b ∧ d.onSameSide AB b ∧ c.onSameSide AB c ∧ d.onSameSide AB c ∧ c.onSameSide AB d ∧ d.on",
+      "probability": 4.4135293717991194e-15,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 25.910058975219727,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB AC CB AD DB : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine c b CB ∧ distinctPointsOnLine a d AD ∧ distinctPointsOnLine d b DB ∧ (c.sameSide d AB) ∧ c ≠ d ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|) → False",
+  "nl_statement": "On the same straight-line, two other straight-lines  equal, respectively, to  two (given) straight-lines (which meet) cannot be constructed (meeting) at  a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.     For, if possible, let the two straight-lines $AC$, $CB$, equal to two other straight-lines $AD$, $DB$, respectively, have been constructed on the same straight-line $AB$, meeting at different points, $C$ and $D$, on the same side (of $AB$), and having the same ends (on $AB$). So $CA$ is equal to $DA$, having the same end $A$ as it, and $CB$ is equal to $DB$, having the same end $B$ as it. And let $CD$ have been joined [Post.~1]. <prf> Again, since  $CB$ is equal to $DB$, the angle $CDB$ is also equal to angle $DCB$ [Prop.~1.5]. But it was shown that the former (angle) is also much greater (than the latter). The very thing is impossible. Thus, on the same straight-line, two other straight-lines equal, respectively, to two (given) straight-lines (which meet) cannot be constructed (meeting) at a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.",
+  "lean4_header": ""
+}

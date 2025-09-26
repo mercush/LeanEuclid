@@ -1,0 +1,68 @@
+{
+  "id": "48",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)|)) → (∠ a:b:c = ∟)",
+      "full_output": "theorem ex_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)|) : ∠ a:b:c = ∟ := by",
+      "probability": 0.25043938401032856,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.1093168258667,
+      "well_typed": true,
+      "token_counts": 88,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(b─c)| ^ 2 = |(a─b)| ^ 2 + |(a─c)| ^ 2)) → (∠ b:a:c = ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(b─c)| ^ 2 = |(a─b)| ^ 2 + |(a─c)| ^ 2) : ∠ b:a:c = ∟ := by",
+      "probability": 0.2504074530319034,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.1093168258667,
+      "well_typed": false,
+      "token_counts": 76,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(b─c)| ^ 2 = |(a─b)| ^ 2 + |(a─c)| ^ 2)) → (∠ a:b:c = ∟)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(b─c)| ^ 2 = |(a─b)| ^ 2 + |(a─c)| ^ 2) : ∠ a:b:c = ∟ := by",
+      "probability": 0.25005065994175224,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.1093168258667,
+      "well_typed": false,
+      "token_counts": 76,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((|(b─c)|)^2 = (|(b─a)|)^2 + (|(a─c)|)^2)) → (∠ a:b:c = ∟)",
+      "full_output": "theorem thm1 (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (|(b─c)|)^2 = (|(b─a)|)^2 + (|(a─c)|)^2) : ∠ a:b:c = ∟ := by",
+      "probability": 0.24910250301601575,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.1093168258667,
+      "well_typed": false,
+      "token_counts": 73,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(b─c)|² = |(a─b)|² + |(a─c)|²)) → ()",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(b─c)|² = |(a─b)|² + |(a─c)|²)",
+      "probability": 0.0,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "all",
+      "time": 11.1093168258667,
+      "well_typed": false,
+      "token_counts": 59,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)| → ∠ b:a:c = ∟",
+  "nl_statement": "For let the square on one of the sides, $BC$, of triangle $ABC$ be equal to the (sum of the) squares on the sides $BA$ and $AC$. I say that angle $BAC$ is a right-angle. <prf>  Thus, $BAC$ is also a right-angle.Thus, if the square on one of the sides of a triangle is equal to the (sum of the) squares on the remaining two sides of the triangle then the angle contained by the remaining two sides of the triangle is a right-angle.",
+  "lean4_header": ""
+}
