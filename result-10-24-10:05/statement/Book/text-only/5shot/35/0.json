@@ -1,0 +1,20 @@
+{
+  "id": "35",
+  "formalizations": [
+    {
+      "formalization": "((hypothesis_1) ∧ (hypothesis_2)) → ()",
+      "full_output": "Alright, I'm trying to tackle this geometry problem about parallelograms. So, the English statement says that if there are two parallelograms on the same base and between the same parallel lines, then those parallelograms are equal to one another. The example given uses parallelograms ABCD and EBCF, sharing the same base BC and lying between the same parallels AF and BC. The conclusion is that ABCD is equal to EBCF.\n\nOkay, first, I need to understand what it means for two parallelograms to be \"equal.\" I think in geometry, two figures are equal if they have the same shape and size, which usually means they can be superimposed on each other without any discrepancy. For parallelograms, having the same base and lying between the same parallels suggests that their corresponding sides and angles are equal.\n\nNow, focusing on the formalization part. The user provided some examples of how to structure the theorem in Lean4. They have various axioms and namespaces for points, lines, and circles, which define properties like being on a line, being collinear, forming triangles, etc. So, I need to use these structures to express the theorem correctly.\n\nThe theorem needs to be written in the form:\n\ntheorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 19.58778953552246,
+      "well_typed": false,
+      "token_counts": 278,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g : Point) (AF BC AB CD EB FC : Line), formParallelogram a d b c AF BC AB CD ∧ formParallelogram e f b c AF BC EB FC ∧ between a d e ∧ between d e f ∧ g.onLine CD ∧ g.onLine EB → Triangle.area △a:b:d + Triangle.area △d:b:c = Triangle.area △e:b:c + Triangle.area △ e:c:f",
+  "nl_statement": "Parallelograms which are on the same base and between the same parallels are equal to one another. Let $ABCD$ and $EBCF$ be parallelograms on the same base $BC$, and between the same parallels $AF$ and $BC$. I say that $ABCD$ is equal to parallelogram $EBCF$. <prf> Thus, the whole parallelogram $ABCD$ is equal to the whole parallelogram $EBCF$.Thus, parallelograms which are on the same base and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

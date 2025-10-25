@@ -1,0 +1,68 @@
+{
+  "id": "22",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Line) (B : Line) (C : Line), (True) → ()",
+      "full_output": "theorem constructor_triangle (A B C : Line) (h1 : |(A endpointsTextboxe ///<----------')\n\nAlright, so I have this problem about constructing a triangle from three given straight lines. The problem statement says that to construct a triangle from three straight lines, the sum of any two lines must be greater than the third one because that's a property of triangles. \n\nFirst, I need to understand what it's asking. We have three lines, let's call them A, B, and C. The goal is to build a triangle using these lines as sides. But before I can do that, I have to make sure that these lines can form a triangle. According to the problem, this is possible if the sum of any two lines is greater than the third one. So, if A + B > C, A + C > B, and B + C > A, then it's possible to construct the triangle.\n\nOkay, so how do I approach this? I think the first step is to take one of the lines and use it as a base. Let's say I take line A and draw it horizontally on a piece of paper. Then, I need to attach line B to one end of line A, forming",
+      "probability": 0.20130484968115886,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.60310506820679,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((twoLinesIntersectAtPoint AB CD d) ∧ (twoLinesIntersectAtPoint CD EF e) ∧ (twoLinesIntersectAtPoint EF AB f) ∧ (|(a─b)| = |(c─d)|) ∧ (|(d─e)| = |(e─f)|) ∧ (|(f─a)| = |(a─b)|) ∧ (|(c─d)| < |(a─b)| + |(d─e)|) ∧ (|(e─f)| < |(d─e)| + |(f─a)|) ∧ (|(a─b)| < |(f─a)| + |(a─b)|)) → (formTriangle a b c AB CD EF)",
+      "full_output": "theorem construct_triangle_from_three_straight_lines (a b c d e f : Point) (AB CD EF : Line) (h1 : twoLinesIntersectAtPoint AB CD d) (h2 : twoLinesIntersectAtPoint CD EF e) (h3 : twoLinesIntersectAtPoint EF AB f) (h4 : |(a─b)| = |(c─d)|) (h5 : |(d─e)| = |(e─f)|) (h6 : |(f─a)| = |(a─b)|) (h7 : |(c─d)| < |(a─b)| + |(d─e)|) (h8 : |(e─f)| < |(d─e)| + |(f─a)|) (h9 : |(a─b)| < |(f─a)| + |(a─b)|) : formTriangle a b c AB CD EF := by",
+      "probability": 0.20032674799983444,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.60310506820679,
+      "well_typed": true,
+      "token_counts": 207,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (A : Line) (B : Line) (C : Line), ((|(a─b)| > |(a─c)|) ∧ (|(a─b)| > |(b─c)|) ∧ (|(a─c)| > |(b─c)|)) → (∃ k f g : Point, |(k─f)| = |(a─b)| ∧ |(f─g)| = |(a─c)| ∧ |(g─k)| = |(b─c)| ∧ formTriangle k f g KFG KFG KFG)",
+      "full_output": "theorem construct_triangle_from_three_straight_lines (a b c : Point) (A B C : Line) (h1 : |(a─b)| > |(a─c)|) (h2 : |(a─b)| > |(b─c)|) (h3 : |(a─c)| > |(b─c)|) : ∃ k f g : Point, |(k─f)| = |(a─b)| ∧ |(f─g)| = |(a─c)| ∧ |(g─k)| = |(b─c)| ∧ formTriangle k f g KFG KFG KFG := by",
+      "probability": 0.19987428719135775,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.60310506820679,
+      "well_typed": false,
+      "token_counts": 140,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (CA : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine c a CA) ∧ (|(a─b)| < |(b─c)| + |(a─c)|) ∧ (|(b─c)| < |(a─b)| + |(a─c)|) ∧ (|(a─c)| < |(a─b)| + |(b─c)|)) → (∃ kfg : Point, formTriangle kfg a b AB ∧ formTriangle kfg b c BC ∧ formTriangle kfg c a CA ∧ |(kfg─a)| = |(b─c)| ∧ |(kfg─b)| = |(a─c)| ∧ |(kfg─c)| = |(a─b)|)",
+      "full_output": "theorem construct_triangle_from_three_straight_lines (a b c : Point) (AB BC CA : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine b c BC) (h3 : distinctPointsOnLine c a CA) (h4 : |(a─b)| < |(b─c)| + |(a─c)|) (h5 : |(b─c)| < |(a─b)| + |(a─c)|) (h6 : |(a─c)| < |(a─b)| + |(b─c)|) : ∃ kfg : Point, formTriangle kfg a b AB ∧ formTriangle kfg b c BC ∧ formTriangle kfg c a CA ∧ |(kfg─a)| = |(b─c)| ∧ |(kfg─b)| = |(a─c)| ∧ |(kfg─c)| = |(a─b)| := by",
+      "probability": 0.19963098617545924,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.60310506820679,
+      "well_typed": false,
+      "token_counts": 211,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (((∠ a:b:c : ℝ) = ∠ a:c:b))) → ((|(a─b)| = |(a─c)|))",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ((∠ a:b:c : ℝ) = ∠ a:c:b)) : (|(a─b)| = |(a─c)|) := by",
+      "probability": 0.1988631289521898,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.60310506820679,
+      "well_typed": true,
+      "token_counts": 67,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a a' b b' c c' : Point) (A B C : Line), distinctPointsOnLine a a' A ∧ distinctPointsOnLine b b' B ∧ distinctPointsOnLine c c' C ∧ (|(a─a')| + |(b─b')| > |(c─c')|) ∧ (|(a─a')| + |(c─c')| > |(b─b')|) ∧ (|(b─b')| + |(c─c')| > |(a─a')|) → ∃ (k f g : Point), (|(f─k)| = |(a─a')|) ∧ (|(f─g)| = |(b─b')|) ∧ (|(k─g)| = |(c─c')|)",
+  "nl_statement": "To construct a triangle from three straight-lines which are equal to three given [straight-lines]. It is necessary for (the sum of) two (of the straight-lines) taken together in any (possible way) to be greater than the remaining (one), on account of the (fact that) in any triangle (the sum of) two sides taken together in any (possible way) is greater than the remaining (one) [Prop.~1.20].Let $A$, $B$, and $C$ be the three given straight-lines, of which let (the sum of) two taken together in any (possible way)  be greater than the remaining (one).(Thus), (the sum of) $A$ and $B$ (is greater) than $C$, (the sum of) $A$ and $C$ than $B$,  and also (the sum of) $B$ and $C$ than $A$.So it is required to construct a triangle  from (straight-lines) equal to $A$, $B$, and $C$.    <prf>  Thus,  the three straight-lines $KF$, $FG$, and $GK$ are equal to $A$, $B$, and $C$ (respectively).   Thus, the triangle $KFG$ has been constructed from the three straight-lines  $KF$, $FG$, and $GK$, which are equal to the three given straight-lines  $A$, $B$, and $C$ (respectively).(Which is) the very thing it was required  to do.",
+  "lean4_header": ""
+}

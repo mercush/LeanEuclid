@@ -1,0 +1,68 @@
+{
+  "id": "41",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AE : Line) (CD : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AE AB)) → ((Triangle.area △ e:b:c) * 2 = Triangle.area △ a:b:c)",
+      "full_output": "theorem example_thm (a b c d e : Point) (AB BC AE CD : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AE AB) : (Triangle.area △ e:b:c) * 2 = Triangle.area △ a:b:c := by",
+      "probability": 0.20041593471403274,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.92452120780945,
+      "well_typed": true,
+      "token_counts": 73,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (AE : Line) (AD : Line) (CD : Line) (AB : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AE AB) ∧ (a ≠ e)) → (Triangle.area △ a:b:c + Triangle.area △ a:c:d = 2 * Triangle.area △ e:b:c)",
+      "full_output": "theorem thm_000405 (a b c d e : Point) (BC AE AD CD AB : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AE AB) (h3 : a ≠ e) : Triangle.area △ a:b:c + Triangle.area △ a:c:d = 2 * Triangle.area △ e:b:c := by",
+      "probability": 0.20039371766217734,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.92452120780945,
+      "well_typed": true,
+      "token_counts": 89,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (base : Point) (e : Point) (parallelogram_base : Point) (parallelogram_top : Point) (triangle_point : Point) (base_line : Line) (top_line : Line), ((formParallelogram base e parallelogram_base parallelogram_top base_line top_line (Line.intersectsLine base_line top_line) (Line.intersectsLine top_line base_line)) ∧ (distinctPointsOnLine base e base_line) ∧ (distinctPointsOnLine triangle_point base base_line) ∧ (oppositeSides triangle_point e base_line)) → ((Triangle.area △ base parallelogram_base parallelogram_top = 2 * Triangle.area △ base e base))",
+      "full_output": "theorem example_thm (base : Point) (e : Point) (parallelogram_base : Point) (parallelogram_top : Point) (triangle_point : Point) (base_line : Line) (top_line : Line) (h1 : formParallelogram base e parallelogram_base parallelogram_top base_line top_line (Line.intersectsLine base_line top_line) (Line.intersectsLine top_line base_line)) (h2 : distinctPointsOnLine base e base_line) (h3 : distinctPointsOnLine triangle_point base base_line) (h4 : oppositeSides triangle_point e base_line) : (Triangle.area △ base parallelogram_base parallelogram_top = 2 * Triangle.area △ base e base) := by",
+      "probability": 0.1998728626903227,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.92452120780945,
+      "well_typed": false,
+      "token_counts": 158,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (AE : Line) (CD : Line) (AB : Line), ((formParallelogram a b c d AB CD AE BC) ∧ (formTriangle e b c BC AE CD) ∧ (a ≠ b) ∧ (a ≠ c) ∧ (a ≠ d) ∧ (a ≠ e)) → ((Triangle.area △ a:b:c + Triangle.area △ c:d:a) = 2 * Triangle.area △ e:b:c)",
+      "full_output": "theorem parallelogram_area_double_triangle (a b c d e : Point) (BC AE CD AB : Line) (h1 : formParallelogram a b c d AB CD AE BC) (h2 : formTriangle e b c BC AE CD) (h3 : a ≠ b) (h4 : a ≠ c) (h5 : a ≠ d) (h6 : a ≠ e) : (Triangle.area △ a:b:c + Triangle.area △ c:d:a) = 2 * Triangle.area △ e:b:c := by",
+      "probability": 0.19971566756936823,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.92452120780945,
+      "well_typed": true,
+      "token_counts": 115,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (AB : Line) (BC : Line) (CD : Line) (DA : Line) (AE : Line), ((formParallelogram A B C D AB CD BC DA) ∧ (formTriangle E B C EB BC CE) ∧ (¬Point.collinear A E) ∧ (¬Point.collinear B C) ∧ ((Point.onLine A AE) ∧ (Point.onLine E AE)) ∧ ((Point.onLine B BC) ∧ (Point.onLine C BC))) → (Triangle.area △ E:B:C * 2 = Triangle.area △ A:B:C)",
+      "full_output": "theorem example_thm (A B C D E : Point) (AB BC CD DA AE : Line) (h1 : formParallelogram A B C D AB CD BC DA) (h2 : formTriangle E B C EB BC CE) (h3 : ¬Point.collinear A E) (h4 : ¬Point.collinear B C) (h5 : (Point.onLine A AE) ∧ (Point.onLine E AE)) (h6 : (Point.onLine B BC) ∧ (Point.onLine C BC)) : Triangle.area △ E:B:C * 2 = Triangle.area △ A:B:C := by",
+      "probability": 0.1996018173640991,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 20.92452120780945,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AE BC AB CD BE CE : Line), formParallelogram a d b c AE BC AB CD ∧ formTriangle e b c BE BC CE ∧ e.onLine AE ∧ ¬(AE.intersectsLine BC) → (Triangle.area △ a:b:c : ℝ) + (Triangle.area △ a:c:d) = (Triangle.area △ e:b:c) + (Triangle.area △ e :b :c)",
+  "nl_statement": "If a parallelogram has the same base as a triangle, and is between the same parallels, then the parallelogram is double (the area) of the triangle. For let parallelogram $ABCD$ have the same base $BC$ as triangle $EBC$, and let it be between the same parallels, $BC$ and $AE$. I say that  parallelogram $ABCD$ is double (the area) of triangle $BEC$.  <prf> So parallelogram $ABCD$ is also double (the area) of triangle $EBC$.Thus, if a parallelogram has the same base as a triangle, and is between the same parallels, then the parallelogram is double (the area) of the triangle.",
+  "lean4_header": ""
+}

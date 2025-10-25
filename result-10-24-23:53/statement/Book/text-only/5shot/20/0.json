@@ -1,0 +1,20 @@
+{
+  "id": "20",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (CA : Line), ((formTriangle a b c AB BC CA)) → ((|(b─a)| + |(a─c)| > |(b─c)|) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(b─c)| + |(c─a)| > |(a─b)|))",
+      "full_output": "Alright, so I need to formalize this triangle inequality theorem using Lean 4. Let me first understand what the theorem is saying. It states that in any triangle, the sum of any two sides is greater than the remaining side. So, for triangle ABC, it means BA + AC > BC, AB + BC > AC, and BC + CA > AB.\n\nOkay, to start, I need to define the points and lines involved. Let's say points a, b, and c form the triangle, and the sides are AB, BC, and CA. I need to ensure that these points are distinct and form a valid triangle. \n\nNext, I should think about how to express the inequality in Lean. The length of a side can be represented using |(a─b)|, which denotes the distance between points a and b. So, I need to write that |(b─a)| + |(a─c)| > |(b─c)|, and similarly for the other combinations.\n\nNow, considering the axioms and definitions provided, I should use the appropriate geometric relations. Since this is a fundamental property of triangles, I might not need specific axioms beyond the basic ones related to points and lines.\n\nI also need to make sure that I follow the guidelines strictly. That means no extra text, just the theorem statement in the specified format. I should avoid using any intermediate variables or additional operators beyond the basic ones like +, -, *, /.\n\nLet me try to structure the theorem. I'll name it triangle_inequality, and it will take points a, b, c and lines AB, BC, CA as parameters. The hypothesis h1 will assert that these points form a triangle. The conclusion will be the three inequalities.\n\nWait, but in Lean, I can't have multiple conclusions directly. Maybe I can combine them using logical conjunctions. So, the conclusion would be that all three inequalities hold: BA + AC > BC, AB + BC > AC, and BC + CA > AB.\n\nI think that's a good approach. Now, I'll write the theorem statement accordingly, making sure to follow the format precisely. I'll also need to use the correct notation for the lengths of the segments.\n\nFinally, I'll end the statement with \":= by sorry\" as instructed, even though in a real proof, I would provide the actual proof steps here. But for now, I'm just setting up the formal structure.\n\nAlright, let me put it all together.\n</think>\n\ntheorem triangle_inequality (a b c : Point) (AB BC CA : Line) (h1 : formTriangle a b c AB BC CA) : (|(b─a)| + |(a─c)| > |(b─c)|) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(b─c)| + |(c─a)| > |(a─b)|) := by sorry",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 44.474321126937866,
+      "well_typed": true,
+      "token_counts": 610,
+      "formalization_check": true
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC → |(b─a)| + |(a─c)| > |(b─c)|",
+  "nl_statement": "In any triangle, (the sum of) two sides taken together in any (possible way) is greater than the remaining (side). For let $ABC$ be a triangle. I say that in triangle $ABC$ (the sum of) two sides taken together in any (possible way) is greater than the remaining (side). (So), (the sum of) $BA$ and $AC$ (is greater) than $BC$, (the sum of) $AB$ and $BC$ than $AC$, and (the sum of) $BC$ and $CA$ than $AB$.   <prf>  Thus, (the sum of) $BA$ and $AC$ is greater than $BC$. Similarly, we can show that (the sum of) $AB$ and $BC$ is also greater than $CA$, and (the sum of) $BC$ and $CA$ than $AB$.Thus, in any triangle, (the sum of) two sides taken together in any (possible way) is greater than the remaining (side).",
+  "lean4_header": ""
+}

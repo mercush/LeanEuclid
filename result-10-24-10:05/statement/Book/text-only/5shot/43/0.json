@@ -1,0 +1,20 @@
+{
+  "id": "43",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (Point.onLine a AC) ∧ (Point.onLine d BD)) → ((|a─b| = |c─d|))",
+      "full_output": "Alright, so I have this problem about parallelograms and their complements. It's a bit confusing at first glance, but I think if I break it down step by step, I can understand what's being asked.\n\nFirst, let's make sure I understand the terms:\n\n- **Parallelogram**: A four-sided figure with both pairs of opposite sides parallel. Like a rectangle or a rhombus.\n- **Diagonal**: A line connecting two non-adjacent vertices of a polygon. In a parallelogram, the diagonals bisect each other.\n- **Complements**: This is a bit tricky. The term isn't commonly used in basic geometry, so I need to figure out what it means in this context. It seems like it's referring to the smaller parallelograms formed by dividing the original parallelogram along the diagonal.\n\nSo, the statement is saying that if you have a parallelogram, and you draw its diagonal, this diagonal will divide the original parallelogram into two smaller parallelograms. The \"complements\" of these smaller parallelograms about the diagonal are equal to one another. That means the two smaller parallelograms created by the diagonal are congruent or have the same area.\n\nAlright, to formalize this, I need to translate the English statement into Lean4 code, following the provided guidelines and structure. Here's what the final statement should look like:\n\ntheorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : Point.onLine a AC) (h3 : Point.onLine d BD) : (|a─b| = |c─d|) := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 25.63954496383667,
+      "well_typed": false,
+      "token_counts": 362,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h k : Point) (AD BC AB CD AC EF GH : Line), formParallelogram a d b c AD BC AB CD ∧ distinctPointsOnLine a c AC ∧ k.onLine AC ∧ between a h d ∧ formParallelogram a h e k AD EF AB GH ∧ formParallelogram k f g c EF BC GH CD → (Triangle.area △ e:b:g + Triangle.area △ e:g:k = Triangle.area △ h:k:f + Triangle.area △ h:f:d)",
+  "nl_statement": "For any parallelogram, the complements of the parallelograms about the diagonal are equal to one another. Let $ABCD$ be a parallelogram, and $AC$ its diagonal. And let $EH$ and $FG$ be the parallelograms about  $AC$, and $BK$ and $KD$ the so-called complements (about $AC$). I say that the complement $BK$ is equal to the complement $KD$. <prf> Thus, the remaining complement $BK$ is equal to the remaining complement $KD$. Thus, for any parallelogramic figure, the complements of the parallelograms about the diagonal are equal to one another.",
+  "lean4_header": ""
+}

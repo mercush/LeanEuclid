@@ -1,0 +1,68 @@
+{
+  "id": "22",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point), (((|(A─B)| = |(A─C)|)) ∧ ((|(A─B)| = |(B─C)|)) ∧ ((|(A─C)| = |(B─C)|))) → (∃ (k f g : Point) (KF FG GK : Line), formTriangle k f g KF FG GK ∧ |(k─f)| = |(A─B)| ∧ |(f─g)| = |(A─C)| ∧ |(g─k)| = |(B─C)|)",
+      "full_output": "theorem example_thm (A B C : Point) (h1 : (|(A─B)| = |(A─C)|)) (h2 : (|(A─B)| = |(B─C)|)) (h3 : (|(A─C)| = |(B─C)|)) : ∃ (k f g : Point) (KF FG GK : Line), formTriangle k f g KF FG GK ∧ |(k─f)| = |(A─B)| ∧ |(f─g)| = |(A─C)| ∧ |(g─k)| = |(B─C)| := by",
+      "probability": 0.20057703596946466,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.398327112197876,
+      "well_typed": true,
+      "token_counts": 135,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Line) (B : Line) (C : Line), ((distinctPointsOnLine A B (A + B - C)) ∧ (distinctPointsOnLine A C (A + C - B)) ∧ (distinctPointsOnLine B C (B + C - A))) → (∃ (K F G : Point) (KF FG GK : Line), formTriangle K F G KF FG GK ∧ |(K─F)| = |(A─(A + B - C))| ∧ |(F─G)| = |(B─(B + C - A))| ∧ |(G─K)| = |(C─(C + A - B))|)",
+      "full_output": "theorem construct_triangle_from_three_straight_lines (A B C : Line) (h1 : distinctPointsOnLine A B (A + B - C)) (h2 : distinctPointsOnLine A C (A + C - B)) (h3 : distinctPointsOnLine B C (B + C - A)) : ∃ (K F G : Point) (KF FG GK : Line), formTriangle K F G KF FG GK ∧ |(K─F)| = |(A─(A + B - C))| ∧ |(F─G)| = |(B─(B + C - A))| ∧ |(G─K)| = |(C─(C + A - B))| := by",
+      "probability": 0.200257806399505,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.398327112197876,
+      "well_typed": false,
+      "token_counts": 154,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine a c AC) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(b─c)| + |(a─c)| > |(a─b)|)) → (∃ l m n : Point, formTriangle l m n LM MN NL)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine b c BC) (h3 : distinctPointsOnLine a c AC) (h4 : |(a─b)| + |(b─c)| > |(a─c)|) (h5 : |(a─b)| + |(a─c)| > |(b─c)|) (h6 : |(b─c)| + |(a─c)| > |(a─b)|) : ∃ l m n : Point, formTriangle l m n LM MN NL := by",
+      "probability": 0.20024837506084078,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.398327112197876,
+      "well_typed": false,
+      "token_counts": 148,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Line) (B : Line) (C : Line), (True) → (∃ KFG : Triangle, |(K─F)| = |(A─B)| ∧ |(F─G)| = |(A─B)| ∧ |(G─K)| = |(A─B)|)",
+      "full_output": "theorem construct_triangle_from_three_lines (A B C : Line) : ∃ KFG : Triangle, |(K─F)| = |(A─B)| ∧ |(F─G)| = |(A─B)| ∧ |(G─K)| = |(A─B)| := by",
+      "probability": 0.19983161674980277,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.398327112197876,
+      "well_typed": false,
+      "token_counts": 64,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point), ((|(A─B)| > 0) ∧ (|(A─C)| > 0) ∧ (|(B─C)| > 0) ∧ (|(A─B)| + |(A─C)| > |(B─C)|) ∧ (|(A─C)| + |(B─C)| > |(A─B)|) ∧ (|(A─B)| + |(B─C)| > |(A─C)|)) → (∃ K F G : Point, |(K─F)| = |(A─B)| ∧ |(F─G)| = |(A─C)| ∧ |(G─K)| = |(B─C)|)",
+      "full_output": "theorem example_thm (A B C : Point) (h1 : |(A─B)| > 0) (h2 : |(A─C)| > 0) (h3 : |(B─C)| > 0) (h4 : |(A─B)| + |(A─C)| > |(B─C)|) (h5 : |(A─C)| + |(B─C)| > |(A─B)|) (h6 : |(A─B)| + |(B─C)| > |(A─C)|) : ∃ K F G : Point, |(K─F)| = |(A─B)| ∧ |(F─G)| = |(A─C)| ∧ |(G─K)| = |(B─C)| := by",
+      "probability": 0.1990851658203867,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.398327112197876,
+      "well_typed": true,
+      "token_counts": 180,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a a' b b' c c' : Point) (A B C : Line), distinctPointsOnLine a a' A ∧ distinctPointsOnLine b b' B ∧ distinctPointsOnLine c c' C ∧ (|(a─a')| + |(b─b')| > |(c─c')|) ∧ (|(a─a')| + |(c─c')| > |(b─b')|) ∧ (|(b─b')| + |(c─c')| > |(a─a')|) → ∃ (k f g : Point), (|(f─k)| = |(a─a')|) ∧ (|(f─g)| = |(b─b')|) ∧ (|(k─g)| = |(c─c')|)",
+  "nl_statement": "To construct a triangle from three straight-lines which are equal to three given [straight-lines]. It is necessary for (the sum of) two (of the straight-lines) taken together in any (possible way) to be greater than the remaining (one), on account of the (fact that) in any triangle (the sum of) two sides taken together in any (possible way) is greater than the remaining (one) [Prop.~1.20].Let $A$, $B$, and $C$ be the three given straight-lines, of which let (the sum of) two taken together in any (possible way)  be greater than the remaining (one).(Thus), (the sum of) $A$ and $B$ (is greater) than $C$, (the sum of) $A$ and $C$ than $B$,  and also (the sum of) $B$ and $C$ than $A$.So it is required to construct a triangle  from (straight-lines) equal to $A$, $B$, and $C$.    <prf>  Thus,  the three straight-lines $KF$, $FG$, and $GK$ are equal to $A$, $B$, and $C$ (respectively).   Thus, the triangle $KFG$ has been constructed from the three straight-lines  $KF$, $FG$, and $GK$, which are equal to the three given straight-lines  $A$, $B$, and $C$ (respectively).(Which is) the very thing it was required  to do.",
+  "lean4_header": ""
+}

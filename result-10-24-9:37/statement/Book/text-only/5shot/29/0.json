@@ -1,0 +1,68 @@
+{
+  "id": "29",
+  "formalizations": [
+    {
+      "formalization": "∀ (E : Point) (F : Point) (G : Point) (H : Point) (B : Point) (C : Point) (D : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine E F EF) ∧ (Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF) ∧ (¬(Line.intersectsLine AB CD)) ∧ (Point.onLine G AB) ∧ (Point.onLine G EF) ∧ (Point.onLine H CD) ∧ (Point.onLine H EF) ∧ (Point.onLine B AB) ∧ (Point.onLine C CD) ∧ (Angle.right ∠ G H E) ∧ (Angle.right ∠ G H C) ∧ (Angle.ofPoints G H E) ∧ (Angle.ofPoints G H C) ∧ (Angle.ofPoints B G H) ∧ (Angle.ofPoints G H D) ∧ (Angle.ofPoints E G H) ∧ (Angle.ofPoints G H D)) → ()",
+      "full_output": "theorem thm_parallel_lines_and_transversal_properties (E F G H B C D : Point)\n  (AB CD EF : Line)\n  (h1 : distinctPointsOnLine E F EF)\n  (h2 : Line.intersectsLine AB EF)\n  (h3 : Line.intersectsLine CD EF)\n  (h4 : ¬(Line.intersectsLine AB CD))\n  (h5 : Point.onLine G AB)\n  (h6 : Point.onLine G EF)\n  (h7 : Point.onLine H CD)\n  (h8 : Point.onLine H EF)\n  (h9 : Point.onLine B AB)\n  (h10 : Point.onLine C CD)\n  (h11 : Angle.right ∠ G H E)\n  (h12 : Angle.right ∠ G H C)\n  (h13 : Angle.ofPoints G H E)\n  (h14 : Angle.ofPoints G H C)\n  (h15 : Angle.ofPoints B G H)\n  (h16 : Angle.ofPoints G H D)\n  (h17 : Angle.ofPoints E G H)\n  (h18 : Angle.ofPoints G H D)\n  (h19 : Angle",
+      "probability": 0.20049200128917422,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 36.68897342681885,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (¬(Line.intersectsLine AB CD)) ∧ (Line.intersectsLine EF AB ∧ Line.intersectsLine EF CD) ∧ (formTriangle a b c AB CD (c:=') (h6 : Angle.right)) ∧ (formTriangle c d a CD AB (c:='))) → ((∠ a:c:d = ∠ c:d:a) ∧ (∠ a:c:d = ∠ a:d:c) ∧ (∠ a:c:d + ∠ c:d:a = ∟ + ∟))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : ¬(Line.intersectsLine AB CD)) (EF : Line) (h4 : Line.intersectsLine EF AB ∧ Line.intersectsLine EF CD) (h5 : formTriangle a b c AB CD (c:=') (h6 : Angle.right)) (h7 : formTriangle c d a CD AB (c:=')) : (∠ a:c:d = ∠ c:d:a) ∧ (∠ a:c:d = ∠ a:d:c) ∧ (∠ a:c:d + ∠ c:d:a = ∟ + ∟) := by",
+      "probability": 0.20020329203897344,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 36.68897342681885,
+      "well_typed": false,
+      "token_counts": 163,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (EF : Line) (AB : Line) (CD : Line), ((Line.intersectsLine EF AB) ∧ (Line.intersectsLine EF CD) ∧ (¬(A.onLine EF)) ∧ (¬(B.onLine EF)) ∧ (¬(C.onLine EF)) ∧ (¬(D.onLine EF)) ∧ (Point.collinear A B C) ∧ (Point.collinear C D A) ∧ (Point.opposingSides A C EF)) → (∠ A:C:D = ∠ A:B:C ∧ ∠ B:C:D = ∠ B:A:C ∧ ∠ A:B:C + ∠ B:C:D = ∟ + ∟)",
+      "full_output": "theorem example_thm (A B C D : Point) (EF AB CD : Line) (h1 : Line.intersectsLine EF AB) (h2 : Line.intersectsLine EF CD) (h3 : ¬(A.onLine EF)) (h4 : ¬(B.onLine EF)) (h5 : ¬(C.onLine EF)) (h6 : ¬(D.onLine EF)) (h7 : Point.collinear A B C) (h8 : Point.collinear C D A) (h9 : Point.opposingSides A C EF) : ∠ A:C:D = ∠ A:B:C ∧ ∠ B:C:D = ∠ B:A:C ∧ ∠ A:B:C + ∠ B:C:D = ∟ + ∟ := by",
+      "probability": 0.20013593421375442,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 36.68897342681885,
+      "well_typed": false,
+      "token_counts": 164,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (EF : Line), ((Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF) ∧ (¬(AB = CD)) ∧ (Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c CD) ∧ (Point.onLine d CD) ∧ (Point.onLine e EF) ∧ (Point.onLine f EF) ∧ (Point.onLine g EF) ∧ (Point.onLine h EF) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine e f EF) ∧ (distinctPointsOnLine g h EF)) → ()",
+      "full_output": "theorem thm_name (a b c d e f g h : Point) (AB CD EF : Line) (h1 : Line.intersectsLine AB EF) (h2 : Line.intersectsLine CD EF) (h3 : ¬(AB = CD)) (h4 : Point.onLine a AB) (h5 : Point.onLine b AB) (h6 : Point.onLine c CD) (h7 : Point.onLine d CD) (h8 : Point.onLine e EF) (h9 : Point.onLine f EF) (h10 : Point.onLine g EF) (h11 : Point.onLine h EF) (h12 : distinctPointsOnLine a b AB) (h13 : distinctPointsOnLine c d CD) (h14 : distinctPointsOnLine e f EF) (h15 : distinctPointsOnLine g h EF)) : ∠ a:g:b = ∠ g:h:c ∧ ∠ e:h:g = ∠ g:f:e ∧ |(a─b)| + |(c─d)| = |(e─f)| + |(g─h)| := by",
+      "probability": 0.199649491556094,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 36.68897342681885,
+      "well_typed": false,
+      "token_counts": 237,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (EF : Line), ((Line.intersectsLine AB CD) ∧ (¬(Line.intersectsLine EF AB)) ∧ (Line.intersectsLine EF CD) ∧ (Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c CD) ∧ (Point.onLine d CD) ∧ (Point.onLine e EF) ∧ (Point.onLine f EF) ∧ (Point.onLine g EF) ∧ (Point.onLine h EF) ∧ (formTriangle a b c AB CD EF) ∧ (formTriangle c d e CD EF AB) ∧ (formTriangle e f g EF AB CD) ∧ (formTriangle g h a CD EF AB) ∧ (formTriangle h b CD EF AB) ∧ (formTriangle b c EF AB CD)) → ()",
+      "full_output": "theorem parallel_straight_lines_intercepted_angle (a b c d e f g h : Point) \n  (AB CD EF : Line) \n  (h1 : Line.intersectsLine AB CD)\n  (h2 : ¬(Line.intersectsLine EF AB))\n  (h3 : Line.intersectsLine EF CD)\n  (h4 : Point.onLine a AB)\n  (h5 : Point.onLine b AB)\n  (h6 : Point.onLine c CD)\n  (h7 : Point.onLine d CD)\n  (h8 : Point.onLine e EF)\n  (h9 : Point.onLine f EF)\n  (h10 : Point.onLine g EF)\n  (h11 : Point.onLine h EF)\n  (h12 : formTriangle a b c AB CD EF)\n  (h13 : formTriangle c d e CD EF AB)\n  (h14 : formTriangle e f g EF AB CD)\n  (h15 : formTriangle g h a CD EF AB)\n  (h16 : formTriangle h b CD EF AB)\n  (h17 : formTriangle b c EF AB CD)\n  (h18 : formTriangle c d AB CD",
+      "probability": 0.19951928090200394,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 36.68897342681885,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AB CD EF : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine e f EF ∧ (between a g b) ∧ (between c h d) ∧ (between e g h) ∧ (between g h f) ∧ (b.sameSide d EF) ∧ ¬(AB.intersectsLine CD) → ∠ a:g:h = ∠ g:h:d ∧ ∠ e:g:b = ∠ g:h:d ∧ ∠ b:g:h + ∠ g:h:d = ∟ + ∟",
+  "nl_statement": "A straight-line falling across  parallel straight-lines makes the alternate angles equal to one another, the external (angle) equal to the internal and opposite (angle), and the (sum of the) internal (angles) on the same side equal to two right-angles. For let the straight-line $EF$ fall across the parallel straight-lines $AB$ and $CD$. I say that it makes the  alternate angles, $AGH$ and $GHD$,  equal,  the external angle $EGB$ equal to the internal and opposite (angle) $GHD$, and the (sum of the) internal (angles) on the same side, $BGH$ and $GHD$, equal to two right-angles. <prf>  Thus, (the sum of) $BGH$ and $GHD$ is also equal to two right-angles.Thus, a straight-line falling across parallel straight-lines makes the alternate angles equal to one another,  the external (angle) equal to the internal and opposite (angle), and the (sum of the) internal (angles) on the same side equal to two right-angles.",
+  "lean4_header": ""
+}

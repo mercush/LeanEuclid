@@ -1,0 +1,68 @@
+{
+  "id": "28",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (F : Point) (G : Point) (H : Point) (AB : Line) (CD : Line) (EF : Line), ((Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF) ∧ (Point.onLine A AB) ∧ (Point.onLine B AB) ∧ (Point.onLine C CD) ∧ (Point.onLine D CD) ∧ (Point.onLine E EF) ∧ (Point.onLine F EF) ∧ (Point.onLine G EF) ∧ (Point.onLine H EF) ∧ (∠ E:G:B = ∠ G:H:D ∨ ∠ B:G:H + ∠ G:H:D = ∟ + ∟) ∧ (A ≠ B) ∧ (C ≠ D) ∧ (E ≠ F) ∧ (G ≠ H)) → (¬(Line.intersectsLine AB CD))",
+      "full_output": "theorem parallel_from_exterior_angle (A B C D E F G H : Point)\n  (AB CD EF : Line)\n  (h1 : Line.intersectsLine AB EF)\n  (h2 : Line.intersectsLine CD EF)\n  (h3 : Point.onLine A AB)\n  (h4 : Point.onLine B AB)\n  (h5 : Point.onLine C CD)\n  (h6 : Point.onLine D CD)\n  (h7 : Point.onLine E EF)\n  (h8 : Point.onLine F EF)\n  (h9 : Point.onLine G EF)\n  (h10 : Point.onLine H EF)\n  (h11 : ∠ E:G:B = ∠ G:H:D ∨ ∠ B:G:H + ∠ G:H:D = ∟ + ∟)\n  (h12 : A ≠ B)\n  (h13 : C ≠ D)\n  (h14 : E ≠ F)\n  (h15 : G ≠ H)\n  : ¬(Line.intersectsLine AB CD) := by",
+      "probability": 0.20043081855272177,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 26.225263833999634,
+      "well_typed": true,
+      "token_counts": 224,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((Line.intersectsLine EF AB) ∧ (Line.intersectsLine EF CD) ∧ (∠ a:b:c = ∠ d:c:b ∨ ∠ a:b:c + ∠ d:c:b = ∟ + ∟)) → (¬(Line.intersectsLine AB CD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD EF : Line) (h1 : Line.intersectsLine EF AB) (h2 : Line.intersectsLine EF CD) (h3 : ∠ a:b:c = ∠ d:c:b ∨ ∠ a:b:c + ∠ d:c:b = ∟ + ∟) : ¬(Line.intersectsLine AB CD) := by",
+      "probability": 0.20042571200001655,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 26.225263833999634,
+      "well_typed": true,
+      "token_counts": 87,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (E : Point) (F : Point) (G : Point) (H : Point) (D : Point) (EF : Line) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD G) ∧ (twoLinesIntersectAtPoint EF CD H) ∧ (twoLinesIntersectAtPoint EF AB E) ∧ (∠ E:G:F = ∠ G:H:D ∨ (∠ G:H:D + ∠ E:G:F) = ∟ + ∟)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (E F G H D : Point) (EF : Line) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD G) (h2 : twoLinesIntersectAtPoint EF CD H) (h3 : twoLinesIntersectAtPoint EF AB E) (h4 : ∠ E:G:F = ∠ G:H:D ∨ (∠ G:H:D + ∠ E:G:F) = ∟ + ∟) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.20037655190545248,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 26.225263833999634,
+      "well_typed": true,
+      "token_counts": 114,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (E : Point) (F : Point) (G : Point) (H : Point) (D : Point) (AB : Line) (CD : Line) (EF : Line), ((twoLinesIntersectAtPoint AB EF E) ∧ (twoLinesIntersectAtPoint CD EF F) ∧ (((∠ E:G:B : ℝ) = ∠ G:H:D : ℝ) ∨ ((∠ E:G:B : ℝ) + ∠ G:H:D : ℝ) = ∟ + ∟)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (E F G H D : Point) (AB CD EF : Line) (h1 : twoLinesIntersectAtPoint AB EF E) (h2 : twoLinesIntersectAtPoint CD EF F) (h3 : ((∠ E:G:B : ℝ) = ∠ G:H:D : ℝ) ∨ ((∠ E:G:B : ℝ) + ∠ G:H:D : ℝ) = ∟ + ∟) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.199995287820106,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 26.225263833999634,
+      "well_typed": false,
+      "token_counts": 107,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((formTriangle e f a EF AB a) ∧ (formTriangle c d b CD c) ∧ (Line.intersectsLine AB CD) ∧ (∠ e:f:a = ∠ c:d:b ∨ ∠ c:d:b + ∠ d:c:f = ∟ + ∟)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem thm_parallel_falling_line_exterior_interior_angles (a b c d e f : Point)\n  (AB CD EF : Line)\n  (h1 : formTriangle e f a EF AB a)\n  (h2 : formTriangle c d b CD c)\n  (h3 : Line.intersectsLine AB CD)\n  (h4 : ∠ e:f:a = ∠ c:d:b ∨ ∠ c:d:b + ∠ d:c:f = ∟ + ∟)\n  : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.198771629721703,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 26.225263833999634,
+      "well_typed": false,
+      "token_counts": 116,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AB CD EF : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine e f EF ∧ (between a g b) ∧ (between c h d) ∧ (between e g h) ∧ (between g h f) ∧ (b.sameSide d EF) ∧ (∠ e:g:b = ∠ g:h:d ∨ ∠ b:g:h + ∠ g:h:d = ∟ + ∟) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "If a straight-line falling across two straight-lines makes the external angle equal to the internal and opposite angle on the same side, or (makes) the (sum  of the) internal (angles) on the same side equal to two right-angles, then the (two) straight-lines will be parallel to one another.   For let $EF$, falling across the two straight-lines $AB$ and $CD$, make the external angle $EGB$ equal to the internal and opposite angle $GHD$, or the (sum of the) internal (angles) on the same side, $BGH$ and $GHD$, equal to two right-angles. I say that $AB$ is parallel to $CD$.   <prf> Thus, $AB$ is parallel to $CD$ [Prop.~1.27].  Thus, if a straight-line falling across two straight-lines makes the external angle equal to the internal and opposite angle on the same side, or (makes) the (sum of the) internal (angles) on the same side equal to two right-angles, then the (two) straight-lines will be parallel (to one another).",
+  "lean4_header": ""
+}

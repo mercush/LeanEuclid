@@ -1,0 +1,20 @@
+{
+  "id": "21",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Okay, so I have to formalize this Euclidean geometry theorem into Lean 4 code. Let me first understand what the theorem is saying. \n\nThe theorem states that if you have a triangle ABC, and you draw two lines BD and DC internally on one of its sides, BC, from points B and C respectively, then these two lines BD and DC are each less than the sum of the two remaining sides BA and AC. However, the angle BDC that is formed is greater than the angle BAC of the original triangle.\n\nAlright, so to formalize this, I need to set up the theorem in Lean 4 with the right structure. I have to make sure I'm using the correct types and functions as per the provided guidelines.\n\nFirst, I'll need to define the points and lines involved. Points A, B, C, D are all instances of the Point type. Lines AB, BC, AC, BD, and DC are instances of the Line type.\n\nNext, I need to state the hypotheses. The first hypothesis is that these four points A, B, C, D form a quadrilateral. This is important because it sets the relationships between these points and lines. The second hypothesis is about the angle BDC being greater than angle BAC. This is the key part of the theorem that we're trying to prove.\n\nThe conclusion is that the length of BD plus the length of DC is less than the length of BA plus the length of AC.\n\nSo, putting this together, the theorem should be structured to take these hypotheses and conclude the desired statement about the lengths.\n\nI also need to remember the guidelines: only use the provided axioms, don't define any intermediate variables, ensure all quantified variables are mentioned, and stick to the specified notation and syntax.\n\nI think I have a rough idea now. Let me try to write this out in Lean 4, making sure I'm following the structure and using the correct types and functions.\n\nFirst, I'll declare the theorem with the appropriate name and parameters. Then, I'll list the hypotheses, and finally, the conclusion. I'll end it with \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 30.701175928115845,
+      "well_typed": false,
+      "token_counts": 433,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD DC : Line), formTriangle a b c AB BC AC ∧ (a.sameSide d BC) ∧ (c.sameSide d AB) ∧ (b.sameSide d AC) ∧ distinctPointsOnLine b d BD ∧ distinctPointsOnLine d c DC → (|(b─d)| + |(d─c)| < |(b─a)| + |(a─c)|) ∧ (∠ b:d:c > ∠ b:a:c)",
+  "nl_statement": "If two internal straight-lines are constructed on one of the sides of a triangle, from its ends, the constructed (straight-lines) will be less than the two remaining  sides of the triangle, but will encompass a greater angle. For let the two internal straight-lines $BD$ and $DC$ have been constructed on one of the sides $BC$ of the triangle $ABC$, from its ends $B$ and $C$ (respectively). I say that  $BD$ and $DC$ are less than the (sum of the) two  remaining sides of the triangle $BA$ and $AC$, but encompass an angle $BDC$ greater than $BAC$.    <prf>  Thus, $BDC$ is much greater than $BAC$.Thus, if two internal straight-lines are constructed on one of the sides of a triangle, from its ends,  the constructed (straight-lines) are less than the two remaining  sides of the triangle, but  encompass a greater angle.",
+  "lean4_header": ""
+}

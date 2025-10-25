@@ -1,0 +1,20 @@
+{
+  "id": "7",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I've been given this geometry theorem to formalize in Lean4. Let me try to understand what it's saying. The English statement is a bit complex, but I'll break it down step by step.\n\nAlright, so the theorem is about constructing two lines on the same straight-line that are equal to two given lines which meet at a point. It's saying that it's impossible to have these two new lines meeting at a different point on the same side of the original straight-line without changing their endpoints. \n\nFirst, I need to identify the key elements in this theorem. There's a straight-line AB, and on it, we're trying to construct two new straight-lines AC and CB that are equal to two other given straight-lines AD and DB, respectively. The points C and D are on the same side of AB, and they're different points. So, AC and CB are supposed to be equal to AD and DB, but C and D are distinct points on AB.\n\nThe proof seems to involve some angle relationships. It mentions that angle CDB is equal to angle DCB because CB equals DB. But then it also points out that angle CDB is much greater than angle DCB, which is a contradiction. Hence, such a construction isn't possible.\n\nNow, to formalize this in Lean4, I need to translate this geometric scenario into the provided structure and axioms. Let's start by identifying the relevant axioms and structures.\n\nThe theorem involves points, lines, and equality of line segments. We'll need to use the definitions and notations provided, such as \"|(a─b)|\" for the length of the line segment between points a and b, and \"collinear\" for points lying on the same line.\n\nI also need to consider the Prologue section which defines the basic geometric sorts: Point, Line, Circle, and their relations. The theorem seems to deal with points and lines, so I'll focus on those.\n\nNext, I need to structure the theorem in Lean4. The user has provided examples that show how to format similar theorems. For example, in the previous example, the theorem has hypotheses and a conclusion, ending with \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 31.63374090194702,
+      "well_typed": false,
+      "token_counts": 447,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB AC CB AD DB : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine c b CB ∧ distinctPointsOnLine a d AD ∧ distinctPointsOnLine d b DB ∧ (c.sameSide d AB) ∧ c ≠ d ∧ (|(a─c)| = |(a─d)|) ∧ (|(c─b)| = |(d─b)|) → False",
+  "nl_statement": "On the same straight-line, two other straight-lines  equal, respectively, to  two (given) straight-lines (which meet) cannot be constructed (meeting) at  a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.     For, if possible, let the two straight-lines $AC$, $CB$, equal to two other straight-lines $AD$, $DB$, respectively, have been constructed on the same straight-line $AB$, meeting at different points, $C$ and $D$, on the same side (of $AB$), and having the same ends (on $AB$). So $CA$ is equal to $DA$, having the same end $A$ as it, and $CB$ is equal to $DB$, having the same end $B$ as it. And let $CD$ have been joined [Post.~1]. <prf> Again, since  $CB$ is equal to $DB$, the angle $CDB$ is also equal to angle $DCB$ [Prop.~1.5]. But it was shown that the former (angle) is also much greater (than the latter). The very thing is impossible. Thus, on the same straight-line, two other straight-lines equal, respectively, to two (given) straight-lines (which meet) cannot be constructed (meeting) at a different point on the same side (of the straight-line), but having the same ends as the given straight-lines.",
+  "lean4_header": ""
+}

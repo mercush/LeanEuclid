@@ -1,9 +1,14 @@
 #!/bin/bash
-# This script was designed to run on GitHub Codespaces.
+curl -LsSf https://astral.sh/uv/install.sh | sh
+cd ../..
+uv venv
+source .venv/bin/activate
+cd src/LeanEuclid
+apt-get update && apt-get install -y curl git cmake m4 
 
 # Install elan.
 curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | bash -s -- -y
-source $HOME/.elan/env
+echo source $HOME/.elan/env >> ~/.bashrc
 
 # Build and Install CVC5.
 git clone https://github.com/cvc5/cvc5 && cd cvc5
@@ -17,9 +22,8 @@ python3 scripts/mk_make.py
 cd build && make -j8 && sudo make install
 cd ../..
 
-pip install smt-portfolio 
-
 # Build the Lean project.
 lake script run check
 lake exe cache get
 lake build SystemE Book UniGeo E3
+source ~/.bashrc

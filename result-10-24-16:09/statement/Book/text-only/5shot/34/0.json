@@ -1,0 +1,20 @@
+{
+  "id": "34",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, I'm trying to formalize this theorem about parallelograms. So, first, I need to understand what's being said here. The English statement says that in a parallelogram, opposite sides and angles are equal, and the diagonal cuts it in half. Let me think about that.\n\nOkay, so in a parallelogram, I know that opposite sides are equal in length and opposite angles are equal in measure. That makes sense, but I need to formalize this using Lean 4. So, how do I represent a parallelogram in this system? Hmm, the problem statement mentions \"points\" and \"lines,\" so I should use those.\n\nWait, the problem says \"parallax figure,\" but I think it means parallelogram. That might be a translation issue. So, let's assume it's a parallelogram. Now, the theorem has two parts: one about opposite sides and angles, and another about the diagonal bisecting the parallelogram.\n\nI see that in the examples, they used \"formParallelogram\" and \"formTriangle\" to define the shapes. So, I should probably use those as well. The theorem needs to conclude two things: the equality of opposite sides and angles, and the diagonal bisecting the parallelogram.\n\nBut how do I represent the diagonal cutting it in half? Maybe by saying that the diagonal divides the parallelogram into two equal triangles. That would make sense, as per the <prf> part where it refers to triangle equality from Prop.~1.4.\n\nSo, the first part is about the opposite sides and angles being equal. I need to find a way to express that using the Lean types and functions provided. The sides are represented by their lengths, so I can use the \"|(a─b)|\" notation for that. For the angles, maybe I can use the \"∠\" notation, but I need to be careful about how to compare them.\n\nThe second part is about the diagonal cutting the parallelogram in half. This would mean that the diagonal divides the parallelogram into two congruent triangles. So, maybe I can use the \"Triangle.area\" function to compare the areas of the two resulting triangles.\n\nLet me try to structure this. I need to define the points and lines that make up the parallelogram. Let's say we have points A, C, D, B, and lines AC, CD, DB, and the diagonal BC. The hypothesis would be that these points form a parallelogram.\n\nThen, for the conclusion, I need to state two things: first, that the opposite sides are equal and the opposite angles are equal. Second, that the diagonal BC creates two triangles of equal area within the parallelogram.\n\nI also need to follow the guidelines strictly. That means I can't use the \"→\" symbol, and all hypotheses must be to the left of the colon, with the conclusion to the right. Lean 4 uses a specific indentation for tactics, but since I'm ending with \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 44.7309787273407,
+      "well_typed": false,
+      "token_counts": 624,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB CD AC BD BC : Line), formParallelogram a b c d AB CD AC BD ∧ distinctPointsOnLine b c BC → |(a─b)| = |(c─d)| ∧ |(a─c)| = |(b─d)| ∧ ∠ a:b:d = ∠ a:c:d ∧ ∠ b:a:c = ∠ c:d:b ∧ Triangle.area △ a:b:c = Triangle.area △ d:c:b",
+  "nl_statement": "In parallelogrammic figures the opposite sides and angles are equal to one another, and a diagonal cuts them in half.Let $ACDB$ be a parallelogrammic figure, and $BC$ its diagonal. I say that for parallelogram $ACDB$, the opposite sides and angles are equal to one another, and the diagonal $BC$ cuts it in half. <prf> Thus, the base $AC$ (is) also equal to $DB$, and triangle $ABC$ is equal to triangle $BCD$ [Prop.~1.4].Thus, the diagonal $BC$ cuts the parallelogram $ACDB$ in half.",
+  "lean4_header": ""
+}

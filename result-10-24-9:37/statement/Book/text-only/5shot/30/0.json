@@ -1,0 +1,56 @@
+{
+  "id": "30",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.4005351109773017,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.701977252960205,
+      "well_typed": false,
+      "token_counts": 54,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_to_same_line_are_parallel (a b c d : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.20028157330149887,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.701977252960205,
+      "well_typed": false,
+      "token_counts": 57,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Line) (B : Line) (C : Line) (D : Line), ((¬(A.intersectsLine B)) ∧ (¬(B.intersectsLine C)) ∧ (¬(C.intersectsLine D))) → (¬(A.intersectsLine D))",
+      "full_output": "theorem example_thm (A B C D : Line) (h1 : ¬(A.intersectsLine B)) (h2 : ¬(B.intersectsLine C)) (h3 : ¬(C.intersectsLine D)) : ¬(A.intersectsLine D) := by",
+      "probability": 0.19997854141133103,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.701977252960205,
+      "well_typed": true,
+      "token_counts": 59,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (EF : Line), ((¬(a.onLine EF)) ∧ (¬(b.onLine EF)) ∧ (¬(aeline EA EB))) → (¬(aeline AB CD))",
+      "full_output": "theorem example_thm (a b : Point) (EF : Line) (h1 : ¬(a.onLine EF)) (h2 : ¬(b.onLine EF)) (h3 : ¬(aeline EA EB)) : ¬(aeline AB CD) := by",
+      "probability": 0.19920477430986838,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 9.701977252960205,
+      "well_typed": false,
+      "token_counts": 58,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (AB CD EF : Line), AB ≠ CD ∧ CD ≠ EF ∧ EF ≠ AB ∧ ¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "(Straight-lines) parallel to the same straight-line are also parallel to one another.Let each of the (straight-lines) $AB$ and $CD$ be parallel to $EF$. I say that $AB$ is also parallel to $CD$. <prf>  Thus, $AB$ is parallel to $CD$ [Prop.~1.27]. Thus, (straight-lines) parallel to the same straight-line are also parallel to one another.",
+  "lean4_header": ""
+}

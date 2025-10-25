@@ -1,0 +1,20 @@
+{
+  "id": "5",
+  "formalizations": [
+    {
+      "formalization": "((hypothesis_1) ∧ (hypothesis_2)) → ()",
+      "full_output": "Alright, so I have this problem about isosceles triangles, and I need to formalize the statement using Lean 4. I'm a bit new to this, but I'll try to break it down step by step.\n\nFirst, let's understand the English statement:\n\n\"For isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another. Let ABC be an isosceles triangle having the side AB equal to the side AC, and let the straight-lines BD and CE have been produced in a straight-line with AB and AC (respectively) [Post.~2]. I say that the angle ABC is equal to ACB, and (angle) CBD to BCE. <prf> Therefore, since the whole angle ABG was shown (to be) equal to the whole angle ACF, within which CBG is equal to BCF, the remainder ABC is thus equal to the remainder ACB [C.N.~3]. And they are at the base of triangle ABC. And FBC was also shown (to be) equal to GCB. And they are under the base. Thus, for isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another.\"\n\nOkay, so the triangle ABC is isosceles with AB = AC. Lines BD and CE are produced in a straight line with AB and AC, respectively. We need to prove that angles at the base (ABC and ACB) are equal, and the angles under the base (CBD and BCE) are equal.\n\nNow, I need to translate this into Lean 4 code. I have to follow the given guidelines and structures. Let's recall the structures provided:\n\nPoints, Lines, and Circles are basic sorts. There are inductive types for geometric entities like angles, segments, triangles, etc. Notations are provided for lengths of segments, measures of angles, right angles, triangles, and their areas.\n\nRelations and axioms are provided under namespaces for points, lines, and circles, including operations like onLine, sameSide, opposingSides, intersectsLine, etc.\n\nThe task is to write a theorem in the form:\n\ntheorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 36.29582476615906,
+      "well_typed": false,
+      "token_counts": 502,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─b)| = |(a─c)|) ∧ (between a b d) ∧ (between a c e) → (∠ a:b:c = ∠ a:c:b) ∧ (∠ c:b:d = ∠ b:c:e)",
+  "nl_statement": "For isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another. Let $ABC$ be an isosceles triangle having the side $AB$ equal to the side $AC$, and let the straight-lines $BD$ and $CE$ have been produced in a straight-line with $AB$ and $AC$ (respectively) [Post.~2]. I say that the angle $ABC$ is equal to $ACB$, and (angle) $CBD$  to $BCE$.  <prf> Therefore, since the whole angle $ABG$ was shown (to be) equal to the whole angle $ACF$, within which $CBG$ is equal to $BCF$, the remainder $ABC$ is thus equal to the remainder $ACB$ [C.N.~3]. And they are at the base of triangle $ABC$. And $FBC$ was also shown (to be) equal to $GCB$. And they are under the base. Thus, for isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another.",
+  "lean4_header": ""
+}

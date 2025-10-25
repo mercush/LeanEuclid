@@ -1,0 +1,20 @@
+{
+  "id": "30",
+  "formalizations": [
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF)) ∧ (AB ≠ CD)) → (¬(AB.intersectsLine CD))",
+      "full_output": "Okay, I have this geometry theorem to formalize in Lean 4. The statement is about parallel lines: \"Straight-lines parallel to the same straight-line are also parallel to one another.\" So, if AB is parallel to EF, and CD is also parallel to EF, then AB should be parallel to CD.\n\nFirst, I need to understand the given axioms and definitions in Lean 4 provided. There are basic geometric sorts like Point, Line, and Circle. Then there are inductive types for geometric entities such as Angle, Segment, and Triangle. Notations like |(a─b)| for the length of segment AB, ∠ a:b:c for the angle at point B, ∟ for a right angle, and △ a:b:c for the triangle area are defined.\n\nIn the namespace for Line, there's a function intersectsLine that checks if two lines intersect. So, if two lines don't intersect, they must be parallel. That’s crucial because in Euclidean geometry, lines are either intersecting or parallel.\n\nNow, to formalize the theorem: Given lines AB and CD, both parallel to line EF, prove that AB is parallel to CD. Since parallel lines don't intersect, I can use this property to structure the proof.\n\nIn Lean 4, I need to define a theorem with the appropriate hypotheses and conclusion. The hypotheses will state that AB is parallel to EF and CD is parallel to EF. The conclusion will be that AB is parallel to CD.\n\nI must ensure that I'm using the correct types and functions. Since parallel is defined by the absence of intersection, I'll use ¬(AB.intersectsLine CD) to denote that AB and CD don't intersect, hence are parallel.\n\nI should also follow the guidelines: use only addition, subtraction, multiplication, and division; avoid defining intermediate variables in the proposition; and use only the provided axioms without importing libraries.\n\nSo, mapping this out, the theorem will have three hypotheses: AB is parallel to EF, CD is parallel to EF, and AB is distinct from CD to ensure they're not the same line. The conclusion will naturally be that AB is parallel to CD.\n\nFinally, I'll structure the theorem in Lean 4 syntax, ending with \":= by sorry\" to indicate the placeholder for the proof.\n</think>\n\ntheorem parallel_transitivity (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) (h3 : AB ≠ CD) : ¬(AB.intersectsLine CD) := by\n  -- Use the given properties of parallel lines and the distinctness of AB and EF\n  simp_all [intersectsLine_comm]\n  -- Use tauto to handle the logical implications and conclude the proof\n  <;> tauto\n\n```lean4\ntheorem parallel_transitivity (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) (h3 : AB ≠ CD) : ¬(AB.intersectsLine CD) := by\n  -- Use the commutativity of line intersection to handle the logical implications\n  simp_all [intersectsLine_comm]\n  -- Use tauto to conclude the proof based on the given hypotheses\n  <;> tauto\n```",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 49.11790728569031,
+      "well_typed": true,
+      "token_counts": 678,
+      "formalization_check": true
+    }
+  ],
+  "reference_formalization": "∀ (AB CD EF : Line), AB ≠ CD ∧ CD ≠ EF ∧ EF ≠ AB ∧ ¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "(Straight-lines) parallel to the same straight-line are also parallel to one another.Let each of the (straight-lines) $AB$ and $CD$ be parallel to $EF$. I say that $AB$ is also parallel to $CD$. <prf>  Thus, $AB$ is parallel to $CD$ [Prop.~1.27]. Thus, (straight-lines) parallel to the same straight-line are also parallel to one another.",
+  "lean4_header": ""
+}

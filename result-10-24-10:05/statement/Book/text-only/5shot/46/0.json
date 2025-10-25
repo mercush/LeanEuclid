@@ -1,0 +1,20 @@
+{
+  "id": "46",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I have this problem to work on: \"To describe a square on a given straight-line.\" The given statement is in English, and I need to formalize it using Lean 4 programming language based on the provided guidelines and structures. \n\nFirst, I need to understand what the problem is asking. Essentially, if I'm given a straight line AB, I need to construct a square that has AB as one of its sides. The proof is omitted, but the formalization needs to capture the idea that the resulting shape is indeed a square.\n\nLooking at the provided structures, I see that there are axioms and definitions for points, lines, and circles. There are also definitions for angles, segments, and triangles. Notations are provided for lengths of segments, degrees of angles, etc.\n\nThe example given in the problem statement involves showing that a certain quadrilateral is a square by proving it's both right-angled and equilateral. So, I think for my problem, I need to construct a square on line AB, which means defining a quadrilateral that includes AB and satisfies the properties of a square: all sides equal and all angles right angles.\n\nI need to define the square using the given sorts and relations. So, I should probably use the `Triangle` namespace since squares are special types of triangles, specifically quadrilaterals with equal sides and right angles.\n\nI also need to ensure that I'm using the correct notations, such as \"∟\" for right angles and \"|(a─b)|\" for the length of segment AB. Plus, I have to make sure that all quantified variables are points, lines, or circles, and that I'm not introducing any intermediate variables within the proposition.\n\nThinking about the Lean4 code, I think it should start with `theorem` followed by a theorem name, then the hypotheses, and end with the conclusion and the `:= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 27.362597465515137,
+      "well_typed": false,
+      "token_counts": 385,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ (d e : Point) (DE AD BE : Line), formParallelogram d e a b DE AB AD BE ∧ |(d─e)| = |(a─b)| ∧ |(a─d)| = |(a─b)| ∧ |(b─e)| = |(a─b)| ∧ (∠ b:a:d = ∟) ∧ (∠ a:d:e = ∟) ∧ (∠ a:b:e = ∟) ∧ (∠ b:e:d = ∟)",
+  "nl_statement": "To describe a square on a given straight-line. Let $AB$ be the given straight-line.So it is required to describe a square on the straight-line $AB$. <prf> Thus, $ADEB$ is right-angled. And it was also shown (to be) equilateral.Thus, ($ADEB$) is a square [Def.~1.22]. And it is described on the straight-line $AB$.",
+  "lean4_header": ""
+}

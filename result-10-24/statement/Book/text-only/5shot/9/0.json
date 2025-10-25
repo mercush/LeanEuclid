@@ -1,0 +1,68 @@
+{
+  "id": "9",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (TAU : Line) (GAMMA : Point) (UNUN : Point), ((formRectilinearAngle a b c TAU UNUN) ∧ (Line.intersectsLine TAU UNUN) ∧ (distinctPointsOnLine a b TAU) ∧ (distinctPointsOnLine b c UNUN)) → (∃ g e f : Point, ∃ CG EG EF : Line, formParallelogram a b c d e f CG EG EF ∧ ∠ c:e:f = ∠ a:b:c ∧ ∠ a:e:d = ∠ a:b:c)",
+      "full_output": "theorem evclid_I_9 (a b c d e f : Point) (TAU : Line) (GAMMA UNUN : Point) (h1 : formRectilinearAngle a b c TAU UNUN) (h2 : Line.intersectsLine TAU UNUN) (h3 : distinctPointsOnLine a b TAU) (h4 : distinctPointsOnLine b c UNUN) : ∃ g e f : Point, ∃ CG EG EF : Line, formParallelogram a b c d e f CG EG EF ∧ ∠ c:e:f = ∠ a:b:c ∧ ∠ a:e:d = ∠ a:b:c := by",
+      "probability": 0.20181569941771946,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 19.585726976394653,
+      "well_typed": false,
+      "token_counts": 143,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (formParallelogram d₁ d₂ d₃ a AB BC AC)) → (∃ f : Point, |(a─f)| = |(b─f)| ∧ |(c─f)| = |(d₁─f)|)",
+      "full_output": "theorem angle_bisect (a b c d₁ d₂ d₃ : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formParallelogram d₁ d₂ d₃ a AB BC AC) : ∃ f : Point, |(a─f)| = |(b─f)| ∧ |(c─f)| = |(d₁─f)| := by",
+      "probability": 0.20095750403160467,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 19.585726976394653,
+      "well_typed": false,
+      "token_counts": 95,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (formParallelogram a b c d AB CD AC BD)) → (∃ (af : Point) (AF : Line), af.onLine AF ∧ b.onLine AB ∧ c.onLine CD ∧ af ≠ a ∧ Point.sameSide af b AF)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : formParallelogram a b c d AB CD AC BD) : ∃ (af : Point) (AF : Line), af.onLine AF ∧ b.onLine AB ∧ c.onLine CD ∧ af ≠ a ∧ Point.sameSide af b AF := by",
+      "probability": 0.19953336637949906,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 19.585726976394653,
+      "well_typed": false,
+      "token_counts": 97,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (d₄ : Point) (e : Point) (f : Point) (BA : Line) (CA : Line) (DA : Line) (EA : Line) (FA : Line), ((between a b d₁) ∧ (between b d₁ d₂) ∧ (between d₂ d₃ d₄) ∧ (formRectilinearAngle d₁ d₂ d₃ BA CA) ∧ (formRectilinearAngle d₁ d₂ d₄ EA FA)) → (∠ d₂:d₁:a = ∠ d₂:d₁:f ∧ ∠ d₁:d₂:a = ∠ d₁:d₂:f)",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ d₄ e f : Point) (BA CA DA EA FA : Line) (h1 : between a b d₁) (h2 : between b d₁ d₂) (h3 : between d₂ d₃ d₄) (h4 : formRectilinearAngle d₁ d₂ d₃ BA CA) (h5 : formRectilinearAngle d₁ d₂ d₄ EA FA) : ∠ d₂:d₁:a = ∠ d₂:d₁:f ∧ ∠ d₁:d₂:a = ∠ d₁:d₂:f := by",
+      "probability": 0.19926066966842054,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 19.585726976394653,
+      "well_typed": false,
+      "token_counts": 134,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (AC : Line) (AD : Line) (AE : Line) (AF : Line), ((formRectilinearAngle a b c AB AC) ∧ (Point.onLine d AB) ∧ (Point.onLine e AC) ∧ (AE = AF) ∧ (AD = AF)) → (∠ d:a:f = ∠ e:a:f)",
+      "full_output": "theorem cut_rectilinear_angle (a b c d e f : Point) (AB AC AD AE AF : Line) (h1 : formRectilinearAngle a b c AB AC) (h2 : Point.onLine d AB) (h3 : Point.onLine e AC) (h4 : AE = AF) (h5 : AD = AF) : ∠ d:a:f = ∠ e:a:f := by",
+      "probability": 0.19843276050275632,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 19.585726976394653,
+      "well_typed": true,
+      "token_counts": 88,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB AC : Line), formRectilinearAngle b a c AB AC ∧ AB ≠ AC → ∃ f : Point, f ≠ a ∧ (∠ b:a:f = ∠ c:a:f)",
+  "nl_statement": "To cut a given rectilinear angle in half. Let $BAC$ be the given rectilinear angle. So it is required to cut it in half.    <prf>  Thus, angle $DAF$ is equal to angle $EAF$ [Prop.~1.8]. Thus, the given rectilinear angle $BAC$ has been cut in half by the straight-line $AF$.",
+  "lean4_header": ""
+}

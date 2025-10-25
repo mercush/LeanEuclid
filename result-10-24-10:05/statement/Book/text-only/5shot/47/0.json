@@ -1,0 +1,20 @@
+{
+  "id": "47",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (AC : Line), ((formTriangle a b c AB AC (Point.collinear a b c)) ∧ (∠ a:b:c = ∟)) → (|(b─c)| = |(a─b)|² + |(a─c)|²)",
+      "full_output": "Alright, I'm trying to understand how to formalize this theorem about right-angled triangles. So, the theorem is that in a right-angled triangle, the square on the side opposite the right angle is equal to the sum of the squares on the other two sides. \n\nFirst, I need to break down the problem. The triangle is right-angled at point A, so angle BAC is a right angle. The sides in question are BA, AC, and BC, with BC being the side opposite the right angle. The theorem claims that the square of BC's length is equal to the sum of the squares of BA and AC's lengths.\n\nNow, I need to translate this into the Lean 4 programming language using the provided structures and guidelines. I'll start by identifying the types and notations. Points are represented by the type Point, and lines by Line. The length of a segment AB is written as |(a─b)|, and angles are represented with ∟ for right angles.\n\nNext, I'll consider the hypotheses. I need to ensure that the triangle ABC is right-angled at A, which means that angle BAC is 90 degrees (∟). Also, I need to have the sides BA, AC, and BC defined.\n\nFor the conclusion, I need to state that the square of the length of BC is equal to the sum of the squares of the lengths of BA and AC. In mathematical terms, this is |(b─c)|^2 = |(b─a)|^2 + |(c─a)|^2.\n\nPutting this together, I'll structure the theorem with the appropriate hypotheses and conclusion, making sure to follow the guidelines strictly. I'll use the given axioms and definitions to ensure everything is correctly typed and conforms to the required format.\n\nI also need to remember not to introduce any intermediate variables or extra text outside the specified theorem format. All quantified variables should be explicitly mentioned, and I should avoid using any non-primitive operators beyond addition, subtraction, multiplication, and division.\n\nFinally, I'll double-check that the theorem name is a valid Lean identifier and that all the hypotheses are correctly placed and typed. This should result in a correct formalization of the Pythagorean theorem in Lean 4.\n</think>\n\ntheorem PythagoreanTheorem (a b c : Point) (AB AC : Line) (h1 : formTriangle a b c AB AC (Point.collinear a b c)) (h2 : ∠ a:b:c = ∟) : |(b─c)| = |(a─b)|² + |(a─c)|² := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 38.234888553619385,
+      "well_typed": false,
+      "token_counts": 539,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c: Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ b:a:c : ℝ) = ∟ → |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)|",
+  "nl_statement": "In right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides containing the right-angle. Let $ABC$ be a right-angled triangle having the angle $BAC$a right-angle. I say that the square on $BC$ is equal to the (sum of the) squares on $BA$ and $AC$.  <prf>  Thus, the square on the side $BC$ is equal to the (sum of the) squares on the sides $BA$ and $AC$. Thus, in right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides surrounding the right-[angle].",
+  "lean4_header": ""
+}

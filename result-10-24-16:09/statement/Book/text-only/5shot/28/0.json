@@ -1,0 +1,20 @@
+{
+  "id": "28",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Okay, so I'm looking at this problem about Euclidean geometry, specifically something about parallel lines and transversals. The English statement says that if a straight-line (which I think is like a transversal) cuts across two straight-lines (which would be the two lines we're interested in), and this creates certain angle relationships, then the two original lines must be parallel. \n\nAlright, first, I need to understand what the specific angle conditions are. The statement mentions two cases: one where the external angle is equal to the internal and opposite angle on the same side, and another where the sum of the internal angles on the same side equals two right angles. So, I guess in both cases, the transversal is forming angles with the two lines, and depending on how these angles relate, we can conclude that the two lines are parallel.\n\nI think the first thing I need to do is to identify the corresponding parts in the Lean4 formalization. Looking at the examples given, it seems that the formalized statements use specific patterns, with hypotheses h1, h2, etc., and they end with a conclusion that's introduced by \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 16.893967390060425,
+      "well_typed": false,
+      "token_counts": 235,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AB CD EF : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine e f EF ∧ (between a g b) ∧ (between c h d) ∧ (between e g h) ∧ (between g h f) ∧ (b.sameSide d EF) ∧ (∠ e:g:b = ∠ g:h:d ∨ ∠ b:g:h + ∠ g:h:d = ∟ + ∟) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "If a straight-line falling across two straight-lines makes the external angle equal to the internal and opposite angle on the same side, or (makes) the (sum  of the) internal (angles) on the same side equal to two right-angles, then the (two) straight-lines will be parallel to one another.   For let $EF$, falling across the two straight-lines $AB$ and $CD$, make the external angle $EGB$ equal to the internal and opposite angle $GHD$, or the (sum of the) internal (angles) on the same side, $BGH$ and $GHD$, equal to two right-angles. I say that $AB$ is parallel to $CD$.   <prf> Thus, $AB$ is parallel to $CD$ [Prop.~1.27].  Thus, if a straight-line falling across two straight-lines makes the external angle equal to the internal and opposite angle on the same side, or (makes) the (sum of the) internal (angles) on the same side equal to two right-angles, then the (two) straight-lines will be parallel (to one another).",
+  "lean4_header": ""
+}

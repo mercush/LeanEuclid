@@ -1,0 +1,20 @@
+{
+  "id": "1",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, |(a─⟨b, c⟩)| = |(b─c)| ∧ |(a─c)| = |(b─c)|)",
+      "full_output": "Okay, so I have this problem where I need to construct an equilateral triangle on a given finite straight-line AB. Alright, let's see. First, I need to understand what it means to construct something in geometry. I guess it means using a compass and straightedge to draw the required figure, right? So, I have a line segment AB, and I need to build an equilateral triangle on top of it.\n\nAlright, so an equilateral triangle has all sides equal and all angles equal to 60 degrees. So, if AB is one side, I need to find points C such that AC and BC are also equal to AB. Hmm, how do I ensure that? Well, I think I can use circles. If I draw a circle with center A and radius AB, and another circle with center B and the same radius, their intersection point should be C. That makes sense because AC and BC would both be equal to AB.\n\nWait, but what if AB is not long enough? No, AB is given as a finite straight-line, so it has a specific length, and as long as I set the compass to that length, the circles should intersect above and below AB. So, I can choose either intersection point; let's say I choose the one above AB for simplicity.\n\nOkay, so I've constructed point C. Now, I need to connect the dots to form triangle ABC. So, I draw lines AC and BC. Now, I need to verify that all sides are equal. AB is the given length, and AC and BC are both set to the same length via the compass, so they should be equal. Therefore, triangle ABC should be equilateral.\n\nWait, but did I account for all possibilities? What if the circles don't intersect? Well, as long as AB is a finite straight-line, and I set the compass correctly, the circles should intersect at two points, one on each side of AB. So, as long as I choose one of those points, the construction should work.\n\nIs there another way to do this? Maybe using angles? Well, I could also construct 60-degree angles at points A and B and find their intersection, but that might be more complicated. Using circles seems more straightforward.\n\nAlright, I think I've got a good plan. Use the compass to draw circles centered at A and B with radius AB, find their intersection point C, and connect the points to form triangle ABC. That should give me an equilateral triangle on the given straight-line AB.\n</think>\n\nTo construct an equilateral triangle on a given finite straight-line AB:\n\n1. **Set the compass** to the length of AB.\n2. **Draw a circle** with center at A, intersecting AB at B.\n3. **Draw another circle** with center at B, using the same compass width.\n4. **Identify the intersection points** of the two circles above and below AB.\n5. **Choose one intersection point**, say C, above AB.\n6. **Draw lines** AC and BC.\n7. **Connect points** A, B, and C to form triangle ABC.\n\nThis construction ensures that all sides AB, BC, and AC are equal, forming an equilateral triangle.\n\n```lean4\ntheorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : \n  ∃ c : Point, |(a─⟨b, c⟩)| = |(b─c)| ∧ |(a─c)| = |(b─c)| := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 53.78679537773132,
+      "well_typed": false,
+      "token_counts": 731,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)|",
+  "nl_statement": "To construct an equilateral triangle on a given finite straight-line. Let $AB$ be the given finite straight-line.  <prf> Thus, the three (straight-lines) $CA$, $AB$, and $BC$ are equal to one another.Thus, the triangle $ABC$ is equilateral, and has been constructed on the given finite straight-line $AB$.",
+  "lean4_header": ""
+}

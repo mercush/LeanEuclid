@@ -1,0 +1,20 @@
+{
+  "id": "27",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I have this geometry theorem to formalize using Lean 4. The theorem states that if a straight-line falling across two straight-lines makes the alternate angles equal, then the two straight-lines are parallel. Hmm, okay, let me break this down.\n\nFirst, I need to understand what the theorem is saying in plain language. If I have two lines, say AB and CD, and another line EF that crosses both AB and CD, and if the alternate angles at the intersection points are equal, then AB and CD must be parallel. That makes sense intuitively because if the angles are equal, the lines aren't converging or diverging.\n\nNow, I need to think about how to translate this into Lean 4 code. I remember that in Lean, we have types for points, lines, and circles. So, I'll probably need to use these types to represent the geometric entities involved.\n\nNext, I need to consider the structures and guidelines provided. There are axioms defined for points being on lines, lines intersecting, and so on. I should use these axioms rather than defining my own parallelism or perpendicularity predicates. For example, to say two lines are parallel, I can state that they do not intersect.\n\nLooking at the examples provided, I see that the formalized statements use a theorem structure with hypotheses and a conclusion. The hypotheses are enclosed in parentheses, and the conclusion follows after a colon. The theorem ends with \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 20.94958209991455,
+      "well_typed": false,
+      "token_counts": 296,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a d e f : Point) (AE FD EF : Line), distinctPointsOnLine a e AE ∧ distinctPointsOnLine f d FD ∧ distinctPointsOnLine e f EF ∧ a.opposingSides d EF ∧ (∠ a:e:f = ∠ e:f:d) → ¬(AE.intersectsLine FD)",
+  "nl_statement": "If a straight-line falling across two straight-lines makes the alternate angles equal to one another then the (two) straight-lines will be parallel to one another.For let the straight-line $EF$, falling across the two straight-lines $AB$ and $CD$, make the alternate angles $AEF$ and $EFD$ equal to one another. I say that $AB$ and $CD$ are parallel. <prf> Thus, $AB$ and $CD$ are parallel.Thus, if a straight-line falling across two straight-lines makes the alternate angles equal to one another then the (two) straight-lines will be parallel (to one another).",
+  "lean4_header": ""
+}

@@ -1,0 +1,68 @@
+{
+  "id": "29",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((formQuadrilateral a b c d AB CD AB CD) ∧ (Line.intersectsLine EF AB) ∧ (Line.intersectsLine EF CD) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine a d AB) ∧ (distinctPointsOnLine b c CD) ∧ (∠ a:a:a = ∟ + ∟) ∧ (∠ a:a:a = ∟ + ∟)) → (∠ a:a:a = a.b + c.d ∧ ∠ a:a:a = ∠ c.d.a ∧ ∠ a.b + c.d = ∟ + ∟)",
+      "full_output": "theorem thm (a b c d : Point) (AB CD EF : Line) (h1 : formQuadrilateral a b c d AB CD AB CD) (h2 : Line.intersectsLine EF AB) (h3 : Line.intersectsLine EF CD) (h4 : distinctPointsOnLine a b AB) (h5 : distinctPointsOnLine c d CD) (h6 : distinctPointsOnLine a d AB) (h7 : distinctPointsOnLine b c CD) (h8 : ∠ a:a:a = ∟ + ∟) (h9 : ∠ a:a:a = ∟ + ∟) : ∠ a:a:a = a.b + c.d ∧ ∠ a:a:a = ∠ c.d.a ∧ ∠ a.b + c.d = ∟ + ∟ := by",
+      "probability": 0.20190498102599894,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.8673677444458,
+      "well_typed": false,
+      "token_counts": 177,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (F : Point) (G : Point) (H : Point) (AB : Line) (CD : Line) (EF : Line), ((ABallocator) ∧ (Callocator) ∧ (Eallocator) ∧ (distinctPointsOnLine A B AB) ∧ (distinctPointsOnLine C D CD) ∧ (distinctPointsOnLine E F EF) ∧ (Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF) ∧ (∠ A:h:B = ∠ C:h:D) ∧ (∠ E:h:B = ∠ E:h:D)) → (∠ A:h:B = ∠ C:h:D ∧ ∠ E:h:B = ∠ E:h:D ∧ ∠ E:h:B + ∠ A:h:B = ∟ + ∟)",
+      "full_output": "theorem parallel_lines_cut_by_transversal (A B C D E F G H : Point) (AB CD EF : Line) (h1 : ABallocator) (h2 : Callocator) (h3 : Eallocator) (h4 : distinctPointsOnLine A B AB) (h5 : distinctPointsOnLine C D CD) (h6 : distinctPointsOnLine E F EF) (h7 : Line.intersectsLine AB EF) (h8 : Line.intersectsLine CD EF) (h9 : ∠ A:h:B = ∠ C:h:D) (h10 : ∠ E:h:B = ∠ E:h:D) : ∠ A:h:B = ∠ C:h:D ∧ ∠ E:h:B = ∠ E:h:D ∧ ∠ E:h:B + ∠ A:h:B = ∟ + ∟ := by",
+      "probability": 0.20056705626203852,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.8673677444458,
+      "well_typed": false,
+      "token_counts": 182,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (i : Point) (j : Point) (EF : Line) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (twoLinesIntersectAtPoint AB CD c) ∧ (¬(AB.intersectsLine CD))) → ((|(a─b)| = |(c─d)|) ∧ (|(a─c)| = |(b─d)|) ∧ (|(a─d)| = |(b─c)|))",
+      "full_output": "theorem example_thm (a b c d e f g h i j : Point) (EF : Line) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD a) (h2 : twoLinesIntersectAtPoint AB CD b) (h3 : twoLinesIntersectAtPoint AB CD c) (h4 : ¬(AB.intersectsLine CD)) : (|(a─b)| = |(c─d)|) ∧ (|(a─c)| = |(b─d)|) ∧ (|(a─d)| = |(b─c)|) := by",
+      "probability": 0.1994338673707573,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.8673677444458,
+      "well_typed": false,
+      "token_counts": 130,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((Point.collinear a b c) ∧ (Point.collinear a d c) ∧ (¬(c.onLine AB))) → (∠ a:b:c = ∠ c:d:a ∧ ∠ a:b:c = ∠ b:c:d ∧ ∠ a:b:c + ∠ b:c:d = ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : Point.collinear a b c) (h2 : Point.collinear a d c) (h3 : ¬(c.onLine AB)) : ∠ a:b:c = ∠ c:d:a ∧ ∠ a:b:c = ∠ b:c:d ∧ ∠ a:b:c + ∠ b:c:d = ∟ + ∟ := by",
+      "probability": 0.19913515525223915,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.8673677444458,
+      "well_typed": false,
+      "token_counts": 95,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((Line.intersectsLine AB CD) ∧ (Line.intersectsLine EF AB) ∧ (Line.intersectsLine EF CD) ∧ (a.onLine AB) ∧ (b.onLine CD) ∧ (c.onLine AB) ∧ (d.onLine CD) ∧ (c ≠ a) ∧ (d ≠ b)) → (∠ a:c:b = ∠ b:d:a ∧ ∠ a:c:d = ∠ d:b:a ∧ ∠ a:b:c + ∠ b:d:a = ∟ + ∟)",
+      "full_output": "theorem theorem_name (a b c d : Point) (AB CD EF : Line) (h1 : Line.intersectsLine AB CD) (h2 : Line.intersectsLine EF AB) (h3 : Line.intersectsLine EF CD) (h4 : a.onLine AB) (h5 : b.onLine CD) (h6 : c.onLine AB) (h7 : d.onLine CD) (h8 : c ≠ a) (h9 : d ≠ b) : ∠ a:c:b = ∠ b:d:a ∧ ∠ a:c:d = ∠ d:b:a ∧ ∠ a:b:c + ∠ b:d:a = ∟ + ∟ := by",
+      "probability": 0.19895894008896609,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.8673677444458,
+      "well_typed": true,
+      "token_counts": 147,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AB CD EF : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine e f EF ∧ (between a g b) ∧ (between c h d) ∧ (between e g h) ∧ (between g h f) ∧ (b.sameSide d EF) ∧ ¬(AB.intersectsLine CD) → ∠ a:g:h = ∠ g:h:d ∧ ∠ e:g:b = ∠ g:h:d ∧ ∠ b:g:h + ∠ g:h:d = ∟ + ∟",
+  "nl_statement": "A straight-line falling across  parallel straight-lines makes the alternate angles equal to one another, the external (angle) equal to the internal and opposite (angle), and the (sum of the) internal (angles) on the same side equal to two right-angles. For let the straight-line $EF$ fall across the parallel straight-lines $AB$ and $CD$. I say that it makes the  alternate angles, $AGH$ and $GHD$,  equal,  the external angle $EGB$ equal to the internal and opposite (angle) $GHD$, and the (sum of the) internal (angles) on the same side, $BGH$ and $GHD$, equal to two right-angles. <prf>  Thus, (the sum of) $BGH$ and $GHD$ is also equal to two right-angles.Thus, a straight-line falling across parallel straight-lines makes the alternate angles equal to one another,  the external (angle) equal to the internal and opposite (angle), and the (sum of the) internal (angles) on the same side equal to two right-angles.",
+  "lean4_header": ""
+}

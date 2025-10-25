@@ -1,0 +1,20 @@
+{
+  "id": "19",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ b : a : c : ℝ) > (∠ b : c : a : ℝ))) → ((|(a─c)| > |(a─b)|))",
+      "full_output": "Okay, I need to formalize this English statement about triangles into Lean 4 code. Let me read the English statement again to make sure I understand it.\n\n\"In any triangle, the greater angle is subtended by the greater side. Let $ABC$ be a triangle having the angle $ABC$ greater than $BCA$. I say that side $AC$ is also greater than side $AB$. Thus, $AC$ is greater than $AB$. Thus, in any triangle, the greater angle is subtended by the greater side.\"\n\nAlright, so the key points are:\n\n1. We have a triangle ABC.\n2. Angle ABC is greater than angle BCA.\n3. Therefore, side AC is greater than side AB.\n\nFirst, I need to translate this into Lean 4 code following the given structure and guidelines. Let's recall the provided axioms and notations.\n\n- For points, lines, and circles, we have inductive types or axioms defining them.\n- Notations like |(a─b)| for the length of the segment between points a and b.\n- ∟ for a right angle, which is 90 degrees.\n- △ a:b:c for the triangle formed by points a, b, c.\n- Triangle.area △ a:b:c for the area of the triangle.\n\nAdditionally, there are namespaces for Point, Line, Circle, and Triangle with various functions and axioms defined.\n\nNow, according to the problem, I need to define a theorem in Lean 4 that states this relationship. Let's outline the steps:\n\n1. Define the theorem with a meaningful name, say `greater_angle_opposite_greater_side`.\n2. Declare the hypotheses:\n   - `h1`: the triangle `ABC` is formed by points `a`, `b`, `c` and lines `AB`, `BC`, `AC`.\n   - `h2`: angle `ABC` is greater than angle `BCA`.\n3. The conclusion is that the length of side `AC` is greater than the length of side `AB`, i.e., |(a─c)| > |(a─b)|.\n\nSo, in Lean 4 code, it would look something like:\n\ntheorem greater_angle_opposite_greater_side (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ b : a : c : ℝ) > (∠ b : c : a : ℝ)) : (|(a─c)| > |(a─b)|) := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 37.3407187461853,
+      "well_typed": true,
+      "token_counts": 523,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ a:b:c > ∠ b:c:a) → (|(a─c)| > |(a─b)|)",
+  "nl_statement": "In any triangle, the greater angle is subtended by the greater side. Let $ABC$ be a triangle having the angle $ABC$ greater than $BCA$. I say that side $AC$ is also greater than side $AB$. <prf>  Thus, $AC$  is greater than $AB$. Thus, in any triangle, the greater angle is subtended by the greater side.",
+  "lean4_header": ""
+}

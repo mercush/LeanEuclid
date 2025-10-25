@@ -1,0 +1,68 @@
+{
+  "id": "35",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e b c f EF CD EB BF) ∧ (a.onLine AC) ∧ (e.onLine EB) ∧ (f.onLine BF) ∧ (distinctPointsOnLine a e EB) ∧ (distinctPointsOnLine f d BF) ∧ (distinctPointsOnLine a d AC) ∧ (distinctPointsOnLine e f EF)) → ((Triangle.area △ a:b:c + Triangle.area △ c:d:a + Triangle.area △ a:c:d + Triangle.area △ d:b:a) = (Triangle.area △ e:b:c + Triangle.area △ c:f:e + Triangle.area △ e:c:f + Triangle.area △ f:b:e))",
+      "full_output": "theorem parallelogram_congruence (a b c d e f : Point) (AB CD AC BD EF : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e b c f EF CD EB BF) (h3 : a.onLine AC) (h4 : e.onLine EB) (h5 : f.onLine BF) (h6 : distinctPointsOnLine a e EB) (h7 : distinctPointsOnLine f d BF) (h8 : distinctPointsOnLine a d AC) (h9 : distinctPointsOnLine e f EF) : (Triangle.area △ a:b:c + Triangle.area △ c:d:a + Triangle.area △ a:c:d + Triangle.area △ d:b:a) = (Triangle.area △ e:b:c + Triangle.area △ c:f:e + Triangle.area △ e:c:f + Triangle.area △ f:b:e) := by",
+      "probability": 0.20198569813055361,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 24.025713443756104,
+      "well_typed": false,
+      "token_counts": 200,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e b c f EF CD EB EC)) → (|(a─b)| + |(a─d)| = |(e─b)| + |(e─f)|)",
+      "full_output": "theorem parallelogram_congruence (a b c d e f : Point) (AB CD AC BD EF : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e b c f EF CD EB EC) : |(a─b)| + |(a─d)| = |(e─b)| + |(e─f)| := by",
+      "probability": 0.20033391149424346,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 24.025713443756104,
+      "well_typed": false,
+      "token_counts": 93,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e b c d EF CD EC EB) ∧ (sameSide a e (Line AB))) → (formParallelogram a b c d AB CD AC BD ∧ formParallelogram e b c d EF CD EC EB)",
+      "full_output": "theorem parallelogramEquality (a b c d e : Point) (AB CD AC BD EF : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e b c d EF CD EC EB) (h3 : sameSide a e (Line AB)) : formParallelogram a b c d AB CD AC BD ∧ formParallelogram e b c d EF CD EC EB := by",
+      "probability": 0.1994844578720337,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 24.025713443756104,
+      "well_typed": false,
+      "token_counts": 101,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e b c f AB CD EF BD) ∧ (Line.intersectsCircle AC EF) ∧ (Line.intersectsCircle BD EF)) → ((Triangle.area △ a:b:c + Triangle.area △ a:c:d) = (Triangle.area △ e:b:c + Triangle.area △ e:c:f))",
+      "full_output": "theorem parallelograms_on_same_base_between_same_parallels_are_equal (a b c d e f : Point) (AB CD AC BD : Line) (EF : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e b c f AB CD EF BD) (h3 : Line.intersectsCircle AC EF) (h4 : Line.intersectsCircle BD EF) : (Triangle.area △ a:b:c + Triangle.area △ a:c:d) = (Triangle.area △ e:b:c + Triangle.area △ e:c:f) := by",
+      "probability": 0.19917226596143192,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 24.025713443756104,
+      "well_typed": false,
+      "token_counts": 129,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e b f d AB CD e f) ∧ (a.onLine AC) ∧ (e.onLine AC)) → ((|(a─b)| = |(e─b)|) ∧ (|(b─d)| = |(b─d)|))",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e b f d AB CD e f) (h3 : a.onLine AC) (h4 : e.onLine AC) : (|(a─b)| = |(e─b)|) ∧ (|(b─d)| = |(b─d)|) := by",
+      "probability": 0.1990236665417374,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 24.025713443756104,
+      "well_typed": false,
+      "token_counts": 108,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g : Point) (AF BC AB CD EB FC : Line), formParallelogram a d b c AF BC AB CD ∧ formParallelogram e f b c AF BC EB FC ∧ between a d e ∧ between d e f ∧ g.onLine CD ∧ g.onLine EB → Triangle.area △a:b:d + Triangle.area △d:b:c = Triangle.area △e:b:c + Triangle.area △ e:c:f",
+  "nl_statement": "Parallelograms which are on the same base and between the same parallels are equal to one another. Let $ABCD$ and $EBCF$ be parallelograms on the same base $BC$, and between the same parallels $AF$ and $BC$. I say that $ABCD$ is equal to parallelogram $EBCF$. <prf> Thus, the whole parallelogram $ABCD$ is equal to the whole parallelogram $EBCF$.Thus, parallelograms which are on the same base and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

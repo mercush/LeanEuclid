@@ -1,0 +1,20 @@
+{
+  "id": "18",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I have this English statement about a theorem in Euclidean geometry, and I need to formalize it using Lean 4. The statement is: \"In any triangle, the greater side subtends the greater angle. For let $ABC$ be a triangle having side $AC$ greater than $AB$. I say that angle $ABC$ is also greater than $BCA$.\" \n\nOkay, first, I need to understand what this means. In a triangle, if one side is longer than another, the angle opposite the longer side is larger. So, in triangle $ABC$, if $AC > AB$, then angle $ABC$ (which is opposite $AC$) is greater than angle $BCA$ (which is opposite $AB$).\n\nNow, I need to translate this into Lean 4 code. I've seen some examples, so I know I need to start with `theorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 14.922900438308716,
+      "well_typed": false,
+      "token_counts": 208,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─c)| > |(a─b)|) → (∠ a:b:c > ∠ b:c:a)",
+  "nl_statement": "In any triangle, the greater side subtends the greater angle. For let $ABC$ be a triangle having side $AC$ greater than $AB$. I say that angle $ABC$ is also greater than $BCA$.   <prf>  Thus, $ABC$ is much greater than  $ACB$.  Thus, in any triangle, the greater side subtends the greater angle. (Which is) the very thing  it was required to show.",
+  "lean4_header": ""
+}

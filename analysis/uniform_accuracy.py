@@ -88,6 +88,7 @@ async def calculate_accuracy(
     reasoning: str = "text-only",
     num_examples: int = 5,
     aggregation: str = "uniform",
+    nodenom: bool = False,
 ):
     """Calculate accuracy using different aggregation methods and scoring systems."""
 
@@ -144,68 +145,89 @@ async def calculate_accuracy(
 
                 # Apply different aggregation methods
                 if all_formalizations:
-                    # Filter to well-typed formalizations first for all methods
-                    well_typed_formalizations = [
-                        f for f in all_formalizations if f.get("well_typed", False)
-                    ]
+                    if nodenom:
+                        # Use all formalizations, not just well-typed ones
+                        # Non-well-typed formalizations are considered incorrect
+                        target_formalizations = all_formalizations
+                    else:
+                        # Filter to well-typed formalizations first for all methods
+                        target_formalizations = [
+                            f for f in all_formalizations if f.get("well_typed", False)
+                        ]
 
-                    if well_typed_formalizations:
+                    if target_formalizations:
                         if aggregation == "best":
-                            # Take only the sample with highest probability among well-typed
+                            # Take only the sample with highest probability among target formalizations
                             best_formalization = max(
-                                well_typed_formalizations,
+                                target_formalizations,
                                 key=lambda x: x.get("probability", 0.0),
                             )
 
-                            formalization_check = best_formalization.get(
-                                "formalization_check", False
-                            )
+                            # For nodenom, check both well-typed and formalization_check
+                            if nodenom:
+                                is_correct = (best_formalization.get("well_typed", False) and
+                                             best_formalization.get("formalization_check", False))
+                            else:
+                                is_correct = best_formalization.get("formalization_check", False)
 
-                            if formalization_check:
+                            if is_correct:
                                 cnt += 1
 
                         elif aggregation == "uniform":
-                            # Uniform weighting across well-typed samples in this problem
-                            num_samples = len(well_typed_formalizations)
+                            # Uniform weighting across target samples in this problem
+                            num_samples = len(target_formalizations)
                             correct_count = 0
 
-                            for formalization_data in well_typed_formalizations:
-                                formalization_check = formalization_data.get(
-                                    "formalization_check", False
-                                )
+                            for formalization_data in target_formalizations:
+                                # For nodenom, check both well-typed and formalization_check
+                                if nodenom:
+                                    is_correct = (formalization_data.get("well_typed", False) and
+                                                 formalization_data.get("formalization_check", False))
+                                else:
+                                    is_correct = formalization_data.get("formalization_check", False)
 
-                                if formalization_check:
+                                if is_correct:
                                     correct_count += 1
 
                             cnt += correct_count / num_samples
 
                         elif aggregation == "smc":
                             # SMC-style probability weighting (like original evaluate.py)
-                            # Normalize probabilities among well-typed formalizations
+                            # Normalize probabilities among target formalizations
                             total_prob = sum(
                                 f.get("probability", 0.0)
-                                for f in well_typed_formalizations
+                                for f in target_formalizations
                             )
 
                             if total_prob > 0:
-                                for formalization_data in well_typed_formalizations:
+                                for formalization_data in target_formalizations:
                                     normalized_prob = (
                                         formalization_data.get("probability", 0.0)
                                         / total_prob
                                     )
-                                    formalization_check = formalization_data.get(
-                                        "formalization_check", False
-                                    )
+                                    # For nodenom, check both well-typed and formalization_check
+                                    if nodenom:
+                                        is_correct = (formalization_data.get("well_typed", False) and
+                                                     formalization_data.get("formalization_check", False))
+                                    else:
+                                        is_correct = formalization_data.get("formalization_check", False)
 
-                                    if formalization_check:
+                                    if is_correct:
                                         cnt += normalized_prob
 
                         elif aggregation == "any":
-                            # Count problem correct if ANY well-typed formalization is correct
-                            any_correct = any(
-                                f.get("formalization_check", False)
-                                for f in well_typed_formalizations
-                            )
+                            # Count problem correct if ANY target formalization is correct
+                            if nodenom:
+                                # For nodenom, need both well-typed and formalization_check
+                                any_correct = any(
+                                    f.get("well_typed", False) and f.get("formalization_check", False)
+                                    for f in target_formalizations
+                                )
+                            else:
+                                any_correct = any(
+                                    f.get("formalization_check", False)
+                                    for f in target_formalizations
+                                )
                             if any_correct:
                                 cnt += 1
 
@@ -272,6 +294,11 @@ def main():
         default="uniform",
         help="Aggregation method: smc (probability weighting like evaluate.py), best (highest probability sample), uniform (equal weighting), theorem_statement (SMC with proof scoring adjustment)",
     )
+    parser.add_argument(
+        "--nodenom",
+        action="store_true",
+        help="Include non-well-typed formalizations in denominator (they are considered incorrect)",
+    )
 
     args = parser.parse_args()
 
@@ -284,6 +311,7 @@ def main():
             args.reasoning,
             args.num_examples,
             args.aggregation,
+            args.nodenom,
         )
     )
 

@@ -1,0 +1,20 @@
+{
+  "id": "17",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (CA : Line), ((formTriangle a b c AB BC CA)) → (∠ a:b:c + ∠ b:c:a < ∟ + ∟)",
+      "full_output": "Okay, I'm trying to formalize this theorem about triangle angles. The English statement says that for any triangle, the sum of any two angles is less than two right angles. A right angle is 90 degrees, so two right angles would be 180 degrees. \n\nFirst, I need to understand what this means. In any triangle, there are three angles that add up to 180 degrees. If I take any two of these angles, their sum should be less than 180 degrees. That makes sense because if two angles were 180 degrees or more, the third angle wouldn't exist or would have to be negative, which isn't possible.\n\nI need to express this in Lean 4. I'll start by defining the triangle using points A, B, and C, and lines AB, BC, and CA. The hypothesis `h` will state that these points form a triangle. \n\nNext, I need to express that the sum of any two angles is less than two right angles. The angles at points A, B, and C are `∠ A:B:C`, `∠ B:C:A`, and `∠ C:A:B` respectively. \n\nI'll write the conclusion as `∠ A:B:C + ∠ B:C:A < ∟ + ∟`. The `+` operator is used for addition, and `<` for \"less than\". \n\nI need to make sure that all variables are properly defined and that the syntax matches Lean's requirements. Also, since the problem mentions any two angles, I should consider all possible pairs: ∠A + ∠B < 180°, ∠B + ∠C < 180°, and ∠C + ∠A < 180°. But for the example, I'll focus on one pair.\n\nI'll structure the theorem as `theorem example_thm (a b c : Point) (AB BC CA : Line) (h : formTriangle a b c AB BC CA) : ∠ a:b:c + ∠ b:c:a < ∟ + ∟ := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 30.085036754608154,
+      "well_typed": true,
+      "token_counts": 421,
+      "formalization_check": true
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC → ∠ a:b:c + ∠ b:c:a < ∟ + ∟",
+  "nl_statement": "For any triangle,  (the sum of) two angles taken together in any (possible way) is less than two right-angles. Let $ABC$ be a triangle. I say that (the sum of) two angles of triangle $ABC$ taken together in any (possible way) is less than two right-angles. <prf> Thus, (the sum of) $ABC$ and $BCA$ is less than two right-angles. Similarly, we can show that (the sum of) $BAC$ and $ACB$ is also less than two right-angles, and further (that the sum of) $CAB$ and $ABC$ (is less than two right-angles).Thus, for any triangle,  (the sum of) two angles taken together in any (possible way) is less than two right-angles.",
+  "lean4_header": ""
+}

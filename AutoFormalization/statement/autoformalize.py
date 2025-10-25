@@ -29,21 +29,38 @@ from LeanPotential.models import ChatModel, Featherless, GeminiModel
 from LeanPotential.roundtrip import RoundTripPotential
 
 
-async def run_generation(llm, potential, instruction, content, cycle_potential=None, reasoning=False, max_tokens=500, n_particles=10, ess_threshold=0.5):
-    """Create ChatModel and run generation with timing."""
+async def run_generation(config):
+    """Create ChatModel and run generation with timing.
+
+    Args:
+        config: Dictionary containing:
+            - llm: Language model instance
+            - potential: Lean potential for validation
+            - instruction: System instruction
+            - content: List of content messages
+            - cycle_potential: Optional round-trip potential
+            - reasoning: Whether to use reasoning
+            - max_tokens: Maximum tokens to generate
+            - n_particles: Number of particles
+            - ess_threshold: ESS threshold
+            - lhts: Whether to use long horizon temperature sampling
+            - lhts_power: Power for long horizon temperature sampling
+    """
     model = ChatModel(
-        model=llm,
-        potential=potential,
-        reasoning=reasoning,
-        max_tokens=max_tokens,
-        n_particles=n_particles,
-        ess_threshold=ess_threshold,
-        critic=cycle_potential,
+        model=config["llm"],
+        potential=config["potential"],
+        reasoning=config["reasoning"],
+        max_tokens=config["max_tokens"],
+        n_particles=config["n_particles"],
+        ess_threshold=config["ess_threshold"],
+        critic=None,
+        lhts=config["lhts"],
+        lhts_power=config["lhts_power"],
     )
 
     # Add messages in the same way as the original code
-    model.add_message("system", instruction)
-    for con in content:
+    model.add_message("system", config["instruction"])
+    for con in config["content"]:
         model.add_message("user", con["text"])
 
     start_time = time.time()
@@ -137,8 +154,7 @@ async def main() -> None:
     )
     parser.add_argument(
         "--reasoning",
-        type=bool,
-        default=False,
+        action="store_true",
         help="Whether or not to include CoT",
     )
     parser.add_argument(
@@ -181,8 +197,12 @@ async def main() -> None:
     )
     parser.add_argument("--start_index", type=int, default=1, help="Start index")
     parser.add_argument("--typecheck", type=str, choices=["all", "none", "final"])
-    parser.add_argument("--max_tokens", type=int)
-    parser.add_argument("--n_particles", type=int)
+    parser.add_argument("--max_tokens", type=int, default=500, help="Maximum tokens to generate")
+    parser.add_argument("--n_particles", type=int, default=10, help="Number of particles")
+    parser.add_argument("--ess_threshold", type=float, default=0.5, help="ESS threshold")
+    parser.add_argument("--lhts", action="store_true", help="Enable long horizon temperature sampling")
+    parser.add_argument("--lhts_power", type=float, default=4.0, help="Power for long horizon temperature sampling")
+    parser.add_argument("--temperature", type=float, default=1.0, help="Sampling temperature for the language model")
     args = parser.parse_args()
     random.seed(42)
 
@@ -202,7 +222,7 @@ async def main() -> None:
 
     llm = device_llm(
         args.model_name,
-        temperature=1.0,
+        temperature=args.temperature,
         tensor_parallel_size=args.tensor_parallel_size
     )
     lean_config = LeanREPLConfig(
@@ -277,15 +297,12 @@ async def main() -> None:
                     reasoning=args.reasoning,
                     typecheck=args.typecheck,
                 )
-                cycle_potential = RoundTripPotential(
-                    target_str=unreformat_theorem(problem_text), formal_prefix=""
-                    ) if args.roundtrip else None
             elif args.model_type.lower() == "gemini":
                 model = GeminiModel(
                     model_name=args.model_name,
                     max_tokens=args.max_tokens,
                     n_particles=args.n_particles,
-                    temperature=1.0,
+                    temperature=args.temperature,
                 )
             elif args.model_type.lower() == "featherless":
                 model = Featherless(
@@ -312,42 +329,31 @@ async def main() -> None:
                     "text": f"English Statement: {problem_text}\nFormalized Statement: ",
                 },
             )
-            # Handle different model types for response generation with retry logic
+            # Handle different model types for response generation
             response = None
             generation_time = 0
-            for attempt in range(3):
-                try:
-                    if args.model_type.lower() == "chat":
-                        response, generation_time = await run_generation(
-                            llm=llm,
-                            potential=lean_potential,
-                            instruction=instruction,
-                            content=content,
-                            cycle_potential=cycle_potential,
-                            reasoning=args.reasoning,
-                            max_tokens=args.max_tokens,
-                            n_particles=args.n_particles,
-                            ess_threshold=0.5
-                        )
-                    else:
-                        # For non-chat models, use the original approach
-                        model.add_message("system", instruction)
-                        for con in content:
-                            model.add_message("user", con["text"])
-                        start_time = time.time()
-                        response = await model.get_outputs()
-                        generation_time = time.time() - start_time
-                    break
-                except openai.InternalServerError:
-                    wait_time = 2**attempt
-                    print(
-                        f"API error encountered, retrying in {wait_time} seconds... (attempt {attempt + 1}/3)"
-                    )
-                    await asyncio.sleep(wait_time)
-
-            if response is None:
-                print("Failed to get response after retries")
-                continue
+            if args.model_type.lower() == "chat":
+                config = {
+                    "llm": llm,
+                    "potential": lean_potential,
+                    "instruction": instruction,
+                    "content": content,
+                    "reasoning": args.reasoning,
+                    "max_tokens": args.max_tokens,
+                    "n_particles": args.n_particles,
+                    "ess_threshold": args.ess_threshold,
+                    "lhts": args.lhts,
+                    "lhts_power": args.lhts_power,
+                }
+                response, generation_time = await run_generation(config)
+            else:
+                # For non-chat models, use the original approach
+                model.add_message("system", instruction)
+                for con in content:
+                    model.add_message("user", con["text"])
+                start_time = time.time()
+                response = await model.get_outputs()
+                generation_time = time.time() - start_time
 
             # Check well-typedness for each formalization
             validated_formalizations = []

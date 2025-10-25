@@ -1,0 +1,20 @@
+{
+  "id": "14",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (AB : Line), ((distinctPointsOnLine A B AB) ∧ (∠ A:B:C = ∟ + ∟ - ∠ A:B:D) ∧ (Point.opposingSides C D AB)) → (Point.collinear B C D)",
+      "full_output": "Okay, so I have this English statement from Euclidean geometry, and I need to translate it into the Lean 4 programming language. The theorem is about two straight lines making adjacent angles equal to two right angles with another straight line. Here's what I'm thinking:\n\nFirst, I need to understand the geometric setup. There's a straight line AB, and at point B, two straight lines BC and BD are drawn on opposite sides of AB. These lines BC and BD form angles ABC and ABD with AB, and the sum of these angles is two right angles, which is 180 degrees. The claim is that BC and BD are straight-on with respect to each other, meaning they form a straight line.\n\nNow, looking at the guidelines, I see that I need to use the provided axioms and notations. I need to define points, lines, and circles, and use the given relations like onLine, sameSide, etc.\n\nI think I'll start by declaring the points and lines involved. Points A, B, C, D are points on lines AB, BC, and BD. Then, I'll specify that angles ABC and ABD are adjacent and their sum is two right angles. Since the lines are on opposite sides, they should form a straight line when extended.\n\nI'm a bit confused about how to express the angles summing to two right angles. Maybe I can use angle addition, noting that angle ABC plus angle ABD equals 180 degrees.\n\nAlso, I need to ensure that lines BC and BD are on opposite sides of AB and that they don't lie on the same side. I think the sameSide and opposingSides relations from the Point namespace can help here.\n\nOnce I set up the hypotheses correctly, the conclusion should be straightforward: BC and BD are collinear, meaning they lie on the same straight line.\n\nI should also make sure that all quantified variables are limited to points, lines, and circles as per the guidelines. No intermediate variables or extra axioms should be used.\n\nAfter setting up the theorem with the correct hypotheses and conclusion, I'll end it with \":= by sorry.\" as instructed.\n\nI think I have a rough idea now. I'll try to translate each part step by step, making sure I follow the format and use the provided axioms correctly.\n</think>\n\ntheorem example_thm (A B C D : Point) (AB : Line) (h1 : distinctPointsOnLine A B AB) (h2 : ∠ A:B:C = ∟ + ∟ - ∠ A:B:D) (h3 : Point.opposingSides C D AB) : Point.collinear B C D := by sorry\n",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 39.22740197181702,
+      "well_typed": false,
+      "token_counts": 543,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC BD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine b c BC ∧ distinctPointsOnLine b d BD ∧ (c.opposingSides d AB) ∧ (∠ a:b:c + ∠ a:b:d) = ∟ + ∟ → BC = BD",
+  "nl_statement": "If two straight-lines, not lying on the same side,  make adjacent angles (whose sum is) equal to two right-angles  with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another. For let two straight-lines $BC$ and $BD$, not lying on the same side, make adjacent angles $ABC$ and $ABD$ (whose sum is) equal to two right-angles with some straight-line $AB$, at the point $B$ on it. I say that $BD$ is  straight-on with respect to $CB$. <prf> Thus, $CB$ is straight-on with respect to $BD$.Thus, if two straight-lines, not lying on the same side, make adjacent angles (whose sum is) equal to two right-angles with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another.",
+  "lean4_header": ""
+}

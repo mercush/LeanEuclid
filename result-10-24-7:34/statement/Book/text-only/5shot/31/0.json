@@ -1,0 +1,68 @@
+{
+  "id": "31",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ lines : Line × Line, (¬(Line.intersectsLine BC lines.1 ∧ lines.1.onLine a)))",
+      "full_output": "theorem draw_parallel_line (a : Point) (b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ lines : Line × Line, (¬(Line.intersectsLine BC lines.1 ∧ lines.1.onLine a)) := by",
+      "probability": 0.20099419841617197,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.227842569351196,
+      "well_typed": false,
+      "token_counts": 70,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ l : Point, let h)",
+      "full_output": "theorem to_draw_a_straight_line_parallel_to_a_given_straight_line_through_a_given_point (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ l : Point, let h := l; h.onLine BC ∧ |(a─h)| = |(b─c)| := by",
+      "probability": 0.20059323328684872,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.227842569351196,
+      "well_typed": false,
+      "token_counts": 82,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (BC : Line), ((¬a.onLine BC)) → (∃ EF : Line, (¬EF.intersectsCircle BC) ∧ a.onLine EF)",
+      "full_output": "theorem to_draw_a_straight_line_parallel_to_a_given_straight_line_through_a_given_point (a : Point) (BC : Line) (h : ¬a.onLine BC) : ∃ EF : Line, (¬EF.intersectsCircle BC) ∧ a.onLine EF := by",
+      "probability": 0.19991343211178944,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.227842569351196,
+      "well_typed": false,
+      "token_counts": 59,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (BC : Point), (True) → (∃ l : Point, Point.onLine A l ∧ ¬(Line.intersectsLine BC l))",
+      "full_output": "theorem example_thm (A BC : Point) : ∃ l : Point, Point.onLine A l ∧ ¬(Line.intersectsLine BC l) := by",
+      "probability": 0.19944479256039319,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.227842569351196,
+      "well_typed": false,
+      "token_counts": 34,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (e : Point) (f : Point) (BC : Line) (EA : Line) (AF : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b) ∧ (¬(a.onLine BC)) ∧ (twoLinesIntersectAtPoint BC EA a) ∧ (twoLinesIntersectAtPoint EA AF a) ∧ (formParallelogram e a f c BC AF EA)) → (¬(Line.intersectsLine BC AF) ∧ |(e─a)| = |(b─c)|)",
+      "full_output": "theorem drawParallelLine (a b c e f : Point) (BC : Line) (EA : Line) (AF : Line) \n(h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) (h3 : ¬(a.onLine BC)) \n(h4 : twoLinesIntersectAtPoint BC EA a) (h5 : twoLinesIntersectAtPoint EA AF a) \n(h6 : formParallelogram e a f c BC AF EA) : \n  ¬(Line.intersectsLine BC AF) ∧ |(e─a)| = |(b─c)| := by",
+      "probability": 0.1990543436247967,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.227842569351196,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)",
+  "nl_statement": "To draw a straight-line parallel to a given straight-line, through a given point.Let $A$ be the given point, and $BC$ the given straight-line. So it is required to draw a straight-line parallel to the straight-line $BC$, through the point $A$.  <prf>  Thus, the straight-line $EAF$ has been drawn parallel to the given straight-line $BC$, through the  given point $A$.",
+  "lean4_header": ""
+}

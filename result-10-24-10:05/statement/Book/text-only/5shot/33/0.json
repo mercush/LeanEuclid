@@ -1,0 +1,20 @@
+{
+  "id": "33",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I'm trying to formalize this theorem: \"Straight-lines joining equal and parallel straight-lines on the same sides are themselves also equal and parallel.\" Let's break it down.\n\nFirst, I need to understand what the theorem is saying. We have two straight lines, AB and CD, which are equal in length and parallel. Then, there are two more straight lines, AC and BD, that connect these lines on the same sides. The theorem states that AC and BD will also be equal in length and parallel to each other.\n\nOkay, so to formalize this, I need to use the Lean4 language with the given axioms and structures. Let me recall the types and axioms provided.\n\nWe have basic geometric sorts: Point, Line, and Circle. Then, inductive types for Angle, Segment, and Triangle. Notations include |(a─b)| for the length of a segment, ∠ a:b:c for the angle at point b, and so on.\n\nFor the theorem, I need to state that given two equal and parallel lines AB and CD, and lines AC and BD connecting them on the same sides, then AC and BD are equal and parallel.\n\nIn Lean4, I should define the hypothesis and the conclusion accordingly. The hypothesis should include the equality and parallelism of AB and CD, and the connections via AC and BD.\n\nI also need to ensure that the proof structure follows the guidelines, ending with \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 20.841440439224243,
+      "well_typed": false,
+      "token_counts": 295,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB CD AC BD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine b d BD ∧ (a.sameSide c BD) ∧ ¬(AB.intersectsLine CD) ∧ |(a─b)| = |(c─d)| → AC ≠ BD ∧ ¬(AC.intersectsLine BD) ∧ |(a─c)|= |(b─d)|",
+  "nl_statement": "Straight-lines joining equal and parallel (straight-lines) on the same sides are  themselves also equal and parallel.Let $AB$ and $CD$ be equal and parallel (straight-lines), and let the straight-lines $AC$ and $BD$ join them on the same sides. I say that $AC$ and $BD$ are also equal and parallel. <prf> Thus, straight-lines joining equal and parallel (straight-lines) on the same sides are themselves also equal and parallel.",
+  "lean4_header": ""
+}

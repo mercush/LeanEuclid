@@ -1,0 +1,68 @@
+{
+  "id": "13",
+  "formalizations": [
+    {
+      "formalization": "∀ (C : Point) (D : Point) (A : Point) (B : Point) (CD : Line), ((distinctPointsOnLine C D CD) ∧ (a ≠ b)) → (∠ A:B:C + ∠ B:D:A = ∟ + ∟)",
+      "full_output": "theorem example_thm (C D A B : Point) (CD : Line) (h₀ : distinctPointsOnLine C D CD) (h₁ : a ≠ b) : ∠ A:B:C + ∠ B:D:A = ∟ + ∟ := by",
+      "probability": 0.2005473888485993,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.52680277824402,
+      "well_typed": false,
+      "token_counts": 57,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line), ((formTriangle a b c AB AC CD) ∧ (between b c d)) → (∠ c:b:a + ∠ a:b:d = ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC : Line) (h1 : formTriangle a b c AB AC CD) (h2 : between b c d) : ∠ c:b:a + ∠ a:b:d = ∟ + ∟ := by",
+      "probability": 0.20046683528311424,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.52680277824402,
+      "well_typed": true,
+      "token_counts": 61,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (formTriangle a b c AB AC BD) ∧ (formTriangle a c d AC BD CD) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (∠ a:b:c = ∟ ∨ ∠ a:c:d = ∟)) → ((∠ a:b:c = ∟ ∧ ∠ c:b:d = ∟) ∨ (∠ a:b:c + ∠ c:b:d = ∟ + ∟))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : formTriangle a b c AB AC BD) (h3 : formTriangle a c d AC BD CD) (h4 : distinctPointsOnLine a b AB) (h5 : distinctPointsOnLine c d CD) (h6 : ∠ a:b:c = ∟ ∨ ∠ a:c:d = ∟) : (∠ a:b:c = ∟ ∧ ∠ c:b:d = ∟) ∨ (∠ a:b:c + ∠ c:b:d = ∟ + ∟) := by",
+      "probability": 0.19977932012373995,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.52680277824402,
+      "well_typed": true,
+      "token_counts": 149,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (twoLinesIntersectAtPoint AB AB AB a) ∧ (∠ a:b:c = ∟ ∨ ∠ a:b:d = ∟ ∨ ((∠ a:b:c + ∠ a:b:d) = ∟ + ∟))) → ((|(a─b)| = |(a─b)|))",
+      "full_output": "theorem if_straight_line_stood_on_another_straight_line_make_two_right_angles_or_their_sum_equal_to_two_right_angles (a b c d : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : twoLinesIntersectAtPoint AB AB AB a) (h3 : ∠ a:b:c = ∟ ∨ ∠ a:b:d = ∟ ∨ ((∠ a:b:c + ∠ a:b:d) = ∟ + ∟)) : (|(a─b)| = |(a─b)|) := by",
+      "probability": 0.1997597035396691,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.52680277824402,
+      "well_typed": false,
+      "token_counts": 124,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((distinctPointsOnLine a b AB) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (¬(c.onLine AB))) → (∠ a:b:c = ∟ ∨ ∠ a:b:c + ∠ c:b:d = ∟ + ∟)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : distinctPointsOnLine a b AB) (h2 : twoLinesIntersectAtPoint AB CD b) (h3 : ¬(c.onLine AB)) : ∠ a:b:c = ∟ ∨ ∠ a:b:c + ∠ c:b:d = ∟ + ∟ := by",
+      "probability": 0.19944675220487756,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.52680277824402,
+      "well_typed": true,
+      "token_counts": 84,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB CD : Line), AB ≠ CD ∧ distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ between d b c → ∠ c:b:a + ∠ a:b:d = ∟ + ∟",
+  "nl_statement": "If a straight-line stood on a(nother)  straight-line makes angles, it will certainly either make two right-angles, or (angles whose sum is) equal to two right-angles. For  let some straight-line $AB$ stood on the straight-line $CD$ make the angles $CBA$ and $ABD$. I say that the angles $CBA$ and $ABD$ are certainly either two right-angles, or (have a sum) equal to two right-angles. <prf> Thus, (the sum of) $ABD$ and $ABC$ is also equal to two right-angles.Thus, if a straight-line stood on a(nother)  straight-line makes angles, it will certainly either make two right-angles, or (angles whose sum is) equal to two right-angles.",
+  "lean4_header": ""
+}

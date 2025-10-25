@@ -1,0 +1,20 @@
+{
+  "id": "19",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ b : ℝ) > ∠ c)) → (|(a─c)| > |(a─b)|)",
+      "full_output": "Alright, so I've got this geometry problem here, and I need to translate it into Lean 4 code. First, I'll read the statement carefully to understand what it's saying.\n\nThe statement is: \"In any triangle, the greater angle is subtended by the greater side.\" Given a triangle ABC where angle ABC is greater than angle BCA, the claim is that side AC is greater than side AB.\n\nOkay, so to formalize this, I need to define a theorem in Lean that captures this relationship. Let me break down the components:\n\n1. **Triangle Definition**: I have points A, B, and C forming a triangle. So, I'll use the `Triangle` type and provide the lines AB, BC, and AC.\n\n2. **Angle Comparison**: Angle ABC is greater than angle BCA. In Lean, angles are represented using `∠`, and I can use `>` to denote \"greater than\".\n\n3. **Side Lengths**: The sides opposite these angles are AC and AB, respectively. So, I need to express that the length of AC is greater than the length of AB.\n\nNow, considering the guidelines:\n\n- **Sorts and Types**: I need to use the provided axioms and sorts like `Point`, `Line`, and `Triangle`.\n- **Angles and Sides**: Use `|(a─b)|` for the length of the segment between points a and b.\n- **No Intermediate Variables**: I can't define any intermediate variables inside the theorem statement.\n\nPutting it all together, the theorem should take the points A, B, C as inputs, along with the lines AB, BC, and AC. It should also take the hypothesis that the triangle is formed, and the specific angles at B and C.\n\nFinally, the theorem will conclude that the length of side AC is greater than the length of side AB.\n\nI think I've covered all the necessary parts. Now, I'll write the formalized statement in Lean 4, making sure to follow the syntax and structure provided in the examples.\n</think>\n\ntheorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ b : ℝ) > ∠ c) : |(a─c)| > |(a─b)| := by sorry",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 34.51815724372864,
+      "well_typed": false,
+      "token_counts": 480,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ a:b:c > ∠ b:c:a) → (|(a─c)| > |(a─b)|)",
+  "nl_statement": "In any triangle, the greater angle is subtended by the greater side. Let $ABC$ be a triangle having the angle $ABC$ greater than $BCA$. I say that side $AC$ is also greater than side $AB$. <prf>  Thus, $AC$  is greater than $AB$. Thus, in any triangle, the greater angle is subtended by the greater side.",
+  "lean4_header": ""
+}

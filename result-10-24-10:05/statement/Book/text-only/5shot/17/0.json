@@ -1,0 +1,20 @@
+{
+  "id": "17",
+  "formalizations": [
+    {
+      "formalization": "((hypothesis_1) ∧ (hypothesis_2)) → ()",
+      "full_output": "Alright, I'm trying to understand how to formalize this Euclidean geometry theorem using Lean 4. The theorem states that for any triangle, the sum of any two angles is less than two right angles. Let me break this down.\n\nFirst, I need to recall some basic properties of triangles and angles. In Euclidean geometry, the sum of the internal angles of a triangle is always equal to one full straight angle, which is 180 degrees. Since a right angle is 90 degrees, two right angles sum up to 180 degrees. So, the theorem is essentially saying that any two angles in the triangle, when added together, will be less than 180 degrees.\n\nBut wait, isn't that always true? If the total sum of all three angles is 180 degrees, then any two angles must sum to less than 180 degrees, because the third angle has to be greater than zero. That makes sense. So, in any triangle, no angle can be 180 degrees or more, because then the sum of all three angles would exceed 180 degrees, which isn't possible.\n\nNow, I need to think about how to express this in Lean 4. From the guidelines, I see that I have to use specific types and notations for points, lines, angles, segments, and triangles. The theorem should be a statement that follows the given format: \n\ntheorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 21.519299507141113,
+      "well_typed": false,
+      "token_counts": 303,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC → ∠ a:b:c + ∠ b:c:a < ∟ + ∟",
+  "nl_statement": "For any triangle,  (the sum of) two angles taken together in any (possible way) is less than two right-angles. Let $ABC$ be a triangle. I say that (the sum of) two angles of triangle $ABC$ taken together in any (possible way) is less than two right-angles. <prf> Thus, (the sum of) $ABC$ and $BCA$ is less than two right-angles. Similarly, we can show that (the sum of) $BAC$ and $ACB$ is also less than two right-angles, and further (that the sum of) $CAB$ and $ABC$ (is less than two right-angles).Thus, for any triangle,  (the sum of) two angles taken together in any (possible way) is less than two right-angles.",
+  "lean4_header": ""
+}

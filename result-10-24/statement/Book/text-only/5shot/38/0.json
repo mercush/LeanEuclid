@@ -1,0 +1,68 @@
+{
+  "id": "38",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (CA : Line) (DEF_FG_HI : Line) (JI_JK : Line), ((formTriangle a b c AB BC CA) ∧ (formTriangle d e f DEF_FG_HI JI_JK (Line.mk d)) ∧ (|(b─c)| = |(e─f)|) ∧ (Line Destructor.stringify AB = \"BF\") ∧ (Line Destructor.stringify DEF_FG_HI = \"AD\") ∧ (Point.onLine b AB) ∧ (Point.onLine c AB) ∧ (Point.onLine e DEF_FG_HI) ∧ (Point.onLine f DEF_FG_HI) ∧ (¬(Line.intersectsLine AB DEF_FG_HI)) ∧ (¬(Line.intersectsLine BC JI_JK)) ∧ (¬(Line.intersectsLine CA (Line.mk d))) ∧ (Point.sameSide a (Line.mk d) AB) ∧ (Point.sameSide d (Line.mk d) AB)) → ()",
+      "full_output": "theorem thm_1 (a b c d e f : Point)\n    (AB BC CA DEF_FG_HI JI_JK : Line)\n    (h1 : formTriangle a b c AB BC CA)\n    (h2 : formTriangle d e f DEF_FG_HI JI_JK (Line.mk d))\n    (h3 : |(b─c)| = |(e─f)|)\n    (h4 : Line Destructor.stringify AB = \"BF\")\n    (h5 : Line Destructor.stringify DEF_FG_HI = \"AD\")\n    (h6 : Point.onLine b AB)\n    (h7 : Point.onLine c AB)\n    (h8 : Point.onLine e DEF_FG_HI)\n    (h9 : Point.onLine f DEF_FG_HI)\n    (h10 : ¬(Line.intersectsLine AB DEF_FG_HI))\n    (h11 : ¬(Line.intersectsLine BC JI_JK))\n    (h12 : ¬(Line.intersectsLine CA (Line.mk d)))\n    (h13 : Point.sameSide a (Line.mk d) AB)\n    (h14 : Point.sameSide d (Line.mk d) AB)\n   ",
+      "probability": 0.20261105491340853,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.48851752281189,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((Triangle) ∧ (Line.onLine b BC) ∧ (Line.onLine c BC) ∧ (Triangle.onBase a DEF) ∧ (Line.onLine a (Line.neg BC))) → (Triangle.equivalent a b c DEF)",
+      "full_output": "theorem example_thm (a b c : Point) (BC : Line) (DEF : Triangle) (h1 : Line.onLine b BC) (h2 : Line.onLine c BC) (h3 : Triangle.onBase a DEF) (h4 : Line.onLine a (Line.neg BC)) : Triangle.equivalent a b c DEF := by",
+      "probability": 0.20014252920331121,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.48851752281189,
+      "well_typed": false,
+      "token_counts": 74,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (BC : Line) (EF : Line), ((|(b─c)| = |(e─f)|) ∧ (¬(b.onLine EF)) ∧ (¬(c.onLine EF)) ∧ (¬(e.onLine BC)) ∧ (¬(f.onLine BC)) ∧ (Line.intersectsLine BC EF) ∧ (Line.intersectsLine BC EF)) → ((Triangle.area △ a:b:c) = (Triangle.area △ d:e:f))",
+      "full_output": "theorem triangles_on_equal_bases_between_same_parallels_are_equal (a b c d e f : Point) (BC EF : Line) (h1 : |(b─c)| = |(e─f)|) (h2 : ¬(b.onLine EF)) (h3 : ¬(c.onLine EF)) (h4 : ¬(e.onLine BC)) (h5 : ¬(f.onLine BC)) (h6 : Line.intersectsLine BC EF) (h7 : Line.intersectsLine BC EF) : (Triangle.area △ a:b:c) = (Triangle.area △ d:e:f) := by",
+      "probability": 0.19918858659046357,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.48851752281189,
+      "well_typed": true,
+      "token_counts": 132,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (BC : Line) (EF : Line), ((|(b─c)| = |(e─f)|) ∧ (¬(b.onLine EF)) ∧ (¬(c.onLine EF)) ∧ (¬(e.onLine BC)) ∧ (¬(f.onLine BC)) ∧ (Line.intersectsLine BC EF = none)) → (Triangle.area △ a:b:c = Triangle.area △ d:e:f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (BC EF : Line) (h1 : |(b─c)| = |(e─f)|) (h2 : ¬(b.onLine EF)) (h3 : ¬(c.onLine EF)) (h4 : ¬(e.onLine BC)) (h5 : ¬(f.onLine BC)) (h6 : Line.intersectsLine BC EF = none) : Triangle.area △ a:b:c = Triangle.area △ d:e:f := by",
+      "probability": 0.1990781980548686,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.48851752281189,
+      "well_typed": false,
+      "token_counts": 111,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (BC : Line) (EF : Line) (BF : Line) (AD : Line), ((formTriangle a b c (Line.ends b c BC) (Line.ends b c BC) (Line.ends a b AD)) ∧ (formTriangle d e f (Line.ends e f EF) (Line.ends e f EF) (Line.ends d e BF)) ∧ (|(b─c)| = |(e─f)|) ∧ (¬(BF.intersectsLine AD))) → (Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f))",
+      "full_output": "theorem triangles_on_equal_bases_between_same_parallels_are_equal (a b c d e f : Point) (BC EF : Line) (BF AD : Line) (h1 : formTriangle a b c (Line.ends b c BC) (Line.ends b c BC) (Line.ends a b AD)) (h2 : formTriangle d e f (Line.ends e f EF) (Line.ends e f EF) (Line.ends d e BF)) (h3 : |(b─c)| = |(e─f)|) (h4 : ¬(BF.intersectsLine AD)) : Triangle.congruent (Triangle.ofPoints a b c) (Triangle.ofPoints d e f) := by",
+      "probability": 0.19897963123794812,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 28.48851752281189,
+      "well_typed": false,
+      "token_counts": 147,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f: Point) (AD BF AB AC DE DF : Line), a.onLine AD ∧ d.onLine AD ∧ formTriangle a b c AB BF AC ∧ formTriangle d e f DE BF DF ∧ ¬(AD.intersectsLine BF) ∧ (between b c f) ∧ (between b e f) ∧ |(b─c)| = |(e─f)| → Triangle.area △ a:b:c = Triangle.area △ d:e:f",
+  "nl_statement": "Triangles which are on equal bases and between the same parallels are equal to one another. Let $ABC$ and $DEF$ be triangles on the equal bases $BC$ and $EF$, and between the same parallels $BF$ and $AD$. I say that triangle $ABC$ is equal to triangle $DEF$.  <prf> Thus, triangle $ABC$ is equal to triangle $DEF$.Thus, triangles which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

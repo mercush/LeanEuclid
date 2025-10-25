@@ -1,0 +1,68 @@
+{
+  "id": "43",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (a ≠ c)) → (|(a─b)| = |(c─d)|)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) \n(h1 : formParallelogram a b c d AB CD AC BD) (h2 : a ≠ c) : |(a─b)| = |(c─d)| := by",
+      "probability": 0.20057786338418412,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 12.055927276611328,
+      "well_typed": true,
+      "token_counts": 62,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → ((|a─b| = |c─d|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) : (|a─b| = |c─d|) := by",
+      "probability": 0.20010550875277738,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 12.055927276611328,
+      "well_typed": false,
+      "token_counts": 54,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → (|(a─b)| + |(d─c)| = |(a─d)| + |(b─c)|)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) : |(a─b)| + |(d─c)| = |(a─d)| + |(b─c)| := by",
+      "probability": 0.20004299640686232,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 12.055927276611328,
+      "well_typed": true,
+      "token_counts": 68,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram a c d b AC CD AB BD)) → (|(a─b)| * |(c─d)| = |(a─d)| * |(b─c)|)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram a c d b AC CD AB BD) : |(a─b)| * |(c─d)| = |(a─d)| * |(b─c)| := by",
+      "probability": 0.19977242877097315,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 12.055927276611328,
+      "well_typed": true,
+      "token_counts": 86,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → ((Triangle.area △ a:b:c) = Triangle.area △ a:d:c)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h₁ : formParallelogram a b c d AB CD AC BD) : (Triangle.area △ a:b:c) = Triangle.area △ a:d:c := by",
+      "probability": 0.19950120268520294,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 12.055927276611328,
+      "well_typed": true,
+      "token_counts": 56,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h k : Point) (AD BC AB CD AC EF GH : Line), formParallelogram a d b c AD BC AB CD ∧ distinctPointsOnLine a c AC ∧ k.onLine AC ∧ between a h d ∧ formParallelogram a h e k AD EF AB GH ∧ formParallelogram k f g c EF BC GH CD → (Triangle.area △ e:b:g + Triangle.area △ e:g:k = Triangle.area △ h:k:f + Triangle.area △ h:f:d)",
+  "nl_statement": "For any parallelogram, the complements of the parallelograms about the diagonal are equal to one another. Let $ABCD$ be a parallelogram, and $AC$ its diagonal. And let $EH$ and $FG$ be the parallelograms about  $AC$, and $BK$ and $KD$ the so-called complements (about $AC$). I say that the complement $BK$ is equal to the complement $KD$. <prf> Thus, the remaining complement $BK$ is equal to the remaining complement $KD$. Thus, for any parallelogramic figure, the complements of the parallelograms about the diagonal are equal to one another.",
+  "lean4_header": ""
+}

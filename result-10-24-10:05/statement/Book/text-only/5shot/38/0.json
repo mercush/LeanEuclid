@@ -1,0 +1,20 @@
+{
+  "id": "38",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I'm trying to formalize this theorem about triangles being equal if they're on equal bases and between the same parallels. Let me see if I can break this down.\n\nFirst, I need to understand the English statement properly. It says that if two triangles, let's say ABC and DEF, have their bases BC and EF equal in length and they're both located between the same two parallel lines, BF and AD, then the two triangles are equal to one another. That makes sense intuitively because if the bases are the same and they're squeezed between the same parallel lines, the triangles should end up being congruent.\n\nOkay, now to think about how to translate this into Lean4. I remember that in the guidelines, there are certain types and notations defined, like Point, Line, Triangle, and various functions for congruence and similarity. So I'll need to use those.\n\nThe theorem seems to involve two triangles, ABC and DEF. Each triangle has three points, so I'll need to define these points. The bases BC and EF are equal, so I'll have to express that the length of segment BC is equal to the length of segment EF. Also, these bases are between the same parallels, which are lines BF and AD. So, I need to express that lines BF and AD are parallel.\n\nIn the examples provided, they use the form \"theorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 21.41024899482727,
+      "well_typed": false,
+      "token_counts": 304,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f: Point) (AD BF AB AC DE DF : Line), a.onLine AD ∧ d.onLine AD ∧ formTriangle a b c AB BF AC ∧ formTriangle d e f DE BF DF ∧ ¬(AD.intersectsLine BF) ∧ (between b c f) ∧ (between b e f) ∧ |(b─c)| = |(e─f)| → Triangle.area △ a:b:c = Triangle.area △ d:e:f",
+  "nl_statement": "Triangles which are on equal bases and between the same parallels are equal to one another. Let $ABC$ and $DEF$ be triangles on the equal bases $BC$ and $EF$, and between the same parallels $BF$ and $AD$. I say that triangle $ABC$ is equal to triangle $DEF$.  <prf> Thus, triangle $ABC$ is equal to triangle $DEF$.Thus, triangles which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

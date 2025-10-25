@@ -1,0 +1,20 @@
+{
+  "id": "18",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─c)| > |(a─b)|)) → (∠ b:c:a > ∠ c:a:b)",
+      "full_output": "Okay, so I have this problem here that says, \"In any triangle, the greater side subtends the greater angle.\" And they've given me an example with points A, B, and C, where side AC is greater than side AB, and they want me to show that angle ABC is greater than angle BCA. Then, there's a formalized statement that I need to follow, which looks like it's in Lean 4 programming language.\n\nFirst, I need to understand what it means for one side of a triangle to subtend a greater angle. So, in triangle ABC, side AC is opposite angle B, and side AB is opposite angle C. So, if AC is longer than AB, then angle B should be greater than angle C. That makes sense based on what I know about triangles—longer sides are opposite larger angles.\n\nNow, looking at the guidelines, I see that I need to write a theorem in Lean 4 following a specific format. The theorem name should be something like example_thm, and it should take some points and lines as hypotheses, leading to a conclusion about the angles being equal or not.\n\nI need to make sure I'm using the right notation for points, lines, and angles. From the examples, I see that we use Point, Line, and functions like onLine, distinctPointsOnLine, formTriangle, and then use ∟ for right angles and |(a─b)| for the length of the segment between points a and b.\n\nSo, in this problem, I have points a, b, and c, and lines AB, BC, and AC forming a triangle. The hypothesis is that |(a─c)| > |(a─b)|, meaning the length of side AC is greater than AB. The conclusion should be that ∠ b:c:a > ∠ c:a:b, which means angle at B is greater than angle at C.\n\nI also need to make sure that all the variables are properly declared and that I'm using the correct relations for forming the triangle and comparing the sides and angles. I should avoid using any other libraries or theorems outside of what's provided in the guidelines.\n\nAlright, so putting this together, I'll define the theorem with the given points and lines, state the hypotheses about the triangle formation and the side lengths, and then conclude the relationship between the two angles.\n\nI think I should also consider if there are any edge cases or if the side lengths being equal would make the angles equal, but the problem specifically says one side is greater, so I don't need to handle the equality case here.\n\nOverall, by following the format and using the correct notations and relations, I can formalize this geometric theorem in Lean 4.\n</think>\n\ntheorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─c)| > |(a─b)|) : ∠ b:c:a > ∠ c:a:b := by\n  -- Use the given side lengths to compare the angles.\n  have h3 : ∠ b:c:a > ∠ c:a:b := by\n    -- Apply the theorem that relates side lengths to angles.\n    apply Angle.greater_of_sides_greater\n    -- Use the given side length inequality.\n    <;> assumption\n  -- Conclude the proof with the derived angle inequality.\n  exact h3\n",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 50.96353626251221,
+      "well_typed": true,
+      "token_counts": 709,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─c)| > |(a─b)|) → (∠ a:b:c > ∠ b:c:a)",
+  "nl_statement": "In any triangle, the greater side subtends the greater angle. For let $ABC$ be a triangle having side $AC$ greater than $AB$. I say that angle $ABC$ is also greater than $BCA$.   <prf>  Thus, $ABC$ is much greater than  $ACB$.  Thus, in any triangle, the greater side subtends the greater angle. (Which is) the very thing  it was required to show.",
+  "lean4_header": ""
+}

@@ -1,0 +1,20 @@
+{
+  "id": "40",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Okay, so I have to formalize this geometry theorem into Lean4 code. Let me start by understanding the English statement carefully. \n\nThe theorem says that if we have two equal triangles, ABC and CDE, which are on equal bases BC and CE respectively, and both are on the same side of the line BE, then they are also between the same parallel lines. Furthermore, it mentions that the line AD is parallel to BE.\n\nFirst, I need to identify the geometric entities involved: points A, B, C, D, E; lines AD, BE, BC, CE; and the triangles ABC and CDE.\n\nI need to set up the hypotheses. The first hypothesis is that triangles ABC and CDE are equal. In Lean, I can express this using the `Triangle.congruent` relation. The second hypothesis is that the bases BC and CE are equal in length, which I can write as `|(b─c)| = |(c─e)|`. Finally, I need to state that the triangles are on the same side of the line BE. For this, I can use `Point.sameSide` for points A and D with respect to line BE.\n\nI also need to express the conclusion that AD is parallel to BE and that the triangles are between the same parallels. However, parallel lines are not directly defined in the provided axioms. Instead of using `Line.Parallel AD BE`, I should express this through the properties of the lines and angles, possibly using the fact that corresponding angles are equal.\n\nNow, considering the structure of the Lean4 code, I need to follow the given guidelines. The theorem name should be a valid Lean identifier, possibly `thm_triangles_between_parallels`. Each hypothesis must be inside parentheses and have the form `(h : statement)`. The conclusion should be on the right side of the colon, ending with `:= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 27.421045780181885,
+      "well_typed": false,
+      "token_counts": 383,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC CD DE AD : Line), formTriangle a b c AB BC AC ∧ formTriangle d c e CD BC DE ∧ a.sameSide d BC ∧ b ≠ e ∧ |(b─c)| = |(c─e)| ∧ distinctPointsOnLine a d AD ∧ (Triangle.area △ a:b:c = Triangle.area △ d:c:e) → ¬(AD.intersectsLine BC)",
+  "nl_statement": "Equal triangles which are on equal bases, and on the same side, are also between the same parallels.Let $ABC$ and $CDE$ be equal triangles on the equal bases $BC$ and $CE$ (respectively), and on the same side (of $BE$). I say that they are also between the same parallels.For let $AD$ have been joined. I say that $AD$ is parallel to $BE$.   <prf> Thus, $AD$ is parallel to $BE$.Thus, equal triangles which are on equal bases, and on the same side, are also between the same parallels.",
+  "lean4_header": ""
+}

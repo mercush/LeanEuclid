@@ -1,0 +1,20 @@
+{
+  "id": "38",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, I need to formalize the given English theorem statement using Lean 4. The theorem is about the equality of triangles that lie on equal bases and between the same parallels. \n\nFirst, I'll break down the components of the theorem. The statement mentions \"triangles which are on equal bases and between the same parallels.\" So, I need to understand what that means. \n\nI have two triangles, ABC and DEF. BC and EF are the equal bases, meaning they have the same length. The parallels mentioned are BF and AD. So, BF is one pair of parallel lines, and AD is another.\n\nTo formalize this, I'll need to use the Lean 4 structures and notations provided. I'll start by defining the points and lines involved. The theorem likely involves area or some measure of equality, so I should consider what that means in Lean 4 terms.\n\nI'll need to use the area function from Triangle.area. The goal seems to be to show that Triangle.area ABC = Triangle.area DEF. \n\nNext, I need to set up the hypotheses. The bases BC and EF are equal, so I'll express that with |(b - c)| = |(e - f)|. The lines BF and AD are the parallels. In Lean 4, to state that two lines are parallel, I think the correct way is to use the Parallel line function. But looking back, I see that there's an example where parallel lines are defined as not intersecting. So, BF and AD being parallel means that lines BF and AD do not intersect, which can be represented as ¬(BF.intersectsLine AD).\n\nThen, ABC and DEF are the triangles on these bases and between the same parallels. So, I'll need to define the triangles accordingly.\n\nI also need to consider that the points are distinct and properly form the triangles and parallels. So, I should include distinctness conditions, like a ≠ b and b ≠ c, to ensure that the points are distinct and the lines are valid.\n\nPutting it all together, the theorem in Lean 4 should state that if two triangles have equal bases and lie between the same set of parallels, then their areas are equal, establishing their equality in size.\n\nI need to make sure that all bound variables are included, and there are no intermediate variables defined inside the proposition. Everything should be expressed using the Lean 4 axioms and definitions provided.\n\nFinally, I need to construct the formalized theorem statement in the exact format specified. This includes the theorem name, which should be a valid Lean 4 identifier, the hypotheses in parentheses, and the conclusion after the colon, ending with \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 38.10652422904968,
+      "well_typed": false,
+      "token_counts": 538,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f: Point) (AD BF AB AC DE DF : Line), a.onLine AD ∧ d.onLine AD ∧ formTriangle a b c AB BF AC ∧ formTriangle d e f DE BF DF ∧ ¬(AD.intersectsLine BF) ∧ (between b c f) ∧ (between b e f) ∧ |(b─c)| = |(e─f)| → Triangle.area △ a:b:c = Triangle.area △ d:e:f",
+  "nl_statement": "Triangles which are on equal bases and between the same parallels are equal to one another. Let $ABC$ and $DEF$ be triangles on the equal bases $BC$ and $EF$, and between the same parallels $BF$ and $AD$. I say that triangle $ABC$ is equal to triangle $DEF$.  <prf> Thus, triangle $ABC$ is equal to triangle $DEF$.Thus, triangles which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

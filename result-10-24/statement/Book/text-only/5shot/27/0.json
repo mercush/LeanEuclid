@@ -1,0 +1,68 @@
+{
+  "id": "27",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF) ∧ (∠ a:b:c = ∠ c:d:e)) → (¬(Line.intersectsLine AB CD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD EF : Line) (h1 : Line.intersectsLine AB EF) (h2 : Line.intersectsLine CD EF) (h3 : ∠ a:b:c = ∠ c:d:e) : ¬(Line.intersectsLine AB CD) := by",
+      "probability": 0.20033845047300247,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 12.00507664680481,
+      "well_typed": false,
+      "token_counts": 69,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF) ∧ (∠ a:b:c : ℝ = ∠ d:c:b : ℝ)) → (¬(Line.intersectsLine AB CD))",
+      "full_output": "theorem euclid_jc_TH'post (a b c d : Point) (AB CD EF : Line) (h1 : Line.intersectsLine AB EF) (h2 : Line.intersectsLine CD EF) (h3 : ∠ a:b:c : ℝ = ∠ d:c:b : ℝ) : ¬(Line.intersectsLine AB CD) := by",
+      "probability": 0.20000064408801618,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 12.00507664680481,
+      "well_typed": false,
+      "token_counts": 76,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (E : Point) (F : Point) (AB : Line) (CD : Line) (EF : Line), ((twoLinesIntersectAtPoint AB EF E) ∧ (twoLinesIntersectAtPoint CD EF E) ∧ (∠ A:E:F = ∠ E:F:D)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (A B C D E F : Point) (AB CD EF : Line) (h1 : twoLinesIntersectAtPoint AB EF E) (h2 : twoLinesIntersectAtPoint CD EF E) (h3 : ∠ A:E:F = ∠ E:F:D) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.1999939568160273,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 12.00507664680481,
+      "well_typed": false,
+      "token_counts": 76,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((twoLinesIntersectAtPoint AB CD EF) ∧ (twoLinesIntersectAtPoint EF AB CD) ∧ (∠ a:b:c = ∠ d:e:f)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD EF : Line) (h1 : twoLinesIntersectAtPoint AB CD EF) (h2 : twoLinesIntersectAtPoint EF AB CD) (h3 : ∠ a:b:c = ∠ d:e:f) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.19998470741477903,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 12.00507664680481,
+      "well_typed": false,
+      "token_counts": 74,
+      "formalization_check": false
+    },
+    {
+      "formalization": "()",
+      "full_output": "theorem alternate_angles(IF : Line) (AB CD : Line) (h : AB.intersectsLine CD) (h1 : ∠ AB.intersectsLine CD = ∠ CD.intersectsLine AB) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.1996822412081752,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 12.00507664680481,
+      "well_typed": false,
+      "token_counts": 53,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a d e f : Point) (AE FD EF : Line), distinctPointsOnLine a e AE ∧ distinctPointsOnLine f d FD ∧ distinctPointsOnLine e f EF ∧ a.opposingSides d EF ∧ (∠ a:e:f = ∠ e:f:d) → ¬(AE.intersectsLine FD)",
+  "nl_statement": "If a straight-line falling across two straight-lines makes the alternate angles equal to one another then the (two) straight-lines will be parallel to one another.For let the straight-line $EF$, falling across the two straight-lines $AB$ and $CD$, make the alternate angles $AEF$ and $EFD$ equal to one another. I say that $AB$ and $CD$ are parallel. <prf> Thus, $AB$ and $CD$ are parallel.Thus, if a straight-line falling across two straight-lines makes the alternate angles equal to one another then the (two) straight-lines will be parallel (to one another).",
+  "lean4_header": ""
+}

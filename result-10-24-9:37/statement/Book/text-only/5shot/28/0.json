@@ -1,0 +1,68 @@
+{
+  "id": "28",
+  "formalizations": [
+    {
+      "formalization": "∀ (E : Point) (F : Point) (G : Point) (H : Point) (D : Point) (EF : Line) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD G) ∧ (twoLinesIntersectAtPoint AB EF E) ∧ (twoLinesIntersectAtPoint CD EF F) ∧ (∠ E:G:B = ∠ G:H:D ∨ (∠ E:G:B + ∠ G:H:D = ∟ + ∟)) ∧ (h4.elim (fun h => h) (fun h => h))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem prop_1_27_corollary (E F G H D : Point) (EF AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD G) (h2 : twoLinesIntersectAtPoint AB EF E) (h3 : twoLinesIntersectAtPoint CD EF F) (h4 : ∠ E:G:B = ∠ G:H:D ∨ (∠ E:G:B + ∠ G:H:D = ∟ + ∟)) (h5 : h4.elim (fun h => h) (fun h => h)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.20086225629909427,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 24.25257420539856,
+      "well_typed": false,
+      "token_counts": 134,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (AB : Line) (CD : Line) (EF : Line), ((Line.intersectsLine AB EF) ∧ (Line.intersectsLine CD EF) ∧ (∠ a:e:b = ∠ c:h:d ∨ (∠ a:e:b + ∠ e:h:d) = ∟ + ∟)) → (¬(Line.intersectsLine AB CD))",
+      "full_output": "theorem example_thm (a b c d e f g h : Point) (AB CD EF : Line) (h1 : Line.intersectsLine AB EF) (h2 : Line.intersectsLine CD EF) (h3 : ∠ a:e:b = ∠ c:h:d ∨ (∠ a:e:b + ∠ e:h:d) = ∟ + ∟) : ¬(Line.intersectsLine AB CD) := by",
+      "probability": 0.20061876377657661,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 24.25257420539856,
+      "well_typed": false,
+      "token_counts": 92,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (EF : Line) (AB : Line) (CD : Line) (E : Point) (F : Point) (G : Point) (B : Point) (D : Point), ((twoLinesIntersectAtPoint AB CD G) ∧ (twoLinesIntersectAtPoint EF AB E) ∧ (twoLinesIntersectAtPoint EF CD F) ∧ (∠ E:G:B = ∠ F:D:G ∨ (∠ E:G:B + ∠ F:D:G) = ∟ + ∟)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem theorem_name (EF AB CD : Line) (E F G B D : Point) (h1 : twoLinesIntersectAtPoint AB CD G) (h2 : twoLinesIntersectAtPoint EF AB E) (h3 : twoLinesIntersectAtPoint EF CD F) (h4 : ∠ E:G:B = ∠ F:D:G ∨ (∠ E:G:B + ∠ F:D:G) = ∟ + ∟) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.19989300571156834,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 24.25257420539856,
+      "well_typed": true,
+      "token_counts": 111,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (AB : Line) (CD : Line) (EF : Line), ((twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (twoLinesIntersectAtPoint AB CD c) ∧ (twoLinesIntersectAtPoint AB CD d) ∧ (twoLinesIntersectAtPoint AB CD e) ∧ (twoLinesIntersectAtPoint AB CD f) ∧ (twoLinesIntersectAtPoint AB CD g) ∧ (∠ e:g:b = ∠ g:h:d ∨ (∠ b:g:h = ∟ / 2 + ∠ g:h:d)) ∧ (∠ b:g:h + ∠ g:h:d = ∟ + ∟)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem example_thm (a b c d e f g : Point) (AB CD EF : Line) (h1 : twoLinesIntersectAtPoint AB CD a) (h2 : twoLinesIntersectAtPoint AB CD b) (h3 : twoLinesIntersectAtPoint AB CD c) (h4 : twoLinesIntersectAtPoint AB CD d) (h5 : twoLinesIntersectAtPoint AB CD e) (h6 : twoLinesIntersectAtPoint AB CD f) (h7 : twoLinesIntersectAtPoint AB CD g) (h8 : ∠ e:g:b = ∠ g:h:d ∨ (∠ b:g:h = ∟ / 2 + ∠ g:h:d)) (h9 : ∠ b:g:h + ∠ g:h:d = ∟ + ∟) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.1995090883094278,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 24.25257420539856,
+      "well_typed": false,
+      "token_counts": 187,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (AB : Line) (CD : Line) (EF : Line), ((twoLinesIntersectAtPoint AB CD A) ∧ (twoLinesIntersectAtPoint AB CD B) ∧ (twoLinesIntersectAtPoint AB CD C) ∧ (twoLinesIntersectAtPoint AB CD D) ∧ ((Point.onLine A EF) ∧ (Point.onLine B EF) ∧ (Point.onLine C EF) ∧ (Point.onLine D EF))) → (¬(Line.intersectsLine AB CD))",
+      "full_output": "theorem example_thm (A B C D : Point) (AB CD EF : Line) (h1 : twoLinesIntersectAtPoint AB CD A) (h2 : twoLinesIntersectAtPoint AB CD B) (h3 : twoLinesIntersectAtPoint AB CD C) (h4 : twoLinesIntersectAtPoint AB CD D) (h5 : (Point.onLine A EF) ∧ (Point.onLine B EF) ∧ (Point.onLine C EF) ∧ (Point.onLine D EF)) : ¬(Line.intersectsLine AB CD) := by",
+      "probability": 0.19911688590333296,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 24.25257420539856,
+      "well_typed": true,
+      "token_counts": 122,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AB CD EF : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine e f EF ∧ (between a g b) ∧ (between c h d) ∧ (between e g h) ∧ (between g h f) ∧ (b.sameSide d EF) ∧ (∠ e:g:b = ∠ g:h:d ∨ ∠ b:g:h + ∠ g:h:d = ∟ + ∟) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "If a straight-line falling across two straight-lines makes the external angle equal to the internal and opposite angle on the same side, or (makes) the (sum  of the) internal (angles) on the same side equal to two right-angles, then the (two) straight-lines will be parallel to one another.   For let $EF$, falling across the two straight-lines $AB$ and $CD$, make the external angle $EGB$ equal to the internal and opposite angle $GHD$, or the (sum of the) internal (angles) on the same side, $BGH$ and $GHD$, equal to two right-angles. I say that $AB$ is parallel to $CD$.   <prf> Thus, $AB$ is parallel to $CD$ [Prop.~1.27].  Thus, if a straight-line falling across two straight-lines makes the external angle equal to the internal and opposite angle on the same side, or (makes) the (sum of the) internal (angles) on the same side equal to two right-angles, then the (two) straight-lines will be parallel (to one another).",
+  "lean4_header": ""
+}

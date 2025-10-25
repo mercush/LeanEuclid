@@ -1,0 +1,20 @@
+{
+  "id": "16",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I have this geometry problem to formalize. It's about triangles and external angles being greater than internal and opposite angles. Let me try to understand what it's saying.\n\nSo, we have a triangle, let's say triangle ABC. They produce one of its sides, say BC, to a point D. So now, we have an external angle at point C, which is angle ACD. The claim is that this external angle ACD is greater than each of the internal and opposite angles, which are angles CBA and BAC.\n\nHmm, okay. I think the key here is to understand the relationships between these angles when a side is extended. When you extend BC to D, angle ACD is formed outside the triangle. I remember that in a triangle, the sum of the internal angles is 180 degrees, or two right angles as they say here.\n\nSo, angle ACD is external, and the two internal angles it's comparing to are CBA and BAC. The proof talks about cutting AC and BC in half and using those midpoints to show that angle ACD is greater than each of these internal angles.\n\nI need to formalize this, which means translating this statement into Lean 4 code using the provided structures and guidelines. Let's see.\n\nFirst, I have to identify the given elements and what needs to be proven. We have points A, B, C, D, with ABC being a triangle, and BC extended to D. We need to show that angle ACD is greater than angles CBA and BAC.\n\nI also need to consider the hints from the provided examples. They use theorems with hypotheses and conclusions, and they define things like triangles, lines, and points with specific properties.\n\nI need to make sure I adhere to the guidelines: no use of \"→\", all hypotheses on the left of the colon, a valid Lean identifier for the theorem name, each hypothesis in parentheses, and the conclusion after the colon, ending with \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 29.16765809059143,
+      "well_typed": false,
+      "token_counts": 406,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC: Line), formTriangle a b c AB BC AC ∧ (between b c d) → (∠ a:c:d > ∠ c:b:a) ∧ (∠ a:c:d > ∠ b:a:c)",
+  "nl_statement": "For any triangle, when one of the sides is produced, the external angle is greater than each of the internal and opposite angles.Let $ABC$ be a triangle, and let one of its sides $BC$ have been produced to $D$. I say that the external angle $ACD$ is greater than each of the  internal and opposite angles, $CBA$ and $BAC$.  Let the (straight-line) $AC$ have been cut in half at (point) $E$ [Prop.~1.10]. <prf> Thus,  $ACD$ is greater than $BAE$. Similarly, by having cut $BC$ in half,  it can  be shown (that) $BCG$ ---that is to say, $ACD$---(is) also greater than $ABC$. Thus, for any triangle, when one of the sides is produced, the external angle is greater than each of the internal and opposite angles.",
+  "lean4_header": ""
+}

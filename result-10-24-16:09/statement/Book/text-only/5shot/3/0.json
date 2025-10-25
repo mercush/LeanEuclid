@@ -1,0 +1,20 @@
+{
+  "id": "3",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I'm trying to formalize this Euclidean geometry problem using Lean 4. The problem is about cutting off a segment from a longer straight-line equal in length to a shorter given straight-line. \n\nFirst, I need to understand the problem thoroughly. We have two unequal straight lines, AB and CD, with AB being the longer one. The goal is to cut off a segment from AB that is equal in length to CD. \n\nI'll start by recalling some basic concepts in Euclidean geometry. In this context, a straight-line is a line segment between two points. So, AB and CD are line segments, and AB is longer than CD. The task is to find a point E on AB such that AE is equal in length to CD.\n\nNext, I need to think about how to approach the proof. In Euclidean geometry, one might use a compass and a straightedge to perform such constructions. But since I'm working in Lean 4, which is a programming language and proof assistant based on dependent type theory, I need to translate these geometric operations into formal proofs.\n\nI also need to consider the axioms and definitions provided. For example, the notion of points, lines, and circles, and the relations between them like \"Point.onLine,\" \"Line.intersectsLine,\" etc. I should stick strictly to the axioms provided and not invent new ones.\n\nNow, to formalize the statement, I should identify the hypotheses and the conclusion. The hypotheses are that AB and CD are two given unequal straight lines, with AB being longer. The conclusion is that we can find a point E on AB such that the segment AE is equal in length to CD.\n\nI should also consider any necessary lemmas or theorems that will be used in the proof. For instance, the ability to transfer distances using a compass or the concept of equality in segment lengths.\n\nOne potential challenge is ensuring that the proof is constructive. In Lean 4, proofs need to not only show that something exists but also construct it. So, I need to not only state that such a point E exists but also describe how to construct it.\n\nAnother thing to keep in mind is the use of Lean's type system and the inductive definitions of geometric entities like lines, points, and triangles. I need to make sure that my terms are well-typed and that I'm using the correct notations and macros provided.\n\nI should also be cautious about introducing intermediate variables inside the proposition, as per the guidelines. All variables must be bound at the top level, and their types should be clear from the context.\n\nFinally, I need to ensure that the final theorem statement strictly follows the specified format, ending with \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 38.62359881401062,
+      "well_typed": false,
+      "token_counts": 547,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c₀ c₁ : Point) (AB C : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c₀ c₁ C ∧ |(a─b)| > |(c₀─c₁)| → ∃ e : Point, between a e b ∧ |(a─e)| = |(c₀─c₁)|",
+  "nl_statement": "For two given unequal straight-lines, to cut off from the greater a straight-line equal to the lesser. Let $AB$ and $C$ be the two given unequal straight-lines, of which let the greater be $AB$.  <prf> So $AE$ is also equal to $C$ [C.N.~1]. Thus, for two given unequal straight-lines, $AB$ and $C$, the (straight-line) $AE$, equal to the lesser $C$, has been cut off from the greater $AB$.",
+  "lean4_header": ""
+}

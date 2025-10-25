@@ -1,0 +1,68 @@
+{
+  "id": "45",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (i : Point) (j : Point) (k : Point) (l : Point) (m : Point) (n : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line) (FG : Line) (ML : Line) (EF : Line) (GM : Line) (FH : Line) (LM : Line) (KL : Line) (FM : Line) (GM : Line) (ML : Line) (KL : Line) (GM : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (formRectilinearAngle e f g EF FG) ∧ (Triangle.area △ f:e:g = Triangle.area △ f:g:m) ∧ (Triangle.area △ g:m:l = Triangle.area △ m:l:K) ∧ (Triangle.area △ f:h:m = Triangle.area △ h:m:F) ∧ (Triangle.area △ f:h:l = Triangle.area △ h:l:FH) ∧ (Triangle.area △ a:b:c = Triangle.area △ a:c:b) ∧ (Triangle.area △ b:c:d = Triangle.area △ c:d:b) ∧ (Triangle.area △ a:c:d = Triangle.area △ c:d:a)) → ()",
+      "full_output": "theorem parallelogram_from_rectilinear_figure_in_angle \n(a b c d e f g h i j k l m n : Point) \n(AB CD AC BD EF FG ML EF GM FH LM KL FM GM ML KL GM : Line) \n(h1 : formQuadrilateral a b c d AB CD AC BD) \n(h2 : formRectilinearAngle e f g EF FG) \n(h3 : Triangle.area △ f:e:g = Triangle.area △ f:g:m) \n(h4 : Triangle.area △ g:m:l = Triangle.area △ m:l:K) \n(h5 : Triangle.area △ f:h:m = Triangle.area △ h:m:F) \n(h6 : Triangle.area △ f:h:l = Triangle.area △ h:l:FH) \n(h7 : Triangle.area △ a:b:c = Triangle.area △ a:c:b) \n(h8 : Triangle.area △ b:c:d = Triangle.area △ c:d:b) \n(h9 : Triangle.area △ a:c:d = Triangle.area △ c:d:a) : \n∃ (KFLM : Parallelogram), formParallelogram K F L M KFLM.1 KFLM.2.1 KFLM.2.",
+      "probability": 0.2033671411297143,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 36.771753549575806,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b d₁ d₂ AB CD AC BD) ∧ (formRectilinearAngle d₁ d₂ d₃ AC BD) ∧ ((∠ d₁:d₂:d₃ : ℝ) > 0) ∧ ((∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟)) → ()",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b d₁ d₂ AB CD AC BD) (h2 : formRectilinearAngle d₁ d₂ d₃ AC BD) (h3 : (∠ d₁:d₂:d₃ : ℝ) > 0) (h4 : (∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟) : ∃ (k f l m g m' : Point) (KL GM FM MK FL ML KM : Line), formParallelogram k f l m GM FM FL ML ∧ formParallelogram k m g m' GM ML MK FL ∧ ((|(a─b)| + |(d₁─d₂)| + |(d₂─d₃)| + |(d₃─d₁)|) = (|(k─f)| + |(f─l)| + |(l─m)| + |(m─k)|)) ∧ ((|(a─b)| + |(d₁─d₂)| + |(d₂─d₃)| + |(d₃─",
+      "probability": 0.20048937521106056,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 36.771753549575806,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (AB : Line) (BC : Line) (CD : Line) (DA : Line), ((formQuadrilateral a b c d₁ AB BC CD DA) ∧ (formRectilinearAngle d₂ d₃ d₁ AB BC) ∧ (¬(Point.onLine a AB))) → (∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c))",
+      "full_output": "theorem construction_of_parallelogram (a b c d₁ d₂ d₃ : Point) (AB BC CD DA : Line) (h1 : formQuadrilateral a b c d₁ AB BC CD DA) (h2 : formRectilinearAngle d₂ d₃ d₁ AB BC) (h3 : ¬(Point.onLine a AB)) : ∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c) := by",
+      "probability": 0.19957884347214555,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 36.771753549575806,
+      "well_typed": true,
+      "token_counts": 136,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (i : Point) (j : Point) (k : Point) (l : Point) (m : Point) (AB : Line) (CD : Line) (EF : Line) (GH : Line) (ij : Line), ((formQuadrilateral a b c d e f g h i j k l m AB CD EF GH ij) ∧ (formRectilinearAngle a b c d e f g h i j k l m AB CD EF GH ij) ∧ (∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ a:b:c) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c))) → (∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ a:b:c) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c))",
+      "full_output": "theorem example_thm (a b c d e f g h i j k l m : Point) (AB CD EF GH ij : Line) (h1 : formQuadrilateral a b c d e f g h i j k l m AB CD EF GH ij) (h2 : formRectilinearAngle a b c d e f g h i j k l m AB CD EF GH ij) (h3 : ∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ a:b:c) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c)) : ∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (∠ c':e:f = ∠ a:b:c) ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c) := by",
+      "probability": 0.19862569748233222,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 36.771753549575806,
+      "well_typed": false,
+      "token_counts": 235,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (d₄ : Point) (d₅ : Point) (d₆ : Point) (d₇ : Point) (d₈ : Point) (d₉ : Point) (d₁₀ : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EF : Line) (GH : Line) (KM : Line) (FL : Line), ((formParallelogram a b d₁ c AC BD AB CD) ∧ (formParallelogram d₂ d₃ d₄ d₅ AC BD AB CD) ∧ (formParallelogram d₆ d₇ d₈ d₉ AC BD AB CD) ∧ (formParallelogram d₁₀ d₃ d₄ d₁ AC BD AB CD)) → (∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ d₄ d₅ d₆ d₇ d₈ d₉ d₁₀ : Point) (AB CD AC BD EF GH KM FL : Line) (h1 : formParallelogram a b d₁ c AC BD AB CD) (h2 : formParallelogram d₂ d₃ d₄ d₅ AC BD AB CD) (h3 : formParallelogram d₆ d₇ d₈ d₉ AC BD AB CD) (h4 : formParallelogram d₁₀ d₃ d₄ d₁ AC BD AB CD) : ∃ (f g e c' : Point) (FG EC EF CG : Line), formParallelogram f g e c' FG EC EF CG ∧ (Triangle.area △ f:e:c' + Triangle.area △ f:c':g = Triangle.area △ a:b:c) := by",
+      "probability": 0.19793894270474752,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 36.771753549575806,
+      "well_typed": false,
+      "token_counts": 204,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e₁ e₂ e₃ : Point) (AB BC CD AD DB E₁₂ E₂₃ : Line), formTriangle a b d AB DB AD ∧ formTriangle b c d BC CD DB ∧ a.opposingSides c DB ∧ formRectilinearAngle e₁ e₂ e₃ E₁₂ E₂₃ ∧ ∠ e₁:e₂:e₃ > 0 ∧ ∠ e₁:e₂:e₃ < ∟ + ∟ → ∃ (f l k m : Point) (FL KM FK LM : Line), formParallelogram f l k m FL KM FK LM ∧ (∠ f:k:m = ∠ e₁:e₂:e₃) ∧ (Triangle.area △ f:k:m + Triangle.area △ f:l:m = Triangle.area △ a:b:d + Triangle.area △ d:b:c)",
+  "nl_statement": "To construct a parallelogram equal to a given rectilinear figure in a given rectilinear angle.Let $ABCD$ be the given rectilinear figure, and $E$ the given rectilinear angle. So it is required to construct a parallelogram equal to the rectilinear figure $ABCD$ in the given angle $E$.  <prf> And since triangle $ABD$ is equal to parallelogram $FH$, and $DBC$ to $GM$, the whole rectilinear figure $ABCD$ is thus equal to the whole parallelogram $KFLM$. Thus, the parallelogram $KFLM$, equal to the given rectilinear figure $ABCD$, has been constructed in the angle $FKM$, which is equal to the given (angle) $E$.",
+  "lean4_header": ""
+}

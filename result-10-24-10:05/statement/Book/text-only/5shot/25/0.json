@@ -1,0 +1,20 @@
+{
+  "id": "25",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Okay, so I have this geometry theorem to formalize using Lean 4. The theorem is about triangles having two equal sides but different base lengths, leading to a comparison of the angles opposite those bases. Let me try to understand the problem step by step.\n\nFirst, we have two triangles, ABC and DEF. In triangle ABC, sides AB and AC are equal to sides DE and DF in triangle DEF, respectively. So, AB = DE and AC = DF. The base BC in triangle ABC is longer than the base EF in triangle DEF. We need to prove that angle BAC in triangle ABC is greater than angle EDF in triangle DEF.\n\nHmm, so the theorem is saying that if two triangles have two corresponding sides equal but one has a longer base, then the angle formed by those two equal sides in the triangle with the longer base is larger.\n\nI need to think about how to translate this into Lean 4. Let's recall the axioms and types provided. We have points, lines, angles, segments, and triangles. The notation includes things like ∠ for angles and |(a─b)| for the length of a segment between points a and b.\n\nSo, I need to define the triangles ABC and DEF, ensure that AB = DE and AC = DF, and that BC > EF. Then, show that angle BAC > angle EDF.\n\nWait, but in the examples, the formalized statements use type classes and specific notations. I need to make sure I follow those conventions.\n\nOkay, step by step:\n\n1. **Define Points and Lines:**\n   - Let ABC be a triangle with points A, B, C.\n   - Let DEF be another triangle with points D, E, F.\n\n2. **Set Up Equal Sides:**\n   - AB equals DE.\n   - AC equals DF.\n\n3. **Establish the Base Relationship:**\n   - BC is greater than EF.\n\n4. **Compare the Angles:**\n   - Angle BAC is greater than angle EDF.\n\nNow, thinking about Lean 4, I need to express these relationships using the provided types and notations.\n\nFirst, I should probably define the triangles using the `formTriangle` function, which takes three points and the lines connecting them.\n\nThen, use the `|.|` notation for segment lengths to express that AB = DE, AC = DF, and BC > EF.\n\nFinally, use the `∠` notation for angles to compare angle BAC and angle EDF.\n\nBut I need to structure this into a theorem with hypotheses and a conclusion.\n\nLooking back at the examples, the theorem name starts with \"theorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 39.685017824172974,
+      "well_typed": false,
+      "token_counts": 559,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ (|(a─b)| = |(d─e)|) ∧ (|(a─c)| = |(d─f)|) ∧ (|(b─c)| > |(e─f)|) → (∠ b:a:c > ∠ e:d:f)",
+  "nl_statement": "If two triangles have two sides equal to two sides, respectively, but (one) has a base greater than the base (of the other), then (the former triangle) will also have the angle encompassed by the equal straight-lines greater than the (corresponding) angle (in the latter).Let $ABC$ and $DEF$ be  two triangles having the two sides $AB$ and $AC$ equal to the two sides $DE$ and $DF$, respectively. (That is), $AB$ (equal) to $DE$, and $AC$ to $DF$. And let the base $BC$ be greater than the base $EF$. I say that angle $BAC$ is also greater than $EDF$. <prf>  Thus, $BAC$ is greater than $EDF$.Thus, if two triangles have two sides equal to two sides, respectively, but (one) has a base greater than the base (of the other), then (the former triangle) will also have the angle encompassed by the equal straight-lines greater than the (corresponding) angle (in the latter).",
+  "lean4_header": ""
+}

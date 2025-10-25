@@ -1,0 +1,68 @@
+{
+  "id": "33",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (¬(Line.intersectsLine AB CD)) ∧ (|(a─b)| = |(c─d)|)) → (|(a─c)| = |(b─d)| ∧ ¬(Line.intersectsLine AC BD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : ¬(Line.intersectsLine AB CD)) (h3 : |(a─b)| = |(c─d)|) : |(a─c)| = |(b─d)| ∧ ¬(Line.intersectsLine AC BD) := by",
+      "probability": 0.20098960783132847,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.436228036880493,
+      "well_typed": true,
+      "token_counts": 98,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((¬(a.onLine AB)) ∧ (¬(b.onLine CD)) ∧ (¬(c.onLine CD)) ∧ (¬(d.onLine AB)) ∧ (∠ a:b:c : ℝ = ∠ c:d:b : ℝ) ∧ (|(a─b)| = |(c─d)|)) → (|(a─c)| = |(b─d)| ∧ ¬(AC.intersectsLine BD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h₁ : ¬(a.onLine AB)) (h₂ : ¬(b.onLine CD)) (h₃ : ¬(c.onLine CD)) (h₄ : ¬(d.onLine AB)) (h₅ : ∠ a:b:c : ℝ = ∠ c:d:b : ℝ) (h₆ : |(a─b)| = |(c─d)|) : |(a─c)| = |(b─d)| ∧ ¬(AC.intersectsLine BD) := by",
+      "probability": 0.2004514673223249,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.436228036880493,
+      "well_typed": false,
+      "token_counts": 130,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formQuadrilateral a b c d AB CD AC BD) ∧ (AB ∈ Line.intersectsCircle AC) ∧ (CD ∈ Line.intersectsCircle AC) ∧ (AB = CD) ∧ (Line.intersectsLine AB CD)) → (|(a─c)| = |(b─d)| ∧ ¬(Line.intersectsLine AC BD))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formQuadrilateral a b c d AB CD AC BD) (h2 : AB ∈ Line.intersectsCircle AC) (h3 : CD ∈ Line.intersectsCircle AC) (h4 : AB = CD) (h5 : Line.intersectsLine AB CD) : |(a─c)| = |(b─d)| ∧ ¬(Line.intersectsLine AC BD) := by",
+      "probability": 0.2000152304428086,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.436228036880493,
+      "well_typed": false,
+      "token_counts": 106,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (AB = CD) ∧ (AB ⟂ AC)) → (AC = BD ∧ AC ∥ BD)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : AB = CD) (h3 : AB ⟂ AC) : AC = BD ∧ AC ∥ BD := by",
+      "probability": 0.19977380431686798,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.436228036880493,
+      "well_typed": false,
+      "token_counts": 66,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((¬(AB.intersectsLine CD)) ∧ (|(a─b)| = |(c─d)|) ∧ (|(a─c)| = |(b─d)|)) → ()",
+      "full_output": "theorem straightLines_joined_on_parallel_equals_and_parallel (a b c d : Point) (AB CD : Line) (h1 : ¬(AB.intersectsLine CD)) (h2 : |(a─b)| = |(c─d)|) (h3 : |(a─c)| = |(b─d)|) : |(a─c)| = |(b─d)| ∧ ¬(a.onLine AB ∧ b.onLine AB ∧ c.onLine CD ∧ d.onLine CD ∧ (a.between c d ∧ b.between c d))) := by",
+      "probability": 0.19876989008667,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.436228036880493,
+      "well_typed": false,
+      "token_counts": 122,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB CD AC BD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ distinctPointsOnLine a c AC ∧ distinctPointsOnLine b d BD ∧ (a.sameSide c BD) ∧ ¬(AB.intersectsLine CD) ∧ |(a─b)| = |(c─d)| → AC ≠ BD ∧ ¬(AC.intersectsLine BD) ∧ |(a─c)|= |(b─d)|",
+  "nl_statement": "Straight-lines joining equal and parallel (straight-lines) on the same sides are  themselves also equal and parallel.Let $AB$ and $CD$ be equal and parallel (straight-lines), and let the straight-lines $AC$ and $BD$ join them on the same sides. I say that $AC$ and $BD$ are also equal and parallel. <prf> Thus, straight-lines joining equal and parallel (straight-lines) on the same sides are themselves also equal and parallel.",
+  "lean4_header": ""
+}

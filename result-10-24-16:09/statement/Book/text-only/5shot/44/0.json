@@ -1,0 +1,20 @@
+{
+  "id": "44",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I have this problem to formalize an English statement of a theorem from Euclidean Geometry into the Lean 4 programming language, following specific structures and guidelines. The problem given is:\n\nEnglish Statement: To apply a parallelogram equal to a given triangle to a given straight-line in a given rectilinear angle. Let $AB$ be the given straight-line, $C$ the given triangle, and $D$ the given rectilinear angle. So it is required to apply a parallelogram equal to the given triangle $C$ to the given straight-line $AB$ in an angle equal to (angle) $D$. <prf> Thus, the parallelogram $LB$, equal to the given triangle $C$, has been applied to the given straight-line $AB$ in the angle $ABM$, which is equal to $D$.\n\nOkay, first, I need to understand the English statement correctly. It's about constructing a parallelogram that's equal in area to a given triangle and attaching it to a specific straight-line at a given angle.\n\nNow, looking at the guidelines, I need to translate this into a Lean 4 theorem statement, following the provided structures and syntax. The example theorems given show that the theorem starts with the keyword `theorem`, followed by a valid Lean identifier as the theorem name, then a list of hypotheses in parentheses, each of the form `(h : statement)`, and finally the conclusion after the colon `:`, ending with `:= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 22.25186514854431,
+      "well_typed": false,
+      "token_counts": 307,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c₁ c₂ c₃ d₁ d₂ d₃ : Point) (AB C₁₂ C₂₃ C₃₁ D₁₂ D₂₃ : Line), formTriangle c₁ c₂ c₃ C₁₂ C₂₃ C₃₁ ∧ formRectilinearAngle d₁ d₂ d₃ D₁₂ D₂₃ ∧ distinctPointsOnLine a b AB ∧ (∠ d₁:d₂:d₃ : ℝ) > 0 ∧ (∠ d₁:d₂:d₃ : ℝ) < ∟ + ∟ → ∃ (m l : Point) (BM AL ML : Line), formParallelogram b m a l BM AL AB ML ∧ (∠ a:b:m = ∠ d₁:d₂:d₃) ∧ (Triangle.area △ a:b:m + Triangle.area △ a:l:m = Triangle.area △ c₁:c₂:c₃)",
+  "nl_statement": "To apply a parallelogram equal to a given triangle to a given straight-line in a given rectilinear angle. Let $AB$ be the given straight-line,  $C$ the given triangle, and $D$ the given rectilinear angle. So it is required to apply a parallelogram equal to the given triangle $C$ to the given straight-line $AB$ in an angle equal to (angle) $D$. <prf> Thus, the parallelogram $LB$, equal to the given triangle $C$, has been applied to the given straight-line $AB$ in the angle $ABM$, which is equal to $D$.",
+  "lean4_header": ""
+}

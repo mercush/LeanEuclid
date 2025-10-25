@@ -1,0 +1,20 @@
+{
+  "id": "36",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Okay, so I've been given this problem about parallelograms and I need to formalize the theorem using Lean 4. I'm a bit new to this, so I'll try to break it down step by step.\n\nFirst, I'll read the English statement carefully to understand what it's saying. It mentions two parallelograms, ABCD and EFGH, which are on equal bases BC and FG and between the same parallels AH and BG. The conclusion is that these two parallelograms are equal to one another.\n\nNow, I need to think about how to represent this in Lean 4. From the guidelines, I see that there are specific types for points, lines, circles, and so on. So, I'll probably need to define points A, B, C, D, E, F, G, H and lines AH, BG, AB, BC, CD, DA, EF, FG, GH, HE, etc.\n\nNext, I'll consider the hypotheses. The bases BC and FG are equal, so I'll need a hypothesis that states |(B─C)| = |(F─G)|. Also, the parallelograms are between the same parallels, which I think means that lines AH and BG are the same parallels. So, I might need to express that AH and BG are parallel.\n\nI also need to think about how to express that ABCD and EFGH are parallelograms. Maybe I can use the formParallelogram function provided, which takes points and lines as arguments. So, I'll need to set up the points and lines accordingly.\n\nThe conclusion is that the areas of the two parallelograms are equal. Since they are parallelograms, their areas can be calculated as the base times the height. If the bases are equal and they are between the same parallels, then their heights should also be the same, making their areas equal.\n\nI should also remember not to use any intermediate variables or other geometric properties that aren't provided in the axioms. And I need to make sure that all quantified variables are of the allowed types: points, lines, or circles.\n\nNow, I'll try to sketch out the Lean 4 code based on this reasoning. I'll define all the necessary points and lines, set up the hypotheses about the equal bases and the same parallels, and then conclude that the areas of the two parallelograms are equal.\n\nI need to make sure that the code follows the exact structure specified, with the theorem name, hypotheses in parentheses, and the conclusion after the colon, ending with \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 37.146157026290894,
+      "well_typed": false,
+      "token_counts": 527,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h : Point) (AH BG AB CD EF HG : Line), formParallelogram a d b c AH BG AB CD ∧ formParallelogram e h f g AH BG EF HG ∧ |(b─c)| = |(f─g)| ∧ (between a d h) ∧ (between a e h) → Triangle.area △ a:b:d + Triangle.area △ d:b:c = Triangle.area △ e:f:h + Triangle.area △ h:f:g",
+  "nl_statement": "Parallelograms which are on equal bases and between the same parallels are equal to one another. Let $ABCD$ and $EFGH$ be parallelograms which are on the equal bases $BC$ and $FG$, and (are) between the same parallels $AH$ and $BG$. I say that the parallelogram $ABCD$ is equal to $EFGH$. <prf> So that the parallelogram $ABCD$ is  also equal to $EFGH$.Thus, parallelograms which are on equal bases and between the same parallels are equal to one another.",
+  "lean4_header": ""
+}

@@ -1,0 +1,68 @@
+{
+  "id": "15",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (twoLinesIntersectAtPoint AB CD c) ∧ (twoLinesIntersectAtPoint AB CD d)) → (∠ a:c:b + ∠ c:d:a = ∟ + ∟)",
+      "full_output": "theorem vertical_opposite_angles (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD a) (h2 : twoLinesIntersectAtPoint AB CD b) (h3 : twoLinesIntersectAtPoint AB CD c) (h4 : twoLinesIntersectAtPoint AB CD d) : ∠ a:c:b + ∠ c:d:a = ∟ + ∟ := by",
+      "probability": 0.20022841421635082,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.69501829147339,
+      "well_typed": true,
+      "token_counts": 95,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (twoLinesIntersectAtPoint AB CD c) ∧ (twoLinesIntersectAtPoint AB CD d) ∧ (formTriangle a b c AB CD AB) ∧ (formTriangle a d c CD AB CD)) → (∠ a:c:b = ∠ d:b:c)",
+      "full_output": "theorem two_straight_lines_cut_make_vertically_opposite_angles_equal (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD a) (h2 : twoLinesIntersectAtPoint AB CD b) (h3 : twoLinesIntersectAtPoint AB CD c) (h4 : twoLinesIntersectAtPoint AB CD d) (h5 : formTriangle a b c AB CD AB) (h6 : formTriangle a d c CD AB CD) : ∠ a:c:b = ∠ d:b:c := by",
+      "probability": 0.2000773213302927,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.69501829147339,
+      "well_typed": true,
+      "token_counts": 123,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (twoLinesIntersectAtPoint AB CD c) ∧ (twoLinesIntersectAtPoint AB CD d) ∧ (∠ a:b:c : ℝ = ∠ d:b:c : ℝ) ∧ (∠ c:b:d : ℝ = ∠ a:b:c : ℝ)) → (∠ a:b:c : ℝ = ∠ d:b:c : ℝ)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD a) (h2 : twoLinesIntersectAtPoint AB CD b) (h3 : twoLinesIntersectAtPoint AB CD c) (h4 : twoLinesIntersectAtPoint AB CD d) (h5 : ∠ a:b:c : ℝ = ∠ d:b:c : ℝ) (h6 : ∠ c:b:d : ℝ = ∠ a:b:c : ℝ) : ∠ a:b:c : ℝ = ∠ d:b:c : ℝ := by",
+      "probability": 0.1999793031580608,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.69501829147339,
+      "well_typed": false,
+      "token_counts": 132,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (CD : Line), ((twoLinesIntersectAtPoint AB CD e) ∧ (formRectilinearAngle a b e AB (Line46 h1)) ∧ (formRectilinearAngle c d e CD (Line53 h1))) → (∠ a:e:c = ∠ d:e:b ∧ ∠ c:e:b = ∠ a:e:d)",
+      "full_output": "theorem theorem_vertical_angles (a b c d e : Point) (AB CD : Line) (h1 : twoLinesIntersectAtPoint AB CD e) (h2 : formRectilinearAngle a b e AB (Line46 h1)) (h3 : formRectilinearAngle c d e CD (Line53 h1)) : ∠ a:e:c = ∠ d:e:b ∧ ∠ c:e:b = ∠ a:e:d := by",
+      "probability": 0.19986430538897426,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.69501829147339,
+      "well_typed": false,
+      "token_counts": 95,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((Line.intersectsLine AB CD) ∧ (∃ a, AB.endpoints = (a, b)) ∧ (∃ c, CD.endpoints = (c, d))) → (∠ a:c:b = ∠ d:b:c)",
+      "full_output": "theorem theorem_name (a b c d : Point) (AB CD : Line) (h1 : Line.intersectsLine AB CD) (h2 : ∃ a, AB.endpoints = (a, b)) (h3 : ∃ c, CD.endpoints = (c, d)) : ∠ a:c:b = ∠ d:b:c := by",
+      "probability": 0.1998506559063213,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 18.69501829147339,
+      "well_typed": false,
+      "token_counts": 76,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB CD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ e.onLine AB ∧ e.onLine CD ∧ CD ≠ AB ∧ (between d e c) ∧ (between a e b) → (∠ a:e:c = ∠ d:e:b) ∧ (∠ c:e:b = ∠ a:e:d)",
+  "nl_statement": "If two straight-lines cut one another then they make the vertically opposite angles equal to one another.For let the two straight-lines $AB$ and $CD$ cut one another at the point $E$. I say that  angle $AEC$ is equal to (angle) $DEB$, and (angle) $CEB$ to (angle) $AED$. <prf>  Thus, the remainder $CEA$ is equal to the remainder $BED$ [C.N.~3]. Similarly, it can be shown that $CEB$ and $DEA$ are also equal.Thus, if two straight-lines cut one another then they make the vertically opposite angles equal to one another.",
+  "lean4_header": ""
+}

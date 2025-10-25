@@ -1,0 +1,20 @@
+{
+  "id": "31",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BC : Line), ((distinctPointsOnLine b c BC) ∧ (a ≠ b)) → (∃ l : Point, |(a─l)| = |(b─c)|)",
+      "full_output": "Alright, so I'm trying to understand how to formalize this geometry problem using Lean 4. The problem is about drawing a straight-line that's parallel to a given straight-line through a given point. Let me break this down.\n\nFirst, I need to parse the English statement carefully. It says, \"To draw a straight-line parallel to a given straight-line, through a given point.\" So, we're given a point, let's call it A, and a straight-line BC. We need to draw a new straight-line that goes through point A and is parallel to BC.\n\nNow, I need to think about how to represent this in Lean 4. From the examples provided, I see that we're using types like Point and Line, and there are functions and axioms defined for these types. For example, there's an inductive type for Angle and Segment, and notations like |(a─b)| for the length of a segment between points a and b.\n\nI also notice that there are namespaces for Point, Line, Circle, Triangle, etc., with various functions and axioms defined within them. For instance, in the Line namespace, there's an intersectsLine function that returns whether two lines intersect.\n\nGiven that, I need to figure out how to express the concept of parallelism in Lean 4. I recall that in Euclidean geometry, two lines are parallel if they do not intersect. So, in Lean 4, I can represent parallel lines by negating the intersectsLine function. That is, if line L does not intersect line M, then L is parallel to M.\n\nNow, for the theorem we're trying to formalize, we have two main components:\n\n1. We are given a point A and a line BC.\n2. We need to draw a line through A that is parallel to BC.\n\nSo, in Lean 4 terms, we need to construct a line that passes through point A and does not intersect with line BC.\n\nLooking at the structure of the previous examples, I see that the formalized statements are in the form of a theorem with hypotheses and a conclusion. For example:\n\ntheorem example_thm (a b c : Point) (BC : Line) (h1 : distinctPointsOnLine b c BC) (h2 : a ≠ b) : ∃ l : Point, |(a─l)| = |(b─c)| := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 34.844157457351685,
+      "well_typed": true,
+      "token_counts": 490,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)",
+  "nl_statement": "To draw a straight-line parallel to a given straight-line, through a given point.Let $A$ be the given point, and $BC$ the given straight-line. So it is required to draw a straight-line parallel to the straight-line $BC$, through the point $A$.  <prf>  Thus, the straight-line $EAF$ has been drawn parallel to the given straight-line $BC$, through the  given point $A$.",
+  "lean4_header": ""
+}

@@ -1,0 +1,20 @@
+{
+  "id": "48",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, I'm trying to understand how to formalize this theorem using the Lean 4 programming language based on the given guidelines. The theorem statement is about a triangle where the square on one of its sides is equal to the sum of the squares on the other two sides, implying that a specific angle is a right angle.\n\nFirst, I need to parse the English statement carefully to identify all the components involved. The theorem mentions a triangle ABC, a square on side BC, and the squares on sides BA and AC. The condition is that the square on BC equals the sum of the squares on BA and AC, and we need to conclude that angle BAC is a right angle.\n\nNext, I'll refer to the provided structures and guidelines to see how to express these components in Lean 4. The geometric sorts like Point, Line, and Circle are defined as axioms, and there are inductive types for Angle, Segment, Triangle, and so on. There are also various relations and axioms defined in different namespaces, which I need to utilize.\n\nI notice that there are notations and macros provided for expressing geometric entities. For instance, \"|(a─b)|\" represents the length of the segment between points a and b, and \"∠ a:b:c\" denotes the angle at point b formed by points a, b, and c. The right angle is represented by \"∟\".\n\nMy goal is to translate the theorem into a Lean 4 theorem statement that follows the specified format. I need to ensure that the theorem name is a valid Lean identifier, and all hypotheses are listed on the left side of the colon, with the conclusion on the right side. The statement should end with \":= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 24.825411319732666,
+      "well_typed": false,
+      "token_counts": 345,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)| → ∠ b:a:c = ∟",
+  "nl_statement": "For let the square on one of the sides, $BC$, of triangle $ABC$ be equal to the (sum of the) squares on the sides $BA$ and $AC$. I say that angle $BAC$ is a right-angle. <prf>  Thus, $BAC$ is also a right-angle.Thus, if the square on one of the sides of a triangle is equal to the (sum of the) squares on the remaining two sides of the triangle then the angle contained by the remaining two sides of the triangle is a right-angle.",
+  "lean4_header": ""
+}

@@ -1,0 +1,20 @@
+{
+  "id": "10",
+  "formalizations": [
+    {
+      "formalization": "((hypothesis_1) ∧ (hypothesis_2)) → ()",
+      "full_output": "Alright, I'm trying to figure out how to formalize the English statement \"To cut a given finite straight-line in half.\" The given example shows that it should be translated into Lean 4 code with a specific structure. The English statement says that if we have a finite straight-line AB, we need to cut it in half, resulting in point D such that AD equals DB.\n\nFirst, I note that the goal is to find a point D on line AB such that the lengths of AD and DB are equal. In Lean 4, we'll need to express this using the provided axioms and definitions. The key here is to use the axioms related to points and lines, specifically those that allow us to find a midpoint.\n\nI see that in the previous examples, they've used the theorem structure:\ntheorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by sorry\n\nSo, I'll follow that structure. The theorem name should be descriptive, like \"bisectFiniteLine\". \n\nNext, I need to identify the hypotheses. Since AB is a finite straight-line, I'll need to express that AB is a line with points A and B on it, and that A and B are distinct. The \"distinctPointsOnLine\" function seems appropriate here, as it takes two points and a line, asserting that they are distinct and on that line.\n\nThen, for the conclusion, I need to state that there exists a point D such that D is on line AB, and the lengths of AD and DB are equal. In Lean 4, this would be expressed using the exists quantifier and the appropriate relations.\n\nI also need to ensure that I'm using the correct notations and macros. For instance, \"|(a─b)|\" represents the length of the line segment between points a and b, which is crucial for expressing the equality of lengths in the conclusion.\n\nPutting it all together, the theorem should assert that given a line AB with distinct points A and B, there exists a point D on AB such that the lengths AD and DB are equal. This captures the essence of bisecting the line AB at point D.\n\nI should also be careful to adhere to the guidelines provided, such as not using the \"→\" character, ensuring that all hypotheses are to the left of the colon, and that the conclusion is on the right side. Additionally, I must avoid introducing any intermediate variables within the proposition itself and only use the provided axioms without importing any libraries.\n\nFinally, I need to make sure that the theorem name is a valid Lean identifier, which typically means it should start with a lowercase letter and contain only alphanumeric characters and underscores.\n\nBy following these steps and adhering to the provided format and guidelines, I can construct the formalized statement for bisecting a finite straight-line in Lean 4.\n</think>\n\ntheorem bisectFiniteLine (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ d : Point, d.onLine AB ∧ |(a─d)| = |(d─b)| := by sorry",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 46.01038694381714,
+      "well_typed": false,
+      "token_counts": 640,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ d : Point, (between a d b) ∧ (|(a─d)| = |(d─b)|)",
+  "nl_statement": "To cut a given finite straight-line in half. Let $AB$ be the given finite straight-line. So it is required to cut the finite straight-line $AB$ in half.  <prf> Thus, the base $AD$ is equal to the base $BD$ [Prop.~1.4]. Thus, the given finite straight-line $AB$ has been cut in half at  (point) $D$.",
+  "lean4_header": ""
+}

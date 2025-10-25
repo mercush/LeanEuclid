@@ -1,0 +1,68 @@
+{
+  "id": "22",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (A : Line) (B : Line) (C : Line), ((|(a─b)| > 0) ∧ (|(a─c)| > 0) ∧ (|(b─c)| > 0) ∧ (|(a─b)| + |(a─c)| > |(b─c)|) ∧ (|(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─c)| + |(b─c)| > |(a─b)|)) → (∃ a' b' c' : Point, |(a'─b')| = |(a─b)| ∧ |(a'─c')| = |(a─c)| ∧ |(b'─c')| = |(b─c)|)",
+      "full_output": "theorem construct_triangle_from_three_straightlines (a b c : Point) (A B C : Line) \n  (h1 : |(a─b)| > 0) \n  (h2 : |(a─c)| > 0) \n  (h3 : |(b─c)| > 0) \n  (h4 : |(a─b)| + |(a─c)| > |(b─c)|)\n  (h5 : |(a─b)| + |(b─c)| > |(a─c)|)\n  (h6 : |(a─c)| + |(b─c)| > |(a─b)|) : \n  ∃ a' b' c' : Point, |(a'─b')| = |(a─b)| ∧ |(a'─c')| = |(a─c)| ∧ |(b'─c')| = |(b─c)| := by",
+      "probability": 0.2005522810457222,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.17427039146423,
+      "well_typed": false,
+      "token_counts": 212,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Line) (B : Line) (C : Line), ((|(A) + (B)| > C) ∧ (|(A) + (C)| > B) ∧ (|(B) + (C)| > A)) → (∃ (F G K : Point) (FG : Line) (GK : Line) (KF : Line), |(F─G)| = |(A─B)| ∧ |(G─K)| = |(B─C)| ∧ |(K─F)| = |(C─A)|)",
+      "full_output": "theorem cc_thm (A B C : Line) (h1 : |(A) + (B)| > C) (h2 : |(A) + (C)| > B) (h3 : |(B) + (C)| > A) : ∃ (F G K : Point) (FG : Line) (GK : Line) (KF : Line), |(F─G)| = |(A─B)| ∧ |(G─K)| = |(B─C)| ∧ |(K─F)| = |(C─A)| := by",
+      "probability": 0.20047792350535934,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.17427039146423,
+      "well_typed": false,
+      "token_counts": 125,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (A : Line) (B : Line) (C : Line), ((|(a─b)| = |(a─c)|) ∧ (|(b─c)| < |(a─b)| + |(a─c)|)) → (∃ k f g : Point, |(k─f)| = |(a─b)| ∧ |(f─g)| = |(a─c)| ∧ |(g─k)| = |(b─c)|)",
+      "full_output": "theorem triangle_construction (a b c : Point) (A B C : Line) (h1 : |(a─b)| = |(a─c)|) (h2 : |(b─c)| < |(a─b)| + |(a─c)|) : ∃ k f g : Point, |(k─f)| = |(a─b)| ∧ |(f─g)| = |(a─c)| ∧ |(g─k)| = |(b─c)| := by",
+      "probability": 0.20017174043158378,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.17427039146423,
+      "well_typed": false,
+      "token_counts": 113,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a1 : Point) (a2 : Point) (a3 : Point) (L1 : Line) (L2 : Line) (L3 : Line), ((distinctPointsOnLine a1 a2 L1) ∧ (distinctPointsOnLine a1 a3 L2) ∧ (distinctPointsOnLine a2 a3 L3) ∧ (|(a1─a2)| + |(a2─a3)| > |(a1─a3)|) ∧ (|(a1─a2)| + |(a1─a3)| > |(a2─a3)|) ∧ (|(a2─a3)| + |(a1─a3)| > |(a1─a2)|)) → (∃ f g e c' : Point, |(f─g)| = |(a1─a2)| ∧ |(g─e)| = |(a2─a3)| ∧ |(e─c')| = |(a1─a3)| ∧ |(f─e)| = |(a1─a3)|)",
+      "full_output": "theorem example_thm (a1 a2 a3 : Point) (L1 L2 L3 : Line) (h1 : distinctPointsOnLine a1 a2 L1) (h2 : distinctPointsOnLine a1 a3 L2) (h3 : distinctPointsOnLine a2 a3 L3) (h4 : |(a1─a2)| + |(a2─a3)| > |(a1─a3)|) (h5 : |(a1─a2)| + |(a1─a3)| > |(a2─a3)|) (h6 : |(a2─a3)| + |(a1─a3)| > |(a1─a2)|) : ∃ f g e c' : Point, |(f─g)| = |(a1─a2)| ∧ |(g─e)| = |(a2─a3)| ∧ |(e─c')| = |(a1─a3)| ∧ |(f─e)| = |(a1─a3)| := by",
+      "probability": 0.20005565142488524,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.17427039146423,
+      "well_typed": true,
+      "token_counts": 239,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (CA : Line), ((formTriangle a b c AB BC CA) ∧ (∀ a b c : Point, |(a─b)| + |(b─c)| > |(a─c)|) ∧ (|(a─b)| = |(b─c)|) ∧ (|(b─c)| = |(c─a)|) ∧ (|(a─b)| + |(c─a)| > |(b─c)|)) → (∃ k f g : Point, (|(a─k)| = |(a─f)|) ∧ (|(k─f)| = |(f─g)|) ∧ (|(f─g)| = |(g─k)|))",
+      "full_output": "theorem construct_triangle (a b c : Point) (AB BC CA : Line) (h1 : formTriangle a b c AB BC CA) (h2 : ∀ a b c : Point, |(a─b)| + |(b─c)| > |(a─c)|) (h3 : |(a─b)| = |(b─c)|) (h4 : |(b─c)| = |(c─a)|) (h5 : |(a─b)| + |(c─a)| > |(b─c)|) : ∃ k f g : Point, (|(a─k)| = |(a─f)|) ∧ (|(k─f)| = |(f─g)|) ∧ (|(f─g)| = |(g─k)|) := by",
+      "probability": 0.1987424035924496,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 32.17427039146423,
+      "well_typed": true,
+      "token_counts": 178,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a a' b b' c c' : Point) (A B C : Line), distinctPointsOnLine a a' A ∧ distinctPointsOnLine b b' B ∧ distinctPointsOnLine c c' C ∧ (|(a─a')| + |(b─b')| > |(c─c')|) ∧ (|(a─a')| + |(c─c')| > |(b─b')|) ∧ (|(b─b')| + |(c─c')| > |(a─a')|) → ∃ (k f g : Point), (|(f─k)| = |(a─a')|) ∧ (|(f─g)| = |(b─b')|) ∧ (|(k─g)| = |(c─c')|)",
+  "nl_statement": "To construct a triangle from three straight-lines which are equal to three given [straight-lines]. It is necessary for (the sum of) two (of the straight-lines) taken together in any (possible way) to be greater than the remaining (one), on account of the (fact that) in any triangle (the sum of) two sides taken together in any (possible way) is greater than the remaining (one) [Prop.~1.20].Let $A$, $B$, and $C$ be the three given straight-lines, of which let (the sum of) two taken together in any (possible way)  be greater than the remaining (one).(Thus), (the sum of) $A$ and $B$ (is greater) than $C$, (the sum of) $A$ and $C$ than $B$,  and also (the sum of) $B$ and $C$ than $A$.So it is required to construct a triangle  from (straight-lines) equal to $A$, $B$, and $C$.    <prf>  Thus,  the three straight-lines $KF$, $FG$, and $GK$ are equal to $A$, $B$, and $C$ (respectively).   Thus, the triangle $KFG$ has been constructed from the three straight-lines  $KF$, $FG$, and $GK$, which are equal to the three given straight-lines  $A$, $B$, and $C$ (respectively).(Which is) the very thing it was required  to do.",
+  "lean4_header": ""
+}

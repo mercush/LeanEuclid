@@ -1,0 +1,68 @@
+{
+  "id": "21",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (BC : Line) (AB : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((between b c d₁)) ∧ ((between b c d₂))) → (|(b─d₁)| < (|(b─a)| + |(a─c)|) ∧ |(d₂─c)| < (|(b─a)| + |(a─c)|) ∧ (∠ b:d₁:c > ∠ b:a:c) ∧ (∠ b:d₂:c > ∠ b:a:c))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ : Point) (BC AB AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (between b c d₁)) (h3 : (between b c d₂)) : |(b─d₁)| < (|(b─a)| + |(a─c)|) ∧ |(d₂─c)| < (|(b─a)| + |(a─c)|) ∧ (∠ b:d₁:c > ∠ b:a:c) ∧ (∠ b:d₂:c > ∠ b:a:c) := by",
+      "probability": 0.20098040806332837,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 22.30966305732727,
+      "well_typed": true,
+      "token_counts": 133,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (BC : Line) (BD : Line) (DC : Line), ((Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine d BD) ∧ (Point.onLine e DC) ∧ (distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine b d BD) ∧ (distinctPointsOnLine c e DC) ∧ (Triangle.formParallelogram a b c d e BC BD DC)) → (|(b─d)| + |(c─e)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ b:a:c)",
+      "full_output": "theorem example_thm (a b c d e : Point) (BC : Line) (BD DC : Line) (h1 : Point.onLine b BC) (h2 : Point.onLine c BC) (h3 : Point.onLine d BD) (h4 : Point.onLine e DC) (h5 : distinctPointsOnLine b c BC) (h6 : distinctPointsOnLine b d BD) (h7 : distinctPointsOnLine c e DC) (h8 : Triangle.formParallelogram a b c d e BC BD DC) : |(b─d)| + |(c─e)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:c > ∠ b:a:c := by",
+      "probability": 0.20070108007573598,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 22.30966305732727,
+      "well_typed": false,
+      "token_counts": 161,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EC : Line), ((formTriangle a b c AB BC AC) ∧ (Point.onLine b BC) ∧ (Point.onLine c BC) ∧ (Point.onLine d AB) ∧ (Point.onLine e AC) ∧ (distinctPointsOnLine b c BC) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC)) → ()",
+      "full_output": "theorem example_thm (a b c d e : Point) (AB BC AC DE EC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : Point.onLine b BC) (h3 : Point.onLine c BC) (h4 : Point.onLine d AB) (h5 : Point.onLine e AC) (h6 : distinctPointsOnLine b c BC) (h7 : distinctPointsOnLine a b AB) (h8 : distinctPointsOnLine a c AC)) : |(b─d)| + |(c─e)| < |(a─b)| + |(a─c)| ∧ ∠ b:d:e > ∠ a:b:c := by",
+      "probability": 0.2004446119234713,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 22.30966305732727,
+      "well_typed": false,
+      "token_counts": 153,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d1 : Point) (d2 : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (between b c d1) ∧ (between c d1 d2)) → ((∃ h : Point, h.onLine AB ∧ ((∠ a:h:c : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟)))",
+      "full_output": "theorem example_thm (a b c d1 d2 : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : between b c d1) (h3 : between c d1 d2) : (∃ h : Point, h.onLine AB ∧ ((∠ a:h:c : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟)) := by",
+      "probability": 0.19951519268372325,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 22.30966305732727,
+      "well_typed": true,
+      "token_counts": 94,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (D : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle A B C AB BC AC) ∧ (Point.onLine D BC)) → (∃ E : Point, Point.onLine E BC ∧ Point.onLine E AB ∧ Point.onLine E AC)",
+      "full_output": "theorem exConcurrencyPoint (A B C D : Point) (AB BC AC : Line) (h1 : formTriangle A B C AB BC AC) (h2 : Point.onLine D BC) : ∃ E : Point, Point.onLine E BC ∧ Point.onLine E AB ∧ Point.onLine E AC := by",
+      "probability": 0.19835870725374113,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 22.30966305732727,
+      "well_typed": true,
+      "token_counts": 68,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC AC BD DC : Line), formTriangle a b c AB BC AC ∧ (a.sameSide d BC) ∧ (c.sameSide d AB) ∧ (b.sameSide d AC) ∧ distinctPointsOnLine b d BD ∧ distinctPointsOnLine d c DC → (|(b─d)| + |(d─c)| < |(b─a)| + |(a─c)|) ∧ (∠ b:d:c > ∠ b:a:c)",
+  "nl_statement": "If two internal straight-lines are constructed on one of the sides of a triangle, from its ends, the constructed (straight-lines) will be less than the two remaining  sides of the triangle, but will encompass a greater angle. For let the two internal straight-lines $BD$ and $DC$ have been constructed on one of the sides $BC$ of the triangle $ABC$, from its ends $B$ and $C$ (respectively). I say that  $BD$ and $DC$ are less than the (sum of the) two  remaining sides of the triangle $BA$ and $AC$, but encompass an angle $BDC$ greater than $BAC$.    <prf>  Thus, $BDC$ is much greater than $BAC$.Thus, if two internal straight-lines are constructed on one of the sides of a triangle, from its ends,  the constructed (straight-lines) are less than the two remaining  sides of the triangle, but  encompass a greater angle.",
+  "lean4_header": ""
+}

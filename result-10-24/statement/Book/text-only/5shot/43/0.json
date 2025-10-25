@@ -1,0 +1,68 @@
+{
+  "id": "43",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (g : Point) (h : Point) (k : Point) (AB : Line) (CD : Line) (AC : Line) (EF : Line) (BD : Line) (EH : Line) (FK : Line) (BK : Line) (KD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e f g h EF EH FK BK) ∧ (formParallelogram e f g h EF FH EK KD)) → ()",
+      "full_output": "theorem example_thm (a b c d e f g h k : Point) (AB CD AC EF BD EH FK BK KD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e f g h EF EH FK BK) (h3 : formParallelogram e f g h EF FH EK KD) -- assuming some form of the complement parallelograms) : (|(b─k)| = |(k─d)|) := by",
+      "probability": 0.20099899904466942,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.467886924743652,
+      "well_typed": false,
+      "token_counts": 112,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e₁ : Point) (e₂ : Point) (f : Point) (g : Point) (h : Point) (k : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line) (EH : Line) (FG : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (formParallelogram e₁ e₂ b h EH AC BD) ∧ (formParallelogram f g a k FG AC BD)) → (Triangle.area △ b:e₁:e₂ = Triangle.area △ k:d:e₂)",
+      "full_output": "theorem compequal_complements_of_diagonal_in_parallelogram (a b c d e₁ e₂ f g h k : Point) (AB CD AC BD EH FG : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : formParallelogram e₁ e₂ b h EH AC BD) (h3 : formParallelogram f g a k FG AC BD) : Triangle.area △ b:e₁:e₂ = Triangle.area △ k:d:e₂ := by",
+      "probability": 0.20084718778448993,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.467886924743652,
+      "well_typed": false,
+      "token_counts": 113,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → (|(a─b)| * |(a─d)| = |(a─c)| * |(c─d)|)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) : |(a─b)| * |(a─d)| = |(a─c)| * |(c─d)| := by",
+      "probability": 0.1996611202841033,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.467886924743652,
+      "well_typed": true,
+      "token_counts": 68,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD) ∧ (a ≠ c)) → ((|(c─b)| + |(d─a)|) = (|(a─b)| + |(c─d)|))",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) (h2 : a ≠ c) : (|(c─b)| + |(d─a)|) = (|(a─b)| + |(c─d)|) := by",
+      "probability": 0.19929021252026524,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.467886924743652,
+      "well_typed": true,
+      "token_counts": 78,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (AC : Line) (BD : Line), ((formParallelogram a b c d AB CD AC BD)) → (|(a─b)| = |(c─d)|)",
+      "full_output": "theorem example_thm (a b c d : Point) (AB CD AC BD : Line) (h1 : formParallelogram a b c d AB CD AC BD) : |(a─b)| = |(c─d)| := by",
+      "probability": 0.19920248036647215,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.467886924743652,
+      "well_typed": true,
+      "token_counts": 54,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f g h k : Point) (AD BC AB CD AC EF GH : Line), formParallelogram a d b c AD BC AB CD ∧ distinctPointsOnLine a c AC ∧ k.onLine AC ∧ between a h d ∧ formParallelogram a h e k AD EF AB GH ∧ formParallelogram k f g c EF BC GH CD → (Triangle.area △ e:b:g + Triangle.area △ e:g:k = Triangle.area △ h:k:f + Triangle.area △ h:f:d)",
+  "nl_statement": "For any parallelogram, the complements of the parallelograms about the diagonal are equal to one another. Let $ABCD$ be a parallelogram, and $AC$ its diagonal. And let $EH$ and $FG$ be the parallelograms about  $AC$, and $BK$ and $KD$ the so-called complements (about $AC$). I say that the complement $BK$ is equal to the complement $KD$. <prf> Thus, the remaining complement $BK$ is equal to the remaining complement $KD$. Thus, for any parallelogramic figure, the complements of the parallelograms about the diagonal are equal to one another.",
+  "lean4_header": ""
+}

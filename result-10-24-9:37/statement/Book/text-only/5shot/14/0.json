@@ -1,0 +1,68 @@
+{
+  "id": "14",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b₁ : Point) (b₂ : Point) (AB : Line), ((distinctPointsOnLine a b₁ AB) ∧ (distinctPointsOnLine a b₂ AB) ∧ (Point.onLine a AB) ∧ (Point.onLine b₁ AB) ∧ (Point.onLine b₂ AB) ∧ (∠ a:b₁:a:b₂:ℝ = ∟ + ∟)) → ((Point.opposingSides b₁ b₂ AB))",
+      "full_output": "theorem example_thm (a b₁ b₂ : Point) (AB : Line) (h1 : distinctPointsOnLine a b₁ AB) (h2 : distinctPointsOnLine a b₂ AB) (h3 : Point.onLine a AB) (h4 : Point.onLine b₁ AB) (h5 : Point.onLine b₂ AB) (h6 : ∠ a:b₁:a:b₂:ℝ = ∟ + ∟) : (Point.opposingSides b₁ b₂ AB) := by",
+      "probability": 0.20054506425564977,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.583292961120605,
+      "well_typed": false,
+      "token_counts": 113,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (BD : Line), ((twoLinesIntersectAtPoint AB BC b) ∧ (twoLinesIntersectAtPoint AB BD b) ∧ (∠ a:b:c + ∠ a:b:d = ∟ + ∟)) → (formParallelogram a b c d AB BC BD AB)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC BD : Line) (h1 : twoLinesIntersectAtPoint AB BC b) (h2 : twoLinesIntersectAtPoint AB BD b) (h3 : ∠ a:b:c + ∠ a:b:d = ∟ + ∟) : formParallelogram a b c d AB BC BD AB := by",
+      "probability": 0.2003997694108602,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.583292961120605,
+      "well_typed": false,
+      "token_counts": 84,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line), ((twoLinesIntersectAtPoint AB BC b) ∧ (∠ a:b:c + ∠ a:b:d = ∟ + ∟)) → (Line.intersectsLine BC BD)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (BC : Line) (h1 : twoLinesIntersectAtPoint AB BC b) (h2 : ∠ a:b:c + ∠ a:b:d = ∟ + ∟) : Line.intersectsLine BC BD := by",
+      "probability": 0.2000190743364545,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.583292961120605,
+      "well_typed": false,
+      "token_counts": 66,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:c:b + ∠ a:b:c = ∟ + ∟)) → (c.onLine AB)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:c:b + ∠ a:b:c = ∟ + ∟) : c.onLine AB := by",
+      "probability": 0.1996933905929369,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.583292961120605,
+      "well_typed": true,
+      "token_counts": 60,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (H : Point) (O : Point) (P : Point) (Q : Point) (HQ : Line) (QP : Line) (OP : Line), ((Type) ∧ (Type) ∧ (formTriangle H Q P HQ QP OP) ∧ (∠ H:Q:H = ∟ + ∟)) → (Q.onLine HQ ∧ P.onLine QP ∧ O.onLine OP)",
+      "full_output": "theorem example_thm (Point : Type) (Line : Type) (H : Point) (O : Point) (P : Point) (Q : Point) (HQ : Line) (QP : Line) (OP : Line) (h1 : formTriangle H Q P HQ QP OP) (h2 : ∠ H:Q:H = ∟ + ∟) : Q.onLine HQ ∧ P.onLine QP ∧ O.onLine OP := by",
+      "probability": 0.19934270140409865,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.583292961120605,
+      "well_typed": false,
+      "token_counts": 98,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d : Point) (AB BC BD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine b c BC ∧ distinctPointsOnLine b d BD ∧ (c.opposingSides d AB) ∧ (∠ a:b:c + ∠ a:b:d) = ∟ + ∟ → BC = BD",
+  "nl_statement": "If two straight-lines, not lying on the same side,  make adjacent angles (whose sum is) equal to two right-angles  with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another. For let two straight-lines $BC$ and $BD$, not lying on the same side, make adjacent angles $ABC$ and $ABD$ (whose sum is) equal to two right-angles with some straight-line $AB$, at the point $B$ on it. I say that $BD$ is  straight-on with respect to $CB$. <prf> Thus, $CB$ is straight-on with respect to $BD$.Thus, if two straight-lines, not lying on the same side, make adjacent angles (whose sum is) equal to two right-angles with some straight-line, at a point on it, then the two straight-lines will be straight-on (with respect) to one another.",
+  "lean4_header": ""
+}

@@ -1,0 +1,68 @@
+{
+  "id": "26",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (CA : Line) (DE : Line) (EF : Line) (FD : Line), ((formTriangle a b c AB BC CA) ∧ (formTriangle d e f DE EF FD) ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:c:b = ∠ d:f:e)",
+      "full_output": "theorem triangle_congruencenpc (a b c d e f : Point) \n    (AB BC CA DE EF FD : Line)\n    (h0 : formTriangle a b c AB BC CA)\n    (h1 : formTriangle d e f DE EF FD)\n    (h2 : ∠ a:b:c = ∠ d:e:f)\n    (h3 : ∠ b:c:a = ∠ e:f:d)\n    (h4 : |(b─c)| = |(e─f)|)\n    : |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:c:b = ∠ d:f:e\n    := by",
+      "probability": 0.2007100493004869,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.614633798599243,
+      "well_typed": true,
+      "token_counts": 156,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (CA : Line) (DE : Line) (EF : Line) (FD : Line), ((formTriangle a b c AB BC CA) ∧ (formTriangle d e f DE EF FD) ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a : b : c = ∠ d : e : f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (AB BC CA DE EF FD : Line) (h1 : formTriangle a b c AB BC CA) (h2 : formTriangle d e f DE EF FD) (h3 : ∠ a:b:c = ∠ d:e:f) (h4 : ∠ b:c:a = ∠ e:f:d) (h5 : |(b─c)| = |(e─f)|) : |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a : b : c = ∠ d : e : f := by",
+      "probability": 0.1999807986363495,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.614633798599243,
+      "well_typed": true,
+      "token_counts": 146,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (ABC : Line) (DEF : Line), ((formTriangle a b c ABC DEF (Point.Line a c)) ∧ (formTriangle d e f DEF (Point.Line d f) (Point.Line e f)) ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:b:c = ∠ d:e:f)",
+      "full_output": "theorem example_thm (a b c d e f : Point) (ABC DEF : Line) (h1 : formTriangle a b c ABC DEF (Point.Line a c)) (h2 : formTriangle d e f DEF (Point.Line d f) (Point.Line e f)) (h3 : ∠ a:b:c = ∠ d:e:f) (h4 : ∠ b:c:a = ∠ e:f:d) (h5 : |(b─c)| = |(e─f)|) : |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:b:c = ∠ d:e:f := by",
+      "probability": 0.19993721082746463,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.614633798599243,
+      "well_typed": false,
+      "token_counts": 151,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((formTriangle a b c AB BC AC) ∧ (formTriangle d e f DE EF DF) ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)|)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:c:b = ∠ d:f:e)",
+      "full_output": "theorem triangle_congruence (a b c d e f : Point) (AB BC AC DE EF DF : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formTriangle d e f DE EF DF) (h3 : ∠ a:b:c = ∠ d:e:f) (h4 : ∠ b:c:a = ∠ e:f:d) (h5 : |(b─c)| = |(e─f)|) : |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ∠ a:c:b = ∠ d:f:e := by",
+      "probability": 0.199862056007215,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.614633798599243,
+      "well_typed": true,
+      "token_counts": 144,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (BC : Line) (AC : Line) (DE : Line) (EF : Line) (DF : Line), ((Triangle.ofPoints a b c = Triangle.ofPoints d e f) ∧ (((∠ a:b:c : ℝ) = ∠ d:e:f) ∧ ((∠ b:c:a : ℝ) = ∠ e:f:d)) ∧ (|(b─c)| = |(e─f)|)) → (|(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ((∠ a:b:c : ℝ) = ∠ d:e:f))",
+      "full_output": "theorem triangle_congruence (a b c d e f : Point) (AB BC AC DE EF DF : Line) (h1 : Triangle.ofPoints a b c = Triangle.ofPoints d e f) (h2 : ((∠ a:b:c : ℝ) = ∠ d:e:f) ∧ ((∠ b:c:a : ℝ) = ∠ e:f:d)) (h3 : |(b─c)| = |(e─f)|) : |(a─b)| = |(d─e)| ∧ |(a─c)| = |(d─f)| ∧ ((∠ a:b:c : ℝ) = ∠ d:e:f) := by",
+      "probability": 0.19950988522848417,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 25.614633798599243,
+      "well_typed": false,
+      "token_counts": 143,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e f : Point) (AB BC AC DE EF DF : Line), formTriangle a b c AB BC AC ∧ formTriangle d e f DE EF DF ∧ (∠ a:b:c = ∠ d:e:f) ∧ (∠ b:c:a = ∠ e:f:d) ∧ (|(b─c)| = |(e─f)| ∨ |(a─b)| = |(d─e)|) → (|(a─b)| = |(d─e)|) ∧ (|(b─c)| = |(e─f)|) ∧ (|(a─c)| = |(d─f)|) ∧ (∠ b:a:c = ∠ e:d:f)",
+  "nl_statement": "If two triangles have two angles equal to two angles, respectively,  and one side equal to one side---in fact, either that by the equal angles, or that subtending one of the equal angles---then (the triangles) will also have the remaining sides equal to the [corresponding] remaining sides, and the remaining angle (equal) to the remaining angle.Let $ABC$ and $DEF$ be two triangles having the two angles $ABC$ and $BCA$ equal to the two (angles) $DEF$ and $EFD$, respectively. (That is) $ABC$ (equal) to $DEF$, and $BCA$ to $EFD$. And let them also have one side equal to one side. First of all, the (side) by the equal angles. (That is) $BC$ (equal) to $EF$. I say that they will have the  remaining sides equal to the corresponding remaining sides. (That is) $AB$ (equal) to $DE$, and $AC$ to $DF$. And (they will have) the remaining angle (equal) to the remaining angle. (That is) $BAC$ (equal) to $EDF$. <prf> Thus, the base $AC$ is equal to the base $DF$, and triangle $ABC$ (is) equal to triangle $DEF$, and the remaining angle $BAC$ (is) equal to the remaining angle $EDF$ [Prop.~1.4].Thus, if two triangles have two angles equal to two angles, respectively, and one side equal to one side---in fact, either that by the equal angles, or that subtending one of the equal angles---then (the triangles) will also have the remaining sides equal to the (corresponding) remaining sides, and the remaining angle (equal) to the remaining angle.",
+  "lean4_header": ""
+}

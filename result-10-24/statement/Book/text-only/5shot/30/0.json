@@ -1,0 +1,68 @@
+{
+  "id": "30",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_to_same_parallel (a b c d : Point) (AB : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.20037913019330472,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.600672960281372,
+      "well_typed": false,
+      "token_counts": 53,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line), ((¬(AB.intersectsLine CD)) ∧ (¬(AB.intersectsLine c))) → (∃ p : Point, Point.onLine a AB ∧ Point.onLine b AB ∧ Point.onLine c d ∧ Point.onLine d AB)",
+      "full_output": "theorem parallel_to_same_line_are_parallel (a b c d : Point) (AB CD : Line) (h1 : ¬(AB.intersectsLine CD)) (h2 : ¬(AB.intersectsLine c)) : ∃ p : Point, Point.onLine a AB ∧ Point.onLine b AB ∧ Point.onLine c d ∧ Point.onLine d AB := by",
+      "probability": 0.20017221799537013,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.600672960281372,
+      "well_typed": false,
+      "token_counts": 77,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF)) ∧ (twoLinesIntersectAtPoint AB CD a) ∧ (twoLinesIntersectAtPoint AB CD b) ∧ (twoLinesIntersectAtPoint CD EF c) ∧ (twoLinesIntersectAtPoint CD EF d) ∧ (twoLinesIntersectAtPoint EF AB e) ∧ (twoLinesIntersectAtPoint EF AB f)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_lines (a b c d e f : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) (h3 : twoLinesIntersectAtPoint AB CD a) (h4 : twoLinesIntersectAtPoint AB CD b) (h5 : twoLinesIntersectAtPoint CD EF c) (h6 : twoLinesIntersectAtPoint CD EF d) (h7 : twoLinesIntersectAtPoint EF AB e) (h8 : twoLinesIntersectAtPoint EF AB f) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.1999838502414337,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.600672960281372,
+      "well_typed": true,
+      "token_counts": 139,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_to_same_line_parallel (a b c d : Point) (AB CD EF : Line) (h1 : ¬(AB.intersectsLine EF)) (h2 : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.19973315472153108,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.600672960281372,
+      "well_typed": false,
+      "token_counts": 56,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (AB : Line) (CD : Line) (EF : Line), ((¬(AB.intersectsLine EF)) ∧ (¬(CD.intersectsLine EF))) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem parallel_to_same_line_parallel (AB CD EF : Line) (h : ¬(AB.intersectsLine EF)) (h' : ¬(CD.intersectsLine EF)) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.1997316468483604,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 15.600672960281372,
+      "well_typed": true,
+      "token_counts": 47,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (AB CD EF : Line), AB ≠ CD ∧ CD ≠ EF ∧ EF ≠ AB ∧ ¬(AB.intersectsLine EF) ∧ ¬(CD.intersectsLine EF) → ¬(AB.intersectsLine CD)",
+  "nl_statement": "(Straight-lines) parallel to the same straight-line are also parallel to one another.Let each of the (straight-lines) $AB$ and $CD$ be parallel to $EF$. I say that $AB$ is also parallel to $CD$. <prf>  Thus, $AB$ is parallel to $CD$ [Prop.~1.27]. Thus, (straight-lines) parallel to the same straight-line are also parallel to one another.",
+  "lean4_header": ""
+}

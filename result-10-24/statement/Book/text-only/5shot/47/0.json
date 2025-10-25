@@ -1,0 +1,68 @@
+{
+  "id": "47",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BA : Line) (AC : Line) (BC : Line), ((formTriangle a b c BA AC BC) ∧ (∠ a:b:c = ∟)) → (|(b─c)| ^ 2 = |(a─b)| ^ 2 + |(a─c)| ^ 2)",
+      "full_output": "theorem pythagoras_thm (a b c : Point) (BA AC BC : Line) (h1 : formTriangle a b c BA AC BC) (h2 : ∠ a:b:c = ∟) : |(b─c)| ^ 2 = |(a─b)| ^ 2 + |(a─c)| ^ 2 := by",
+      "probability": 0.20046117435774327,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.05031967163086,
+      "well_typed": false,
+      "token_counts": 78,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by",
+      "probability": 0.2002937484167814,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.05031967163086,
+      "well_typed": false,
+      "token_counts": 76,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (BA : Line) (AC : Line) (BC : Line), ((formTriangle a b c BA AC BC) ∧ (∠ a:b:c = ∟)) → (|(b─c)|² = |(a─b)|² + |(a─c)|²)",
+      "full_output": "theorem pythagoras_thm (a b c : Point) (BA AC BC : Line) (h1 : formTriangle a b c BA AC BC) (h2 : ∠ a:b:c = ∟) : |(b─c)|² = |(a─b)|² + |(a─c)|² := by",
+      "probability": 0.19981778381207582,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.05031967163086,
+      "well_typed": false,
+      "token_counts": 72,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((∠ a:b:c : ℝ) = ∟)) → (|(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2)",
+      "full_output": "theorem pythagorean_theorem (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (∠ a:b:c : ℝ) = ∟) : |(a─b)| ^ 2 + |(a─c)| ^ 2 = |(b─c)| ^ 2 := by",
+      "probability": 0.19973350068663392,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.05031967163086,
+      "well_typed": false,
+      "token_counts": 81,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (∠ a:b:c = ∟)) → (|(a─b)| * |(a─b)| = |(b─c)| * |(b─c)| + |(a─c)| * |(a─c)|)",
+      "full_output": "theorem pythagorean_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : ∠ a:b:c = ∟) : |(a─b)| * |(a─b)| = |(b─c)| * |(b─c)| + |(a─c)| * |(a─c)| := by",
+      "probability": 0.1996937927267655,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.05031967163086,
+      "well_typed": true,
+      "token_counts": 90,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c: Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ b:a:c : ℝ) = ∟ → |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)|",
+  "nl_statement": "In right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides containing the right-angle. Let $ABC$ be a right-angled triangle having the angle $BAC$a right-angle. I say that the square on $BC$ is equal to the (sum of the) squares on $BA$ and $AC$.  <prf>  Thus, the square on the side $BC$ is equal to the (sum of the) squares on the sides $BA$ and $AC$. Thus, in right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides surrounding the right-[angle].",
+  "lean4_header": ""
+}

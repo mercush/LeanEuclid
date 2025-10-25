@@ -1,0 +1,68 @@
+{
+  "id": "20",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─a)| > |(b─c)| ∧ |(b─c)| + |(c─a)| > |(a─b)|)",
+      "full_output": "theorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : \n    |(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─a)| > |(b─c)| ∧ |(b─c)| + |(c─a)| > |(a─b)| := by",
+      "probability": 0.20057614297923015,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 16.99453043937683,
+      "well_typed": true,
+      "token_counts": 102,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((|(a─b)| + |(b─c)| > |(a─c)|) ∧\n    (|(a─b)| + |(a─c)| > |(b─c)|) ∧\n    (|(b─c)| + |(a─c)| > |(a─b)|))",
+      "full_output": "theorem triangle_two_sides_greater_than_third (a b c : Point)\n  (AB : Line) (BC : Line) (AC : Line)\n  (h : formTriangle a b c AB BC AC)\n  :\n  (|(a─b)| + |(b─c)| > |(a─c)|) ∧\n    (|(a─b)| + |(a─c)| > |(b─c)|) ∧\n    (|(b─c)| + |(a─c)| > |(a─b)|) := by",
+      "probability": 0.20029969060877043,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 16.99453043937683,
+      "well_typed": true,
+      "token_counts": 118,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─b)| > |(a─b)| ∧ |(b─c)| + |(c─a)| > |(a─b)|)",
+      "full_output": "theorem triangle_two_sides_greater_than_third (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : |(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─b)| > |(a─b)| ∧ |(b─c)| + |(c─a)| > |(a─b)| := by",
+      "probability": 0.19987692999986734,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 16.99453043937683,
+      "well_typed": true,
+      "token_counts": 100,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → ((|(a─c)| + |(c─b)|) > |(a─b)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : (|(a─c)| + |(c─b)|) > |(a─b)| := by",
+      "probability": 0.19980711856967961,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 16.99453043937683,
+      "well_typed": true,
+      "token_counts": 55,
+      "formalization_check": true
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC)) → (|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─b)| > |(a─b)| ∧ |(c─b)| + |(b─c)| > |(a─c)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) : \n|(a─b)| + |(b─c)| > |(a─c)| ∧ |(a─c)| + |(c─b)| > |(a─b)| ∧ |(c─b)| + |(b─c)| > |(a─c)| := by",
+      "probability": 0.19944011784245264,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 16.99453043937683,
+      "well_typed": true,
+      "token_counts": 96,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (AB BC AC : Line), formTriangle a b c AB BC AC → |(b─a)| + |(a─c)| > |(b─c)|",
+  "nl_statement": "In any triangle, (the sum of) two sides taken together in any (possible way) is greater than the remaining (side). For let $ABC$ be a triangle. I say that in triangle $ABC$ (the sum of) two sides taken together in any (possible way) is greater than the remaining (side). (So), (the sum of) $BA$ and $AC$ (is greater) than $BC$, (the sum of) $AB$ and $BC$ than $AC$, and (the sum of) $BC$ and $CA$ than $AB$.   <prf>  Thus, (the sum of) $BA$ and $AC$ is greater than $BC$. Similarly, we can show that (the sum of) $AB$ and $BC$ is also greater than $CA$, and (the sum of) $BC$ and $CA$ than $AB$.Thus, in any triangle, (the sum of) two sides taken together in any (possible way) is greater than the remaining (side).",
+  "lean4_header": ""
+}

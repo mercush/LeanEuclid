@@ -1,0 +1,68 @@
+{
+  "id": "3",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (c ≠ a)) → (∃ l : Point, |(a─l)| = |(b─c)| ∧ c.onLine AB)",
+      "full_output": "theorem example_thm_1 (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c ≠ a) : ∃ l : Point, |(a─l)| = |(b─c)| ∧ c.onLine AB := by",
+      "probability": 0.20064225178425849,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.548035860061646,
+      "well_typed": true,
+      "token_counts": 65,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (|(a─b)| ≠ |(a─c)|)) → (∃ e : Point, |(a─e)| = |(a─c)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h₁ : distinctPointsOnLine a b AB) (h₂ : |(a─b)| ≠ |(a─c)|) : ∃ e : Point, |(a─e)| = |(a─c)| := by",
+      "probability": 0.20023310914922232,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.548035860061646,
+      "well_typed": true,
+      "token_counts": 68,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (AC : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c AC) ∧ (¬(|(a─b)| = |(a─c)|)) ∧ (|(a─b)| > |(a─c)|)) → (∃ e : Point, |(a─e)| = |(a─c)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB AC : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine a c AC) (h3 : ¬(|(a─b)| = |(a─c)|)) (h4 : |(a─b)| > |(a─c)|) : ∃ e : Point, |(a─e)| = |(a─c)| := by",
+      "probability": 0.19979685517212747,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.548035860061646,
+      "well_typed": true,
+      "token_counts": 100,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (a ≠ b)) → (∃ l : Point, |(a─l)| = |(b─c)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : a ≠ b) : ∃ l : Point, |(a─l)| = |(b─c)| := by",
+      "probability": 0.19978444115170008,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.548035860061646,
+      "well_typed": true,
+      "token_counts": 58,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (a ≠ c) ∧ (b ≠ c)) → (∃ e : Point, e.onLine AB ∧ |(a─e)| = |(a─c)|)",
+      "full_output": "theorem two_unequal_straight_lines_cut_off (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : a ≠ c) (h3 : b ≠ c) : ∃ e : Point, e.onLine AB ∧ |(a─e)| = |(a─c)| := by",
+      "probability": 0.1995433427426915,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 13.548035860061646,
+      "well_typed": true,
+      "token_counts": 77,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c₀ c₁ : Point) (AB C : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c₀ c₁ C ∧ |(a─b)| > |(c₀─c₁)| → ∃ e : Point, between a e b ∧ |(a─e)| = |(c₀─c₁)|",
+  "nl_statement": "For two given unequal straight-lines, to cut off from the greater a straight-line equal to the lesser. Let $AB$ and $C$ be the two given unequal straight-lines, of which let the greater be $AB$.  <prf> So $AE$ is also equal to $C$ [C.N.~1]. Thus, for two given unequal straight-lines, $AB$ and $C$, the (straight-line) $AE$, equal to the lesser $C$, has been cut off from the greater $AB$.",
+  "lean4_header": ""
+}

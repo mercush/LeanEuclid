@@ -1,0 +1,68 @@
+{
+  "id": "3",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Point) (B : Point) (C : Point) (AB : Line), ((distinctPointsOnLine A B AB) ∧ (|(A─B)| > |(A─C)|)) → (∃ E : Point, |(A─E)| = |(A─C)| ∧ Point.onLine E AB)",
+      "full_output": "theorem example_thm (A B C : Point) (AB : Line) (h1 : distinctPointsOnLine A B AB) (h2 : |(A─B)| > |(A─C)|) : ∃ E : Point, |(A─E)| = |(A─C)| ∧ Point.onLine E AB := by",
+      "probability": 0.20044495838048393,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.59730052947998,
+      "well_typed": true,
+      "token_counts": 74,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (C : Line), ((distinctPointsOnLine a b AB) ∧ (¬(a.onLine C)) ∧ (|(a─b)| > |(c─a)|)) → (∃ e : Point, e.onLine AB ∧ |(a─e)| = |(c─a)|)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (C : Line) (h1 : distinctPointsOnLine a b AB) (h2 : ¬(a.onLine C)) (h3 : |(a─b)| > |(c─a)|) : ∃ e : Point, e.onLine AB ∧ |(a─e)| = |(c─a)| := by",
+      "probability": 0.20043335058966363,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.59730052947998,
+      "well_typed": true,
+      "token_counts": 89,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (|(a─b)| ≠ |(a─c)|)) → (∃ ae : Point, (|(a─ae)| = |(a─c)|) ∧ between a ae b)",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : |(a─b)| ≠ |(a─c)|) : ∃ ae : Point, (|(a─ae)| = |(a─c)|) ∧ between a ae b := by",
+      "probability": 0.20018701770300634,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.59730052947998,
+      "well_typed": true,
+      "token_counts": 74,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line), ((distinctPointsOnLine a b AB) ∧ (¬(c.onLine AB))) → (exists h : Point, h.onLine AB ∧ ((∠ a:h:c : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟))",
+      "full_output": "theorem example_thm (a b c : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) (h2 : ¬(c.onLine AB)) : exists h : Point, h.onLine AB ∧ ((∠ a:h:c : ℝ) = ∟ ∨ (∠ b:h:c : ℝ) = ∟) := by",
+      "probability": 0.20003506887624056,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.59730052947998,
+      "well_typed": true,
+      "token_counts": 76,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (AB : Line) (C_line : Line), ((distinctPointsOnLine a b AB) ∧ (c ≠ a) ∧ (¬(c.onLine AB)) ∧ (|(a─c)| < |(a─b)|)) → (∃ e : Point, (e.onLine AB ∧ |(a─e)| = |(a─c)|))",
+      "full_output": "theorem theorem_unequal_straight_lines (a b c : Point) (AB C_line : Line) (h1 : distinctPointsOnLine a b AB) (h2 : c ≠ a) (h3 : ¬(c.onLine AB)) (h4 : |(a─c)| < |(a─b)|) : ∃ e : Point, (e.onLine AB ∧ |(a─e)| = |(a─c)|) := by",
+      "probability": 0.19889960445060542,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 14.59730052947998,
+      "well_typed": false,
+      "token_counts": 100,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c₀ c₁ : Point) (AB C : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c₀ c₁ C ∧ |(a─b)| > |(c₀─c₁)| → ∃ e : Point, between a e b ∧ |(a─e)| = |(c₀─c₁)|",
+  "nl_statement": "For two given unequal straight-lines, to cut off from the greater a straight-line equal to the lesser. Let $AB$ and $C$ be the two given unequal straight-lines, of which let the greater be $AB$.  <prf> So $AE$ is also equal to $C$ [C.N.~1]. Thus, for two given unequal straight-lines, $AB$ and $C$, the (straight-line) $AE$, equal to the lesser $C$, has been cut off from the greater $AB$.",
+  "lean4_header": ""
+}

@@ -1,0 +1,68 @@
+{
+  "id": "10",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (AB : Line), ((between a b c) ∧ (between a c d₁) ∧ (¬(c.onLine AB))) → ((|(a─c)| = |(c─b)|))",
+      "full_output": "theorem example_thm (a b c d₁ : Point) (AB : Line) (h1 : between a b c) (h2 : between a c d₁) (h3 : ¬(c.onLine AB)) : (|(a─c)| = |(c─b)|) := by",
+      "probability": 0.20087638668360241,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 10.376156330108643,
+      "well_typed": true,
+      "token_counts": 65,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ mid : Point, mid.onLine AB ∧ |(a─mid)| = |(mid─b)|)",
+      "full_output": "theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ mid : Point, mid.onLine AB ∧ |(a─mid)| = |(mid─b)| := by",
+      "probability": 0.20009016564471682,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 10.376156330108643,
+      "well_typed": true,
+      "token_counts": 54,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ d : Point, Point.onLine d AB ∧ |(a─d)| = |(d─b)|)",
+      "full_output": "theorem to_cut_a_given_finite_straight_line_in_half (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ d : Point, Point.onLine d AB ∧ |(a─d)| = |(d─b)| := by",
+      "probability": 0.19978596952862002,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 10.376156330108643,
+      "well_typed": true,
+      "token_counts": 63,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ c : Point, c.onLine AB ∧ |(a─c)| = |(c─b)|)",
+      "full_output": "theorem cut_line_in_half (a b : Point) (AB : Line) (h : distinctPointsOnLine a b AB) :\n  ∃ c : Point, c.onLine AB ∧ |(a─c)| = |(c─b)| := by",
+      "probability": 0.19974599175797803,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 10.376156330108643,
+      "well_typed": true,
+      "token_counts": 55,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (AB : Line), ((distinctPointsOnLine a b AB)) → (∃ d : Point, (Point.onLine d AB) ∧ (|(a─d)| = |(d─b)|))",
+      "full_output": "theorem to_cut_finite_straight_line_in_half (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ d : Point, (Point.onLine d AB) ∧ (|(a─d)| = |(d─b)|) := by",
+      "probability": 0.1995014863850827,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 10.376156330108643,
+      "well_typed": true,
+      "token_counts": 64,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB → ∃ d : Point, (between a d b) ∧ (|(a─d)| = |(d─b)|)",
+  "nl_statement": "To cut a given finite straight-line in half. Let $AB$ be the given finite straight-line. So it is required to cut the finite straight-line $AB$ in half.  <prf> Thus, the base $AD$ is equal to the base $BD$ [Prop.~1.4]. Thus, the given finite straight-line $AB$ has been cut in half at  (point) $D$.",
+  "lean4_header": ""
+}

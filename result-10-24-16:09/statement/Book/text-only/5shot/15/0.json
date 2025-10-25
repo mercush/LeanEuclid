@@ -1,0 +1,20 @@
+{
+  "id": "15",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I'm trying to formalize this theorem from Euclidean geometry using Lean 4. The theorem states that if two straight lines intersect, then the vertically opposite angles formed are equal. The given example shows how to approach this, but I need to translate that into the Lean 4 code structure provided.\n\nFirst, I need to understand the theorem deeply. The theorem says that when two lines cross each other, the opposite angles are equal. In the example, lines AB and CD intersect at point E, and we need to show that angle AEC is equal to angle DEB, and angle CEB is equal to angle AED.\n\nNow, looking at the Lean 4 code structure, I see there are axioms and definitions for points, lines, circles, and various geometric relations like angles, segments, and so on. I need to use these to state the theorem formally.\n\nI should start by identifying the given points and lines. We have points A, B, C, D, and E, with E being the intersection point. The lines AB and CD intersect at E.\n\nIn Lean, I'll need to express this situation using the provided axioms. For example, I can use the 'twoLinesIntersectAtPoint' to express that AB and CD intersect at E.\n\nNext, I need to express the conclusion that the vertically opposite angles are equal. In the notation, angle AEC corresponds to ∠ a:e:c, and angle DEB corresponds to ∠ d:e:b. So, I need to state that these two angles are equal.\n\nSimilarly, angle CEB is ∠ c:e:b, and angle AED is ∠ a:e:d, and these should also be equal.\n\nPutting this together, the theorem should be stated in Lean 4 as a logical implication, where the hypothesis is the intersection of the two lines at a point, and the conclusion is the equality of the vertically opposite angles.\n\nI also need to make sure that I follow the guidelines strictly, such as not using '→' in the theorem statement, ensuring all hypotheses are to the left of the colon, and the conclusion is to the right. The theorem name should be a valid Lean identifier, and each hypothesis should be inside parentheses.\n\nFinally, the theorem should end with ':= by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 33.84569025039673,
+      "well_typed": false,
+      "token_counts": 464,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB CD : Line), distinctPointsOnLine a b AB ∧ distinctPointsOnLine c d CD ∧ e.onLine AB ∧ e.onLine CD ∧ CD ≠ AB ∧ (between d e c) ∧ (between a e b) → (∠ a:e:c = ∠ d:e:b) ∧ (∠ c:e:b = ∠ a:e:d)",
+  "nl_statement": "If two straight-lines cut one another then they make the vertically opposite angles equal to one another.For let the two straight-lines $AB$ and $CD$ cut one another at the point $E$. I say that  angle $AEC$ is equal to (angle) $DEB$, and (angle) $CEB$ to (angle) $AED$. <prf>  Thus, the remainder $CEA$ is equal to the remainder $BED$ [C.N.~3]. Similarly, it can be shown that $CEB$ and $DEA$ are also equal.Thus, if two straight-lines cut one another then they make the vertically opposite angles equal to one another.",
+  "lean4_header": ""
+}

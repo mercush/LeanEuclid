@@ -1,0 +1,20 @@
+{
+  "id": "47",
+  "formalizations": [
+    {
+      "formalization": "()",
+      "full_output": "Alright, so I have this problem about right-angled triangles and the Pythagorean theorem. I need to formalize the given English statement into Lean 4 code, following specific structures and guidelines. Let me break this down step by step.\n\nFirst, I'll read the English statement carefully:\n\n\"In right-angled triangles, the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides containing the right-angle. Let $ABC$ be a right-angled triangle having the angle $BAC$ a right-angle. I say that the square on $BC$ is equal to the (sum of the) squares on $BA$ and $AC$. Thus, the square on the side $BC$ is equal to the (sum of the) squares on the sides $BA$ and $AC$. Thus, in right-angled triangles, the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides surrounding the right-angle.\"\n\nOkay, so the theorem is about the Pythagorean theorem. It's saying that in a right-angled triangle, the square of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the other two sides.\n\nNow, I need to translate this into Lean 4 code following the given structures and guidelines. Let me recall the guidelines:\n\n1. The output must strictly follow the theorem format: `theorem theorem_name (h1 : hypothesis_1) (h2 : hypothesis_2) ... : conclusion := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 23.4085054397583,
+      "well_typed": false,
+      "token_counts": 321,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c: Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (∠ b:a:c : ℝ) = ∟ → |(b─c)| * |(b─c)| = |(b─a)| * |(b─a)| + |(a─c)| * |(a─c)|",
+  "nl_statement": "In right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides containing the right-angle. Let $ABC$ be a right-angled triangle having the angle $BAC$a right-angle. I say that the square on $BC$ is equal to the (sum of the) squares on $BA$ and $AC$.  <prf>  Thus, the square on the side $BC$ is equal to the (sum of the) squares on the sides $BA$ and $AC$. Thus, in right-angled triangles,  the square on the side subtending the right-angle is equal to the (sum of the) squares on the sides surrounding the right-[angle].",
+  "lean4_header": ""
+}

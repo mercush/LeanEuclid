@@ -1,0 +1,68 @@
+{
+  "id": "5",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ ((between a b c)) ∧ ((between b c d₁)) ∧ ((between a c d₂))) → (∠ a:b:c = ∠ a:c:b ∧ ∠ b:d₁:c = ∠ c:d₂:b)",
+      "full_output": "theorem example_thm (a b c d₁ d₂ : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : (between a b c)) (h3 : (between b c d₁)) (h4 : (between a c d₂)) : ∠ a:b:c = ∠ a:c:b ∧ ∠ b:d₁:c = ∠ c:d₂:b := by",
+      "probability": 0.20196822377935236,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 21.692585706710815,
+      "well_typed": true,
+      "token_counts": 95,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (AB : Line) (BC : Line) (AC : Line), ((formTriangle a b c AB BC AC) ∧ (|(a─b)| = |(a─c)|) ∧ (Line.intersectsLine AB BC) ∧ (Line.intersectsLine AC BC)) → (∠ a:b:c = ∠ a:c:b)",
+      "full_output": "theorem isosceles_base_angles (a b c d e : Point) (AB BC AC : Line) (h1 : formTriangle a b c AB BC AC) (h2 : |(a─b)| = |(a─c)|) (h3 : Line.intersectsLine AB BC) (h4 : Line.intersectsLine AC BC) : ∠ a:b:c = ∠ a:c:b := by",
+      "probability": 0.20037743349330184,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 21.692585706710815,
+      "well_typed": false,
+      "token_counts": 90,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (ab : Line) (ac : Line) (bd : Line) (ce : Line), ((formTriangle a b c ab bd ac) ∧ (formTriangle a c b ac ce ab) ∧ (|(a─b)| = |(a─c)|)) → (∠ a:b:c = ∠ a:c:b)",
+      "full_output": "theorem isoceles_base_angles (a b c d e : Point)\n  (ab : Line) (ac : Line) (bd : Line) (ce : Line) (h₁ : formTriangle a b c ab bd ac) \n  (h₂ : formTriangle a c b ac ce ab) (h₃ : |(a─b)| = |(a─c)|) : \n  ∠ a:b:c = ∠ a:c:b := by",
+      "probability": 0.2003384337456888,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 21.692585706710815,
+      "well_typed": false,
+      "token_counts": 98,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (AB : Line) (BC : Line) (CA : Line) (BD : Line) (CE : Line), ((Triangle.ofPoints a b c) ∧ (h1.congruent h1) ∧ (distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine a c CA) ∧ (twoLinesIntersectAtPoint AB BC b) ∧ (twoLinesIntersectAtPoint CA CE c) ∧ (Line.intersectsLine AB BD) ∧ (Line.intersectsLine CA CE) ∧ (between b c d₁) ∧ (between c b d₂)) → (∠ b:a:c = ∠ c:a:b ∧ ∠ b:d₁:a = ∠ c:d₂:a)",
+      "full_output": "theorem isosceles_triangle_base_angles (a b c d₁ d₂ : Point) (AB BC CA BD CE : Line) (h1 : Triangle.ofPoints a b c) (h2 : h1.congruent h1) (h3 : distinctPointsOnLine a b AB) (h4 : distinctPointsOnLine a c CA) (h5 : twoLinesIntersectAtPoint AB BC b) (h6 : twoLinesIntersectAtPoint CA CE c) (h7 : Line.intersectsLine AB BD) (h8 : Line.intersectsLine CA CE) (h9 : between b c d₁) (h10 : between c b d₂) : ∠ b:a:c = ∠ c:a:b ∧ ∠ b:d₁:a = ∠ c:d₂:a := by",
+      "probability": 0.20026544019104428,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 21.692585706710815,
+      "well_typed": false,
+      "token_counts": 173,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (AB : Line) (BC : Line) (AC : Line) (CD : Line), ((formTriangle a b c AB BC AC) ∧ (formParallelogram a b c d₁ AB BC AC CD)) → ()",
+      "full_output": "theorem example_thm (a b c d₁ d₂ : Point) (AB BC AC CD : Line) (h1 : formTriangle a b c AB BC AC) (h2 : formParallelogram a b c d₁ AB BC AC CD) (h3 : h1 Clan h2 = Cluster.hates MSE.Connection gCluster.release_pix Ross PSE Rom 으로]) : ∠ a:b:c = ∠ c:a:b ∧ ∠ a:c:d₁ = ∠ b:c:d₁ := by",
+      "probability": 0.1970504687906128,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 21.692585706710815,
+      "well_typed": false,
+      "token_counts": 110,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c d e : Point) (AB BC AC : Line), formTriangle a b c AB BC AC ∧ (|(a─b)| = |(a─c)|) ∧ (between a b d) ∧ (between a c e) → (∠ a:b:c = ∠ a:c:b) ∧ (∠ c:b:d = ∠ b:c:e)",
+  "nl_statement": "For isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another. Let $ABC$ be an isosceles triangle having the side $AB$ equal to the side $AC$, and let the straight-lines $BD$ and $CE$ have been produced in a straight-line with $AB$ and $AC$ (respectively) [Post.~2]. I say that the angle $ABC$ is equal to $ACB$, and (angle) $CBD$  to $BCE$.  <prf> Therefore, since the whole angle $ABG$ was shown (to be) equal to the whole angle $ACF$, within which $CBG$ is equal to $BCF$, the remainder $ABC$ is thus equal to the remainder $ACB$ [C.N.~3]. And they are at the base of triangle $ABC$. And $FBC$ was also shown (to be) equal to $GCB$. And they are under the base. Thus, for isosceles triangles, the angles at the base are equal to one another, and if the equal sides are produced then the angles under the base will be equal to one another.",
+  "lean4_header": ""
+}

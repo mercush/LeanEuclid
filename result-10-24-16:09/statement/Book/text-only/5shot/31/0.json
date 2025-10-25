@@ -1,0 +1,20 @@
+{
+  "id": "31",
+  "formalizations": [
+    {
+      "formalization": "∀ (A : Point) (BC : Line), ((¬(A.onLine BC))) → (exists l : Line, A.onLine l ∧ l.parallel BC)",
+      "full_output": "Okay, I need to formalize this Euclidean Geometry theorem using Lean 4. The English statement says, \"To draw a straight-line parallel to a given straight-line, through a given point.\" Let me break this down.\n\nFirst, I need to understand what's given and what's to be proven. We have a point A and a straight-line BC. The goal is to draw a straight-line through A that's parallel to BC.\n\nAlright, thinking about the Lean 4 syntax. I know that we have to define the theorem with the right parameters and use the provided axioms. So, the theorem should take a point A and a line BC as inputs, along with any necessary proof terms.\n\nI remember that in Lean 4, we can't have direct geometric proofs like in a textbook, but we can express the construction using existing objects. So, maybe I can use the fact that if we have two different points on BC, say B and C, and then construct lines through A that are parallel to BC.\n\nWait, but how do we represent parallelism? Oh, right, parallelism can be expressed as not intersecting, so if two lines don't intersect, they are parallel. But in the case of Euclidean geometry, we usually have a concept of parallel lines not meeting, so we can use that.\n\nSo, if I have line BC and I want to draw a line through A that doesn't intersect BC, that would be parallel. But I need to ensure that this new line is indeed parallel.\n\nMaybe I can use the given point A and construct a line through A that never meets BC, effectively making it parallel.\n\nAlright, putting this into the Lean 4 structure. The theorem will be named something like 'draw_parallel_line' and it will take a point A and a line BC as parameters, along with any needed hypotheses like A not being on BC.\n\nBut wait, the problem doesn't specify whether A is on BC or not. So, I think A could be on BC, but generally, we want A not on BC to draw a parallel line. So, I'll assume A is not on BC.\n\nSo, the theorem statement would be something like:\n\ntheorem draw_parallel_line (A : Point) (BC : Line) (h : ¬(A.onLine BC)) : exists l : Line, A.onLine l ∧ l.parallel BC := by",
+      "probability": 1.0,
+      "source": "chat",
+      "reasoning": true,
+      "leanpotential": "none",
+      "time": 34.18894720077515,
+      "well_typed": false,
+      "token_counts": 484,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a b c : Point) (BC : Line), distinctPointsOnLine b c BC ∧ ¬(a.onLine BC) → ∃ EF : Line, a.onLine EF ∧ ¬(EF.intersectsLine BC)",
+  "nl_statement": "To draw a straight-line parallel to a given straight-line, through a given point.Let $A$ be the given point, and $BC$ the given straight-line. So it is required to draw a straight-line parallel to the straight-line $BC$, through the point $A$.  <prf>  Thus, the straight-line $EAF$ has been drawn parallel to the given straight-line $BC$, through the  given point $A$.",
+  "lean4_header": ""
+}

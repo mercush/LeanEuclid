@@ -1,0 +1,68 @@
+{
+  "id": "27",
+  "formalizations": [
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d₁ : Point) (d₂ : Point) (d₃ : Point) (d₄ : Point) (AB : Line) (CD : Line) (EF : Line), ((twoLinesIntersectAtPoint AB CD d₂) ∧ (twoLinesIntersectAtPoint EF AB d₁) ∧ (twoLinesIntersectAtPoint EF CD d₄) ∧ (∠ a:d₁:c = ∠ d₄:d₂:d₃)) → (¬(Line.intersectsLine AB CD))",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ d₄ : Point) (AB CD EF : Line) (h1 : twoLinesIntersectAtPoint AB CD d₂) (h2 : twoLinesIntersectAtPoint EF AB d₁) (h3 : twoLinesIntersectAtPoint EF CD d₄) (h4 : ∠ a:d₁:c = ∠ d₄:d₂:d₃) : ¬(Line.intersectsLine AB CD) := by",
+      "probability": 0.20038013576768823,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 30.64899516105652,
+      "well_typed": false,
+      "token_counts": 106,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((distinctPointsOnLine a b AB) ∧ (distinctPointsOnLine c d CD) ∧ (distinctPointsOnLine e f EF) ∧ (∠ a:e:f = ∠ d:e:f)) → (¬(AB.intersectsLine CD))",
+      "full_output": "theorem alternate_angles_congruent (a b c d e f : Point) (AB CD EF : Line) (h1 : distinctPointsOnLine a b AB) (h2 : distinctPointsOnLine c d CD) (h3 : distinctPointsOnLine e f EF) (h4 : ∠ a:e:f = ∠ d:e:f) : ¬(AB.intersectsLine CD) := by",
+      "probability": 0.2002223565492843,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 30.64899516105652,
+      "well_typed": true,
+      "token_counts": 86,
+      "formalization_check": false
+    },
+    {
+      "formalization": "()",
+      "full_output": "theorem example_thm (a b c d₁ d₂ d₃ d₄ d₅ d₆ d₇ d₈ d₉ d₁₀ d₁₁ d₁₂ d₁₃ d₁₄ d₁₅ d₁₆ d₁₇ d₁₈ d₁₉ d₂₀ d₂₁ d₂₂ d₂₃ d₂₄ d₂₅ d₂₆ d₂₇ d₂₈ d₂₉ d₃₀ d₃₁ d₃₂ d₃₃ d₃₄ d₃₅ d₃₆ d₃₇ d₃₈ d₃₉ d₄₀ d₄₁ d₄₂ d₄₃ d₄₄ d₄₅ d₄₆ d₄₇ d₄₈ d₄₉ d₅₀ d₅₁ d₅₂ d₅₃ d₅₄ d₅₅ d₅₆ d₅₇ d₅₈ d₅₉ d₆₀ d₆₁ d₆₂ d₆₃ d",
+      "probability": 0.20000704162079355,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 30.64899516105652,
+      "well_typed": false,
+      "token_counts": 249,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (e : Point) (f : Point) (AB : Line) (CD : Line) (EF : Line), ((twoLinesIntersectAtPoint AB CD e) ∧ (twoLinesIntersectAtPoint EF AB e) ∧ (twoLinesIntersectAtPoint EF CD f) ∧ (∠ a:e:f = ∠ e:f:d)) → (EFparallel AB ∧ EFparallel CD)",
+      "full_output": "theorem alternate_angles_parallel (a b c d e f : Point)\n  (AB CD EF : Line)\n  (h1 : twoLinesIntersectAtPoint AB CD e)\n  (h2 : twoLinesIntersectAtPoint EF AB e)\n  (h3 : twoLinesIntersectAtPoint EF CD f)\n  (h4 : ∠ a:e:f = ∠ e:f:d)\n  : EFparallel AB ∧ EFparallel CD := by",
+      "probability": 0.1997487956534616,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 30.64899516105652,
+      "well_typed": false,
+      "token_counts": 95,
+      "formalization_check": false
+    },
+    {
+      "formalization": "∀ (a : Point) (b : Point) (c : Point) (d : Point) (AB : Line) (CD : Line) (EF : Line), ((Point.onLine a AB) ∧ (Point.onLine b AB) ∧ (Point.onLine c CD) ∧ (Point.onLine d CD) ∧ (Point.onLine a EF) ∧ (Point.onLine b EF) ∧ (Point.onLine c EF) ∧ (Point.onLine d EF) ∧ ((Point.onLine a AB ∧ Point.onLine b AB ∧ Point.onLine c CD ∧ Point.onLine d CD) ∧ (Point.onLine a EF ∧ Point.onLine b EF ∧ Point.onLine c EF ∧ Point.onLine d EF)) ∧ ((Point.onLine a AB ∧ Point.onLine b AB ∧ Point.onLine c CD ∧ Point.onLine d CD) ∧ (Point.onLine a EF ∧ Point.onLine b EF ∧ Point.onLine c EF ∧ Point.onLine d EF)) ∧ (¬(Line.intersectsLine AB CD))) → ()",
+      "full_output": "theorem theoremalternateangle (a b c d : Point) (AB CD EF : Line) (h1 : Point.onLine a AB) (h2 : Point.onLine b AB) (h3 : Point.onLine c CD) (h4 : Point.onLine d CD) (h5 : Point.onLine a EF) (h6 : Point.onLine b EF) (h7 : Point.onLine c EF) (h8 : Point.onLine d EF) (h9 : (Point.onLine a AB ∧ Point.onLine b AB ∧ Point.onLine c CD ∧ Point.onLine d CD) ∧ (Point.onLine a EF ∧ Point.onLine b EF ∧ Point.onLine c EF ∧ Point.onLine d EF)) (h10 : (Point.onLine a AB ∧ Point.onLine b AB ∧ Point.onLine c CD ∧ Point.onLine d CD) ∧ (Point.onLine a EF ∧ Point.onLine b EF ∧ Point.onLine c EF ∧ Point.onLine d EF)) (h11 : ¬(Line.intersectsLine AB CD)) (h12 : (Point.onLine a AB ∧ Point.onLine b AB ∧ Point.onLine c CD ∧ Point.onLine d CD",
+      "probability": 0.19964167040877234,
+      "source": "chat",
+      "reasoning": false,
+      "leanpotential": "none",
+      "time": 30.64899516105652,
+      "well_typed": false,
+      "token_counts": 250,
+      "formalization_check": false
+    }
+  ],
+  "reference_formalization": "∀ (a d e f : Point) (AE FD EF : Line), distinctPointsOnLine a e AE ∧ distinctPointsOnLine f d FD ∧ distinctPointsOnLine e f EF ∧ a.opposingSides d EF ∧ (∠ a:e:f = ∠ e:f:d) → ¬(AE.intersectsLine FD)",
+  "nl_statement": "If a straight-line falling across two straight-lines makes the alternate angles equal to one another then the (two) straight-lines will be parallel to one another.For let the straight-line $EF$, falling across the two straight-lines $AB$ and $CD$, make the alternate angles $AEF$ and $EFD$ equal to one another. I say that $AB$ and $CD$ are parallel. <prf> Thus, $AB$ and $CD$ are parallel.Thus, if a straight-line falling across two straight-lines makes the alternate angles equal to one another then the (two) straight-lines will be parallel (to one another).",
+  "lean4_header": ""
+}
