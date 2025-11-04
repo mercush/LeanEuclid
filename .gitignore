@@ -142,4 +142,5 @@ dmypy.json
 /cvc5
 /z3
 core
+result*
 session_cache
