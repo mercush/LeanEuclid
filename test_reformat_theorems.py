@@ -18,9 +18,7 @@ def test_unreformat_with_variables_and_hypotheses() -> None:
     """Test unreformatting with variables and hypotheses."""
     formula = """∀ (a b : Point) (AB : Line), distinctPointsOnLine a b AB →
     ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)|"""
-    expected = """theorem example_thm (a b : Point) (AB : Line)
-    (h1 : distinctPointsOnLine a b AB) :
-    ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)| := by sorry"""
+    expected = """theorem example_thm (a b : Point) (AB : Line) (h1 : distinctPointsOnLine a b AB) : ∃ c : Point, |(c─a)| = |(a─b)| ∧ |(c─b)| = |(a─b)| := by sorry"""
     assert unreformat_theorem(formula) == expected
 
 
