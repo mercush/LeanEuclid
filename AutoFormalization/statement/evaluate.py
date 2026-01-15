@@ -52,6 +52,12 @@ def main() -> None:
         default=0,
         help="Number of examples",
     )
+    parser.add_argument(
+        "--prefix",
+        type=str,
+        default="",
+        help="Prefix for result directory",
+    )
     args = parser.parse_args()
 
     cnt = 0
@@ -66,6 +72,7 @@ def main() -> None:
             args.dataset,
             args.reasoning,
             str(args.num_examples) + "shot",
+            args.prefix,
             c,
         )
         result_dir = os.path.join(
@@ -75,6 +82,7 @@ def main() -> None:
             args.dataset,
             args.reasoning,
             str(args.num_examples) + "shot",
+            args.prefix,
             c,
         )
 

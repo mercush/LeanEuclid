@@ -9,15 +9,11 @@ import re
 import time
 from copy import deepcopy
 
-import openai
 import tqdm
 from lean_interact import (
-    AutoLeanServer,
-    Command,
     LeanREPLConfig,
     LocalProject,
 )
-from lean_interact.interface import CommandResponse, LeanError
 
 from LeanEuclid.AutoFormalization.unreformat_theorems import unreformat_theorem
 from LeanEuclid.AutoFormalization.utils import EXAMPLE_DIR, ROOT_DIR
@@ -25,7 +21,7 @@ from LeanEuclid.E3.validator import Validator
 from LeanEuclid.reformat_theorems import reformat_theorem_string
 from LeanPotential import device_llm
 from LeanPotential.lean_potential import LeanPotential
-from LeanPotential.models import ChatModel, Featherless, GeminiModel
+from LeanPotential.models import ChatModel, GeminiModel
 from LeanPotential.roundtrip import RoundTripPotential
 
 
@@ -43,8 +39,6 @@ async def run_generation(config):
             - max_tokens: Maximum tokens to generate
             - n_particles: Number of particles
             - ess_threshold: ESS threshold
-            - lhts: Whether to use long horizon temperature sampling
-            - lhts_power: Power for long horizon temperature sampling
     """
     model = ChatModel(
         model=config["llm"],
@@ -54,8 +48,6 @@ async def run_generation(config):
         n_particles=config["n_particles"],
         ess_threshold=config["ess_threshold"],
         critic=None,
-        lhts=config["lhts"],
-        lhts_power=config["lhts_power"],
     )
 
     # Add messages in the same way as the original code
@@ -166,13 +158,13 @@ async def main() -> None:
     parser.add_argument(
         "--num_query",
         type=int,
-        default=5,
+        default=1,
         help="Maximum number of query per instance",
     )
     parser.add_argument(
         "--num_examples",
         type=int,
-        default=0,
+        default=5,
         help="Number of examples",
     )
     parser.add_argument(
@@ -182,11 +174,11 @@ async def main() -> None:
         help="Model type",
     )
     parser.add_argument("--model_name", type=str, required=True, help="Model name")
-    parser.add_argument("--preamble", type=str, default="", help="Preamble for GenLM")
+    parser.add_argument("--preamble", type=str, default="import SystemE", help="Preamble for GenLM")
     parser.add_argument(
         "--project_dir",
         type=str,
-        default=".",
+        default=ROOT_DIR,
         help="Project directory",
     )
     parser.add_argument(
@@ -196,6 +188,7 @@ async def main() -> None:
         help="Tensor parallel size for GenLM",
     )
     parser.add_argument("--start_index", type=int, default=1, help="Start index")
+    parser.add_argument("--prefix", type=str, default="", help="Prefix for output directory")
     parser.add_argument("--typecheck", type=str, choices=["all", "none", "final"])
     parser.add_argument("--max_tokens", type=int, default=500, help="Maximum tokens to generate")
     parser.add_argument("--n_particles", type=int, default=10, help="Number of particles")
@@ -207,23 +200,25 @@ async def main() -> None:
     random.seed(42)
 
     if args.dataset == "UniGeo":
-        if args.reasoning == "multi-modal":
-            instruction_head = "Your task is to take a diagram and an English statement of a theorem from Euclidean Geometry and formalize it using Lean 4 programming language, adhering to the following structures and guidelines:\n"
-        else:
-            instruction_head = "Your task is to take an English statement of a theorem from Euclidean Geometry and formalize it using Lean 4 programming language, adhering to the following structures and guidelines:\n"
+        # if args.reasoning == "multi-modal":
+        instruction_head = "Your task is to take a diagram and an English statement of a theorem from Euclidean Geometry and formalize it using Lean 4 programming language, adhering to the following structures and guidelines:\n"
+        # else:
+        #     instruction_head = "Your task is to take an English statement of a theorem from Euclidean Geometry and formalize it using Lean 4 programming language, adhering to the following structures and guidelines:\n"
     else:
-        if args.reasoning == "multi-modal":
-            instruction_head = "Your task is to take a diagram and an English statement of a theorem from Euclidean Geometry (proof is omitted using the <prf> symbol) and formalize it using Lean 4 programming language, adhering to the following structures and guidelines:\n"
-        else:
-            instruction_head = "Your task is to take an English statement of a theorem from Euclidean Geometry (proof is omitted using the <prf> symbol) and formalize it using Lean 4 programming language, adhering to the following structures and guidelines:\n"
+        # if args.reasoning == "multi-modal":
+        instruction_head = "Your task is to take a diagram and an English statement of a theorem from Euclidean Geometry (proof is omitted using the <prf> symbol) and formalize it using Lean 4 programming language, adhering to the following structures and guidelines:\n"
+        # else:
+        #     instruction_head = "Your task is to take an English statement of a theorem from Euclidean Geometry (proof is omitted using the <prf> symbol) and formalize it using Lean 4 programming language, adhering to the following structures and guidelines:\n"
 
-    with open("AutoFormalization/statement/instruction.txt") as f:
+    with open(os.path.join(ROOT_DIR, "AutoFormalization/statement/instruction.txt")) as f:
         instruction = instruction_head + f.read()
 
     llm = device_llm(
         args.model_name,
         temperature=args.temperature,
-        tensor_parallel_size=args.tensor_parallel_size
+        tensor_parallel_size=args.tensor_parallel_size,
+        lhts=args.lhts,
+        lhts_power=args.lhts_power,
     )
     lean_config = LeanREPLConfig(
         project=LocalProject(directory=args.project_dir),
@@ -247,6 +242,7 @@ async def main() -> None:
             args.dataset,
             "text-only",
             str(args.num_examples) + "shot",
+            args.prefix,
             c,
         )
         os.makedirs(result_dir, exist_ok=True)
@@ -304,10 +300,6 @@ async def main() -> None:
                     n_particles=args.n_particles,
                     temperature=args.temperature,
                 )
-            elif args.model_type.lower() == "featherless":
-                model = Featherless(
-                    model_name=args.model_name, max_tokens=args.max_tokens
-                )
             else:
                 raise ValueError(f"Unknown model_type: {args.model_type}")
             file_name = (
@@ -342,8 +334,6 @@ async def main() -> None:
                     "max_tokens": args.max_tokens,
                     "n_particles": args.n_particles,
                     "ess_threshold": args.ess_threshold,
-                    "lhts": args.lhts,
-                    "lhts_power": args.lhts_power,
                 }
                 response, generation_time = await run_generation(config)
             else:
